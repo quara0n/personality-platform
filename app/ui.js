@@ -101,7 +101,7 @@ function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-U
       <img class="d-offer-art" src="assets/design/offer-work.webp" alt="" aria-hidden="true">
       <div class="d-offer-card">
         <h2>${tr('Your in-depth report','Din fordypningsrapport')}</h2>
-        <ul>${tick(tr('A deeper look at your five traits and 30 facets','Et dypere blikk på fem trekk og 30 fasetter'))}${tick(tr('Work &amp; career insights','Innsikt om arbeidsliv og karriere'))}${tick(tr('Everyday life &amp; relationships','Hverdagsliv og relasjoner'))}${tick(tr('Three concrete next steps','Tre konkrete neste steg'))}</ul>
+        <ul>${tick(tr('A deeper look at your five traits and 30 facets','Et dypere blikk på fem trekk og 30 fasetter'))}${tick(tr('Percentiles: see where you stand among other test-takers','Persentiler: se hvor du ligger blant andre testtakere'))}${tick(tr('Work &amp; career insights','Innsikt om arbeidsliv og karriere'))}${tick(tr('Everyday life &amp; relationships','Hverdagsliv og relasjoner'))}${tick(tr('Three concrete next steps','Tre konkrete neste steg'))}</ul>
         <p class="d-offer-terms">${tr('One payment. No subscription.','Én betaling. Ingen abonnement.')}</p>
         <p class="d-offer-price">${price}</p>
         <a class="d-offer-buy" href="#report">${tr('Get the full report','Få hele rapporten')} <span aria-hidden="true">→</span></a>
