@@ -38,7 +38,7 @@ const {chromium}=bundle?require(bundle):require('playwright');
   await page.pdf({path:path.join(out,'sample-report-no.pdf'),format:'A4',printBackground:true});
   await page.screenshot({path:path.join(out,'report-no-desktop.png'),fullPage:false});
   await page.goto('http://127.0.0.1:4173/#offer');
-  await page.waitForFunction(()=>document.querySelector('.offer-card')?.textContent.includes('NOK'));
+  await page.waitForFunction(()=>/NOK|kr/.test(document.querySelector('.d-offer-card')?.textContent||''));
   await page.setViewportSize({width:390,height:844});
   await page.screenshot({path:path.join(out,'offer-mobile.png'),fullPage:true});
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No mobile horizontal overflow');
