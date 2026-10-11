@@ -33,7 +33,7 @@ const {chromium}=bundle?require(bundle):require('playwright');
   assert.equal(await page.locator('.step').count(),3);
   await page.pdf({path:path.join(out,'sample-report-en.pdf'),format:'Letter',printBackground:true});
   await page.locator('#language').selectOption('no');
-  await page.waitForFunction(()=>document.documentElement.lang==='nb'&&document.querySelector('.d-report-body')?.textContent.includes('Personligheten din,'));
+  await page.waitForFunction(()=>document.documentElement.lang==='nb'&&document.querySelector('.d-report-body')?.textContent.includes('Personlighetsprofilen din'));
   await page.locator('#country').selectOption('NO');
   await page.pdf({path:path.join(out,'sample-report-no.pdf'),format:'A4',printBackground:true});
   await page.screenshot({path:path.join(out,'report-no-desktop.png'),fullPage:false});

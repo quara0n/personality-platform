@@ -13,7 +13,7 @@ const assert=require('node:assert/strict');
  await page.goto('http://127.0.0.1:4173/#demo');await page.locator('.d-report-body').waitFor();
  await page.pdf({path:'artifacts/sample-report-en.pdf',format:'Letter',printBackground:true});
  await page.locator('.d-contents a[href="#report/work"]').click();await page.locator('#language').selectOption('no');
- await page.waitForFunction(()=>document.querySelector('.d-report-body')?.textContent.includes('Personligheten din,'));
+ await page.waitForFunction(()=>document.querySelector('.d-report-body')?.textContent.includes('Personlighetsprofilen din'));
  assert.equal(await page.locator('.facet').count(),30);
  await page.pdf({path:'artifacts/sample-report-no.pdf',format:'A4',printBackground:true});
  await page.goto('http://127.0.0.1:4173/#offer');await page.locator('.d-offer').waitFor();
