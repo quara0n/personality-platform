@@ -36,3 +36,11 @@ Independent code-review receipt and deployment outcome will be recorded after co
 
 - Code review completed: `20261011-report-facets`, focused correctness plus independent local adversarial review. Finding #1 (P2, a pending answer import could undo a clear) applied inline. A deferred-read browser regression failed before the fix and now passes for both clear and a newer import. No unresolved findings.
 - Final full 120-answer browser regression passed. Final report-upgrade browser regression passed, including the import/clear race.
+
+## Designtilpasning (2026-10-11)
+- `npm test`: 11 av 11 består. Alle fem nettleserskriptene (`browser-check`, `preview-check`, `design-check`, `locale-race-check`, `report-upgrade-check`) består i Chromium etter at selektorene ble oppdatert til de nye skjermene.
+- Gjennomgått med 120 svar på 1440 px og 390 px: ingen sideveis scrolling og ingen konsollfeil. Utskrift av eksempelrapporten gir 22 A4-sider med alle kapitler.
+
+## Kjøpsside og stabil spørsmålsside (2026-10-11)
+- Svarfeltenes plassering på siden ble målt for de 30 første spørsmålene på 1440, 1366 og 390 px. Den var identisk for alle spørsmål, også når tittelen går over to linjer.
+- Kjøpssiden, trekk-, hverdags- og stegkapitlet ble gjennomgått på 1440 px og 390 px: ingen sideveis scrolling og ingen konsollfeil.
