@@ -1,7 +1,7 @@
 import { scoreAssessment, createReport } from './scoring.js';
 import {withPercentiles,shownPercentile} from './norms.js';
 import {contextCard} from './context-copy.js';
-import {traitColors,traitPiece,profileSummary,traitLine,traitQuestion,reflection} from './design-copy.js';
+import {traitColors,traitPiece,profileSummary,traitLine,panelCopy,traitQuestion,reflection} from './design-copy.js';
 import {encodeAnswers,decodeAnswers} from './answer-backup.js';
 const main=document.querySelector('main');
 const KEY='five-assessment-v1', PREF='five-preferences-v1';
@@ -40,7 +40,7 @@ async function restoreAnswers(file){
   }catch{if(token!==restoreToken)return;status.textContent=tr('This file is not a valid Fem answer backup. Your current answers have not changed.','Filen er ikke en gyldig Fem-svarkopi. Svarene dine er ikke endret.');}
 }
 function sorted(){return report.domains;}
-function bandText(b){return b==='low'?tr('Lower endorsement','Lavere tilslutning'):b==='high'?tr('Higher endorsement','Høyere tilslutning'):tr('Mixed / middle','Blandet / midt på skalaen');}
+function bandText(b){return b==='low'?tr('Lower on the scale','Lavere på skalaen'):b==='high'?tr('Higher on the scale','Høyere på skalaen'):tr('Middle of the scale','Midt på skalaen');}
 function entry(d){const base=content.domains?.[d.code]||{};return {...(base[d.band]||{}),...(d.content||{})};}
 function name(d){return content.domains?.[d.code]?.name||names[d.code]?.()||d.name;}
 function scale(d){return `<div class="score-row"><div class="score-top"><strong>${esc(name(d))}</strong><span>${Number(d.mean).toFixed(2)} / 5</span></div><div class="track" role="img" aria-label="${esc(name(d))}: ${Number(d.mean).toFixed(2)} / 5"><span style="width:${Math.max(0,Math.min(100,d.position))}%"></span></div><div class="score-scale"><span>${tr('Lower endorsement','Lavere tilslutning')}</span><span>${tr('Higher endorsement','Høyere tilslutning')}</span></div></div>`;}
@@ -86,7 +86,11 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
     <div class="d-first-look"><h2>${tr('A first look at your patterns','Et første blikk på mønstrene dine')}</h2><p>${esc(profileSummary(sorted(),language))}</p><p class="d-small">${tr('The traits describe tendencies, not fixed types.','Trekkene beskriver tendenser, ikke faste typer.')}</p></div>
     <div class="d-explore"><div class="d-explore-inner"><h2 class="d-panels-title">${tr('Explore your traits','Utforsk trekkene dine')}</h2>
       <div class="d-panels">${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<button type="button" class="d-tpanel d-tpanel-${c}" data-trait="${c}" aria-expanded="false" aria-controls="td-${c}"><span class="d-tpanel-art"><img src="assets/design/trait-${c}.webp" alt="" aria-hidden="true"></span><span class="d-tpanel-name">${esc(name(d).replace(/\s*\(.*\)$/,''))}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`;}).join('')}</div>
-      ${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-line">${esc(traitLine(d,language))} <em>${esc(traitQuestion(d,language))}</em></p><p class="eyebrow">${bandText(d.band)} · ${Number(d.mean).toFixed(2)} / 5</p>${strengthHtml(d)}<p>${esc(entry(d).meaning)}</p><div class="d-use"><strong>${tr('Getting the most from it','Slik får du mest ut av det')}</strong><p>${esc(entry(d).watch)}</p></div></div>`;}).join('')}
+      ${order.map(c=>{const d=sorted().find(x=>x.code===c),pc=panelCopy(d,language),art=c==='O'?'facets/strength-O.webp':`facets/head-${c}.webp`;return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-level">${bandText(d.band)} · ${Number(d.mean).toFixed(2)} / 5</p><p class="d-tdetail-line">${esc(traitLine(d,language))}</p>
+        <div class="d-tdetail-strength"><div><p class="d-tdetail-eyebrow d-tdetail-eyebrow-warm">${tr('A possible strength','En mulig styrke')}</p><h4>${esc(pc.strength)}</h4><p>${esc(pc.strengthText)}</p></div><img src="assets/design/${art}" alt="" aria-hidden="true"></div>
+        <div class="d-tdetail-try"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10a10 10 0 0 0-6 18c1.5 1.2 2 2.6 2 4h8c0-1.4.5-2.8 2-4a10 10 0 0 0-6-18zM20 36h8M21 40h6M24 2v3M10 8l2 2M38 8l-2 2M5 20h3M40 20h3"/></svg><div><p class="d-tdetail-eyebrow">${tr('Try it this week','Prøv i hverdagen')}</p><p class="d-tdetail-try-h">${esc(pc.try)}</p><p>${esc(pc.tryQuestion)}</p></div></div>
+        <p class="d-tdetail-caveat">${esc(pc.caveat)}</p>
+        <div class="d-tdetail-more"><button type="button" class="d-more-toggle" aria-expanded="false" aria-controls="tm-${c}">${tr('Read more about your result','Les mer om resultatet')}<span class="d-fcard-plus" aria-hidden="true"></span></button><div class="d-more-body" id="tm-${c}" hidden><p>${esc(entry(d).meaning)}</p><p>${esc(entry(d).strength)}</p><div class="d-use"><strong>${tr('Worth keeping in mind','Verdt å ha i bakhodet')}</strong><p>${esc(entry(d).watch)}</p></div><p class="d-tdetail-q">${esc(traitQuestion(d,language))}</p></div></div></div>`;}).join('')}
       <div class="d-cta-row"><a class="d-cta" href="#offer">${tr('Explore the in-depth report','Utforsk fordypningsrapporten')} <span aria-hidden="true">→</span></a></div>
       <p class="d-small d-center">${interpretation()}</p>
       <div class="d-links"><a href="#method">${tr('Read the method','Les om metoden')}</a>${!demo?`<button class="text-button" id="edit">${tr('Review my answers','Se gjennom svarene mine')}</button>`:''}</div>
@@ -94,6 +98,7 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
   document.querySelectorAll('.d-tpanel').forEach(btn=>btn.addEventListener('click',()=>{const wasOpen=btn.getAttribute('aria-expanded')==='true';
     document.querySelectorAll('.d-tpanel').forEach(x=>x.setAttribute('aria-expanded','false'));document.querySelectorAll('.d-tdetail').forEach(x=>x.hidden=true);
     if(!wasOpen){btn.setAttribute('aria-expanded','true');const el=document.getElementById('td-'+btn.dataset.trait);el.hidden=false;el.scrollIntoView({block:'nearest',behavior:'smooth'});}}));
+  document.querySelectorAll('.d-more-toggle').forEach(btn=>btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(open));btn.parentElement.classList.toggle('is-open',open);document.getElementById(btn.getAttribute('aria-controls')).hidden=!open;}));
   document.querySelector('#edit')?.addEventListener('click',()=>{index=0;location.hash='test';});}
 function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-US',{style:'currency',currency:country==='NO'?'NOK':'USD',minimumFractionDigits:country==='NO'?0:2,maximumFractionDigits:country==='NO'?0:2}).format(country==='NO'?99:9.99);
   const tick=label=>`<li><span class="d-tick" aria-hidden="true"></span><span>${label}</span></li>`;
