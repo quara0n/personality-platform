@@ -86,3 +86,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Forsiden på mobil 2026-10-11
 - På smale skjermer (≤ 700 px) skjules de beskårne sidefigurene på forsiden. Eksempelkortet står i full bredde, med de to figurene fra resultatsiden under seg som to avrundede bilder. Det er samme side, ikke en egen mobilside.
+
+## Spørsmålssiden på mobil 2026-10-11
+- Rune ba om at logo, spørsmål og alle fem svaralternativer får plass i ett skjermbilde på telefon. På smale skjermer (≤ 760 px) er linjen «Svar ut fra hvordan du vanligvis er.» og «Spørsmål 12 av 120» tatt bort; fremdriftslinjen viser i stedet «12/120». Topptekst, avstander og svarknapper er strammet inn. Målt: femte svar slutter ved 465 px for alle 120 spørsmål på norsk og engelsk, og kvinnefiguren kommer innenfor skjermen fra omtrent 660 px synlig høyde.
+- Figurstørrelsen og automatisk overgang på stor skjerm er uendret.
+- «Take charge» (E3, selvhevdelse) var oversatt «Tar ansvar», som betyr noe annet. Endret til «Tar styringen». Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret.

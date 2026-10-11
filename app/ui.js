@@ -55,7 +55,7 @@ function assessment(focus=false){demo=false;report=null;
   const q=questions[index],count=Object.keys(answers).length,percent=Math.round(count/120*100);
   main.innerHTML=`<section class="d-question">
     <div class="d-question-inner">
-      <div class="d-progress"><span>${tr('Progress','Fremdrift')}</span><progress max="120" value="${count}" aria-label="${tr('Answered questions','Besvarte spørsmål')}: ${count} / 120"></progress><span>${percent} %</span></div>
+      <div class="d-progress"><span>${tr('Progress','Fremdrift')}</span><progress max="120" value="${count}" aria-label="${tr('Answered questions','Besvarte spørsmål')}: ${count} / 120"></progress><span class="d-pct">${percent} %</span><span class="d-qnum">${index+1}/120</span></div>
       <p class="d-instruction">${tr('Answer based on how you usually are.','Svar ut fra hvordan du vanligvis er.')}</p>
       <p class="d-count">${tr('Question','Spørsmål')} ${index+1} ${tr('of','av')} 120</p>
       <div class="d-title-slot"><h1 class="d-question-title${q.text.length>38?' is-long':''}" id="question" tabindex="-1">${esc(q.text)}</h1></div>
