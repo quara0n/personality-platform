@@ -1,0 +1,11 @@
+{
+  "name": "personality-platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "verify:items": "python scripts/verify_items.py",
+    "start": "node scripts/serve.js",
+    "build": "node scripts/build.js"
+  }
+}

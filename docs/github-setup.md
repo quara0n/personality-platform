@@ -1,16 +1,12 @@
-# GitHub-status og publisering
+# GitHub-publisering
 
-Per overleveringen: lokalt repo, ingen remote, ingen GitHub-push. Git finnes. GitHub CLI finnes ikke i PATH eller de kontrollerte vanlige installasjonsmappene. Et ikke-interaktivt forsøk med Git Credential Manager returnerte ingen tilgjengelig GitHub-innlogging. Den tilkoblede GitHub-koblingen tilbyr ikke oppretting av repository.
+Brukeren valgte quara0n. Privat repo: https://github.com/quara0n/personality-platform.
 
-Brukeren har bedt om oppretting og push. Privat repo er et forsiktig foreslått standardvalg for dette upubliserte prosjektet; ingen organisasjon er valgt.
+Lokal arbeidsgren: feat/ipip-assessment. Historisk prosjektgrunnlag ligger på bootstrap/project-foundation. Publiser begge grenene uten å endre den opprinnelige historikken. Gjeldende prosjektstatus er i status.md; HANDOFF.md bevarer overleveringen før implementeringen.
 
-Når GitHub CLI og innlogging er tilgjengelig, kan følgende kjøres fra prosjektroten:
-```powershell
-gh auth login
-gh repo create personality-platform --private --source . --remote origin --push
-```
+Publisering skal bekreftes mot GitHub før push rapporteres som fullført.
 
-Navnet er et teknisk forslag. Ved navnekollisjon velg et ledig navn; ikke skriv over et eksisterende repo.
-Alternativt: opprett et tomt privat repo i GitHub, sett den bekreftede URL-en som origin og push den lokale grenen.
-Lokal gren er bootstrap/project-foundation. Den kan brukes som første standardgren eller omdøpes til main før første push etter prosjektets konvensjon.
-Verifiser remote, commit og tilgang etter push. Ikke rapporter GitHub som ferdig før dette faktisk er gjort.
+## Bekreftet publisering
+11. oktober 2026: repoet er opprettet som privat under quara0n. Implementeringen er pushet til feat/ipip-assessment, med originalhistorikken på main. Første implementeringscommit er 1163cdff4e4258a121b4320e2bf8b2bccd34d389; SHA ble bekreftet med git ls-remote.
+
+Utkast til pull request: https://github.com/quara0n/personality-platform/pull/1. Utkastet samler dagens forhåndsvisning og dokumenterer gjenstående betalings-/lanseringsarbeid. Gjeldende kode: https://github.com/quara0n/personality-platform/tree/feat/ipip-assessment.

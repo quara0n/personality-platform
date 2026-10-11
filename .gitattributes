@@ -2,3 +2,5 @@
 *.png binary
 *.jpg binary
 *.pdf binary
+research/upstream/* -text -whitespace
+app/data/questions*.json text eol=lf
