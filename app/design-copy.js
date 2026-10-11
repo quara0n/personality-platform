@@ -46,7 +46,7 @@ const distinctive = domains => domains.filter(d => d.band !== 'middle').sort((a,
 /** One or two phrases from the domains furthest from the response midpoint. */
 export function profileSummary(domains, language) {
   const top = distinctive(domains).slice(0, 2).map(d => pick(summaryPhrases[d.code][d.band], language));
-  if (!top.length) return pick(['Your answers sit close to the middle on all five traits, so the situation may shape what you do more than any single tendency.', 'Svarene dine ligger nær midten på alle fem trekk, så situasjonen kan forme det du gjør mer enn én enkelt tendens.'], language);
+  if (!top.length) return pick(['Your answers sit close to the middle of the answer scale on all five traits, so the situation may shape what you do more than any single tendency.', 'Svarene dine ligger nær midten av svarskalaen på alle fem trekk, så situasjonen kan forme det du gjør mer enn én enkelt tendens.'], language);
   return language === 'no' ? `Svarene dine tyder på ${top.join(' og ')}.` : `Your answers suggest ${top.join(', alongside ')}.`;
 }
 

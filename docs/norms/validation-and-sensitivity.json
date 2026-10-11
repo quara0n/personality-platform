@@ -1,0 +1,1349 @@
+{
+  "sourceSha256": "526daf7ebe7d480ba71258cd20f0fc3b37ab3a43a2e4191c19a49e185a1df53b",
+  "n": 243307,
+  "itemKeyMatchesArchiveAndFem": 120,
+  "scaleChecks": [
+    {
+      "code": "N",
+      "checkedPoints": 97,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E",
+      "checkedPoints": 97,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O",
+      "checkedPoints": 97,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A",
+      "checkedPoints": 97,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C",
+      "checkedPoints": 97,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N1",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N2",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N3",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N4",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N5",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "N6",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E1",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E2",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E3",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E4",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E5",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "E6",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O1",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O2",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O3",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O4",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O5",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "O6",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A1",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A2",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A3",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A4",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A5",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "A6",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C1",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C2",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C3",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C4",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C5",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    },
+    {
+      "code": "C6",
+      "checkedPoints": 17,
+      "countTotal": 243307,
+      "monotonic": true,
+      "independentSearchMatches": true
+    }
+  ],
+  "wordingDifference": {
+    "item": 58,
+    "facet": "O6",
+    "archive": "Believe that there is no absolute right or wrong.",
+    "Fem": "Believe that there is no absolute right and wrong",
+    "effect": "Same position, facet and positive key; wording differs. No app wording changed."
+  },
+  "constantRawProfilesInPrimary": 0,
+  "sensitivity": {
+    "complete_age_19_69": {
+      "n": 212869,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 0.7666,
+          "atSum": 59,
+          "signedChangeAtSum": 0.7666
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 0.655,
+          "atSum": 82,
+          "signedChangeAtSum": 0.655
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.4002,
+          "atSum": 83,
+          "signedChangeAtSum": -0.4002
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 0.778,
+          "atSum": 89,
+          "signedChangeAtSum": -0.778
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 1.8545,
+          "atSum": 90,
+          "signedChangeAtSum": -1.8545
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 0.8479,
+          "atSum": 12,
+          "signedChangeAtSum": 0.8479
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 0.5049,
+          "atSum": 11,
+          "signedChangeAtSum": 0.5049
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 0.2157,
+          "atSum": 5,
+          "signedChangeAtSum": 0.2157
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.3311,
+          "atSum": 9,
+          "signedChangeAtSum": 0.3311
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 0.614,
+          "atSum": 14,
+          "signedChangeAtSum": -0.614
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 1.324,
+          "atSum": 9,
+          "signedChangeAtSum": 1.324
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 0.5883,
+          "atSum": 13,
+          "signedChangeAtSum": 0.5883
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 0.9534,
+          "atSum": 13,
+          "signedChangeAtSum": 0.9534
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 0.9966,
+          "atSum": 15,
+          "signedChangeAtSum": -0.9966
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 0.7107,
+          "atSum": 14,
+          "signedChangeAtSum": -0.7107
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 1.8909,
+          "atSum": 13,
+          "signedChangeAtSum": 1.8909
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 0.7197,
+          "atSum": 16,
+          "signedChangeAtSum": 0.7197
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 0.9564,
+          "atSum": 14,
+          "signedChangeAtSum": 0.9564
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 0.7585,
+          "atSum": 13,
+          "signedChangeAtSum": -0.7585
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 0.3876,
+          "atSum": 16,
+          "signedChangeAtSum": -0.3876
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 0.674,
+          "atSum": 14,
+          "signedChangeAtSum": -0.674
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 1.2356,
+          "atSum": 14,
+          "signedChangeAtSum": -1.2356
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 0.9782,
+          "atSum": 9,
+          "signedChangeAtSum": 0.9782
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 0.1173,
+          "atSum": 15,
+          "signedChangeAtSum": -0.1173
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 1.6422,
+          "atSum": 17,
+          "signedChangeAtSum": -1.6422
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 0.2891,
+          "atSum": 16,
+          "signedChangeAtSum": -0.2891
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 1.4973,
+          "atSum": 15,
+          "signedChangeAtSum": -1.4973
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 0.6998,
+          "atSum": 12,
+          "signedChangeAtSum": 0.6998
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 0.1459,
+          "atSum": 18,
+          "signedChangeAtSum": -0.1459
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 1.1228,
+          "atSum": 16,
+          "signedChangeAtSum": -1.1228
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 1.2165,
+          "atSum": 14,
+          "signedChangeAtSum": -1.2165
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 1.132,
+          "atSum": 16,
+          "signedChangeAtSum": -1.132
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 2.0036,
+          "atSum": 16,
+          "signedChangeAtSum": -2.0036
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 1.1568,
+          "atSum": 15,
+          "signedChangeAtSum": -1.1568
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 1.5104,
+          "atSum": 15,
+          "signedChangeAtSum": -1.5104
+        }
+      },
+      "maxAcrossAllScales": 2.0036
+    },
+    "complete_age_18_34": {
+      "n": 198539,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 1.5648,
+          "atSum": 60,
+          "signedChangeAtSum": -1.5648
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 1.762,
+          "atSum": 83,
+          "signedChangeAtSum": -1.762
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.1083,
+          "atSum": 81,
+          "signedChangeAtSum": 0.1083
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 2.8447,
+          "atSum": 91,
+          "signedChangeAtSum": 2.8447
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 3.0875,
+          "atSum": 93,
+          "signedChangeAtSum": 3.0875
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 2.1518,
+          "atSum": 12,
+          "signedChangeAtSum": -2.1518
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 1.2737,
+          "atSum": 11,
+          "signedChangeAtSum": -1.2737
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 0.4216,
+          "atSum": 5,
+          "signedChangeAtSum": -0.4216
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.1888,
+          "atSum": 8,
+          "signedChangeAtSum": -0.1888
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 1.3775,
+          "atSum": 10,
+          "signedChangeAtSum": -1.3775
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 1.7822,
+          "atSum": 9,
+          "signedChangeAtSum": -1.7822
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 1.1946,
+          "atSum": 13,
+          "signedChangeAtSum": -1.1946
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 2.5722,
+          "atSum": 12,
+          "signedChangeAtSum": -2.5722
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 1.1254,
+          "atSum": 15,
+          "signedChangeAtSum": 1.1254
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 1.4154,
+          "atSum": 14,
+          "signedChangeAtSum": 1.4154
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 4.1523,
+          "atSum": 12,
+          "signedChangeAtSum": -4.1523
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 1.1116,
+          "atSum": 15,
+          "signedChangeAtSum": -1.1116
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 2.3677,
+          "atSum": 14,
+          "signedChangeAtSum": -2.3677
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 1.0012,
+          "atSum": 13,
+          "signedChangeAtSum": 1.0012
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 0.4143,
+          "atSum": 15,
+          "signedChangeAtSum": 0.4143
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 1.3526,
+          "atSum": 14,
+          "signedChangeAtSum": 1.3526
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 1.5474,
+          "atSum": 14,
+          "signedChangeAtSum": 1.5474
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 1.5907,
+          "atSum": 9,
+          "signedChangeAtSum": -1.5907
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 0.3878,
+          "atSum": 14,
+          "signedChangeAtSum": 0.3878
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 3.9871,
+          "atSum": 18,
+          "signedChangeAtSum": 3.9871
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 0.413,
+          "atSum": 16,
+          "signedChangeAtSum": 0.413
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 3.4271,
+          "atSum": 16,
+          "signedChangeAtSum": 3.4271
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 1.0696,
+          "atSum": 11,
+          "signedChangeAtSum": 1.0696
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 1.3859,
+          "atSum": 15,
+          "signedChangeAtSum": 1.3859
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 1.1236,
+          "atSum": 17,
+          "signedChangeAtSum": 1.1236
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 1.3476,
+          "atSum": 15,
+          "signedChangeAtSum": 1.3476
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 2.5838,
+          "atSum": 17,
+          "signedChangeAtSum": 2.5838
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 3.8763,
+          "atSum": 17,
+          "signedChangeAtSum": 3.8763
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 2.0093,
+          "atSum": 15,
+          "signedChangeAtSum": 2.0093
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 2.7649,
+          "atSum": 15,
+          "signedChangeAtSum": 2.7649
+        }
+      },
+      "maxAcrossAllScales": 4.1523
+    },
+    "complete_age_35_90": {
+      "n": 44768,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 6.9395,
+          "atSum": 60,
+          "signedChangeAtSum": 6.9395
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 7.814,
+          "atSum": 83,
+          "signedChangeAtSum": 7.814
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.4805,
+          "atSum": 81,
+          "signedChangeAtSum": -0.4805
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 12.6157,
+          "atSum": 91,
+          "signedChangeAtSum": -12.6157
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 13.6924,
+          "atSum": 93,
+          "signedChangeAtSum": -13.6924
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 9.5431,
+          "atSum": 12,
+          "signedChangeAtSum": 9.5431
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 5.6489,
+          "atSum": 11,
+          "signedChangeAtSum": 5.6489
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 1.8698,
+          "atSum": 5,
+          "signedChangeAtSum": 1.8698
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.8371,
+          "atSum": 8,
+          "signedChangeAtSum": 0.8371
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 6.109,
+          "atSum": 10,
+          "signedChangeAtSum": 6.109
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 7.9039,
+          "atSum": 9,
+          "signedChangeAtSum": 7.9039
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 5.298,
+          "atSum": 13,
+          "signedChangeAtSum": 5.298
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 11.4074,
+          "atSum": 12,
+          "signedChangeAtSum": 11.4074
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 4.9909,
+          "atSum": 15,
+          "signedChangeAtSum": -4.9909
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 6.277,
+          "atSum": 14,
+          "signedChangeAtSum": -6.277
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 18.4149,
+          "atSum": 12,
+          "signedChangeAtSum": 18.4149
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 4.9298,
+          "atSum": 15,
+          "signedChangeAtSum": 4.9298
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 10.5005,
+          "atSum": 14,
+          "signedChangeAtSum": 10.5005
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 4.44,
+          "atSum": 13,
+          "signedChangeAtSum": -4.44
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 1.8372,
+          "atSum": 15,
+          "signedChangeAtSum": -1.8372
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 5.9984,
+          "atSum": 14,
+          "signedChangeAtSum": -5.9984
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 6.8623,
+          "atSum": 14,
+          "signedChangeAtSum": -6.8623
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 7.0544,
+          "atSum": 9,
+          "signedChangeAtSum": 7.0544
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 1.7197,
+          "atSum": 14,
+          "signedChangeAtSum": -1.7197
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 17.6823,
+          "atSum": 18,
+          "signedChangeAtSum": -17.6823
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 1.8315,
+          "atSum": 16,
+          "signedChangeAtSum": -1.8315
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 15.1986,
+          "atSum": 16,
+          "signedChangeAtSum": -15.1986
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 4.7435,
+          "atSum": 11,
+          "signedChangeAtSum": -4.7435
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 6.1464,
+          "atSum": 15,
+          "signedChangeAtSum": -6.1464
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 4.9831,
+          "atSum": 17,
+          "signedChangeAtSum": -4.9831
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 5.9762,
+          "atSum": 15,
+          "signedChangeAtSum": -5.9762
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 11.4585,
+          "atSum": 17,
+          "signedChangeAtSum": -11.4585
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 17.1907,
+          "atSum": 17,
+          "signedChangeAtSum": -17.1907
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 8.911,
+          "atSum": 15,
+          "signedChangeAtSum": -8.911
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 12.262,
+          "atSum": 15,
+          "signedChangeAtSum": -12.262
+        }
+      },
+      "maxAcrossAllScales": 18.4149
+    },
+    "complete_all_recorded_ages_10_99": {
+      "n": 296766,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 1.4627,
+          "atSum": 62,
+          "signedChangeAtSum": -1.4627
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 1.3712,
+          "atSum": 87,
+          "signedChangeAtSum": -1.3712
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.1713,
+          "atSum": 64,
+          "signedChangeAtSum": -0.1713
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 2.3184,
+          "atSum": 88,
+          "signedChangeAtSum": 2.3184
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 4.0484,
+          "atSum": 86,
+          "signedChangeAtSum": 4.0484
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 0.9919,
+          "atSum": 12,
+          "signedChangeAtSum": -0.9919
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 1.9947,
+          "atSum": 12,
+          "signedChangeAtSum": -1.9947
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 0.8471,
+          "atSum": 10,
+          "signedChangeAtSum": -0.8471
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.3206,
+          "atSum": 10,
+          "signedChangeAtSum": -0.3206
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 0.8307,
+          "atSum": 15,
+          "signedChangeAtSum": 0.8307
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 1.9259,
+          "atSum": 9,
+          "signedChangeAtSum": -1.9259
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 0.646,
+          "atSum": 16,
+          "signedChangeAtSum": -0.646
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 1.8596,
+          "atSum": 14,
+          "signedChangeAtSum": -1.8596
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 1.276,
+          "atSum": 14,
+          "signedChangeAtSum": 1.276
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 1.1082,
+          "atSum": 13,
+          "signedChangeAtSum": 1.1082
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 4.0345,
+          "atSum": 14,
+          "signedChangeAtSum": -4.0345
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 0.6872,
+          "atSum": 17,
+          "signedChangeAtSum": -0.6872
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 2.3964,
+          "atSum": 16,
+          "signedChangeAtSum": -2.3964
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 1.4097,
+          "atSum": 13,
+          "signedChangeAtSum": 1.4097
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 1.1051,
+          "atSum": 15,
+          "signedChangeAtSum": 1.1051
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 0.7575,
+          "atSum": 10,
+          "signedChangeAtSum": -0.7575
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 1.411,
+          "atSum": 14,
+          "signedChangeAtSum": 1.411
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 1.8781,
+          "atSum": 9,
+          "signedChangeAtSum": -1.8781
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 0.68,
+          "atSum": 15,
+          "signedChangeAtSum": 0.68
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 3.1214,
+          "atSum": 16,
+          "signedChangeAtSum": 3.1214
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 1.7479,
+          "atSum": 16,
+          "signedChangeAtSum": 1.7479
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 4.1152,
+          "atSum": 14,
+          "signedChangeAtSum": 4.1152
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 1.2635,
+          "atSum": 14,
+          "signedChangeAtSum": -1.2635
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 0.4087,
+          "atSum": 13,
+          "signedChangeAtSum": 0.4087
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 2.2329,
+          "atSum": 15,
+          "signedChangeAtSum": 2.2329
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 3.5976,
+          "atSum": 13,
+          "signedChangeAtSum": 3.5976
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 2.699,
+          "atSum": 16,
+          "signedChangeAtSum": 2.699
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 3.5167,
+          "atSum": 15,
+          "signedChangeAtSum": 3.5167
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 1.9989,
+          "atSum": 14,
+          "signedChangeAtSum": 1.9989
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 3.3997,
+          "atSum": 14,
+          "signedChangeAtSum": 3.3997
+        }
+      },
+      "maxAcrossAllScales": 4.1152
+    },
+    "exclude_constant_raw_response_profiles": {
+      "n": 243307,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 112,
+          "signedChangeAtSum": -0.0
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 78,
+          "signedChangeAtSum": -0.0
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 28,
+          "signedChangeAtSum": -0.0
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 106,
+          "signedChangeAtSum": -0.0
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 77,
+          "signedChangeAtSum": -0.0
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 16,
+          "signedChangeAtSum": -0.0
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 17,
+          "signedChangeAtSum": -0.0
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 5,
+          "signedChangeAtSum": 0.0
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 10,
+          "signedChangeAtSum": 0.0
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 11,
+          "signedChangeAtSum": 0.0
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 12,
+          "signedChangeAtSum": -0.0
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 7,
+          "signedChangeAtSum": -0.0
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 14,
+          "signedChangeAtSum": -0.0
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 19,
+          "signedChangeAtSum": -0.0
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 16,
+          "signedChangeAtSum": 0.0
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 4,
+          "signedChangeAtSum": -0.0
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 6,
+          "signedChangeAtSum": 0.0
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 6,
+          "signedChangeAtSum": 0.0
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 19,
+          "signedChangeAtSum": 0.0
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 4,
+          "signedChangeAtSum": 0.0
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 5,
+          "signedChangeAtSum": -0.0
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 8,
+          "signedChangeAtSum": 0.0
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 12,
+          "signedChangeAtSum": -0.0
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 19,
+          "signedChangeAtSum": -0.0
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 19,
+          "signedChangeAtSum": 0.0
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 19,
+          "signedChangeAtSum": -0.0
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 11,
+          "signedChangeAtSum": -0.0
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 10,
+          "signedChangeAtSum": 0.0
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 8,
+          "signedChangeAtSum": -0.0
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 17,
+          "signedChangeAtSum": -0.0
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 20,
+          "signedChangeAtSum": -0.0
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 10,
+          "signedChangeAtSum": 0.0
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 10,
+          "signedChangeAtSum": 0.0
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 7,
+          "signedChangeAtSum": -0.0
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 0.0,
+          "atSum": 16,
+          "signedChangeAtSum": 0.0
+        }
+      },
+      "maxAcrossAllScales": 0.0
+    },
+    "up_to_four_missing_items_prorated_with_at_least_three_per_facet": {
+      "n": 358647,
+      "byScale": {
+        "N": {
+          "maxAbsolutePercentilePointChange": 0.3,
+          "atSum": 61,
+          "signedChangeAtSum": -0.3
+        },
+        "E": {
+          "maxAbsolutePercentilePointChange": 0.6382,
+          "atSum": 78,
+          "signedChangeAtSum": -0.6382
+        },
+        "O": {
+          "maxAbsolutePercentilePointChange": 0.3686,
+          "atSum": 90,
+          "signedChangeAtSum": 0.3686
+        },
+        "A": {
+          "maxAbsolutePercentilePointChange": 0.3298,
+          "atSum": 89,
+          "signedChangeAtSum": 0.3298
+        },
+        "C": {
+          "maxAbsolutePercentilePointChange": 0.2857,
+          "atSum": 95,
+          "signedChangeAtSum": 0.2857
+        },
+        "N1": {
+          "maxAbsolutePercentilePointChange": 0.3373,
+          "atSum": 10,
+          "signedChangeAtSum": -0.3373
+        },
+        "N2": {
+          "maxAbsolutePercentilePointChange": 0.4215,
+          "atSum": 9,
+          "signedChangeAtSum": -0.4215
+        },
+        "N3": {
+          "maxAbsolutePercentilePointChange": 0.1214,
+          "atSum": 11,
+          "signedChangeAtSum": 0.1214
+        },
+        "N4": {
+          "maxAbsolutePercentilePointChange": 0.5134,
+          "atSum": 15,
+          "signedChangeAtSum": 0.5134
+        },
+        "N5": {
+          "maxAbsolutePercentilePointChange": 0.4304,
+          "atSum": 9,
+          "signedChangeAtSum": -0.4304
+        },
+        "N6": {
+          "maxAbsolutePercentilePointChange": 0.5903,
+          "atSum": 9,
+          "signedChangeAtSum": -0.5903
+        },
+        "E1": {
+          "maxAbsolutePercentilePointChange": 0.4562,
+          "atSum": 13,
+          "signedChangeAtSum": -0.4562
+        },
+        "E2": {
+          "maxAbsolutePercentilePointChange": 0.6168,
+          "atSum": 10,
+          "signedChangeAtSum": -0.6168
+        },
+        "E3": {
+          "maxAbsolutePercentilePointChange": 0.4817,
+          "atSum": 13,
+          "signedChangeAtSum": -0.4817
+        },
+        "E4": {
+          "maxAbsolutePercentilePointChange": 0.6261,
+          "atSum": 12,
+          "signedChangeAtSum": -0.6261
+        },
+        "E5": {
+          "maxAbsolutePercentilePointChange": 0.109,
+          "atSum": 11,
+          "signedChangeAtSum": 0.109
+        },
+        "E6": {
+          "maxAbsolutePercentilePointChange": 0.2839,
+          "atSum": 13,
+          "signedChangeAtSum": -0.2839
+        },
+        "O1": {
+          "maxAbsolutePercentilePointChange": 0.6337,
+          "atSum": 15,
+          "signedChangeAtSum": 0.6337
+        },
+        "O2": {
+          "maxAbsolutePercentilePointChange": 0.349,
+          "atSum": 16,
+          "signedChangeAtSum": 0.349
+        },
+        "O3": {
+          "maxAbsolutePercentilePointChange": 0.2005,
+          "atSum": 13,
+          "signedChangeAtSum": -0.2005
+        },
+        "O4": {
+          "maxAbsolutePercentilePointChange": 0.239,
+          "atSum": 9,
+          "signedChangeAtSum": -0.239
+        },
+        "O5": {
+          "maxAbsolutePercentilePointChange": 0.6743,
+          "atSum": 15,
+          "signedChangeAtSum": 0.6743
+        },
+        "O6": {
+          "maxAbsolutePercentilePointChange": 0.5448,
+          "atSum": 9,
+          "signedChangeAtSum": -0.5448
+        },
+        "A1": {
+          "maxAbsolutePercentilePointChange": 0.4479,
+          "atSum": 15,
+          "signedChangeAtSum": 0.4479
+        },
+        "A2": {
+          "maxAbsolutePercentilePointChange": 0.4907,
+          "atSum": 15,
+          "signedChangeAtSum": 0.4907
+        },
+        "A3": {
+          "maxAbsolutePercentilePointChange": 0.1791,
+          "atSum": 15,
+          "signedChangeAtSum": 0.1791
+        },
+        "A4": {
+          "maxAbsolutePercentilePointChange": 0.6183,
+          "atSum": 15,
+          "signedChangeAtSum": 0.6183
+        },
+        "A5": {
+          "maxAbsolutePercentilePointChange": 0.1348,
+          "atSum": 13,
+          "signedChangeAtSum": -0.1348
+        },
+        "A6": {
+          "maxAbsolutePercentilePointChange": 0.3192,
+          "atSum": 17,
+          "signedChangeAtSum": -0.3192
+        },
+        "C1": {
+          "maxAbsolutePercentilePointChange": 0.396,
+          "atSum": 16,
+          "signedChangeAtSum": 0.396
+        },
+        "C2": {
+          "maxAbsolutePercentilePointChange": 0.3735,
+          "atSum": 15,
+          "signedChangeAtSum": 0.3735
+        },
+        "C3": {
+          "maxAbsolutePercentilePointChange": 0.4544,
+          "atSum": 15,
+          "signedChangeAtSum": 0.4544
+        },
+        "C4": {
+          "maxAbsolutePercentilePointChange": 0.1215,
+          "atSum": 17,
+          "signedChangeAtSum": -0.1215
+        },
+        "C5": {
+          "maxAbsolutePercentilePointChange": 0.2857,
+          "atSum": 13,
+          "signedChangeAtSum": -0.2857
+        },
+        "C6": {
+          "maxAbsolutePercentilePointChange": 0.7026,
+          "atSum": 15,
+          "signedChangeAtSum": 0.7026
+        }
+      },
+      "maxAcrossAllScales": 0.7026
+    }
+  },
+  "interpretation": "Sensitivity differences are in percentile points, not measurement error or confidence intervals. Age subgroup differences reflect sample composition."
+}
