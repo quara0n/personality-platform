@@ -13,15 +13,18 @@ export function percentile(scale, sum) {
 /** Display-only rule: empirical extremes that round to 0 or 100 are shown as 1 or 99. */
 export const shownPercentile = p => Math.min(99, Math.max(1, p));
 
-/** Adds `percentile` to each domain and facet when a norm table for this instrument is available. */
-export function withPercentiles(report, norms) {
-  if (!norms?.scales || (report.instrumentVersion && norms.instrumentVersion !== report.instrumentVersion)) return report;
-  const pct = x => percentile(norms.scales[x.code], x.sum);
-  const domains = report.domains.map(d => ({...d, percentile: pct(d), facets: d.facets.map(f => ({...f, percentile: pct(f)}))}));
-  const byCode = Object.fromEntries(domains.flatMap(d => d.facets).map(f => [f.code, f]));
-  const swap = list => list?.map(f => byCode[f.code] ? {...f, percentile: byCode[f.code].percentile} : f);
-  const one = f => f && byCode[f.code] ? {...f, percentile: byCode[f.code].percentile} : f;
+/** Level words follow the percentile when a norm table exists: below 30 lower, above 70 higher. */
+export const bandFromPercentile = p => p < 30 ? 'low' : p > 70 ? 'high' : 'middle';
+
+/**
+ * Adds `percentile` to each domain and facet of a scored result and sets `band` from it, so that
+ * level words and all band-selected text agree with the percentile. `meanBand` keeps the 1–5 rule.
+ * Without a matching norm table the result is returned unchanged (mean-based bands).
+ */
+export function applyNorms(result, norms) {
+  if (!norms?.scales || (result.instrumentVersion && norms.instrumentVersion !== result.instrumentVersion)) return result;
+  const add = x => { const p = percentile(norms.scales[x.code], x.sum); return p === null ? x : {...x, percentile: p, meanBand: x.band, band: bandFromPercentile(p)}; };
   const ref = norms.reference || {};
-  return {...report, domains: domains.map(d => ({...d, contextFacets: swap(d.contextFacets), pattern: {...d.pattern, high: one(d.pattern?.high), low: one(d.pattern?.low)}})), nextSteps: swap(report.nextSteps),
+  return {...result, domains: result.domains.map(d => ({...add(d), facets: d.facets.map(add)})),
     norms: {version: norms.normVersion, n: ref.n, collected: (ref.collectedYears || []).join('–')}};
 }

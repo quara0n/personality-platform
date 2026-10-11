@@ -143,3 +143,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Styrke, Prøv og forbehold er skrevet for alle fem trekk og tre nivåer på norsk og engelsk (panelCopy i app/design-copy.js) og velges fra nivået, som resten av teksten.
 - Språkregel fra Rune: lett og hverdagslig, men ikke barnslig. Unngå ord som «element» og akademiske ord. De lengre trekktekstene (betydning, styrke og «verdt å ha i bakhodet») er skrevet om i det språket på begge språk, og «Lavere/Høyere tilslutning» heter nå «Lavere/Høyere på skalaen».
 - Illustrasjonen for Åpenhet er klippet fra motivet; de andre trekkene bruker båndillustrasjonene fra rapportkapitlet.
+
+## Nivåord følger persentilen 2026-10-11
+- Rune ville fjerne skårene fra 0 til 5 når persentilene finnes. Skåren x/5 vises ikke lenger i panelet, fasettkortene eller rapporten der en persentil finnes. Stolpene viser persentilposisjonen.
+- Nivåord og all tekst som velges etter nivå, følger persentilen: under 30 er lavere, 30 til 70 er midt, over 70 er høyere. Det gjelder trekk og fasetter, panelene, kapitlene, neste steg og mønsterteksten. «Midt» kan dermed ikke stå ved siden av for eksempel 8. persentil.
+- Etiketten heter «Lavere/Midtre/Høyere område» når persentil finnes. Uten normtabell (annen instrumentversjon) brukes fortsatt svargjennomsnittet og de gamle etikettene.
+- Mønsterteksten i fasettene sammenligner persentiler (forskjell på minst 30 regnes som tydelig). Neste steg og nyansene sorteres etter avstand fra 50. persentil.
+- Råskårene (sum og gjennomsnitt) beholdes i skåringen og i lagrede svar, men vises ikke i rapporten.

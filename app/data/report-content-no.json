@@ -428,6 +428,8 @@
   },
   "pattern": {
     "mixed": "I dette trekket er høyeste rågjennomsnitt {high} ({highScore}/5), mens det laveste er {low} ({lowScore}/5). Gjennomsnittet skjuler denne forskjellen i svarene dine. Les tendensene sammen fremfor å la én beskrivelse oppsummere hele trekket.",
-    "close": "Gjennomsnittene for de seks fasettene ligger mindre enn ett svarpoeng fra hverandre. Ingen stor forskjell vises innenfor trekket; beskrivelsene nedenfor viser likevel hva hver del handler om."
+    "close": "Gjennomsnittene for de seks fasettene ligger mindre enn ett svarpoeng fra hverandre. Ingen stor forskjell vises innenfor trekket; beskrivelsene nedenfor viser likevel hva hver del handler om.",
+    "mixedPct": "I dette trekket ligger {high} høyest ({highScore}. persentil) og {low} lavest ({lowScore}. persentil). Den samlede skåren skjuler denne forskjellen, så les fasettene sammen i stedet for å la én beskrivelse oppsummere hele trekket.",
+    "closePct": "De seks fasettene ligger ganske nær hverandre her. Ingen stor forskjell viser seg innenfor trekket; beskrivelsene nedenfor viser likevel hva hver del handler om."
   }
 }

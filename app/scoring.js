@@ -34,9 +34,11 @@ export function scoreAssessment(questions,answers){
 }
 
 /** Editorial rules are deterministic and retain their underlying scores. */
+// Distance from the middle: percentile when a norm table was applied, otherwise the 1–5 mean.
+export const extremity=x=>Number.isFinite(x.percentile)?Math.abs(x.percentile-50)/50:Math.abs(x.mean-3)/2;
 function selectDirectionalFacets(facets,limit){
   return facets.filter(f=>f.band!=='middle')
-    .sort((a,b)=>Math.abs(b.mean-3)-Math.abs(a.mean-3)||a.code.localeCompare(b.code)).slice(0,limit);
+    .sort((a,b)=>extremity(b)-extremity(a)||a.code.localeCompare(b.code)).slice(0,limit);
 }
 
 export function createReport(result,content){
@@ -44,11 +46,13 @@ export function createReport(result,content){
   const domains=result.domains.map(d=>{
     const facets=d.facets.map(f=>({...f,name:content.facets[f.code].name,content:content.facets[f.code],
       interpretation:content.facets[f.code][f.band],
-      nearBoundary:Math.min(Math.abs(f.mean-2.5),Math.abs(f.mean-3.5))<=0.25,
+      nearBoundary:Number.isFinite(f.percentile)?Math.min(Math.abs(f.percentile-30),Math.abs(f.percentile-70))<=5:Math.min(Math.abs(f.mean-2.5),Math.abs(f.mean-3.5))<=0.25,
       ruleId:`${INSTRUMENT_VERSION}/${f.code}/${f.band}`}));
-    const ranked=[...facets].sort((a,b)=>b.mean-a.mean||a.code.localeCompare(b.code));
-    const high=ranked[0],low=ranked.at(-1),mixed=high.mean-low.mean>=1;
-    const text=mixed?format(content.pattern.mixed,{high:high.name,highScore:high.mean.toFixed(2),low:low.name,lowScore:low.mean.toFixed(2)}):content.pattern.close;
+    const pct=facets.every(f=>Number.isFinite(f.percentile)),shown=p=>Math.min(99,Math.max(1,p));
+    const ranked=[...facets].sort((a,b)=>(pct?b.percentile-a.percentile:b.mean-a.mean)||a.code.localeCompare(b.code));
+    const high=ranked[0],low=ranked.at(-1),mixed=pct?high.percentile-low.percentile>=30:high.mean-low.mean>=1;
+    const text=pct?(mixed?format(content.pattern.mixedPct,{high:high.name,highScore:shown(high.percentile),low:low.name,lowScore:shown(low.percentile)}):content.pattern.closePct)
+      :(mixed?format(content.pattern.mixed,{high:high.name,highScore:high.mean.toFixed(2),low:low.name,lowScore:low.mean.toFixed(2)}):content.pattern.close);
     return {...d,name:content.domains[d.code].name,
       description:content.domains[d.code].description,
       content:content.domains[d.code][d.band],

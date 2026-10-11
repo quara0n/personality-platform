@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {percentile, shownPercentile, withPercentiles} from '../app/norms.js';
+import {percentile, shownPercentile, applyNorms, bandFromPercentile} from '../app/norms.js';
 import {scoreAssessment, createReport} from '../app/scoring.js';
 
 const read = file => JSON.parse(fs.readFileSync(new URL(file, import.meta.url), 'utf8'));
@@ -45,7 +45,7 @@ test('app scoring plus the norm table reproduces the synthetic verification prof
   for (const fixture of cases) {
     const answers = Object.fromEntries(mapping.map((m, i) => [m.questionId, fixture.rawAnswersInArchiveOrder[i]]));
     for (const qs of Object.values(questions)) {
-      const report = withPercentiles(createReport(scoreAssessment(qs, answers), content), norms);
+      const report = createReport(applyNorms(scoreAssessment(qs, answers), norms), content);
       for (const d of report.domains) for (const x of [d, ...d.facets]) {
         assert.equal(x.sum, fixture.expected[x.code].sum, x.code);
         assert.equal(x.percentile, fixture.expected[x.code].displayPercentile, x.code);
@@ -56,8 +56,23 @@ test('app scoring plus the norm table reproduces the synthetic verification prof
   assert.equal(checked, cases.length * 35 * 2);
 });
 
-test('withPercentiles leaves the report unchanged without norms or for another instrument', () => {
-  const report = {instrumentVersion: 'ipip-neo-120-johnson-2014-v1', domains: []};
-  assert.equal(withPercentiles(report, null), report);
-  assert.equal(withPercentiles({...report, instrumentVersion: 'other'}, norms).norms, undefined);
+test('level words follow the percentile: below 30 lower, above 70 higher', () => {
+  assert.equal(bandFromPercentile(29), 'low');
+  assert.equal(bandFromPercentile(30), 'middle');
+  assert.equal(bandFromPercentile(70), 'middle');
+  assert.equal(bandFromPercentile(71), 'high');
+  const qs = read('../app/data/questions.json');
+  const answers = Object.fromEntries(qs.map(q => [q.id, 3]));
+  const report = createReport(applyNorms(scoreAssessment(qs, answers), norms), read('../app/data/report-content.json'));
+  const A = report.domains.find(d => d.code === 'A');
+  assert.equal(A.meanBand, 'middle');
+  assert.equal(A.band, bandFromPercentile(A.percentile));
+  assert.equal(A.band, 'low'); // a mean of 3.00 is low for Agreeableness compared with the reference group
+  for (const d of report.domains) for (const f of d.facets) assert.equal(f.band, bandFromPercentile(f.percentile), f.code);
+});
+
+test('applyNorms leaves the result unchanged without norms or for another instrument', () => {
+  const result = {instrumentVersion: 'ipip-neo-120-johnson-2014-v1', domains: []};
+  assert.equal(applyNorms(result, null), result);
+  assert.equal(applyNorms({...result, instrumentVersion: 'other'}, norms).norms, undefined);
 });
