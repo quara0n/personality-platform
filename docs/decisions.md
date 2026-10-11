@@ -125,3 +125,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Visningsregel: verdier som avrundes til 0 eller 100, vises som 1 og 99. Dataene endres ikke.
 - Samme amerikanske referanse brukes for engelsk og norsk. Kort merking følger Codex' tekst, og metodesiden har utdypende forklaring, kilde, CC BY 4.0-lenke og opplysning om bearbeiding.
 - Nivåordene lavere/midt/høyere og all rapporttekst følger fortsatt svargjennomsnittet, som Codex anbefalte. Stolpene på gratisprofilen følger persentilen når normen finnes, så de ikke motsier rapporten.
+
+## Illustrerte kort i Arbeidsliv og Hverdagsliv 2026-10-11
+- Rune sendte nye motiver for kapitlene Arbeidsliv og karriere og Hverdagsliv. Hvert kapittel starter med tittel, ingress og illustrasjon. Hvert trekk vises som et kort med logobit og navn, metaforen i kursiv med aksentstrek, beskrivelse, Prøv-boks og illustrasjon til høyre (over teksten på mobil).
+- Illustrasjonene er klippet fra motivene (app/assets/design/context/), én per trekk og kapittel. De viser midtnivå-metaforene; samme illustrasjon brukes for lavere og høyere nivå til egne motiver finnes.
+- Nivåmerket beholdes på kortet, så koblingen mellom skår og råd synes. «Eksempelprofil» vises bare i eksempelrapporten. Det løse anførselstegnet i motivets Reaktivitet-metafor finnes ikke i appteksten.
