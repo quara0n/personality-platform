@@ -25,8 +25,8 @@ const {chromium}=bundle?require(bundle):require('playwright');
     await page.locator('.d-choice').nth(2).click();
     if(n<119)await page.waitForFunction(expected=>document.querySelector('.d-count')?.textContent.includes(`${expected} of 120`),n+2);
   }
-  await page.waitForURL('**/#results');await page.locator('.d-accordion').waitFor();
-  assert.equal(await page.locator('.d-accordion details').count(),5);
+  await page.waitForURL('**/#results');await page.locator('.d-panels').waitFor();
+  assert.equal(await page.locator('.d-tpanel').count(),5);await page.locator('.d-tpanel').nth(1).click();assert.equal(await page.locator('.d-tdetail:visible').count(),1);
   await page.screenshot({path:path.join(out,'results-desktop.png'),fullPage:true});
   await page.goto('http://127.0.0.1:4173/#demo');await page.locator('.d-report-body').waitFor();
   assert.equal(await page.locator('.facet').count(),30);
