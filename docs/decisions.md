@@ -111,3 +111,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Trekkfarger følger panelene 2026-10-11
 - Rune bestemte at den mørke logobiten hører til Følelsesmessig reaktivitet, og at fargene i hele rapporten skal følge trekkpanelene: Åpenhet lyseblå, Planmessighet aprikos, Ekstroversjon stålblå, Medmenneskelighet den lyse sandbiten (lys bit med nok kontrast mot lys bakgrunn) og Følelsesmessig reaktivitet mørkeblå. Dette erstatter fargefordelingen fra «Persentiler, logobiter og neste steg».
+
+## Fasettkort i «Dine fem trekk» 2026-10-11
+- Rune valgte et nytt oppsett for rapportkapitlet «Dine fem trekk» for bedre oversikt: hvert trekk starter med et lyseblått bånd med navn, nivå, skår og illustrasjon, og de seks fasettene vises som kompakte kort med navn, stolpe i trekkfargen, skår, nivå, illustrasjon og +.
+- + åpner kortet med tolkningen og beskrivelsen av fasetten. Kortene er lukket fra start, og flere kan være åpne samtidig. I PDF er alle kort åpne.
+- Illustrasjonene er klippet fra Runes motiver (app/assets/design/facets/), med gjennomsiktig bakgrunn. Motivet for Åpenhet hadde ikke en båndillustrasjon, så båndet bruker panelillustrasjonen fra resultatsiden.
+- Stolpene følger fargene fra «Trekkfarger følger panelene», ikke de eldre fargene i motivene. «Eksempelprofil» vises bare i eksempelrapporten.
+- Rekkefølgen i hvert trekk er bånd, kort beskrivelse, fasettkort, din styrke, tolkning, råd og nyanser, så koblingen mellom resultater og råd er bevart.
