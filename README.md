@@ -1,8 +1,10 @@
 # Personality platform — arbeidsnavn «5»
 
-Prosjektgrunnlag for en engelskspråklig Big Five-tjeneste. Samarbeid med Rune foregår på norsk bokmål.
+Big Five-tjeneste på engelsk og norsk bokmål. Samarbeid med Rune foregår på norsk bokmål.
 
-**Status:** Valgt visuell retning og brukerreise er dokumentert. Bildene er statiske konseptskisser. Ingen nettside, skåringsmotor, betalingsløsning eller ekte personrapport er implementert.
+**Status:** Interaktiv IPIP-NEO-120-test, skåringsmotor og rapporter er implementert på engelsk og norsk bokmål. USA/USD og Norge/NOK støttes. Betaling er ikke aktivert; hele rapporten er tilgjengelig i forhåndsvisningen. Se [implementering og kjøring](docs/implementation.md).
+
+Kjør `npm start` og åpne http://127.0.0.1:4173. `npm test` kontrollerer skåring/rapporter, og `npm run verify:items` sammenligner spørsmålsbanken med originalkilden. Ingen installasjon av appavhengigheter trengs.
 
 ## Start her
 1. [Overlevering til Codex](HANDOFF.md) — status og neste økt.
@@ -15,12 +17,12 @@ Prosjektgrunnlag for en engelskspråklig Big Five-tjeneste. Samarbeid med Rune f
 Åpne [designgalleriet](design/index.html) i en nettleser for å se hele den valgte flyten. Galleriet er bare en lokal visning av PNG-skisser, ikke produktet.
 
 ## Viktig
-Produktet skal være på **engelsk**. Norsk tekst i eldre bilder er visuelle plassholdere.
-«Fem» og «5» er arbeidsnavn; endelig navn, målgruppe, lanseringsland og pris er ikke valgt.
+Produktet finnes på **engelsk og norsk bokmål**. USA/USD og Norge/NOK er første markeder. Brukeren har valgt 99 kr og $9.99 som engangspriser, med Stripe.
+«Fem» er arbeidsnavnet og brukerens originale logo brukes i grensesnittet. Stripe-sandbox er koblet til, med produkt, priser og to testlenker; kjøp er ikke koblet til rapporttilgang.
 Rapportenes eksempelprofiler er syntetiske, ikke Runes personlighet.
 Gratisresultatet skal gi nyttig verdi før et valgfritt engangskjøp av én rapport med både arbeidsliv og hverdagsliv.
 
 ## Oppbevaring og GitHub
 Denne mappen er et selvstendig lokalt Git-repo, adskilt fra den synkroniserte ChatGPT-prosjektmappen.
-GitHub-repo er ikke opprettet og ingen push er utført ved overleveringen. Se [GitHub-oppsett](docs/github-setup.md).
+GitHub: https://github.com/quara0n/personality-platform (privat). Se [GitHub-status](docs/github-setup.md) og [gjeldende prosjektstatus](docs/status.md).
 Ingen åpen kildekodelisens er valgt; ikke anta at kildekode, spørreskjema eller eksterne illustrasjoner kan gjenbrukes fritt.

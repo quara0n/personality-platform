@@ -1,0 +1,18 @@
+{
+  "instrument": "Johnson IPIP-NEO-120",
+  "instrumentVersion": "ipip-neo-120-johnson-2014-v1",
+  "retrieved": "2026-10-11",
+  "repository": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r",
+  "revision": "493546d48eb9053aca7e6c55574f4bf8033cc5a4",
+  "license": "Public-domain IPIP items; MIT-licensed Alheimsins distribution",
+  "englishSource": "data/en/questions.json",
+  "norwegianSource": "data/no/questions.json",
+  "norwegianTranslator": "Eli Huseby (upstream attribution)",
+  "englishSha256": "a2c3eb00be6292454519aa6b84e04c0e67cae7195323faf79cefb6f6d1c8af1c",
+  "norwegianSha256": "3e1340e97bc01d28026092d3ce411fc56e31937bc761b81a22dfde75d92a628b",
+  "officialKey": "https://ipip.ori.org/30facetneo-pi-ritems.htm",
+  "officialScoring": "https://ipip.ori.org/newScoringInstructions.htm",
+  "permission": "https://ipip.ori.org/newPermission.htm",
+  "verification": "All 120 English texts and facet/key assignments compared against official key, ignoring terminal punctuation. All 120 Norwegian IDs and keys matched English.",
+  "translationValidity": "An available attributed translation; no Norwegian psychometric validation or representative Norwegian norms established in this implementation."
+}

@@ -1,5 +1,8 @@
 # Arbeidsplan
 
+## Statusoppdatering 2026-10-11
+Instrumentresearch, kildekontroll, skåringsmotor, engelske og norske rapporter og interaktiv nettleserflyt er implementert. Se docs/implementation.md for kjøring, avgrensninger og kommersielle lanseringsavhengigheter. Den opprinnelige planen nedenfor bevares som bakgrunn; setningen om at ingen faser var påbegynt gjaldt overleveringen, ikke dagens tilstand. Verifikasjon dokumenteres i docs/verification.md.
+
 ## Ferdig i denne overleveringen
 Valgt brukerreise, konseptbilder, beslutningslogg, kildearkiv, forskningsspørsmål og Codex-instruksjoner er samlet. Dette er grunnlag, ikke produksjonskode.
 
