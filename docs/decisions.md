@@ -91,3 +91,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune ba om at logo, spørsmål og alle fem svaralternativer får plass i ett skjermbilde på telefon. På smale skjermer (≤ 760 px) er linjen «Svar ut fra hvordan du vanligvis er.» og «Spørsmål 12 av 120» tatt bort; fremdriftslinjen viser i stedet «12/120». Topptekst, avstander og svarknapper er strammet inn. Målt: femte svar slutter ved 465 px for alle 120 spørsmål på norsk og engelsk, og kvinnefiguren kommer innenfor skjermen fra omtrent 660 px synlig høyde.
 - Figurstørrelsen og automatisk overgang på stor skjerm er uendret.
 - «Take charge» (E3, selvhevdelse) var oversatt «Tar ansvar», som betyr noe annet. Endret til «Tar styringen». Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret.
+
+## Mobilretting av resultat, rapport og kjøpskort 2026-10-11
+- Rune så at overskrifter og kort gikk ut over høyre kant på Android, der serif-skriften er bredere enn i testene. Overskriftene skalerer nå med skjermbredden, kortene i «Nyansene bak skårene» krymper, og trekknavnene i profilkortet står over stolpen på telefon. Sjekket i 360 og 412 px med en bredere erstatningsskrift.
+- En CSS-regel for figurene på resultatsiden gjorde logobitene like brede som navnefeltet, så navnene forsvant. Regelen gjelder nå bare figurene.
+- Alle trekk i «Utforsk trekkene dine» er lukket fra start.
+- Kjøpskortet har fem punkter med en uthevet fordel og en kort forklaring: Alle 30 fasettene, Hvor du ligger, Arbeidsliv, Hverdagsliv og En ukeplan, på norsk og engelsk.
