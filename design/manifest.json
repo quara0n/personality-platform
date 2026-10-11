@@ -51,6 +51,13 @@
       "title": "Tidlig figurstil – hverdagsklær",
       "sha256": "21A90705ED227D8098FB41E952C87201F86A1443AECFE0630BC4E65CEC39D0F2",
       "status": "supporting style reference"
+    },
+    {
+      "path": "design/selected/08-trait-panels.png",
+      "source_file": "Rune, project chat 2026-10-11",
+      "title": "Fem trekk – fem illustrerte paneler som erstatter trekklisten på resultatsiden",
+      "sha256": "71E1864D051BC4AFABE1C31FBC2A1F2A9ED400F5B0A9B59B23043B998816A9C5",
+      "status": "user-approved visual concept"
     }
   ]
 }
