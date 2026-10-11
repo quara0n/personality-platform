@@ -97,3 +97,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - En CSS-regel for figurene på resultatsiden gjorde logobitene like brede som navnefeltet, så navnene forsvant. Regelen gjelder nå bare figurene.
 - Alle trekk i «Utforsk trekkene dine» er lukket fra start.
 - Kjøpskortet har fem punkter med en uthevet fordel og en kort forklaring: Alle 30 fasettene, Hvor du ligger, Arbeidsliv, Hverdagsliv og En ukeplan, på norsk og engelsk.
+
+## Nettbrett 2026-10-11
+- Gått gjennom forside, spørsmål, resultat, kjøpsside og rapport i 768, 820 og 1024 px. Ingen tekst går utenfor skjermen.
+- På liggende nettbrett dekket figuren på spørsmålssiden «Tilbake». Mellom 761 og 1100 px er figuren mindre og står under knappene.
+- På stående nettbrett (701–900 px) står språk og land på egen linje i toppmenyen, så lenkene ikke brytes.

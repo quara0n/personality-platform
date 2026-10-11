@@ -478,3 +478,14 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-scale-head span:first-child{display:none}
 }
 .d-offer-card li strong{font-weight:700}
+
+/* Tablets: keep the question figure below the buttons and the header on one line */
+@media(min-width:761px) and (max-width:1100px){
+  .d-question{padding-bottom:230px}
+  .d-question-figure{width:150px}
+}
+@media(min-width:701px) and (max-width:900px){
+  header{flex-wrap:wrap;row-gap:4px}
+  header nav a,header .small-button{white-space:nowrap}
+  header .locale-bar{width:100%;justify-content:flex-end}
+}
