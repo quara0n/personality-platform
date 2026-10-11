@@ -137,3 +137,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Fremdriftslinjen viser alltid både prosent og spørsmålsnummer (for eksempel «12 % 14/120»). På skjermer lavere enn 860 px skjules «Svar ut fra hvordan du vanligvis er / Spørsmål X av 120», og spørsmålet og svarboksene blir litt mindre. Under 760 px skjules også notatet under knappene.
 - På mobil vises venstre del av landskapet (kvinnen og trærne) i fast høyde.
 - «Worry about things» er rettet fra «Bekymrer meg for mye» til «Bekymrer meg for ting», fordi «for mye» endret betydningen av utsagnet.
+
+## Utvidet trekkpanel og lettere språk 2026-10-11
+- Rune valgte et nytt oppsett for trekket som åpnes under «Utforsk trekkene dine»: bit og navn, nivå og skår, én oppsummerende setning, «En mulig styrke» med kort overskrift, én setning og illustrasjon, «Prøv i hverdagen» med lyspære, overskrift og oppfølgingsspørsmål, en kort forbeholdslinje og til slutt «Les mer om resultatet» med de lengre tekstene.
+- Styrke, Prøv og forbehold er skrevet for alle fem trekk og tre nivåer på norsk og engelsk (panelCopy i app/design-copy.js) og velges fra nivået, som resten av teksten.
+- Språkregel fra Rune: lett og hverdagslig, men ikke barnslig. Unngå ord som «element» og akademiske ord. De lengre trekktekstene (betydning, styrke og «verdt å ha i bakhodet») er skrevet om i det språket på begge språk, og «Lavere/Høyere tilslutning» heter nå «Lavere/Høyere på skalaen».
+- Illustrasjonen for Åpenhet er klippet fra motivet; de andre trekkene bruker båndillustrasjonene fra rapportkapitlet.

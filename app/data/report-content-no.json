@@ -17,25 +17,25 @@
       "name": "Følelsesmessig reaktivitet (nevrotisisme)",
       "description": "Trekket oppsummerer selvrapporterte tendenser til bekymring, følelsesmessig ubehag og opplevelse av å bli overveldet. Fasettene dekker ulike erfaringer, og den brede skåren bør leses sammen med disse detaljene. Et høyere gjennomsnitt er ingen diagnose, og et lavere betyr ikke at du aldri har det vanskelig.",
       "low": {
-        "meaning": "Svarene dine heller bort fra utsagn om hyppig bekymring og følelsesmessig uro. Du kan ofte kjenne deg rolig når planer endrer seg, selv om enkelte situasjoner fortsatt kan påvirke deg sterkt. Undersøk hvilke fasetter som passer, fremfor å anta at du er like rolig i alle sammenhenger.",
-        "strength": "En rolig reaksjon kan gjøre det lettere å arbeide videre med et praktisk problem når utfallet er usikkert. Andre kan sette pris på at du stopper opp og finner neste håndterbare steg.",
-        "watch": "Andre kan være mer bekymret enn deg i samme situasjon. Hvis du går raskt til løsninger, kan de oppleve at følelsene deres ikke blir møtt, selv om du ønsker å hjelpe.",
+        "meaning": "Svarene dine heller bort fra hyppig bekymring og følelsesmessig uro. Du kjenner deg kanskje ofte rolig når planer endrer seg, selv om noen situasjoner fortsatt kan påvirke deg mye. Sjekk hvilke fasetter som passer, i stedet for å anta at du er rolig overalt.",
+        "strength": "En rolig reaksjon kan gjøre det lettere å jobbe videre med et praktisk problem når utfallet er usikkert. Andre kan sette pris på at du stopper opp og finner neste steg.",
+        "watch": "Andre kan bekymre seg mer enn deg i samme situasjon. Hvis du går rett på løsninger, kan de føle at følelsene deres ikke blir hørt, selv om du prøver å hjelpe.",
         "work": "Når en kollega tar opp en risiko, spør hva vurderingen bygger på før du avgjør at den er liten. Kombiner roen med en konkret gjennomgang av frister, konsekvenser og ansvar.",
         "life": "I en vanskelig samtale kan du forsøke å sette ord på det den andre virker opptatt av, før du beroliger. En rolig tone fungerer best når den også viser at du lytter.",
         "experiment": "Velg ett anspent øyeblikk hver dag i en uke. Noter hva du la merke til, hva du undersøkte, og om den første vurderingen endret seg. Bruk eksemplene til å justere vurderingene dine."
       },
       "middle": {
-        "meaning": "Svarene dine ligger i det midtre intervallet for følelsesmessig reaktivitet. Du kan kjenne igjen både bekymring og følsomhet, samtidig som du også har rolige perioder. Ulike situasjoner eller store forskjeller mellom fasettene kan gi det samme gjennomsnittet.",
-        "strength": "Du kan ha opplevd at bekymring noen ganger får deg til å forberede deg, mens du andre ganger kan leve med at noe er uavklart. Se etter konkrete eksempler på begge deler.",
-        "watch": "Et gjennomsnitt kan skjule situasjoner som stadig blir krevende. En stram frist, sosial vurdering eller lite søvn kan ha større betydning for opplevelsen din enn det brede trekknavnet.",
+        "meaning": "Svarene dine ligger i midten for følelsesmessig reaktivitet. Du kjenner kanskje igjen både bekymring og følsomhet, samtidig som du har roligere perioder. Ulike situasjoner, eller store forskjeller mellom fasettene, kan gi det samme gjennomsnittet.",
+        "strength": "Du merker kanskje at bekymring noen ganger får deg til å forberede deg, mens du andre ganger kan leve med at noe er uavklart. Se etter konkrete eksempler på begge deler.",
+        "watch": "Et gjennomsnitt kan skjule situasjoner som stadig er krevende. En stram frist, å bli vurdert av andre eller for lite søvn kan bety mer for hvordan du har det enn det brede trekknavnet tilsier.",
         "work": "Finn de to arbeidssituasjonene som oftest skaper friksjon. Vurder på forhånd hvilken informasjon, forberedelse eller støtte som kan gjøre hver av dem lettere å håndtere.",
         "life": "Fortell nære personer hva som hjelper når du er presset. Behovene kan variere: noen ganger vil du ha praktisk hjelp, andre ganger rom til å beskrive problemet.",
         "experiment": "Noter tre stressende og tre håndterbare situasjoner denne uken. Beskriv kravene, støtten du hadde, og reaksjonen din. Se etter en forskjell som går igjen før du endrer en rutine."
       },
       "high": {
-        "meaning": "Svarene dine heller mot opplevelser av bekymring, følelsesmessig ubehag eller press. Enkelte hendelser kan bli værende i tankene lenger enn du ønsker. Se på fasettene for å forstå hvilke erfaringer som bidrar til mønsteret. Skåren fastslår ingen lidelse.",
-        "strength": "Bekymringen kan noen ganger rette oppmerksomheten mot et uløst problem eller et behov for forberedelse. Om den hjelper, avhenger av situasjonen og hvor godt vurderingen treffer, ikke av skåren alene.",
-        "watch": "En sterk følelse kan få et usikkert utfall til å virke mer sikkert. Det kan hjelpe å skille mellom det som skjedde, det du frykter kan skje, og informasjonen som fortsatt mangler.",
+        "meaning": "Svarene dine heller mot å kjenne bekymring, følelsesmessig ubehag eller press. Noen hendelser kan bli sittende i tankene lenger enn du ønsker. Fasettene viser hvilke erfaringer som utgjør mønsteret. Skåren er ingen diagnose.",
+        "strength": "Bekymring kan noen ganger peke på et problem som må løses, eller noe du bør forberede deg på. Om den hjelper, avhenger av situasjonen og hvor treffende bekymringen er, ikke av skåren.",
+        "watch": "En sterk følelse kan få et usikkert utfall til å virke mer sikkert enn det er. Det kan hjelpe å skille mellom det som skjedde, det du frykter kan skje, og det du ennå ikke vet.",
         "work": "Ved uklare oppgaver kan du avklare ønsket resultat og neste tidspunkt for oppfølging. En kort skriftlig avtale kan redusere behovet for å gjette på om du innfrir forventningene.",
         "life": "Når en samtale kjennes ladet, kan du be om en kort pause og avtale når dere fortsetter. Forklar hva du trenger, uten å anta at du kjenner den andres hensikt.",
         "experiment": "Velg én håndterbar bekymring som går igjen. Skriv ned observerbare fakta, ett ubesvart spørsmål og én liten handling du selv kan påvirke. Sammenlign senere det forventede utfallet med det som faktisk skjedde."
@@ -45,25 +45,25 @@
       "name": "Ekstroversjon",
       "description": "Ekstroversjon omfatter sosialt engasjement, selvhevdelse, aktivitetsnivå, spenningssøking og uttrykk for positive følelser. Å like selskap, ta ordet og søke stimulering er beslektede, men forskjellige preferanser. Et lavere gjennomsnitt påviser ikke sjenanse eller svake sosiale ferdigheter.",
       "low": {
-        "meaning": "Svarene dine heller mot en roligere eller mindre utadvendt stil. Du kan foretrekke mindre grupper, færre samtidige inntrykk eller mer tid til å formulere et svar. Fasettene kan vise om dette først og fremst gjelder selskap, tempo eller stimulering.",
-        "strength": "En preferanse for færre inntrykk kan gi rom for oppmerksomhet og samtaler med plass til detaljer. Dette er muligheter å undersøke i egen erfaring, ikke ferdigheter som skåren har påvist.",
-        "watch": "Når en gruppe belønner raske bidrag, kan nyttige tanker forbli usagt. Andre kan også tolke en rolig stil som manglende interesse hvis de vet lite om preferansene dine.",
+        "meaning": "Svarene dine heller mot en roligere og mer tilbakeholden stil. Du foretrekker kanskje mindre grupper, færre ting på en gang eller mer tid til å tenke før du svarer. Fasettene viser om dette mest gjelder selskap, tempo eller spenning.",
+        "strength": "Når du liker færre inntrykk, får du rom til å konsentrere deg og ha samtaler med plass til detaljer. Dette er muligheter å sjekke mot egen erfaring, ikke ferdigheter skåren har bevist.",
+        "watch": "Når en gruppe belønner raske svar, kan gode tanker bli usagt. Andre kan også tro at en rolig stil betyr lite interesse, hvis de ikke kjenner deg godt.",
         "work": "Be om temaene før et møte, og forbered ett poeng du vil bidra med. En skriftlig oppfølging kan gi ideene dine en ekstra vei inn i beslutningen.",
         "life": "Forklar hvilke former for sosialt samvær du liker. Foreslå en tur, en liten middag eller et besøk med avtalt varighet, slik at andre slipper å tolke et avslag på egen hånd.",
         "experiment": "Prøv én aktivitet i en liten gruppe og én roligere aktivitet denne uken. Noter trivsel og energi etterpå. Bruk erfaringen når du planlegger neste sosiale avtale."
       },
       "middle": {
-        "meaning": "Gjennomsnittet ditt ligger i det midtre intervallet for ekstroversjon. Du kan like sosial kontakt i noen sammenhenger og foretrekke ro i andre. Gjennomsnittet kan også skyldes tydelige preferanser i ulike retninger på tvers av fasettene.",
-        "strength": "Du kan ha eksempler på at du trives både med samarbeid og med tid på egen hånd. Det er mer nyttig å finne betingelsene for hver av delene enn å forvente at du veksler like lett i alle situasjoner.",
-        "watch": "Uken kan gradvis fylles med mer samvær eller alenetid enn du hadde tenkt. Den foretrukne blandingen kan variere med aktiviteten, menneskene og andre krav til oppmerksomheten din.",
+        "meaning": "Svarene dine ligger i midten for ekstroversjon. Du liker kanskje å være sosial i noen sammenhenger og foretrekker ro i andre. Gjennomsnittet kan også skjule sterke preferanser i hver sin retning på tvers av fasettene.",
+        "strength": "Du har kanskje eksempler på at du trives både med samarbeid og med tid for deg selv. Det hjelper mer å finne ut hva som får hver av delene til å fungere, enn å forvente at du skifter like lett i alle situasjoner.",
+        "watch": "Uken kan gradvis fylles med mer samvær eller mer alenetid enn du hadde tenkt. Hvilken blanding du liker, kan endre seg med aktiviteten, menneskene og hva annet som skjer.",
         "work": "Samle beslektede møter når det er mulig, og gi deretter plass til oppgavene møtene skaper. Legg merke til om de beste bidragene dine kommer under samtalen, i forberedelsen eller etterpå.",
         "life": "Før du sier ja til en ny invitasjon, se på resten av uken. Gi plass til både kontakt med andre og den mengden uplanlagt tid du opplever som nyttig.",
-        "experiment": "Noter mengden og typen samvær du har i fem dager, og hvordan du kjenner deg etterpå. Endre ett element neste uke, og undersøk om justeringen hjelper."
+        "experiment": "Noter mengden og typen samvær du har i fem dager, og hvordan du kjenner deg etterpå. Endre én ting neste uke, og se om det hjelper."
       },
       "high": {
-        "meaning": "Svarene dine heller mot aktiv kontakt med andre, tydelige uttrykk eller stimulering. Du kan like å utveksle ideer høyt og ha ting som skjer rundt deg. Se på fasettene: sosial varme, selvhevdelse og spenningssøking trenger ikke være like fremtredende.",
-        "strength": "Viljen til å engasjere deg kan bidra til å starte samtaler og gjøre det lettere for andre å delta. Det kan være nyttig når oppgaven krever kontakt, synlig energi eller rask utveksling.",
-        "watch": "Entusiasme kan ta mer plass i samtalen enn du hadde tenkt. En livlig diskusjon kan kjennes produktiv selv om gruppen ennå ikke har avklart en beslutning eller hørt de roligere stemmene.",
+        "meaning": "Svarene dine heller mot aktiv kontakt med andre, å si fra og å ha ting som skjer. Du liker kanskje å tenke høyt sammen med andre og ha liv rundt deg. Fasettene viser at sosial varme, selvhevdelse og spenningssøking ikke trenger å være like sterke.",
+        "strength": "Lysten til å engasjere deg kan hjelpe med å starte samtaler og gjøre det lettere for andre å bli med. Det er nyttig når en oppgave trenger kontakt, synlig energi eller rask utveksling.",
+        "watch": "Entusiasme kan ta mer plass i samtalen enn du hadde tenkt. En livlig diskusjon kan føles nyttig selv om gruppen ikke har bestemt noe, eller hørt de roligere stemmene.",
         "work": "Bruk engasjementet til å invitere konkrete bidrag fra andre. Etter en diskusjon kan du oppsummere beslutningen, hvem som har ansvaret, og neste steg, slik at fremdriften følges opp.",
         "life": "Undersøk om den andre ønsker en livlig samtale, rolig selskap eller tid alene. Ulike ønsker om sosialt samvær trenger ikke bety ulik grad av nærhet eller omtanke.",
         "experiment": "Still et spørsmål i tre samtaler, og la det bli en ordentlig pause før du legger til ditt eget syn. Noter om du får høre noe du ellers ville ha gått glipp av."
@@ -73,25 +73,25 @@
       "name": "Åpenhet",
       "description": "Åpenhet omfatter fantasi, estetiske interesser, oppmerksomhet på følelser, vilje til å prøve uvante aktiviteter, utforsking av ideer og spørsmål ved konvensjoner. Det beskriver selvrapporterte preferanser, ikke intelligens, ekspertise, kreative prestasjoner eller politisk identitet.",
       "low": {
-        "meaning": "Svarene dine heller mot kjente, konkrete eller etablerte tilnærminger. Du kan foretrekke en idé med et tydelig praktisk formål fremfor utforsking for sin egen del. Enkelte fasetter kan vise områder der du er langt mer nysgjerrig eller utprøvende.",
-        "strength": "En preferanse for det tydelige og utprøvde kan bidra til å holde oppmerksomheten på praktiske behov. Du kan finne glede i å forbedre en kjent fremgangsmåte og gjøre den pålitelig for dem som bruker den.",
-        "watch": "Et ukjent alternativ kan fremstå som mindre nyttig fordi fordelene er vanskeligere å se for seg. Undersøk grunnlaget før du avviser en idé bare fordi den er ny.",
+        "meaning": "Svarene dine heller mot det kjente, konkrete og utprøvde. Du liker kanskje ideer best når de har en tydelig praktisk nytte. Enkelte fasetter kan likevel vise områder der du er mye mer nysgjerrig.",
+        "strength": "Du holder fokus på det som faktisk virker. Du kan like å forbedre en kjent måte å gjøre ting på, og gjøre den pålitelig for dem som bruker den.",
+        "watch": "Et nytt forslag kan virke mindre nyttig bare fordi fordelene er vanskeligere å se for seg. Sjekk hva som taler for det før du sier nei bare fordi det er nytt.",
         "work": "Når noen foreslår en ny tilnærming, spør hvilket problem den løser, og hva en liten utprøving kan vise. Det kan gjøre endringen lettere å vurdere på et konkret grunnlag.",
         "life": "Behold rutinene du setter pris på, og gi samtidig litt plass til en annens interesser. En ny felles opplevelse kan være liten og avgrenset fremfor en stor omveltning.",
         "experiment": "Velg én rimelig og enkel variasjon av en kjent aktivitet. Bestem på forhånd hva som ville gjort den verdt å prøve, prøv den én gang, og sammenlign opplevelsen med forventningen."
       },
       "middle": {
-        "meaning": "Gjennomsnittet ditt ligger i det midtre intervallet for åpenhet. Du kan søke noe nytt på utvalgte områder og foretrekke kjente tilnærminger på andre. Fasettene skiller mellom interesse for ideer, fantasi, estetikk og vilje til å endre rutiner.",
-        "strength": "Du kan ha eksempler på at du kombinerer en etablert metode med ett nytt element. Det kan være nyttig når en situasjon krever utforsking uten at alt som fungerer, må byttes ut.",
-        "watch": "Lysten på noe nytt kan avhenge av temaet. Interesse for nye ideer betyr ikke nødvendigvis at du liker endringer i timeplanen, og kjente rutiner betyr ikke mangel på nysgjerrighet.",
+        "meaning": "Svarene dine ligger i midten for åpenhet. Du søker kanskje nye ting på noen områder og holder deg til det kjente på andre. Fasettene viser forskjellen på nysgjerrighet på ideer, fantasi, kunst og lyst til å endre rutiner.",
+        "strength": "Du har kanskje eksempler på at du bygger videre på noe som fungerer, og legger til en ny vri. Det er nyttig når noe trenger nye tanker uten at alt som virker, må byttes ut.",
+        "watch": "Hvor mye du vil ha noe nytt, kan avhenge av temaet. Å like nye ideer betyr ikke at du liker endringer i timeplanen, og å like rutiner betyr ikke at du mangler nysgjerrighet.",
         "work": "Når du har flere valgmuligheter, sammenlign én etablert tilnærming med ett alternativ. Bruk de samme kriteriene for begge, blant annet innsats, usikkerhet og problemet du skal løse.",
         "life": "Fortell andre hvor du liker overraskelser, og hvor forhåndsvarsel hjelper. Konkrete preferanser er lettere å ta hensyn til enn en generell beskrivelse av deg som spontan eller rutinepreget.",
         "experiment": "Velg én rutine du vil beholde, og én du vil variere denne uken. Noter hva hvert valg ga deg. Bruk sammenligningen til å ta neste valg mer bevisst."
       },
       "high": {
-        "meaning": "Svarene dine heller mot fantasi, utforsking eller interesse for uvante perspektiver. Du kan like å tenke på muligheter utover den umiddelbare oppgaven. Fasettene viser hvilke former for åpenhet som betyr mest for deg. Skåren påviser ikke bedre innsikt.",
-        "strength": "Lysten til å utforske kan hjelpe deg med å se alternativer og stille spørsmål som åpner en fastlåst diskusjon. Ideene blir særlig nyttige når du knytter dem til situasjonens praktiske behov.",
-        "watch": "En ny mulighet kan konkurrere med å fullføre en eksisterende forpliktelse. Andre kan også trenge mer forklaring eller dokumentasjon før en idé du liker, oppleves som gjennomførbar for dem.",
+        "meaning": "Svarene dine heller mot fantasi, utforsking og interesse for nye perspektiver. Du liker kanskje å tenke på muligheter utover oppgaven foran deg. Fasettene viser hvilke sider av åpenhet som betyr mest for deg. Skåren betyr ikke at du har bedre innsikt enn andre.",
+        "strength": "Lysten til å utforske kan hjelpe deg å se andre muligheter og stille spørsmål som får en fastlåst diskusjon i gang igjen. Ideene dine er mest nyttige når du knytter dem til det situasjonen faktisk trenger.",
+        "watch": "En ny mulighet kan konkurrere med å gjøre ferdig det du allerede har lovet. Andre kan også trenge mer forklaring før en idé du er begeistret for, virker gjennomførbar for dem.",
         "work": "Skill mellom tid til å skape alternativer og tid til å velge og fullføre ett av dem. Beskriv problemet, endringen du foreslår, og den minste nyttige måten å prøve den på.",
         "life": "Inviter andre inn i interessene dine uten å anta at de ønsker like mye nytt som deg. Avtal hvilke felles rutiner som gir stabilitet, og hvilke dere kan eksperimentere med.",
         "experiment": "Velg én idé du allerede har, og gi den en liten form som kan fullføres. Noter hva gjennomføringen lærte deg som videre tenking alene ikke hadde avklart."
@@ -101,25 +101,25 @@
       "name": "Medmenneskelighet",
       "description": "Medmenneskelighet omfatter tillit, oppriktighet, hjelpsomhet, samarbeid, beskjedenhet og medfølelse. Det beskriver tendenser i møte med andre, ikke godhet, moralsk verdi, kvaliteten på relasjoner eller fravær av sunn uenighet.",
       "low": {
-        "meaning": "Svarene dine heller mot en mer skeptisk, konkurranseorientert eller selvhevdende stil i møte med andre. Du kan være villig til å stille spørsmål ved motiver eller utfordre et forslag. Se på fasettene før du antar at dette gjelder tillit, medfølelse og samarbeid i samme grad.",
-        "strength": "Viljen til å stille spørsmål kan være nyttig når en gruppe trenger en kritisk gjennomgang eller en tydelig beskrivelse av ulike interesser. Den hjelper mest når innvendingen er konkret og knyttet til saken.",
-        "watch": "En direkte innvending kan oppfattes som en vurdering av personen. Hvis andre går i forsvar, kan det bli vanskeligere å få frem informasjonen som trengs for å løse uenigheten.",
+        "meaning": "Svarene dine heller mot en mer kritisk, konkurranselysten eller frittalende stil med andre. Du er kanskje villig til å stille spørsmål ved motiver eller si imot et forslag. Sjekk fasettene før du antar at dette gjelder tillit, medfølelse og samarbeid like mye.",
+        "strength": "Viljen til å stille vanskelige spørsmål er nyttig når en gruppe trenger et kritisk blikk eller et tydelig bilde av ulike interesser. Det virker best når innvendingen er konkret og handler om saken.",
+        "watch": "En direkte innvending kan oppfattes som kritikk av personen. Hvis andre går i forsvar, kan det bli vanskeligere å få frem det som trengs for å løse uenigheten.",
         "work": "Beskriv det felles målet før du tar opp en bekymring. Spør hva som kunne endret hver parts syn, også ditt eget, slik at diskusjonen har en mulig vei videre.",
         "life": "Når du er uenig, beskriv handlingen og virkningen fremfor å tillegge den andre et motiv. Gi plass til muligheten for at vedkommende oppfattet situasjonen annerledes.",
         "experiment": "I én uenighet kan du oppsummere den andres syn til vedkommende bekrefter at du har forstått. Legg deretter frem ønsket ditt. Noter om samtalen blir tydeligere, selv om dere ikke blir enige."
       },
       "middle": {
-        "meaning": "Svarene dine ligger i det midtre intervallet for medmenneskelighet. Du kan verdsette samarbeid og samtidig være villig til å ivareta egne interesser. Gjennomsnittet kan gjenspeile ulike blandinger av tillit, hjelpsomhet, beskjedenhet og kompromissvilje.",
-        "strength": "Du kan ha eksempler på både å tilpasse deg en annen og å stå fast. Ved å undersøke hva som styrte valgene, kan du gjøre senere beslutninger mer bevisste og lettere å forklare.",
-        "watch": "Reaksjonen din kan endre seg med relasjonen og det som står på spill. Andre kan ha vanskelig for å forstå grensene dine hvis de først blir synlige når du er frustrert.",
+        "meaning": "Svarene dine ligger i midten for medmenneskelighet. Du setter kanskje pris på samarbeid og står samtidig opp for det du selv trenger. Gjennomsnittet kan bestå av ulike blandinger av tillit, hjelpsomhet, beskjedenhet og vilje til å inngå kompromiss.",
+        "strength": "Du har kanskje eksempler på både å gi etter og å stå på ditt. Hvis du ser på hva som styrte valgene, kan senere beslutninger bli mer bevisste og lettere å forklare.",
+        "watch": "Hvordan du reagerer, kan endre seg med relasjonen og hva som står på spill. Andre kan ha vanskelig for å se grensene dine hvis de først viser seg når du er frustrert.",
         "work": "Før en forhandling kan du avklare hva som er nødvendig, hva som er fleksibelt, og hva du trenger å forstå. Det gjør det lettere å samarbeide uten å miste ansvaret ditt av syne.",
         "life": "Gjør ønsker og grenser konkrete. Når du sier hva du kan tilby, når du kan gjøre det, og hva du ikke kan ta på deg, gir du andre nyttig informasjon.",
         "experiment": "Se tilbake på ett nylig ja og ett nylig nei. Finn behovet du ivaretok i hvert tilfelle, og vurder om du formidlet det tydelig. Prøv en klarere formulering i neste lignende samtale."
       },
       "high": {
-        "meaning": "Svarene dine heller mot tillit, samarbeid eller omtanke for andre. Du kan legge stor vekt på å bevare et godt forhold og svare på andres behov. Fasettene skiller medfølelse fra andre tendenser, som beskjedenhet eller det å unngå konfrontasjon.",
-        "strength": "Viljen til å hjelpe og vurdere andres perspektiv kan støtte konstruktive relasjoner. Den er mest bærekraftig når forventningene er tydelige og du også har rom til å uttrykke egne behov.",
-        "watch": "Et raskt ja kan skjule en praktisk begrensning eller en viktig uenighet. En forespørsel som virker liten der og da, kan bli krevende sammen med forpliktelser andre ikke kjenner til.",
+        "meaning": "Svarene dine heller mot tillit, samarbeid og omtanke for andre. Du legger kanskje stor vekt på gode relasjoner og på å møte andres behov. Fasettene skiller medfølelse fra andre sider, som beskjedenhet eller å unngå konflikt.",
+        "strength": "Viljen til å hjelpe og se ting fra andres side kan gi gode relasjoner. Det holder best når forventningene er tydelige og du også har rom til å si hva du trenger.",
+        "watch": "Et raskt ja kan skjule en praktisk grense eller en reell uenighet. En forespørsel som virker liten der og da, kan bli tung oppå forpliktelser andre ikke ser.",
         "work": "Sjekk kapasitet og prioriteringer før du tar på deg mer arbeid. Foreslå et realistisk omfang eller tidspunkt, og ta opp bekymringer tidlig nok til at gruppen kan gjøre noe med dem.",
         "life": "Se på en tydelig grense som nyttig informasjon i en relasjon. Du kan anerkjenne en annens skuffelse samtidig som du forklarer hva du faktisk har mulighet til å gjøre.",
         "experiment": "Sett én vennlig og konkret grense denne uken: anerkjenn forespørselen, si hva grensen er, og tilby et alternativ bare hvis du ønsker det. Vurder den faktiske reaksjonen fremfor den du fryktet."
@@ -129,25 +129,25 @@
       "name": "Planmessighet",
       "description": "Planmessighet omfatter opplevd mestring, orden, ansvar, målrettethet, utholdenhet og overveielse. Det beskriver selvrapporterte vaner og preferanser. Det fastslår ikke kompetanse, personlig verdi eller hvor pålitelig noen vil prestere i enhver situasjon.",
       "low": {
-        "meaning": "Svarene dine heller bort fra svært strukturert planlegging eller vedvarende kontroll over oppgaver. Du kan foretrekke fleksibilitet, handle spontant eller synes noen forpliktelser er vanskelige å organisere. Fasettene skiller orden, utholdenhet, målrettethet og andre deler av mønsteret.",
-        "strength": "Mindre binding til planer kan gi rom for tilpasning når forholdene endrer seg. Undersøk når denne fleksibiliteten hjelper, og hvor litt struktur kan beskytte viktige forpliktelser.",
-        "watch": "Oppgaver med utsatt belønning eller mange små steg kan være lette å utsette. Hvis du bare støtter deg på hukommelsen, kan intensjonen være mindre synlig akkurat når du trenger å handle.",
+        "meaning": "Svarene dine heller bort fra stram planlegging og tett kontroll på oppgaver. Du foretrekker kanskje frihet, handler på impuls eller synes noen plikter er vanskelige å organisere. Fasettene viser forskjellen på orden, utholdenhet, ambisjoner og resten av bildet.",
+        "strength": "Når du er mindre bundet av planer, har du rom til å tilpasse deg når ting endrer seg. Legg merke til når friheten hjelper deg, og hvor litt struktur kan beskytte det som betyr noe.",
+        "watch": "Oppgaver med belønning langt frem i tid eller mange små steg kan være lette å utsette. Hvis du bare stoler på hukommelsen, kan en god intensjon forsvinne akkurat når du trenger den.",
         "work": "Gi én viktig oppgave en synlig neste handling og et realistisk starttidspunkt. Avtal oppfølging underveis i lengre arbeid, slik at forsinkelser oppdages mens det fortsatt er mulig å justere.",
         "life": "Bruk en enkel påminnelse for én gjentakende forpliktelse. Velg et system du faktisk ser og vedlikeholder, fremfor en komplisert rutine som skaper mer arbeid.",
         "experiment": "Velg én liten prioritet hver morgen i fem dager, og definer hva ferdig betyr. Noter om du fullførte, og hva som gjorde det lettere eller vanskeligere å begynne."
       },
       "middle": {
-        "meaning": "Gjennomsnittet ditt ligger i det midtre intervallet for planmessighet. Du kan bruke struktur på noen områder og en løsere tilnærming på andre. Et ryddig miljø, høye ambisjoner og jevn oppfølging er forskjellige fasetter og trenger ikke følges ad.",
-        "strength": "Du kan ha erfaring med å bruke planer når de hjelper og justere dem når forholdene endrer seg. Finn situasjonene der dette har fungert, fremfor å anta at gjennomsnittet beskriver alle forpliktelsene dine.",
-        "watch": "Et system som fungerer for et interessant prosjekt, kan være mindre nyttig for rutineoppgaver. Legg merke til om bestemte oppgavetyper stadig faller utenfor de vanlige planleggingsvanene dine.",
+        "meaning": "Svarene dine ligger i midten for planmessighet. Du bruker kanskje struktur på noen områder og en løsere stil på andre. Orden, ambisjoner og jevn oppfølging er ulike fasetter og trenger ikke henge sammen.",
+        "strength": "Du vet kanskje hvordan du bruker en plan når den hjelper, og endrer den når noe skjer. Finn situasjonene der det har fungert, i stedet for å anta at gjennomsnittet passer for alt du gjør.",
+        "watch": "Et system som virker for et spennende prosjekt, kan virke dårligere for vanlige hverdagsoppgaver. Legg merke til om noen typer oppgaver stadig glipper.",
         "work": "Tilpass mengden struktur til konsekvensen av å overse et steg. En enkel sjekkliste kan være nok for en gjentakende oppgave, mens en komplisert overlevering trenger tydelig ansvar og tidspunkt.",
         "life": "Velg noen få gjentakende forpliktelser som fortjener pålitelige påminnelser. Behold fleksibilitet ellers, slik at planleggingen støtter det viktige uten å fylle alle ledige timer.",
         "experiment": "Sammenlign én oppgave du fullførte greit med én du utsatte. Noter tydelighet, tidspunkt, interesse og avbrytelser. Bruk én hjelpsom betingelse fra den første på neste krevende oppgave."
       },
       "high": {
-        "meaning": "Svarene dine heller mot planlegging, ansvar eller vedvarende innsats. Du kan like tydelige forventninger og ta forpliktelser alvorlig. Se på fasettene for å forstå om mønsteret særlig drives av orden, målrettethet, utholdenhet eller grundig overveielse.",
-        "strength": "Oppmerksomheten på forberedelse og oppfølging kan bidra til at hensikter blir til fullført arbeid. Det er særlig nyttig når ansvaret er tydelig og detaljnivået passer til konsekvensene av en feil.",
-        "watch": "Ekstra kontroll eller innsats kan fortsette etter at den slutter å tilføre særlig verdi. Endringer i en plan kan også oppleves forstyrrende når du har investert mye i å få den til å fungere.",
+        "meaning": "Svarene dine heller mot planlegging, ansvar og jevn innsats. Du liker kanskje tydelige forventninger og tar løfter på alvor. Fasettene viser om dette mest handler om orden, ambisjoner, utholdenhet eller om å tenke seg godt om.",
+        "strength": "At du forbereder deg og følger opp, kan gjøre planer om til ferdig arbeid. Det er mest nyttig når ansvaret er tydelig og detaljnivået passer til hvor mye en feil ville betydd.",
+        "watch": "Ekstra sjekking eller innsats kan fortsette etter at den slutter å gjøre noen forskjell. Endringer i en plan kan også føles forstyrrende når du har jobbet hardt for å få den til å gå.",
         "work": "Avtal hva som skal til for at oppgaven er ferdig, før du begynner. Skill nødvendig kvalitetskontroll fra valgfri finpuss, og vurder prioriteringene på nytt når nye oppgaver kommer til.",
         "life": "La noe av tiden sammen være åpen for andres ønsker. Forklar hvilke forpliktelser som betyr mest for deg, og gi mindre viktige rutiner rom til å variere.",
         "experiment": "Sett en tidsramme og et tydelig krav til ferdigstillelse for én oppgave med små konsekvenser. Stopp når kravet er oppfylt, og vurder deretter om mer innsats faktisk ville endret utfallet."

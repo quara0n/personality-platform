@@ -17,25 +17,25 @@
       "name": "Emotional reactivity (Neuroticism)",
       "description": "This trait summarizes reported tendencies toward worry, emotional discomfort, and feeling overwhelmed. Its facets cover different experiences; a broad score should not replace reading those details. A higher response mean is not a diagnosis, and a lower mean does not mean you never experience distress.",
       "low": {
-        "meaning": "Your answers lean away from statements about frequent worry and emotional disruption. You may often feel steady when plans change, although particular situations can still affect you strongly. Check which facets fit rather than assuming calmness in every setting.",
-        "strength": "A steady response can make it easier to stay with a practical problem during uncertainty. Others may value your ability to pause and identify the next manageable action.",
-        "watch": "Your own level of concern may differ from someone else's. Moving quickly to solutions can leave their feelings unacknowledged, even when your intention is to help.",
+        "meaning": "Your answers lean away from frequent worry and emotional ups and downs. You may often feel steady when plans change, although some situations can still affect you strongly. Check which facets fit rather than assuming you are calm everywhere.",
+        "strength": "A calm reaction can make it easier to keep working on a practical problem when the outcome is uncertain. Others may value that you stop, take a breath and find the next step.",
+        "watch": "Others may worry more than you in the same situation. If you jump straight to solutions, they may feel their feelings were not heard, even when you are trying to help.",
         "work": "When a colleague raises a risk, ask what evidence they see before deciding it is minor. Pair your calm response with an explicit check of deadlines, consequences, and responsibilities.",
         "life": "In a difficult conversation, try naming what the other person seems concerned about before offering reassurance. A calm tone works best when it also communicates attention.",
         "experiment": "For one week, choose one tense moment each day and record what you noticed, what you checked, and whether your first assessment changed. Use the examples to refine your judgment."
       },
       "middle": {
-        "meaning": "Your answers sit around the middle of the response scale for emotional reactivity. You may recognize some worry or sensitivity alongside periods of steadiness. Different situations or sharply different facet scores could produce this same average.",
-        "strength": "You may find occasions when concern prompts preparation and others when you can let uncertainty remain unresolved. Look for specific examples of each rather than assuming a consistent balance.",
-        "watch": "An average can hide recurring pressure points. A demanding deadline, social evaluation, or lack of sleep may matter more to your experience than the broad label suggests.",
+        "meaning": "Your answers are in the middle for emotional reactivity. You may recognise some worry or sensitivity alongside calmer periods. Different situations, or very different facet scores, can lead to the same average.",
+        "strength": "You may notice that worry sometimes makes you prepare, while other times you can live with things being unsettled. Look for real examples of both.",
+        "watch": "An average can hide situations that keep being hard. A tight deadline, being judged by others or too little sleep may matter more to how you feel than the broad trait name suggests.",
         "work": "Identify the two work situations that tend to create the most friction. Decide in advance what information, preparation, or support would make each easier to handle.",
         "life": "Let close people know what helps when you are under pressure. Preferences can vary: sometimes you may want practical help, and sometimes space to describe the problem.",
         "experiment": "Track three stressful and three manageable situations this week. Note the demands, available support, and your response. Look for a repeatable difference before changing your routine."
       },
       "high": {
-        "meaning": "Your answers lean toward experiencing worry, emotional discomfort, or pressure. Some events may stay with you longer than you would like. Review the facets to see which experiences drive this pattern; the score does not establish a disorder.",
-        "strength": "Your concern may sometimes draw attention to an unresolved issue or a need for preparation. Whether it helps depends on the situation and the accuracy of the concern, not the score alone.",
-        "watch": "A strong feeling can make an uncertain outcome seem more certain. It may help to separate what happened, what you fear could happen, and what information is still missing.",
+        "meaning": "Your answers lean toward feeling worry, emotional discomfort or pressure. Some events may stay on your mind longer than you would like. The facets show which experiences make up this pattern. The score is not a diagnosis.",
+        "strength": "Worry can sometimes point you to a problem that needs solving or something you should prepare for. Whether it helps depends on the situation and how accurate the worry is, not on the score.",
+        "watch": "A strong feeling can make an uncertain outcome seem more certain than it is. It can help to separate what happened, what you fear might happen, and what you still do not know.",
         "work": "For ambiguous requests, clarify the desired result and the next checkpoint. A short written agreement may reduce repeated guessing about whether you are meeting expectations.",
         "life": "When a conversation feels loaded, consider asking for a brief pause and a clear time to return. Explain what you need without assuming you know the other person's intention.",
         "experiment": "Choose one manageable recurring concern. Write down the observable facts, one unanswered question, and one small action within your control. Later, compare the anticipated outcome with what actually happened."
@@ -45,25 +45,25 @@
       "name": "Extraversion",
       "description": "Extraversion covers social engagement, assertiveness, activity, excitement seeking, and positive emotional expression. Enjoying company, speaking up, and enjoying stimulation are related but distinct preferences. A lower mean does not establish shyness or poor social skills.",
       "low": {
-        "meaning": "Your answers lean toward a quieter or less outwardly active style. You may prefer smaller groups, fewer competing demands, or more time to form a response. Your facet scores can show whether this is mainly about company, pace, or stimulation.",
-        "strength": "A preference for less stimulation can support deliberate attention and conversations with room for detail. These are possibilities to check in your own experience, not abilities established by a score.",
-        "watch": "When a group rewards immediate contributions, useful thoughts can remain unheard. Other people may also mistake a quiet style for disinterest if they have little information about your preferences.",
+        "meaning": "Your answers lean toward a quieter, more low-key style. You may prefer smaller groups, fewer things going on at once, or more time to think before you answer. The facets show whether this is mainly about company, pace or excitement.",
+        "strength": "Liking fewer impressions can give room for focus and conversations with space for detail. These are possibilities to check against your own experience, not skills the score has proven.",
+        "watch": "When a group rewards quick answers, good thoughts can go unsaid. Others may also read a quiet style as lack of interest if they do not know you well.",
         "work": "Ask for the agenda before a discussion and prepare one point you want to contribute. Written follow-up can give your ideas another route into the decision.",
         "life": "Explain the kinds of social time you enjoy. Suggest a walk, a small dinner, or a defined visit rather than leaving others to interpret a declined invitation.",
         "experiment": "Try one small-group activity and one quieter activity this week. Note your enjoyment and energy afterward. Use that evidence to plan your next social commitment."
       },
       "middle": {
-        "meaning": "Your response mean falls in the middle band for extraversion. You may enjoy social contact in some settings and prefer quiet in others. The average can also reflect strong preferences in opposite directions across the facets.",
-        "strength": "You may have examples of enjoying both collaboration and independent time. Identifying the conditions that support each is more useful than expecting yourself to switch comfortably in every situation.",
-        "watch": "A schedule can accumulate more interaction or solitude than you intended. Your preferred mix may shift with the activity, the people involved, and other demands on your attention.",
+        "meaning": "Your answers are in the middle for extraversion. You may enjoy being social in some settings and prefer quiet in others. The average can also hide strong preferences in opposite directions across the facets.",
+        "strength": "You may have examples of enjoying both teamwork and time on your own. It helps more to find what makes each of them work for you than to expect to switch easily in every situation.",
+        "watch": "Your week can slowly fill up with more people or more time alone than you meant. The mix you like can change with the activity, the people and what else is going on.",
         "work": "Group related meetings where possible, then leave room to complete the work they create. Notice whether your best contributions come during discussion, preparation, or later reflection.",
         "life": "Before accepting another invitation, consider what the rest of the week already contains. Make room for both connection and the amount of unstructured time you find useful.",
-        "experiment": "For five days, note the amount and kind of interaction you had and how you felt afterward. Change one element next week and check whether the adjustment helps."
+        "experiment": "For five days, note the amount and kind of interaction you had and how you felt afterward. Change one thing next week and see if it helps."
       },
       "high": {
-        "meaning": "Your answers lean toward active engagement with people, expression, or stimulation. You may enjoy exchanging ideas aloud and having things happening around you. Check the facets: social warmth, assertiveness, and excitement seeking need not be equally prominent.",
-        "strength": "Your willingness to engage may help start conversations and make participation easier for others. It can be useful when a task benefits from visible energy, outreach, or quick exchange.",
-        "watch": "Enthusiasm can occupy more conversational space than you intended. A lively interaction may feel productive even when the group has not clarified a decision or heard quieter perspectives.",
+        "meaning": "Your answers lean toward active contact with people, speaking up and having things happen. You may enjoy talking ideas through out loud and having life around you. The facets show that social warmth, assertiveness and excitement seeking do not have to be equally strong.",
+        "strength": "Your eagerness to join in can help start conversations and make it easier for others to take part. It is useful when a task needs contact, visible energy or a quick back-and-forth.",
+        "watch": "Enthusiasm can take up more of the conversation than you meant. A lively discussion can feel productive even when the group has not agreed on anything or heard the quieter voices.",
         "work": "Use your participation to invite specific contributions from others. After a discussion, state the decision, the owner, and the next step so momentum turns into follow-through.",
         "life": "Check whether someone wants an energetic exchange, quiet company, or time alone. Differences in social appetite need not imply differences in affection or commitment.",
         "experiment": "In three conversations, ask a question and leave a full pause before adding your own view. Note whether you hear anything you would otherwise have missed."
@@ -73,25 +73,25 @@
       "name": "Openness",
       "description": "Openness covers imagination, aesthetic interests, attention to feelings, willingness to try unfamiliar activities, intellectual exploration, and questioning convention. It describes reported preferences, not intelligence, expertise, creativity as an achievement, or political identity.",
       "low": {
-        "meaning": "Your answers lean toward familiar, concrete, or established approaches. You may prefer an idea with a clear practical purpose over exploration for its own sake. Individual facets can reveal areas where you are much more curious or adventurous.",
-        "strength": "A preference for what is clear and proven can help keep attention on practical needs. You may find satisfaction in refining a familiar approach and making it dependable for the people using it.",
-        "watch": "An unfamiliar option can look less useful simply because its benefits are harder to picture. Check the evidence before treating novelty itself as a reason to dismiss an idea.",
+        "meaning": "Your answers lean toward what is familiar, concrete and proven. You may like ideas best when they have a clear practical use. Some facets may still show areas where you are much more curious.",
+        "strength": "You keep the focus on what actually works. You may enjoy improving a familiar way of doing things and making it reliable for the people who use it.",
+        "watch": "A new option can look less useful just because its benefits are harder to picture. Check what speaks for it before you turn an idea down only because it is new.",
         "work": "When a new approach is proposed, ask which problem it solves and what a small trial would show. This can make a change easier to evaluate on concrete terms.",
         "life": "Keep the routines you value while making a little room for another person's interests. A shared new experience can be small and bounded rather than a major disruption.",
         "experiment": "Choose one low-cost variation on a familiar activity. Decide beforehand what would make it worthwhile, try it once, and compare the experience with your expectation."
       },
       "middle": {
-        "meaning": "Your response mean lies in the middle band for openness. You may seek novelty in selected areas while preferring familiar approaches elsewhere. Read the facets to distinguish intellectual curiosity, imagination, aesthetics, and willingness to change routines.",
-        "strength": "You may have examples of combining an established method with one new element. That can be useful when a situation calls for exploration without replacing everything that already works.",
-        "watch": "Your appetite for novelty may depend on the subject. Do not assume that enjoying new ideas means enjoying changes to your schedule, or that familiar routines imply little curiosity.",
+        "meaning": "Your answers are in the middle for openness. You may seek out new things in some areas and stick with what you know in others. The facets show the difference between curiosity about ideas, imagination, art and willingness to change routines.",
+        "strength": "You may have examples of building on something that works and adding a new twist. That helps when a situation needs fresh thinking without throwing out everything that already works.",
+        "watch": "How much you want something new may depend on the topic. Liking new ideas does not have to mean liking changes to your schedule, and enjoying routines does not mean you lack curiosity.",
         "work": "For a decision with several options, compare one established approach with one alternative. Use the same criteria for both, including effort, uncertainty, and the problem you need to solve.",
         "life": "Tell others where you enjoy surprise and where advance notice helps. Specific preferences are easier to accommodate than a broad claim that you are either spontaneous or routine-oriented.",
         "experiment": "Pick one routine to keep and one to vary this week. Record what each choice contributed. Use that comparison to make the next choice deliberately."
       },
       "high": {
-        "meaning": "Your answers lean toward imagination, exploration, or interest in unfamiliar perspectives. You may enjoy considering possibilities beyond the immediate task. The facets show which forms of openness matter most to you; this score does not establish superior insight.",
-        "strength": "An appetite for exploration may help you notice alternatives and ask questions that reopen a stuck discussion. Your ideas become especially useful when you connect them to the situation's practical needs.",
-        "watch": "A new possibility can compete with finishing an existing commitment. Others may also need more explanation or evidence before an idea that feels exciting to you feels workable to them.",
+        "meaning": "Your answers lean toward imagination, exploring and interest in new perspectives. You may enjoy thinking about possibilities beyond the task in front of you. The facets show which kinds of openness matter most to you. The score does not mean you have better insight than others.",
+        "strength": "Your wish to explore can help you spot other options and ask questions that get a stuck discussion moving. Your ideas are most useful when you link them to what the situation actually needs.",
+        "watch": "A new possibility can compete with finishing what you have already promised. Others may also need more explanation before an idea that excites you feels doable to them.",
         "work": "Separate time for generating options from time for choosing and completing one. State the problem, the proposed change, and the smallest useful way to test it.",
         "life": "Invite others into your interests without assuming they want the same amount of novelty. Agree on which shared routines provide stability and which are open to experimentation.",
         "experiment": "Select one idea from your current list and give it a small, finishable form. Record what completing it taught you that further thinking alone had not resolved."
@@ -101,25 +101,25 @@
       "name": "Agreeableness",
       "description": "Agreeableness covers trust, straightforwardness, helping, cooperation, modesty, and sympathetic concern. It describes tendencies in relating to others, not goodness, moral worth, relationship quality, or the absence of healthy disagreement.",
       "low": {
-        "meaning": "Your answers lean toward a more skeptical, competitive, or self-assertive interpersonal style. You may be willing to question motives or challenge a proposal. Check the facets before assuming these tendencies apply equally to trust, compassion, and cooperation.",
-        "strength": "A readiness to question can be useful when a group needs scrutiny or a clear statement of competing interests. It helps most when your challenge is specific and grounded in the issue.",
-        "watch": "A direct challenge may be heard as a judgment of the person. If others become defensive, it can become harder to obtain the information needed to resolve the disagreement.",
+        "meaning": "Your answers lean toward a more questioning, competitive or outspoken style with other people. You may be willing to question motives or push back on a suggestion. Check the facets before assuming this applies equally to trust, compassion and cooperation.",
+        "strength": "Being willing to ask hard questions is useful when a group needs a critical look or a clear picture of different interests. It works best when your objection is specific and about the issue.",
+        "watch": "A direct objection can be heard as criticism of the person. If others get defensive, it can be harder to get the information you need to solve the disagreement.",
         "work": "State the shared objective before identifying a concern. Ask what evidence would change each person's view, including your own, so the discussion has a route toward resolution.",
         "life": "When you disagree, describe the behavior and its effect rather than assigning a motive. Make room for the possibility that the other person understood the situation differently.",
         "experiment": "In one disagreement, summarize the other person's position until they confirm you understood it. Then make your request. Note whether the conversation becomes clearer, even if agreement does not follow."
       },
       "middle": {
-        "meaning": "Your answers fall in the middle band for agreeableness. You may value cooperation while also being willing to protect your interests. This mean can represent different mixtures of trust, helping, modesty, and willingness to compromise.",
-        "strength": "You may have examples of both accommodating another person and holding your ground. Examining what guided those choices can help you make future decisions more intentional and easier to explain.",
-        "watch": "Your response may change with the stakes or the relationship. Others can find it difficult to predict your boundaries if those boundaries become visible only after you are frustrated.",
+        "meaning": "Your answers are in the middle for agreeableness. You may value cooperation while also standing up for your own interests. The average can be made up of different mixes of trust, helpfulness, modesty and willingness to compromise.",
+        "strength": "You may have examples of both going along with someone and standing your ground. Looking at what guided those choices can make future decisions more deliberate and easier to explain.",
+        "watch": "How you react can change with the relationship and what is at stake. Others may find your limits hard to read if they only show once you are frustrated.",
         "work": "Before a negotiation, identify what is essential, what is flexible, and what you need to understand. This makes it easier to cooperate without losing track of your responsibilities.",
         "life": "Make requests and limits specific. Saying what you can offer, when you can offer it, and what you cannot take on gives others usable information.",
         "experiment": "Review one recent yes and one recent no. For each, identify the need you were protecting and whether you communicated it clearly. Try clearer wording in your next similar conversation."
       },
       "high": {
-        "meaning": "Your answers lean toward trust, cooperation, or concern for others. You may place substantial weight on maintaining goodwill and responding to people's needs. The facets help distinguish compassion from other tendencies, such as modesty or avoiding confrontation.",
-        "strength": "Your willingness to help and consider another perspective may support constructive relationships. It is most sustainable when expectations are clear and you also have room to express your own needs.",
-        "watch": "Agreeing quickly can hide a practical limit or an important disagreement. A request that seems small in the moment may become difficult when added to commitments others cannot see.",
+        "meaning": "Your answers lean toward trust, cooperation and care for others. You may put a lot of weight on keeping good relationships and meeting other people's needs. The facets separate compassion from other tendencies, such as modesty or avoiding conflict.",
+        "strength": "Your willingness to help and see things from another side can support good relationships. It lasts best when expectations are clear and you also have room to say what you need.",
+        "watch": "A quick yes can hide a practical limit or a real disagreement. A request that seems small in the moment can become heavy on top of commitments others cannot see.",
         "work": "Before accepting additional work, check capacity and priorities. Offer a realistic scope or timing, and surface a concern early enough for the team to act on it.",
         "life": "Treat a clear limit as useful information in a relationship. You can acknowledge another person's disappointment while still explaining what you are able to do.",
         "experiment": "Use one warm, specific boundary this week: acknowledge the request, state your limit, and offer an alternative only if you want to. Reflect on the actual response rather than the response you feared."
@@ -129,25 +129,25 @@
       "name": "Conscientiousness",
       "description": "Conscientiousness covers perceived effectiveness, order, responsibility, striving, persistence, and deliberation. It describes reported habits and preferences. It does not establish competence, personal value, or how reliably someone will perform in every environment.",
       "low": {
-        "meaning": "Your answers lean away from highly structured planning or sustained task control. You may prefer flexibility, act spontaneously, or find some obligations difficult to organize. The facets distinguish orderliness, persistence, striving, and other parts of this pattern.",
-        "strength": "A lighter attachment to plans may leave room to adapt when circumstances change. Check whether this flexibility helps in your actual situation and where a little structure would protect important commitments.",
-        "watch": "Tasks with delayed rewards or several small steps may be easy to postpone. Relying on memory can also make an intention less visible at the moment you need to act.",
+        "meaning": "Your answers lean away from tight planning and keeping close control of tasks. You may prefer flexibility, act on the spur of the moment, or find some duties hard to organise. The facets show the difference between order, persistence, ambition and the other parts of the picture.",
+        "strength": "Being less tied to plans can leave room to adapt when things change. Notice when that flexibility helps you, and where a little structure would protect things that matter.",
+        "watch": "Tasks with a late reward or many small steps can be easy to put off. If you rely only on memory, a good intention can slip away right when you need it.",
         "work": "Give one important task a visible next action and a realistic time to begin. Agree on checkpoints for longer work so a delay can be noticed while adjustment is still possible.",
         "life": "Use a simple reminder for one recurring obligation. Choose a system you will actually see and maintain rather than building a complicated routine that creates more work.",
         "experiment": "For five days, choose one small priority each morning and define what finished means. Record whether you completed it and what made starting easier or harder."
       },
       "middle": {
-        "meaning": "Your response mean is in the middle band for conscientiousness. You may use structure in some areas and a looser approach in others. A tidy environment, strong ambition, and steady follow-through are distinct facets and need not move together.",
-        "strength": "You may have experience using plans when they help and adjusting them when circumstances change. Identify where that approach has worked rather than assuming the average describes every responsibility.",
-        "watch": "A system that works for an interesting project may be less effective for routine maintenance. Notice whether particular kinds of tasks repeatedly fall outside your usual planning habits.",
+        "meaning": "Your answers are in the middle for conscientiousness. You may use structure in some areas and a looser approach in others. Tidiness, ambition and steady follow-through are separate facets and do not have to go together.",
+        "strength": "You may know how to use a plan when it helps and change it when things shift. Look for the situations where that has worked, rather than assuming the average fits everything you do.",
+        "watch": "A system that works for an exciting project may work less well for everyday chores. Notice if certain kinds of tasks keep slipping past your usual habits.",
         "work": "Match the amount of structure to the consequence of a missed step. A simple checklist may be enough for a repeatable task, while a complex handoff needs explicit ownership and timing.",
         "life": "Choose a few recurring commitments that deserve reliable reminders. Leave flexibility elsewhere so planning supports what matters without filling every available hour.",
         "experiment": "Compare one task you finished smoothly with one you postponed. Note clarity, timing, interest, and interruptions. Apply one helpful condition from the first task to the next difficult one."
       },
       "high": {
-        "meaning": "Your answers lean toward planning, responsibility, or sustained effort. You may like clear expectations and take commitments seriously. Read the facets to see whether this pattern is driven more by order, achievement striving, persistence, or careful deliberation.",
-        "strength": "Your attention to preparation and follow-through may help turn intentions into completed work. It is particularly useful when responsibilities are clear and the level of detail matches the consequences of an error.",
-        "watch": "Additional checking or effort can continue after it stops adding much value. Changes to a plan may also feel disruptive when you have invested heavily in making it work.",
+        "meaning": "Your answers lean toward planning, responsibility and steady effort. You may like clear expectations and take promises seriously. The facets show whether this is mostly about order, ambition, persistence or thinking things through.",
+        "strength": "Your care for preparation and follow-up can help turn plans into finished work. It is most useful when responsibilities are clear and the level of detail fits how much a mistake would matter.",
+        "watch": "Extra checking or effort can carry on after it stops making much difference. Changes to a plan can also feel disruptive when you have worked hard to make it run.",
         "work": "Agree on completion criteria before starting. Distinguish essential quality checks from optional polish, and revisit priorities when new work arrives rather than absorbing every request into the original plan.",
         "life": "Leave some shared time open to other people's preferences. Explain which commitments matter most to you while allowing less consequential routines to vary.",
         "experiment": "For one low-stakes task, set a time limit and a clear standard for completion. Stop when that standard is met, then check whether extra effort would actually have changed the outcome."
