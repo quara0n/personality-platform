@@ -4,8 +4,8 @@
 
 // One logo piece per trait. Colours follow the pieces; Emotional reactivity uses a deeper sand
 // version of the ivory piece so it keeps contrast on the ivory page.
-export const traitColors = {O: '#91b6d3', C: '#142c5b', E: '#f6b18d', A: '#5a84aa', N: '#cdb8a2'};
-export const traitPiece = {O: 'sky', C: 'navy', E: 'apricot', A: 'steel', N: 'sand'};
+export const traitColors = {O: '#91b6d3', C: '#f6b18d', E: '#5a84aa', A: '#cdb8a2', N: '#142c5b'};
+export const traitPiece = {O: 'sky', C: 'apricot', E: 'steel', A: 'sand', N: 'navy'};
 
 // Noun phrases used in "Your answers suggest … and …".
 const summaryPhrases = {

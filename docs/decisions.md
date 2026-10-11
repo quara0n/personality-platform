@@ -108,3 +108,6 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Illustrasjonene er klippet fra motivet (app/assets/design/trait-*.webp). Panelfarger, skrå kanter, navn og +-knapp er laget i HTML/CSS, så teksten er skarp og oversettes.
 - Et trykk åpner forklaringen for trekket under panelraden; ett trekk er åpent om gangen, og alle er lukket fra start. På mobil blas panelene sidelengs.
 - Panelfargene følger motivet og avviker fra logobitene: Planmessighet er fersken i panelet, men mørkeblå bit ellers; Ekstroversjon er blå i panelet, men aprikos bit; Følelsesmessig reaktivitet er mørkeblå i panelet, men sandfarget bit. Logobitene i resten av rapporten er uendret.
+
+## Trekkfarger følger panelene 2026-10-11
+- Rune bestemte at den mørke logobiten hører til Følelsesmessig reaktivitet, og at fargene i hele rapporten skal følge trekkpanelene: Åpenhet lyseblå, Planmessighet aprikos, Ekstroversjon stålblå, Medmenneskelighet den lyse sandbiten (lys bit med nok kontrast mot lys bakgrunn) og Følelsesmessig reaktivitet mørkeblå. Dette erstatter fargefordelingen fra «Persentiler, logobiter og neste steg».
