@@ -130,3 +130,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune sendte nye motiver for kapitlene Arbeidsliv og karriere og Hverdagsliv. Hvert kapittel starter med tittel, ingress og illustrasjon. Hvert trekk vises som et kort med logobit og navn, metaforen i kursiv med aksentstrek, beskrivelse, Prøv-boks og illustrasjon til høyre (over teksten på mobil).
 - Illustrasjonene er klippet fra motivene (app/assets/design/context/), én per trekk og kapittel. De viser midtnivå-metaforene; samme illustrasjon brukes for lavere og høyere nivå til egne motiver finnes.
 - Nivåmerket beholdes på kortet, så koblingen mellom skår og råd synes. «Eksempelprofil» vises bare i eksempelrapporten. Det løse anførselstegnet i motivets Reaktivitet-metafor finnes ikke i appteksten.
+
+## Landskap på spørsmålssiden 2026-10-11
+- Rune valgte et nytt motiv for spørsmålssiden: et landskap med åser, trær, sti og sol langs bunnen, og kvinnen som sitter på en kloss nederst til venstre. Det erstatter figuren og hjørnebildet. Illustrasjonen er klippet fra motivet (app/assets/design/question-landscape.webp) med gjennomsiktig himmel.
+- Krav: logo, fremdrift, spørsmål, alle fem svar og knappene skal synes uten å rulle på mobil, nettbrett og desktop. Kontrollert i 360×640, 390×664, 390×844, 768×1024, 820×1180, 1024×768, 1280×720, 1366×768, 1440×900 og 1920×1080, også med det lengste spørsmålet.
+- Fremdriftslinjen viser alltid både prosent og spørsmålsnummer (for eksempel «12 % 14/120»). På skjermer lavere enn 860 px skjules «Svar ut fra hvordan du vanligvis er / Spørsmål X av 120», og spørsmålet og svarboksene blir litt mindre. Under 760 px skjules også notatet under knappene.
+- På mobil vises venstre del av landskapet (kvinnen og trærne) i fast høyde.
+- «Worry about things» er rettet fra «Bekymrer meg for mye» til «Bekymrer meg for ting», fordi «for mye» endret betydningen av utsagnet.

@@ -4,7 +4,7 @@
 - Les README.md, docs/decisions.md, docs/design.md og docs/plan.md før produktarbeid.
 - Appen ligger i app/ og kjører med npm start. Designbildene er historiske konseptreferanser. Betaling er ikke implementert; forhåndsvisningen gir gratis tilgang til rapporten.
 - Bruk de åtte bildene i design/selected/ som valgte referanser. design/manifest.json angir opphav og status. Eldre alternativer er ikke med.
-- Behold den godkjente figurstørrelsen på spørsmålssiden og automatisk overgang ved valg. Ikke erstatt med obligatorisk Neste-knapp.
+- Behold landskapet på spørsmålssiden, at hele spørsmålet og alle svar synes uten å rulle, og automatisk overgang ved valg. Ikke erstatt med obligatorisk Neste-knapp.
 - En rapport kjøpes én gang og dekker både Work & career og Everyday life. Ikke innfør abonnement eller separate kjøp uten ny beslutning.
 - Brukeren valgte Norge/USA, 99 kr/$9.99 som engangspriser og Stripe. Stripe-sandbox er tilkoblet og katalog/testlenker er opprettet. Sikker betalingslevering og livebetaling gjenstår. Implementeringen bruker Johnson IPIP-NEO-120, engelsk og norsk upstream-oversettelse, og vanlig HTML/CSS/JavaScript. Endelig navn er åpent.
 - Prototype kan bruke tydelig merket eksempeldata. Produksjonsskåring, persentiler og rapportpåstander må bygge på valgt instrument, dokumentert lisens, skåringsnøkkel og relevant evidens.
