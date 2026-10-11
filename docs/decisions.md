@@ -78,3 +78,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Merking: «Sammenlignet med amerikanske nettdeltakere … overføring til norsk språk er ikke særskilt validert.» På engelsk: sammenlignet med amerikanske voksne som tok testen på nett på engelsk, ikke en nasjonal norm.
 - Hvert trekk har sin logobit: Åpenhet lyseblå, Planmessighet mørkeblå, Ekstroversjon aprikos, Medmenneskelighet stålblå, Følelsesmessig reaktivitet en mørkere sandversjon av den lyse biten for kontrast. Bitene brukes i oversikt, kapitler og neste steg.
 - «Dine neste steg» er en ukeplan med tre eksperimenter, avkrysning i fanen og «Etter en uke». Når færre enn tre fasetter er utenfor midtområdet, fylles det på med fasettene lengst fra midtpunktet, én per trekk, merket som utforskninger.
+
+## Metaforkort i Arbeidsliv og Hverdagsliv 2026-10-11
+- Rune godkjente et nytt kortformat for kapitlene Arbeidsliv og Hverdagsliv: en kort metafor som sitatlinje, en beskrivelse og én «Prøv»-idé. Kortene er skrevet for alle fem trekk × lav/midt/høy × begge kapitler, på engelsk og norsk bokmål hver for seg (app/context-copy.js, regel-ID context-v1/<trekk>/<kapittel>/<nivå>).
+- Kortene velges fra trekkets nivå, så de er sporbare til skåren. Fasettkortene får ingen metaforer.
+- De gjentakende forbeholdslinjene «Nær en grense for ordlyden …» og «Alle seks fasettene ligger i det redaksjonelle midtområdet …» er fjernet fra kortene. Forbeholdene står fortsatt i «Slik leser du resultatene».
