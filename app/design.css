@@ -581,3 +581,33 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-fcard,.d-trait-band{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .d-fcard-art{max-height:90px;padding-right:8px}
 }
+
+/* Work & career / Everyday life: chapter band and illustrated trait cards */
+.d-context-band{align-items:flex-end;margin-bottom:22px}
+.d-context-band>div{padding-bottom:18px}
+.d-context-band img{width:340px;max-width:42%;display:block}
+.d-demo-pill{display:inline-block;margin:0 0 6px;padding:4px 12px;border-radius:999px;background:#e3eef8;color:#1f4fa0;font-size:13px}
+.d-context-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,32%);gap:18px;align-items:center;padding:20px 22px 20px 24px!important}
+.d-context-body{min-width:0}
+.d-context-title h3{overflow-wrap:anywhere;hyphens:auto}
+.d-context-title .d-chip{margin-left:auto;flex:none}
+.d-context-title .d-trait-alt{font-size:.62em}
+.d-context-art{display:block;width:100%;max-height:220px;object-fit:contain;object-position:right center}
+.d-context-card .d-try{display:flex;gap:10px;align-items:baseline;padding:10px 14px}
+.d-context-card .d-try span{flex:none}
+@media(max-width:900px){
+  .d-context-band img{display:block;width:240px;max-width:38%}
+}
+@media(max-width:700px){
+  .d-context-band{flex-direction:column;align-items:stretch;gap:0}
+  .d-context-band>div{padding-bottom:6px}
+  .d-context-band img{width:auto;max-width:100%;max-height:150px;align-self:flex-end}
+  .d-context-card{grid-template-columns:1fr;padding:18px!important}
+  .d-context-art{order:-1;max-height:160px;object-position:center bottom;margin:0 auto}
+  .d-context-card .d-try{display:block}
+  .d-context-card .d-try span{margin-bottom:6px}
+}
+@media print{
+  .d-context-card{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .d-context-art{max-height:140px}
+}
