@@ -8,8 +8,8 @@ const assert=require('node:assert/strict');
  assert.doesNotMatch(await page.locator('.hero').innerText(),/stemmegivning|utsagn/);
  assert.equal(await page.locator('header .locale-bar').count(),1);
  await page.screenshot({path:'artifacts/design-home-no.png',fullPage:true});
- await page.goto('http://127.0.0.1:4173/#test');await page.locator('.choices').waitFor();
- assert.match(await page.locator('.assessment .eyebrow').innerText(),/Spørsmål/i);
+ await page.goto('http://127.0.0.1:4173/#test');await page.locator('.d-choices').waitFor();
+ assert.match(await page.locator('.d-count').innerText(),/Spørsmål/i);
  await page.screenshot({path:'artifacts/design-question-no.png',fullPage:true});
  for(const width of [390,768,971]){
   await page.setViewportSize({width,height:844});
