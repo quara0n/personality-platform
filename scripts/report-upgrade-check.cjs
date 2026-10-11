@@ -28,7 +28,7 @@ const answers=Object.fromEntries(questions.map(q=>{
     assert.deepEqual(await restored.evaluate(()=>JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers),answers);
     await restored.reload();await restored.locator('.d-report-body').waitFor();
     await restored.locator('#header-language').selectOption('no');
-    await restored.getByRole('heading',{name:'Fasettmønstrene dine',exact:true}).waitFor();
+    await restored.getByRole('heading',{name:'Nyansene bak skårene',exact:true}).waitFor();
     assert.ok((await restored.locator('.facet-pattern').nth(2).textContent()).includes('Vennlighet (5.00/5)'));
     await restored.goto('http://127.0.0.1:4173/#report/traits');await restored.locator('.facet-pattern').first().waitFor();
     fs.mkdirSync('artifacts',{recursive:true});
@@ -65,6 +65,7 @@ const answers=Object.fromEntries(questions.map(q=>{
     assert.deepEqual(await restored.evaluate(()=>JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers),neutral,'A newer import must win over an older delayed read');
     await restored.reload();await restored.locator('.d-report-body').waitFor();
     assert.equal(await restored.locator('.step').count(),0);
+    assert.equal(await restored.locator('.d-step.is-explore').count(),3);
     assert.ok((await restored.locator('#steps').textContent()).includes('Fremfor å finne på tre'));
     assert.deepEqual(errors,[]);
     console.log('PASS: facet contrasts, 30 interpretations, facet actions, answer-file download/restore/reload, bilingual report, invalid import preserves answers, neutral report, desktop/mobile/PDF.');

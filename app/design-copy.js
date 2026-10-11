@@ -2,7 +2,10 @@
 // Each entry is selected deterministically from a domain's band (low / middle / high),
 // so every sentence stays traceable to the underlying score.
 
-export const traitColors = {O: '#8fb4d0', C: '#a9c6dc', E: '#f6b18d', A: '#8fb4d0', N: '#f6b18d'};
+// One logo piece per trait. Colours follow the pieces; Emotional reactivity uses a deeper sand
+// version of the ivory piece so it keeps contrast on the ivory page.
+export const traitColors = {O: '#91b6d3', C: '#142c5b', E: '#f6b18d', A: '#5a84aa', N: '#cdb8a2'};
+export const traitPiece = {O: 'sky', C: 'navy', E: 'apricot', A: 'steel', N: 'sand'};
 
 // Noun phrases used in "Your answers suggest … and …".
 const summaryPhrases = {

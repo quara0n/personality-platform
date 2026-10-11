@@ -70,3 +70,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Figuren på spørsmålssiden er skåret på nytt med hele hodet.
 - Rune ba om vekt på det positive. I gratisresultat og rapport kommer «Din styrke» først og fremhevet, deretter forklaringen og «Slik får du mest ut av det». «Hva gjennomsnittet kan skjule» heter nå «Nyanser i profilen din», står sist og er dempet, og er tatt ut av gratisresultatet. Tekstene er de samme regelstyrte tekstene som før, så koblingen mellom skår og råd er uendret.
 - Rapporten er gjort mer visuell: trekkhoder med logobit, stolpe og nivåmerke, fasettkort med egne stolper, kontekstkort med «Prøv»-forslag og nummererte stegkort.
+
+## Persentiler, logobiter og neste steg 2026-10-11
+- Rune ba om oversikten som i bilde 5, med persentiler fra den amerikanske referansegruppen for både engelsk og norsk (se Codex sin normrapport). Persentilen beregnes som empirisk rang, P = 100 × (lavere + 0,5 × like) / N, avrundet til hele tall mellom 1 og 99 (app/norms.js).
+- Referansefordelingen lages av scripts/build_norms.py fra IPIP120.dat (Kajonius og Johnson 2019, CC BY 4.0): USA, alle 120 svar 1–5, alder 18–90. Bare aggregerte tellinger per mulig sum lagres i app/data/norms-us.json. Alderskolonnen er utledet og må stemme med kildeopptellingen (243 307 rader); skriptet varsler ellers.
+- Inntil norms-us.json finnes, viser rapporten skalaplassering 1–5 og sier tydelig at det ikke er persentiler. Ingen oppdiktede persentiler vises.
+- Merking: «Sammenlignet med amerikanske nettdeltakere … overføring til norsk språk er ikke særskilt validert.» På engelsk: sammenlignet med amerikanske voksne som tok testen på nett på engelsk, ikke en nasjonal norm.
+- Hvert trekk har sin logobit: Åpenhet lyseblå, Planmessighet mørkeblå, Ekstroversjon aprikos, Medmenneskelighet stålblå, Følelsesmessig reaktivitet en mørkere sandversjon av den lyse biten for kontrast. Bitene brukes i oversikt, kapitler og neste steg.
+- «Dine neste steg» er en ukeplan med tre eksperimenter, avkrysning i fanen og «Etter en uke». Når færre enn tre fasetter er utenfor midtområdet, fylles det på med fasettene lengst fra midtpunktet, én per trekk, merket som utforskninger.
