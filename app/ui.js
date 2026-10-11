@@ -86,14 +86,14 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
     </div>
     <div class="d-first-look"><h2>${tr('A first look at your patterns','Et første blikk på mønstrene dine')}</h2><p>${esc(profileSummary(sorted(),language))}</p><p class="d-small">${tr('The traits describe tendencies, not fixed types.','Trekkene beskriver tendenser, ikke faste typer.')}</p></div>
     <div class="d-explore"><div class="d-explore-inner"><h2>${tr('Explore your traits','Utforsk trekkene dine')}</h2>
-      <div class="d-accordion">${sorted().map((d,i)=>`<details ${i===0?'open':''}><summary><span class="d-acc-name">${esc(name(d))}</span><span class="d-acc-line">${esc(traitLine(d,language))}<em>${esc(traitQuestion(d,language))}</em></span><span class="d-acc-icon" aria-hidden="true"></span></summary><div class="d-acc-body"><p class="eyebrow">${bandText(d.band)} · ${Number(d.mean).toFixed(2)} / 5</p>${strengthHtml(d)}<p>${esc(entry(d).meaning)}</p><div class="d-use"><strong>${tr('Getting the most from it','Slik får du mest ut av det')}</strong><p>${esc(entry(d).watch)}</p></div></div></details>`).join('')}</div>
+      <div class="d-accordion">${sorted().map((d,i)=>`<details><summary><span class="d-acc-name">${esc(name(d))}</span><span class="d-acc-line">${esc(traitLine(d,language))}<em>${esc(traitQuestion(d,language))}</em></span><span class="d-acc-icon" aria-hidden="true"></span></summary><div class="d-acc-body"><p class="eyebrow">${bandText(d.band)} · ${Number(d.mean).toFixed(2)} / 5</p>${strengthHtml(d)}<p>${esc(entry(d).meaning)}</p><div class="d-use"><strong>${tr('Getting the most from it','Slik får du mest ut av det')}</strong><p>${esc(entry(d).watch)}</p></div></div></details>`).join('')}</div>
       <div class="d-cta-row"><a class="d-cta" href="#offer">${tr('Explore the in-depth report','Utforsk fordypningsrapporten')} <span aria-hidden="true">→</span></a></div>
       <p class="d-small d-center">${interpretation()}</p>
       <div class="d-links"><a href="#method">${tr('Read the method','Les om metoden')}</a>${!demo?`<button class="text-button" id="edit">${tr('Review my answers','Se gjennom svarene mine')}</button>`:''}</div>
     </div></div></section>`;
   document.querySelector('#edit')?.addEventListener('click',()=>{index=0;location.hash='test';});}
 function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-US',{style:'currency',currency:country==='NO'?'NOK':'USD',minimumFractionDigits:country==='NO'?0:2,maximumFractionDigits:country==='NO'?0:2}).format(country==='NO'?99:9.99);
-  const tick=label=>`<li><span class="d-tick" aria-hidden="true"></span>${label}</li>`;
+  const tick=label=>`<li><span class="d-tick" aria-hidden="true"></span><span>${label}</span></li>`;
   main.innerHTML=`<section class="d-offer">${notice()}
     <a class="d-offer-back" href="#results"><span aria-hidden="true">←</span> ${tr('Back to your free profile','Tilbake til gratisprofilen')}</a>
     <h1>${tr('Understand yourself.<br>Put it into practice.','Forstå deg selv.<br>Bruk det i praksis.')}</h1>
@@ -102,7 +102,7 @@ function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-U
       <img class="d-offer-art" src="assets/design/offer-work.webp" alt="" aria-hidden="true">
       <div class="d-offer-card">
         <h2>${tr('Your in-depth report','Din fordypningsrapport')}</h2>
-        <ul>${tick(tr('A deeper look at your five traits and 30 facets','Et dypere blikk på fem trekk og 30 fasetter'))}${tick(tr('Percentiles: see where you stand among other test-takers','Persentiler: se hvor du ligger blant andre testtakere'))}${tick(tr('Work &amp; career insights','Innsikt om arbeidsliv og karriere'))}${tick(tr('Everyday life &amp; relationships','Hverdagsliv og relasjoner'))}${tick(tr('Three concrete next steps','Tre konkrete neste steg'))}</ul>
+        <ul>${tick(tr('<strong>All 30 facets</strong> – what sits behind each of your five traits','<strong>Alle 30 fasettene</strong> – hva som ligger bak hvert av de fem trekkene dine'))}${tick(tr('<strong>Where you stand</strong> – percentiles compared with other test-takers','<strong>Hvor du ligger</strong> – persentiler sammenlignet med andre testtakere'))}${tick(tr('<strong>Work</strong> – how you work best and work with others','<strong>Arbeidsliv</strong> – hvordan du jobber best og samarbeider med andre'))}${tick(tr('<strong>Everyday life</strong> – habits, relationships and daily choices','<strong>Hverdagsliv</strong> – vaner, relasjoner og valg i hverdagen'))}${tick(tr('<strong>A one-week plan</strong> – three concrete experiments matched to your profile','<strong>En ukeplan</strong> – tre konkrete eksperimenter tilpasset profilen din'))}</ul>
         <p class="d-offer-terms">${tr('One payment. No subscription.','Én betaling. Ingen abonnement.')}</p>
         <p class="d-offer-price">${price}</p>
         <a class="d-offer-buy" href="#report">${tr('Get the full report','Få hele rapporten')} <span aria-hidden="true">→</span></a>
