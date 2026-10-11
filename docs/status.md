@@ -15,3 +15,6 @@ Syv skårings-/innholdstester bestått. Alle 120 engelske spørsmål kontrollert
 Sikker serverbasert betaling/rapporttilgang, signerte betalingshendelser, varig levering/gjenoppretting, live Stripe-oppsett, avgifter, selger-/personvernvilkår og support/refusjon. Testlenkene er foreløpig separate. Privat Sites-prosjekt er opprettet, men ikke publisert. Endelig navn/domene og faglig gjennomgang gjenstår.
 
 GitHub-mål: https://github.com/quara0n/personality-platform (privat). HANDOFF.md er historisk og er bevart uendret; denne filen beskriver dagens tilstand.
+
+## Ny rapportversjon
+Rapport v2 bruker fasettkontraster, egne midttolkninger, fasettbaserte refleksjoner og neste steg. Svar kan lagres i en privat lokal JSON-fil og gjenbrukes uten ny gjennomføring. 11 automatiske tester og egen nettleserkontroll dekker forbedringen. Spørsmål/skåringsnøkkel er uendret; bedre formidling innebærer ingen ny valideringspåstand.

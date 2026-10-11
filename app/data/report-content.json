@@ -9,7 +9,8 @@
     "Each facet uses four items. Read small score differences cautiously, especially near a band boundary; no confidence interval or reliable-change estimate is provided.",
     "Intellect does not measure IQ, Morality does not measure moral worth, and Liberalism does not identify a political party. These are historical facet labels with narrower meanings explained in the report.",
     "The report uses predefined editorial rules. It does not infer a unique personality type, diagnose you, or make validated predictions from combinations of traits.",
-    "Some Liberalism items directly concern political beliefs and originate in a particular cultural context. Treat these answers as sensitive. A Norwegian translation does not establish cultural equivalence or Norwegian norms."
+    "Some Liberalism items directly concern political beliefs and originate in a particular cultural context. Treat these answers as sensitive. A Norwegian translation does not establish cultural equivalence or Norwegian norms.",
+    "Comparisons between facets describe raw response means, not how unusual a tendency is. Facets differ in content and endorsement rates; without suitable norms, the highest mean cannot establish your strongest trait relative to other people."
   ],
   "domains": {
     "N": {
@@ -158,181 +159,275 @@
       "name": "Anxiety",
       "description": "Reported tendency to anticipate threats or feel worried; this facet is not a clinical anxiety assessment.",
       "low": "You endorsed fewer worry-related statements. Check important risks explicitly even when you feel comfortable.",
-      "high": "You endorsed more worry-related statements. Try separating a concrete concern from an unanswered question before deciding what to do."
+      "high": "You endorsed more worry-related statements. Try separating a concrete concern from an unanswered question before deciding what to do.",
+      "middle": "Worry may depend on how uncertain or consequential a situation feels. Compare a familiar task with an unfamiliar one.",
+      "work": "For an uncertain task, write down the specific risk and the next piece of information you need.",
+      "life": "Compare how you react to a familiar plan and an unexpected change."
     },
     "N2": {
       "name": "Anger",
       "description": "Reported tendency to feel irritated or angry when things go wrong; it does not establish aggressive behavior.",
       "low": "You report relatively little irritation. If a problem matters, state it clearly even when you do not feel angry.",
-      "high": "You report more irritation. Notice the specific unmet expectation and consider expressing a request once you can do so clearly."
+      "high": "You report more irritation. Notice the specific unmet expectation and consider expressing a request once you can do so clearly.",
+      "middle": "Irritation may arise around particular frustrations rather than across your whole day. Notice which expectations matter most.",
+      "work": "When a process frustrates you, describe the obstacle and request one change.",
+      "life": "In a disagreement, name the expectation that was not met before deciding how to respond."
     },
     "N3": {
       "name": "Depression",
       "description": "A historical facet label for reported discouragement, sadness, or low spirits; it cannot diagnose or rule out depression.",
       "low": "You endorsed fewer low-spirited statements. This does not mean every period of life feels easy or positive.",
-      "high": "You endorsed more low-spirited statements. Consider your recent circumstances when interpreting this result; it is not a clinical conclusion."
+      "high": "You endorsed more low-spirited statements. Consider your recent circumstances when interpreting this result; it is not a clinical conclusion.",
+      "middle": "Your answers do not point consistently toward either end of the low-spirits scale. Recent circumstances may help explain the variation.",
+      "work": "Consider how your current circumstances affect motivation; this score does not establish a health condition.",
+      "life": "Notice whether the answers fit your usual experience or a particularly difficult recent period."
     },
     "N4": {
       "name": "Self-Consciousness",
       "description": "Reported discomfort with social evaluation or being the focus of attention.",
       "low": "You report less discomfort with being noticed. Others may need more preparation before being put on the spot.",
-      "high": "You report more discomfort with evaluation. Preparing one contribution in advance may make a specific social task feel more manageable."
+      "high": "You report more discomfort with evaluation. Preparing one contribution in advance may make a specific social task feel more manageable.",
+      "middle": "Being noticed may feel comfortable in some settings and awkward in others. Compare familiar people with unfamiliar audiences.",
+      "work": "Compare contributing in a small familiar meeting with presenting to an unfamiliar audience.",
+      "life": "Choose a social setting where you can participate at a comfortable pace."
     },
     "N5": {
       "name": "Immoderation",
       "description": "Reported difficulty resisting urges or temptations; this is not a diagnosis of addiction or a judgment of character.",
       "low": "You report less difficulty resisting temptations. Notice which conditions support your choices rather than assuming willpower is constant.",
-      "high": "You report more difficulty resisting some urges. For one everyday temptation, try making your preferred choice easier to access."
+      "high": "You report more difficulty resisting some urges. For one everyday temptation, try making your preferred choice easier to access.",
+      "middle": "Resisting an urge may be easier under some conditions than others. Look at tiredness, access and routines around one everyday temptation.",
+      "work": "Notice which distractions are easiest to act on, and change access to one that interrupts your work.",
+      "life": "For one everyday temptation, change the surroundings before relying on willpower."
     },
     "N6": {
       "name": "Vulnerability",
       "description": "Reported tendency to feel overwhelmed or less able to cope under pressure.",
       "low": "You report feeling relatively capable under pressure. Still check whether you need information, rest, or help for the particular situation.",
-      "high": "You report more difficulty under pressure. Breaking one demand into a next step and clarifying available support may be worth trying."
+      "high": "You report more difficulty under pressure. Breaking one demand into a next step and clarifying available support may be worth trying.",
+      "middle": "Your sense of coping may depend on the kind of pressure and the support available. Compare two recent demanding situations.",
+      "work": "For a demanding task, clarify the next step and who can help if you get stuck.",
+      "life": "When several demands arrive together, separate what needs action now from what can wait."
     },
     "E1": {
       "name": "Friendliness",
       "description": "Reported warmth and ease in approaching people; it does not measure kindness.",
       "low": "You may approach people more reservedly. A brief expression of interest can make your intentions easier for others to read.",
-      "high": "You may readily express warmth. Check whether a new acquaintance welcomes the same pace of connection."
+      "high": "You may readily express warmth. Check whether a new acquaintance welcomes the same pace of connection.",
+      "middle": "You may approach people differently depending on familiarity and setting. Notice when warmth comes easily and when you prefer more distance.",
+      "work": "Notice whether colleagues can read your interest from how you approach them.",
+      "life": "Express interest in a way that feels natural, while checking the other person’s preferred pace."
     },
     "E2": {
       "name": "Gregariousness",
       "description": "Reported preference for company, groups, and social gatherings.",
       "low": "You may prefer smaller gatherings or more time alone. Suggest the kinds of connection you enjoy rather than only declining others.",
-      "high": "You may enjoy frequent company and groups. Plan social time while checking that quieter commitments also get attention."
+      "high": "You may enjoy frequent company and groups. Plan social time while checking that quieter commitments also get attention.",
+      "middle": "Company and time alone may both appeal to you. Group size, familiarity and the activity may explain which you prefer.",
+      "work": "Compare individual focus time with collaborative time when planning a working day.",
+      "life": "Plan a form of connection you actually enjoy, rather than assuming every gathering suits you."
     },
     "E3": {
       "name": "Assertiveness",
       "description": "Reported willingness to speak up, take charge, and influence group direction.",
       "low": "You may be less inclined to take the lead. Prepare one clear request or contribution when your perspective needs to be heard.",
-      "high": "You may readily influence a discussion. Invite an alternative view before treating your preferred direction as the group's decision."
+      "high": "You may readily influence a discussion. Invite an alternative view before treating your preferred direction as the group's decision.",
+      "middle": "You may speak up or take the lead selectively. Compare a subject you know well with one where you prefer to listen first.",
+      "work": "Before a discussion, decide what contribution you want heard and how you will invite other views.",
+      "life": "Make one preference explicit when agreeing on a shared plan."
     },
     "E4": {
       "name": "Activity Level",
       "description": "Reported preference for a busy pace and active involvement; this is not a measure of health or productivity.",
       "low": "You may prefer a less hurried pace. Allow realistic transition time when planning several commitments.",
-      "high": "You may enjoy a full, active schedule. Check whether the pace leaves enough room to finish tasks and respond to surprises."
+      "high": "You may enjoy a full, active schedule. Check whether the pace leaves enough room to finish tasks and respond to surprises.",
+      "middle": "A busy pace may suit some days, while a slower pace suits others. Notice which commitments energise you and which create overload.",
+      "work": "Plan commitments at a pace that leaves room for transitions and unexpected work.",
+      "life": "Compare a full day with a quieter day and notice which pace you prefer."
     },
     "E5": {
       "name": "Excitement-Seeking",
       "description": "Reported appetite for stimulation and exciting experiences; it does not establish reckless behavior.",
       "low": "You may prefer less intense stimulation. Choose settings that let you engage comfortably without assuming novelty will be unpleasant.",
-      "high": "You may enjoy stimulating experiences. Consider the practical consequences separately from how exciting an option feels."
+      "high": "You may enjoy stimulating experiences. Consider the practical consequences separately from how exciting an option feels.",
+      "middle": "Your appetite for stimulation may vary by experience. Separate interest in novelty from comfort with noise, intensity or risk.",
+      "work": "Distinguish the stimulation you enjoy from the interruptions that make a task harder.",
+      "life": "Choose an enjoyable experience and assess its practical consequences separately from its excitement."
     },
     "E6": {
       "name": "Cheerfulness",
       "description": "Reported tendency to experience and express positive feelings; it is not a complete measure of well-being.",
       "low": "You endorsed fewer strongly upbeat statements. A quieter emotional style does not mean you cannot enjoy meaningful experiences.",
-      "high": "You endorsed more upbeat statements. Your enthusiasm may be welcome; also leave space for someone else's disappointment or concern."
+      "high": "You endorsed more upbeat statements. Your enthusiasm may be welcome; also leave space for someone else's disappointment or concern.",
+      "middle": "Positive feelings may vary across situations or be expressed quietly. Notice what you enjoy without requiring constant enthusiasm.",
+      "work": "Notice how your emotional expression affects the tone of a team conversation.",
+      "life": "Share an enjoyable moment in your own style, leaving room for other people’s feelings."
     },
     "O1": {
       "name": "Imagination",
       "description": "Reported engagement with fantasy and imagined possibilities.",
       "low": "You may prefer concrete information. Sketching one alternative can still be useful when the current approach is stuck.",
-      "high": "You may readily imagine alternatives. Capture a promising idea in a small practical form to see what it offers."
+      "high": "You may readily imagine alternatives. Capture a promising idea in a small practical form to see what it offers.",
+      "middle": "Concrete thinking and imagined possibilities may both be useful to you. Compare how you approach a practical task and an open-ended idea.",
+      "work": "For an open problem, compare a concrete example with one alternative you can imagine.",
+      "life": "Try making one imagined possibility concrete through a sketch, note or small trial."
     },
     "O2": {
       "name": "Artistic Interests",
       "description": "Reported appreciation of art, beauty, and aesthetic experiences; it does not measure artistic ability.",
       "low": "Artistic experiences may be a smaller part of your interests. This says nothing about your ability to learn an art or craft.",
-      "high": "Aesthetic experiences may matter to you. Consider making intentional room for the forms you actually enjoy."
+      "high": "Aesthetic experiences may matter to you. Consider making intentional room for the forms you actually enjoy.",
+      "middle": "Your aesthetic interests may be selective. Particular music, places or art forms may matter more than a broad interest in art.",
+      "work": "Notice whether the appearance of your surroundings affects your experience of working there.",
+      "life": "Make room for an aesthetic experience you enjoy; no artistic skill is required."
     },
     "O3": {
       "name": "Emotionality",
       "description": "Reported awareness of and attention to one's feelings; this differs from emotional distress or empathy.",
       "low": "You may give feelings less attention when describing experience. Naming a feeling can sometimes clarify what matters in a decision.",
-      "high": "You may attend closely to your feelings. Treat them as information alongside the facts and practical constraints of a situation."
+      "high": "You may attend closely to your feelings. Treat them as information alongside the facts and practical constraints of a situation.",
+      "middle": "Attention to feelings may depend on the situation. Compare decisions where you notice your emotions with those where practical facts dominate.",
+      "work": "When making a decision, identify both the facts and how you feel about the options.",
+      "life": "Name a feeling and the situation around it without treating it as the whole explanation."
     },
     "O4": {
       "name": "Adventurousness",
       "description": "Reported willingness to try unfamiliar activities and depart from routine.",
       "low": "Familiar activities may appeal more. If a change is needed, a small trial can make the experience easier to evaluate.",
-      "high": "You may welcome unfamiliar experiences. Check whether a shared change also works for the people affected by it."
+      "high": "You may welcome unfamiliar experiences. Check whether a shared change also works for the people affected by it.",
+      "middle": "You may welcome some changes while preferring familiar routines elsewhere. Notice what makes an unfamiliar activity worth trying.",
+      "work": "For a change in routine, agree on a small trial and what would make it worth keeping.",
+      "life": "Compare a familiar activity with one small unfamiliar variation."
     },
     "O5": {
       "name": "Intellect",
       "description": "A historical label for interest in abstract ideas and intellectual exploration; this is not an IQ or ability score.",
       "low": "Abstract discussion may appeal less than concrete problems. This does not imply lower intelligence or less expertise.",
-      "high": "You may enjoy exploring complex ideas. Translate your reasoning into a concrete example when communicating it to others."
+      "high": "You may enjoy exploring complex ideas. Translate your reasoning into a concrete example when communicating it to others.",
+      "middle": "Interest in abstract ideas may depend on the topic and its relevance. This result says nothing about your intelligence.",
+      "work": "Choose a concrete example when explaining an abstract idea to a colleague.",
+      "life": "Explore a topic that interests you without treating this score as a measure of intelligence."
     },
     "O6": {
       "name": "Liberalism",
       "description": "A historical facet combining political and conventional beliefs, including liberal or conservative candidates, crime policy, and absolute right and wrong. These culturally specific items do not establish party membership or voting behavior.",
       "low": "You may place more value on established conventions. Consider the reason for a rule when deciding whether it still serves its purpose.",
-      "high": "You may be inclined to question conventions. Explain what a proposed alternative would improve and how it could be evaluated."
+      "high": "You may be inclined to question conventions. Explain what a proposed alternative would improve and how it could be evaluated.",
+      "middle": "These culturally specific answers are mixed. They cannot establish a political identity; consider the individual beliefs rather than a general label.",
+      "work": "These culturally specific items do not support advice about job fit. Examine a particular rule on its merits.",
+      "life": "Consider a specific convention and what it does for the people affected; avoid drawing conclusions about voting."
     },
     "A1": {
       "name": "Trust",
       "description": "Reported expectation that other people generally have good intentions.",
       "low": "You may be cautious about others' intentions. Look for observable evidence before drawing a conclusion about a particular person.",
-      "high": "You may readily expect good intentions. For important commitments, combine goodwill with clear agreements and follow-through."
+      "high": "You may readily expect good intentions. For important commitments, combine goodwill with clear agreements and follow-through.",
+      "middle": "Trust may depend on the person and the stakes. Compare initial expectations with the evidence you use before an important commitment.",
+      "work": "For an important handoff, combine expectations about people with clear ownership and a check-in.",
+      "life": "Compare a first impression with evidence from the person’s actions."
     },
     "A2": {
       "name": "Morality",
       "description": "A historical label concerning reported straightforwardness versus strategic self-presentation; it does not measure moral worth.",
       "low": "You may be more guarded or strategic in what you disclose. Check that others still have the information needed for a fair agreement.",
-      "high": "You may favor straightforward communication. Consider timing and privacy as well as candor when sharing sensitive information."
+      "high": "You may favor straightforward communication. Consider timing and privacy as well as candor when sharing sensitive information.",
+      "middle": "How openly you communicate may depend on trust, privacy and the situation. This score is not a judgment of your moral worth.",
+      "work": "Clarify what someone needs to know for a fair agreement, while respecting confidentiality.",
+      "life": "Explain a preference honestly while choosing an appropriate time and level of detail."
     },
     "A3": {
       "name": "Altruism",
       "description": "Reported willingness to help others and enjoyment of being useful.",
       "low": "Helping may be a more selective commitment for you. Make expectations clear so others know what support they can count on.",
-      "high": "You may readily offer help. Check what the person actually wants and what you can sustainably provide."
+      "high": "You may readily offer help. Check what the person actually wants and what you can sustainably provide.",
+      "middle": "You may offer help selectively, depending on capacity and the request. Notice when helping feels worthwhile and when a limit is needed.",
+      "work": "Before offering help, check both the request and your available capacity.",
+      "life": "Ask what support is wanted before deciding what to offer."
     },
     "A4": {
       "name": "Cooperation",
       "description": "Reported willingness to compromise and avoid interpersonal confrontation.",
       "low": "You may be willing to confront disagreement. Focus the challenge on the issue and keep a route to resolution open.",
-      "high": "You may prefer compromise. State an important concern early so agreement reflects your needs as well as others'."
+      "high": "You may prefer compromise. State an important concern early so agreement reflects your needs as well as others'.",
+      "middle": "You may compromise on some issues and challenge others. Notice which disagreements deserve a clear position and which allow flexibility.",
+      "work": "In a disagreement, identify the point you need resolved and what you can compromise on.",
+      "life": "State one important need before agreeing to a shared decision."
     },
     "A5": {
       "name": "Modesty",
       "description": "Reported comfort with self-promotion and claims of personal superiority; it is not a measure of confidence or worth.",
       "low": "You may be comfortable highlighting your strengths. Use concrete evidence and acknowledge others' contributions when describing success.",
-      "high": "You may avoid drawing attention to your achievements. A factual account of your contribution can help others understand your work."
+      "high": "You may avoid drawing attention to your achievements. A factual account of your contribution can help others understand your work.",
+      "middle": "Comfort with highlighting your contribution may vary by setting. Compare sharing a factual achievement with making a broad claim about yourself.",
+      "work": "Describe your contribution using concrete outcomes and acknowledge others’ work.",
+      "life": "Notice when sharing an achievement helps someone know you better."
     },
     "A6": {
       "name": "Sympathy",
       "description": "Reported tender concern for others and attention to their difficulties.",
       "low": "You may put more weight on detached or practical considerations. Ask about the personal impact before deciding what help is useful.",
-      "high": "You may be strongly moved by others' difficulties. Clarify what support is wanted and which responsibilities you can reasonably take on."
+      "high": "You may be strongly moved by others' difficulties. Clarify what support is wanted and which responsibilities you can reasonably take on.",
+      "middle": "You may weigh personal feelings and practical considerations differently across situations. Notice how both inform your response to another person.",
+      "work": "Before solving a problem, ask how it affects the person who brought it to you.",
+      "life": "Balance concern with a clear account of the support you can provide."
     },
     "C1": {
       "name": "Self-Efficacy",
       "description": "Reported belief in one's ability to handle tasks effectively; it does not directly measure competence.",
       "low": "You may feel less certain of your effectiveness. Review one specific task and identify what knowledge or support would help.",
-      "high": "You may feel capable of handling tasks. Check that your confidence is supported by the information and preparation this task requires."
+      "high": "You may feel capable of handling tasks. Check that your confidence is supported by the information and preparation this task requires.",
+      "middle": "Confidence in handling tasks may vary with experience and preparation. Identify one task you feel ready for and one where support would help.",
+      "work": "For a task you are unsure about, identify the preparation or feedback that would help.",
+      "life": "Check your confidence against one concrete example of what you have handled before."
     },
     "C2": {
       "name": "Orderliness",
       "description": "Reported preference for organization, tidiness, and structured surroundings.",
       "low": "You may tolerate a less structured environment. Use a simple place or reminder for items whose loss creates real friction.",
-      "high": "You may prefer clear organization. Distinguish the structure that helps from details that others need not arrange your way."
+      "high": "You may prefer clear organization. Distinguish the structure that helps from details that others need not arrange your way.",
+      "middle": "You may prefer structure in some areas and tolerate disorder in others. Identify which arrangements actually save you time or friction.",
+      "work": "Choose one arrangement that makes important materials easier to find.",
+      "life": "Agree on a useful level of order in a shared space without treating preference as a universal standard."
     },
     "C3": {
       "name": "Dutifulness",
       "description": "Reported commitment to obligations and rules; it does not establish trustworthiness in every situation.",
       "low": "You may treat obligations or rules more flexibly. Clarify commitments others rely on before changing them.",
-      "high": "You may take obligations seriously. Revisit an agreement openly when changed circumstances make the original commitment unrealistic."
+      "high": "You may take obligations seriously. Revisit an agreement openly when changed circumstances make the original commitment unrealistic.",
+      "middle": "Your approach to obligations may depend on the commitment and its purpose. Notice which promises you treat as fixed and which you renegotiate.",
+      "work": "Make a commitment explicit and renegotiate it early if circumstances change.",
+      "life": "Choose a reminder for one promise another person relies on."
     },
     "C4": {
       "name": "Achievement-Striving",
       "description": "Reported drive to meet ambitious standards and pursue accomplishment.",
       "low": "Ambitious achievement may be less central to your priorities. Define success around what you actually value and need to accomplish.",
-      "high": "You may pursue demanding goals. Set a clear stopping point and check what other priorities the effort displaces."
+      "high": "You may pursue demanding goals. Set a clear stopping point and check what other priorities the effort displaces.",
+      "middle": "Ambition may be selective rather than constant. Identify the goals that matter to you and those where a sufficient result is enough.",
+      "work": "Define what success and sufficient completion mean before spending more effort.",
+      "life": "Check what a demanding goal displaces and whether the trade-off matches your priorities."
     },
     "C5": {
       "name": "Self-Discipline",
       "description": "Reported ability to begin and persist with tasks despite boredom or distraction.",
       "low": "You may find some tasks difficult to start or sustain. Try a small first action with a visible cue and a short work period.",
-      "high": "You may persist with tasks readily. Pause occasionally to check that completing the task still serves the current priority."
+      "high": "You may persist with tasks readily. Pause occasionally to check that completing the task still serves the current priority.",
+      "middle": "Starting and persisting may depend on interest, clarity or distractions. Compare one task you completed with one you kept postponing.",
+      "work": "Make the next action small and visible, then check whether your working conditions help you start.",
+      "life": "For one recurring task, choose a realistic cue and a short starting period."
     },
     "C6": {
       "name": "Cautiousness",
       "description": "Reported tendency to deliberate before acting; it does not measure decision accuracy.",
       "low": "You may decide quickly. For a consequential choice, add one check of the likely downside before committing.",
-      "high": "You may weigh decisions carefully. Set a decision deadline when further information is unlikely to change the choice."
+      "high": "You may weigh decisions carefully. Set a decision deadline when further information is unlikely to change the choice.",
+      "middle": "You may deliberate more for some decisions than others. Notice whether your time spent thinking matches the consequences of the choice.",
+      "work": "Match time spent deliberating to the consequences and reversibility of the decision.",
+      "life": "For one choice, decide what information is enough and when you will decide."
     }
+  },
+  "pattern": {
+    "mixed": "Within this trait, the highest raw facet mean is {high} ({highScore}/5), while the lowest is {low} ({lowScore}/5). The overall average hides this difference in your responses. Read these tendencies together rather than treating the trait as a single description.",
+    "close": "The six facet means are less than one response point apart. No large contrast appears within this trait; the individual descriptions below still show what each part covers."
   }
 }

@@ -34,12 +34,28 @@ export function scoreAssessment(questions,answers){
 }
 
 /** Editorial rules are deterministic and retain their underlying scores. */
+function selectDirectionalFacets(facets,limit){
+  return facets.filter(f=>f.band!=='middle')
+    .sort((a,b)=>Math.abs(b.mean-3)-Math.abs(a.mean-3)||a.code.localeCompare(b.code)).slice(0,limit);
+}
+
 export function createReport(result,content){
-  return {...result,reportVersion:'editorial-v1-2026-10-11',introduction:content.introduction,limitations:content.limitations,
-    domains:result.domains.map(d=>({...d,name:content.domains[d.code].name,
+  const format=(template,values)=>template.replace(/\{(\w+)\}/g,(_,key)=>values[key]);
+  const domains=result.domains.map(d=>{
+    const facets=d.facets.map(f=>({...f,name:content.facets[f.code].name,content:content.facets[f.code],
+      interpretation:content.facets[f.code][f.band],
+      nearBoundary:Math.min(Math.abs(f.mean-2.5),Math.abs(f.mean-3.5))<=0.25,
+      ruleId:`${INSTRUMENT_VERSION}/${f.code}/${f.band}`}));
+    const ranked=[...facets].sort((a,b)=>b.mean-a.mean||a.code.localeCompare(b.code));
+    const high=ranked[0],low=ranked.at(-1),mixed=high.mean-low.mean>=1;
+    const text=mixed?format(content.pattern.mixed,{high:high.name,highScore:high.mean.toFixed(2),low:low.name,lowScore:low.mean.toFixed(2)}):content.pattern.close;
+    return {...d,name:content.domains[d.code].name,
       description:content.domains[d.code].description,
       content:content.domains[d.code][d.band],
       ruleId:`${INSTRUMENT_VERSION}/${d.code}/${d.band}`,
-      facets:d.facets.map(f=>({...f,name:content.facets[f.code].name,content:content.facets[f.code]}))
-    }))};
+      pattern:{mixed,high,low,text},facets,contextFacets:selectDirectionalFacets(facets,2)};
+  });
+  const nextSteps=selectDirectionalFacets(domains.flatMap(d=>d.facets),3);
+  return {...result,reportVersion:'editorial-v2-facets-2026-10-11',introduction:content.introduction,
+    limitations:content.limitations,domains,nextSteps};
 }

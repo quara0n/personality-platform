@@ -25,3 +25,14 @@ Independent code-review receipt and deployment outcome will be recorded after co
 - `scripts/design-check.cjs` passed Norwegian/English labels, compact header, and no horizontal overflow at 390, 768 and 971 pixels. Screenshots at desktop and mobile were inspected.
 - The independent eight-lens review completed with one confirmed P2: obsolete locale fetch failures could overwrite a newer successful page. Added the same load-token guard to the failure branch. `scripts/locale-race-check.cjs` reproduced the failure before the fix and passed after it. All seven scoring/content tests still pass.
 - Review receipt is stored outside the repo in ../review-artifacts/20261011-bigfive. Its payment-connection description predates the subsequently approved Stripe sandbox; commercial checkout remains unfinished.
+
+## Facet report v2 and reusable answers (2026-10-11)
+- Proof-first: equal-domain/different-facet and neutral report tests failed on the old report; answer-file tests failed before the backup module existed. All 11 tests now pass.
+- Source audit: all 120 English texts, facet assignments and signs still match the official key; Norwegian IDs and scoring metadata match.
+- `scripts/report-upgrade-check.cjs`: synthetic profile with E facets 5/1/4/2/3/3; verifies contrasts, all 30 facet descriptions, facet actions, downloaded backup, restore in another tab, reload, both languages, invalid-file preservation, neutral profile, desktop/mobile overflow and printable PDF. No real user answers are accessed or saved to the repository.
+- Simplification: three independent reuse/quality/efficiency passes. Centralized facet selection in the report model and removed duplicate restore rendering that could clear the success message. No configured lint/typecheck; JavaScript syntax and runtime/browser checks used.
+- Original `scripts/browser-check.cjs` remains the 120-answer end-to-end regression check.
+- This validates implementation and response/report traceability, not Norwegian linguistic equivalence, population norms or new psychometric accuracy.
+
+- Code review completed: `20261011-report-facets`, focused correctness plus independent local adversarial review. Finding #1 (P2, a pending answer import could undo a clear) applied inline. A deferred-read browser regression failed before the fix and now passes for both clear and a newer import. No unresolved findings.
+- Final full 120-answer browser regression passed. Final report-upgrade browser regression passed, including the import/clear race.

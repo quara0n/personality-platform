@@ -26,3 +26,5 @@ Gratisresultatet skal gi nyttig verdi før et valgfritt engangskjøp av én rapp
 Denne mappen er et selvstendig lokalt Git-repo, adskilt fra den synkroniserte ChatGPT-prosjektmappen.
 GitHub: https://github.com/quara0n/personality-platform (privat). Se [GitHub-status](docs/github-setup.md) og [gjeldende prosjektstatus](docs/status.md).
 Ingen åpen kildekodelisens er valgt; ikke anta at kildekode, spørreskjema eller eksterne illustrasjoner kan gjenbrukes fritt.
+
+Rapport v2 forklarer fasettforskjeller innenfor hvert trekk og bruker fasetter i arbeidsliv, hverdagsliv og neste steg. Bruk «Lagre svarene mine» for å ta vare på en lokal svarfil; «Hent lagrede svar» lager gjeldende rapport fra filen uten ny test. Svarfilen inneholder personlige svar og skal oppbevares privat.

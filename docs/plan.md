@@ -35,3 +35,6 @@ Test forståelse av svarskala, automatisk overgang, resultatskala og kjøpstilbu
 Revider design med evidens. Kontroller mobil, tilgjengelighet og betalingsflyt før produksjonslansering.
 
 Ingen fase utover pakkingen er påbegynt her.
+
+## Rapportoppdatering 2026-10-11
+Rapport v2 gjennomført innenfor brukerens godkjente forbedring: fasettmønstre, egne midttolkninger, fasettbaserte arbeids-/hverdagsrefleksjoner og neste steg. Svar kan tas vare på i en lokal fil og brukes på nytt i senere rapportversjoner. Offisielle spørsmål og beregning er uendret. Se docs/verification.md for kontrollene; psykometrisk validering og normering er fortsatt separate lanseringsoppgaver.

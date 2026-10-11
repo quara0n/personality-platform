@@ -38,7 +38,7 @@ test('editorial boundaries use unrounded means and both report languages have co
     const content=JSON.parse(readFileSync(new URL(`../app/data/report-content${locale}.json`,import.meta.url)));
     assert.equal(Object.keys(content.domains).length,5);assert.equal(Object.keys(content.facets).length,30);
     for(const d of Object.values(content.domains))for(const b of ['low','middle','high'])for(const field of ['meaning','strength','watch','work','life','experiment'])assert.ok(d[b][field]?.length>20);
-    for(const f of Object.values(content.facets))for(const field of ['name','description','low','high'])assert.ok(f[field]?.length>0);
+    for(const f of Object.values(content.facets))for(const field of ['name','description','low','middle','high','work','life'])assert.ok(f[field]?.length>0);
     for(const [sum,band] of [[59,'low'],[60,'middle'],[84,'middle'],[85,'high']]){
       let remaining=sum-24;
       const a=answersFor(q=>{if(q.domain!=='O')return 3;const value=1+Math.min(4,remaining);remaining-=value-1;return q.keyed==='plus'?value:6-value;});
@@ -46,5 +46,33 @@ test('editorial boundaries use unrounded means and both report languages have co
       assert.equal(d.band,band);assert.equal(d.sum,sum);assert.equal(d.content.meaning,content.domains.O[band].meaning);
       assert.ok(d.ruleId.endsWith(`/O/${band}`));assert.deepEqual(r.limitations,content.limitations);
     }
+  }
+});
+
+test('equal domain means retain different facet patterns and advice',()=>{
+  for(const locale of ['','-no']){
+    const content=JSON.parse(readFileSync(new URL(`../app/data/report-content${locale}.json`,import.meta.url)));
+    const profile=values=>createReport(scoreAssessment(questions,answersFor(q=>{
+      const value=q.domain==='E'?values[q.facet-1]:3;
+      return q.keyed==='minus'?6-value:value;
+    })),content);
+    const a=profile([5,1,4,2,3,3]),b=profile([1,5,2,4,3,3]);
+    const ea=a.domains.find(d=>d.code==='E'),eb=b.domains.find(d=>d.code==='E');
+    assert.equal(ea.mean,eb.mean);
+    assert.equal(ea.pattern.high.code,'E1');assert.equal(ea.pattern.low.code,'E2');
+    assert.equal(eb.pattern.high.code,'E2');assert.equal(eb.pattern.low.code,'E1');
+    assert.notEqual(ea.pattern.text,eb.pattern.text);
+    assert.notDeepEqual(a.nextSteps,b.nextSteps);
+    assert.ok(a.nextSteps.some(f=>f.code==='E1'));
+    assert.ok(ea.facets.every(f=>f.interpretation&&f.ruleId));
+  }
+});
+
+test('neutral profile does not invent distinctive facets and all 30 middle interpretations exist',()=>{
+  for(const locale of ['','-no']){
+    const content=JSON.parse(readFileSync(new URL(`../app/data/report-content${locale}.json`,import.meta.url)));
+    const r=createReport(scoreAssessment(questions,answersFor(()=>3)),content);
+    assert.equal(r.nextSteps.length,0);
+    for(const d of r.domains){assert.equal(d.pattern.mixed,false);for(const f of d.facets)assert.equal(f.interpretation,content.facets[f.code].middle);}
   }
 });
