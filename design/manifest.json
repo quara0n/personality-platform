@@ -1,0 +1,56 @@
+{
+  "created_at": "2026-10-11T15:01:15Z",
+  "generator": "Built-in image generation",
+  "source_directory_machine_local": "C:/Users/runef/.codex/generated_images/01a12ab4-210d-7711-9bb7-9c54d1e10e45",
+  "assets": [
+    {
+      "path": "design/selected/01-landing.png",
+      "source_file": "exec-0a3c8401-d9ee-44d8-8302-2f7b7422f560.png",
+      "title": "Landing – valgt sentrert oppsett",
+      "sha256": "3960C3330E831BB586C65FB3DE99592D2ED55CB504FF44E6FED65501D09639D2",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/02-question.png",
+      "source_file": "exec-10342b8f-55aa-4fa7-91df-8d9f832be10c.png",
+      "title": "Spørsmål – automatisk overgang og variable firkanter",
+      "sha256": "132C1DE97AD08FF56B5B6252C3F8B4A32141B4DF6A4B4845337523C92EDEBFDF",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/03-loading.png",
+      "source_file": "exec-3aa69afb-c83d-4362-b68d-0967480d8884.png",
+      "title": "Lasting – statisk skisse av logodelene",
+      "sha256": "4419BA14A578B8C777FA7B9B317C4DB493308B64FC3373D99D24C22B39939B58",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/04-free-results.png",
+      "source_file": "exec-17fe38d8-5b39-44a0-bc71-de054ffbfd15.png",
+      "title": "Gratis resultat – første forslag valgt",
+      "sha256": "260299BACB770B67E38316F2E9D6B20F498BA7943BFC8713D326C51206849E1D",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/05-report-offer.png",
+      "source_file": "exec-0edde361-7304-4fcc-9a5d-041a7a6bcde3.png",
+      "title": "Kjøpsside – arbeid, sentrert kjøp og relasjoner",
+      "sha256": "F5A81A5BE47181DC657739D94FA2478279061EDE16AAD9E6710217998B8D1A2B",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/06-report-reader.png",
+      "source_file": "exec-a173fa1c-cd69-4831-879d-2b95aca86dd0.png",
+      "title": "Betalt rapport – kapitler og oversikt",
+      "sha256": "6391BA9F2F2D1C49F6D07E2EEBA50FA90557E34471238A2D93B1B9225F6D13DE",
+      "status": "user-approved visual concept"
+    },
+    {
+      "path": "design/selected/07-character-style.png",
+      "source_file": "exec-a2503b9a-9220-42e3-89a6-f51cd5f395da.png",
+      "title": "Tidlig figurstil – hverdagsklær",
+      "sha256": "21A90705ED227D8098FB41E952C87201F86A1443AECFE0630BC4E65CEC39D0F2",
+      "status": "supporting style reference"
+    }
+  ]
+}
