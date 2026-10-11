@@ -17,8 +17,8 @@ const answers=Object.fromEntries(questions.map(q=>{
     await page.reload();await page.locator('.hero').waitFor();
     await page.goto('http://127.0.0.1:4173/#report');await page.locator('.d-report-body').waitFor();
     assert.equal(await page.locator('.facet').count(),30);
-    assert.ok((await page.locator('.facet-pattern').nth(2).textContent()).includes('Friendliness (5.00/5)'));
-    assert.ok((await page.locator('.facet-pattern').nth(2).textContent()).includes('Gregariousness (1.00/5)'));
+    const ePattern=await page.locator('.d-trait-chapter').filter({hasText:'Extraversion'}).locator('.facet-pattern').textContent();
+    assert.ok(/Friendliness is highest \(percentile \d+\) and Gregariousness is lowest \(percentile \d+\)/.test(ePattern),ePattern);
     assert.equal(await page.locator('.step').count(),3);
     const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#report-save').click()]);
     const backup=fs.readFileSync(await download.path(),'utf8');assert.deepEqual(JSON.parse(backup).answers,answers);
@@ -29,7 +29,8 @@ const answers=Object.fromEntries(questions.map(q=>{
     await restored.reload();await restored.locator('.d-report-body').waitFor();
     await restored.locator('#header-language').selectOption('no');
     await restored.getByRole('heading',{name:'Nyansene bak skårene',exact:true}).waitFor();
-    assert.ok((await restored.locator('.facet-pattern').nth(2).textContent()).includes('Vennlighet (5.00/5)'));
+    const ePatternNo=await restored.locator('.d-trait-chapter').filter({hasText:'Ekstroversjon'}).locator('.facet-pattern').textContent();
+    assert.ok(/Vennlighet høyest \(\d+\. persentil\) og Selskapelighet lavest/.test(ePatternNo),ePatternNo);
     await restored.goto('http://127.0.0.1:4173/#report/traits');await restored.locator('.facet-pattern').first().waitFor();
     fs.mkdirSync('artifacts',{recursive:true});
     await restored.locator('#traits').scrollIntoViewIfNeeded();
@@ -54,7 +55,14 @@ const answers=Object.fromEntries(questions.map(q=>{
     await restored.evaluate(async()=>{await window.finishBackupRead();await new Promise(resolve=>requestAnimationFrame(resolve));});
     assert.equal(await restored.evaluate(()=>sessionStorage.getItem('five-assessment-v1')),null,'Clear must cancel an older pending import');
     await restored.locator('.hero').waitFor();
-    const neutral=Object.fromEntries(questions.map(q=>[q.id,3]));
+    // With norms, all-3 answers are not neutral; aim each facet at the sum closest to the 50th percentile.
+    const norms=JSON.parse(fs.readFileSync('app/data/norms-us.json','utf8')),neutral={};
+    for(const code of [...new Set(questions.map(q=>q.domain+q.facet))]){
+      const scale=norms.scales[code],pct=x=>100*(x.below+0.5*x.count)/scale.n;
+      let left=scale.lookup.reduce((a,b)=>Math.abs(pct(b)-50)<Math.abs(pct(a)-50)?b:a).sum;
+      const items=questions.filter(q=>q.domain+q.facet===code);
+      items.forEach((q,i)=>{const value=Math.ceil(left/(items.length-i));left-=value;neutral[q.id]=q.keyed==='minus'?6-value:value;});
+    }
     await restored.locator('#backup-restore').setInputFiles({name:'older.json',mimeType:'application/json',buffer:Buffer.from(backup)});
     await restored.evaluate(()=>{window.olderBackupRead=window.finishBackupRead;});
     const newer=JSON.stringify({...JSON.parse(backup),answers:neutral});

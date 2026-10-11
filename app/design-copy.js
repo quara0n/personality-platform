@@ -41,7 +41,8 @@ const reflections = {
 };
 
 const pick = (pair, language) => pair[language === 'no' ? 1 : 0];
-const distinctive = domains => domains.filter(d => d.band !== 'middle').sort((a, b) => Math.abs(b.mean - 3) - Math.abs(a.mean - 3) || a.code.localeCompare(b.code));
+const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 50) / 50 : Math.abs(x.mean - 3) / 2;
+const distinctive = domains => domains.filter(d => d.band !== 'middle').sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code));
 
 /** One or two phrases from the domains furthest from the response midpoint. */
 export function profileSummary(domains, language) {

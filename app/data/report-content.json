@@ -428,6 +428,8 @@
   },
   "pattern": {
     "mixed": "Within this trait, the highest raw facet mean is {high} ({highScore}/5), while the lowest is {low} ({lowScore}/5). The overall average hides this difference in your responses. Read these tendencies together rather than treating the trait as a single description.",
-    "close": "The six facet means are less than one response point apart. No large contrast appears within this trait; the individual descriptions below still show what each part covers."
+    "close": "The six facet means are less than one response point apart. No large contrast appears within this trait; the individual descriptions below still show what each part covers.",
+    "mixedPct": "Within this trait, {high} is highest (percentile {highScore}) and {low} is lowest (percentile {lowScore}). The overall score hides this difference, so read the facets together rather than letting one description sum up the whole trait.",
+    "closePct": "The six facets sit fairly close to each other here. No big contrast shows up within this trait; the descriptions below still show what each part covers."
   }
 }
