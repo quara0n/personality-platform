@@ -64,8 +64,7 @@ function assessment(focus=false){demo=false;report=null;
       <div class="d-actions"><button class="d-back" id="back" ${index===0?'disabled':''}><span aria-hidden="true">←</span> ${tr('Back','Tilbake')}</button><button class="d-next" id="forward" ${!answers[q.id]?'disabled':''}>${index===119?tr('See results','Se resultat'):tr('Next','Neste')} <span aria-hidden="true">→</span></button></div>
       <p class="d-note">${tr('You can go back and change your answer.','Du kan gå tilbake og endre svaret ditt.')}</p>
     </div>
-    <img class="d-question-figure" src="assets/design/question-figure.webp" alt="" aria-hidden="true">
-    <img class="d-question-corner" src="assets/design/question-corner.webp" alt="" aria-hidden="true">
+    <img class="d-question-land" src="assets/design/question-landscape.webp" alt="" aria-hidden="true">
   </section>`;
   document.querySelectorAll('.d-choice input').forEach(input=>{input.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();
     const all=[...document.querySelectorAll('.d-choice input')],next=(all.indexOf(input)+(e.key==='ArrowRight'||e.key==='ArrowDown'?1:4))%5;all[next].focus();}});
