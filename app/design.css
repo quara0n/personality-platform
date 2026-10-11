@@ -698,3 +698,15 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-deeper a{display:inline-flex;gap:12px;padding-bottom:6px;border-bottom:1.5px solid var(--title);color:var(--title);font-size:clamp(16px,1.6vw,19px);text-decoration:none}
 .d-deeper a:hover{color:#2f5f93;border-color:#2f5f93}
 @media(max-width:500px){.d-deeper{gap:14px}.d-deeper-mark{width:48px;height:38px}}
+
+/* Percentile explanation (i) */
+.d-info{margin-top:14px;font-size:14px;color:#33496b}
+.d-info-btn{display:inline-flex;align-items:center;gap:8px;padding:4px 0;border:0;background:none;color:#33496b;font:inherit;font-size:14px;cursor:pointer;text-align:left;vertical-align:middle}
+.d-info-btn span:last-child:not(.d-info-i){text-decoration:underline;text-underline-offset:3px}
+.d-info-i{display:inline-grid;place-items:center;flex:none;width:20px;height:20px;border:1.5px solid currentColor;border-radius:50%;font:italic 600 13px/1 Georgia,serif}
+.d-info-btn:focus-visible{outline:2px solid #13284f;outline-offset:3px;border-radius:4px}
+.d-trait-score .d-info-btn{margin-left:6px;padding:0}
+.d-info-pop{margin-top:10px;padding:14px 16px;max-width:520px;border:1px solid #d8e1ec;border-radius:12px;background:#fff;color:#1d2f4f;line-height:1.5;text-align:left}
+.d-info-pop p,.d-trait-head-text .d-info-pop p{margin:0 0 8px;font-size:14px;font-weight:400;letter-spacing:0;color:#1d2f4f}
+.d-info-pop p:last-child,.d-trait-head-text .d-info-pop p:last-child{margin:0}
+@media print{.d-info,.d-info-btn,.d-info-pop{display:none!important}}

@@ -150,3 +150,4 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Etiketten heter «Lavere/Midtre/Høyere område» når persentil finnes. Uten normtabell (annen instrumentversjon) brukes fortsatt svargjennomsnittet og de gamle etikettene.
 - Mønsterteksten i fasettene sammenligner persentiler (forskjell på minst 30 regnes som tydelig). Neste steg og nyansene sorteres etter avstand fra 50. persentil.
 - Råskårene (sum og gjennomsnitt) beholdes i skåringen og i lagrede svar, men vises ikke i rapporten.
+- Rune ønsket en synlig forklaring. Et (i)-symbol står ved profilkortet på gratisprofilen («Hva betyr persentilen?»), i oversikten og ved persentilen i hvert trekk i rapporten. Det åpner en kort forklaring: hva persentilen betyr, hvem referansegruppen er, grensene 30/70 og at høy eller lav verken er bra eller dårlig. Forklaringen skjules i PDF.
