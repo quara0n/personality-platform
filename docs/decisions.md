@@ -104,7 +104,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - På stående nettbrett (701–900 px) står språk og land på egen linje i toppmenyen, så lenkene ikke brytes.
 
 ## Fem trekk-paneler på resultatsiden 2026-10-11
-- Rune valgte et nytt motiv (design/selected/08-trait-panels.png) som erstatter listen «Utforsk trekkene dine» på gratisresultatet: «Fem trekk. Mange nyanser.», «Utforsk trekkene dine.» og fem illustrerte paneler med skrå topp, ett per trekk i fast rekkefølge O, C, E, A, N.
+- Rune valgte et nytt motiv (design/selected/08-trait-panels.png) som erstatter listen «Utforsk trekkene dine» på gratisresultatet: tittelen «Utforsk trekkene dine» (Rune valgte den fremfor «Fem trekk. Mange nyanser.») og fem illustrerte paneler med skrå topp, ett per trekk i fast rekkefølge O, C, E, A, N.
 - Illustrasjonene er klippet fra motivet (app/assets/design/trait-*.webp). Panelfarger, skrå kanter, navn og +-knapp er laget i HTML/CSS, så teksten er skarp og oversettes.
 - Et trykk åpner forklaringen for trekket under panelraden; ett trekk er åpent om gangen, og alle er lukket fra start. På mobil blas panelene sidelengs.
 - Panelfargene følger motivet og avviker fra logobitene: Planmessighet er fersken i panelet, men mørkeblå bit ellers; Ekstroversjon er blå i panelet, men aprikos bit; Følelsesmessig reaktivitet er mørkeblå i panelet, men sandfarget bit. Logobitene i resten av rapporten er uendret.
