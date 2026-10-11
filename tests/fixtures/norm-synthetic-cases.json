@@ -1,0 +1,1494 @@
+[
+  {
+    "name": "neutral_all_3",
+    "synthetic": true,
+    "rawAnswersInArchiveOrder": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "expected": {
+      "N": {
+        "sum": 72,
+        "count": 5123,
+        "below": 153244,
+        "percentile": 64.036588,
+        "displayPercentile": 64
+      },
+      "E": {
+        "sum": 72,
+        "count": 4397,
+        "below": 53949,
+        "percentile": 23.076812,
+        "displayPercentile": 23
+      },
+      "O": {
+        "sum": 72,
+        "count": 5592,
+        "below": 47816,
+        "percentile": 20.801703,
+        "displayPercentile": 21
+      },
+      "A": {
+        "sum": 72,
+        "count": 2517,
+        "below": 20199,
+        "percentile": 8.819105,
+        "displayPercentile": 9
+      },
+      "C": {
+        "sum": 72,
+        "count": 3025,
+        "below": 27281,
+        "percentile": 11.834226,
+        "displayPercentile": 12
+      },
+      "N1": {
+        "sum": 12,
+        "count": 23871,
+        "below": 106703,
+        "percentile": 48.760825,
+        "displayPercentile": 49
+      },
+      "N2": {
+        "sum": 12,
+        "count": 20203,
+        "below": 123456,
+        "percentile": 54.892584,
+        "displayPercentile": 55
+      },
+      "N3": {
+        "sum": 12,
+        "count": 15862,
+        "below": 175762,
+        "percentile": 75.498444,
+        "displayPercentile": 75
+      },
+      "N4": {
+        "sum": 12,
+        "count": 24259,
+        "below": 118027,
+        "percentile": 53.494762,
+        "displayPercentile": 53
+      },
+      "N5": {
+        "sum": 12,
+        "count": 27590,
+        "below": 113420,
+        "percentile": 52.285795,
+        "displayPercentile": 52
+      },
+      "N6": {
+        "sum": 12,
+        "count": 20185,
+        "below": 160501,
+        "percentile": 70.114506,
+        "displayPercentile": 70
+      },
+      "E1": {
+        "sum": 12,
+        "count": 16480,
+        "below": 50066,
+        "percentile": 23.963963,
+        "displayPercentile": 24
+      },
+      "E2": {
+        "sum": 12,
+        "count": 20423,
+        "below": 99084,
+        "percentile": 44.92082,
+        "displayPercentile": 45
+      },
+      "E3": {
+        "sum": 12,
+        "count": 18328,
+        "below": 47189,
+        "percentile": 23.161274,
+        "displayPercentile": 23
+      },
+      "E4": {
+        "sum": 12,
+        "count": 27113,
+        "below": 83180,
+        "percentile": 39.759029,
+        "displayPercentile": 40
+      },
+      "E5": {
+        "sum": 12,
+        "count": 27905,
+        "below": 90353,
+        "percentile": 42.869913,
+        "displayPercentile": 43
+      },
+      "E6": {
+        "sum": 12,
+        "count": 12653,
+        "below": 30122,
+        "percentile": 14.980457,
+        "displayPercentile": 15
+      },
+      "O1": {
+        "sum": 12,
+        "count": 18489,
+        "below": 43634,
+        "percentile": 21.733242,
+        "displayPercentile": 22
+      },
+      "O2": {
+        "sum": 12,
+        "count": 17130,
+        "below": 49406,
+        "percentile": 23.826277,
+        "displayPercentile": 24
+      },
+      "O3": {
+        "sum": 12,
+        "count": 16378,
+        "below": 29008,
+        "percentile": 15.288093,
+        "displayPercentile": 15
+      },
+      "O4": {
+        "sum": 12,
+        "count": 29209,
+        "below": 100180,
+        "percentile": 47.176818,
+        "displayPercentile": 47
+      },
+      "O5": {
+        "sum": 12,
+        "count": 19911,
+        "below": 52036,
+        "percentile": 25.478716,
+        "displayPercentile": 25
+      },
+      "O6": {
+        "sum": 12,
+        "count": 27727,
+        "below": 130706,
+        "percentile": 59.418554,
+        "displayPercentile": 59
+      },
+      "A1": {
+        "sum": 12,
+        "count": 20471,
+        "below": 68382,
+        "percentile": 32.312058,
+        "displayPercentile": 32
+      },
+      "A2": {
+        "sum": 12,
+        "count": 9030,
+        "below": 15273,
+        "percentile": 8.132935,
+        "displayPercentile": 8
+      },
+      "A3": {
+        "sum": 12,
+        "count": 6418,
+        "below": 9141,
+        "percentile": 5.075892,
+        "displayPercentile": 5
+      },
+      "A4": {
+        "sum": 12,
+        "count": 15783,
+        "below": 41732,
+        "percentile": 20.395426,
+        "displayPercentile": 20
+      },
+      "A5": {
+        "sum": 12,
+        "count": 29244,
+        "below": 100322,
+        "percentile": 47.242373,
+        "displayPercentile": 47
+      },
+      "A6": {
+        "sum": 12,
+        "count": 16919,
+        "below": 31785,
+        "percentile": 16.540626,
+        "displayPercentile": 17
+      },
+      "C1": {
+        "sum": 12,
+        "count": 7469,
+        "below": 9431,
+        "percentile": 5.411065,
+        "displayPercentile": 5
+      },
+      "C2": {
+        "sum": 12,
+        "count": 18002,
+        "below": 89612,
+        "percentile": 40.530277,
+        "displayPercentile": 41
+      },
+      "C3": {
+        "sum": 12,
+        "count": 8147,
+        "below": 11280,
+        "percentile": 6.31034,
+        "displayPercentile": 6
+      },
+      "C4": {
+        "sum": 12,
+        "count": 12457,
+        "below": 23528,
+        "percentile": 12.230022,
+        "displayPercentile": 12
+      },
+      "C5": {
+        "sum": 12,
+        "count": 23652,
+        "below": 53146,
+        "percentile": 26.703712,
+        "displayPercentile": 27
+      },
+      "C6": {
+        "sum": 12,
+        "count": 17816,
+        "below": 75480,
+        "percentile": 34.683753,
+        "displayPercentile": 35
+      }
+    }
+  },
+  {
+    "name": "all_keyed_minimum",
+    "synthetic": true,
+    "rawAnswersInArchiveOrder": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      5,
+      1,
+      5,
+      1,
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      5,
+      5,
+      5,
+      5,
+      1,
+      1,
+      5,
+      5,
+      5,
+      1,
+      1,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      1,
+      1,
+      5,
+      5,
+      5,
+      1,
+      5,
+      1,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5
+    ],
+    "expected": {
+      "N": {
+        "sum": 24,
+        "count": 71,
+        "below": 0,
+        "percentile": 0.014591,
+        "displayPercentile": 0
+      },
+      "E": {
+        "sum": 24,
+        "count": 4,
+        "below": 0,
+        "percentile": 0.000822,
+        "displayPercentile": 0
+      },
+      "O": {
+        "sum": 24,
+        "count": 0,
+        "below": 0,
+        "percentile": 0.0,
+        "displayPercentile": 0
+      },
+      "A": {
+        "sum": 24,
+        "count": 8,
+        "below": 0,
+        "percentile": 0.001644,
+        "displayPercentile": 0
+      },
+      "C": {
+        "sum": 24,
+        "count": 6,
+        "below": 0,
+        "percentile": 0.001233,
+        "displayPercentile": 0
+      },
+      "N1": {
+        "sum": 4,
+        "count": 3744,
+        "below": 0,
+        "percentile": 0.769398,
+        "displayPercentile": 1
+      },
+      "N2": {
+        "sum": 4,
+        "count": 8968,
+        "below": 0,
+        "percentile": 1.842939,
+        "displayPercentile": 2
+      },
+      "N3": {
+        "sum": 4,
+        "count": 22029,
+        "below": 0,
+        "percentile": 4.526997,
+        "displayPercentile": 5
+      },
+      "N4": {
+        "sum": 4,
+        "count": 4147,
+        "below": 0,
+        "percentile": 0.852216,
+        "displayPercentile": 1
+      },
+      "N5": {
+        "sum": 4,
+        "count": 2419,
+        "below": 0,
+        "percentile": 0.497109,
+        "displayPercentile": 0
+      },
+      "N6": {
+        "sum": 4,
+        "count": 11693,
+        "below": 0,
+        "percentile": 2.402931,
+        "displayPercentile": 2
+      },
+      "E1": {
+        "sum": 4,
+        "count": 1392,
+        "below": 0,
+        "percentile": 0.286058,
+        "displayPercentile": 0
+      },
+      "E2": {
+        "sum": 4,
+        "count": 5466,
+        "below": 0,
+        "percentile": 1.123272,
+        "displayPercentile": 1
+      },
+      "E3": {
+        "sum": 4,
+        "count": 1218,
+        "below": 0,
+        "percentile": 0.250301,
+        "displayPercentile": 0
+      },
+      "E4": {
+        "sum": 4,
+        "count": 1068,
+        "below": 0,
+        "percentile": 0.219476,
+        "displayPercentile": 0
+      },
+      "E5": {
+        "sum": 4,
+        "count": 888,
+        "below": 0,
+        "percentile": 0.182486,
+        "displayPercentile": 0
+      },
+      "E6": {
+        "sum": 4,
+        "count": 755,
+        "below": 0,
+        "percentile": 0.155154,
+        "displayPercentile": 0
+      },
+      "O1": {
+        "sum": 4,
+        "count": 343,
+        "below": 0,
+        "percentile": 0.070487,
+        "displayPercentile": 0
+      },
+      "O2": {
+        "sum": 4,
+        "count": 754,
+        "below": 0,
+        "percentile": 0.154948,
+        "displayPercentile": 0
+      },
+      "O3": {
+        "sum": 4,
+        "count": 294,
+        "below": 0,
+        "percentile": 0.060417,
+        "displayPercentile": 0
+      },
+      "O4": {
+        "sum": 4,
+        "count": 1568,
+        "below": 0,
+        "percentile": 0.322227,
+        "displayPercentile": 0
+      },
+      "O5": {
+        "sum": 4,
+        "count": 819,
+        "below": 0,
+        "percentile": 0.168306,
+        "displayPercentile": 0
+      },
+      "O6": {
+        "sum": 4,
+        "count": 11027,
+        "below": 0,
+        "percentile": 2.266067,
+        "displayPercentile": 2
+      },
+      "A1": {
+        "sum": 4,
+        "count": 2557,
+        "below": 0,
+        "percentile": 0.525468,
+        "displayPercentile": 1
+      },
+      "A2": {
+        "sum": 4,
+        "count": 149,
+        "below": 0,
+        "percentile": 0.03062,
+        "displayPercentile": 0
+      },
+      "A3": {
+        "sum": 4,
+        "count": 169,
+        "below": 0,
+        "percentile": 0.03473,
+        "displayPercentile": 0
+      },
+      "A4": {
+        "sum": 4,
+        "count": 804,
+        "below": 0,
+        "percentile": 0.165223,
+        "displayPercentile": 0
+      },
+      "A5": {
+        "sum": 4,
+        "count": 1255,
+        "below": 0,
+        "percentile": 0.257905,
+        "displayPercentile": 0
+      },
+      "A6": {
+        "sum": 4,
+        "count": 623,
+        "below": 0,
+        "percentile": 0.128028,
+        "displayPercentile": 0
+      },
+      "C1": {
+        "sum": 4,
+        "count": 93,
+        "below": 0,
+        "percentile": 0.019112,
+        "displayPercentile": 0
+      },
+      "C2": {
+        "sum": 4,
+        "count": 4128,
+        "below": 0,
+        "percentile": 0.848311,
+        "displayPercentile": 1
+      },
+      "C3": {
+        "sum": 4,
+        "count": 115,
+        "below": 0,
+        "percentile": 0.023633,
+        "displayPercentile": 0
+      },
+      "C4": {
+        "sum": 4,
+        "count": 274,
+        "below": 0,
+        "percentile": 0.056307,
+        "displayPercentile": 0
+      },
+      "C5": {
+        "sum": 4,
+        "count": 370,
+        "below": 0,
+        "percentile": 0.076036,
+        "displayPercentile": 0
+      },
+      "C6": {
+        "sum": 4,
+        "count": 3827,
+        "below": 0,
+        "percentile": 0.786455,
+        "displayPercentile": 1
+      }
+    }
+  },
+  {
+    "name": "all_keyed_maximum",
+    "synthetic": true,
+    "rawAnswersInArchiveOrder": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      1,
+      5,
+      1,
+      5,
+      1,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      5,
+      5,
+      1,
+      1,
+      1,
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      5,
+      5,
+      1,
+      1,
+      1,
+      5,
+      1,
+      5,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1,
+      1,
+      5,
+      1,
+      1,
+      1
+    ],
+    "expected": {
+      "N": {
+        "sum": 120,
+        "count": 10,
+        "below": 243297,
+        "percentile": 99.997945,
+        "displayPercentile": 100
+      },
+      "E": {
+        "sum": 120,
+        "count": 8,
+        "below": 243299,
+        "percentile": 99.998356,
+        "displayPercentile": 100
+      },
+      "O": {
+        "sum": 120,
+        "count": 6,
+        "below": 243301,
+        "percentile": 99.998767,
+        "displayPercentile": 100
+      },
+      "A": {
+        "sum": 120,
+        "count": 26,
+        "below": 243281,
+        "percentile": 99.994657,
+        "displayPercentile": 100
+      },
+      "C": {
+        "sum": 120,
+        "count": 515,
+        "below": 242792,
+        "percentile": 99.894167,
+        "displayPercentile": 100
+      },
+      "N1": {
+        "sum": 20,
+        "count": 4274,
+        "below": 239033,
+        "percentile": 99.121686,
+        "displayPercentile": 99
+      },
+      "N2": {
+        "sum": 20,
+        "count": 6865,
+        "below": 236442,
+        "percentile": 98.589231,
+        "displayPercentile": 99
+      },
+      "N3": {
+        "sum": 20,
+        "count": 2298,
+        "below": 241009,
+        "percentile": 99.527757,
+        "displayPercentile": 100
+      },
+      "N4": {
+        "sum": 20,
+        "count": 2823,
+        "below": 240484,
+        "percentile": 99.419869,
+        "displayPercentile": 99
+      },
+      "N5": {
+        "sum": 20,
+        "count": 3305,
+        "below": 240002,
+        "percentile": 99.320817,
+        "displayPercentile": 99
+      },
+      "N6": {
+        "sum": 20,
+        "count": 1522,
+        "below": 241785,
+        "percentile": 99.687226,
+        "displayPercentile": 100
+      },
+      "E1": {
+        "sum": 20,
+        "count": 14749,
+        "below": 228558,
+        "percentile": 96.969056,
+        "displayPercentile": 97
+      },
+      "E2": {
+        "sum": 20,
+        "count": 6219,
+        "below": 237088,
+        "percentile": 98.721985,
+        "displayPercentile": 99
+      },
+      "E3": {
+        "sum": 20,
+        "count": 15940,
+        "below": 227367,
+        "percentile": 96.724303,
+        "displayPercentile": 97
+      },
+      "E4": {
+        "sum": 20,
+        "count": 1968,
+        "below": 241339,
+        "percentile": 99.595573,
+        "displayPercentile": 100
+      },
+      "E5": {
+        "sum": 20,
+        "count": 3629,
+        "below": 239678,
+        "percentile": 99.254234,
+        "displayPercentile": 99
+      },
+      "E6": {
+        "sum": 20,
+        "count": 16027,
+        "below": 227280,
+        "percentile": 96.706424,
+        "displayPercentile": 97
+      },
+      "O1": {
+        "sum": 20,
+        "count": 19374,
+        "below": 223933,
+        "percentile": 96.01861,
+        "displayPercentile": 96
+      },
+      "O2": {
+        "sum": 20,
+        "count": 18934,
+        "below": 224373,
+        "percentile": 96.109031,
+        "displayPercentile": 96
+      },
+      "O3": {
+        "sum": 20,
+        "count": 15365,
+        "below": 227942,
+        "percentile": 96.842467,
+        "displayPercentile": 97
+      },
+      "O4": {
+        "sum": 20,
+        "count": 2194,
+        "below": 241113,
+        "percentile": 99.549129,
+        "displayPercentile": 100
+      },
+      "O5": {
+        "sum": 20,
+        "count": 18151,
+        "below": 225156,
+        "percentile": 96.269939,
+        "displayPercentile": 96
+      },
+      "O6": {
+        "sum": 20,
+        "count": 739,
+        "below": 242568,
+        "percentile": 99.848134,
+        "displayPercentile": 100
+      },
+      "A1": {
+        "sum": 20,
+        "count": 6123,
+        "below": 237184,
+        "percentile": 98.741713,
+        "displayPercentile": 99
+      },
+      "A2": {
+        "sum": 20,
+        "count": 42799,
+        "below": 200508,
+        "percentile": 91.204733,
+        "displayPercentile": 91
+      },
+      "A3": {
+        "sum": 20,
+        "count": 37401,
+        "below": 205906,
+        "percentile": 92.314031,
+        "displayPercentile": 92
+      },
+      "A4": {
+        "sum": 20,
+        "count": 22714,
+        "below": 220593,
+        "percentile": 95.332235,
+        "displayPercentile": 95
+      },
+      "A5": {
+        "sum": 20,
+        "count": 5511,
+        "below": 237796,
+        "percentile": 98.86748,
+        "displayPercentile": 99
+      },
+      "A6": {
+        "sum": 20,
+        "count": 16107,
+        "below": 227200,
+        "percentile": 96.689984,
+        "displayPercentile": 97
+      },
+      "C1": {
+        "sum": 20,
+        "count": 20485,
+        "below": 222822,
+        "percentile": 95.790298,
+        "displayPercentile": 96
+      },
+      "C2": {
+        "sum": 20,
+        "count": 19212,
+        "below": 224095,
+        "percentile": 96.051902,
+        "displayPercentile": 96
+      },
+      "C3": {
+        "sum": 20,
+        "count": 24589,
+        "below": 218718,
+        "percentile": 94.946919,
+        "displayPercentile": 95
+      },
+      "C4": {
+        "sum": 20,
+        "count": 30164,
+        "below": 213143,
+        "percentile": 93.801247,
+        "displayPercentile": 94
+      },
+      "C5": {
+        "sum": 20,
+        "count": 6457,
+        "below": 236850,
+        "percentile": 98.673076,
+        "displayPercentile": 99
+      },
+      "C6": {
+        "sum": 20,
+        "count": 18236,
+        "below": 225071,
+        "percentile": 96.252471,
+        "displayPercentile": 96
+      }
+    }
+  },
+  {
+    "name": "alternating_raw_1_to_5",
+    "synthetic": true,
+    "rawAnswersInArchiveOrder": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "expected": {
+      "N": {
+        "sum": 52,
+        "count": 4447,
+        "below": 42952,
+        "percentile": 18.567283,
+        "displayPercentile": 19
+      },
+      "E": {
+        "sum": 60,
+        "count": 1959,
+        "below": 17391,
+        "percentile": 7.550338,
+        "displayPercentile": 8
+      },
+      "O": {
+        "sum": 72,
+        "count": 5592,
+        "below": 47816,
+        "percentile": 20.801703,
+        "displayPercentile": 21
+      },
+      "A": {
+        "sum": 62,
+        "count": 822,
+        "below": 5685,
+        "percentile": 2.505477,
+        "displayPercentile": 3
+      },
+      "C": {
+        "sum": 68,
+        "count": 2176,
+        "below": 17303,
+        "percentile": 7.558763,
+        "displayPercentile": 8
+      },
+      "N1": {
+        "sum": 4,
+        "count": 3744,
+        "below": 0,
+        "percentile": 0.769398,
+        "displayPercentile": 1
+      },
+      "N2": {
+        "sum": 8,
+        "count": 21235,
+        "below": 45369,
+        "percentile": 23.010641,
+        "displayPercentile": 23
+      },
+      "N3": {
+        "sum": 8,
+        "count": 26337,
+        "below": 91056,
+        "percentile": 42.836622,
+        "displayPercentile": 43
+      },
+      "N4": {
+        "sum": 8,
+        "count": 19519,
+        "below": 31764,
+        "percentile": 17.066299,
+        "displayPercentile": 17
+      },
+      "N5": {
+        "sum": 16,
+        "count": 16472,
+        "below": 203466,
+        "percentile": 87.010238,
+        "displayPercentile": 87
+      },
+      "N6": {
+        "sum": 8,
+        "count": 26656,
+        "below": 63566,
+        "percentile": 31.603694,
+        "displayPercentile": 32
+      },
+      "E1": {
+        "sum": 12,
+        "count": 16480,
+        "below": 50066,
+        "percentile": 23.963963,
+        "displayPercentile": 24
+      },
+      "E2": {
+        "sum": 12,
+        "count": 20423,
+        "below": 99084,
+        "percentile": 44.92082,
+        "displayPercentile": 45
+      },
+      "E3": {
+        "sum": 10,
+        "count": 10298,
+        "below": 24109,
+        "percentile": 12.025137,
+        "displayPercentile": 12
+      },
+      "E4": {
+        "sum": 10,
+        "count": 19368,
+        "below": 39616,
+        "percentile": 20.262467,
+        "displayPercentile": 20
+      },
+      "E5": {
+        "sum": 8,
+        "count": 12444,
+        "below": 14989,
+        "percentile": 8.717793,
+        "displayPercentile": 9
+      },
+      "E6": {
+        "sum": 8,
+        "count": 3730,
+        "below": 5577,
+        "percentile": 3.058687,
+        "displayPercentile": 3
+      },
+      "O1": {
+        "sum": 12,
+        "count": 18489,
+        "below": 43634,
+        "percentile": 21.733242,
+        "displayPercentile": 22
+      },
+      "O2": {
+        "sum": 12,
+        "count": 17130,
+        "below": 49406,
+        "percentile": 23.826277,
+        "displayPercentile": 24
+      },
+      "O3": {
+        "sum": 12,
+        "count": 16378,
+        "below": 29008,
+        "percentile": 15.288093,
+        "displayPercentile": 15
+      },
+      "O4": {
+        "sum": 12,
+        "count": 29209,
+        "below": 100180,
+        "percentile": 47.176818,
+        "displayPercentile": 47
+      },
+      "O5": {
+        "sum": 12,
+        "count": 19911,
+        "below": 52036,
+        "percentile": 25.478716,
+        "displayPercentile": 25
+      },
+      "O6": {
+        "sum": 12,
+        "count": 27727,
+        "below": 130706,
+        "percentile": 59.418554,
+        "displayPercentile": 59
+      },
+      "A1": {
+        "sum": 14,
+        "count": 22778,
+        "below": 108647,
+        "percentile": 49.335202,
+        "displayPercentile": 49
+      },
+      "A2": {
+        "sum": 8,
+        "count": 1389,
+        "below": 1332,
+        "percentile": 0.832898,
+        "displayPercentile": 1
+      },
+      "A3": {
+        "sum": 12,
+        "count": 6418,
+        "below": 9141,
+        "percentile": 5.075892,
+        "displayPercentile": 5
+      },
+      "A4": {
+        "sum": 8,
+        "count": 5371,
+        "below": 7281,
+        "percentile": 4.096265,
+        "displayPercentile": 4
+      },
+      "A5": {
+        "sum": 8,
+        "count": 14066,
+        "below": 16194,
+        "percentile": 9.546376,
+        "displayPercentile": 10
+      },
+      "A6": {
+        "sum": 12,
+        "count": 16919,
+        "below": 31785,
+        "percentile": 16.540626,
+        "displayPercentile": 17
+      },
+      "C1": {
+        "sum": 20,
+        "count": 20485,
+        "below": 222822,
+        "percentile": 95.790298,
+        "displayPercentile": 96
+      },
+      "C2": {
+        "sum": 8,
+        "count": 14095,
+        "below": 27349,
+        "percentile": 14.137078,
+        "displayPercentile": 14
+      },
+      "C3": {
+        "sum": 12,
+        "count": 8147,
+        "below": 11280,
+        "percentile": 6.31034,
+        "displayPercentile": 6
+      },
+      "C4": {
+        "sum": 12,
+        "count": 12457,
+        "below": 23528,
+        "percentile": 12.230022,
+        "displayPercentile": 12
+      },
+      "C5": {
+        "sum": 12,
+        "count": 23652,
+        "below": 53146,
+        "percentile": 26.703712,
+        "displayPercentile": 27
+      },
+      "C6": {
+        "sum": 4,
+        "count": 3827,
+        "below": 0,
+        "percentile": 0.786455,
+        "displayPercentile": 1
+      }
+    }
+  }
+]

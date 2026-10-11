@@ -38,3 +38,5 @@ Ingen fase utover pakkingen er påbegynt her.
 
 ## Rapportoppdatering 2026-10-11
 Rapport v2 gjennomført innenfor brukerens godkjente forbedring: fasettmønstre, egne midttolkninger, fasettbaserte arbeids-/hverdagsrefleksjoner og neste steg. Svar kan tas vare på i en lokal fil og brukes på nytt i senere rapportversjoner. Offisielle spørsmål og beregning er uendret. Se docs/verification.md for kontrollene; psykometrisk validering og normering er fortsatt separate lanseringsoppgaver.
+
+Persentiler 2026-10-11: Ekte empiriske persentiler fra Codex' normpakke er koblet til skåringen (app/data/norms-us.json, N = 243 307 amerikanske voksne nettbesvarelser, midtrang). Begge språk bruker samme referanse. Gjenstår: faglig psykometrisk gjennomgang, norsk språkvalidering, eventuell aldersinnhenting og om nivåordene lavere/midt/høyere skal følge persentil i stedet for svargjennomsnitt.

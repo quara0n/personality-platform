@@ -118,3 +118,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Illustrasjonene er klippet fra Runes motiver (app/assets/design/facets/), med gjennomsiktig bakgrunn. Motivet for Åpenhet hadde ikke en båndillustrasjon, så båndet bruker panelillustrasjonen fra resultatsiden.
 - Stolpene følger fargene fra «Trekkfarger følger panelene», ikke de eldre fargene i motivene. «Eksempelprofil» vises bare i eksempelrapporten.
 - Rekkefølgen i hvert trekk er bånd, kort beskrivelse, fasettkort, din styrke, tolkning, råd og nyanser, så koblingen mellom resultater og råd er bevart.
+
+## Ekte persentiler 2026-10-11
+- Rune leverte Codex' normpakke. Hashene i SHA256SUMS stemte, og tabellen har N = 243 307 (USA, alder 18–90, alle 120 svar). Pakken er lagt inn som app/data/norms-us.json, scripts/build_norms.py (Codex' versjon), docs/norms/ og tests/fixtures/norm-synthetic-cases.json.
+- Persentil = 100 × (lavere + 0,5 × like) / N, avrundet med floor(P + 0,5). Ugyldige eller ikke-heltallige summer gir ingen persentil; ingen interpolering eller nærmeste oppslag.
+- Visningsregel: verdier som avrundes til 0 eller 100, vises som 1 og 99. Dataene endres ikke.
+- Samme amerikanske referanse brukes for engelsk og norsk. Kort merking følger Codex' tekst, og metodesiden har utdypende forklaring, kilde, CC BY 4.0-lenke og opplysning om bearbeiding.
+- Nivåordene lavere/midt/høyere og all rapporttekst følger fortsatt svargjennomsnittet, som Codex anbefalte. Stolpene på gratisprofilen følger persentilen når normen finnes, så de ikke motsier rapporten.
