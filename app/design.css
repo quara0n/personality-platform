@@ -690,3 +690,11 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 /* Preview-only test helper (?dev=1); remove before launch */
 .d-dev-random{position:relative;z-index:1;margin-top:6px;padding:4px 10px;border:1px dashed #b9c8d6;border-radius:4px;background:transparent;color:#8a9bb0;font-size:12px;cursor:pointer;opacity:.7}
 .d-dev-random:hover{opacity:1}
+
+/* Free result: closing link to the in-depth report */
+.d-deeper{display:flex;align-items:center;justify-content:center;gap:22px;margin:40px auto 22px;text-align:left}
+.d-deeper-mark{flex:none;width:68px;height:52px}
+.d-deeper h2{margin:0 0 10px;font:400 clamp(26px,3.2vw,40px)/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.03em;color:var(--title)}
+.d-deeper a{display:inline-flex;gap:12px;padding-bottom:6px;border-bottom:1.5px solid var(--title);color:var(--title);font-size:clamp(16px,1.6vw,19px);text-decoration:none}
+.d-deeper a:hover{color:#2f5f93;border-color:#2f5f93}
+@media(max-width:500px){.d-deeper{gap:14px}.d-deeper-mark{width:48px;height:38px}}
