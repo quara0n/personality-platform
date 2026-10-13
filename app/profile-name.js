@@ -149,12 +149,12 @@ const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 5
 const key = f => `${f.code}${f.band[0]}`;
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Name, a video closer line for signatures (`line`), the facets it rests on (most distinctive first), the standout traits and a rule id. */
+/** Name, an illustration id (app/assets/names/<image>.webp; one per signature, per noun and for balanced), a video closer line for signatures (`line`), the facets it rests on (most distinctive first), the standout traits and a rule id. */
 export function profileName(domains, language) {
   const no = language === 'no' ? 1 : 0, traits = standouts(domains);
   const out = domains.flatMap(d => d.facets || []).filter(f => f.band && f.band !== 'middle')
     .sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code));
-  if (!out.length) return {name: balanced[no], facets: [], traits, ruleId: 'profile-name-v2/balanced'};
+  if (!out.length) return {name: balanced[no], image: 'balanced', facets: [], traits, ruleId: 'profile-name-v2/balanced'};
   const [core] = out, second = out.find(f => f.code[0] !== core.code[0]);
   const plain = extremity(core) + (second ? extremity(second) : 0);
   const byKey = Object.fromEntries(out.map(f => [key(f), f]));
@@ -164,12 +164,12 @@ export function profileName(domains, language) {
   if (sig && sig.score >= SIGNATURE_SHARE * plain) {
     const facets = [byKey[sig.s[0]], byKey[sig.s[1]]].sort((a, b) => extremity(b) - extremity(a));
     const id = `${sig.s[0]}-${sig.s[1]}`;
-    return {name: sig.s[no ? 3 : 2], line: signatureLines[id][no], facets, traits, ruleId: `profile-name-v2/signature/${id}`};
+    return {name: sig.s[no ? 3 : 2], image: id, line: signatureLines[id][no], facets, traits, ruleId: `profile-name-v2/signature/${id}`};
   }
   const noun = words[key(core)][no ? 3 : 2];
-  if (!second) return {name: no ? cap(noun) : `The ${noun}`, facets: [core], traits, ruleId: `profile-name-v2/${key(core)}`};
+  if (!second) return {name: no ? cap(noun) : `The ${noun}`, image: key(core), facets: [core], traits, ruleId: `profile-name-v2/${key(core)}`};
   const adj = words[key(second)][no ? 1 : 0];
-  return {name: no ? `Den ${adj} ${noun}` : `The ${adj} ${noun}`, facets: [core, second], traits, ruleId: `profile-name-v2/${key(core)}-${key(second)}`};
+  return {name: no ? `Den ${adj} ${noun}` : `The ${adj} ${noun}`, image: key(core), facets: [core, second], traits, ruleId: `profile-name-v2/${key(core)}-${key(second)}`};
 }
 
 export {words, signatures, signatureLines};

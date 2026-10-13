@@ -12,6 +12,7 @@ test('a signature pairing wins when it rests on the most distinctive facets', ()
   assert.equal(profileName(d, 'no').name, 'Den varme eneboeren');
   assert.equal(profileName(d, 'en').ruleId, 'profile-name-v2/signature/E1h-E2l');
   assert.equal(profileName(d, 'no').line, 'Elsker folk. Én om gangen. Helst hjemme.');
+  assert.equal(profileName(d, 'no').image, 'E1h-E2l');
 });
 
 test('otherwise the noun comes from the top facet and the adjective from another trait', () => {
@@ -19,6 +20,7 @@ test('otherwise the noun comes from the top facet and the adjective from another
   const n = profileName(d, 'en');
   assert.equal(n.name, 'The Spontaneous Volcano');
   assert.deepEqual(n.facets.map(f => f.code), ['N2', 'C3']);
+  assert.equal(n.image, 'N2h');
   assert.equal(profileName(d, 'no').name, 'Den spontane vulkanen');
 });
 
