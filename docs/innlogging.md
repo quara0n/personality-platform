@@ -5,7 +5,7 @@ Valgfri innlogging med Google, Apple eller X lar folk lagre de 120 svarene og å
 ## Slik virker det
 - Tjenesten er Supabase (innlogging og Postgres-database). Appen bruker PKCE-flyten, så innloggingen kommer tilbake som `?code=…` og kolliderer ikke med `#`-rutene.
 - Lagret: svarene som samme kode som profillenken (`1` + 120 sifre), språk og tidspunkt, én rad per konto i `public.profiles`. Radnivåsikkerhet gjør at hver bruker bare kan lese, endre og slette sin egen rad.
-- Rett etter siste spørsmål kommer en innloggingsside («Vil du lagre profilen før du ser den?») med Google, Apple og X og lenken «Fortsett uten å logge inn». Den vises bare når innlogging er koblet til og personen ikke er logget inn (og i `?dev=1`). Etter innlogging lagres profilen og lasteanimasjonen og gratisprofilen følger som før.
+- Rett etter siste spørsmål kommer en innloggingsside («Vil du lagre profilen før du ser den?») med Google, Apple og X og lenken «Fortsett uten å logge inn». Den vises bare når innlogging er koblet til og personen ikke er logget inn (og i `?dev=1`). Etter innlogging lagres profilen, lasteanimasjonen følger, og så åpnes videokortet først med fornavnet fra innloggingen fylt inn.
 - «Lagre profilen din» står også under e-postboksen i gratisprofilen. Etter innlogging derfra lagres profilen automatisk. «Min side» (`#account`) viser kontoen, åpner den lagrede profilen, erstatter den med svarene i fanen, sletter profilen, sletter kontoen (`delete_my_account()`) og logger ut.
 - Uten oppsett er alt skjult. Med `?dev=1` vises knappene deaktivert, slik at designet kan sees i forhåndsvisningen.
 

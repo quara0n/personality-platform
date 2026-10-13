@@ -198,4 +198,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Lagret per konto: de 120 svarene som profilkode, språk og tidspunkt. Brukeren kan slette profilen eller hele kontoen fra «Min side». Personvernsiden forklarer dette når innlogging er slått på.
 - Rune ønsket innloggingssiden rett etter spørsmålene. Den kommer mellom siste svar og lasteanimasjonen, med Google, Apple og X (de mest brukte i dag; Facebook og Microsoft kan legges til senere) og «Fortsett uten å logge inn», så ingen tvinges.
 - Rune valgte Supabase på beslutningskortet 2026-10-13.
+- Rune ønsket at videoen skal være det første man ser etter spørsmålene. Når lasteanimasjonen er ferdig, åpnes videokortet som et vindu over gratisprofilen og spiller av seg selv (stillbilde ved redusert bevegelse). Fornavnet fylles inn fra innloggingen når det finnes, og kan endres eller fjernes. «Ikke nå» (eller Esc) lukker vinduet, og kortet står videre på sin vanlige plass i profilen. Vinduet vises én gang per fullført test.
 - Oppsett og gjenstående arbeid står i docs/innlogging.md.

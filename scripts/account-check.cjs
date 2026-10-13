@@ -3,7 +3,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
 const assert=require('node:assert/strict');
 const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.getItem(n)||'null'),put=(n,v)=>localStorage.setItem(n,JSON.stringify(v));
-  const user={id:'u1',email:'rune@example.com',app_metadata:{provider:'google'},user_metadata:{}};
+  const user={id:'u1',email:'rune@example.com',app_metadata:{provider:'google'},user_metadata:{full_name:'Rune Hansen'}};
   window.__femAuthClient={auth:{getSession:async()=>{if(new URLSearchParams(location.search).get('code')==='ok')put(k,true);return {data:{session:get(k)?{user}:null}};},exchangeCodeForSession:async()=>({}),
     signInWithOAuth:async({provider,options})=>{put('fake-provider',provider);location.href=options.redirectTo+'?code=ok';return {};},signOut:async()=>{put(k,false);return {};}},
     from:()=>({select:()=>({maybeSingle:async()=>({data:get(db)})}),upsert:async row=>{put(db,{answers:row.answers,language:row.language,updated_at:row.updated_at});return {};},delete:()=>({eq:async()=>{put(db,null);return {};}})}),
@@ -14,6 +14,9 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await ctx.route('**/config.js',r=>r.fulfill({contentType:'text/javascript',body:"window.FEM_CONFIG={supabaseUrl:'https://example.supabase.co',supabaseAnonKey:'public-anon'};"}));
   await ctx.addInitScript(fake);
   await page.goto('http://127.0.0.1:4173/?dev=1#test');await page.locator('#dev-random').click();
+  // The video card opens first after the test and closes with «Ikke nå».
+  await page.locator('dialog.d-video-intro[open]').waitFor({timeout:20000});await page.locator('.d-video-intro-close').click();
+  await page.locator('dialog.d-video-intro').waitFor({state:'detached'});assert.equal(await page.locator('.d-results .d-share').count(),1);
   const box=page.locator('[data-account="box"]');await box.locator('.d-signin-btn').first().waitFor({timeout:20000});
   assert.equal(await box.locator('.d-signin-btn').count(),3);
   await box.locator('.d-signin-google').click();
@@ -37,7 +40,10 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await step.waitForURL(/#signin$/,{timeout:15000});assert.equal(await step.locator('.d-signin-step .d-signin-btn').count(),3);
   if(process.env.SHOT_STEP)await step.screenshot({path:process.env.SHOT_STEP});
   await step.locator('.d-signin-step .d-signin-apple').click();
-  await step.locator('.d-results').waitFor({timeout:20000});await step.locator('[data-account="box"] .d-account-saved').waitFor();
+  await step.locator('.d-results').waitFor({timeout:20000});await step.locator('dialog.d-video-intro[open]').waitFor();
+  assert.equal(await step.locator('#share-first').inputValue(),'Rune','first name comes from the sign-in');
+  if(process.env.SHOT_INTRO)await step.screenshot({path:process.env.SHOT_INTRO});
+  await step.keyboard.press('Escape');await step.locator('dialog.d-video-intro').waitFor({state:'detached'});await step.locator('[data-account="box"] .d-account-saved').waitFor();
   assert.equal(await step.evaluate(()=>localStorage.getItem('fake-provider')),'"apple"');
   await page.screenshot({path:process.env.SHOT||'/dev/null'}).catch(()=>{});
   assert.deepEqual(errors,[]);console.log('account check passed');
