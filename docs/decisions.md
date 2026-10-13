@@ -164,6 +164,12 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Profilkortet viser nå persentiltallet til høyre for stolpen (over stolpen på mobil).
 - «Et første blikk», trekkpanelene, «Gå dypere» og e-postboksen glir inn når man ruller til dem. Låsen på fasett-smakebiten rister litt når et trekk åpnes.
 - Alt slås av når brukeren har valgt redusert bevegelse; da vises ferdige verdier med en gang. Spørsmålssiden og rapportens oversiktsside eies av tråden «Animasjoner og oversiktsside».
+## Logoen som trekkvelger i «Dine fem trekk» 2026-10-13
+- Rune ønsket at kapittelet skal bli kortere: litt informasjon først, deretter Fem-logoen, der hver av de fem bitene åpner trekket sitt i et panel under logoen.
+- Hver bit er en knapp i trekkfargen med navn og persentil ved siden av. Den hever seg ved hover og tastaturfokus; på berøringsskjerm brukes trykk. Bare den synlige trekanten reagerer, så bitene ikke stjeler klikk fra hverandre.
+- Ett trekk er åpent om gangen. Alle er lukket når kapittelet åpnes. Et nytt trykk på samme bit eller «Fold sammen» nederst i panelet lukker det igjen.
+- Utskrift og PDF viser alle fem trekk utfoldet og skjuler logovelgeren. Bevegelse slås av ved «redusert bevegelse».
+
 ## Varder, profiloversikt og animasjoner (2026-10-13)
 - Rune godkjente forslagene om fem varder på spørsmålssiden og en ny oversikt i rapporten.
 - Spørsmålssiden: fem steinvarder langs stien, én per trekk i trekkfargen. Hvert besvart spørsmål du har passert legger én stein på varden til trekket, uansett svar, og alle steinene er like store, så vardene aldri viser retningen på en skår. Tilbake tar steinen av igjen. Ved 25, 50 og 75 % gløder vardene og en kort tekst vises. Etter siste svar blir vardene til de fem logobitene, som flyr sammen i lasteanimasjonen. På mobil står vardene i en rad over fremdriftslinjen. Hele spørsmålet og alle svar synes fortsatt uten å rulle.
