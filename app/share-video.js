@@ -1,8 +1,9 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
-// Short (15 s, free profile): hook, profile name, the trait furthest from the middle as
+// Short (about 24 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
-// a light closing line and an end card.
-// Long (31 s, in-depth report): adds all five traits, the combination sentence and a
+// a light closing line and an end card that stays for five seconds before the clip loops.
+// The song from share-music.js is recorded into the same file.
+// Long (about 42 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
@@ -12,6 +13,7 @@ import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
+import {SONG} from './share-music.js';
 
 export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
@@ -84,6 +86,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
 const clamp = t => Math.min(1, Math.max(0, t));
 const ease = t => 1 - Math.pow(1 - clamp(t), 3);
 const easeInOut = t => {t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;};
+const easeOutBack = t => {t = clamp(t); const c = 1.6; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2);};
+
+// The song opens with quick plucks on every eighth note (0.25 s) from 0.157 s. The ring starts on the
+// first one, each logo piece lands on one of the next five, and the ring closes on the beat at 1.9 s.
+export const LOGO_HITS = {ring: [.157, 1.9], pieces: [.407, .657, .907, 1.157, 1.407], flight: .32};
 const span = (t, a, b) => clamp((t - a) / (b - a));
 // Fade in over `inn` after a, out over `out` before b.
 const life = (t, a, b, inn = .45, out = .35) => Math.min(ease(span(t, a, a + inn)), 1 - span(t, b - out, b));
@@ -97,16 +104,18 @@ export function loadPieces(base = 'assets/design/') {
   return Promise.all([...PIECES, 'sand'].map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
 }
 
-function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1) {
+/** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop. */
+function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null) {
   PIECES.forEach((p, i) => {
     const img = imgs[p]; if (!img) return;
-    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = easeInOut(span(t, i * .09, i * .09 + .55));
+    const hit = LOGO_HITS.pieces[i], pop = at === null ? 1 : 1 + .14 * clamp(1 - Math.abs(at - hit) / .12);
+    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = at === null ? easeInOut(span(t, i * .09, i * .09 + .55)) : easeOutBack(span(at, hit - LOGO_HITS.flight, hit));
     const [fx, fy, fr] = FLY[p];
     ctx.save();
     ctx.globalAlpha *= clamp(k * 3);
     ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k)) * scale);
     ctx.rotate(fr * (1 - k) * Math.PI / 180);
-    ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
+    ctx.scale(pop, pop); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
     ctx.restore();
   });
   if (ring > 0) {
@@ -174,10 +183,11 @@ function footer(ctx, imgs, a) {
   ctx.restore();
 }
 
-// Scene lengths in seconds. Scenes play back to back and cross-fade at the edges.
+// Scene lengths in seconds, on the beat of the song (120 BPM, 0.5 s per beat); each content scene
+// got one more second so it is easier to read. The short cut lasts as long as the song. Scenes play back to back and cross-fade at the edges.
 const CUTS = {
-  short: [['hook', 4.0], ['name', 2.5], ['stat', 3.0], ['facet', 2.2], ['closer', 1.9], ['end', 1.4]],
-  long: [['hook', 4.0], ['name', 2.8], ['traits', 5.4], ['stat', 3.4], ['facet', 2.8], ['combo', 4.4], ['strength', 3.3], ['closer', 2.6], ['end', 2.2]]
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 3.0], ['end', 5.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 3.5], ['end', 5.0]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
@@ -277,7 +287,7 @@ export function drawFrame(ctx, t, s, imgs) {
   if (t < name.end) {
     const move = easeInOut(span(t, name.start - .5, name.start + .3));
     ctx.save(); ctx.globalAlpha = 1 - span(t, name.end - .4, name.end);
-    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, span(t, 0, 1.5), span(t, 1.1, 1.9));
+    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, 1, span(t, ...LOGO_HITS.ring), t);
     ctx.restore();
   }
   for (const sc of tl) {
@@ -318,29 +328,54 @@ export function drawPoster(ctx, s, imgs) {
   pill(ctx, s.button, H - 110, 1, .8);
 }
 
-/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. */
-export function videoType() {
+/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. With `audio`, a type that also carries sound. */
+export function videoType(audio = false) {
   if (typeof MediaRecorder === 'undefined') return '';
-  return ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t)) || '';
+  const types = audio
+    ? ['video/mp4;codecs="avc1.42E01E,mp4a.40.2"', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    : ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+  return types.find(t => MediaRecorder.isTypeSupported(t)) || '';
 }
 
-/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1. */
-export function recordVideo(canvas, s, imgs, onProgress = () => {}) {
-  const type = videoType();
+/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1.
+ *  `audio` ({ctx, buffer, monitor}) adds the music: a running AudioContext, the rendered buffer and
+ *  an optional node the person hears it through. */
+const WARMUP = .4;
+export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null) {
+  const type = videoType(Boolean(audio)) || videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
-  const total = duration(s), ctx = canvas.getContext('2d'), stream = canvas.captureStream(30), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6}), parts = [];
+  const total = duration(s), ctx = canvas.getContext('2d'), video = canvas.captureStream(30), parts = [];
+  let src = null, tracks = video.getVideoTracks();
+  if (audio) {
+    const dest = audio.ctx.createMediaStreamDestination();
+    src = audio.ctx.createBufferSource(); src.buffer = audio.buffer; src.connect(dest); if (audio.monitor) src.connect(audio.monitor);
+    tracks = [...tracks, ...dest.stream.getAudioTracks()];
+  }
+  const stream = new MediaStream(tracks), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6, audioBitsPerSecond: 160e3});
   rec.ondataavailable = e => e.data.size && parts.push(e.data);
   return new Promise((resolve, reject) => {
-    rec.onstop = () => {stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
-    rec.onerror = e => reject(e.error || e);
+    rec.onstop = () => {video.getTracks().forEach(x => x.stop()); stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
+    rec.onerror = e => {src?.stop(); reject(e.error || e);};
     drawFrame(ctx, 0, s, imgs);
     rec.start(250);
-    const start = performance.now();
+    // Give the encoder a moment on the first (empty) frame before the clock and the song start, so the
+    // opening logo animation is not dropped while it warms up.
+    let start = 0;
+    const warm = performance.now() + WARMUP * 1000;
     const tick = now => {
+      if (!start) {if (now < warm) {drawFrame(ctx, 0, s, imgs); requestAnimationFrame(tick); return;} start = now; src?.start();}
       const t = (now - start) / 1000;
       drawFrame(ctx, Math.min(t, total), s, imgs); onProgress(Math.min(1, t / total));
-      if (t < total + .2) requestAnimationFrame(tick); else rec.stop();
+      if (t < total + .2) requestAnimationFrame(tick); else {try {src?.stop();} catch {} rec.stop();}
     };
     requestAnimationFrame(tick);
   });
+}
+
+/** Times the music follows: its length and, when the video is longer than the song, the scene change
+ *  where the song starts again so that both passes fit (the last cut before the song would end). */
+export function musicCues(s) {
+  const tl = timeline(s), total = duration(s);
+  if (total <= SONG.length + .5) return {total, restartAt: null};
+  return {total, restartAt: tl.filter(x => x.start >= total - SONG.length && x.start <= SONG.length).at(-1)?.start ?? null};
 }
