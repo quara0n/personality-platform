@@ -50,3 +50,16 @@ test('every facet and direction has four words, and signatures use known keys', 
   }
   assert.equal(new Set(signatures.map(s => [s[0], s[1]].sort().join())).size, signatures.length);
 });
+
+test('every illustration has a text in both languages and an image file', async () => {
+  const {characterText, sharedArt} = await import('../app/profile-name-copy.js');
+  const fs = await import('node:fs');
+  const ids = [...signatures.map(s => `${s[0]}-${s[1]}`), ...Object.keys(words), 'balanced'];
+  assert.equal(ids.length, 91);
+  for (const id of ids) {
+    assert.equal(characterText[id]?.length, 2, id);
+    assert.ok(fs.existsSync(`app/assets/names/${id}.webp`), id);
+    if (!sharedArt.has(id)) for (const v of ['female', 'male']) assert.ok(fs.existsSync(`app/assets/names/${v}/${id}.webp`), `${v}/${id}`);
+  }
+  assert.equal(Object.keys(characterText).length, 91);
+});
