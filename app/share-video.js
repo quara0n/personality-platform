@@ -86,6 +86,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
 const clamp = t => Math.min(1, Math.max(0, t));
 const ease = t => 1 - Math.pow(1 - clamp(t), 3);
 const easeInOut = t => {t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;};
+const easeOutBack = t => {t = clamp(t); const c = 1.6; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2);};
+
+// The song opens with quick plucks on every eighth note (0.25 s) from 0.157 s. The ring starts on the
+// first one, each logo piece lands on one of the next five, and the ring closes on the beat at 1.9 s.
+export const LOGO_HITS = {ring: [.157, 1.9], pieces: [.407, .657, .907, 1.157, 1.407], flight: .32};
 const span = (t, a, b) => clamp((t - a) / (b - a));
 // Fade in over `inn` after a, out over `out` before b.
 const life = (t, a, b, inn = .45, out = .35) => Math.min(ease(span(t, a, a + inn)), 1 - span(t, b - out, b));
@@ -99,16 +104,18 @@ export function loadPieces(base = 'assets/design/') {
   return Promise.all([...PIECES, 'sand'].map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
 }
 
-function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1) {
+/** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop. */
+function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null) {
   PIECES.forEach((p, i) => {
     const img = imgs[p]; if (!img) return;
-    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = easeInOut(span(t, i * .09, i * .09 + .55));
+    const hit = LOGO_HITS.pieces[i], pop = at === null ? 1 : 1 + .14 * clamp(1 - Math.abs(at - hit) / .12);
+    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = at === null ? easeInOut(span(t, i * .09, i * .09 + .55)) : easeOutBack(span(at, hit - LOGO_HITS.flight, hit));
     const [fx, fy, fr] = FLY[p];
     ctx.save();
     ctx.globalAlpha *= clamp(k * 3);
     ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k)) * scale);
     ctx.rotate(fr * (1 - k) * Math.PI / 180);
-    ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
+    ctx.scale(pop, pop); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
     ctx.restore();
   });
   if (ring > 0) {
@@ -279,7 +286,7 @@ export function drawFrame(ctx, t, s, imgs) {
   if (t < name.end) {
     const move = easeInOut(span(t, name.start - .5, name.start + .3));
     ctx.save(); ctx.globalAlpha = 1 - span(t, name.end - .4, name.end);
-    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, span(t, 0, 1.5), span(t, 1.1, 1.9));
+    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, 1, span(t, ...LOGO_HITS.ring), t);
     ctx.restore();
   }
   for (const sc of tl) {
@@ -332,6 +339,7 @@ export function videoType(audio = false) {
 /** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1.
  *  `audio` ({ctx, buffer, monitor}) adds the music: a running AudioContext, the rendered buffer and
  *  an optional node the person hears it through. */
+const WARMUP = .4;
 export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null) {
   const type = videoType(Boolean(audio)) || videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
@@ -348,9 +356,13 @@ export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null
     rec.onstop = () => {video.getTracks().forEach(x => x.stop()); stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
     rec.onerror = e => {src?.stop(); reject(e.error || e);};
     drawFrame(ctx, 0, s, imgs);
-    rec.start(250); src?.start();
-    const start = performance.now();
+    rec.start(250);
+    // Give the encoder a moment on the first (empty) frame before the clock and the song start, so the
+    // opening logo animation is not dropped while it warms up.
+    let start = 0;
+    const warm = performance.now() + WARMUP * 1000;
     const tick = now => {
+      if (!start) {if (now < warm) {drawFrame(ctx, 0, s, imgs); requestAnimationFrame(tick); return;} start = now; src?.start();}
       const t = (now - start) / 1000;
       drawFrame(ctx, Math.min(t, total), s, imgs); onProgress(Math.min(1, t / total));
       if (t < total + .2) requestAnimationFrame(tick); else {try {src?.stop();} catch {} rec.stop();}

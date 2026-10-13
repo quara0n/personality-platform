@@ -66,3 +66,9 @@ test('the song fits the video: short cut plays it once, long cut starts it again
     assert.ok(tl.every(x => Math.abs(x.start * 2 - Math.round(x.start * 2)) < 1e-9), 'every cut is on a beat');
   }
 });
+
+test('the logo pieces land on the song’s opening eighth notes', async () => {
+  const {LOGO_HITS} = await import('../app/share-video.js');
+  LOGO_HITS.pieces.forEach((t, i) => assert.ok(Math.abs((t - LOGO_HITS.ring[0]) - .25 * (i + 1)) < 1e-9));
+  assert.ok(LOGO_HITS.pieces.at(-1) < LOGO_HITS.ring[1]);
+});
