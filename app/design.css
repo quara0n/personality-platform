@@ -710,3 +710,113 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-info-pop p,.d-trait-head-text .d-info-pop p{margin:0 0 8px;font-size:14px;font-weight:400;letter-spacing:0;color:#1d2f4f}
 .d-info-pop p:last-child,.d-trait-head-text .d-info-pop p:last-child{margin:0}
 @media print{.d-info,.d-info-btn,.d-info-pop{display:none!important}}
+
+/* Question page: five cairns along the path, one stone per answered question (same size
+   whatever the answer). Desktop and tablet place them in the landscape; phones show a row. */
+.d-cairn-defs{position:absolute;width:0;height:0;overflow:hidden}
+.d-cairns{position:absolute;left:0;right:0;bottom:0;aspect-ratio:1800/372;pointer-events:none;z-index:1}
+.d-cairn{position:absolute;left:var(--x);bottom:var(--y);width:max(4.2%,44px);transform:translate(-50%,4%)}
+.d-cairn svg{display:block;width:100%;height:auto;overflow:visible}
+.d-cairn-ground{fill:rgba(16,39,71,.13)}
+.d-stone{transform-box:fill-box;transform-origin:center}
+.d-stone.is-new{animation:d-stone-drop .34s cubic-bezier(.33,.9,.45,1.2) both}
+.d-stone.is-leaving{animation:d-stone-lift .3s ease forwards}
+@keyframes d-stone-drop{from{transform:translateY(-28px);opacity:0}45%{opacity:1}to{transform:none;opacity:1}}
+@keyframes d-stone-lift{to{transform:translateY(-12px);opacity:0}}
+.d-cairns.is-glow .d-cairn svg{animation:d-cairn-glow 1.8s ease}
+@keyframes d-cairn-glow{35%{filter:drop-shadow(0 0 5px rgba(255,214,170,.95)) brightness(1.12)}}
+.d-cairn-piece{position:absolute;left:50%;bottom:18%;width:72%;opacity:0;transform:translate(-50%,0) scale(.4);pointer-events:none}
+.d-question.is-finale .d-question-inner,.d-question.is-finale .d-question-land{opacity:0;transition:opacity .45s ease}
+.d-question.is-finale .d-cairn svg{opacity:0;transform:translateY(-14%);transition:opacity .35s ease .1s,transform .5s ease}
+.d-question.is-finale .d-cairn-piece{opacity:1;transform:translate(-50%,-55%) scale(1);transition:opacity .3s ease .12s,transform .6s cubic-bezier(.3,.8,.3,1.15) .08s}
+.d-question.is-finale .d-cairn:nth-child(3) .d-cairn-piece{transition-delay:.18s}
+.d-question.is-finale .d-cairn:nth-child(4) .d-cairn-piece{transition-delay:.24s}
+.d-question.is-finale .d-cairn:nth-child(5) .d-cairn-piece{transition-delay:.3s}
+.d-question.is-finale .d-cairn:nth-child(6) .d-cairn-piece{transition-delay:.36s}
+.d-progress{position:relative}
+.d-milestone{position:absolute;left:50%;top:calc(100% + 10px);z-index:2;margin:0;padding:7px 16px;border:1px solid #eadfcd;border-radius:999px;background:#fffefb;box-shadow:0 6px 18px rgba(16,39,71,.08);font-size:15px;line-height:1.3;color:var(--title);white-space:nowrap;opacity:0;transform:translateX(-50%);pointer-events:none}
+.d-milestone:not(:empty){animation:d-milestone 3.2s ease both}
+.d-milestone-top{display:none}
+.d-milestone-land{top:auto;left:73%;bottom:62%}
+@keyframes d-milestone{0%{opacity:0;transform:translate(-50%,6px)}12%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-4px)}}
+.d-assemble.is-from-cairns .d-piece{animation:none;opacity:1}
+.d-assemble.is-from-cairns{animation-delay:1.35s}
+@media(max-width:760px){
+  .d-cairns{position:relative;display:flex;justify-content:center;gap:16px;aspect-ratio:auto;height:29px;margin:-2px auto 4px}
+  .d-cairn{position:relative;left:auto;bottom:auto;width:40px;transform:none}
+  .d-milestone-top{display:block;position:fixed;top:auto;bottom:18px;max-width:92vw;font-size:14px}
+  .d-milestone-land{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .d-stone.is-new,.d-cairns.is-glow .d-cairn svg{animation:none}
+  .d-stone.is-leaving{display:none}
+  .d-milestone:not(:empty){animation:d-milestone-still 3.2s linear both}
+  @keyframes d-milestone-still{0%,100%{opacity:0}8%,85%{opacity:1}}
+}
+@media print{.d-cairns{display:none}}
+
+/* Report overview: your profile at a glance (radar, 100 people, two cards, combination) */
+.d-glance .d-panel-title{margin-bottom:4px}
+.d-glance-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;margin-top:20px}
+.d-glance-grid.is-single{grid-template-columns:minmax(0,480px)}
+.d-radar{display:block;width:100%;max-width:380px;margin:0 auto}
+.d-radar-ring{fill:none;stroke:#dbe3ec;stroke-width:1}
+.d-radar-ring.is-mid{stroke:#93a9c0;stroke-dasharray:4 4}
+.d-radar-axis{stroke:#e2e8ef;stroke-width:1}
+.d-radar-area{fill:rgba(20,44,91,.1);stroke:#142c5b;stroke-width:2.2;stroke-linejoin:round}
+.d-radar-dot{stroke:#fffefb;stroke-width:2.5}
+.d-radar-value{font:700 19px Arial,Helvetica,sans-serif;fill:#13284f;font-variant-numeric:tabular-nums}
+.d-radar-shape{transform-box:view-box;transform-origin:180px 174px}
+.d-radar-legend{display:grid;gap:7px;max-width:380px;margin:12px auto 0;padding:0;list-style:none}
+.d-radar-legend li{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px;color:var(--title)}
+.d-radar-legend strong{font-variant-numeric:tabular-nums}
+.d-people-box h3{margin:0 0 12px;font:400 24px/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--title)}
+.d-people-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.d-people-tabs button{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1.5px solid #d3dde8;border-radius:999px;background:#fffefb;color:var(--title);font-size:14px;cursor:pointer}
+.d-people-tabs button::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--tc)}
+.d-people-tabs button[aria-selected="true"]{border-color:var(--title);background:var(--title);color:#fff}
+.d-people-tabs button:focus-visible{outline:3px solid #a44e24;outline-offset:2px}
+.d-people{display:block;width:100%;max-width:300px;margin:0 auto}
+.d-person{fill:#dfe5ec;transform-box:fill-box;transform-origin:center bottom}
+.d-person.is-lit{fill:var(--lit)}
+.d-person.is-you{fill:#fffefb;stroke:#13284f;stroke-width:2}
+.d-people-line{margin:14px 0 6px;text-align:center;font:400 22px/1.3 Georgia,serif;color:var(--title)}
+.d-people-line strong{font-variant-numeric:tabular-nums}
+.d-people-key{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:0;font-size:13px;color:#5d7792}
+.d-key-lit,.d-key-you{width:12px;height:12px;border-radius:3px}
+.d-key-you{margin-left:10px;border:2px solid #13284f}
+.d-glance-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.d-glance-card{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:start;padding:20px;border-radius:10px}
+.d-glance-card.is-warm{background:#fdebe3}
+.d-glance-card.is-cool{background:#eaf1f7}
+.d-glance-card img{width:104px;height:104px;object-fit:contain}
+.d-glance-eyebrow{margin:0 0 4px!important;font-size:12px!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5d7792!important}
+.d-glance-card h3,.d-combo h3{margin:0 0 6px;font:400 26px/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
+.d-glance-card p,.d-combo p{margin:0;font-size:15.5px;line-height:1.5;color:#2c4566}
+.d-glance-card .d-glance-score{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--title)}
+.d-combo{display:flex;gap:20px;align-items:center;margin-top:18px;padding:22px 24px;border:1.5px solid #e7dccd;border-radius:10px;background:#fffdf8}
+.d-combo-pieces{display:flex;flex:none;gap:4px}
+.d-combo-pieces .d-piece-icon{width:40px;height:40px}
+.d-combo .d-small{margin-top:10px}
+/* Motion: parts wait in a start state only after the script has seen they are off screen. */
+.d-radar-box.is-waiting .d-radar-shape{transform:scale(0);opacity:0}
+.d-radar-box.is-playing .d-radar-shape{animation:d-radar-grow 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes d-radar-grow{from{transform:scale(0);opacity:0}30%{opacity:1}to{transform:scale(1);opacity:1}}
+.d-people-panel.is-waiting .d-person.is-lit{fill:#dfe5ec}
+.d-people-panel.is-playing .d-person.is-lit{animation:d-person-in .3s ease both;animation-delay:calc(var(--i) * 9ms)}
+@keyframes d-person-in{from{fill:#dfe5ec;transform:scale(.7)}to{fill:var(--lit);transform:scale(1)}}
+.d-glance-card.is-waiting,.d-combo.is-waiting{opacity:0;transform:translateY(12px)}
+.d-glance-card.is-playing,.d-combo.is-playing{animation:d-rise .55s ease both}
+.d-glance-cards .d-glance-card+.d-glance-card.is-playing{animation-delay:.12s}
+@keyframes d-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.d-glance-grid,.d-glance-cards{grid-template-columns:1fr}.d-people-box{border-top:1px solid #e3e9f0;padding-top:22px}}
+@media(max-width:500px){.d-glance-card{grid-template-columns:72px minmax(0,1fr);padding:16px}.d-glance-card img{width:72px;height:72px}.d-combo{flex-direction:column;align-items:flex-start;padding:18px}.d-people-line{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.is-waiting,.is-waiting *{opacity:1!important;transform:none!important}.d-people-panel.is-waiting .d-person.is-lit{fill:var(--lit)}}
+@media print{.is-waiting,.is-waiting *,.is-playing,.is-playing *{animation:none!important;opacity:1!important;transform:none!important}.d-people-panel .d-person.is-lit{fill:var(--lit)!important}.d-people-tabs{display:none}.d-glance-card,.d-combo{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+/* Facet cards: the bar fills and the number counts up when a card opens */
+.d-fcard.is-filling .d-mini span{animation:d-bar-fill .7s cubic-bezier(.25,.8,.3,1) both}
+.d-fcard.is-filling .d-mini i{animation:d-mark-slide .7s cubic-bezier(.25,.8,.3,1) both}
+@keyframes d-bar-fill{from{width:0}}
+@keyframes d-mark-slide{from{left:0}}
+@media(max-width:500px){.d-glance-card{grid-template-columns:1fr}.d-glance-card img{width:64px;height:64px}}
+@media(prefers-reduced-motion:reduce){.d-fcard.is-filling .d-mini span,.d-fcard.is-filling .d-mini i{animation:none}}
