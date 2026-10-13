@@ -70,7 +70,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: tr('The facet that stands out most', 'Fasetten som skiller seg mest ut'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
+    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Fem',
@@ -143,7 +143,8 @@ function lines(ctx, text, max) {
 // Centred, wrapped text; shrinks the font until it fits in `maxLines`. Returns the bottom y.
 function text(ctx, str, y, {size, font = SERIF, weight = '400', style = '', color = INK, max = W - 160, maxLines = 3, lh = 1.12, alpha = 1, rise = 0, spacing = 0}) {
   let s = size, ls;
-  do {ctx.font = `${style} ${weight} ${s}px ${font}`; ls = lines(ctx, str, max); s -= 4;} while (ls.length > maxLines && s > 24);
+  // Shrink until it fits the line count and no single long word runs past the edge.
+  do {ctx.font = `${style} ${weight} ${s}px ${font}`; ls = lines(ctx, str, max); s -= 4;} while ((ls.length > maxLines || ls.some(l => ctx.measureText(l).width > max)) && s > 24);
   s += 4;
   ctx.save(); ctx.globalAlpha *= alpha; ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
   if (spacing && 'letterSpacing' in ctx) ctx.letterSpacing = `${spacing}px`;

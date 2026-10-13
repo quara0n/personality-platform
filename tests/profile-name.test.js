@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {profileName, words, signatures} from '../app/profile-name.js';
+import {profileName, words, signatures, signatureLines} from '../app/profile-name.js';
 
 // Domains with all facets at percentile 50 unless overridden, e.g. {E1: ['high', 92]}.
 const profile = (over = {}) => [...'OCEAN'].map(code => ({code, band: 'middle', percentile: 50,
@@ -11,6 +11,7 @@ test('a signature pairing wins when it rests on the most distinctive facets', ()
   assert.equal(profileName(d, 'en').name, 'The Warm Hermit');
   assert.equal(profileName(d, 'no').name, 'Den varme eneboeren');
   assert.equal(profileName(d, 'en').ruleId, 'profile-name-v2/signature/E1h-E2l');
+  assert.equal(profileName(d, 'no').line, 'Elsker folk. Én om gangen. Helst hjemme.');
 });
 
 test('otherwise the noun comes from the top facet and the adjective from another trait', () => {
@@ -43,6 +44,7 @@ test('every facet and direction has four words, and signatures use known keys', 
   for (const [a, b, en, no] of signatures) {
     assert.ok(words[a] && words[b] && en && no, `${a}-${b}`);
     assert.notEqual(a, b);
+    assert.equal(signatureLines[`${a}-${b}`]?.length, 2, `line ${a}-${b}`);
   }
   assert.equal(new Set(signatures.map(s => [s[0], s[1]].sort().join())).size, signatures.length);
 });

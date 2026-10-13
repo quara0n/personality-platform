@@ -16,7 +16,7 @@ test('names the person, the profile name and the trait furthest from the middle'
   assert.equal(s.name, "The Devil's Advocate");
   assert.equal(s.name, profileName(d, 'en').name);
   assert.deepEqual([s.stat.above, s.stat.number], ['More curious than', 92]);
-  assert.equal(s.closer, closers.O.high[0]);
+  assert.equal(s.closer, 'Agrees with you. Just not yet.');
 });
 
 test('a low score is phrased by its own pole, never as lacking', () => {

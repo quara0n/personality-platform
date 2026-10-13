@@ -109,13 +109,47 @@ const signatures = [
   ['O6h', 'A2h', 'The Rebel with a Cause', 'Opprøreren med en sak']
 ];
 
+// One-line closers for the share video, per signature. [English, Norwegian]
+const signatureLines = {
+  'E1h-E2l': ["Loves people. One at a time. Preferably at home.", "Elsker folk. Én om gangen. Helst hjemme."],
+  'E2h-N4h': ["First to the party, last to take the mic.", "Først på festen, sist til mikrofonen."],
+  'E3h-N1h': ["Leads the way, with a quiet plan B in the pocket.", "Går først, med en stille plan B i lomma."],
+  'E3h-A5h': ["Takes charge, then gives everyone else the credit.", "Tar styringen, og gir æren til alle andre."],
+  'E5h-C6h': ["Jumps out of planes. After checking the parachute twice.", "Hopper i fallskjerm. Etter å ha sjekket skjermen to ganger."],
+  'O4h-C6h': ["Off on an adventure. With plasters for everyone.", "Drar på eventyr. Med plaster til alle."],
+  'E5h-A6h': ["Up for anything, and the first to check you're okay.", "Med på alt, og først til å spørre om du har det bra."],
+  'E5h-N1l': ["Says 'how hard can it be?' and means it.", "Sier «hvor vanskelig kan det være?» og mener det."],
+  'O1h-C2h': ["Dreams in colour. Files the dreams by colour too.", "Drømmer i farger. Sorterer drømmene etter farge også."],
+  'O1h-C2l': ["Ideas everywhere. Including under the sofa.", "Ideer overalt. Også under sofaen."],
+  'O1h-E4l': ["Has travelled the world without leaving the blanket.", "Har reist jorda rundt uten å forlate pleddet."],
+  'O2h-C2h': ["Art on the walls. Spines lined up perfectly.", "Kunst på veggene. Bokryggene i perfekt rekke."],
+  'O5h-E2l': ["Best conversations: with a book and a cup of tea.", "Beste samtalene: med en bok og en kopp te."],
+  'O5h-A4l': ["Agrees with you. Just not yet.", "Er enig med deg. Bare ikke ennå."],
+  'C4h-C5l': ["Big goals. Starts tomorrow. Delivers at 23:59.", "Store mål. Begynner i morgen. Leverer 23.59."],
+  'C4h-A5h': ["Does great things and hopes nobody makes a fuss.", "Gjør store ting og håper ingen lager noe styr."],
+  'E4h-C5l': ["Doing five things at once. All of them fun.", "Holder på med fem ting samtidig. Alle er gøy."],
+  'N5h-C5l': ["Knows exactly how many episodes 'just one more' is.", "Vet nøyaktig hvor mange episoder «bare én til» er."],
+  'A3h-N1h': ["Worries about you so you don't have to.", "Bekymrer seg for deg, så du slipper."],
+  'A3h-N2h': ["Boils over fast. Would still give you the last slice.", "Koker fort over. Gir deg likevel det siste kakestykket."],
+  'A3h-N6l': ["When everything shakes, this is who you call.", "Når alt rister, er det denne du ringer."],
+  'A3h-C3h': ["Says yes. And then actually turns up.", "Sier ja. Og møter faktisk opp."],
+  'A6h-N6h': ["Feels everything, and holds space for everyone.", "Kjenner alt, og har plass til alle."],
+  'E6h-N1h': ["Smiling on the outside, running scenarios on the inside.", "Smiler utenpå, kjører scenarioer inni."],
+  'E6h-A3h': ["Brightens the room, then helps clear the table.", "Lyser opp rommet, og hjelper til med å rydde bordet."],
+  'A1l-C6h': ["Reads the small print. Twice.", "Leser det med liten skrift. To ganger."],
+  'A2l-E1h': ["Could talk you into anything. Usually something fun.", "Kan prate deg med på hva som helst. Som regel noe gøy."],
+  'N4l-E2h': ["Never waits to be asked to dance.", "Venter aldri på å bli bedt opp."],
+  'N5l-C5h': ["One piece of chocolate. Actually just one.", "Én bit sjokolade. Faktisk bare én."],
+  'O6h-A2h': ["Breaks the rules for the right reasons.", "Bryter reglene av de riktige grunnene."]
+};
+
 const balanced = ['The All-Rounder', 'Den allsidige'];
 const SIGNATURE_SHARE = 0.85; // a signature wins when it rests on at least this share of the plain name's distinctiveness
 const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 50) / 50 : Math.abs(x.mean - 3) / 2;
 const key = f => `${f.code}${f.band[0]}`;
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Name, the facets it rests on (most distinctive first), the standout traits and a rule id. */
+/** Name, a video closer line for signatures (`line`), the facets it rests on (most distinctive first), the standout traits and a rule id. */
 export function profileName(domains, language) {
   const no = language === 'no' ? 1 : 0, traits = standouts(domains);
   const out = domains.flatMap(d => d.facets || []).filter(f => f.band && f.band !== 'middle')
@@ -129,7 +163,8 @@ export function profileName(domains, language) {
     .sort((x, y) => y.score - x.score)[0];
   if (sig && sig.score >= SIGNATURE_SHARE * plain) {
     const facets = [byKey[sig.s[0]], byKey[sig.s[1]]].sort((a, b) => extremity(b) - extremity(a));
-    return {name: sig.s[no ? 3 : 2], facets, traits, ruleId: `profile-name-v2/signature/${sig.s[0]}-${sig.s[1]}`};
+    const id = `${sig.s[0]}-${sig.s[1]}`;
+    return {name: sig.s[no ? 3 : 2], line: signatureLines[id][no], facets, traits, ruleId: `profile-name-v2/signature/${id}`};
   }
   const noun = words[key(core)][no ? 3 : 2];
   if (!second) return {name: no ? cap(noun) : `The ${noun}`, facets: [core], traits, ruleId: `profile-name-v2/${key(core)}`};
@@ -137,4 +172,4 @@ export function profileName(domains, language) {
   return {name: no ? `Den ${adj} ${noun}` : `The ${adj} ${noun}`, facets: [core, second], traits, ruleId: `profile-name-v2/${key(core)}-${key(second)}`};
 }
 
-export {words, signatures};
+export {words, signatures, signatureLines};
