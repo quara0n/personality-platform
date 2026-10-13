@@ -1,39 +1,140 @@
-// Profile name, e.g. "The Curious Planner" / "Den nysgjerrige planleggeren": a shareable label that
-// describes the scores, not a type. Built from the same two traits as "Your combination": the noun
-// comes from the trait furthest from the middle, the adjective from the second one. One trait out
-// gives the noun alone; none out gives a balanced name. [English, Norwegian bokmål]; editorial copy,
-// no MBTI letters or names. Flagged for the same professional review as the combination sentences.
+// Profile name, e.g. "The Warm Hermit" / "Den varme eneboeren": a playful, shareable label that
+// describes the scores, not a type. Built from the facets that sit furthest from the middle
+// (percentile 50), so it can catch the small extremes that make a profile recognisable.
+// 1. A hand-written signature name when two of the most distinctive facets form a known pairing.
+// 2. Otherwise "<adjective> <noun>": the noun from the most distinctive facet, the adjective from
+//    the most distinctive facet in another trait. One distinctive facet gives the noun alone.
+// 3. No facet outside the middle range gives a balanced name.
+// [English, Norwegian bokmål]; editorial copy written to be warm and a little cheeky, never a
+// diagnosis. No MBTI letters or names. Flagged for the same professional review as the
+// combination sentences.
 import {standouts} from './combination-copy.js';
 
-const adjectives = {
-  O: {high: ['Curious', 'nysgjerrige'], low: ['Down-to-Earth', 'jordnære']},
-  C: {high: ['Structured', 'strukturerte'], low: ['Flexible', 'fleksible']},
-  E: {high: ['Outgoing', 'utadvendte'], low: ['Quiet', 'stillferdige']},
-  A: {high: ['Considerate', 'omtenksomme'], low: ['Direct', 'direkte']},
-  N: {high: ['Sensitive', 'følsomme'], low: ['Calm', 'rolige']}
+// code+direction: [English adjective, Norwegian definite adjective, English noun, Norwegian definite noun].
+// Norwegian nouns are all common gender, so "Den <adjektiv> <substantiv>" always fits.
+const words = {
+  O1h: ['Dreamy', 'drømmende', 'Daydreamer', 'dagdrømmeren'],
+  O1l: ['Down-to-Earth', 'jordnære', 'Realist', 'realisten'],
+  O2h: ['Artistic', 'kunstneriske', 'Aesthete', 'estetikeren'],
+  O2l: ['Unfussy', 'ukompliserte', 'Pragmatist', 'pragmatikeren'],
+  O3h: ['Heartfelt', 'inderlige', 'Romantic', 'romantikeren'],
+  O3l: ['Level-Headed', 'nøkterne', 'Stoic', 'stoikeren'],
+  O4h: ['Adventurous', 'eventyrlystne', 'Adventurer', 'eventyreren'],
+  O4l: ['Routine-Loving', 'rutinekjære', 'Regular', 'stamgjesten'],
+  O5h: ['Curious', 'nysgjerrige', 'Philosopher', 'filosofen'],
+  O5l: ['Hands-On', 'praktiske', 'Practitioner', 'praktikeren'],
+  O6h: ['Free-Thinking', 'frisinnede', 'Rebel', 'opprøreren'],
+  O6l: ['Traditional', 'tradisjonsbevisste', 'Tradition Keeper', 'tradisjonsbæreren'],
+  C1h: ['Capable', 'handlekraftige', 'Problem Solver', 'problemknuseren'],
+  C1l: ['Unassuming', 'ydmyke', 'Apprentice', 'lærlingen'],
+  C2h: ['Tidy', 'ryddige', 'Organiser', 'systematikeren'],
+  C2l: ['Creatively Chaotic', 'kreativt kaotiske', 'Chaos Pilot', 'kaospiloten'],
+  C3h: ['Dependable', 'pålitelige', 'Promise Keeper', 'ordholderen'],
+  C3l: ['Spontaneous', 'spontane', 'Free Spirit', 'frifuglen'],
+  C4h: ['Ambitious', 'ambisiøse', 'Goal Hunter', 'måljegeren'],
+  C4l: ['Contented', 'tilfredse', 'Bon Vivant', 'livsnyteren'],
+  C5h: ['Disciplined', 'disiplinerte', 'Finisher', 'fullføreren'],
+  C5l: ['Easily Sidetracked', 'distré', 'Last-Minute Artist', 'sisteliten-kunstneren'],
+  C6h: ['Careful', 'varsomme', 'Safety Officer', 'sikkerhetssjefen'],
+  C6l: ['Impulsive', 'impulsive', 'Improviser', 'improvisatoren'],
+  E1h: ['Warm', 'varme', 'Charmer', 'sjarmøren'],
+  E1l: ['Reserved', 'reserverte', 'Sphinx', 'sfinksen'],
+  E2h: ['Sociable', 'selskapelige', 'Party Lion', 'festløven'],
+  E2l: ['Stay-at-Home', 'hjemmekjære', 'Hermit', 'eneboeren'],
+  E3h: ['Assertive', 'bestemte', 'Captain', 'kapteinen'],
+  E3l: ['Low-Key', 'lavmælte', 'Backstage Hero', 'kulissehelten'],
+  E4h: ['Busy', 'travle', 'Whirlwind', 'virvelvinden'],
+  E4l: ['Laid-Back', 'avslappede', 'Stroller', 'slentreren'],
+  E5h: ['Daring', 'dristige', 'Daredevil', 'våghalsen'],
+  E5l: ['Peace-Loving', 'fredelige', 'Comfort Connoisseur', 'kosemesteren'],
+  E6h: ['Cheerful', 'blide', 'Ray of Sunshine', 'solstrålen'],
+  E6l: ['Deadpan', 'tørrvittige', 'Straight Face', 'alvorsmesteren'],
+  A1h: ['Trusting', 'tillitsfulle', 'Idealist', 'idealisten'],
+  A1l: ['Sceptical', 'skeptiske', 'Detective', 'detektiven'],
+  A2h: ['Honest', 'ærlige', 'Knight of Fair Play', 'fair play-ridderen'],
+  A2l: ['Crafty', 'lure', 'Fox', 'reven'],
+  A3h: ['Generous', 'gavmilde', 'Guardian Angel', 'skytsengelen'],
+  A3l: ['Self-Reliant', 'selvhjulpne', 'Self-Starter', 'selvbergeren'],
+  A4h: ['Accommodating', 'imøtekommende', 'Peacemaker', 'fredsmegleren'],
+  A4l: ['Feisty', 'stridbare', 'Debater', 'debattanten'],
+  A5h: ['Modest', 'beskjedne', 'Everyday Hero', 'hverdagshelten'],
+  A5l: ['Self-Assured', 'selvsikre', 'Star', 'stjernen'],
+  A6h: ['Soft-Hearted', 'bløthjertede', 'Comforter', 'trøsteren'],
+  A6l: ['Clear-Eyed', 'klarsynte', 'Strategist', 'strategen'],
+  N1h: ['Watchful', 'årvåkne', 'Worrier', 'grubleren'],
+  N1l: ['Unflappable', 'uforskrekkede', 'Zen Master', 'zenmesteren'],
+  N2h: ['Fiery', 'fyrrige', 'Volcano', 'vulkanen'],
+  N2l: ['Patient', 'tålmodige', 'Diplomat', 'diplomaten'],
+  N3h: ['Melancholic', 'melankolske', 'Poet', 'poeten'],
+  N3l: ['Hopeful', 'håpefulle', 'Optimist', 'optimisten'],
+  N4h: ['Shy', 'sjenerte', 'Wallflower', 'veggblomsten'],
+  N4l: ['Unabashed', 'frimodige', 'Entertainer', 'entertaineren'],
+  N5h: ['Pleasure-Loving', 'livsglade', 'Hedonist', 'hedonisten'],
+  N5l: ['Moderate', 'måteholdne', 'Monk', 'munken'],
+  N6h: ['Sensitive', 'følsomme', 'Seismograph', 'seismografen'],
+  N6l: ['Steady', 'stødige', 'Rock', 'klippen']
 };
 
-// Definite form in Norwegian; all are common gender, so "Den <adjective> <noun>" always fits.
-const nouns = {
-  O: {high: ['Explorer', 'utforskeren'], low: ['Realist', 'realisten']},
-  C: {high: ['Planner', 'planleggeren'], low: ['Improviser', 'improvisatoren']},
-  E: {high: ['Enthusiast', 'entusiasten'], low: ['Observer', 'observatøren']},
-  A: {high: ['Supporter', 'støttespilleren'], low: ['Challenger', 'utfordreren']},
-  N: {high: ['Watcher', 'vokteren'], low: ['Anchor', 'klippen']}
-};
+// Signature names for pairings that say more together than apart. [facet, facet, English, Norwegian]
+const signatures = [
+  ['E1h', 'E2l', 'The Warm Hermit', 'Den varme eneboeren'],
+  ['E2h', 'N4h', 'The Shy Party Lion', 'Den sjenerte festløven'],
+  ['E3h', 'N1h', 'The Captain with Butterflies', 'Kapteinen med sommerfugler i magen'],
+  ['E3h', 'A5h', 'The Humble Captain', 'Den beskjedne kapteinen'],
+  ['E5h', 'C6h', 'The Careful Daredevil', 'Den forsiktige våghalsen'],
+  ['O4h', 'C6h', 'The Adventurer with a First-Aid Kit', 'Eventyreren med førstehjelpsskrin'],
+  ['E5h', 'A6h', 'The Soft-Hearted Daredevil', 'Våghalsen med det myke hjertet'],
+  ['E5h', 'N1l', 'The Unflappable Thrill-Seeker', 'Den uforskrekkede adrenalinjegeren'],
+  ['O1h', 'C2h', 'The Daydreamer with a Label Maker', 'Dagdrømmeren med merkemaskin'],
+  ['O1h', 'C2l', 'The Creative Chaos Pilot', 'Den kreative kaospiloten'],
+  ['O1h', 'E4l', 'The Sofa Daydreamer', 'Dagdrømmeren i sofakroken'],
+  ['O2h', 'C2h', 'The Aesthete with Alphabetised Shelves', 'Estetikeren med alfabetisk bokhylle'],
+  ['O5h', 'E2l', 'The Reading-Nook Philosopher', 'Filosofen i lesekroken'],
+  ['O5h', 'A4l', "The Devil's Advocate", 'Djevelens advokat'],
+  ['C4h', 'C5l', 'The Ambitious Last-Minute Artist', 'Den ambisiøse sisteliten-kunstneren'],
+  ['C4h', 'A5h', 'The Quiet High Achiever', 'Den stille stjernen'],
+  ['E4h', 'C5l', 'The Whirlwind with Ten Tabs Open', 'Virvelvinden med ti faner åpne'],
+  ['N5h', 'C5l', 'The Just-One-More-Episode Enthusiast', 'Bare-én-episode-til-entusiasten'],
+  ['A3h', 'N1h', 'The Worried Guardian Angel', 'Den bekymrede skytsengelen'],
+  ['A3h', 'N2h', 'The Volcano with a Heart of Gold', 'Vulkanen med gullhjerte'],
+  ['A3h', 'N6l', 'The Calm in the Storm', 'Roen i stormen'],
+  ['A3h', 'C3h', 'The Rock Everyone Calls', 'Klippen alle ringer til'],
+  ['A6h', 'N6h', 'The Tender Soul', 'Den ømme sjelen'],
+  ['E6h', 'N1h', 'The Cheerful Worrier', 'Den blide grubleren'],
+  ['E6h', 'A3h', 'The Ray of Sunshine Who Shows Up', 'Solstrålen som stiller opp'],
+  ['A1l', 'C6h', 'The Careful Detective', 'Den grundige detektiven'],
+  ['A2l', 'E1h', 'The Charming Fox', 'Den sjarmerende reven'],
+  ['N4l', 'E2h', 'The Life of the Party', 'Midtpunktet i festen'],
+  ['N5l', 'C5h', 'The Monk with a Plan', 'Munken med en plan'],
+  ['O6h', 'A2h', 'The Rebel with a Cause', 'Opprøreren med en sak']
+];
 
 const balanced = ['The All-Rounder', 'Den allsidige'];
+const SIGNATURE_SHARE = 0.85; // a signature wins when it rests on at least this share of the plain name's distinctiveness
+const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 50) / 50 : Math.abs(x.mean - 3) / 2;
+const key = f => `${f.code}${f.band[0]}`;
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Name, the traits it rests on (furthest from the middle first) and a rule id for traceability. */
+/** Name, the facets it rests on (most distinctive first), the standout traits and a rule id. */
 export function profileName(domains, language) {
-  const no = language === 'no' ? 1 : 0, out = standouts(domains);
-  const rule = out.map(d => `${d.code}${d.band[0]}`).join('') || 'balanced';
-  if (!out.length) return {name: balanced[no], traits: [], ruleId: `profile-name-v1/${rule}`};
-  const [core, second] = out, noun = nouns[core.code][core.band][no];
-  const name = !second ? (no ? cap(noun) : `The ${noun}`)
-    : no ? `Den ${adjectives[second.code][second.band][1]} ${noun}` : `The ${adjectives[second.code][second.band][0]} ${noun}`;
-  return {name, traits: out, ruleId: `profile-name-v1/${rule}`};
+  const no = language === 'no' ? 1 : 0, traits = standouts(domains);
+  const out = domains.flatMap(d => d.facets || []).filter(f => f.band && f.band !== 'middle')
+    .sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code));
+  if (!out.length) return {name: balanced[no], facets: [], traits, ruleId: 'profile-name-v2/balanced'};
+  const [core] = out, second = out.find(f => f.code[0] !== core.code[0]);
+  const plain = extremity(core) + (second ? extremity(second) : 0);
+  const byKey = Object.fromEntries(out.map(f => [key(f), f]));
+  const sig = signatures.filter(([a, b]) => byKey[a] && byKey[b])
+    .map(s => ({s, score: extremity(byKey[s[0]]) + extremity(byKey[s[1]])}))
+    .sort((x, y) => y.score - x.score)[0];
+  if (sig && sig.score >= SIGNATURE_SHARE * plain) {
+    const facets = [byKey[sig.s[0]], byKey[sig.s[1]]].sort((a, b) => extremity(b) - extremity(a));
+    return {name: sig.s[no ? 3 : 2], facets, traits, ruleId: `profile-name-v2/signature/${sig.s[0]}-${sig.s[1]}`};
+  }
+  const noun = words[key(core)][no ? 3 : 2];
+  if (!second) return {name: no ? cap(noun) : `The ${noun}`, facets: [core], traits, ruleId: `profile-name-v2/${key(core)}`};
+  const adj = words[key(second)][no ? 1 : 0];
+  return {name: no ? `Den ${adj} ${noun}` : `The ${adj} ${noun}`, facets: [core, second], traits, ruleId: `profile-name-v2/${key(core)}-${key(second)}`};
 }
 
-export {adjectives, nouns};
+export {words, signatures};

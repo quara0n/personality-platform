@@ -1,16 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {videoScript, closers, timeline, duration} from '../app/share-video.js';
+import {profileName} from '../app/profile-name.js';
 
 const f = (code, p, extra = {}) => ({code, percentile: p, band: p < 30 ? 'low' : p > 70 ? 'high' : 'middle', ...extra});
 const profile = ps => Object.entries(ps).map(([code, p]) => ({...f(code, p), facets: [f(`${code}1`, 50, {name: `${code} facet`})]}));
 const name = d => ({O: 'Openness', C: 'Conscientiousness', E: 'Extraversion', A: 'Agreeableness', N: 'Emotional reactivity'})[d.code];
 
 test('names the person, the profile name and the trait furthest from the middle', () => {
-  const s = videoScript(profile({O: 92, C: 81, E: 45, A: 60, N: 35}), {language: 'en', firstName: '  Rune Hansen ', name});
+  const d = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
+  d[0].facets.push(f('O5', 95, {name: 'Intellect'})); d[3].facets.push(f('A4', 20, {name: 'Cooperation'}));
+  const s = videoScript(d, {language: 'en', firstName: '  Rune Hansen ', name});
   assert.equal(s.hook, 'Who is Rune, really?');
   assert.equal(s.intro, 'Rune is');
-  assert.equal(s.name, 'The Structured Explorer');
+  assert.equal(s.name, "The Devil's Advocate");
+  assert.equal(s.name, profileName(d, 'en').name);
   assert.deepEqual([s.stat.above, s.stat.number], ['More curious than', 92]);
   assert.equal(s.closer, closers.O.high[0]);
 });

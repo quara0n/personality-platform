@@ -803,6 +803,8 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-combo-pieces{display:flex;flex:none;gap:4px}
 .d-combo-pieces .d-piece-icon{width:40px;height:40px}
 .d-combo .d-small{margin-top:10px}
+.d-glance-name{margin:6px 0 0;color:#5a7290;font-size:15px}
+.d-glance-name strong{font:400 22px/1.2 Georgia,serif;color:var(--title)}
 /* Motion: parts wait in a start state only after the script has seen they are off screen. */
 .d-radar-box.is-waiting .d-radar-shape{transform:scale(0);opacity:0}
 .d-radar-box.is-playing .d-radar-shape{animation:d-radar-grow 1s cubic-bezier(.2,.8,.2,1) both}
