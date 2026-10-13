@@ -38,11 +38,11 @@ test('every trait and direction has a closing line in both languages', () => {
   for (const code of 'OCEAN') for (const band of ['low', 'high']) assert.ok(closers[code][band].every(x => x.trim().length > 10));
 });
 
-test('short cut is 15 s of content plus a 5-second end card and keeps paid content out; long cut is about 30 s plus the end card', () => {
+test('short cut is under 20 s of content plus a 5-second end card and keeps paid content out; long cut is under 40 s plus the end card', () => {
   const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
   const short = videoScript(ds, {language: 'en', name}), long = videoScript(ds, {language: 'no', name, long: true});
-  assert.ok(timeline(short).at(-1).start <= 15 && duration(short) <= 20);
-  assert.ok(timeline(long).at(-1).start <= 30 && duration(long) <= 35);
+  assert.ok(timeline(short).at(-1).start <= 20 && duration(short) <= 25);
+  assert.ok(timeline(long).at(-1).start <= 40 && duration(long) <= 45);
   assert.ok(Math.abs(timeline(short).at(-1).end - timeline(short).at(-1).start - 5) < 1e-9);
   assert.equal(short.traits, undefined);
   assert.equal(short.combo, undefined);
