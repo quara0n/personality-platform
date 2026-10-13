@@ -85,16 +85,18 @@ body.in-loading footer{display:none}
 
 /* Shared profile card */
 .d-profile-card{background:#fffefb;border-radius:6px;box-shadow:0 10px 30px rgba(16,39,71,.07);padding:30px 34px 34px}
-.d-profile-name{margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid #e6e9ed;text-align:center}
-.d-profile-name-art{display:block;width:clamp(180px,34vw,260px);aspect-ratio:1;object-fit:contain;margin:0 auto 6px;border-radius:8px}
-.d-figure-pick{display:flex;justify-content:center;gap:6px;margin:0 0 12px}
+.d-profile-name{position:relative;max-width:620px;margin:22px auto 0;text-align:center}
+.d-profile-name-art{display:block;width:100%;max-width:620px;aspect-ratio:1;object-fit:contain;margin:0 auto;border-radius:14px}
+.d-figure-pick{position:absolute;top:12px;right:12px;display:flex;gap:6px;margin:0}
 .d-figure-pick button{border:1px solid #d9e0e6;background:#fff;color:#5a7290;border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;cursor:pointer}
 .d-figure-pick button[aria-pressed="true"]{border-color:var(--title);color:var(--title)}
-.d-profile-name-text{max-width:460px;margin:8px auto 8px;color:var(--title);font-size:16px;line-height:1.45}
-.d-profile-name-eyebrow{margin:0;color:#5a7290;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-.d-profile-name h2{margin:6px 0 4px;font:400 clamp(26px,3vw,34px)/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
+.d-profile-name-eyebrow{display:inline-block;position:relative;margin:-28px 0 0;padding:6px 14px;border-radius:999px;background:var(--title);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.d-profile-name-art:not([src]),.d-profile-name:not(:has(.d-profile-name-art)) .d-profile-name-eyebrow{margin-top:0}
+.d-profile-name h2{margin:12px 0 4px;font:400 clamp(32px,4vw,46px)/1.1 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
+.d-profile-name-text{max-width:540px;margin:8px auto;color:var(--title);font-size:18px;line-height:1.45}
 .d-profile-name-basis{margin:0;color:#5a7290;font-size:14px}
 .d-profile-name-more{display:inline-block;margin-top:8px;color:var(--title);font-size:14px;text-underline-offset:3px}
+.d-stage.is-solo{grid-template-columns:minmax(0,620px)}
 .d-scale-head,.d-trait-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr;align-items:center;column-gap:10px}
 .d-scale-head{grid-template-columns:minmax(120px,40%) 1fr 1fr;margin-bottom:14px;color:#5a7290;font-size:13px}
 .d-scale-head span:last-child{text-align:right}
@@ -107,7 +109,7 @@ body.in-loading footer{display:none}
 .d-results{padding-top:30px}
 .d-results-hero{text-align:center;padding:0 20px}
 .d-results-hero .eyebrow{color:#4f78a0}
-.d-results-hero h1{margin:6px 0 0;font:400 clamp(44px,6.4vw,82px)/1 Georgia,'Times New Roman',serif;letter-spacing:-.05em;color:var(--title)}
+.d-results-hero h1{margin:6px 0 0;font:400 clamp(40px,5vw,64px)/1 Georgia,'Times New Roman',serif;letter-spacing:-.05em;color:var(--title)}
 .d-sub{margin:16px 0 0;font-size:21px;color:#1f3c75}
 .d-stage{position:relative;display:grid;grid-template-columns:232px minmax(0,568px) 225px;justify-content:center;align-items:end;margin:28px auto 0;max-width:1024px}
 .d-stage>img{display:block;width:100%}
@@ -879,7 +881,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-anim .d-trait-row .d-piece-icon{animation:d-piece-in .7s cubic-bezier(.2,.8,.3,1.15) both;animation-delay:calc(var(--i,0)*120ms + 120ms)}
   .d-anim .d-track>span{animation:d-bar-grow .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
   .d-anim .d-track>i{animation:d-dot-slide .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
-  .d-anim .d-profile-name h2{animation:d-card-in .6s ease-out both;animation-delay:1.3s}
+  .d-anim .d-profile-name{animation:d-card-in .6s ease-out both}
   .d-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out;transition-delay:calc(var(--r,0)*90ms)}
   .d-reveal.is-in{opacity:1;transform:none}
   .d-tdetail:not([hidden]){animation:d-card-in .35s ease-out both}
