@@ -68,6 +68,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     hook: first ? tr(`Who is ${first}, really?`, `Hvem er ${first}, egentlig?`) : tr('120 questions later …', '120 spørsmål senere …'),
     intro: first ? tr(`${first} is`, `${first} er`) : tr('This is', 'Dette er'),
     name: named.name,
+    image: named.image,
     trait: trait.code,
     color: traitColors[trait.code],
     stat,
@@ -200,11 +201,16 @@ const scenes = {
   hook(ctx, lt, d, a, s) {
     text(ctx, s.hook, 1260, {size: 78, style: 'italic', alpha: Math.min(ease(span(lt, .5, 1.1)), a), rise: 30 * (1 - ease(span(lt, .5, 1.1)))});
   },
-  name(ctx, lt, d, a, s) {
-    const r = 40 * (1 - ease(span(lt, .1, .7)));
-    text(ctx, s.intro, 760, {size: 64, color: MUTED, alpha: a, rise: r});
-    const bottom = text(ctx, s.name, 920, {size: 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
+  name(ctx, lt, d, a, s, imgs) {
+    // With the profile character (imgs.character), the name moves up and the figure stands below it.
+    const art = imgs.character, top = art ? 600 : 760, r = 40 * (1 - ease(span(lt, .1, .7)));
+    text(ctx, s.intro, top, {size: 64, color: MUTED, alpha: a, rise: r});
+    const bottom = text(ctx, s.name, top + 160, {size: art ? 112 : 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
     brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(lt, .8, 1.6)), a);
+    if (art) {
+      const k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - (bottom + 130)), x = (W - size) / 2, y = bottom + 130 + 50 * (1 - k);
+      ctx.save(); ctx.globalAlpha = a * k; ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(feathered(art), x, y, size, size); ctx.restore();
+    }
   },
   traits(ctx, lt, d, a, s, imgs) {
     text(ctx, s.traitsTitle, 330, {size: 84, alpha: a});
@@ -276,6 +282,18 @@ const scenes = {
     text(ctx, s.note, H - 130, {size: 36, font: SANS, color: MUTED, alpha: k});
   }
 };
+
+// The character art sits on an off-white square; soft edges let it melt into the paper.
+const softened = new WeakMap();
+function feathered(img) {
+  if (softened.has(img)) return softened.get(img);
+  const c = document.createElement('canvas'), n = c.width = c.height = img.width || 600, x = c.getContext('2d'), e = n * .08;
+  x.drawImage(img, 0, 0, n, n); x.globalCompositeOperation = 'destination-in';
+  for (const [x0, y0, x1, y1] of [[0, 0, e, 0], [n, 0, n - e, 0], [0, 0, 0, e], [0, n, 0, n - e]]) {
+    const g = x.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000'); x.fillStyle = g; x.fillRect(0, 0, n, n);
+  }
+  softened.set(img, c); return c;
+}
 
 /** Draws the frame at time t (seconds). */
 export function drawFrame(ctx, t, s, imgs) {

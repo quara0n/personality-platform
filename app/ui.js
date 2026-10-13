@@ -168,7 +168,9 @@ function initShare(){
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches,site=/^(localhost|127\.)/.test(location.hostname)?'':location.hostname.replace(/^www\./,'');
   const long=canvas.closest('.d-share').dataset.long==='true',script=()=>videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long});
   let imgs={},playing=false,visible=false,recording=false,pos=0,from=0,since=0,file=null,url='',sound=false,voice=null,monitor=null,music=null;
-  const piecesReady=loadPieces().then(x=>{imgs=x;return x;});
+  // The profile character goes on the name slide, in the figure the person chose on the profile.
+  const character=()=>new Promise(ok=>{const img=new Image();img.onload=()=>ok(img);img.onerror=()=>ok(null);img.src=figureSrc(script().image);});
+  const piecesReady=Promise.all([loadPieces(),character()]).then(([x,c])=>{imgs={...x,character:c};return imgs;});
   const total=()=>duration(script()),clock=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
   const showTime=t=>{seek.max=total().toFixed(2);seek.value=t;seek.style.setProperty('--v',`${t/total()*100}%`);left.textContent='−'+clock(Math.ceil(total()-t-.001));};
   // Music: one buffer per length, heard through a gain node that the sound button turns up or down.
