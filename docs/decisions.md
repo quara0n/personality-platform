@@ -3,7 +3,10 @@
 ## Gjeldende tillegg fra brukeren 2026-10-11
 - USA og Norge er første markeder, med USD og NOK.
 - Brukergrensesnitt, spørsmål og rapport skal følge valgt språk: engelsk og norsk bokmål. Manuell språk- og landoverstyring er inkludert.
-- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. (Erstattet 2026-10-13: 49 kr og $4.99.) Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+
+## Prisendring fra brukeren 2026-10-13
+- Rapportprisen endres til 49 kr i Norge og $4.99 i USA (fra 99 kr/$9.99). Fortsatt engangskjøp av én samlet rapport. Stripe-sandboxprisene må opprettes på nytt; se docs/stripe-setup.md.
 
 Disse tilleggene går foran tidligere engelsk-only føring og den historiske listen over uavklarte punkter nedenfor.
 
@@ -157,6 +160,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Gratis: de fem trekkene med persentil, profilkortet, og per trekk én oppsummering, én styrke med illustrasjon og forbeholdslinjen.
 - Flyttet til rapporten: «Prøv i hverdagen» og spørsmålet til ettertanke står nå i hvert trekk i «Dine fem trekk». «Les mer om resultatet» er fjernet fra gratisprofilen; de lengre tekstene fantes allerede i rapporten.
 - Nytt i gratisprofilen: under hvert trekk står «[Trekket] ditt består av seks fasetter. Én skiller seg ut.» Fasetten lengst fra 50. persentil vises åpen med nivå, persentil og tolkning. De fem andre vises med navn, uskarp stolpe og lås, og en knapp går til kjøpssiden. De uskarpe stolpene er faste plassholdere og avslører ikke de ekte verdiene. Er den åpne fasetten i midtområdet, står det «Her er en smakebit på én» i stedet.
+- **Endret 2026-10-13:** Bare Åpenhet, det første trekket, viser en åpen fasett (fasetten lengst fra 50. persentil, med forklaring). De fire andre trekkene viser «[Trekket] ditt består av seks fasetter.», alle seks fasettene låst med uskarp stolpe, og knappen til kjøpssiden. Rune ønsket å gi bort færre fasetter gratis nå som delevideoen er lagt til.
 - «Send profilen til e-posten din»: skjemaet åpner brukerens eget e-postprogram (mailto) med de fem persentilene og en lenke tilbake til profilen. Lenken har svarene etter #-tegnet (#p=1 + 120 sifre), så de sendes ikke til serveren. Lenken gjenoppretter profilen og spør før den erstatter andre svar. Ekte utsending fra oss krever en e-posttjeneste og en serverfunksjon (se plan).
 
 ## Animasjon på gratisprofilen 2026-10-13
@@ -204,7 +208,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Tilpasset arbeid og hverdag, nytt kjøpsnivå 2026-10-13
 - Rune ønsket mer spesifikke råd: noen få spørsmål om hva man jobber med og hvordan hverdagen ser ut (barn, partner, alene osv.), som kobles med fasettene og gir direkte tilbakemelding om hva som hjelper og hva som kan gjøre det krevende. Rune foreslo dette som et høyere nivå til rundt 149 kr.
-- Bygget som forslag (utkast): kjøpssiden har to valg, fordypningsrapporten og «Fordypning + tilpasset» til 149 kr / $14.99, begge engangskjøp. Dette er et nytt, separat kjøpsnivå etter Runes forslag; endelig pris og om nivået skal lanseres, er Runes beslutning. I forhåndsvisningen er alt åpent.
+- Kjøpssiden har to valg: fordypningsrapporten (49 kr / $4.99) og «Fordypning + tilpasset» til 149 kr / $14.99, begge engangskjøp. Rune godkjente nivået, prisen og spørsmålene 2026-10-13 («Vi prøver det»). Dette er et nytt, separat kjøpsnivå; Stripe-pris og opplåsing etter betaling gjenstår. I forhåndsvisningen er alt åpent.
 - Øverst i Arbeidsliv og Hverdagsliv står «Tilpasset arbeidet ditt» / «Tilpasset hverdagen din». Arbeid: type arbeid, hvor mye med folk, hvor fast arbeidet er, press og frister. Hverdag: hvem man deler hverdagen med, barnas alder (bare når det er barn), hvor full uka er og hva man ønsker mer av. Valg skjer med ett trykk; resultatet vises når alle er besvart, og svarene kan endres.
 - Kobling: faste regler i app/tailored-copy.js (regel-id tailored-v1/…). Hvert svar slår på regler som hver nevner én fasett. Bare fasetter utenfor midtområdet brukes; retningen avgjør «Dette hjelper deg» eller «Dette kan gjøre det krevende». Maks tre per kolonne, fasettene lengst fra 50. persentil først, én fasett én gang per kapittel. Hver linje viser fasetten, persentilen, svaret den kommer fra og ett tiltak.
 - Svarene lagres bare i nettleserfanen (sessionStorage) og slettes med «Slett svarene mine». De er ikke med i svarfilen eller profillenken.
