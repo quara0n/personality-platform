@@ -48,6 +48,7 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   await page.locator('#header-language').selectOption('no');await page.evaluate(()=>location.hash='offer');await page.locator('.d-offer-plus').waitFor();
   await page.locator('#header-country').selectOption('NO');
   assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/149/);
+  assert.equal(await page.locator('.d-offer-plus .d-offer-recommended').innerText(),'ANBEFALT');
   if(SHOTS)await page.screenshot({path:`${SHOTS}/kjopsside.png`,fullPage:true});
   await page.locator('#header-country').selectOption('US');assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/14[.,]99/);
   await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);

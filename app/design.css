@@ -1040,7 +1040,7 @@ details.d-tailor-form{border:0;padding:0}
 @media print{.d-tailor{break-inside:auto;border-width:1px}.d-tailor-col li{break-inside:avoid}}
 
 /* Second tier on the offer page */
-.d-offer-plus{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:30px;align-items:center;max-width:900px;margin:34px auto 0;padding:28px 32px;border:2px solid #f6b18d;border-radius:6px;background:var(--warm);text-align:left}
+.d-offer-plus{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:30px;align-items:center;max-width:900px;margin:34px auto 0;padding:28px 32px;border:2px solid #f6b18d;border-radius:6px;background:var(--warm);text-align:left}
 .d-offer-plus h2{margin:0 0 8px;font:400 32px/1.1 Georgia,serif;letter-spacing:-.035em}
 .d-offer-plus>div:first-child>p:not(.d-tailor-badge){margin:0 0 14px;color:#1f4fa0;font-size:17px}
 .d-offer-plus ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
@@ -1048,3 +1048,5 @@ details.d-tailor-form{border:0;padding:0}
 .d-offer-plus .d-offer-terms{border-top:0;padding-top:0}
 .d-offer-plus .d-offer-price{background:#fff}
 @media(max-width:760px){.d-offer-plus{grid-template-columns:1fr;padding:22px 18px;gap:18px}}
+.d-offer-recommended{position:absolute;top:-15px;right:28px;margin:0;padding:5px 16px;border-radius:999px;background:var(--title);color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.d-offer-plus{border-width:3px}
