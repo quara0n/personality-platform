@@ -113,10 +113,13 @@ function animateResults(){
 const tryIcon='<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10a10 10 0 0 0-6 18c1.5 1.2 2 2.6 2 4h8c0-1.4.5-2.8 2-4a10 10 0 0 0-6-18zM20 36h8M21 40h6M24 2v3M10 8l2 2M38 8l-2 2M5 20h3M40 20h3"/></svg>';
 const lockIcon='<svg class="d-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 const yourTrait=c=>({O:tr('Your Openness','Åpenheten din'),C:tr('Your Conscientiousness','Planmessigheten din'),E:tr('Your Extraversion','Ekstroversjonen din'),A:tr('Your Agreeableness','Medmenneskeligheten din'),N:tr('Your Emotional reactivity','Den følelsesmessige reaktiviteten din')})[c];
-function facetTeaser(d){
-  const top=[...d.facets].sort((a,b)=>extremity(b)-extremity(a)||a.code.localeCompare(b.code))[0],rest=d.facets.filter(f=>f!==top),fake=[62,38,74,51,29];
-  return `<div class="d-teaser"><p class="d-teaser-lead">${yourTrait(d.code)} ${tr('is made up of six facets.','består av seks fasetter.')} ${top.band==='middle'?tr('Here is a taste of one.','Her er en smakebit på én.'):tr('One stands out.','Én skiller seg ut.')}</p>
-    <div class="d-teaser-open"><p class="d-tdetail-eyebrow">${top.band==='middle'?tr('A taste','Smakebit'):tr('Stands out most','Skiller seg mest ut')}</p><div class="d-teaser-open-head"><h4>${esc(top.name)}</h4><span class="d-chip d-chip-${top.band}">${bandShort(top.band)}</span><span class="d-facet-score">${esc(scoreText(top))}</span></div>${miniBar(top,traitColors[d.code])}<p>${esc(top.interpretation)}</p></div>
+const topFacet=d=>[...d.facets].sort((a,b)=>extremity(b)-extremity(a)||a.code.localeCompare(b.code))[0];
+// Only one trait on the free profile shows an open facet: the one whose standout facet lies furthest from the middle.
+function teaserTrait(){return order.map(c=>sorted().find(x=>x.code===c)).sort((a,b)=>extremity(topFacet(b))-extremity(topFacet(a)))[0].code;}
+function facetTeaser(d,open){
+  const top=open?topFacet(d):null,rest=d.facets.filter(f=>f!==top),fake=[62,38,74,51,29,45];
+  return `<div class="d-teaser"><p class="d-teaser-lead">${yourTrait(d.code)} ${tr('is made up of six facets.','består av seks fasetter.')}${top?' '+(top.band==='middle'?tr('Here is a taste of one.','Her er en smakebit på én.'):tr('One stands out.','Én skiller seg ut.')):''}</p>
+    ${top?`<div class="d-teaser-open"><p class="d-tdetail-eyebrow">${top.band==='middle'?tr('A taste','Smakebit'):tr('Stands out most','Skiller seg mest ut')}</p><div class="d-teaser-open-head"><h4>${esc(top.name)}</h4><span class="d-chip d-chip-${top.band}">${bandShort(top.band)}</span><span class="d-facet-score">${esc(scoreText(top))}</span></div>${miniBar(top,traitColors[d.code])}<p>${esc(top.interpretation)}</p></div>`:''}
     <ul class="d-teaser-list" aria-label="${tr('Locked facets','Låste fasetter')}">${rest.map((f,i)=>`<li><span class="d-teaser-name">${esc(f.name)}</span><span class="d-teaser-blur" aria-hidden="true"><i style="width:${fake[i]}%;background:${traitColors[d.code]}"></i></span>${lockIcon}</li>`).join('')}</ul>
     <a class="d-teaser-cta" href="#offer">${lockIcon}<span>${tr('Unlock all six facets in the in-depth report','Lås opp alle seks fasettene i fordypningsrapporten')}</span><span aria-hidden="true">→</span></a></div>`;
 }
@@ -168,10 +171,10 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
     ${shareBox()}
     <div class="d-explore"><div class="d-explore-inner"><h2 class="d-panels-title">${tr('Explore your traits','Utforsk trekkene dine')}</h2>
       <div class="d-panels">${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<button type="button" class="d-tpanel d-tpanel-${c}" data-trait="${c}" aria-expanded="false" aria-controls="td-${c}"><span class="d-tpanel-art"><img src="assets/design/trait-${c}.webp" alt="" aria-hidden="true"></span><span class="d-tpanel-name">${esc(name(d).replace(/\s*\(.*\)$/,''))}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`;}).join('')}</div>
-      ${order.map(c=>{const d=sorted().find(x=>x.code===c),pc=panelCopy(d,language),art=c==='O'?'facets/strength-O.webp':`facets/head-${c}.webp`;return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-level">${bandText(d.band)}${hasPct(d)?'':` · ${Number(d.mean).toFixed(2)} / 5`}</p><p class="d-tdetail-line">${esc(traitLine(d,language))}</p>
+      ${(t=>order.map(c=>{const d=sorted().find(x=>x.code===c),pc=panelCopy(d,language),art=c==='O'?'facets/strength-O.webp':`facets/head-${c}.webp`;return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-level">${bandText(d.band)}${hasPct(d)?'':` · ${Number(d.mean).toFixed(2)} / 5`}</p><p class="d-tdetail-line">${esc(traitLine(d,language))}</p>
         <div class="d-tdetail-strength"><div><p class="d-tdetail-eyebrow d-tdetail-eyebrow-warm">${tr('A possible strength','En mulig styrke')}</p><h4>${esc(pc.strength)}</h4><p>${esc(pc.strengthText)}</p></div><img src="assets/design/${art}" alt="" aria-hidden="true"></div>
         <p class="d-tdetail-caveat">${esc(pc.caveat)}</p>
-        ${facetTeaser(d)}</div>`;}).join('')}
+        ${facetTeaser(d,c===t)}</div>`;}).join(''))(teaserTrait())}
       <div class="d-deeper"><svg class="d-deeper-mark" viewBox="0 0 64 48" aria-hidden="true"><rect x="7" y="10" width="24" height="24" transform="rotate(45 19 22)" fill="#f6b18d"/><rect x="25" y="10" width="24" height="24" transform="rotate(45 37 22)" fill="none" stroke="#13284f" stroke-width="2"/></svg><div><h2>${tr('Go deeper into your personality','Gå dypere i personligheten din')}</h2><a href="#offer">${tr('Explore the in-depth report','Utforsk fordypningsrapporten')} <span aria-hidden="true">→</span></a></div></div>
       ${demo?'':emailBox()}
       <p class="d-small d-center">${interpretation()}</p>
