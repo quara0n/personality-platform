@@ -951,3 +951,25 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 }
 @media(prefers-reduced-motion:reduce){.d-tlogo-piece img,.d-tlogo-label,.d-tlogo-name{transition:none}.d-tlpanel.is-opening{animation:none}}
 @media print{.d-tlogo-wrap,.d-tlpanel-close{display:none!important}.d-tlpanel[hidden]{display:block!important}}
+
+/* Optional account: save the profile (app/account.js) */
+.d-account-box{max-width:1040px;margin:24px auto 0;padding:26px 28px;border:1px solid #d8e1ec;border-radius:12px;background:#fff;color:var(--title)}
+.d-account-box h2{margin:0 0 6px;font:400 clamp(22px,2.2vw,28px)/1.15 Georgia,serif}
+.d-account-box p,.d-account-panel p{margin:0 0 12px;color:#2c4566}
+.d-account-page .d-account-panel{margin-top:28px;padding:28px;border:1px solid #d8e1ec;border-radius:12px;background:#fff}
+.d-signin{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 12px}
+.d-signin-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:10px 20px;border:1px solid #b9c8d6;border-radius:8px;background:#fff;color:#1f1f1f;font:inherit;font-weight:600;font-size:16px;cursor:pointer}
+.d-signin-btn svg{width:20px;height:20px;flex:none}
+.d-signin-apple,.d-signin-x{background:#000;border-color:#000;color:#fff}
+.d-signin-btn:disabled{opacity:.55;cursor:default}
+.d-account-actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 14px}
+.d-account-primary,.d-account-secondary{padding:12px 20px;border:1.5px solid #13284f;border-radius:8px;background:#13284f;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.d-account-secondary{background:#fff;color:#13284f}
+.d-account-who b{color:var(--title)}
+.d-account-saved{color:#2d6a4f!important;font-weight:600}
+.d-account-box .d-account-note,.d-account-panel .d-account-note{font-size:14px;color:#5a7290}
+.d-account-msg{padding:10px 14px;border-radius:8px;background:#edf2f4;color:#13284f!important}
+.d-account-manage{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;padding-top:14px;border-top:1px solid #e6e9ed}
+.d-account-link{color:var(--title);font-size:15px;text-underline-offset:3px}
+@media(max-width:760px){.d-account-box{margin-top:20px;padding:20px 16px}.d-signin-btn{width:100%;justify-content:center}}
+@media print{.d-account-box{display:none}}

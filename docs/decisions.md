@@ -191,3 +191,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Ved redusert bevegelse viser forhåndsvisningen et stillbilde; selve videoen kan fortsatt lages.
 - Rune ønsket i tillegg en lengre video på rundt 30 sekunder i fordypningsrapporten. «Del rapporten din som video» står i oversikten etter «Din profil på ett blikk». Den lange versjonen (30 s) legger til alle fem trekkene med persentil, kombinasjonssetningen og «En mulig styrke» for trekket profilnavnet bygger på. Gratisversjonen viser ikke disse. Begge bygger på samme scener i app/share-video.js (timeline(), regel-id share-video-v1/short|long/…). Boksen skjules i PDF.
 - Rune tror den lange videoen blir delt mest, men vil ikke presse rapporten på folk. Gratisvideoen har derfor ingen salgsbudskap; sluttkortet inviterer bare til å ta testen. I gratisboksen står én stille linje om at den lengre versjonen følger med fordypningsrapporten, med lenke.
+
+## Innlogging for å lagre profilen 2026-10-13
+- Rune ønsket innlogging med Google, Apple eller X. Anbefalt og bygget: innlogging er valgfri og brukes til å lagre profilen og åpne den igjen på alle enheter. Testen, profilen og videoen virker uten konto, og videoen lages fortsatt i nettleseren.
+- Tjeneste: Supabase (innlogging og database i EU), valgt fordi den også kan holde kjøp fra Stripe senere. Rune fikk valget på et beslutningskort; bygget på anbefalingen mens svaret venter.
+- Lagret per konto: de 120 svarene som profilkode, språk og tidspunkt. Brukeren kan slette profilen eller hele kontoen fra «Min side». Personvernsiden forklarer dette når innlogging er slått på.
+- Oppsett og gjenstående arbeid står i docs/innlogging.md.
