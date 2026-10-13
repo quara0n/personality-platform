@@ -30,6 +30,15 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await tab.goto('http://127.0.0.1:4173/#account');tab.on('dialog',d=>d.accept());
   await tab.locator('[data-account-action="delete-account"]').click();await tab.locator('.d-signin-btn').first().waitFor();
   assert.equal(await tab.evaluate(()=>localStorage.getItem('fake-db')),'null');
+  // The sign-in step right after the last question: sign in there and land on the saved profile.
+  const step=await ctx.newPage();step.on('pageerror',e=>errors.push(e.message));
+  await step.goto('http://127.0.0.1:4173/#home');await step.evaluate(async()=>{localStorage.setItem('fake-auth','false');localStorage.setItem('fake-db','null');const q=await (await fetch('data/questions-no.json')).json();const list=Array.isArray(q)?q:q.items||q.questions;const answers=Object.fromEntries(list.slice(0,119).map(x=>[x.id,3]));sessionStorage.setItem('five-assessment-v1',JSON.stringify({answers,index:119}));});
+  await step.goto('http://127.0.0.1:4173/#test');await step.reload();await step.locator('.d-choice').first().click();
+  await step.waitForURL(/#signin$/,{timeout:15000});assert.equal(await step.locator('.d-signin-step .d-signin-btn').count(),3);
+  if(process.env.SHOT_STEP)await step.screenshot({path:process.env.SHOT_STEP});
+  await step.locator('.d-signin-step .d-signin-apple').click();
+  await step.locator('.d-results').waitFor({timeout:20000});await step.locator('[data-account="box"] .d-account-saved').waitFor();
+  assert.equal(await step.evaluate(()=>localStorage.getItem('fake-provider')),'"apple"');
   await page.screenshot({path:process.env.SHOT||'/dev/null'}).catch(()=>{});
   assert.deepEqual(errors,[]);console.log('account check passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});
