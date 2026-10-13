@@ -6,7 +6,7 @@ Updated 2026-10-11. The original handoff remains a historical record.
 
 Buildless HTML/CSS/JavaScript application, with no application-server collection of answers. English and Norwegian Bokmål questionnaires and reports, 120 items, five domains, thirty facets, free results, combined work/life report, up to three facet-based suggested experiments and native browser print/save-PDF. The one-time-purchase offer is explicitly a preview: no payment is collected and no paid entitlement is simulated.
 
-The user confirmed USA and Norway first, fixed one-time prices of USD 9.99 and NOK 99, and Stripe. Browser language proposes English/USA/USD or Norwegian/Norway/NOK. Independent manual language and country selectors remain available. This is a locale suggestion, not IP geolocation. There is no invented exchange rate. Prices are displayed, with checkout explicitly unavailable. See docs/stripe-setup.md for exact minor-unit amounts and remaining setup.
+The user confirmed USA and Norway first, fixed one-time prices of USD 4.99 and NOK 49 (changed from USD 9.99 / NOK 99 on 2026-10-13), and Stripe. Browser language proposes English/USA/USD or Norwegian/Norway/NOK. Independent manual language and country selectors remain available. This is a locale suggestion, not IP geolocation. There is no invented exchange rate. Prices are displayed, with checkout explicitly unavailable. See docs/stripe-setup.md for exact minor-unit amounts and remaining setup.
 
 ## Scientific contract
 

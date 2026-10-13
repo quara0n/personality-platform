@@ -17,7 +17,7 @@ Kjør `npm start` og åpne http://127.0.0.1:4173. `npm test` kontrollerer skåri
 Åpne [designgalleriet](design/index.html) i en nettleser for å se hele den valgte flyten. Galleriet er bare en lokal visning av PNG-skisser, ikke produktet.
 
 ## Viktig
-Produktet finnes på **engelsk og norsk bokmål**. USA/USD og Norge/NOK er første markeder. Brukeren har valgt 99 kr og $9.99 som engangspriser, med Stripe.
+Produktet finnes på **engelsk og norsk bokmål**. USA/USD og Norge/NOK er første markeder. Brukeren har valgt 49 kr og $4.99 som engangspriser (endret fra 99 kr/$9.99 2026-10-13), med Stripe.
 «Fem» er arbeidsnavnet og brukerens originale logo brukes i grensesnittet. Stripe-sandbox er koblet til, med produkt, priser og to testlenker; kjøp er ikke koblet til rapporttilgang.
 Rapportenes eksempelprofiler er syntetiske, ikke Runes personlighet.
 Gratisresultatet skal gi nyttig verdi før et valgfritt engangskjøp av én rapport med både arbeidsliv og hverdagsliv.

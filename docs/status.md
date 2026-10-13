@@ -4,7 +4,7 @@
 - Original Fem-logo og godkjente designreferanser implementert. Språk-/landvalg og mobiltilpasning.
 - Verifisert Johnson IPIP-NEO-120: 120 spørsmål, fem trekk, 30 fasetter, reversering og dokumenterte kilder/lisenser.
 - Engelsk og norsk test, gratisresultat, full rapport om arbeidsliv/hverdag, tre neste steg og PDF-utskrift.
-- USA/USD 9.99 og Norge/NOK 99, med uavhengig valg av språk og marked.
+- USA/USD 4.99 og Norge/NOK 49, med uavhengig valg av språk og marked.
 - Stripe 5 sandbox: produkt, to priser og to testlenker. Ingen ekte betaling.
 - Åtte uavhengige review-linser fullført. Bekreftet språkbytterace rettet og regresjonstest bestått.
 
