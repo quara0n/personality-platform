@@ -13,11 +13,15 @@ const cfg = () => (typeof window !== 'undefined' && window.FEM_CONFIG) || {};
 export const enabled = (c = cfg()) => Boolean(c.supabaseUrl && c.supabaseAnonKey);
 
 /** Providers in the order shown. X is "twitter" in Supabase unless the config says otherwise. */
-export const providers = (c = cfg()) => [
-  {id: 'google', label: 'Google'},
-  {id: 'apple', label: 'Apple'},
-  {id: c.xProvider || 'twitter', label: 'X'}
-];
+// `providers` in the config ("google,apple,x") limits the buttons to the ones switched on in Supabase.
+export const providers = (c = cfg()) => {
+  const on = String(c.providers || 'google,apple,x').split(',').map(x => x.trim().toLowerCase());
+  return [
+    {key: 'google', id: 'google', label: 'Google'},
+    {key: 'apple', id: 'apple', label: 'Apple'},
+    {key: 'x', id: c.xProvider || 'twitter', label: 'X'}
+  ].filter(p => on.includes(p.key)).map(({id, label}) => ({id, label}));
+};
 
 let clientPromise;
 function client() {

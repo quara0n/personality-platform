@@ -17,7 +17,7 @@ Valgfri innlogging med Google, Apple eller X lar folk lagre de 120 svarene og å
    - Google: OAuth-klient (Web) i Google Cloud Console. Gratis.
    - Apple: krever Apple Developer Program (99 USD per år), en Services ID og en nøkkel for Sign in with Apple.
    - X: app i X Developer Portal med OAuth slått på. Supabase kaller leverandøren `twitter`; hvis prosjektet bruker den nyere `x`-leverandøren, sett `SUPABASE_X_PROVIDER=x`.
-5. I Vercel → Settings → Environment Variables: `SUPABASE_URL` og `SUPABASE_ANON_KEY` (Project Settings → API i Supabase). Begge er offentlige verdier. Service role-nøkkelen skal aldri inn i Vercel-bygget eller Git.
+5. I Vercel → Settings → Environment Variables: `SUPABASE_URL` og `SUPABASE_ANON_KEY` (Project Settings → API i Supabase). Begge er offentlige verdier. Sett også `SUPABASE_PROVIDERS` til leverandørene som er slått på, for eksempel `google` til å begynne med, eller `google,apple,x` når alle er klare. Knappene for de andre vises da ikke. Service role-nøkkelen skal aldri inn i Vercel-bygget eller Git.
 6. Deploy på nytt. `scripts/build.js` skriver verdiene til `dist/config.js`.
 
 ## Kontroll

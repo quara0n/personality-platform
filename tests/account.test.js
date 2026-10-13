@@ -18,6 +18,7 @@ test('sign-in stays off until both public Supabase values are set', () => {
 test('offers Google, Apple and X, with the X provider id configurable', () => {
   assert.deepEqual(providers({}).map(p => [p.id, p.label]), [['google', 'Google'], ['apple', 'Apple'], ['twitter', 'X']]);
   assert.equal(providers({xProvider: 'x'})[2].id, 'x');
+  assert.deepEqual(providers({providers: 'google'}).map(p => p.label), ['Google']);
 });
 
 test('the build writes only public settings to config.js', async () => {
