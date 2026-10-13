@@ -1,15 +1,19 @@
-// Shareable profile video: a 14-second vertical clip (1080 × 1920) for Stories, Reels and TikTok.
-// Hook, profile name, the trait furthest from the middle as "more X than N of 100", the facet that
-// stands out most (already open in the free profile), a light closing line and an end card.
+// Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
+// Short (about 14 s, free profile): hook, profile name, the trait furthest from the middle as
+// "more X than N of 100", the facet that stands out most (already open in the free profile),
+// a light closing line and an end card.
+// Long (about 30 s, in-depth report): adds all five traits, the combination sentence and a
+// possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
 // same trait as the profile name's noun, so they stay traceable to the result.
-import {traitColors} from './design-copy.js';
+import {traitColors, traitPiece, panelCopy} from './design-copy.js';
+import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
 
-export const W = 1080, H = 1920, DURATION = 14;
+export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
 const pick = (pair, language) => pair[language === 'no' ? 1 : 0];
 
@@ -35,7 +39,7 @@ const pct = x => Math.round(shownPercentile(x.percentile));
 const byExtremity = (a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code);
 
 /** Everything the video says, chosen from the scores. `names` maps a domain to its display name. */
-export function videoScript(domains, {language, firstName = '', name, site = ''}) {
+export function videoScript(domains, {language, firstName = '', name, site = '', long = false}) {
   const tr = (en, no) => (language === 'no' ? no : en);
   const named = profileName(domains, language);
   const trait = named.traits[0] || [...domains].sort(byExtremity)[0];
@@ -47,7 +51,17 @@ export function videoScript(domains, {language, firstName = '', name, site = ''}
   const facet = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
   const facetTrait = facet && domains.find(d => d.code === facet.code[0]);
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
+  const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
+  const extra = long ? {
+    traitsTitle: tr('All five traits', 'Alle fem trekkene'),
+    traits: ORDER.map(code => domains.find(d => d.code === code)).filter(Boolean).map(d => ({code: d.code, name: name(d), percentile: pct(d), color: traitColors[d.code], piece: traitPiece[d.code]})),
+    traitsNote: tr('Percentile: how many of 100 people scored lower', 'Persentil: hvor mange av 100 som skåret lavere'),
+    combo: {eyebrow: tr('Your combination', 'Kombinasjonen din'), text: combo.text, pieces: combo.traits.map(d => traitPiece[d.code])},
+    strength: {eyebrow: tr('A possible strength', 'En mulig styrke'), title: strength.strength, text: strength.strengthText}
+  } : {};
   return {
+    long,
+    ...extra,
     language,
     hook: first ? tr(`Who is ${first}, really?`, `Hvem er ${first}, egentlig?`) : tr('120 questions later …', '120 spørsmål senere …'),
     intro: first ? tr(`${first} is`, `${first} er`) : tr('This is', 'Dette er'),
@@ -61,7 +75,7 @@ export function videoScript(domains, {language, firstName = '', name, site = ''}
     cta: tr('Take the free Big Five test', 'Ta den gratis Big Five-testen'),
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
-    ruleId: `share-video-v1/${trait.code}${band[0]}/${named.ruleId}`
+    ruleId: `share-video-v1/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}`
   };
 }
 
@@ -79,7 +93,7 @@ const FLY = {navy: [-700, -900, -38], apricot: [800, -700, 42], ivory: [900, 500
 export const PIECES = Object.keys(LOGO);
 
 export function loadPieces(base = 'assets/design/') {
-  return Promise.all(PIECES.map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
+  return Promise.all([...PIECES, 'sand'].map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
 }
 
 function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1) {
@@ -158,83 +172,119 @@ function footer(ctx, imgs, a) {
   ctx.restore();
 }
 
-/** Draws the frame at time t (seconds). */
-export function drawFrame(ctx, t, s, imgs) {
-  const sceneColor = t < 5 ? '#91b6d3' : t < 8.4 ? s.color : t < 10.6 ? (s.facet?.color || s.color) : s.color;
-  paper(ctx, t, sceneColor);
+// Scene lengths in seconds. Scenes play back to back and cross-fade at the edges.
+const CUTS = {
+  short: [['hook', 2.5], ['name', 2.6], ['stat', 3.4], ['facet', 2.2], ['closer', 1.9], ['end', 1.6]],
+  long: [['hook', 2.5], ['name', 2.8], ['traits', 5.6], ['stat', 3.4], ['facet', 2.8], ['combo', 4.8], ['strength', 3.6], ['closer', 2.6], ['end', 2.2]]
+};
+/** Scenes with start and end times for this script; skips the facet when there is none. */
+export function timeline(s) {
+  let at = 0;
+  return CUTS[s.long ? 'long' : 'short'].filter(([id]) => id !== 'facet' || s.facet).map(([id, d]) => {const x = {id, start: at, end: at + d}; at += d; return x;});
+}
+export const duration = s => timeline(s).at(-1).end;
 
-  // 1. Hook: the pieces fly together into the logo.
-  const hookA = 1 - span(t, 1.9, 2.4);
-  if (t < 5) {
-    const move = easeInOut(span(t, 2.0, 2.8));
-    ctx.save(); ctx.globalAlpha = t > 4.6 ? 1 - span(t, 4.6, 5) : 1;
-    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, span(t, 0, 1.5), span(t, 1.1, 1.9));
-    ctx.restore();
-  }
-  if (hookA > 0) text(ctx, s.hook, 1260, {size: 78, style: 'italic', alpha: Math.min(ease(span(t, .5, 1.1)), hookA), rise: 30 * (1 - ease(span(t, .5, 1.1)))});
-
-  // 2. Profile name.
-  const nameA = life(t, 2.5, 5.1);
-  if (nameA > 0) {
-    const r = 40 * (1 - ease(span(t, 2.5, 3.1)));
-    text(ctx, s.intro, 760, {size: 64, color: MUTED, alpha: nameA, rise: r});
-    const bottom = text(ctx, s.name, 920, {size: 132, alpha: Math.min(nameA, ease(span(t, 2.8, 3.4))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
-    brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(t, 3.3, 4.1)), nameA);
-  }
-
-  // 3. The standout percentile, with 100 dots.
-  const statA = life(t, 5.0, 8.5);
-  if (statA > 0) {
-    const k = ease(span(t, 5.2, 6.8));
-    text(ctx, s.stat.above, 360, {size: 70, alpha: statA});
-    text(ctx, String(Math.round(s.stat.number * k)), 700, {size: 330, alpha: statA, color: INK});
-    text(ctx, s.stat.below, 820, {size: 62, alpha: statA, color: MUTED, maxLines: 2});
-    const lit = Math.round(s.stat.count * ease(span(t, 5.4, 7.2))), gap = 62, x0 = W / 2 - gap * 4.5, y0 = 1000;
-    ctx.save(); ctx.globalAlpha = statA;
+const scenes = {
+  hook(ctx, lt, d, a, s) {
+    text(ctx, s.hook, 1260, {size: 78, style: 'italic', alpha: Math.min(ease(span(lt, .5, 1.1)), a), rise: 30 * (1 - ease(span(lt, .5, 1.1)))});
+  },
+  name(ctx, lt, d, a, s) {
+    const r = 40 * (1 - ease(span(lt, .1, .7)));
+    text(ctx, s.intro, 760, {size: 64, color: MUTED, alpha: a, rise: r});
+    const bottom = text(ctx, s.name, 920, {size: 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
+    brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(lt, .8, 1.6)), a);
+  },
+  traits(ctx, lt, d, a, s, imgs) {
+    text(ctx, s.traitsTitle, 330, {size: 84, alpha: a});
+    s.traits.forEach((x, i) => {
+      const y = 520 + i * 220, k = ease(span(lt, .5 + i * .35, 1.6 + i * .35)), ra = a * ease(span(lt, .3 + i * .35, .8 + i * .35));
+      ctx.save(); ctx.globalAlpha = ra;
+      const img = imgs[x.piece]; if (img) {const w = 70, h = w * img.height / img.width; ctx.drawImage(img, 110, y - h / 2 - 34, w, h);}
+      ctx.fillStyle = INK; ctx.font = `400 50px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(x.name, 200, y - 34);
+      ctx.font = `400 64px ${SERIF}`; ctx.textAlign = 'right'; ctx.fillText(String(Math.round(x.percentile * k)), W - 110, y - 30);
+      const bx = 110, bw = W - 220;
+      ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, y + 34, bw, 22, 11); ctx.fill();
+      ctx.fillStyle = x.color; roundRect(ctx, bx, y + 34, Math.max(22, bw * x.percentile / 100 * k), 22, 11); ctx.fill();
+      ctx.restore();
+    });
+    text(ctx, s.traitsNote, 1640, {size: 38, font: SANS, color: MUTED, alpha: a * ease(span(lt, 2.4, 3))});
+  },
+  stat(ctx, lt, d, a, s) {
+    const k = ease(span(lt, .2, 1.8));
+    text(ctx, s.stat.above, 360, {size: 70, alpha: a});
+    text(ctx, String(Math.round(s.stat.number * k)), 700, {size: 330, alpha: a});
+    text(ctx, s.stat.below, 820, {size: 62, alpha: a, color: MUTED, maxLines: 2});
+    const lit = Math.round(s.stat.count * ease(span(lt, .4, 2.2))), gap = 62, x0 = W / 2 - gap * 4.5, y0 = 1000;
+    ctx.save(); ctx.globalAlpha = a;
     for (let i = 0; i < 100; i++) {
       const on = i < lit, x = x0 + (i % 10) * gap, y = y0 + Math.floor(i / 10) * gap;
       ctx.beginPath(); ctx.arc(x, y, on ? 21 : 17, 0, Math.PI * 2); ctx.fillStyle = on ? s.color : 'rgba(12,23,66,.1)'; ctx.fill();
     }
     ctx.restore();
-    text(ctx, s.stat.caption, 1660, {size: 44, font: SANS, color: MUTED, alpha: statA * ease(span(t, 6.6, 7.2))});
-  }
-
-  // 4. The facet that stands out most.
-  const facetA = s.facet ? life(t, 8.4, 10.7) : 0;
-  if (facetA > 0) {
-    const f = s.facet, r = 40 * (1 - ease(span(t, 8.4, 9)));
-    text(ctx, f.eyebrow.toUpperCase(), 640, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: facetA, rise: r, spacing: 4});
-    const bottom = text(ctx, f.name, 800, {size: 120, alpha: facetA, rise: r, maxLines: 2});
-    const by = bottom + 170, bx = 170, bw = W - 340, k = ease(span(t, 9.0, 10.0)) * f.percentile / 100;
-    ctx.save(); ctx.globalAlpha = facetA;
+    text(ctx, s.stat.caption, 1660, {size: 44, font: SANS, color: MUTED, alpha: a * ease(span(lt, 1.6, 2.2))});
+  },
+  facet(ctx, lt, d, a, s) {
+    const f = s.facet, r = 40 * (1 - ease(span(lt, 0, .6)));
+    text(ctx, f.eyebrow.toUpperCase(), 640, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, rise: r, spacing: 4});
+    const bottom = text(ctx, f.name, 800, {size: 120, alpha: a, rise: r, maxLines: 2});
+    const by = bottom + 170, bx = 170, bw = W - 340, k = ease(span(lt, .6, 1.6)) * f.percentile / 100;
+    ctx.save(); ctx.globalAlpha = a;
     ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, by - 14, bw, 28, 14); ctx.fill();
     ctx.fillStyle = f.color; roundRect(ctx, bx, by - 14, Math.max(28, bw * k), 28, 14); ctx.fill();
     ctx.beginPath(); ctx.arc(bx + Math.max(14, bw * k), by, 26, 0, Math.PI * 2); ctx.fillStyle = INK; ctx.fill();
     ctx.restore();
-    text(ctx, f.caption, by + 130, {size: 48, font: SANS, color: MUTED, alpha: facetA});
+    text(ctx, f.caption, by + 130, {size: 48, font: SANS, color: MUTED, alpha: a});
+  },
+  combo(ctx, lt, d, a, s, imgs) {
+    const c = s.combo, n = c.pieces.length;
+    c.pieces.forEach((p, i) => {const img = imgs[p]; if (!img) return; const w = 150, h = w * img.height / img.width, k = easeInOut(span(lt, .1, 1.1)), x = W / 2 + (i - (n - 1) / 2) * 150 * k - w / 2;
+      ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, x, 420 - h / 2, w, h); ctx.restore();});
+    text(ctx, c.eyebrow.toUpperCase(), 640, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, spacing: 4});
+    text(ctx, s.name, 760, {size: 76, alpha: a, maxLines: 2});
+    text(ctx, c.text, 980, {size: 62, alpha: a * ease(span(lt, .6, 1.2)), maxLines: 7, lh: 1.3, max: W - 200});
+  },
+  strength(ctx, lt, d, a, s) {
+    const g = s.strength, r = 40 * (1 - ease(span(lt, 0, .6)));
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#f6b18d'; ctx.beginPath(); ctx.moveTo(W / 2, 470 + r); ctx.lineTo(W / 2 + 60, 570 + r); ctx.lineTo(W / 2 - 60, 570 + r); ctx.closePath(); ctx.fill(); ctx.restore();
+    text(ctx, g.eyebrow.toUpperCase(), 680, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, rise: r, spacing: 4});
+    const bottom = text(ctx, g.title, 840, {size: 96, alpha: a, rise: r, maxLines: 3});
+    text(ctx, g.text, bottom + 150, {size: 56, color: '#2c4566', alpha: a * ease(span(lt, .5, 1.1)), maxLines: 4, lh: 1.3});
+  },
+  closer(ctx, lt, d, a, s) {
+    const k = ease(span(lt, 0, .7));
+    text(ctx, '“', 720, {size: 220, color: s.color, alpha: a * .8});
+    text(ctx, s.closer, 900, {size: 84, style: 'italic', alpha: a, rise: 30 * (1 - k), maxLines: 4, lh: 1.18, max: W - 200});
+  },
+  end(ctx, lt, d, a, s, imgs) {
+    const k = ease(span(lt, 0, .5));
+    ctx.save(); ctx.globalAlpha = k; logo(ctx, imgs, W / 2, 700, .95, span(lt, -.1, .8), span(lt, .2, 1)); ctx.restore();
+    text(ctx, s.end, 1150, {size: 110, alpha: k});
+    text(ctx, s.cta, 1260, {size: 50, font: SANS, alpha: k});
+    if (s.site) text(ctx, s.site, 1340, {size: 46, font: SANS, weight: '700', color: '#d9764a', alpha: k});
+    text(ctx, s.note, H - 130, {size: 36, font: SANS, color: MUTED, alpha: k});
   }
+};
 
-  // 5. The light closing line.
-  const jokeA = life(t, 10.6, 12.5);
-  if (jokeA > 0) {
-    const k = ease(span(t, 10.6, 11.3));
-    text(ctx, '“', 720, {size: 220, color: s.color, alpha: jokeA * .8});
-    text(ctx, s.closer, 900, {size: 84, style: 'italic', alpha: jokeA, rise: 30 * (1 - k), maxLines: 4, lh: 1.18, max: W - 200});
-  }
-
-  footer(ctx, imgs, t > 2.6 && t < 12.5 ? Math.min(ease(span(t, 2.6, 3.2)), 1 - span(t, 12.1, 12.5)) : 0);
-
-  // 6. End card.
-  const endA = ease(span(t, 12.4, 12.9));
-  if (endA > 0) {
-    ctx.save(); ctx.globalAlpha = endA;
-    logo(ctx, imgs, W / 2, 700, .95, span(t, 12.3, 13.2), span(t, 12.6, 13.4));
+/** Draws the frame at time t (seconds). */
+export function drawFrame(ctx, t, s, imgs) {
+  const tl = timeline(s), at = id => tl.find(x => x.id === id), now = tl.find(x => t < x.end) || tl.at(-1);
+  const color = {traits: '#f6b18d', facet: s.facet?.color, combo: '#cdb8a2', strength: '#f6b18d'}[now.id] || (['hook', 'name'].includes(now.id) ? '#91b6d3' : s.color);
+  paper(ctx, t, color);
+  // The logo assembles in the hook, then shrinks to the top while the name appears.
+  const name = at('name');
+  if (t < name.end) {
+    const move = easeInOut(span(t, name.start - .5, name.start + .3));
+    ctx.save(); ctx.globalAlpha = 1 - span(t, name.end - .4, name.end);
+    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, span(t, 0, 1.5), span(t, 1.1, 1.9));
     ctx.restore();
-    text(ctx, s.end, 1150, {size: 110, alpha: endA});
-    text(ctx, s.cta, 1260, {size: 50, font: SANS, color: INK, alpha: endA});
-    if (s.site) text(ctx, s.site, 1340, {size: 46, font: SANS, weight: '700', color: '#d9764a', alpha: endA});
-    text(ctx, s.note, H - 130, {size: 36, font: SANS, color: MUTED, alpha: endA});
   }
+  for (const sc of tl) {
+    if (t < sc.start - .05 || t > sc.end + .05) continue;
+    const last = sc === tl.at(-1), a = Math.min(sc.id === 'hook' ? 1 : ease(span(t, sc.start, sc.start + .45)), last ? 1 : 1 - span(t, sc.end - .35, sc.end));
+    if (a > 0) scenes[sc.id](ctx, t - sc.start, sc.end - sc.start, a, s, imgs);
+  }
+  const closer = at('closer');
+  footer(ctx, imgs, t > name.start + .1 && t < closer.end ? Math.min(ease(span(t, name.start + .1, name.start + .7)), 1 - span(t, closer.end - .4, closer.end)) : 0);
 }
 function roundRect(ctx, x, y, w, h, r) {ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();}
 
@@ -264,7 +314,7 @@ export function videoType() {
 export function recordVideo(canvas, s, imgs, onProgress = () => {}) {
   const type = videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
-  const ctx = canvas.getContext('2d'), stream = canvas.captureStream(30), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6}), parts = [];
+  const total = duration(s), ctx = canvas.getContext('2d'), stream = canvas.captureStream(30), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6}), parts = [];
   rec.ondataavailable = e => e.data.size && parts.push(e.data);
   return new Promise((resolve, reject) => {
     rec.onstop = () => {stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
@@ -274,8 +324,8 @@ export function recordVideo(canvas, s, imgs, onProgress = () => {}) {
     const start = performance.now();
     const tick = now => {
       const t = (now - start) / 1000;
-      drawFrame(ctx, Math.min(t, DURATION), s, imgs); onProgress(Math.min(1, t / DURATION));
-      if (t < DURATION + .2) requestAnimationFrame(tick); else rec.stop();
+      drawFrame(ctx, Math.min(t, total), s, imgs); onProgress(Math.min(1, t / total));
+      if (t < total + .2) requestAnimationFrame(tick); else rec.stop();
     };
     requestAnimationFrame(tick);
   });
