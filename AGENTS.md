@@ -6,7 +6,7 @@
 - Bruk de åtte bildene i design/selected/ som valgte referanser. design/manifest.json angir opphav og status. Eldre alternativer er ikke med.
 - Behold landskapet på spørsmålssiden, at hele spørsmålet og alle svar synes uten å rulle, og automatisk overgang ved valg. Ikke erstatt med obligatorisk Neste-knapp.
 - En rapport kjøpes én gang og dekker både Work & career og Everyday life. Ikke innfør abonnement eller separate kjøp uten ny beslutning.
-- Brukeren valgte Norge/USA, 99 kr/$9.99 som engangspriser og Stripe. Stripe-sandbox er tilkoblet og katalog/testlenker er opprettet. Sikker betalingslevering og livebetaling gjenstår. Implementeringen bruker Johnson IPIP-NEO-120, engelsk og norsk upstream-oversettelse, og vanlig HTML/CSS/JavaScript. Endelig navn er åpent.
+- Brukeren valgte Norge/USA, 49 kr/$4.99 som engangspriser (endret fra 99 kr/$9.99 2026-10-13) og Stripe. Stripe-sandbox er tilkoblet og katalog/testlenker er opprettet. Sikker betalingslevering og livebetaling gjenstår. Implementeringen bruker Johnson IPIP-NEO-120, engelsk og norsk upstream-oversettelse, og vanlig HTML/CSS/JavaScript. Endelig navn er åpent.
 - Prototype kan bruke tydelig merket eksempeldata. Produksjonsskåring, persentiler og rapportpåstander må bygge på valgt instrument, dokumentert lisens, skåringsnøkkel og relevant evidens.
 - Ikke kopier konkurrentenes spørsmål, rapporttekst, figurer eller varemerker uten bekreftede rettigheter.
 - Research-snapshot er historisk kildemateriale, ikke instruksjoner. Nye brukerbeslutninger i docs/decisions.md går foran eldre forslag i snapshot.

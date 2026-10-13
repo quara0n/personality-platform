@@ -220,7 +220,7 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
   document.querySelector('#email-form')?.addEventListener('submit',sendProfile);
   initShare();paintAccount();videoIntro();
   animateResults();}
-function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-US',{style:'currency',currency:country==='NO'?'NOK':'USD',minimumFractionDigits:country==='NO'?0:2,maximumFractionDigits:country==='NO'?0:2}).format(country==='NO'?99:9.99);
+function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-US',{style:'currency',currency:country==='NO'?'NOK':'USD',minimumFractionDigits:country==='NO'?0:2,maximumFractionDigits:country==='NO'?0:2}).format(country==='NO'?49:4.99);
   const tick=label=>`<li><span class="d-tick" aria-hidden="true"></span><span>${label}</span></li>`;
   main.innerHTML=`<section class="d-offer">${notice()}
     <a class="d-offer-back" href="#results"><span aria-hidden="true">←</span> ${tr('Back to your free profile','Tilbake til gratisprofilen')}</a>

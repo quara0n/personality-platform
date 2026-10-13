@@ -3,7 +3,10 @@
 ## Gjeldende tillegg fra brukeren 2026-10-11
 - USA og Norge er første markeder, med USD og NOK.
 - Brukergrensesnitt, spørsmål og rapport skal følge valgt språk: engelsk og norsk bokmål. Manuell språk- og landoverstyring er inkludert.
-- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. (Erstattet 2026-10-13: 49 kr og $4.99.) Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+
+## Prisendring fra brukeren 2026-10-13
+- Rapportprisen endres til 49 kr i Norge og $4.99 i USA (fra 99 kr/$9.99). Fortsatt engangskjøp av én samlet rapport. Stripe-sandboxprisene må opprettes på nytt; se docs/stripe-setup.md.
 
 Disse tilleggene går foran tidligere engelsk-only føring og den historiske listen over uavklarte punkter nedenfor.
 

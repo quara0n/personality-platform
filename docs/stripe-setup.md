@@ -1,6 +1,6 @@
 # Stripe setup — confirmed commercial decisions
 
-Confirmed by Rune on 2026-10-11: one report, one-time purchase, Norway NOK 99 and USA USD 9.99, Stripe. Both work/career and everyday life are included. These are fixed market prices, not live foreign-exchange conversions.
+Confirmed by Rune on 2026-10-11: one report, one-time purchase, Norway NOK 99 and USA USD 9.99, Stripe. On 2026-10-13 Rune changed the prices to NOK 49 and USD 4.99. Both work/career and everyday life are included. These are fixed market prices, not live foreign-exchange conversions.
 
 ## Current access and behavior
 
@@ -20,4 +20,6 @@ User explicitly approved account `acct_1UPOcsDrHYnGVSpC` (5 sandbox), livemode=f
 - NOK test link: https://buy.stripe.com/test_4gMfZhcQCfNz7AzaVq8N200 (`plink_1UPOk5DrHYnGVSpC07bVkGee`)
 - USD test link: https://buy.stripe.com/test_bJefZhdUGgRDaMLfbG8N201 (`plink_1UPOkCDrHYnGVSpCZRfyFHRV`)
 Both links explicitly state test-only, no paid report access. No payment completed yet. Links are not wired into the app. Automatic tax is disabled; tax setup remains undecided. Required signed webhook handling and paid fulfillment are not implemented. No live payment is enabled.
+**Outdated after 2026-10-13:** the sandbox prices and test links above are still NOK 99 / USD 9.99. Stripe prices cannot be edited, so new one-time prices for NOK 49 and USD 4.99 (and new test links) must be created in the 5 sandbox and their IDs recorded here. The old prices should then be archived.
+
 This supersedes earlier notes that Stripe was not connected or the catalog was empty.
