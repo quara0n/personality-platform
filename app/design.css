@@ -877,3 +877,50 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 @keyframes d-bar-grow{from{width:0}}
 @keyframes d-dot-slide{from{left:0}}
 @keyframes d-lock-shake{0%,100%{transform:none}20%{transform:rotate(-16deg)}40%{transform:rotate(13deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+
+/* Report chapter "Your five traits": the logo as a picker, one trait panel open at a time */
+.d-tlogo-wrap{margin:34px 0 8px}
+.d-tlogo-hint{margin:0 0 26px!important;text-align:center;color:#5a7290;font-size:15px}
+.d-tlogo{--s:1;position:relative;width:calc(285px*var(--s));height:calc(278px*var(--s));margin:0 auto 64px}
+.d-tlogo-piece{position:absolute;padding:0;border:0;background:none;font:inherit;color:inherit;pointer-events:none;cursor:pointer}
+.d-tlogo-piece:focus{outline:none}
+.d-tlogo-piece img{display:block;width:100%;height:auto;pointer-events:none;transition:transform .22s cubic-bezier(.3,.7,.3,1.3),filter .22s ease,opacity .22s ease}
+.d-tlogo-hit{position:absolute;inset:0;clip-path:var(--clip);pointer-events:auto;z-index:1}
+.d-tlogo-navy{left:1.75%;top:6.47%;width:41.75%;z-index:1}
+.d-tlogo-apricot{left:45.26%;top:0;width:45.61%;z-index:2}
+.d-tlogo-ivory{left:56.14%;top:44.96%;width:43.86%;z-index:3}
+.d-tlogo-steel{left:30.88%;top:58.63%;width:42.46%;z-index:4}
+.d-tlogo-sky{left:0;top:47.48%;width:47.02%;z-index:5}
+.d-tlogo-label{position:absolute;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:1px;width:max-content;max-width:200px;padding:3px 6px;border-radius:6px;pointer-events:auto;line-height:1.25;transition:transform .22s ease}
+.d-tlogo-name{font-size:16px;font-weight:700;color:var(--title);border-bottom:3px solid transparent;transition:border-color .2s ease}
+.d-tlogo-score{font-size:13px;color:#5a7290}
+.d-tlogo-navy .d-tlogo-label,.d-tlogo-sky .d-tlogo-label{right:calc(100% + 14px);text-align:right;align-items:flex-end}
+.d-tlogo-navy .d-tlogo-label{top:34%}
+.d-tlogo-sky .d-tlogo-label{top:2%}
+.d-tlogo-apricot .d-tlogo-label,.d-tlogo-ivory .d-tlogo-label{left:calc(100% + 14px)}
+.d-tlogo-apricot .d-tlogo-label{top:46%}
+.d-tlogo-ivory .d-tlogo-label{top:-4%}
+.d-tlogo-steel .d-tlogo-label{top:calc(100% + 10px);left:50%;transform:translateX(-50%);align-items:center;text-align:center}
+.d-tlogo-piece:hover img,.d-tlogo-piece:focus-visible img,.d-tlogo-piece.is-open img{transform:translateY(-9px);filter:drop-shadow(0 12px 10px rgba(12,23,66,.24))}
+.d-tlogo-piece:hover .d-tlogo-name,.d-tlogo-piece.is-open .d-tlogo-name{border-color:var(--tc)}
+.d-tlogo-piece:focus-visible .d-tlogo-label{outline:3px solid var(--title);outline-offset:2px}
+.d-tlogo-wrap.has-open .d-tlogo-piece:not(.is-open):not(:hover):not(:focus-visible) img{opacity:.45}
+.d-tlpanels .d-trait-chapter{margin-top:0}
+.d-tlpanel.is-opening{animation:d-rise .4s ease both}
+.d-tlpanel-close{display:flex;align-items:center;gap:8px;margin:-22px auto 30px;padding:10px 18px;border:1px solid #cfdbe6;border-radius:999px;background:#fff;color:var(--title);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.d-tlpanel-close:hover{background:#eef4f9}
+@media(hover:none){.d-tlogo-piece:hover:not(.is-open) img{transform:none;filter:none}.d-tlogo-piece:hover:not(.is-open) .d-tlogo-name{border-color:transparent}}
+@media(max-width:620px){
+  .d-tlogo{--s:.5;margin:0 0 56px 84px}
+  .d-tlogo-label{max-width:none;padding:2px 4px}
+  .d-tlogo-name{font-size:13.5px}
+  .d-tlogo-score{font-size:12px}
+  .d-tlogo-navy .d-tlogo-label,.d-tlogo-sky .d-tlogo-label{right:calc(100% + 6px)}
+  .d-tlogo-apricot .d-tlogo-label,.d-tlogo-ivory .d-tlogo-label{left:calc(100% + 6px)}
+  .d-tlogo-navy .d-tlogo-label{top:22%}
+  .d-tlogo-sky .d-tlogo-label{top:10%}
+  .d-tlogo-apricot .d-tlogo-label{top:40%}
+  .d-tlogo-ivory .d-tlogo-label{top:4%}
+}
+@media(prefers-reduced-motion:reduce){.d-tlogo-piece img,.d-tlogo-label,.d-tlogo-name{transition:none}.d-tlpanel.is-opening{animation:none}}
+@media print{.d-tlogo-wrap,.d-tlpanel-close{display:none!important}.d-tlpanel[hidden]{display:block!important}}
