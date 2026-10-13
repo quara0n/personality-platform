@@ -142,7 +142,7 @@ function initShare(){
       status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');}
     catch{status.textContent=tr('The video could not be made. Keep this tab open while it records, or download the image instead.','Videoen kunne ikke lages. Hold fanen åpen mens den tas opp, eller last ned bildet i stedet.');}
     recording=false;make.disabled=false;input.disabled=false;play(true);});
-  send.addEventListener('click',()=>{if(file)navigator.share({files:[file],title:script().name}).catch(()=>{});});
+  send.addEventListener('click',()=>{if(file)navigator.share({files:[file],title:script().name,text:`${script().end} ${script().cta}: ${location.origin}${location.pathname}`}).catch(()=>{});});
   document.querySelector('#share-still').addEventListener('click',()=>{const c=document.createElement('canvas');c.width=canvas.width;c.height=canvas.height;drawPoster(c.getContext('2d'),script(),imgs);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=tr('fem-profile','fem-profil')+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);},'image/png');});
 }
 function sendProfile(event){

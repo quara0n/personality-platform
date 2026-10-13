@@ -71,8 +71,9 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     stat,
     facet: facet ? {eyebrow: tr('The facet that stands out most', 'Fasetten som skiller seg mest ut'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
     closer: pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
-    end: tr("What's yours?", 'Hva er din?'),
-    cta: tr('Take the free Big Five test', 'Ta den gratis Big Five-testen'),
+    end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
+    cta: tr('Find out for free', 'Finn ut gratis'),
+    button: site || 'Fem',
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
     ruleId: `share-video-v1/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}`
@@ -258,9 +259,9 @@ const scenes = {
   end(ctx, lt, d, a, s, imgs) {
     const k = ease(span(lt, 0, .5));
     ctx.save(); ctx.globalAlpha = k; logo(ctx, imgs, W / 2, 700, .95, span(lt, -.1, .8), span(lt, .2, 1)); ctx.restore();
-    text(ctx, s.end, 1150, {size: 110, alpha: k});
-    text(ctx, s.cta, 1260, {size: 50, font: SANS, alpha: k});
-    if (s.site) text(ctx, s.site, 1340, {size: 46, font: SANS, weight: '700', color: '#d9764a', alpha: k});
+    text(ctx, s.end, 1150, {size: 84, alpha: k, maxLines: 2, lh: 1.1, max: W - 100});
+    text(ctx, s.cta, 1330, {size: 54, font: SANS, alpha: k});
+    pill(ctx, s.button, 1470, k * ease(span(lt, .3, .8)));
     text(ctx, s.note, H - 130, {size: 36, font: SANS, color: MUTED, alpha: k});
   }
 };
@@ -286,22 +287,34 @@ export function drawFrame(ctx, t, s, imgs) {
   const closer = at('closer');
   footer(ctx, imgs, t > name.start + .1 && t < closer.end ? Math.min(ease(span(t, name.start + .1, name.start + .7)), 1 - span(t, closer.end - .4, closer.end)) : 0);
 }
+// A button-like address on the end card. A video cannot hold a link, so the address is what people type or search for.
+function pill(ctx, label, y, a, scale = 1) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= a;
+  let size = 50 * scale; ctx.font = `700 ${size}px ${SANS}`;
+  while (ctx.measureText(label).width > W - 260 && size > 22) {size -= 2; ctx.font = `700 ${size}px ${SANS}`;}
+  const w = ctx.measureText(label).width + 110 * scale, h = 104 * scale;
+  ctx.fillStyle = INK; roundRect(ctx, W / 2 - w / 2, y - h / 2, w, h, h / 2); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, W / 2, y + 2);
+  ctx.restore();
+}
 function roundRect(ctx, x, y, w, h, r) {ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();}
 
 /** A still image that carries the same content: name, the standout number and the closing line. */
 export function drawPoster(ctx, s, imgs) {
   paper(ctx, 3, s.color);
-  logo(ctx, imgs, W / 2, 300, .55, 1, 1);
-  text(ctx, s.intro, 600, {size: 56, color: MUTED});
-  const b = text(ctx, s.name, 730, {size: 112, maxLines: 3, lh: 1.05});
+  logo(ctx, imgs, W / 2, 250, .55, 1, 1);
+  text(ctx, s.intro, 540, {size: 56, color: MUTED});
+  const b = text(ctx, s.name, 670, {size: 112, maxLines: 3, lh: 1.05});
   brush(ctx, 280, 800, b + 60, '#f6b18d', 1);
-  const y = b + 240;
+  const y = b + 200;
   text(ctx, s.stat.above, y, {size: 56});
-  text(ctx, String(s.stat.number), y + 220, {size: 230});
-  text(ctx, s.stat.below, y + 300, {size: 50, color: MUTED});
-  if (s.facet) text(ctx, `${s.facet.name} · ${s.facet.caption.split(' · ')[0].toLowerCase()}`, y + 410, {size: 44, font: SANS, color: MUTED});
-  text(ctx, s.closer, H - 330, {size: 60, style: 'italic', maxLines: 3});
-  text(ctx, `Fem · ${s.end}${s.site ? `  ${s.site}` : ''}`, H - 110, {size: 40, font: SANS, color: INK});
+  text(ctx, String(s.stat.number), y + 190, {size: 200});
+  text(ctx, s.stat.below, y + 262, {size: 50, color: MUTED});
+  if (s.facet) text(ctx, `${s.facet.name} · ${s.facet.caption.split(' · ')[0].toLowerCase()}`, y + 352, {size: 44, font: SANS, color: MUTED});
+  text(ctx, s.closer, H - 400, {size: 60, style: 'italic', maxLines: 2});
+  text(ctx, `${s.end} ${s.cta}`, H - 200, {size: 40, font: SANS, color: INK});
+  pill(ctx, s.button, H - 110, 1, .8);
 }
 
 /** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. */
