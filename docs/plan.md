@@ -43,5 +43,7 @@ Persentiler 2026-10-11: Ekte empiriske persentiler fra Codex' normpakke er koble
 
 Testhjelp 2026-10-11: «Tilfeldig»-knappen på spørsmålssiden (vises etter at du har åpnet en adresse med ?dev=1, og forsvinner med ?dev=0) fyller ut alle 120 svar tilfeldig og går rett til profilen. Den er bare for forhåndsvisning og må fjernes før lansering: devMode() og #dev-random i app/ui.js og .d-dev-random i app/design.css.
 
+Trekkvelger 2026-10-13: «Dine fem trekk» i rapporten åpnes nå via logobitene (app/trait-logo.js), ett trekk om gangen; utskrift viser alle. Kontrolleres med scripts/trait-logo-check.cjs.
+
 E-post 2026-10-13: «Send profilen til e-posten din» bruker foreløpig mailto og en lenke med svarene etter #. Ekte utsending krever en e-posttjeneste (for eksempel Resend eller Postmark), en serverfunksjon på Vercel, samtykke og personvernvilkår, og bør vurderes sammen med sikker betalingslevering.
 Varder og oversikt 2026-10-13: Fem varder på spørsmålssiden (app/cairns.js), «Din profil på ett blikk» i rapportoversikten (app/glance.js, app/combination-copy.js) og animerte fasettkort. Kontrolleres med scripts/cairns-check.cjs. Gjenstår: faglig gjennomgang av kombinasjonssetningene og profilnavnene (app/profile-name.js) sammen med resten av rapportteksten.

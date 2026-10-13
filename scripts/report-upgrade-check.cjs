@@ -31,14 +31,14 @@ const answers=Object.fromEntries(questions.map(q=>{
     await restored.getByRole('heading',{name:'Nyansene bak skårene',exact:true}).waitFor();
     const ePatternNo=await restored.locator('.d-trait-chapter').filter({hasText:'Ekstroversjon'}).locator('.facet-pattern').textContent();
     assert.ok(/Vennlighet høyest \(\d+\. persentil\) og Selskapelighet lavest/.test(ePatternNo),ePatternNo);
-    await restored.goto('http://127.0.0.1:4173/#report/traits');await restored.locator('.facet-pattern').first().waitFor();
+    await restored.goto('http://127.0.0.1:4173/#report/traits');await restored.locator('.d-tlogo-name').first().click();await restored.locator('.d-tlpanel:not([hidden]) .facet-pattern').waitFor();
     fs.mkdirSync('artifacts',{recursive:true});
     await restored.locator('#traits').scrollIntoViewIfNeeded();
     await restored.screenshot({path:'artifacts/report-upgraded-desktop.png'});
     await restored.pdf({path:'artifacts/report-upgraded-no.pdf',format:'A4',printBackground:true});
     await restored.setViewportSize({width:390,height:844});
     assert.ok(await restored.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-    await restored.locator('.facet-pattern').nth(2).scrollIntoViewIfNeeded();
+    await restored.locator('.d-tlpanel:not([hidden]) .facet-pattern').scrollIntoViewIfNeeded();
     await restored.screenshot({path:'artifacts/report-upgraded-mobile.png'});
     await restored.locator('#backup-restore').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"answers":{}}')});
     await restored.getByText('Filen er ikke en gyldig Fem-svarkopi. Svarene dine er ikke endret.',{exact:true}).waitFor();
