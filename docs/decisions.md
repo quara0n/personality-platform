@@ -152,6 +152,18 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Råskårene (sum og gjennomsnitt) beholdes i skåringen og i lagrede svar, men vises ikke i rapporten.
 - Rune ønsket en synlig forklaring. Et (i)-symbol står ved profilkortet på gratisprofilen («Hva betyr persentilen?»), i oversikten og ved persentilen i hvert trekk i rapporten. Det åpner en kort forklaring: hva persentilen betyr, hvem referansegruppen er, grensene 30/70 og at høy eller lav verken er bra eller dårlig. Forklaringen skjules i PDF.
 
+## Gratisprofil og fordypningsrapport 2026-10-13
+- Prinsipp: gratisprofilen viser hva du er, rapporten viser hvorfor og hva du gjør med det. Rune godkjente forslaget.
+- Gratis: de fem trekkene med persentil, profilkortet, og per trekk én oppsummering, én styrke med illustrasjon og forbeholdslinjen.
+- Flyttet til rapporten: «Prøv i hverdagen» og spørsmålet til ettertanke står nå i hvert trekk i «Dine fem trekk». «Les mer om resultatet» er fjernet fra gratisprofilen; de lengre tekstene fantes allerede i rapporten.
+- Nytt i gratisprofilen: under hvert trekk står «[Trekket] ditt består av seks fasetter. Én skiller seg ut.» Fasetten lengst fra 50. persentil vises åpen med nivå, persentil og tolkning. De fem andre vises med navn, uskarp stolpe og lås, og en knapp går til kjøpssiden. De uskarpe stolpene er faste plassholdere og avslører ikke de ekte verdiene. Er den åpne fasetten i midtområdet, står det «Her er en smakebit på én» i stedet.
+- «Send profilen til e-posten din»: skjemaet åpner brukerens eget e-postprogram (mailto) med de fem persentilene og en lenke tilbake til profilen. Lenken har svarene etter #-tegnet (#p=1 + 120 sifre), så de sendes ikke til serveren. Lenken gjenoppretter profilen og spør før den erstatter andre svar. Ekte utsending fra oss krever en e-posttjeneste og en serverfunksjon (se plan).
+
+## Animasjon på gratisprofilen 2026-10-13
+- Rune godkjente forslaget. Når profilen vises, flyr logobitene inn på plass i profilkortet, stolpene vokser til persentilen, og persentiltallet ved hver stolpe teller opp fra 0, forskjøvet trekk for trekk.
+- Profilkortet viser nå persentiltallet til høyre for stolpen (over stolpen på mobil).
+- «Et første blikk», trekkpanelene, «Gå dypere» og e-postboksen glir inn når man ruller til dem. Låsen på fasett-smakebiten rister litt når et trekk åpnes.
+- Alt slås av når brukeren har valgt redusert bevegelse; da vises ferdige verdier med en gang. Spørsmålssiden og rapportens oversiktsside eies av tråden «Animasjoner og oversiktsside».
 ## Varder, profiloversikt og animasjoner (2026-10-13)
 - Rune godkjente forslagene om fem varder på spørsmålssiden og en ny oversikt i rapporten.
 - Spørsmålssiden: fem steinvarder langs stien, én per trekk i trekkfargen. Hvert besvart spørsmål du har passert legger én stein på varden til trekket, uansett svar, og alle steinene er like store, så vardene aldri viser retningen på en skår. Tilbake tar steinen av igjen. Ved 25, 50 og 75 % gløder vardene og en kort tekst vises. Etter siste svar blir vardene til de fem logobitene, som flyr sammen i lasteanimasjonen. På mobil står vardene i en rad over fremdriftslinjen. Hele spørsmålet og alle svar synes fortsatt uten å rulle.
