@@ -7,7 +7,8 @@ import {encodeAnswers,decodeAnswers} from './answer-backup.js';
 import * as account from './account.js';
 import {glanceHtml,initGlance,peopleFor,countUp} from './glance.js';
 import {profileName} from './profile-name.js';
-import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration} from './share-video.js';
+import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration,musicCues} from './share-video.js';
+import {renderMusic,loadSong} from './share-music.js';
 import {cairnsHtml,dropStone,cairnFinale,flyPieces} from './cairns.js';
 import {tailorHtml,initTailor,clearTailor} from './tailored.js';
 const main=document.querySelector('main');
@@ -144,42 +145,72 @@ function videoIntro(){
   dlg.append(box);document.body.append(dlg);
   dlg.querySelector('.d-video-intro-close').addEventListener('click',()=>dlg.close());
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
-  dlg.addEventListener('close',()=>{spot.replaceWith(box);dlg.remove();window.scrollTo(0,0);});
+  dlg.addEventListener('close',()=>{box.femMute?.();spot.replaceWith(box);dlg.remove();window.scrollTo(0,0);});
   dlg.showModal();
   // Making the file draws the video on screen in real time, so it plays and is ready to share when it ends.
   box.femPrepare?.();
 }
-function shareBox(long=false){if(!sorted().some(hasPct))return '';return `<section class="d-share no-print" data-long="${long}" aria-labelledby="share-title"><div class="d-share-frame"><canvas id="share-canvas" width="1080" height="1920" role="img" aria-label="${tr('Preview of your profile video','Forhåndsvisning av profilvideoen din')}"></canvas><button type="button" class="d-share-fab" id="share-fab" data-state="idle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5v4C7 9 4 13.5 3.5 19.5 6 15.8 9 14.4 13.5 14.4v4.1L21 11.5z"/></svg><span class="d-share-fab-label">${tr('Share','Del')}</span></button></div><div class="d-share-body"><p class="eyebrow">${tr('New','Nytt')}</p><h2 id="share-title">${long?tr('Share your report as a video','Del rapporten din som video'):tr('Share your profile as a video','Del profilen din som video')}</h2><p>${long?tr('Thirty seconds for Stories, Reels and TikTok: your profile name, all five traits, your combination, a possible strength and a closing line with a wink.','Tretti sekunder for Stories, Reels og TikTok: profilnavnet ditt, alle fem trekkene, kombinasjonen din, en mulig styrke og en avslutning med et glimt i øyet.'):tr('Fifteen seconds for Stories, Reels and TikTok: your profile name, your clearest trait and a closing line with a wink.','Femten sekunder for Stories, Reels og TikTok: profilnavnet ditt, det tydeligste trekket ditt og en avslutning med et glimt i øyet.')}</p><label for="share-first">${tr('Your first name (optional)','Fornavnet ditt (valgfritt)')}</label><input id="share-first" maxlength="24" autocomplete="given-name" placeholder="${tr('Shown in the video','Vises i videoen')}"><div class="d-share-actions"><button type="button" class="d-share-make" id="share-make">${tr('Make video','Lag video')}</button><button type="button" class="d-share-send" id="share-send" hidden>${tr('Share','Del')}</button><a class="d-share-dl" id="share-dl" hidden>${tr('Download video','Last ned video')}</a><button type="button" class="text-button" id="share-still">${tr('Download as image','Last ned som bilde')}</button></div><p class="d-share-status" id="share-status" role="status"></p>${long?'':`<p class="d-share-more">${tr('A longer 30-second version with all five traits comes with the in-depth report.','En lengre versjon på 30 sekunder med alle fem trekkene følger med fordypningsrapporten.')} <a href="#offer">${tr('About the report','Om rapporten')}</a></p>`}<p class="d-share-note">${long?tr('The video is made in your browser and is not uploaded anywhere. It shows all five percentiles and parts of your report, so share it only if you are comfortable with that.','Videoen lages i nettleseren din og lastes ikke opp noe sted. Den viser alle fem persentilene og deler av rapporten, så del den bare hvis du er komfortabel med det.'):tr('The video is made in your browser and is not uploaded anywhere. It shows your profile name, one trait and one facet, so share it only if you are comfortable with that.','Videoen lages i nettleseren din og lastes ikke opp noe sted. Den viser profilnavnet, ett trekk og én fasett, så del den bare hvis du er komfortabel med det.')}</p></div></section>`;}
+function shareBox(long=false){if(!sorted().some(hasPct))return '';return `<section class="d-share no-print" data-long="${long}" aria-labelledby="share-title"><div class="d-share-frame"><canvas id="share-canvas" width="1080" height="1920" role="img" aria-label="${tr('Preview of your profile video','Forhåndsvisning av profilvideoen din')}"></canvas><button type="button" class="d-share-fab" id="share-fab" data-state="idle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5v4C7 9 4 13.5 3.5 19.5 6 15.8 9 14.4 13.5 14.4v4.1L21 11.5z"/></svg><span class="d-share-fab-label">${tr('Share','Del')}</span></button><button type="button" class="d-share-sound" id="share-sound" aria-pressed="false" aria-label="${tr('Sound','Lyd')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="off" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><div class="d-share-bar"><input type="range" id="share-seek" min="0" max="1" step="0.01" value="0" aria-label="${tr('Position in the video','Posisjon i videoen')}"><span id="share-left" aria-hidden="true"></span></div></div><div class="d-share-body"><p class="eyebrow">${tr('New','Nytt')}</p><h2 id="share-title">${long?tr('Share your report as a video','Del rapporten din som video'):tr('Share your profile as a video','Del profilen din som video')}</h2><p>${long?tr('Thirty seconds for Stories, Reels and TikTok: your profile name, all five traits, your combination, a possible strength and a closing line with a wink.','Tretti sekunder for Stories, Reels og TikTok: profilnavnet ditt, alle fem trekkene, kombinasjonen din, en mulig styrke og en avslutning med et glimt i øyet.'):tr('Fifteen seconds for Stories, Reels and TikTok: your profile name, your clearest trait and a closing line with a wink.','Femten sekunder for Stories, Reels og TikTok: profilnavnet ditt, det tydeligste trekket ditt og en avslutning med et glimt i øyet.')}</p><label for="share-first">${tr('Your first name (optional)','Fornavnet ditt (valgfritt)')}</label><input id="share-first" maxlength="24" autocomplete="given-name" placeholder="${tr('Shown in the video','Vises i videoen')}"><div class="d-share-actions"><button type="button" class="d-share-make" id="share-make">${tr('Make video','Lag video')}</button><button type="button" class="d-share-send" id="share-send" hidden>${tr('Share','Del')}</button><a class="d-share-dl" id="share-dl" hidden>${tr('Download video','Last ned video')}</a><button type="button" class="text-button" id="share-still">${tr('Download as image','Last ned som bilde')}</button></div><p class="d-share-status" id="share-status" role="status"></p>${long?'':`<p class="d-share-more">${tr('A longer 30-second version with all five traits comes with the in-depth report.','En lengre versjon på 30 sekunder med alle fem trekkene følger med fordypningsrapporten.')} <a href="#offer">${tr('About the report','Om rapporten')}</a></p>`}<p class="d-share-note">${long?tr('The video is made in your browser and is not uploaded anywhere. It shows all five percentiles and parts of your report, so share it only if you are comfortable with that.','Videoen lages i nettleseren din og lastes ikke opp noe sted. Den viser alle fem persentilene og deler av rapporten, så del den bare hvis du er komfortabel med det.'):tr('The video is made in your browser and is not uploaded anywhere. It shows your profile name, one trait and one facet, so share it only if you are comfortable with that.','Videoen lages i nettleseren din og lastes ikke opp noe sted. Den viser profilnavnet, ett trekk og én fasett, så del den bare hvis du er komfortabel med det.')}</p></div></section>`;}
+// The preview is a small player: it loops with the end card held, has a timeline to scrub and shows
+// the time left. The song starts muted unless the browser already lets this page play sound, and the
+// first play-through is recorded straight into the file, picture and music together.
+let shareAudio=null;
+function audioContext(){const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;if(!shareAudio)try{shareAudio=new A();}catch{return null;}return shareAudio;}
+async function audioRunning(){const ac=audioContext();if(!ac)return false;if(ac.state!=='running')await Promise.race([ac.resume().catch(()=>{}),new Promise(r=>setTimeout(r,300))]);return ac.state==='running';}
 function initShare(){
   const canvas=document.querySelector('#share-canvas');if(!canvas)return;
   const ctx=canvas.getContext('2d'),input=document.querySelector('#share-first'),make=document.querySelector('#share-make'),send=document.querySelector('#share-send'),dl=document.querySelector('#share-dl'),status=document.querySelector('#share-status');
+  const seek=document.querySelector('#share-seek'),left=document.querySelector('#share-left'),soundBtn=document.querySelector('#share-sound');
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches,site=/^(localhost|127\.)/.test(location.hostname)?'':location.hostname.replace(/^www\./,'');
   const long=canvas.closest('.d-share').dataset.long==='true',script=()=>videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long});
-  let imgs={},playing=false,recording=false,start=0,file=null,url='';
+  let imgs={},playing=false,visible=false,recording=false,pos=0,from=0,since=0,file=null,url='',sound=false,voice=null,monitor=null,music=null;
+  const piecesReady=loadPieces().then(x=>{imgs=x;return x;});
+  const total=()=>duration(script()),clock=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
+  const showTime=t=>{seek.max=total().toFixed(2);seek.value=t;seek.style.setProperty('--v',`${t/total()*100}%`);left.textContent='−'+clock(Math.ceil(total()-t-.001));};
+  // Music: one buffer per length, heard through a gain node that the sound button turns up or down.
+  const getMusic=async()=>{const c=musicCues(script());if(music?.total!==c.total)music={total:c.total,buffer:await renderMusic(await loadSong(audioContext()),c.total,c)};return music.buffer;};
+  const ensureMonitor=()=>{const ac=audioContext();if(!ac)return null;if(!monitor){monitor=ac.createGain();monitor.connect(ac.destination);}monitor.gain.value=sound?1:0;return monitor;};
+  const stopVoice=()=>{try{voice?.stop();}catch{}voice=null;};
+  const startVoice=async t=>{stopVoice();if(!sound||recording||!playing)return;const ac=audioContext();if(!ac||ac.state!=='running')return;let buf;try{buf=await getMusic();}catch{return;}if(!sound||recording||!playing)return;stopVoice();
+    voice=ac.createBufferSource();voice.buffer=buf;voice.connect(ensureMonitor());voice.start(0,Math.min(now(),buf.duration-.01));};
+  const setSound=on=>{sound=on;soundBtn.setAttribute('aria-pressed',String(on));soundBtn.setAttribute('aria-label',on?tr('Sound on','Lyd på'):tr('Sound off','Lyd av'));ensureMonitor();if(on)startVoice(now());else stopVoice();};
+  const now=()=>playing?Math.min(total(),from+(performance.now()-since)/1000):pos;
+  const draw=t=>{drawFrame(ctx,t,script(),imgs);showTime(t);};
+  const frame=()=>{if(!canvas.isConnected){playing=false;stopVoice();return;}if(!playing||recording)return;let t=now();if(t>=total()){from=0;since=performance.now();t=0;startVoice(0);}pos=t;draw(t);requestAnimationFrame(frame);};
+  const play=on=>{if(still||recording){if(still)drawPoster(ctx,script(),imgs);return;}if(on&&!playing){playing=true;from=pos;since=performance.now();startVoice(pos);requestAnimationFrame(frame);}else if(!on&&playing){pos=now();playing=false;stopVoice();}};
+  const seekTo=t=>{if(recording)return;pos=t;from=t;since=performance.now();if(playing)startVoice(t);else draw(t);};
   const reset=()=>{file=null;send.hidden=true;dl.hidden=true;if(url)URL.revokeObjectURL(url);url='';status.textContent='';if(!recording)fabIdle();};
-  const frame=now=>{if(!canvas.isConnected||!playing||recording)return;drawFrame(ctx,((now-start)/1000)%(duration(script())+1),script(),imgs);requestAnimationFrame(frame);};
-  const play=on=>{if(still||recording){if(!recording)drawPoster(ctx,script(),imgs);return;}if(on&&!playing){playing=true;start=performance.now();requestAnimationFrame(frame);}else if(!on)playing=false;};
-  loadPieces().then(x=>{imgs=x;drawPoster(ctx,script(),imgs);if(!still&&'IntersectionObserver' in window){const io=new IntersectionObserver(e=>play(e[0].isIntersecting),{threshold:.3});io.observe(canvas);}});
-  input.addEventListener('input',()=>{reset();if(still||!playing)drawPoster(ctx,script(),imgs);});
-  if(!videoType()||!canvas.captureStream){make.hidden=true;status.textContent=tr('This browser cannot make the video. You can download the image instead.','Denne nettleseren kan ikke lage videoen. Du kan laste ned bildet i stedet.');}
+  if(still){canvas.closest('.d-share').classList.add('is-still');}
+  piecesReady.then(()=>{if(still){drawPoster(ctx,script(),imgs);return;}draw(0);if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{visible=e[0].isIntersecting;play(visible);},{threshold:.3});io.observe(canvas);}else play(true);});
+  input.addEventListener('input',()=>{reset();if(still)drawPoster(ctx,script(),imgs);else if(!playing)draw(pos);});
+  seek.addEventListener('input',()=>seekTo(Number(seek.value)));
+  soundBtn.addEventListener('click',async()=>{const on=!sound;if(on&&!(await audioRunning()))return;setSound(on);});
   const fab=document.querySelector('#share-fab'),fabLabel=fab.querySelector('.d-share-fab-label'),canRecord=Boolean(videoType()&&canvas.captureStream);
+  if(!canRecord){make.hidden=true;status.textContent=tr('This browser cannot make the video. You can download the image instead.','Denne nettleseren kan ikke lage videoen. Du kan laste ned bildet i stedet.');}
   const canShareFiles=()=>{try{return Boolean(navigator.canShare&&navigator.canShare({files:[file||new File([''],'fem.mp4',{type:'video/mp4'})]}));}catch{return false;}};
   const fabState=(state,label)=>{fab.dataset.state=state;fabLabel.textContent=label;};
   const fabIdle=()=>fabState('idle',canRecord&&!canShareFiles()?tr('Save','Lagre'):tr('Share','Del'));
   let wantShare=false;
-  const prepare=async()=>{if(recording||file||!canRecord)return;recording=true;playing=false;reset();make.disabled=true;input.disabled=true;fabState('busy',wantShare?'0 %':tr('Share','Del'));fab.style.setProperty('--p',0);
-    try{const blob=await recordVideo(canvas,script(),imgs,p=>{const pct=`${Math.round(p*100)} %`;status.textContent=`${tr('Making your video','Lager videoen')} … ${pct}`;fab.style.setProperty('--p',p);if(wantShare)fabLabel.textContent=pct;});
+  // `auto` is the window after the test: it only records when the browser already allows sound,
+  // so the shared file never ends up without music. A tap always records.
+  const prepare=async(auto=false)=>{if(recording||file||!canRecord)return;
+    const withSound=await audioRunning();if(auto&&!withSound)return;
+    recording=true;play(false);reset();make.disabled=true;input.disabled=true;seek.disabled=true;fabState('busy',wantShare?'0 %':tr('Share','Del'));fab.style.setProperty('--p',0);
+    if(auto&&withSound)setSound(true);
+    try{await piecesReady;let audio=null;if(withSound)try{audio={ctx:audioContext(),buffer:await getMusic(),monitor:ensureMonitor()};}catch{}
+      const blob=await recordVideo(canvas,script(),imgs,p=>{const pct=`${Math.round(p*100)} %`;status.textContent=`${tr('Making your video','Lager videoen')} … ${pct}`;fab.style.setProperty('--p',p);showTime(p*total());if(wantShare)fabLabel.textContent=pct;},audio);
       const ext=blob.type.includes('mp4')?'mp4':'webm',fname=(long?tr('fem-report','fem-rapport'):tr('fem-profile','fem-profil'))+'.'+ext;file=new File([blob],fname,{type:blob.type});url=URL.createObjectURL(blob);
       dl.href=url;dl.download=fname;dl.hidden=false;send.hidden=!canShareFiles();
       status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');fabState('ready',canShareFiles()?tr('Share','Del'):tr('Save','Lagre'));}
     catch{status.textContent=tr('The video could not be made. Keep this tab open while it records, or download the image instead.','Videoen kunne ikke lages. Hold fanen åpen mens den tas opp, eller last ned bildet i stedet.');fabIdle();}
-    recording=false;make.disabled=false;input.disabled=false;play(true);if(file&&wantShare){wantShare=false;shareFile();}};
+    recording=false;make.disabled=false;input.disabled=false;seek.disabled=false;pos=0;if(visible||canvas.closest('dialog'))play(true);else draw(0);if(file&&wantShare){wantShare=false;shareFile();}};
   // Sharing needs a fresh tap in most browsers; if the tap has expired while the video was made, the button asks for one more.
   const shareFile=()=>{if(!file)return;if(!canShareFiles()){dl.click();return;}
     navigator.share({files:[file],title:script().name,text:`${script().end} ${script().cta}: ${location.origin}${location.pathname}`}).catch(e=>{if(e?.name==='NotAllowedError')fabState('ready',tr('Tap to share','Trykk for å dele'));});};
-  canvas.closest('.d-share').femPrepare=()=>{if(!still)prepare();};
+  canvas.closest('.d-share').femPrepare=()=>{if(!still)prepare(true);};
+  canvas.closest('.d-share').femMute=()=>{if(sound)setSound(false);};
   fabIdle();
-  make.addEventListener('click',prepare);
+  make.addEventListener('click',()=>prepare());
   fab.addEventListener('click',()=>{if(file){shareFile();return;}if(!canRecord){document.querySelector('#share-still').click();return;}wantShare=true;if(recording){fabLabel.textContent=`${Math.round(parseFloat(fab.style.getPropertyValue('--p')||0)*100)} %`;return;}prepare();});
   send.addEventListener('click',shareFile);
   document.querySelector('#share-still').addEventListener('click',()=>{const c=document.createElement('canvas');c.width=canvas.width;c.height=canvas.height;drawPoster(c.getContext('2d'),script(),imgs);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=tr('fem-profile','fem-profil')+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);},'image/png');});
