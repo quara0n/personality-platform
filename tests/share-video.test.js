@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {videoScript, closers, timeline, duration, musicCues} from '../app/share-video.js';
-import {musicPlan} from '../app/share-music.js';
+import {songPlan, SONG} from '../app/share-music.js';
 
 const f = (code, p, extra = {}) => ({code, percentile: p, band: p < 30 ? 'low' : p > 70 ? 'high' : 'middle', ...extra});
 const profile = ps => Object.entries(ps).map(([code, p]) => ({...f(code, p), facets: [f(`${code}1`, 50, {name: `${code} facet`})]}));
@@ -51,10 +51,18 @@ test('short cut is under 20 s of content plus a 5-second end card and keeps paid
   assert.ok(long.combo.text.length > 20 && long.strength.title.length > 5);
 });
 
-test('music follows the video: groove from the name, motif home on the end card, nothing after the end', () => {
-  const s = videoScript(profile({O: 92, C: 81, E: 45, A: 60, N: 35}), {language: 'en', name}), cues = musicCues(s), plan = musicPlan(cues.total, cues);
-  assert.deepEqual(plan, musicPlan(cues.total, cues), 'the same every time');
-  assert.ok(plan.every(e => e.t >= 0 && e.t + e.dur <= cues.total + 1e-6));
-  assert.ok(plan.filter(e => ['kick', 'pluck', 'hat', 'clap'].includes(e.type)).every(e => e.t >= cues.grooveAt && e.t < cues.endAt));
-  assert.equal(plan.filter(e => e.type === 'bell' && e.t >= cues.endAt).at(-1).midi, 86, 'the motif ends on D');
+test('the song fits the video: short cut plays it once, long cut starts it again at a scene change and ends with it', () => {
+  const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
+  const short = musicCues(videoScript(ds, {language: 'en', name})), long = musicCues(videoScript(ds, {language: 'no', name, long: true}));
+  assert.ok(Math.abs(short.total - SONG.length) < .5, 'the short cut lasts as long as the song');
+  assert.deepEqual(songPlan(short.total, short), [{at: 0, from: 0, dur: SONG.length}]);
+  const [first, second] = songPlan(long.total, long);
+  assert.deepEqual(first, {at: 0, from: 0, dur: long.restartAt});
+  assert.equal(second.at, long.restartAt);
+  assert.equal(second.from % SONG.beat, 0, 'starts on a beat');
+  assert.ok(second.from + second.dur <= SONG.length && SONG.length - (second.from + second.dur) < SONG.beat, 'ends with the song');
+  for (const cues of [short, long]) {
+    const tl = timeline(videoScript(ds, {language: 'en', name, long: cues === long}));
+    assert.ok(tl.every(x => Math.abs(x.start * 2 - Math.round(x.start * 2)) < 1e-9), 'every cut is on a beat');
+  }
 });

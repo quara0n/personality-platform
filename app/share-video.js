@@ -2,7 +2,7 @@
 // Short (about 24 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
 // a light closing line and an end card that stays for five seconds before the clip loops.
-// Music comes from share-music.js and is recorded into the same file.
+// The song from share-music.js is recorded into the same file.
 // Long (about 42 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
@@ -13,6 +13,7 @@ import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
+import {SONG} from './share-music.js';
 
 export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
@@ -174,10 +175,11 @@ function footer(ctx, imgs, a) {
   ctx.restore();
 }
 
-// Scene lengths in seconds; each content scene got one more second so it is easier to read. Scenes play back to back and cross-fade at the edges.
+// Scene lengths in seconds, on the beat of the song (120 BPM, 0.5 s per beat); each content scene
+// got one more second so it is easier to read. The short cut lasts as long as the song. Scenes play back to back and cross-fade at the edges.
 const CUTS = {
-  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.2], ['closer', 2.9], ['end', 5.0]],
-  long: [['hook', 5.0], ['name', 3.8], ['traits', 6.4], ['stat', 4.4], ['facet', 3.8], ['combo', 5.4], ['strength', 4.3], ['closer', 3.6], ['end', 5.0]]
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 3.0], ['end', 5.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 3.5], ['end', 5.0]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
@@ -357,8 +359,10 @@ export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null
   });
 }
 
-/** Times the music follows: the groove starts with the name, the motif comes home on the end card. */
+/** Times the music follows: its length and, when the video is longer than the song, the scene change
+ *  where the song starts again so that both passes fit (the last cut before the song would end). */
 export function musicCues(s) {
-  const tl = timeline(s);
-  return {total: duration(s), grooveAt: tl.find(x => x.id === 'name').start, endAt: tl.find(x => x.id === 'end').start};
+  const tl = timeline(s), total = duration(s);
+  if (total <= SONG.length + .5) return {total, restartAt: null};
+  return {total, restartAt: tl.filter(x => x.start >= total - SONG.length && x.start <= SONG.length).at(-1)?.start ?? null};
 }
