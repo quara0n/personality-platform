@@ -744,3 +744,27 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-report-try{margin:18px 0}
 .d-report-try .d-tdetail-q{margin-top:8px!important;font-style:italic}
 @media print{.d-teaser,.d-email{display:none}}
+
+/* Free profile: percentile numbers on the profile card */
+.d-profile-card.has-pct .d-trait-row{grid-template-columns:minmax(120px,40%) 1fr 34px}
+.d-profile-card.has-pct .d-scale-head{grid-template-columns:minmax(120px,40%) 1fr 1fr 34px}
+.d-trait-pct{text-align:right;font:400 20px/1 Georgia,serif;color:var(--title);font-variant-numeric:tabular-nums}
+@media(max-width:900px){.d-profile-card.has-pct .d-trait-row{grid-template-columns:minmax(100px,42%) 1fr 30px}.d-profile-card.has-pct .d-scale-head{grid-template-columns:minmax(100px,42%) 1fr 1fr 30px}}
+@media(max-width:560px){.d-profile-card.has-pct .d-trait-row{grid-template-columns:minmax(0,1fr) auto}.d-profile-card.has-pct .d-trait-row .d-track{grid-column:1/-1;grid-row:2}.d-profile-card.has-pct .d-scale-head{grid-template-columns:1fr 1fr}}
+
+/* Free profile: motion (off when the user prefers reduced motion) */
+@media(prefers-reduced-motion:no-preference){
+  .d-anim .d-profile-card{animation:d-card-in .5s ease-out both}
+  .d-anim .d-trait-row .d-piece-icon{animation:d-piece-in .7s cubic-bezier(.2,.8,.3,1.15) both;animation-delay:calc(var(--i,0)*120ms + 120ms)}
+  .d-anim .d-track>span{animation:d-bar-grow .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
+  .d-anim .d-track>i{animation:d-dot-slide .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
+  .d-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out;transition-delay:calc(var(--r,0)*90ms)}
+  .d-reveal.is-in{opacity:1;transform:none}
+  .d-tdetail:not([hidden]){animation:d-card-in .35s ease-out both}
+  .d-tdetail:not([hidden]) .d-teaser-cta .d-lock{transform-origin:50% 20%;animation:d-lock-shake .7s ease-in-out 1s both}
+}
+@keyframes d-card-in{from{opacity:0;transform:translateY(12px)}}
+@keyframes d-piece-in{from{opacity:0;transform:translate(-70px,-40px) rotate(-140deg) scale(.4)}}
+@keyframes d-bar-grow{from{width:0}}
+@keyframes d-dot-slide{from{left:0}}
+@keyframes d-lock-shake{0%,100%{transform:none}20%{transform:rotate(-16deg)}40%{transform:rotate(13deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
