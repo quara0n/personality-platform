@@ -5,6 +5,7 @@ import {traitColors,traitPiece,profileSummary,traitLine,panelCopy,traitQuestion,
 import {encodeAnswers,decodeAnswers} from './answer-backup.js';
 import {glanceHtml,initGlance,peopleFor,countUp} from './glance.js';
 import {profileName} from './profile-name.js';
+import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,DURATION} from './share-video.js';
 import {cairnsHtml,dropStone,cairnFinale,flyPieces} from './cairns.js';
 const main=document.querySelector('main');
 const KEY='five-assessment-v1', PREF='five-preferences-v1';
@@ -121,6 +122,29 @@ function facetTeaser(d){
 const profileCode=()=>'1'+questions.map(q=>answers[q.id]).join('');
 function profileLink(){return `${location.origin}${location.pathname}#p=${profileCode()}`;}
 function emailBox(){return `<form class="d-email" id="email-form" novalidate><div><h2>${tr('Send the profile to your email','Send profilen til e-posten din')}</h2><p>${tr('Keep your results and come back to the in-depth report later.','Ta vare på resultatene og kom tilbake til fordypningsrapporten senere.')}</p></div><div class="d-email-row"><label class="sr-only" for="email-to">${tr('Email address','E-postadresse')}</label><input type="email" id="email-to" autocomplete="email" placeholder="${tr('your@email.com','din@epost.no')}"><button type="submit">${tr('Send','Send')}</button></div><p class="d-email-note">${tr('Opens your email app with your five results and a link back to this profile. The link contains your answers, so only share it with people you trust.','Åpner e-postprogrammet ditt med de fem resultatene og en lenke tilbake til profilen. Lenken inneholder svarene dine, så del den bare med folk du stoler på.')}</p></form>`;}
+function shareBox(){if(!sorted().some(hasPct))return '';return `<section class="d-share" aria-labelledby="share-title"><div class="d-share-frame"><canvas id="share-canvas" width="1080" height="1920" role="img" aria-label="${tr('Preview of your profile video','Forhåndsvisning av profilvideoen din')}"></canvas></div><div class="d-share-body"><p class="eyebrow">${tr('New','Nytt')}</p><h2 id="share-title">${tr('Share your profile as a video','Del profilen din som video')}</h2><p>${tr('Fourteen seconds for Stories, Reels and TikTok: your profile name, your clearest trait and a closing line with a wink.','Fjorten sekunder for Stories, Reels og TikTok: profilnavnet ditt, det tydeligste trekket ditt og en avslutning med et glimt i øyet.')}</p><label for="share-first">${tr('Your first name (optional)','Fornavnet ditt (valgfritt)')}</label><input id="share-first" maxlength="24" autocomplete="given-name" placeholder="${tr('Shown in the video','Vises i videoen')}"><div class="d-share-actions"><button type="button" class="d-share-make" id="share-make">${tr('Make video','Lag video')}</button><button type="button" class="d-share-send" id="share-send" hidden>${tr('Share','Del')}</button><a class="d-share-dl" id="share-dl" hidden>${tr('Download video','Last ned video')}</a><button type="button" class="text-button" id="share-still">${tr('Download as image','Last ned som bilde')}</button></div><p class="d-share-status" id="share-status" role="status"></p><p class="d-share-note">${tr('The video is made in your browser and is not uploaded anywhere. It shows your profile name, one trait and one facet, so share it only if you are comfortable with that.','Videoen lages i nettleseren din og lastes ikke opp noe sted. Den viser profilnavnet, ett trekk og én fasett, så del den bare hvis du er komfortabel med det.')}</p></div></section>`;}
+function initShare(){
+  const canvas=document.querySelector('#share-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d'),input=document.querySelector('#share-first'),make=document.querySelector('#share-make'),send=document.querySelector('#share-send'),dl=document.querySelector('#share-dl'),status=document.querySelector('#share-status');
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches,site=/^(localhost|127\.)/.test(location.hostname)?'':location.hostname.replace(/^www\./,'');
+  const script=()=>videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site});
+  let imgs={},playing=false,recording=false,start=0,file=null,url='';
+  const reset=()=>{file=null;send.hidden=true;dl.hidden=true;if(url)URL.revokeObjectURL(url);url='';status.textContent='';};
+  const frame=now=>{if(!canvas.isConnected||!playing||recording)return;drawFrame(ctx,((now-start)/1000)%(DURATION+1),script(),imgs);requestAnimationFrame(frame);};
+  const play=on=>{if(still||recording){if(!recording)drawPoster(ctx,script(),imgs);return;}if(on&&!playing){playing=true;start=performance.now();requestAnimationFrame(frame);}else if(!on)playing=false;};
+  loadPieces().then(x=>{imgs=x;drawPoster(ctx,script(),imgs);if(!still&&'IntersectionObserver' in window){const io=new IntersectionObserver(e=>play(e[0].isIntersecting),{threshold:.3});io.observe(canvas);}});
+  input.addEventListener('input',()=>{reset();if(still||!playing)drawPoster(ctx,script(),imgs);});
+  if(!videoType()||!canvas.captureStream){make.hidden=true;status.textContent=tr('This browser cannot make the video. You can download the image instead.','Denne nettleseren kan ikke lage videoen. Du kan laste ned bildet i stedet.');}
+  make.addEventListener('click',async()=>{if(recording)return;recording=true;playing=false;reset();make.disabled=true;input.disabled=true;
+    try{const blob=await recordVideo(canvas,script(),imgs,p=>{status.textContent=`${tr('Making your video','Lager videoen')} … ${Math.round(p*100)} %`;});
+      const ext=blob.type.includes('mp4')?'mp4':'webm',fname=tr('fem-profile','fem-profil')+'.'+ext;file=new File([blob],fname,{type:blob.type});url=URL.createObjectURL(blob);
+      dl.href=url;dl.download=fname;dl.hidden=false;send.hidden=!(navigator.canShare&&navigator.canShare({files:[file]}));
+      status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');}
+    catch{status.textContent=tr('The video could not be made. Keep this tab open while it records, or download the image instead.','Videoen kunne ikke lages. Hold fanen åpen mens den tas opp, eller last ned bildet i stedet.');}
+    recording=false;make.disabled=false;input.disabled=false;play(true);});
+  send.addEventListener('click',()=>{if(file)navigator.share({files:[file],title:script().name}).catch(()=>{});});
+  document.querySelector('#share-still').addEventListener('click',()=>{const c=document.createElement('canvas');c.width=canvas.width;c.height=canvas.height;drawPoster(c.getContext('2d'),script(),imgs);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=tr('fem-profile','fem-profil')+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);},'image/png');});
+}
 function sendProfile(event){
   event.preventDefault();const to=document.querySelector('#email-to').value.trim();
   const lines=sorted().map(d=>`${name(d)}: ${scoreText(d)} (${bandShort(d.band).toLowerCase()})`);
@@ -140,6 +164,7 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
       <div class="d-stage"><img class="d-stage-left" src="assets/design/results-left.webp" alt="" aria-hidden="true">${profileCard([tr('Lower','Lavere utslag'),tr('Higher','Høyere utslag')])}<img class="d-stage-right" src="assets/design/results-right.webp" alt="" aria-hidden="true"></div>
     </div>
     <div class="d-first-look"><h2>${tr('A first look at your patterns','Et første blikk på mønstrene dine')}</h2><p>${esc(profileSummary(sorted(),language))}</p><p class="d-small">${tr('The traits describe tendencies, not fixed types.','Trekkene beskriver tendenser, ikke faste typer.')}</p></div>
+    ${shareBox()}
     <div class="d-explore"><div class="d-explore-inner"><h2 class="d-panels-title">${tr('Explore your traits','Utforsk trekkene dine')}</h2>
       <div class="d-panels">${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<button type="button" class="d-tpanel d-tpanel-${c}" data-trait="${c}" aria-expanded="false" aria-controls="td-${c}"><span class="d-tpanel-art"><img src="assets/design/trait-${c}.webp" alt="" aria-hidden="true"></span><span class="d-tpanel-name">${esc(name(d).replace(/\s*\(.*\)$/,''))}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`;}).join('')}</div>
       ${order.map(c=>{const d=sorted().find(x=>x.code===c),pc=panelCopy(d,language),art=c==='O'?'facets/strength-O.webp':`facets/head-${c}.webp`;return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-level">${bandText(d.band)}${hasPct(d)?'':` · ${Number(d.mean).toFixed(2)} / 5`}</p><p class="d-tdetail-line">${esc(traitLine(d,language))}</p>
@@ -157,6 +182,7 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
   document.querySelectorAll('.d-more-toggle').forEach(btn=>btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(open));btn.parentElement.classList.toggle('is-open',open);document.getElementById(btn.getAttribute('aria-controls')).hidden=!open;}));
   document.querySelector('#edit')?.addEventListener('click',()=>{index=0;location.hash='test';});
   document.querySelector('#email-form')?.addEventListener('submit',sendProfile);
+  initShare();
   animateResults();}
 function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-US',{style:'currency',currency:country==='NO'?'NOK':'USD',minimumFractionDigits:country==='NO'?0:2,maximumFractionDigits:country==='NO'?0:2}).format(country==='NO'?99:9.99);
   const tick=label=>`<li><span class="d-tick" aria-hidden="true"></span><span>${label}</span></li>`;
