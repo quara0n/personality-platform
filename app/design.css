@@ -899,6 +899,8 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-share-dl{background:#fff;color:#13284f}
 .d-share-actions [hidden]{display:none}
 .d-share .d-share-status{min-height:1.5em;margin:4px 0 8px;font-size:15px;color:#13284f}
+.d-share .d-share-more{margin:0 0 8px;font-size:14px;color:#2c4566}
+.d-share .d-share-more a{color:var(--title);text-underline-offset:3px}
 .d-share .d-share-note{margin:0;font-size:13px;color:#5a7290}
 @media(max-width:760px){.d-share{grid-template-columns:1fr;gap:20px;margin-top:28px;padding:20px 16px}.d-share-frame{width:min(240px,70%);margin:0 auto}}
 @media print{.d-share{display:none}}
