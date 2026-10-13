@@ -50,7 +50,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
   const stat = band === 'middle'
     ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
     : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
-  const facet = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
+  // The facet scene shows the first facet of the profile name's image id, so the same
+  // profile name always shows the same facet and a song made per profile name can name it.
+  const top = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
+  const facet = named.facets.find(f => f.code === named.image.slice(0, 2) && Number.isFinite(f.percentile)) || top;
+  const standsOut = !!facet && Math.abs(pct(facet) - 50) >= Math.abs(pct(top) - 50);
   const facetTrait = facet && domains.find(d => d.code === facet.code[0]);
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
@@ -72,7 +76,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     trait: trait.code,
     color: traitColors[trait.code],
     stat,
-    facet: facet ? {eyebrow: tr('The facet that stands out most', 'Fasetten som skiller seg mest ut'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
+    facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
     closer: named.line || pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
