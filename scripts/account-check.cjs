@@ -15,7 +15,10 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await ctx.addInitScript(fake);
   await page.goto('http://127.0.0.1:4173/?dev=1#test');await page.locator('#dev-random').click();
   // The video card opens first after the test and closes with «Ikke nå».
-  await page.locator('dialog.d-video-intro[open]').waitFor({timeout:20000});await page.locator('.d-video-intro-close').click();
+  await page.locator('dialog.d-video-intro[open]').waitFor({timeout:20000});
+  assert.ok(await page.locator('dialog.d-video-intro #share-fab').isVisible(),'share button sits on the video');assert.ok(!(await page.locator('dialog.d-video-intro .d-share-body').isVisible()),'no text under the video');
+  await page.locator('dialog.d-video-intro #share-fab[data-state="busy"]').waitFor({timeout:5000});
+  await page.locator('.d-video-intro-close').click();
   await page.locator('dialog.d-video-intro').waitFor({state:'detached'});assert.equal(await page.locator('.d-results .d-share').count(),1);
   const box=page.locator('[data-account="box"]');await box.locator('.d-signin-btn').first().waitFor({timeout:20000});
   assert.equal(await box.locator('.d-signin-btn').count(),3);
