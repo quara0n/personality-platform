@@ -1,8 +1,9 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
-// Short (15 s, free profile): hook, profile name, the trait furthest from the middle as
+// Short (about 19 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
-// a light closing line and an end card.
-// Long (31 s, in-depth report): adds all five traits, the combination sentence and a
+// a light closing line and an end card that stays for five seconds before the clip loops.
+// Music comes from share-music.js and is recorded into the same file.
+// Long (about 34 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
@@ -175,8 +176,8 @@ function footer(ctx, imgs, a) {
 
 // Scene lengths in seconds. Scenes play back to back and cross-fade at the edges.
 const CUTS = {
-  short: [['hook', 4.0], ['name', 2.5], ['stat', 3.0], ['facet', 2.2], ['closer', 1.9], ['end', 1.4]],
-  long: [['hook', 4.0], ['name', 2.8], ['traits', 5.4], ['stat', 3.4], ['facet', 2.8], ['combo', 4.4], ['strength', 3.3], ['closer', 2.6], ['end', 2.2]]
+  short: [['hook', 4.0], ['name', 2.5], ['stat', 3.0], ['facet', 2.2], ['closer', 1.9], ['end', 5.0]],
+  long: [['hook', 4.0], ['name', 2.8], ['traits', 5.4], ['stat', 3.4], ['facet', 2.8], ['combo', 4.4], ['strength', 3.3], ['closer', 2.6], ['end', 5.0]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
@@ -317,29 +318,47 @@ export function drawPoster(ctx, s, imgs) {
   pill(ctx, s.button, H - 110, 1, .8);
 }
 
-/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. */
-export function videoType() {
+/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. With `audio`, a type that also carries sound. */
+export function videoType(audio = false) {
   if (typeof MediaRecorder === 'undefined') return '';
-  return ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t)) || '';
+  const types = audio
+    ? ['video/mp4;codecs="avc1.42E01E,mp4a.40.2"', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    : ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+  return types.find(t => MediaRecorder.isTypeSupported(t)) || '';
 }
 
-/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1. */
-export function recordVideo(canvas, s, imgs, onProgress = () => {}) {
-  const type = videoType();
+/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1.
+ *  `audio` ({ctx, buffer, monitor}) adds the music: a running AudioContext, the rendered buffer and
+ *  an optional node the person hears it through. */
+export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null) {
+  const type = videoType(Boolean(audio)) || videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
-  const total = duration(s), ctx = canvas.getContext('2d'), stream = canvas.captureStream(30), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6}), parts = [];
+  const total = duration(s), ctx = canvas.getContext('2d'), video = canvas.captureStream(30), parts = [];
+  let src = null, tracks = video.getVideoTracks();
+  if (audio) {
+    const dest = audio.ctx.createMediaStreamDestination();
+    src = audio.ctx.createBufferSource(); src.buffer = audio.buffer; src.connect(dest); if (audio.monitor) src.connect(audio.monitor);
+    tracks = [...tracks, ...dest.stream.getAudioTracks()];
+  }
+  const stream = new MediaStream(tracks), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6, audioBitsPerSecond: 160e3});
   rec.ondataavailable = e => e.data.size && parts.push(e.data);
   return new Promise((resolve, reject) => {
-    rec.onstop = () => {stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
-    rec.onerror = e => reject(e.error || e);
+    rec.onstop = () => {video.getTracks().forEach(x => x.stop()); stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
+    rec.onerror = e => {src?.stop(); reject(e.error || e);};
     drawFrame(ctx, 0, s, imgs);
-    rec.start(250);
+    rec.start(250); src?.start();
     const start = performance.now();
     const tick = now => {
       const t = (now - start) / 1000;
       drawFrame(ctx, Math.min(t, total), s, imgs); onProgress(Math.min(1, t / total));
-      if (t < total + .2) requestAnimationFrame(tick); else rec.stop();
+      if (t < total + .2) requestAnimationFrame(tick); else {try {src?.stop();} catch {} rec.stop();}
     };
     requestAnimationFrame(tick);
   });
+}
+
+/** Times the music follows: the groove starts with the name, the motif comes home on the end card. */
+export function musicCues(s) {
+  const tl = timeline(s);
+  return {total: duration(s), grooveAt: tl.find(x => x.id === 'name').start, endAt: tl.find(x => x.id === 'end').start};
 }

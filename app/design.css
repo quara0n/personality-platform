@@ -1003,3 +1003,21 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-video-intro .d-share-fab svg{width:30px;height:30px;padding:14px}
 .d-video-intro .d-video-intro-close{display:block;margin:0 0 10px auto;padding:8px 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 15px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer}
 @media(max-width:760px){.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 76px)*9/16))}}
+/* Player controls on the video: sound at the top, a thin timeline with the time left at the bottom. */
+.d-share-sound{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:rgba(19,40,79,.55);color:#fff;cursor:pointer}
+.d-share-sound svg{width:22px;height:22px;fill:currentColor}
+.d-share-sound .on,.d-share-sound[aria-pressed="true"] .off{display:none}
+.d-share-sound[aria-pressed="true"] .on{display:inline}
+.d-share-bar{position:absolute;left:10px;right:10px;bottom:8px;display:flex;align-items:center;gap:8px}
+.d-share-bar input{flex:1;min-width:0;max-width:none;height:18px;margin:0;padding:0;border:0;border-radius:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.d-share-bar input::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(90deg,#13284f var(--v,0%),rgba(19,40,79,.2) var(--v,0%))}
+.d-share-bar input::-moz-range-track{height:3px;border-radius:2px;background:rgba(19,40,79,.2)}
+.d-share-bar input::-moz-range-progress{height:3px;border-radius:2px;background:#13284f}
+.d-share-bar input::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;margin-top:-4px;border:0;border-radius:50%;background:#13284f}
+.d-share-bar input::-moz-range-thumb{width:11px;height:11px;border:0;border-radius:50%;background:#13284f}
+.d-share-bar input:disabled{cursor:default}
+.d-share-bar input:disabled::-webkit-slider-thumb{background:#f26b3a}
+.d-share-bar span{flex:none;min-width:3.2em;color:#13284f;font:600 12px/1 system-ui,sans-serif;font-variant-numeric:tabular-nums;text-align:right}
+.d-video-intro .d-share-bar{left:14px;right:14px;bottom:12px}
+.d-video-intro .d-share-bar span{font-size:13px}
+.d-share.is-still .d-share-bar,.d-share.is-still .d-share-sound{display:none}

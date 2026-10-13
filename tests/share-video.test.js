@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {videoScript, closers, timeline, duration} from '../app/share-video.js';
+import {videoScript, closers, timeline, duration, musicCues} from '../app/share-video.js';
+import {musicPlan} from '../app/share-music.js';
 
 const f = (code, p, extra = {}) => ({code, percentile: p, band: p < 30 ? 'low' : p > 70 ? 'high' : 'middle', ...extra});
 const profile = ps => Object.entries(ps).map(([code, p]) => ({...f(code, p), facets: [f(`${code}1`, 50, {name: `${code} facet`})]}));
@@ -37,14 +38,23 @@ test('every trait and direction has a closing line in both languages', () => {
   for (const code of 'OCEAN') for (const band of ['low', 'high']) assert.ok(closers[code][band].every(x => x.trim().length > 10));
 });
 
-test('short cut is 10 to 15 seconds and keeps paid content out; long cut is about 30 seconds', () => {
+test('short cut is 15 s of content plus a 5-second end card and keeps paid content out; long cut is about 30 s plus the end card', () => {
   const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
   const short = videoScript(ds, {language: 'en', name}), long = videoScript(ds, {language: 'no', name, long: true});
-  assert.ok(duration(short) >= 10 && duration(short) <= 15);
-  assert.ok(duration(long) >= 28 && duration(long) <= 32);
+  assert.ok(timeline(short).at(-1).start <= 15 && duration(short) <= 20);
+  assert.ok(timeline(long).at(-1).start <= 30 && duration(long) <= 35);
+  assert.ok(Math.abs(timeline(short).at(-1).end - timeline(short).at(-1).start - 5) < 1e-9);
   assert.equal(short.traits, undefined);
   assert.equal(short.combo, undefined);
   assert.deepEqual(timeline(long).map(x => x.id), ['hook', 'name', 'traits', 'stat', 'facet', 'combo', 'strength', 'closer', 'end']);
   assert.deepEqual(long.traits.map(x => x.percentile), [92, 81, 45, 60, 35]);
   assert.ok(long.combo.text.length > 20 && long.strength.title.length > 5);
+});
+
+test('music follows the video: groove from the name, motif home on the end card, nothing after the end', () => {
+  const s = videoScript(profile({O: 92, C: 81, E: 45, A: 60, N: 35}), {language: 'en', name}), cues = musicCues(s), plan = musicPlan(cues.total, cues);
+  assert.deepEqual(plan, musicPlan(cues.total, cues), 'the same every time');
+  assert.ok(plan.every(e => e.t >= 0 && e.t + e.dur <= cues.total + 1e-6));
+  assert.ok(plan.filter(e => ['kick', 'pluck', 'hat', 'clap'].includes(e.type)).every(e => e.t >= cues.grooveAt && e.t < cues.endAt));
+  assert.equal(plan.filter(e => e.type === 'bell' && e.t >= cues.endAt).at(-1).midi, 86, 'the motif ends on D');
 });
