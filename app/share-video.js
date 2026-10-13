@@ -1,8 +1,8 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
-// Short (about 14 s, free profile): hook, profile name, the trait furthest from the middle as
+// Short (15 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
 // a light closing line and an end card.
-// Long (about 30 s, in-depth report): adds all five traits, the combination sentence and a
+// Long (31 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
@@ -174,8 +174,8 @@ function footer(ctx, imgs, a) {
 
 // Scene lengths in seconds. Scenes play back to back and cross-fade at the edges.
 const CUTS = {
-  short: [['hook', 2.5], ['name', 2.6], ['stat', 3.4], ['facet', 2.2], ['closer', 1.9], ['end', 1.6]],
-  long: [['hook', 2.5], ['name', 2.8], ['traits', 5.6], ['stat', 3.4], ['facet', 2.8], ['combo', 4.8], ['strength', 3.6], ['closer', 2.6], ['end', 2.2]]
+  short: [['hook', 4.0], ['name', 2.5], ['stat', 3.0], ['facet', 2.2], ['closer', 1.9], ['end', 1.4]],
+  long: [['hook', 4.0], ['name', 2.8], ['traits', 5.4], ['stat', 3.4], ['facet', 2.8], ['combo', 4.4], ['strength', 3.3], ['closer', 2.6], ['end', 2.2]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
