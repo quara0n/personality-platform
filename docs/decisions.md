@@ -191,3 +191,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Ved redusert bevegelse viser forhåndsvisningen et stillbilde; selve videoen kan fortsatt lages.
 - Rune ønsket i tillegg en lengre video på rundt 30 sekunder i fordypningsrapporten. «Del rapporten din som video» står i oversikten etter «Din profil på ett blikk». Den lange versjonen (30 s) legger til alle fem trekkene med persentil, kombinasjonssetningen og «En mulig styrke» for trekket profilnavnet bygger på. Gratisversjonen viser ikke disse. Begge bygger på samme scener i app/share-video.js (timeline(), regel-id share-video-v1/short|long/…). Boksen skjules i PDF.
 - Rune tror den lange videoen blir delt mest, men vil ikke presse rapporten på folk. Gratisvideoen har derfor ingen salgsbudskap; sluttkortet inviterer bare til å ta testen. I gratisboksen står én stille linje om at den lengre versjonen følger med fordypningsrapporten, med lenke.
+
+## Innholdsmenyen i rapporten 2026-10-13
+
+- Rune ønsket litt mer kontrast i innholdsmenyen og en rolig bevegelse som viser hvilket kapittel som er aktivt. Aktivt kapittel har nå litt sterkere bakgrunn, halvfet tekst, mørkere oransje nummer og en tynn aksentlinje som «puster» sakte (3,6 s); en svak lysstripe glir over omtrent hvert niende sekund. Inaktive numre er dempet grå slik at titlene skiller seg ut. På smale skjermer ligger aksentlinjen under fanen. Ved redusert bevegelse står linjen stille og lysstripen vises ikke.
