@@ -1,34 +1,65 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {profileName, adjectives, nouns} from '../app/profile-name.js';
-import {combination} from '../app/combination-copy.js';
+import {profileName, words, signatures, signatureLines} from '../app/profile-name.js';
 
-const profile = bands => Object.entries(bands).map(([code, [band, percentile]]) => ({code, band, percentile}));
-const mid = {O: ['middle', 50], C: ['middle', 50], E: ['middle', 50], A: ['middle', 50], N: ['middle', 50]};
+// Domains with all facets at percentile 50 unless overridden, e.g. {E1: ['high', 92]}.
+const profile = (over = {}) => [...'OCEAN'].map(code => ({code, band: 'middle', percentile: 50,
+  facets: [1, 2, 3, 4, 5, 6].map(i => {const [band, percentile] = over[`${code}${i}`] || ['middle', 50]; return {code: `${code}${i}`, name: `${code}${i}`, band, percentile};})}));
 
-test('noun from the trait furthest from the middle, adjective from the second', () => {
-  const d = profile({...mid, O: ['high', 80], C: ['high', 95]});
-  assert.equal(profileName(d, 'en').name, 'The Curious Planner');
-  assert.equal(profileName(d, 'no').name, 'Den nysgjerrige planleggeren');
-  assert.equal(profileName(d, 'en').ruleId, 'profile-name-v1/ChOh');
+test('a signature pairing wins when it rests on the most distinctive facets', () => {
+  const d = profile({E1: ['high', 92], E2: ['low', 8]});
+  assert.equal(profileName(d, 'en').name, 'The Warm Hermit');
+  assert.equal(profileName(d, 'no').name, 'Den varme eneboeren');
+  assert.equal(profileName(d, 'en').ruleId, 'profile-name-v2/signature/E1h-E2l');
+  assert.equal(profileName(d, 'no').line, 'Elsker folk. Én om gangen. Helst hjemme.');
+  assert.equal(profileName(d, 'no').image, 'E1h-E2l');
 });
 
-test('rests on the same two traits as the combination sentence', () => {
-  const d = profile({O: ['low', 10], C: ['high', 75], E: ['low', 4], A: ['high', 90], N: ['middle', 40]});
-  assert.deepEqual(profileName(d, 'en').traits.map(x => x.code).sort(), combination(d, 'en').traits.map(x => x.code).sort());
-  assert.equal(profileName(d, 'en').name, 'The Considerate Observer');
+test('otherwise the noun comes from the top facet and the adjective from another trait', () => {
+  const d = profile({N2: ['high', 97], C3: ['low', 15], N6: ['high', 90]});
+  const n = profileName(d, 'en');
+  assert.equal(n.name, 'The Spontaneous Volcano');
+  assert.deepEqual(n.facets.map(f => f.code), ['N2', 'C3']);
+  assert.equal(n.image, 'N2h');
+  assert.equal(profileName(d, 'no').name, 'Den spontane vulkanen');
 });
 
-test('one standout gives the noun alone; none gives a balanced name', () => {
-  assert.equal(profileName(profile({...mid, N: ['low', 5]}), 'en').name, 'The Anchor');
-  assert.equal(profileName(profile({...mid, N: ['low', 5]}), 'no').name, 'Klippen');
-  assert.equal(profileName(profile(mid), 'en').name, 'The All-Rounder');
-  assert.equal(profileName(profile(mid), 'no').name, 'Den allsidige');
+test('a signature far weaker than the plain name does not win', () => {
+  const d = profile({O5: ['high', 99], N1: ['low', 1], E1: ['high', 72], E2: ['low', 28]});
+  // O5 and N1 tie; the code order makes N1 the noun.
+  assert.equal(profileName(d, 'en').name, 'The Curious Zen Master');
 });
 
-test('every trait and direction has words in both languages', () => {
-  for (const code of 'OCEAN') for (const band of ['low', 'high']) for (const w of [adjectives, nouns]) {
-    assert.equal(w[code][band].length, 2);
-    assert.ok(w[code][band].every(s => s.trim()));
+test('one distinctive facet gives the noun alone; none gives a balanced name', () => {
+  assert.equal(profileName(profile({N6: ['low', 5]}), 'en').name, 'The Rock');
+  assert.equal(profileName(profile({N6: ['low', 5]}), 'no').name, 'Klippen');
+  assert.equal(profileName(profile(), 'en').name, 'The All-Rounder');
+  assert.equal(profileName(profile(), 'no').name, 'Den allsidige');
+});
+
+test('every facet and direction has four words, and signatures use known keys', () => {
+  for (const code of 'OCEAN') for (let i = 1; i <= 6; i++) for (const b of 'hl') {
+    const w = words[`${code}${i}${b}`];
+    assert.equal(w?.length, 4, `${code}${i}${b}`);
+    assert.ok(w.every(s => s.trim()));
   }
+  for (const [a, b, en, no] of signatures) {
+    assert.ok(words[a] && words[b] && en && no, `${a}-${b}`);
+    assert.notEqual(a, b);
+    assert.equal(signatureLines[`${a}-${b}`]?.length, 2, `line ${a}-${b}`);
+  }
+  assert.equal(new Set(signatures.map(s => [s[0], s[1]].sort().join())).size, signatures.length);
+});
+
+test('every illustration has a text in both languages and an image file', async () => {
+  const {characterText, sharedArt} = await import('../app/profile-name-copy.js');
+  const fs = await import('node:fs');
+  const ids = [...signatures.map(s => `${s[0]}-${s[1]}`), ...Object.keys(words), 'balanced'];
+  assert.equal(ids.length, 91);
+  for (const id of ids) {
+    assert.equal(characterText[id]?.length, 2, id);
+    assert.ok(fs.existsSync(`app/assets/names/${id}.webp`), id);
+    if (!sharedArt.has(id)) for (const v of ['female', 'male']) assert.ok(fs.existsSync(`app/assets/names/${v}/${id}.webp`), `${v}/${id}`);
+  }
+  assert.equal(Object.keys(characterText).length, 91);
 });

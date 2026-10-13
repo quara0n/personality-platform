@@ -1,0 +1,1185 @@
+[
+  {
+    "id": "E1h-E2l",
+    "filename": "E1h-E2l.webp",
+    "norsk": "Den varme eneboeren",
+    "english": "The Warm Hermit",
+    "group": "Signaturnavn",
+    "concept": "En varm person som tar imot én venn i døra til en koselig hytte.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E1h-E2l.webp",
+      "female": "app/assets/names/female/E1h-E2l.webp"
+    }
+  },
+  {
+    "id": "E2h-N4h",
+    "filename": "E2h-N4h.webp",
+    "norsk": "Den sjenerte festløven",
+    "english": "The Shy Party Lion",
+    "group": "Signaturnavn",
+    "concept": "En løve med festhatt som gjemmer seg litt bak et gardin på festen.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E2h-N4h.webp",
+      "female": "app/assets/names/E2h-N4h.webp"
+    }
+  },
+  {
+    "id": "E3h-N1h",
+    "filename": "E3h-N1h.webp",
+    "norsk": "Kapteinen med sommerfugler i magen",
+    "english": "The Captain with Butterflies",
+    "group": "Signaturnavn",
+    "concept": "En kaptein ved roret med sommerfugler som flagrer rundt magen.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E3h-N1h.webp",
+      "female": "app/assets/names/female/E3h-N1h.webp"
+    }
+  },
+  {
+    "id": "E3h-A5h",
+    "filename": "E3h-A5h.webp",
+    "norsk": "Den beskjedne kapteinen",
+    "english": "The Humble Captain",
+    "group": "Signaturnavn",
+    "concept": "En kaptein som peker på mannskapet og gir dem medaljen.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E3h-A5h.webp",
+      "female": "app/assets/names/female/E3h-A5h.webp"
+    }
+  },
+  {
+    "id": "E5h-C6h",
+    "filename": "E5h-C6h.webp",
+    "norsk": "Den forsiktige våghalsen",
+    "english": "The Careful Daredevil",
+    "group": "Signaturnavn",
+    "concept": "En fallskjermhopper som dobbeltsjekker en sjekkliste i døra.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E5h-C6h.webp",
+      "female": "app/assets/names/female/E5h-C6h.webp"
+    }
+  },
+  {
+    "id": "O4h-C6h",
+    "filename": "O4h-C6h.webp",
+    "norsk": "Eventyreren med førstehjelpsskrin",
+    "english": "The Adventurer with a First-Aid Kit",
+    "group": "Signaturnavn",
+    "concept": "En eventyrer med ryggsekk og et stort førstehjelpsskrin.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O4h-C6h.webp",
+      "female": "app/assets/names/female/O4h-C6h.webp"
+    }
+  },
+  {
+    "id": "E5h-A6h",
+    "filename": "E5h-A6h.webp",
+    "norsk": "Våghalsen med det myke hjertet",
+    "english": "The Soft-Hearted Daredevil",
+    "group": "Signaturnavn",
+    "concept": "En våghals på motorsykkel med et hjerte på hjelmen som stopper for å hjelpe.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E5h-A6h.webp",
+      "female": "app/assets/names/female/E5h-A6h.webp"
+    }
+  },
+  {
+    "id": "E5h-N1l",
+    "filename": "E5h-N1l.webp",
+    "norsk": "Den uforskrekkede adrenalinjegeren",
+    "english": "The Unflappable Thrill-Seeker",
+    "group": "Signaturnavn",
+    "concept": "En person som surfer en stor bølge helt avslappet.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/E5h-N1l.webp",
+      "female": "app/assets/names/female/E5h-N1l.webp"
+    }
+  },
+  {
+    "id": "O1h-C2h",
+    "filename": "O1h-C2h.webp",
+    "norsk": "Dagdrømmeren med merkemaskin",
+    "english": "The Daydreamer with a Label Maker",
+    "group": "Signaturnavn",
+    "concept": "En dagdrømmer som setter etiketter på skyene sine.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O1h-C2h.webp",
+      "female": "app/assets/names/female/O1h-C2h.webp"
+    }
+  },
+  {
+    "id": "O1h-C2l",
+    "filename": "O1h-C2l.webp",
+    "norsk": "Den kreative kaospiloten",
+    "english": "The Creative Chaos Pilot",
+    "group": "Signaturnavn",
+    "concept": "En pilot i et fargerikt fly av ideer og løse lapper.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O1h-C2l.webp",
+      "female": "app/assets/names/female/O1h-C2l.webp"
+    }
+  },
+  {
+    "id": "O1h-E4l",
+    "filename": "O1h-E4l.webp",
+    "norsk": "Dagdrømmeren i sofakroken",
+    "english": "The Sofa Daydreamer",
+    "group": "Signaturnavn",
+    "concept": "En dagdrømmer i sofaen under pledd, med drømmer som svever over.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O1h-E4l.webp",
+      "female": "app/assets/names/female/O1h-E4l.webp"
+    }
+  },
+  {
+    "id": "O2h-C2h",
+    "filename": "O2h-C2h.webp",
+    "norsk": "Estetikeren med alfabetisk bokhylle",
+    "english": "The Aesthete with Alphabetised Shelves",
+    "group": "Signaturnavn",
+    "concept": "En estetiker foran en bokhylle sortert alfabetisk og etter farge.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O2h-C2h.webp",
+      "female": "app/assets/names/female/O2h-C2h.webp"
+    }
+  },
+  {
+    "id": "O5h-E2l",
+    "filename": "O5h-E2l.webp",
+    "norsk": "Filosofen i lesekroken",
+    "english": "The Reading-Nook Philosopher",
+    "group": "Signaturnavn",
+    "concept": "En filosof i en lesekrok med bøker og en kopp te.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O5h-E2l.webp",
+      "female": "app/assets/names/female/O5h-E2l.webp"
+    }
+  },
+  {
+    "id": "O5h-A4l",
+    "filename": "O5h-A4l.webp",
+    "norsk": "Djevelens advokat",
+    "english": "The Devil's Advocate",
+    "group": "Signaturnavn",
+    "concept": "En person med en liten djevel-advokatkappe som løfter fingeren: 'men…'.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O5h-A4l.webp",
+      "female": "app/assets/names/female/O5h-A4l.webp"
+    }
+  },
+  {
+    "id": "C4h-C5l",
+    "filename": "C4h-C5l.webp",
+    "norsk": "Den ambisiøse sisteliten-kunstneren",
+    "english": "The Ambitious Last-Minute Artist",
+    "group": "Signaturnavn",
+    "concept": "En kunstner som leverer et mesterverk med klokka på 23.59.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C4h-C5l.webp",
+      "female": "app/assets/names/female/C4h-C5l.webp"
+    }
+  },
+  {
+    "id": "C4h-A5h",
+    "filename": "C4h-A5h.webp",
+    "norsk": "Den stille stjernen",
+    "english": "The Quiet High Achiever",
+    "group": "Signaturnavn",
+    "concept": "En person som står i skyggen mens en stjerne de har laget lyser.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C4h-A5h.webp",
+      "female": "app/assets/names/female/C4h-A5h.webp"
+    }
+  },
+  {
+    "id": "E4h-C5l",
+    "filename": "E4h-C5l.webp",
+    "norsk": "Virvelvinden med ti faner åpne",
+    "english": "The Whirlwind with Ten Tabs Open",
+    "group": "Signaturnavn",
+    "concept": "En virvelvind med ti nettleserfaner som svever rundt.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E4h-C5l.webp",
+      "female": "app/assets/names/female/E4h-C5l.webp"
+    }
+  },
+  {
+    "id": "N5h-C5l",
+    "filename": "N5h-C5l.webp",
+    "norsk": "Bare-én-episode-til-entusiasten",
+    "english": "The Just-One-More-Episode Enthusiast",
+    "group": "Signaturnavn",
+    "concept": "En person i sofaen med fjernkontroll og 'neste episode' på skjermen.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N5h-C5l.webp",
+      "female": "app/assets/names/female/N5h-C5l.webp"
+    }
+  },
+  {
+    "id": "A3h-N1h",
+    "filename": "A3h-N1h.webp",
+    "norsk": "Den bekymrede skytsengelen",
+    "english": "The Worried Guardian Angel",
+    "group": "Signaturnavn",
+    "concept": "En skytsengel med bekymret panne som holder paraply over noen.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A3h-N1h.webp",
+      "female": "app/assets/names/female/A3h-N1h.webp"
+    }
+  },
+  {
+    "id": "A3h-N2h",
+    "filename": "A3h-N2h.webp",
+    "norsk": "Vulkanen med gullhjerte",
+    "english": "The Volcano with a Heart of Gold",
+    "group": "Signaturnavn",
+    "concept": "En vulkan med et gyllent hjerte som deler ut kakestykker.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/A3h-N2h.webp",
+      "female": "app/assets/names/A3h-N2h.webp"
+    }
+  },
+  {
+    "id": "A3h-N6l",
+    "filename": "A3h-N6l.webp",
+    "norsk": "Roen i stormen",
+    "english": "The Calm in the Storm",
+    "group": "Signaturnavn",
+    "concept": "En person som står rolig i stormen og holder noen i hånden.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/A3h-N6l.webp",
+      "female": "app/assets/names/female/A3h-N6l.webp"
+    }
+  },
+  {
+    "id": "A3h-C3h",
+    "filename": "A3h-C3h.webp",
+    "norsk": "Klippen alle ringer til",
+    "english": "The Rock Everyone Calls",
+    "group": "Signaturnavn",
+    "concept": "En klippe med en telefon som ringer, og den svarer alltid.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/A3h-C3h.webp",
+      "female": "app/assets/names/A3h-C3h.webp"
+    }
+  },
+  {
+    "id": "A6h-N6h",
+    "filename": "A6h-N6h.webp",
+    "norsk": "Den ømme sjelen",
+    "english": "The Tender Soul",
+    "group": "Signaturnavn",
+    "concept": "En person med et stort, mykt hjerte som omfavner flere andre.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A6h-N6h.webp",
+      "female": "app/assets/names/female/A6h-N6h.webp"
+    }
+  },
+  {
+    "id": "E6h-N1h",
+    "filename": "E6h-N1h.webp",
+    "norsk": "Den blide grubleren",
+    "english": "The Cheerful Worrier",
+    "group": "Signaturnavn",
+    "concept": "En smilende sol med små 'hva om'-skyer bak seg.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E6h-N1h.webp",
+      "female": "app/assets/names/E6h-N1h.webp"
+    }
+  },
+  {
+    "id": "E6h-A3h",
+    "filename": "E6h-A3h.webp",
+    "norsk": "Solstrålen som stiller opp",
+    "english": "The Ray of Sunshine Who Shows Up",
+    "group": "Signaturnavn",
+    "concept": "En liten sol som bærer en tallerken og hjelper til.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E6h-A3h.webp",
+      "female": "app/assets/names/E6h-A3h.webp"
+    }
+  },
+  {
+    "id": "A1l-C6h",
+    "filename": "A1l-C6h.webp",
+    "norsk": "Den grundige detektiven",
+    "english": "The Careful Detective",
+    "group": "Signaturnavn",
+    "concept": "En detektiv med forstørrelsesglass som leser den lille skriften.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/A1l-C6h.webp",
+      "female": "app/assets/names/female/A1l-C6h.webp"
+    }
+  },
+  {
+    "id": "A2l-E1h",
+    "filename": "A2l-E1h.webp",
+    "norsk": "Den sjarmerende reven",
+    "english": "The Charming Fox",
+    "group": "Signaturnavn",
+    "concept": "En sjarmerende rev i dress som holder en invitasjon.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/A2l-E1h.webp",
+      "female": "app/assets/names/A2l-E1h.webp"
+    }
+  },
+  {
+    "id": "N4l-E2h",
+    "filename": "N4l-E2h.webp",
+    "norsk": "Midtpunktet i festen",
+    "english": "The Life of the Party",
+    "group": "Signaturnavn",
+    "concept": "En person midt på dansegulvet i et lyskjegle.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N4l-E2h.webp",
+      "female": "app/assets/names/female/N4l-E2h.webp"
+    }
+  },
+  {
+    "id": "N5l-C5h",
+    "filename": "N5l-C5h.webp",
+    "norsk": "Munken med en plan",
+    "english": "The Monk with a Plan",
+    "group": "Signaturnavn",
+    "concept": "En munk med én sjokoladebit og en ryddig plan.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N5l-C5h.webp",
+      "female": "app/assets/names/female/N5l-C5h.webp"
+    }
+  },
+  {
+    "id": "O6h-A2h",
+    "filename": "O6h-A2h.webp",
+    "norsk": "Opprøreren med en sak",
+    "english": "The Rebel with a Cause",
+    "group": "Signaturnavn",
+    "concept": "En opprører med et skilt der det står et hjerte.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O6h-A2h.webp",
+      "female": "app/assets/names/female/O6h-A2h.webp"
+    }
+  },
+  {
+    "id": "O1h",
+    "filename": "O1h.webp",
+    "norsk": "Dagdrømmeren",
+    "english": "The Daydreamer",
+    "group": "Figurer",
+    "concept": "En person som ser ut av vinduet med skyer formet som fantasidyr over hodet.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O1h.webp",
+      "female": "app/assets/names/female/O1h.webp"
+    }
+  },
+  {
+    "id": "O1l",
+    "filename": "O1l.webp",
+    "norsk": "Realisten",
+    "english": "The Realist",
+    "group": "Figurer",
+    "concept": "En person med begge bena på bakken som måler noe nøyaktig med tommestokk.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O1l.webp",
+      "female": "app/assets/names/female/O1l.webp"
+    }
+  },
+  {
+    "id": "O2h",
+    "filename": "O2h.webp",
+    "norsk": "Estetikeren",
+    "english": "The Aesthete",
+    "group": "Figurer",
+    "concept": "En person som stopper foran et maleri eller solnedgang, helt oppslukt.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O2h.webp",
+      "female": "app/assets/names/female/O2h.webp"
+    }
+  },
+  {
+    "id": "O2l",
+    "filename": "O2l.webp",
+    "norsk": "Pragmatikeren",
+    "english": "The Pragmatist",
+    "group": "Figurer",
+    "concept": "En person i enkle, praktiske klær med en verktøykasse, fornøyd med at ting virker.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O2l.webp",
+      "female": "app/assets/names/female/O2l.webp"
+    }
+  },
+  {
+    "id": "O3h",
+    "filename": "O3h.webp",
+    "norsk": "Romantikeren",
+    "english": "The Romantic",
+    "group": "Figurer",
+    "concept": "En person med hånden på hjertet og et lite hjerte som lyser i brystet.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O3h.webp",
+      "female": "app/assets/names/female/O3h.webp"
+    }
+  },
+  {
+    "id": "O3l",
+    "filename": "O3l.webp",
+    "norsk": "Stoikeren",
+    "english": "The Stoic",
+    "group": "Figurer",
+    "concept": "En rolig person som sitter rett opp og ned med et nøytralt, fornøyd smil.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O3l.webp",
+      "female": "app/assets/names/female/O3l.webp"
+    }
+  },
+  {
+    "id": "O4h",
+    "filename": "O4h.webp",
+    "norsk": "Eventyreren",
+    "english": "The Adventurer",
+    "group": "Figurer",
+    "concept": "En person med ryggsekk og kart på vei inn i ukjent terreng.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O4h.webp",
+      "female": "app/assets/names/female/O4h.webp"
+    }
+  },
+  {
+    "id": "O4l",
+    "filename": "O4l.webp",
+    "norsk": "Stamgjesten",
+    "english": "The Regular",
+    "group": "Figurer",
+    "concept": "En person ved sitt faste bord på kaféen, med 'det vanlige' i koppen.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O4l.webp",
+      "female": "app/assets/names/female/O4l.webp"
+    }
+  },
+  {
+    "id": "O5h",
+    "filename": "O5h.webp",
+    "norsk": "Filosofen",
+    "english": "The Philosopher",
+    "group": "Figurer",
+    "concept": "En person i lenestol omgitt av bøker og spørsmålstegn som svever.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O5h.webp",
+      "female": "app/assets/names/female/O5h.webp"
+    }
+  },
+  {
+    "id": "O5l",
+    "filename": "O5l.webp",
+    "norsk": "Praktikeren",
+    "english": "The Practitioner",
+    "group": "Figurer",
+    "concept": "En person med oppbrettede ermer som fikser noe med hendene.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/O5l.webp",
+      "female": "app/assets/names/female/O5l.webp"
+    }
+  },
+  {
+    "id": "O6h",
+    "filename": "O6h.webp",
+    "norsk": "Opprøreren",
+    "english": "The Rebel",
+    "group": "Figurer",
+    "concept": "En person som går motsatt vei av mengden, med en liten fane.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O6h.webp",
+      "female": "app/assets/names/female/O6h.webp"
+    }
+  },
+  {
+    "id": "O6l",
+    "filename": "O6l.webp",
+    "norsk": "Tradisjonsbæreren",
+    "english": "The Tradition Keeper",
+    "group": "Figurer",
+    "concept": "En person som bærer en gammel lykt eller familieoppskrift videre.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/O6l.webp",
+      "female": "app/assets/names/female/O6l.webp"
+    }
+  },
+  {
+    "id": "C1h",
+    "filename": "C1h.webp",
+    "norsk": "Problemknuseren",
+    "english": "The Problem Solver",
+    "group": "Figurer",
+    "concept": "En person som knuser en stor stein (et problem) med et lite smil.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C1h.webp",
+      "female": "app/assets/names/female/C1h.webp"
+    }
+  },
+  {
+    "id": "C1l",
+    "filename": "C1l.webp",
+    "norsk": "Lærlingen",
+    "english": "The Apprentice",
+    "group": "Figurer",
+    "concept": "En lærling med forkle som lærer av en eldre mester, nysgjerrig og ydmyk.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C1l.webp",
+      "female": "app/assets/names/female/C1l.webp"
+    }
+  },
+  {
+    "id": "C2h",
+    "filename": "C2h.webp",
+    "norsk": "Systematikeren",
+    "english": "The Organiser",
+    "group": "Figurer",
+    "concept": "En person foran perfekt sorterte hyller med etiketter.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C2h.webp",
+      "female": "app/assets/names/female/C2h.webp"
+    }
+  },
+  {
+    "id": "C2l",
+    "filename": "C2l.webp",
+    "norsk": "Kaospiloten",
+    "english": "The Chaos Pilot",
+    "group": "Figurer",
+    "concept": "En pilot i et fly laget av papirlapper, notater og kaffekopper, som likevel flyr.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C2l.webp",
+      "female": "app/assets/names/female/C2l.webp"
+    }
+  },
+  {
+    "id": "C3h",
+    "filename": "C3h.webp",
+    "norsk": "Ordholderen",
+    "english": "The Promise Keeper",
+    "group": "Figurer",
+    "concept": "En person som rekker fram hånden for et løfte, med en klokke som viser at de kom presis.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C3h.webp",
+      "female": "app/assets/names/female/C3h.webp"
+    }
+  },
+  {
+    "id": "C3l",
+    "filename": "C3l.webp",
+    "norsk": "Frifuglen",
+    "english": "The Free Spirit",
+    "group": "Figurer",
+    "concept": "En fugl som flyr fritt ut av et åpent bur.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/C3l.webp",
+      "female": "app/assets/names/C3l.webp"
+    }
+  },
+  {
+    "id": "C4h",
+    "filename": "C4h.webp",
+    "norsk": "Måljegeren",
+    "english": "The Goal Hunter",
+    "group": "Figurer",
+    "concept": "En jeger med kikkert som sikter på en blinkende stjerne (et mål).",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C4h.webp",
+      "female": "app/assets/names/female/C4h.webp"
+    }
+  },
+  {
+    "id": "C4l",
+    "filename": "C4l.webp",
+    "norsk": "Livsnyteren",
+    "english": "The Bon Vivant",
+    "group": "Figurer",
+    "concept": "En person i hengekøye med en god kopp, helt tilfreds.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C4l.webp",
+      "female": "app/assets/names/female/C4l.webp"
+    }
+  },
+  {
+    "id": "C5h",
+    "filename": "C5h.webp",
+    "norsk": "Fullføreren",
+    "english": "The Finisher",
+    "group": "Figurer",
+    "concept": "En løper som krysser målstreken med jevn, rolig stil.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C5h.webp",
+      "female": "app/assets/names/female/C5h.webp"
+    }
+  },
+  {
+    "id": "C5l",
+    "filename": "C5l.webp",
+    "norsk": "Sisteliten-kunstneren",
+    "english": "The Last-Minute Artist",
+    "group": "Figurer",
+    "concept": "En kunstner som maler ferdig med en klokke som viser to minutter på tolv.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C5l.webp",
+      "female": "app/assets/names/female/C5l.webp"
+    }
+  },
+  {
+    "id": "C6h",
+    "filename": "C6h.webp",
+    "norsk": "Sikkerhetssjefen",
+    "english": "The Safety Officer",
+    "group": "Figurer",
+    "concept": "En person med refleksvest og hjelm som sjekker en sjekkliste.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/C6h.webp",
+      "female": "app/assets/names/female/C6h.webp"
+    }
+  },
+  {
+    "id": "C6l",
+    "filename": "C6l.webp",
+    "norsk": "Improvisatoren",
+    "english": "The Improviser",
+    "group": "Figurer",
+    "concept": "En person som improviserer på en scene med et stort smil.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/C6l.webp",
+      "female": "app/assets/names/female/C6l.webp"
+    }
+  },
+  {
+    "id": "E1h",
+    "filename": "E1h.webp",
+    "norsk": "Sjarmøren",
+    "english": "The Charmer",
+    "group": "Figurer",
+    "concept": "En person som hilser varmt med åpne armer.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E1h.webp",
+      "female": "app/assets/names/female/E1h.webp"
+    }
+  },
+  {
+    "id": "E1l",
+    "filename": "E1l.webp",
+    "norsk": "Sfinksen",
+    "english": "The Sphinx",
+    "group": "Figurer",
+    "concept": "En rolig sfinks med et lite, mystisk smil.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E1l.webp",
+      "female": "app/assets/names/E1l.webp"
+    }
+  },
+  {
+    "id": "E2h",
+    "filename": "E2h.webp",
+    "norsk": "Festløven",
+    "english": "The Party Lion",
+    "group": "Figurer",
+    "concept": "En løve med festhatt midt i et selskap.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E2h.webp",
+      "female": "app/assets/names/E2h.webp"
+    }
+  },
+  {
+    "id": "E2l",
+    "filename": "E2l.webp",
+    "norsk": "Eneboeren",
+    "english": "The Hermit",
+    "group": "Figurer",
+    "concept": "En koselig hytte i skogen med lys i vinduet og én person inni.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E2l.webp",
+      "female": "app/assets/names/female/E2l.webp"
+    }
+  },
+  {
+    "id": "E3h",
+    "filename": "E3h.webp",
+    "norsk": "Kapteinen",
+    "english": "The Captain",
+    "group": "Figurer",
+    "concept": "En kaptein ved roret som peker ut kursen.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E3h.webp",
+      "female": "app/assets/names/female/E3h.webp"
+    }
+  },
+  {
+    "id": "E3l",
+    "filename": "E3l.webp",
+    "norsk": "Kulissehelten",
+    "english": "The Backstage Hero",
+    "group": "Figurer",
+    "concept": "En person bak scenen som trekker i snorene mens showet går.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E3l.webp",
+      "female": "app/assets/names/female/E3l.webp"
+    }
+  },
+  {
+    "id": "E4h",
+    "filename": "E4h.webp",
+    "norsk": "Virvelvinden",
+    "english": "The Whirlwind",
+    "group": "Figurer",
+    "concept": "En virvelvind med armer som gjør mange ting samtidig.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E4h.webp",
+      "female": "app/assets/names/female/E4h.webp"
+    }
+  },
+  {
+    "id": "E4l",
+    "filename": "E4l.webp",
+    "norsk": "Slentreren",
+    "english": "The Stroller",
+    "group": "Figurer",
+    "concept": "En person som slentrer langsomt med hendene i lomma og nyter utsikten.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/E4l.webp",
+      "female": "app/assets/names/female/E4l.webp"
+    }
+  },
+  {
+    "id": "E5h",
+    "filename": "E5h.webp",
+    "norsk": "Våghalsen",
+    "english": "The Daredevil",
+    "group": "Figurer",
+    "concept": "En person som hopper fra en klippe ned i vannet med et jubelrop.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E5h.webp",
+      "female": "app/assets/names/female/E5h.webp"
+    }
+  },
+  {
+    "id": "E5l",
+    "filename": "E5l.webp",
+    "norsk": "Kosemesteren",
+    "english": "The Comfort Connoisseur",
+    "group": "Figurer",
+    "concept": "En person under et pledd med kakao, stearinlys og en god bok.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/E5l.webp",
+      "female": "app/assets/names/female/E5l.webp"
+    }
+  },
+  {
+    "id": "E6h",
+    "filename": "E6h.webp",
+    "norsk": "Solstrålen",
+    "english": "The Ray of Sunshine",
+    "group": "Figurer",
+    "concept": "En liten sol med ansikt som lyser opp rundt seg.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/E6h.webp",
+      "female": "app/assets/names/E6h.webp"
+    }
+  },
+  {
+    "id": "E6l",
+    "filename": "E6l.webp",
+    "norsk": "Alvorsmesteren",
+    "english": "The Straight Face",
+    "group": "Figurer",
+    "concept": "En person med helt rolig ansikt og et lite glimt i øyet.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/E6l.webp",
+      "female": "app/assets/names/female/E6l.webp"
+    }
+  },
+  {
+    "id": "A1h",
+    "filename": "A1h.webp",
+    "norsk": "Idealisten",
+    "english": "The Idealist",
+    "group": "Figurer",
+    "concept": "En person som slipper en due eller rekker ut en åpen hånd.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A1h.webp",
+      "female": "app/assets/names/female/A1h.webp"
+    }
+  },
+  {
+    "id": "A1l",
+    "filename": "A1l.webp",
+    "norsk": "Detektiven",
+    "english": "The Detective",
+    "group": "Figurer",
+    "concept": "En detektiv med forstørrelsesglass som undersøker et spor.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A1l.webp",
+      "female": "app/assets/names/female/A1l.webp"
+    }
+  },
+  {
+    "id": "A2h",
+    "filename": "A2h.webp",
+    "norsk": "Fair play-ridderen",
+    "english": "The Knight of Fair Play",
+    "group": "Figurer",
+    "concept": "En ridder med skjold som har en vektskål som merke.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A2h.webp",
+      "female": "app/assets/names/female/A2h.webp"
+    }
+  },
+  {
+    "id": "A2l",
+    "filename": "A2l.webp",
+    "norsk": "Reven",
+    "english": "The Fox",
+    "group": "Figurer",
+    "concept": "En lur rev med et lurt smil og et blunk.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/A2l.webp",
+      "female": "app/assets/names/A2l.webp"
+    }
+  },
+  {
+    "id": "A3h",
+    "filename": "A3h.webp",
+    "norsk": "Skytsengelen",
+    "english": "The Guardian Angel",
+    "group": "Figurer",
+    "concept": "En skytsengel med små vinger som holder en paraply over noen.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A3h.webp",
+      "female": "app/assets/names/female/A3h.webp"
+    }
+  },
+  {
+    "id": "A3l",
+    "filename": "A3l.webp",
+    "norsk": "Selvbergeren",
+    "english": "The Self-Starter",
+    "group": "Figurer",
+    "concept": "En person som har bygget sin egen lille hytte og dyrker sin egen hage.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A3l.webp",
+      "female": "app/assets/names/female/A3l.webp"
+    }
+  },
+  {
+    "id": "A4h",
+    "filename": "A4h.webp",
+    "norsk": "Fredsmegleren",
+    "english": "The Peacemaker",
+    "group": "Figurer",
+    "concept": "En person mellom to andre som rekker hverandre hånden.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A4h.webp",
+      "female": "app/assets/names/female/A4h.webp"
+    }
+  },
+  {
+    "id": "A4l",
+    "filename": "A4l.webp",
+    "norsk": "Debattanten",
+    "english": "The Debater",
+    "group": "Figurer",
+    "concept": "En person ved en talerstol som gestikulerer engasjert.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A4l.webp",
+      "female": "app/assets/names/female/A4l.webp"
+    }
+  },
+  {
+    "id": "A5h",
+    "filename": "A5h.webp",
+    "norsk": "Hverdagshelten",
+    "english": "The Everyday Hero",
+    "group": "Figurer",
+    "concept": "En vanlig person i hverdagsklær med en usynlig kappe som bare så vidt synes.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A5h.webp",
+      "female": "app/assets/names/female/A5h.webp"
+    }
+  },
+  {
+    "id": "A5l",
+    "filename": "A5l.webp",
+    "norsk": "Stjernen",
+    "english": "The Star",
+    "group": "Figurer",
+    "concept": "En stjerne på en scene i rampelyset.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A5l.webp",
+      "female": "app/assets/names/female/A5l.webp"
+    }
+  },
+  {
+    "id": "A6h",
+    "filename": "A6h.webp",
+    "norsk": "Trøsteren",
+    "english": "The Comforter",
+    "group": "Figurer",
+    "concept": "En person som gir et varmt kram og en kopp te.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/A6h.webp",
+      "female": "app/assets/names/female/A6h.webp"
+    }
+  },
+  {
+    "id": "A6l",
+    "filename": "A6l.webp",
+    "norsk": "Strategen",
+    "english": "The Strategist",
+    "group": "Figurer",
+    "concept": "En strateg ved et sjakkbrett, rolig og klar i blikket.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/A6l.webp",
+      "female": "app/assets/names/female/A6l.webp"
+    }
+  },
+  {
+    "id": "N1h",
+    "filename": "N1h.webp",
+    "norsk": "Grubleren",
+    "english": "The Worrier",
+    "group": "Figurer",
+    "concept": "En person med tankebobler fulle av små 'hva om'.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N1h.webp",
+      "female": "app/assets/names/female/N1h.webp"
+    }
+  },
+  {
+    "id": "N1l",
+    "filename": "N1l.webp",
+    "norsk": "Zenmesteren",
+    "english": "The Zen Master",
+    "group": "Figurer",
+    "concept": "En person som mediterer rolig midt i en storm.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N1l.webp",
+      "female": "app/assets/names/female/N1l.webp"
+    }
+  },
+  {
+    "id": "N2h",
+    "filename": "N2h.webp",
+    "norsk": "Vulkanen",
+    "english": "The Volcano",
+    "group": "Figurer",
+    "concept": "En vulkan med et vennlig ansikt som så vidt putrer.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/N2h.webp",
+      "female": "app/assets/names/N2h.webp"
+    }
+  },
+  {
+    "id": "N2l",
+    "filename": "N2l.webp",
+    "norsk": "Diplomaten",
+    "english": "The Diplomat",
+    "group": "Figurer",
+    "concept": "En diplomat som rolig holder på en kopp te mens andre krangler.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N2l.webp",
+      "female": "app/assets/names/female/N2l.webp"
+    }
+  },
+  {
+    "id": "N3h",
+    "filename": "N3h.webp",
+    "norsk": "Poeten",
+    "english": "The Poet",
+    "group": "Figurer",
+    "concept": "En poet ved et vindu med regn og en notatbok.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N3h.webp",
+      "female": "app/assets/names/female/N3h.webp"
+    }
+  },
+  {
+    "id": "N3l",
+    "filename": "N3l.webp",
+    "norsk": "Optimisten",
+    "english": "The Optimist",
+    "group": "Figurer",
+    "concept": "En person som ser opp mot en regnbue etter regnet.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N3l.webp",
+      "female": "app/assets/names/female/N3l.webp"
+    }
+  },
+  {
+    "id": "N4h",
+    "filename": "N4h.webp",
+    "norsk": "Veggblomsten",
+    "english": "The Wallflower",
+    "group": "Figurer",
+    "concept": "En blomst ved veggen på et dansegulv, sjenert men vakker.",
+    "primary_gender": "female",
+    "variants": {
+      "male": "app/assets/names/male/N4h.webp",
+      "female": "app/assets/names/female/N4h.webp"
+    }
+  },
+  {
+    "id": "N4l",
+    "filename": "N4l.webp",
+    "norsk": "Entertaineren",
+    "english": "The Entertainer",
+    "group": "Figurer",
+    "concept": "En underholder med mikrofon og publikum som ler.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N4l.webp",
+      "female": "app/assets/names/female/N4l.webp"
+    }
+  },
+  {
+    "id": "N5h",
+    "filename": "N5h.webp",
+    "norsk": "Hedonisten",
+    "english": "The Hedonist",
+    "group": "Figurer",
+    "concept": "En person som nyter et overdådig bord med dessert.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N5h.webp",
+      "female": "app/assets/names/female/N5h.webp"
+    }
+  },
+  {
+    "id": "N5l",
+    "filename": "N5l.webp",
+    "norsk": "Munken",
+    "english": "The Monk",
+    "group": "Figurer",
+    "concept": "En munk som spiser én bit av noe med et fredfullt smil.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N5l.webp",
+      "female": "app/assets/names/female/N5l.webp"
+    }
+  },
+  {
+    "id": "N6h",
+    "filename": "N6h.webp",
+    "norsk": "Seismografen",
+    "english": "The Seismograph",
+    "group": "Figurer",
+    "concept": "En seismograf-nål som tegner fine utslag, med et lite hjerte.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/N6h.webp",
+      "female": "app/assets/names/female/N6h.webp"
+    }
+  },
+  {
+    "id": "N6l",
+    "filename": "N6l.webp",
+    "norsk": "Klippen",
+    "english": "The Rock",
+    "group": "Figurer",
+    "concept": "En stor stein i brenningen som bølgene slår mot uten å flytte den.",
+    "primary_gender": "shared",
+    "variants": {
+      "male": "app/assets/names/N6l.webp",
+      "female": "app/assets/names/N6l.webp"
+    }
+  },
+  {
+    "id": "balanced",
+    "filename": "balanced.webp",
+    "norsk": "Den allsidige",
+    "english": "The All-Rounder",
+    "group": "Balansert",
+    "concept": "En person som balanserer fem ulike former på en hånd, helt i likevekt.",
+    "primary_gender": "male",
+    "variants": {
+      "male": "app/assets/names/male/balanced.webp",
+      "female": "app/assets/names/female/balanced.webp"
+    }
+  }
+]

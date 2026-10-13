@@ -56,13 +56,14 @@ export function glanceHtml(c) {
     <div class="d-people-panel" id="people-panel" role="tabpanel" aria-labelledby="pt-${first.code}">${people(c, first)}</div></div>` : '';
   return `<section class="d-panel d-glance" aria-labelledby="glance-title">
     <h2 class="d-panel-title" id="glance-title">${c.tr('Your profile at a glance', 'Din profil på ett blikk')}</h2>
+    <p class="d-glance-name">${c.tr('Your profile character', 'Profilfiguren din')}: <strong>${c.esc(named.name)}</strong></p>
     <p class="d-pct-sub">${pct ? c.tr('A higher percentile means more of the trait, not a better result. The dashed ring is the middle (50).', 'Høyere persentil betyr mer av trekket, ikke et bedre resultat. Den stiplede ringen er midten (50).') : c.tr('Further out means you agreed more with statements about the trait. The dashed ring is the middle of the answer scale.', 'Lenger ut betyr at du sa deg mer enig i utsagn om trekket. Den stiplede ringen er midten av svarskalaen.')}</p>${c.pctInfo}
     <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}</div>${tabs}</div>
     <div class="d-glance-cards">
       <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your highest trait', 'Ditt høyeste trekk')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
       <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p><p>${c.esc(facet.interpretation)}</p></div></article>
     </div>
-    <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(named.name)}</h3><p>${c.esc(combo.text)}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
+    <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
   </section>`;
 }
 
