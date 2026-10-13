@@ -89,6 +89,7 @@ body.in-loading footer{display:none}
 .d-profile-name-eyebrow{margin:0;color:#5a7290;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .d-profile-name h2{margin:6px 0 4px;font:400 clamp(26px,3vw,34px)/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
 .d-profile-name-basis{margin:0;color:#5a7290;font-size:14px}
+.d-profile-name-more{display:inline-block;margin-top:8px;color:var(--title);font-size:14px;text-underline-offset:3px}
 .d-scale-head,.d-trait-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr;align-items:center;column-gap:10px}
 .d-scale-head{grid-template-columns:minmax(120px,40%) 1fr 1fr;margin-bottom:14px;color:#5a7290;font-size:13px}
 .d-scale-head span:last-child{text-align:right}
