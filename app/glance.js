@@ -5,6 +5,7 @@
 // every element sits in its final state, so print and no-JS views stay complete.
 import {traitColors} from './design-copy.js';
 import {combination} from './combination-copy.js';
+import {profileName} from './profile-name.js';
 
 const ORDER = ['O', 'C', 'E', 'A', 'N'];
 const still = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,7 +49,7 @@ export function glanceHtml(c) {
   const strongest = [...ds].sort((a, b) => c.barPos(b) - c.barPos(a) || a.code.localeCompare(b.code))[0];
   const facet = ds.flatMap(d => d.facets).sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code))[0];
   const facetTrait = ds.find(d => d.code === facet.code[0]);
-  const combo = combination(ds, c.language);
+  const combo = combination(ds, c.language), named = profileName(ds, c.language);
   const first = ds[0];
   const tabs = pct ? `<div class="d-people-box"><h3>${c.tr('Compared with 100 people', 'Sammenlignet med 100 personer')}</h3>
     <div class="d-people-tabs" role="tablist" aria-label="${c.tr('Choose a trait', 'Velg et trekk')}">${ORDER.map(code => {const d = ds.find(x => x.code === code); return `<button type="button" role="tab" id="pt-${code}" aria-controls="people-panel" aria-selected="${d === first}" tabindex="${d === first ? 0 : -1}" data-trait="${code}" style="--tc:${traitColors[code]}">${c.esc(c.name(d).replace(/\s*\(.*\)$/, '').replace(/^Følelsesmessig r/, 'R').replace(/^Emotional r/, 'R'))}</button>`;}).join('')}</div>
@@ -61,7 +62,7 @@ export function glanceHtml(c) {
       <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your highest trait', 'Ditt høyeste trekk')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
       <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p><p>${c.esc(facet.interpretation)}</p></div></article>
     </div>
-    <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
+    <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(named.name)}</h3><p>${c.esc(combo.text)}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
   </section>`;
 }
 

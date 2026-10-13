@@ -59,9 +59,12 @@ const ORDER = 'OCEAN';
 const pick = (pair, language) => pair[language === 'no' ? 1 : 0];
 const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 50) / 50 : Math.abs(x.mean - 3) / 2;
 
+/** Up to two traits outside the middle range, furthest from the middle first. Shared with the profile name. */
+export const standouts = domains => domains.filter(d => d.band !== 'middle').sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code)).slice(0, 2);
+
 /** Title, sentence and the traits it rests on; falls back gracefully when few traits stand out. */
 export function combination(domains, language) {
-  const out = domains.filter(d => d.band !== 'middle').sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code)).slice(0, 2);
+  const out = standouts(domains);
   if (out.length < 2) {
     if (out.length === 1) {
       const d = out[0];

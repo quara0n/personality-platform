@@ -85,6 +85,10 @@ body.in-loading footer{display:none}
 
 /* Shared profile card */
 .d-profile-card{background:#fffefb;border-radius:6px;box-shadow:0 10px 30px rgba(16,39,71,.07);padding:30px 34px 34px}
+.d-profile-name{margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid #e6e9ed;text-align:center}
+.d-profile-name-eyebrow{margin:0;color:#5a7290;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.d-profile-name h2{margin:6px 0 4px;font:400 clamp(26px,3vw,34px)/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
+.d-profile-name-basis{margin:0;color:#5a7290;font-size:14px}
 .d-scale-head,.d-trait-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr;align-items:center;column-gap:10px}
 .d-scale-head{grid-template-columns:minmax(120px,40%) 1fr 1fr;margin-bottom:14px;color:#5a7290;font-size:13px}
 .d-scale-head span:last-child{text-align:right}
@@ -867,6 +871,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-anim .d-trait-row .d-piece-icon{animation:d-piece-in .7s cubic-bezier(.2,.8,.3,1.15) both;animation-delay:calc(var(--i,0)*120ms + 120ms)}
   .d-anim .d-track>span{animation:d-bar-grow .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
   .d-anim .d-track>i{animation:d-dot-slide .9s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--i,0)*120ms + 300ms)}
+  .d-anim .d-profile-name h2{animation:d-card-in .6s ease-out both;animation-delay:1.3s}
   .d-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out;transition-delay:calc(var(--r,0)*90ms)}
   .d-reveal.is-in{opacity:1;transform:none}
   .d-tdetail:not([hidden]){animation:d-card-in .35s ease-out both}
