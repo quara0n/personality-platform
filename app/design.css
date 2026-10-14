@@ -1023,7 +1023,6 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-video-intro .d-share-fab svg{width:30px;height:30px;padding:14px}
 .d-video-intro .d-video-intro-close{display:block;margin:0 0 10px auto;padding:8px 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 15px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer}
 @media(max-width:760px){.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 76px)*9/16))}}
-<<<<<<< HEAD
 
 /* Tailored to your work / everyday life (tailored.js) */
 .d-tailor{margin:0 0 28px;padding:24px 26px;border:2px solid var(--title);border-radius:8px;background:#fffefb;color:var(--title)}
@@ -1071,7 +1070,6 @@ details.d-tailor-form{border:0;padding:0}
 @media(max-width:760px){.d-offer-plus{grid-template-columns:1fr;padding:22px 18px;gap:18px}}
 .d-offer-recommended{position:absolute;top:-15px;right:28px;margin:0;padding:5px 16px;border-radius:999px;background:var(--title);color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .d-offer-plus{border-width:3px}
-=======
 /* Player controls on the video: sound at the top, a thin timeline with the time left at the bottom. */
 .d-share-sound{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:rgba(19,40,79,.55);color:#fff;cursor:pointer}
 .d-share-sound svg{width:22px;height:22px;fill:currentColor}
@@ -1090,4 +1088,3 @@ details.d-tailor-form{border:0;padding:0}
 .d-video-intro .d-share-bar{left:14px;right:14px;bottom:12px}
 .d-video-intro .d-share-bar span{font-size:13px}
 .d-share.is-still .d-share-bar,.d-share.is-still .d-share-sound{display:none}
->>>>>>> origin/main
