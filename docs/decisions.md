@@ -233,3 +233,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Innholdsmenyen i rapporten 2026-10-13
 
 - Rune ønsket litt mer kontrast i innholdsmenyen og en rolig bevegelse som viser hvilket kapittel som er aktivt. Aktivt kapittel har nå litt sterkere bakgrunn, halvfet tekst, mørkere oransje nummer og en tynn aksentlinje som «puster» sakte (3,6 s); en svak lysstripe glir over omtrent hvert niende sekund. Inaktive numre er dempet grå slik at titlene skiller seg ut. På smale skjermer ligger aksentlinjen under fanen. Ved redusert bevegelse står linjen stille og lysstripen vises ikke.
+
+## 2026-10-14: Ærligere tekster til profilfigurene
+
+- Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»
+- Alle 91 beskrivelser (app/profile-name-copy.js) og 30 avslutningslinjer i videoen (signatureLines i app/profile-name.js) er gått gjennom mot hva hver IPIP-NEO-fasett faktisk måler. 76 beskrivelser og 7 videolinjer er skrevet om. Regelen er: teksten påstår bare det fasettene måler, og nevner den sannsynlige ulempen ved polen ved siden av styrken, i en vennlig tone.
+- Navnene er beholdt, men to adjektiver påsto mer enn fasetten måler: E6l «tørrvittige/Deadpan» er nå «alvorlige/Serious» (lav munterhet måler lite glede og latter, ikke vidd), og C2l «kreativt kaotiske/Creatively Chaotic» er nå «kaotiske/Chaotic».
+- Før/etter-liste: /mnt/project-files/profilnavn/aerligere-beskrivelser.md (delt prosjektmappe, ikke i Git). Tekstene er fortsatt merket for faglig gjennomgang.
