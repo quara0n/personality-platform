@@ -54,21 +54,32 @@ export async function signIn(provider, route = 'account', intent = '') {
   if (error) throw error;
 }
 
+/** On the way back from the provider: the route to show at once, so the first paint is not the home page. */
+export function pendingRoute() {
+  return /[?&](code|error)=/.test(location.search) ? store.get(RETURN) || 'account' : null;
+}
+
 /** After the redirect back: lets Supabase swap ?code= for a session, cleans the address and returns {route, intent}, or null. */
 export async function finishSignIn() {
   const params = new URLSearchParams(location.search);
   if (!enabled() || !(params.has('code') || params.has('error'))) return null;
   const c = await client();
+  let failed = params.has('error') && !params.has('code'), reason = params.get('error_description') || '';
   if (params.has('code')) {
     const {data} = await c.auth.getSession();
-    if (!data?.session) await c.auth.exchangeCodeForSession(params.get('code')).catch(() => {});
+    if (!data?.session) {
+      // A code that does not turn into a session is a failed sign-in, not a silent no-op.
+      const {data: swapped, error} = await c.auth.exchangeCodeForSession(params.get('code')).catch(e => ({error: e}));
+      if (!swapped?.session) {failed = true; reason = error?.message || 'no-session';}
+    }
   }
-  const route = store.get(RETURN) || 'account', intent = store.get(INTENT) || '', failed = params.has('error') && !params.has('code');
+  if (failed) console.warn('Sign-in failed:', reason);
+  const route = store.get(RETURN) || 'account', intent = store.get(INTENT) || '';
   store.drop(RETURN); store.drop(INTENT);
   params.delete('code'); params.delete('error'); params.delete('error_description'); params.delete('error_code'); params.delete('state');
   const query = params.toString();
   history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}#${route}`);
-  return {route, intent, failed};
+  return {route, intent, failed, reason};
 }
 
 /** Saved profile {code, language, updatedAt} or null. */
