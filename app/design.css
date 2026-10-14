@@ -160,11 +160,21 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-contents{min-width:0}
 .d-contents nav{position:sticky;top:20px;display:flex;flex-direction:column;align-items:stretch;gap:6px;text-align:left}
 .d-contents .eyebrow{margin:0 0 14px 10px;letter-spacing:.14em}
-.d-contents a{display:flex;gap:16px;align-items:center;padding:13px 12px;border-radius:4px;color:var(--title);text-decoration:none;font-size:17px}
-.d-contents a span{color:var(--title)}
-.d-contents a[aria-current]{background:#fde3d4}
-.d-contents a[aria-current] span{color:#d4552a}
-.d-contents a:hover{background:#f6efe8}
+.d-contents a{position:relative;overflow:hidden;display:flex;gap:16px;align-items:center;padding:13px 12px;border-radius:6px;color:var(--title);text-decoration:none;font-size:17px;transition:background-color .25s ease,color .25s ease}
+.d-contents a span{color:#5f6b84;font-variant-numeric:tabular-nums;transition:color .25s ease}
+.d-contents a:hover{background:#f3ebe2}
+.d-contents a:hover span{color:var(--title)}
+.d-contents a:focus-visible{outline:2px solid #d4552a;outline-offset:2px}
+/* Active chapter: a little more contrast, and a slow breathing accent so it feels alive */
+.d-contents a[aria-current]{background:#fbd9c5;font-weight:600;box-shadow:inset 0 0 0 1px rgba(212,85,42,.14)}
+.d-contents a[aria-current] span{color:#b13f17}
+.d-contents a[aria-current]::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:#d4552a;transform-origin:center;animation:d-nav-breathe 3.6s ease-in-out infinite}
+.d-contents a[aria-current]::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-110%);animation:d-nav-sheen 9s ease-in-out 1.2s infinite;pointer-events:none}
+.d-contents a.d-howto[aria-current]{color:#2f5a84!important}
+@keyframes d-nav-breathe{0%,100%{opacity:.55;transform:scaleY(.72)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes d-nav-breathe-x{0%,100%{opacity:.55;transform:scaleX(.72)}50%{opacity:1;transform:scaleX(1)}}
+@keyframes d-nav-sheen{0%{transform:translateX(-110%)}22%,100%{transform:translateX(110%)}}
+@media (prefers-reduced-motion:reduce){.d-contents a{transition:none}.d-contents a[aria-current]::before{animation:none;opacity:1}.d-contents a[aria-current]::after{display:none}}
 .d-contents hr{width:100%;border:0;border-top:1px solid #cfdbe6;margin:14px 0}
 .d-howto{font-size:14px!important;color:#4f78a0!important}
 .d-howto svg{width:24px;height:24px;flex:none;fill:none;stroke:#4f78a0;stroke-width:1.5}
@@ -219,7 +229,8 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-contents{border-right:0;border-bottom:1px solid #cfdbe6;padding:14px 12px}
   .d-contents nav{position:static;flex-direction:row;overflow-x:auto;gap:4px}
   .d-contents .eyebrow,.d-contents hr{display:none}
-  .d-contents a{white-space:nowrap;padding:10px 12px;font-size:15px;gap:8px}
+  .d-contents a{flex:none;white-space:nowrap;padding:10px 12px;font-size:15px;gap:8px}
+  .d-contents a[aria-current]::before{left:12px;right:12px;top:auto;bottom:0;width:auto;height:3px;border-radius:3px 3px 0 0;animation-name:d-nav-breathe-x}
   .d-report-body{padding:18px 16px 40px}
   .d-report-toolbar{flex-wrap:wrap}
   .d-tris{display:none}

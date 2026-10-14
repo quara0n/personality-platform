@@ -229,3 +229,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune likte profilnavnbildet og ba om å ta det med i videoen. Navnebildet viser nå figuren til profilnavnet (samme bilde som i profilen, kvinnelig eller mannlig etter valget i profilen) under navnet.
 - Fasettbildet viser fasetten profilnavnet bygger på (den første i navnets id, regel i app/share-video.js), ikke den mest ekstreme av alle 30. Da viser samme profilnavn alltid samme fasett, slik at Rune kan lage én sang per profilnavn som nevner den. Overskriften er «Fasetten som skiller seg mest ut» bare når fasetten også er den mest ekstreme for personen, ellers «Fasetten bak navnet».
 - «Who Are You?» brukes fortsatt i alle videoene. Egne sanger per profilnavn kan komme senere.
+
+## Innholdsmenyen i rapporten 2026-10-13
+
+- Rune ønsket litt mer kontrast i innholdsmenyen og en rolig bevegelse som viser hvilket kapittel som er aktivt. Aktivt kapittel har nå litt sterkere bakgrunn, halvfet tekst, mørkere oransje nummer og en tynn aksentlinje som «puster» sakte (3,6 s); en svak lysstripe glir over omtrent hvert niende sekund. Inaktive numre er dempet grå slik at titlene skiller seg ut. På smale skjermer ligger aksentlinjen under fanen. Ved redusert bevegelse står linjen stille og lysstripen vises ikke.
