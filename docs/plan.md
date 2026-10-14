@@ -41,7 +41,8 @@ Rapport v2 gjennomført innenfor brukerens godkjente forbedring: fasettmønstre,
 
 Persentiler 2026-10-11: Ekte empiriske persentiler fra Codex' normpakke er koblet til skåringen (app/data/norms-us.json, N = 243 307 amerikanske voksne nettbesvarelser, midtrang). Begge språk bruker samme referanse. Gjenstår: faglig psykometrisk gjennomgang, norsk språkvalidering, eventuell aldersinnhenting og om grensene 30/70 for nivåordene skal justeres etter faglig gjennomgang. Nivåordene følger nå persentilen (se beslutningsloggen).
 
-Testhjelp 2026-10-11: «Tilfeldig»-knappen på spørsmålssiden (vises etter at du har åpnet en adresse med ?dev=1, og forsvinner med ?dev=0) fyller ut alle 120 svar tilfeldig og går rett til profilen. Den er bare for forhåndsvisning og må fjernes før lansering: devMode() og #dev-random i app/ui.js og .d-dev-random i app/design.css.
+Testhjelp 2026-10-11: «Tilfeldig»-knappen på spørsmålssiden (vises etter at du har åpnet en adresse med ?dev=1, og forsvinner med ?dev=0) fyller ut alle 120 svar tilfeldig og går rett til profilen. Den er bare for forhåndsvisning og må fjernes før lansering: devMode(), devRandom(), #dev-random, #dev-reroll og ruten #random i app/ui.js og .d-dev-random i app/design.css.
+Utvidet 2026-10-14: snarveien går nå samme vei som en ekte fullføring (innloggingssiden, lasteanimasjonen, videoen og gratisprofilen). Adressen `?dev=1#random` fyller ut svarene og starter flyten direkte, og gratisprofilen har knappen «Ny tilfeldig profil» for å trekke på nytt. Uten dev-modus sender #random til forsiden.
 
 Trekkvelger 2026-10-13: «Dine fem trekk» i rapporten åpnes nå via logobitene (app/trait-logo.js), ett trekk om gangen; utskrift viser alle. Kontrolleres med scripts/trait-logo-check.cjs.
 
