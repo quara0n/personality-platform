@@ -1,0 +1,11 @@
+{
+  "expected": 91,
+  "present": 91,
+  "missing": [],
+  "invalid": [],
+  "gender_missing": [],
+  "human_profiles": 78,
+  "shared_profiles": 13,
+  "webp_files": 247,
+  "unique_generated_sources": 170
+}

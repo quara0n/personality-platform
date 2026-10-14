@@ -1,8 +1,9 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
-// Short (15 s, free profile): hook, profile name, the trait furthest from the middle as
+// Short (about 24 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
-// a light closing line and an end card.
-// Long (31 s, in-depth report): adds all five traits, the combination sentence and a
+// a light closing line and an end card that stays for five seconds before the clip loops.
+// The song from share-music.js is recorded into the same file.
+// Long (about 42 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
@@ -12,6 +13,7 @@ import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
+import {SONG} from './share-music.js';
 
 export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
@@ -48,7 +50,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
   const stat = band === 'middle'
     ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
     : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
-  const facet = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
+  // The facet scene shows the first facet of the profile name's image id, so the same
+  // profile name always shows the same facet and a song made per profile name can name it.
+  const top = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
+  const facet = named.facets.find(f => f.code === named.image.slice(0, 2) && Number.isFinite(f.percentile)) || top;
+  const standsOut = !!facet && Math.abs(pct(facet) - 50) >= Math.abs(pct(top) - 50);
   const facetTrait = facet && domains.find(d => d.code === facet.code[0]);
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
@@ -66,11 +72,12 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     hook: first ? tr(`Who is ${first}, really?`, `Hvem er ${first}, egentlig?`) : tr('120 questions later …', '120 spørsmål senere …'),
     intro: first ? tr(`${first} is`, `${first} er`) : tr('This is', 'Dette er'),
     name: named.name,
+    image: named.image,
     trait: trait.code,
     color: traitColors[trait.code],
     stat,
-    facet: facet ? {eyebrow: tr('The facet that stands out most', 'Fasetten som skiller seg mest ut'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
+    facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
+    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Fem',
@@ -84,6 +91,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
 const clamp = t => Math.min(1, Math.max(0, t));
 const ease = t => 1 - Math.pow(1 - clamp(t), 3);
 const easeInOut = t => {t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;};
+const easeOutBack = t => {t = clamp(t); const c = 1.6; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2);};
+
+// The song opens with quick plucks on every eighth note (0.25 s) from 0.157 s. The ring starts on the
+// first one, each logo piece lands on one of the next five, and the ring closes on the beat at 1.9 s.
+export const LOGO_HITS = {ring: [.157, 1.9], pieces: [.407, .657, .907, 1.157, 1.407], flight: .32};
 const span = (t, a, b) => clamp((t - a) / (b - a));
 // Fade in over `inn` after a, out over `out` before b.
 const life = (t, a, b, inn = .45, out = .35) => Math.min(ease(span(t, a, a + inn)), 1 - span(t, b - out, b));
@@ -97,16 +109,18 @@ export function loadPieces(base = 'assets/design/') {
   return Promise.all([...PIECES, 'sand'].map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
 }
 
-function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1) {
+/** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop. */
+function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null) {
   PIECES.forEach((p, i) => {
     const img = imgs[p]; if (!img) return;
-    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = easeInOut(span(t, i * .09, i * .09 + .55));
+    const hit = LOGO_HITS.pieces[i], pop = at === null ? 1 : 1 + .14 * clamp(1 - Math.abs(at - hit) / .12);
+    const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = at === null ? easeInOut(span(t, i * .09, i * .09 + .55)) : easeOutBack(span(at, hit - LOGO_HITS.flight, hit));
     const [fx, fy, fr] = FLY[p];
     ctx.save();
     ctx.globalAlpha *= clamp(k * 3);
     ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k)) * scale);
     ctx.rotate(fr * (1 - k) * Math.PI / 180);
-    ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
+    ctx.scale(pop, pop); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
     ctx.restore();
   });
   if (ring > 0) {
@@ -143,7 +157,8 @@ function lines(ctx, text, max) {
 // Centred, wrapped text; shrinks the font until it fits in `maxLines`. Returns the bottom y.
 function text(ctx, str, y, {size, font = SERIF, weight = '400', style = '', color = INK, max = W - 160, maxLines = 3, lh = 1.12, alpha = 1, rise = 0, spacing = 0}) {
   let s = size, ls;
-  do {ctx.font = `${style} ${weight} ${s}px ${font}`; ls = lines(ctx, str, max); s -= 4;} while (ls.length > maxLines && s > 24);
+  // Shrink until it fits the line count and no single long word runs past the edge.
+  do {ctx.font = `${style} ${weight} ${s}px ${font}`; ls = lines(ctx, str, max); s -= 4;} while ((ls.length > maxLines || ls.some(l => ctx.measureText(l).width > max)) && s > 24);
   s += 4;
   ctx.save(); ctx.globalAlpha *= alpha; ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
   if (spacing && 'letterSpacing' in ctx) ctx.letterSpacing = `${spacing}px`;
@@ -173,10 +188,11 @@ function footer(ctx, imgs, a) {
   ctx.restore();
 }
 
-// Scene lengths in seconds. Scenes play back to back and cross-fade at the edges.
+// Scene lengths in seconds, on the beat of the song (120 BPM, 0.5 s per beat); each content scene
+// got one more second so it is easier to read. The short cut lasts as long as the song. Scenes play back to back and cross-fade at the edges.
 const CUTS = {
-  short: [['hook', 4.0], ['name', 2.5], ['stat', 3.0], ['facet', 2.2], ['closer', 1.9], ['end', 1.4]],
-  long: [['hook', 4.0], ['name', 2.8], ['traits', 5.4], ['stat', 3.4], ['facet', 2.8], ['combo', 4.4], ['strength', 3.3], ['closer', 2.6], ['end', 2.2]]
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 3.0], ['end', 5.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 3.5], ['end', 5.0]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
@@ -189,11 +205,16 @@ const scenes = {
   hook(ctx, lt, d, a, s) {
     text(ctx, s.hook, 1260, {size: 78, style: 'italic', alpha: Math.min(ease(span(lt, .5, 1.1)), a), rise: 30 * (1 - ease(span(lt, .5, 1.1)))});
   },
-  name(ctx, lt, d, a, s) {
-    const r = 40 * (1 - ease(span(lt, .1, .7)));
-    text(ctx, s.intro, 760, {size: 64, color: MUTED, alpha: a, rise: r});
-    const bottom = text(ctx, s.name, 920, {size: 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
+  name(ctx, lt, d, a, s, imgs) {
+    // With the profile character (imgs.character), the name moves up and the figure stands below it.
+    const art = imgs.character, top = art ? 600 : 760, r = 40 * (1 - ease(span(lt, .1, .7)));
+    text(ctx, s.intro, top, {size: 64, color: MUTED, alpha: a, rise: r});
+    const bottom = text(ctx, s.name, top + 160, {size: art ? 112 : 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
     brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(lt, .8, 1.6)), a);
+    if (art) {
+      const k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - (bottom + 130)), x = (W - size) / 2, y = bottom + 130 + 50 * (1 - k);
+      ctx.save(); ctx.globalAlpha = a * k; ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(feathered(art), x, y, size, size); ctx.restore();
+    }
   },
   traits(ctx, lt, d, a, s, imgs) {
     text(ctx, s.traitsTitle, 330, {size: 84, alpha: a});
@@ -266,6 +287,18 @@ const scenes = {
   }
 };
 
+// The character art sits on an off-white square; soft edges let it melt into the paper.
+const softened = new WeakMap();
+function feathered(img) {
+  if (softened.has(img)) return softened.get(img);
+  const c = document.createElement('canvas'), n = c.width = c.height = img.width || 600, x = c.getContext('2d'), e = n * .08;
+  x.drawImage(img, 0, 0, n, n); x.globalCompositeOperation = 'destination-in';
+  for (const [x0, y0, x1, y1] of [[0, 0, e, 0], [n, 0, n - e, 0], [0, 0, 0, e], [0, n, 0, n - e]]) {
+    const g = x.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000'); x.fillStyle = g; x.fillRect(0, 0, n, n);
+  }
+  softened.set(img, c); return c;
+}
+
 /** Draws the frame at time t (seconds). */
 export function drawFrame(ctx, t, s, imgs) {
   const tl = timeline(s), at = id => tl.find(x => x.id === id), now = tl.find(x => t < x.end) || tl.at(-1);
@@ -276,7 +309,7 @@ export function drawFrame(ctx, t, s, imgs) {
   if (t < name.end) {
     const move = easeInOut(span(t, name.start - .5, name.start + .3));
     ctx.save(); ctx.globalAlpha = 1 - span(t, name.end - .4, name.end);
-    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, span(t, 0, 1.5), span(t, 1.1, 1.9));
+    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, 1, span(t, ...LOGO_HITS.ring), t);
     ctx.restore();
   }
   for (const sc of tl) {
@@ -317,29 +350,54 @@ export function drawPoster(ctx, s, imgs) {
   pill(ctx, s.button, H - 110, 1, .8);
 }
 
-/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. */
-export function videoType() {
+/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. With `audio`, a type that also carries sound. */
+export function videoType(audio = false) {
   if (typeof MediaRecorder === 'undefined') return '';
-  return ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t)) || '';
+  const types = audio
+    ? ['video/mp4;codecs="avc1.42E01E,mp4a.40.2"', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    : ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+  return types.find(t => MediaRecorder.isTypeSupported(t)) || '';
 }
 
-/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1. */
-export function recordVideo(canvas, s, imgs, onProgress = () => {}) {
-  const type = videoType();
+/** Records the clip in real time on `canvas`. Resolves to a Blob; onProgress gets 0..1.
+ *  `audio` ({ctx, buffer, monitor}) adds the music: a running AudioContext, the rendered buffer and
+ *  an optional node the person hears it through. */
+const WARMUP = .4;
+export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null) {
+  const type = videoType(Boolean(audio)) || videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
-  const total = duration(s), ctx = canvas.getContext('2d'), stream = canvas.captureStream(30), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6}), parts = [];
+  const total = duration(s), ctx = canvas.getContext('2d'), video = canvas.captureStream(30), parts = [];
+  let src = null, tracks = video.getVideoTracks();
+  if (audio) {
+    const dest = audio.ctx.createMediaStreamDestination();
+    src = audio.ctx.createBufferSource(); src.buffer = audio.buffer; src.connect(dest); if (audio.monitor) src.connect(audio.monitor);
+    tracks = [...tracks, ...dest.stream.getAudioTracks()];
+  }
+  const stream = new MediaStream(tracks), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6, audioBitsPerSecond: 160e3});
   rec.ondataavailable = e => e.data.size && parts.push(e.data);
   return new Promise((resolve, reject) => {
-    rec.onstop = () => {stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
-    rec.onerror = e => reject(e.error || e);
+    rec.onstop = () => {video.getTracks().forEach(x => x.stop()); stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
+    rec.onerror = e => {src?.stop(); reject(e.error || e);};
     drawFrame(ctx, 0, s, imgs);
     rec.start(250);
-    const start = performance.now();
+    // Give the encoder a moment on the first (empty) frame before the clock and the song start, so the
+    // opening logo animation is not dropped while it warms up.
+    let start = 0;
+    const warm = performance.now() + WARMUP * 1000;
     const tick = now => {
+      if (!start) {if (now < warm) {drawFrame(ctx, 0, s, imgs); requestAnimationFrame(tick); return;} start = now; src?.start();}
       const t = (now - start) / 1000;
       drawFrame(ctx, Math.min(t, total), s, imgs); onProgress(Math.min(1, t / total));
-      if (t < total + .2) requestAnimationFrame(tick); else rec.stop();
+      if (t < total + .2) requestAnimationFrame(tick); else {try {src?.stop();} catch {} rec.stop();}
     };
     requestAnimationFrame(tick);
   });
+}
+
+/** Times the music follows: its length and, when the video is longer than the song, the scene change
+ *  where the song starts again so that both passes fit (the last cut before the song would end). */
+export function musicCues(s) {
+  const tl = timeline(s), total = duration(s);
+  if (total <= SONG.length + .5) return {total, restartAt: null};
+  return {total, restartAt: tl.filter(x => x.start >= total - SONG.length && x.start <= SONG.length).at(-1)?.start ?? null};
 }

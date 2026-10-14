@@ -3,7 +3,10 @@
 ## Gjeldende tillegg fra brukeren 2026-10-11
 - USA og Norge er første markeder, med USD og NOK.
 - Brukergrensesnitt, spørsmål og rapport skal følge valgt språk: engelsk og norsk bokmål. Manuell språk- og landoverstyring er inkludert.
-- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+- Én samlet rapport skal koste 99 kr i Norge og $9.99 i USA. (Erstattet 2026-10-13: 49 kr og $4.99.) Brukeren har Stripe-konto og velger Stripe. Kontotilkobling og leveringsoppsett gjenstår; forhåndsvisning belaster ingen.
+
+## Prisendring fra brukeren 2026-10-13
+- Rapportprisen endres til 49 kr i Norge og $4.99 i USA (fra 99 kr/$9.99). Fortsatt engangskjøp av én samlet rapport. Stripe-sandboxprisene må opprettes på nytt; se docs/stripe-setup.md.
 
 Disse tilleggene går foran tidligere engelsk-only føring og den historiske listen over uavklarte punkter nedenfor.
 
@@ -157,6 +160,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Gratis: de fem trekkene med persentil, profilkortet, og per trekk én oppsummering, én styrke med illustrasjon og forbeholdslinjen.
 - Flyttet til rapporten: «Prøv i hverdagen» og spørsmålet til ettertanke står nå i hvert trekk i «Dine fem trekk». «Les mer om resultatet» er fjernet fra gratisprofilen; de lengre tekstene fantes allerede i rapporten.
 - Nytt i gratisprofilen: under hvert trekk står «[Trekket] ditt består av seks fasetter. Én skiller seg ut.» Fasetten lengst fra 50. persentil vises åpen med nivå, persentil og tolkning. De fem andre vises med navn, uskarp stolpe og lås, og en knapp går til kjøpssiden. De uskarpe stolpene er faste plassholdere og avslører ikke de ekte verdiene. Er den åpne fasetten i midtområdet, står det «Her er en smakebit på én» i stedet.
+- **Endret 2026-10-13:** Bare Åpenhet, det første trekket, viser en åpen fasett (fasetten lengst fra 50. persentil, med forklaring). De fire andre trekkene viser «[Trekket] ditt består av seks fasetter.», alle seks fasettene låst med uskarp stolpe, og knappen til kjøpssiden. Rune ønsket å gi bort færre fasetter gratis nå som delevideoen er lagt til.
 - «Send profilen til e-posten din»: skjemaet åpner brukerens eget e-postprogram (mailto) med de fem persentilene og en lenke tilbake til profilen. Lenken har svarene etter #-tegnet (#p=1 + 120 sifre), så de sendes ikke til serveren. Lenken gjenoppretter profilen og spør før den erstatter andre svar. Ekte utsending fra oss krever en e-posttjeneste og en serverfunksjon (se plan).
 
 ## Animasjon på gratisprofilen 2026-10-13
@@ -191,6 +195,40 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Ved redusert bevegelse viser forhåndsvisningen et stillbilde; selve videoen kan fortsatt lages.
 - Rune ønsket i tillegg en lengre video på rundt 30 sekunder i fordypningsrapporten. «Del rapporten din som video» står i oversikten etter «Din profil på ett blikk». Den lange versjonen (30 s) legger til alle fem trekkene med persentil, kombinasjonssetningen og «En mulig styrke» for trekket profilnavnet bygger på. Gratisversjonen viser ikke disse. Begge bygger på samme scener i app/share-video.js (timeline(), regel-id share-video-v1/short|long/…). Boksen skjules i PDF.
 - Rune tror den lange videoen blir delt mest, men vil ikke presse rapporten på folk. Gratisvideoen har derfor ingen salgsbudskap; sluttkortet inviterer bare til å ta testen. I gratisboksen står én stille linje om at den lengre versjonen følger med fordypningsrapporten, med lenke.
+
+## Innlogging for å lagre profilen 2026-10-13
+- Rune ønsket innlogging med Google, Apple eller X. Anbefalt og bygget: innlogging er valgfri og brukes til å lagre profilen og åpne den igjen på alle enheter. Testen, profilen og videoen virker uten konto, og videoen lages fortsatt i nettleseren.
+- Tjeneste: Supabase (innlogging og database i EU), valgt fordi den også kan holde kjøp fra Stripe senere. Rune fikk valget på et beslutningskort; bygget på anbefalingen mens svaret venter.
+- Lagret per konto: de 120 svarene som profilkode, språk og tidspunkt. Brukeren kan slette profilen eller hele kontoen fra «Min side». Personvernsiden forklarer dette når innlogging er slått på.
+- Rune ønsket innloggingssiden rett etter spørsmålene. Den kommer mellom siste svar og lasteanimasjonen, med Google, Apple og X (de mest brukte i dag; Facebook og Microsoft kan legges til senere) og «Fortsett uten å logge inn», så ingen tvinges.
+- Rune valgte Supabase på beslutningskortet 2026-10-13.
+- Rune ønsket at videoen skal være det første man ser etter spørsmålene. Når lasteanimasjonen er ferdig, åpnes videokortet som et vindu over gratisprofilen og spiller av seg selv (stillbilde ved redusert bevegelse). Fornavnet fylles inn fra innloggingen når det finnes, og kan endres eller fjernes. «Ikke nå» (eller Esc) lukker vinduet, og kortet står videre på sin vanlige plass i profilen. Vinduet vises én gang per fullført test.
+- Rune ønsket bare videoen i vinduet, uten tekst og knapper under, og en delingsknapp (pil, som på TikTok/Instagram) synlig hele tiden. Vinduet viser nå videoen så stor som skjermen tillater, med «Ikke nå ×» over og delingsknappen på selve videoen. Filen lages mens videoen spilles første gang (opptaket er avspillingen), og knappen viser fremdriften som en ring. Trykk før den er klar lager ferdig og åpner delingsmenyen. Telefoner som krever et nytt trykk etter ventetiden får «Trykk for å dele». Uten delingsmeny (PC) laster knappen ned videoen («Lagre»). Kortet i profilen har samme knapp på videoen og beholder fornavnfeltet, bilde-nedlasting og personvernnotatet.
+- Oppsett og gjenstående arbeid står i docs/innlogging.md.
+- Rune ga 2026-10-13 tilbakemelding på delingsvideoen: logoen manglet i første opptak, sluttbildet bør stå minst 5 sekunder før videoen starter på nytt, man bør se en tidslinje med gjenstående tid og kunne spole, og videoen trenger oppløftende musikk som passer Fem. Endringer:
+  - Opptaket venter til logobildene er lastet, så logoen er med fra første gang.
+  - Sluttkortet «Hvordan ser din profil ut?» varer 5 sekunder i både kort og lang versjon, også i selve filen, siden Instagram og TikTok også spiller i løkke. Kort versjon er dermed ca. 19 s (15 s innhold + sluttkort), lang ca. 34 s.
+  - Spilleren har en tynn tidslinje nederst med gjenstående tid. Man kan spole fram og tilbake, unntatt mens den første avspillingen tas opp som fil.
+  - Rune laget sangen «Who Are You?» til videoen (120 BPM, ca. 23 s, laget med Suno) og ba om at den brukes i stedet for musikken jeg først komponerte. Den ligger i app/assets/audio/who-are-you.mp3. Alle klipp ligger på slag (0,5 s), og kort versjon varer like lenge som sangen, så sluttkortet kommer når sangen slutter. Lang versjon spiller sangen fra start og starter den på nytt ved et sceneskifte (fasetten) slik at sangen slutter sammen med videoen. Kommersiell bruk forutsetter at sangen ble laget på et betalt Suno-abonnement, siden sanger fra gratisplanen eies av Suno. Rune bekreftet samme dag at den er laget med betalt abonnement.
+  - Musikken tas opp i samme fil som bildet. Nettlesere tillater ikke lyd uten et trykk, så vinduet etter testen spiller og tar opp automatisk bare når lyden er tillatt. Ellers spiller videoen uten lyd, og trykk på delingsknappen tar den opp med musikk. Lydknappen øverst til venstre slår lyden av og på, og lyden slås av når vinduet lukkes.
+  - Rune ba også om ett sekund lengre per bilde så tekstene blir lettere å lese. Alle innholdsscener har fått ett sekund til, rundet til slagene i sangen. Kort versjon er nå 23,5 s (18,5 s innhold + 5 s sluttkort), lang 42,5 s.
+  - Rune ønsket at logoen bygges i takt med de raske lydene i starten av sangen. Sangen har plukk på hvert åttendedelsslag (0,25 s) fra 0,16 s. Ringen starter på første lyd, hver av de fem logobitene lander på de neste fem med et lite sprett, og ringen lukkes på slaget ved 1,9 s (LOGO_HITS i app/share-video.js). Opptaket venter 0,4 s på første bilde før klokke og sang starter, så starten ikke mister bilder mens koderen kommer i gang.
+
+
+## Tilpasset arbeid og hverdag, nytt kjøpsnivå 2026-10-13
+- Rune ønsket mer spesifikke råd: noen få spørsmål om hva man jobber med og hvordan hverdagen ser ut (barn, partner, alene osv.), som kobles med fasettene og gir direkte tilbakemelding om hva som hjelper og hva som kan gjøre det krevende. Rune foreslo dette som et høyere nivå til rundt 149 kr.
+- Kjøpssiden har to valg: fordypningsrapporten (49 kr / $4.99) og «Fordypning + tilpasset» til 149 kr / $14.99, begge engangskjøp. Rune godkjente nivået, prisen og spørsmålene 2026-10-13 («Vi prøver det»). Dette er et nytt, separat kjøpsnivå; Stripe-pris og opplåsing etter betaling gjenstår. I forhåndsvisningen er alt åpent.
+- Øverst i Arbeidsliv og Hverdagsliv står «Tilpasset arbeidet ditt» / «Tilpasset hverdagen din». Arbeid: type arbeid, hvor mye med folk, hvor fast arbeidet er, press og frister. Hverdag: hvem man deler hverdagen med, barnas alder (bare når det er barn), hvor full uka er og hva man ønsker mer av. Valg skjer med ett trykk; resultatet vises når alle er besvart, og svarene kan endres.
+- Kobling: faste regler i app/tailored-copy.js (regel-id tailored-v1/…). Hvert svar slår på regler som hver nevner én fasett. Bare fasetter utenfor midtområdet brukes; retningen avgjør «Dette hjelper deg» eller «Dette kan gjøre det krevende». Maks tre per kolonne, fasettene lengst fra 50. persentil først, én fasett én gang per kapittel. Hver linje viser fasetten, persentilen, svaret den kommer fra og ett tiltak.
+- Svarene lagres bare i nettleserfanen (sessionStorage) og slettes med «Slett svarene mine». De er ikke med i svarfilen eller profillenken.
+- Tekstene er redaksjonelle hypoteser i «kan/trolig»-form, ikke validerte påstander, og skal med i den faglige gjennomgangen av rapportteksten.
+- Rune ønsket å vise rabatt, for eksempel 50 %. Ikke gjort: en overstrøket førpris må i Norge/EU være den laveste prisen produktet faktisk er solgt for de siste 30 dagene (og i USA en ekte tidligere pris), og produktet er ikke solgt ennå. 149 kr-valget har i stedet fått merket «Anbefalt». En ærlig lanseringspris («Lanseringspris X kr, deretter 149 kr fra dato») kan legges til når Rune har valgt pris og dato.
+
+## 2026-10-13: Profilfigur og fast fasett i profilvideoen
+
+- Rune likte profilnavnbildet og ba om å ta det med i videoen. Navnebildet viser nå figuren til profilnavnet (samme bilde som i profilen, kvinnelig eller mannlig etter valget i profilen) under navnet.
+- Fasettbildet viser fasetten profilnavnet bygger på (den første i navnets id, regel i app/share-video.js), ikke den mest ekstreme av alle 30. Da viser samme profilnavn alltid samme fasett, slik at Rune kan lage én sang per profilnavn som nevner den. Overskriften er «Fasetten som skiller seg mest ut» bare når fasetten også er den mest ekstreme for personen, ellers «Fasetten bak navnet».
+- «Who Are You?» brukes fortsatt i alle videoene. Egne sanger per profilnavn kan komme senere.
 
 ## Innholdsmenyen i rapporten 2026-10-13
 
