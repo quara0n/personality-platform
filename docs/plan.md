@@ -43,6 +43,7 @@ Persentiler 2026-10-11: Ekte empiriske persentiler fra Codex' normpakke er koble
 
 Testhjelp 2026-10-11: «Tilfeldig»-knappen på spørsmålssiden (vises etter at du har åpnet en adresse med ?dev=1, og forsvinner med ?dev=0) fyller ut alle 120 svar tilfeldig og går rett til profilen. Den er bare for forhåndsvisning og må fjernes før lansering: devMode(), devRandom(), #dev-random, #dev-reroll og ruten #random i app/ui.js og .d-dev-random i app/design.css.
 Utvidet 2026-10-14: snarveien går nå samme vei som en ekte fullføring (innloggingssiden, lasteanimasjonen, videoen og gratisprofilen). Adressen `?dev=1#random` fyller ut svarene og starter flyten direkte, og gratisprofilen har knappen «Ny tilfeldig profil» for å trekke på nytt. Uten dev-modus sender #random til forsiden.
+Endret 2026-10-14 (Rune): knappen vises for alle frem til lansering, også uten ?dev=1. Slå av med SHOW_RANDOM=false øverst ved devMode() i app/ui.js før lansering.
 
 Trekkvelger 2026-10-13: «Dine fem trekk» i rapporten åpnes nå via logobitene (app/trait-logo.js), ett trekk om gangen; utskrift viser alle. Kontrolleres med scripts/trait-logo-check.cjs.
 
