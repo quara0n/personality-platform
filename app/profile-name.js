@@ -123,7 +123,7 @@ const signatureLines = {
   'O1h-C2l': ["Ideas everywhere. Including under the sofa.", "Ideer overalt. Også under sofaen."],
   'O1h-E4l': ["Has travelled the world without leaving the blanket.", "Har reist jorda rundt uten å forlate pleddet."],
   'O2h-C2h': ["Art on the walls. Spines lined up perfectly.", "Kunst på veggene. Bokryggene i perfekt rekke."],
-  'O5h-E2l': ["Best conversations: with a book and a cup of tea.", "Beste samtalene: med en bok og en kopp te."],
+  'O5h-E2l': ["Best conversations: with a book and a cup of tea.", "De beste samtalene: med en bok og en kopp te."],
   'O5h-A4l': ["Agrees with you. Just not yet.", "Er enig med deg. Bare ikke ennå."],
   'C4h-C5l': ["Big goals. Starts tomorrow. Again.", "Store mål. Begynner i morgen. Igjen."],
   'C4h-A5h': ["Does great things and hopes nobody makes a fuss.", "Gjør store ting og håper ingen lager noe styr."],
@@ -131,16 +131,16 @@ const signatureLines = {
   'N5h-C5l': ["Knows exactly how many episodes 'just one more' is.", "Vet nøyaktig hvor mange episoder «bare én til» er."],
   'A3h-N1h': ["Worries about you so you don't have to.", "Bekymrer seg for deg, så du slipper."],
   'A3h-N2h': ["Boils over fast. Would still give you the last slice.", "Koker fort over. Gir deg likevel det siste kakestykket."],
-  'A3h-N6l': ["Stands firm when everything shakes, and lends a hand.", "Står støtt når alt rister, og gir en hånd."],
+  'A3h-N6l': ["Stands firm when everything shakes, and lends a hand.", "Står støtt når alt rister, og rekker ut en hånd."],
   'A3h-C3h': ["Says yes. And then actually turns up.", "Sier ja. Og møter faktisk opp."],
   'A6h-N6h': ["Feels for everyone. Sometimes all at once.", "Føler med alle. Noen ganger alt på én gang."],
   'E6h-N1h': ["Smiling on the outside, running scenarios on the inside.", "Smiler utenpå, kjører scenarioer inni."],
-  'E6h-A3h': ["Brightens the room, then helps clear the table.", "Lyser opp rommet, og hjelper til med å rydde bordet."],
+  'E6h-A3h': ["Brightens the room, then helps clear the table.", "Lyser opp rommet, og hjelper til med å rydde av bordet."],
   'A1l-C6h': ["Reads the small print. Twice.", "Leser det med liten skrift. To ganger."],
   'A2l-E1h': ["Could talk you into anything. Not always for your sake.", "Kan prate deg med på hva som helst. Ikke alltid for din skyld."],
   'N4l-E2h': ["Never waits to be asked to dance.", "Venter aldri på å bli bedt opp."],
   'N5l-C5h': ["One piece of chocolate. Actually just one.", "Én bit sjokolade. Faktisk bare én."],
-  'O6h-A2h': ["Breaks the rules for the right reasons.", "Bryter reglene av de riktige grunnene."]
+  'O6h-A2h': ["Breaks the rules for the right reasons.", "Bryter reglene av de rette grunnene."]
 };
 
 const balanced = ['The All-Rounder', 'Den allsidige'];

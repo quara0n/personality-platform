@@ -33,9 +33,9 @@ const pairs = {
   ChEl: ['You may work steadily and thoroughly, preferably with room to concentrate.', 'Du kan jobbe jevnt og grundig, helst med ro til å konsentrere deg.'],
   ClEh: ['You may thrive on spontaneous plans and last-minute invitations.', 'Du kan trives med spontane planer og invitasjoner i siste liten.'],
   ClEl: ['You may prefer to go at your own pace, without fixed schedules.', 'Du kan foretrekke å gå i ditt eget tempo, uten faste timeplaner.'],
-  ChAh: ['You may be someone others rely on, both to follow up and to care.', 'Du kan være en andre stoler på, både for å følge opp og for å bry seg.'],
-  ChAl: ['You may set high standards and say clearly when they are not met.', 'Du kan ha høye krav og si tydelig fra når de ikke blir møtt.'],
-  ClAh: ['You may adapt easily to what others need, sometimes ahead of your own plans.', 'Du kan lett tilpasse deg det andre trenger, noen ganger foran dine egne planer.'],
+  ChAh: ['You may be someone others rely on, both to follow up and to care.', 'Du kan være en som andre stoler på, både for å følge opp og for å bry seg.'],
+  ChAl: ['You may set high standards and say clearly when they are not met.', 'Du kan ha høye krav og si tydelig fra når de ikke blir oppfylt.'],
+  ClAh: ['You may adapt easily to what others need, sometimes ahead of your own plans.', 'Du kan lett tilpasse deg det andre trenger, og noen ganger sette det foran dine egne planer.'],
   ClAl: ['You may act on your own judgement and speak your mind when things change.', 'Du kan handle etter egen vurdering og si din mening når ting endrer seg.'],
   ChNh: ['You may use planning as a way to keep worries in check.', 'Du kan bruke planlegging som en måte å holde bekymringer i sjakk på.'],
   ChNl: ['You may keep a steady course when deadlines get close.', 'Du kan holde stø kurs når fristene nærmer seg.'],
@@ -49,10 +49,10 @@ const pairs = {
   EhNl: ['You may stay relaxed and at ease in busy social settings.', 'Du kan være avslappet og trygg i travle sosiale sammenhenger.'],
   ElNh: ['You may need quiet time to process pressure and impressions.', 'Du kan trenge rolig tid til å bearbeide press og inntrykk.'],
   ElNl: ['You may come across as composed and steady, even when others are stressed.', 'Du kan virke samlet og stødig, også når andre er stresset.'],
-  AhNh: ['You may take other people’s problems to heart.', 'Du kan ta andres problemer tungt.'],
+  AhNh: ['You may take other people’s problems to heart.', 'Du kan ta andres problemer inn over deg.'],
   AhNl: ['You may be a calm support for others when things are hard.', 'Du kan være en rolig støtte for andre når ting er vanskelige.'],
   AlNh: ['You may react quickly when something feels unfair or wrong.', 'Du kan reagere raskt når noe føles urettferdig eller galt.'],
-  AlNl: ['You may handle disagreement without getting easily unsettled.', 'Du kan håndtere uenighet uten å bli lett satt ut.']
+  AlNl: ['You may handle disagreement without getting easily unsettled.', 'Du kan håndtere uenighet uten å bli satt ut så lett.']
 };
 
 const ORDER = 'OCEAN';

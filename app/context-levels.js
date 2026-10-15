@@ -54,7 +54,7 @@ export const outerCards = {
     },
     life: {
       veryHigh: card('Nobody stays a stranger to you for long.|Ingen er fremmede for deg lenge.',
-        'You probably love having people around you and plans on the go, more than almost anyone. Life around you is rarely dull. Quiet weekends can feel empty, and you may say yes to so much that rest and close relationships get less room.|Du elsker trolig å ha folk rundt deg og planer på gang, mer enn nesten alle andre. Livet rundt deg er sjelden kjedelig. Rolige helger kan kjennes tomme, og du kan si ja til så mye at hvile og nære relasjoner får mindre plass.',
+        'You probably love having people around you and plans on the go, more than almost anyone. Life around you is rarely dull. Quiet weekends can feel empty, and you may say yes to so much that rest and close relationships get less room.|Du elsker trolig å ha folk rundt deg og planer på gang, mer enn nesten alle andre. Livet rundt deg er sjelden kjedelig. Rolige helger kan kjennes tomme, og du kan si ja til så mye at hvile og nære forhold får mindre plass.',
         'Plan one evening this week with just one person you care about.|Planlegg én kveld denne uka med bare én person du er glad i.'),
       veryLow: card('Your idea of a good party has three guests.|Din idé om en god fest har tre gjester.',
         'You probably need a lot of quiet and time alone to feel good, more than almost anyone. Your relationships are often few and deep. Big gatherings can feel like hard work, and people may mistake your need for quiet for a lack of interest.|Du trenger trolig mye ro og tid alene for å ha det bra, mer enn nesten alle andre. Relasjonene dine er ofte få og dype. Store sammenkomster kan kjennes som hardt arbeid, og folk kan forveksle behovet ditt for ro med manglende interesse.',
@@ -75,7 +75,7 @@ export const outerCards = {
         'You probably care deeply about others and do a lot to make them feel good, more than almost anyone. People feel safe with you. Your own needs can disappear, and others may sometimes take more than they give.|Du bryr deg trolig dypt om andre og gjør mye for at de skal ha det bra, mer enn nesten alle andre. Folk føler seg trygge hos deg. Dine egne behov kan forsvinne, og andre kan av og til ta mer enn de gir.',
         'Ask for help with one thing this week, even if you could manage it yourself.|Be om hjelp med én ting denne uka, selv om du kunne klart det selv.'),
       veryLow: card('You would rather be honest than easy.|Du vil heller være ærlig enn lettvint.',
-        'You probably say what you mean and stand up for yourself more clearly than almost anyone. People never have to guess where they stand with you. In close relationships your directness can hurt more than you intend, and others may hold back with you.|Du sier trolig det du mener og står opp for deg selv tydeligere enn nesten alle andre. Folk trenger aldri å gjette hvor de har deg. I nære relasjoner kan direktheten såre mer enn du mener, og andre kan holde tilbake overfor deg.',
+        'You probably say what you mean and stand up for yourself more clearly than almost anyone. People never have to guess where they stand with you. In close relationships your directness can hurt more than you intend, and others may hold back with you.|Du sier trolig det du mener og står opp for deg selv tydeligere enn nesten alle andre. Folk trenger aldri å gjette hvor de har deg. I nære forhold kan direktheten såre mer enn du mener, og andre kan holde seg tilbake overfor deg.',
         'Once this week, ask how something you said came across, and just listen to the answer.|Spør én gang denne uka hvordan noe du sa ble tatt imot, og bare lytt til svaret.')
     }
   },
@@ -121,7 +121,7 @@ export const strengthLists = {
         ['Says no before trying|Sier nei før du har prøvd', 'Can feel stuck when life changes|Kan føle deg fastlåst når livet endrer seg', 'People close to you may want more variety|De nærmeste kan ønske mer variasjon']),
       low: L(['Down to earth|Jordnær', 'Enjoys practical tasks|Liker praktiske gjøremål', 'Loyal to good habits|Trofast mot gode vaner'],
         ['New things must earn their place|Nye ting må gjøre seg fortjent til plassen', 'May miss out on experiences|Kan gå glipp av opplevelser', 'Changes take time to accept|Endringer tar tid å godta']),
-      middle: L(['Likes both habits and new things|Liker både vaner og nye ting', 'Open without being restless|Åpen uten å bli rastløs', 'Stable without being rigid|Stabil uten å være rigid'],
+      middle: L(['Likes both habits and new things|Liker både vaner og nye ting', 'Open without being restless|Åpen uten å bli rastløs', 'Stable without being rigid|Stabil uten å være stiv'],
         ['Can slide into comfortable routines|Kan gli inn i behagelige rutiner', 'New things need a nudge|Nye ting trenger et dytt', 'Not always sure which you want more|Ikke alltid sikker på hva du vil mest']),
       high: L(['A rich inner life|Et rikt indre liv', 'Loves books, places and ideas|Elsker bøker, steder og ideer', 'Makes everyday life interesting|Gjør hverdagen interessant'],
         ['Routines can feel tight|Rutiner kan føles trange', 'Restless when the weeks repeat|Rastløs når ukene gjentar seg', 'Practical chores can feel dull|Praktiske gjøremål kan kjennes kjedelige']),
@@ -139,7 +139,7 @@ export const strengthLists = {
         ['Not always aware which mode you are in|Merker ikke alltid hvilken modus du er i', 'Can plan too little for big tasks|Kan planlegge for lite for store oppgaver', 'Can plan too much for small ones|Kan planlegge for mye for små oppgaver']),
       high: L(['Reliable|Pålitelig', 'Notices early when a plan slips|Merker tidlig når en plan sklir ut', 'Finishes what you start|Fullfører det du begynner på'],
         ['Frequent changes cost energy|Hyppige endringer koster energi', 'Can be hard on yourself|Kan være streng mot deg selv', 'Others’ looseness can frustrate you|Andres løse stil kan frustrere deg']),
-      veryHigh: L(['Delivers exactly as agreed|Leverer til punkt og prikke', 'Others can count on you completely|Andre kan stole helt på deg', 'Strong drive and discipline|Sterk driv og disiplin'],
+      veryHigh: L(['Delivers exactly as agreed|Leverer til punkt og prikke', 'Others can count on you completely|Andre kan stole helt på deg', 'Strong drive and discipline|Sterk drivkraft og disiplin'],
         ['Hard to let go of details|Vanskelig å slippe detaljer', 'The bar can be set too high|Lista kan bli lagt for høyt', 'Rest comes last|Hvilen kommer sist'])
     },
     life: {
@@ -196,7 +196,7 @@ export const strengthLists = {
     },
     life: {
       veryLow: L(['Honest when it counts|Ærlig når det gjelder', 'Stands up for yourself|Står opp for deg selv', 'People know where they stand|Folk vet hvor de har deg'],
-        ['Can hurt more than you intend|Kan såre mer enn du mener', 'Others may hold back with you|Andre kan holde tilbake overfor deg', 'Hard to give way, even on small things|Vanskelig å gi etter, også i små ting']),
+        ['Can hurt more than you intend|Kan såre mer enn du mener', 'Others may hold back with you|Andre kan holde seg tilbake overfor deg', 'Hard to give way, even on small things|Vanskelig å gi etter, også i små ting']),
       low: L(['Says what you mean|Sier det du mener', 'Not easily fooled|Lar deg ikke lett lure', 'Keeps your own needs in view|Har egne behov i sikte'],
         ['Others may want a gentler start|Andre kan ønske en mykere start', 'Can seem sceptical|Kan virke skeptisk', 'Comfort may come out as advice|Trøst kan komme ut som råd']),
       middle: L(['Generous, but no doormat|Raus, men ingen dørmatte', 'Considerate and looks after yourself|Omtenksom og tar vare på deg selv', 'Adjusts without always giving in|Tilpasser deg uten alltid å gi etter'],
@@ -214,7 +214,7 @@ export const strengthLists = {
         ['May miss warning signs|Kan overse varseltegn', 'Can seem unaffected|Kan virke uberørt', 'Others’ stress can be hard to grasp|Andres stress kan være vanskelig å forstå']),
       low: L(['Steady when deadlines tighten|Stødig når fristene strammes', 'Reassuring to work with|Betryggende å jobbe med', 'Takes criticism calmly|Tar kritikk med ro'],
         ['Can underestimate risks|Kan undervurdere risiko', 'May not notice colleagues struggling|Merker ikke alltid at kolleger sliter', 'Can seem relaxed when others want urgency|Kan virke avslappet når andre vil ha fart']),
-      middle: L(['Feels pressure without being overwhelmed|Kjenner press uten å bli overveldet', 'Stress gives you useful clues|Stresset gir deg nyttige hint', 'Finds your footing again|Finner fotfestet igjen'],
+      middle: L(['Feels pressure without being overwhelmed|Kjenner press uten å bli overveldet', 'Stress gives you useful clues|Stresset gir deg nyttige pekepinner', 'Finds your footing again|Finner fotfestet igjen'],
         ['Some situations get to you more|Noen situasjoner går mer innpå deg', 'Stress can build up unnoticed|Stress kan bygge seg opp ubemerket', 'Heavy periods take their toll|Tunge perioder tar på']),
       high: L(['Spots risks early|Ser risiko tidlig', 'Careful and thorough|Nøye og grundig', 'Takes things seriously|Tar ting på alvor'],
         ['Worries take up room|Bekymringer tar plass', 'Criticism can sting|Kritikk kan svi', 'High pressure drains you fast|Høyt press tapper deg fort']),
@@ -228,7 +228,7 @@ export const strengthLists = {
         ['Others may need more time than you|Andre kan trenge mer tid enn deg', 'Can reassure too soon|Kan berolige for tidlig', 'May underestimate your own strain|Kan undervurdere din egen belastning']),
       middle: L(['Reacts, and recovers|Reagerer, og kommer deg igjen', 'Notices what drains you|Merker hva som tapper deg', 'Mostly steady|Stort sett stødig'],
         ['Some situations get to you|Noen situasjoner går innpå deg', 'Ups and downs can come in clusters|Opp- og nedturer kan komme i klynger', 'Can forget what helps|Kan glemme hva som hjelper']),
-      high: L(['Feels deeply|Kjenner dypt', 'Empathetic|Empatisk', 'Attentive to the people you love|Oppmerksom på dem du er glad i'],
+      high: L(['Feels deeply|Kjenner dypt', 'Empathetic|Innlevende', 'Attentive to the people you love|Oppmerksom på dem du er glad i'],
         ['Worries can take over|Bekymringer kan ta over', 'Needs time to land|Trenger tid til å lande', 'Many demands at once can be too much|Mange krav samtidig kan bli for mye']),
       veryHigh: L(['Very aware of others’ feelings|Svært var for andres følelser', 'Feels joy strongly|Kjenner glede sterkt', 'Deep care for others|Dyp omtanke for andre'],
         ['Setbacks knock you off balance|Tilbakeslag slår deg ut av balanse', 'Stress and worry feel very present|Stress og bekymring kjennes svært nært', 'Calm takes deliberate effort|Ro krever bevisst innsats'])

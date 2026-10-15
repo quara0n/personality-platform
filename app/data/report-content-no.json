@@ -7,10 +7,10 @@
     "Ingen trekknivåer er alltid bedre enn andre. Mulige styrker og utfordringer avhenger av ansvar, relasjoner, ressurser og omgivelser.",
     "Arbeidslivsforslagene forutsier ikke prestasjoner, velger ikke yrke for deg og fastslår ikke egnethet for ansettelse. Hverdagsforslagene er redaksjonelle hypoteser, ikke validerte tiltak eller behandlingsråd.",
     "Hver fasett bygger på fire utsagn. Vær varsom med å tolke små skårforskjeller, særlig nær en intervallgrense. Rapporten gir ingen konfidensintervaller eller beregning av pålitelig endring.",
-    "Intellekt måler ikke IQ, Moral måler ikke moralsk verdi, og Liberalisme identifiserer ikke et politisk parti. Dette er historiske fasettnavn med mer avgrensede betydninger som forklares i rapporten.",
+    "Intellekt måler ikke IQ, Moral måler ikke moralsk verdi, og Liberalisme peker ikke ut et politisk parti. Dette er historiske fasettnavn med mer avgrensede betydninger som forklares i rapporten.",
     "Rapporten bruker forhåndsdefinerte redaksjonelle regler. Den fastslår ikke en unik personlighetstype, stiller ikke diagnoser og gir ikke validerte forutsigelser basert på kombinasjoner av trekk.",
-    "Noen utsagn i Liberalisme handler direkte om politiske oppfatninger og har opphav i en bestemt kulturell sammenheng. Behandle slike svar som følsomme. En norsk oversettelse påviser ikke kulturell likeverdighet eller norske normer.",
-    "Sammenligninger mellom fasetter beskriver rågjennomsnitt av svar, ikke hvor uvanlig en tendens er. Fasetter har ulikt innhold og ulike tilslutningsnivåer; uten egnede normer fastslår ikke høyeste gjennomsnitt ditt sterkeste trekk sammenlignet med andre."
+    "Noen utsagn i Liberalisme handler direkte om politiske oppfatninger og har opphav i en bestemt kulturell sammenheng. Behandle slike svar som følsomme. En norsk oversettelse viser ikke at utsagnene betyr det samme i en norsk sammenheng, eller at de bygger på norske normer.",
+    "Sammenligninger mellom fasetter beskriver rågjennomsnitt av svar, ikke hvor uvanlig en tendens er. Fasetter har ulikt innhold og ulike tilslutningsnivåer; uten egnede normer fastslår ikke det høyeste gjennomsnittet ditt hva som er ditt sterkeste trekk sammenlignet med andre."
   ],
   "domains": {
     "N": {
@@ -21,7 +21,7 @@
         "strength": "En rolig reaksjon kan gjøre det lettere å jobbe videre med et praktisk problem når utfallet er usikkert. Andre kan sette pris på at du stopper opp og finner neste steg.",
         "watch": "Andre kan bekymre seg mer enn deg i samme situasjon. Hvis du går rett på løsninger, kan de føle at følelsene deres ikke blir hørt, selv om du prøver å hjelpe.",
         "work": "Når en kollega tar opp en risiko, spør hva vurderingen bygger på før du avgjør at den er liten. Kombiner roen med en konkret gjennomgang av frister, konsekvenser og ansvar.",
-        "life": "I en vanskelig samtale kan du forsøke å sette ord på det den andre virker opptatt av, før du beroliger. En rolig tone fungerer best når den også viser at du lytter.",
+        "life": "I en vanskelig samtale kan du forsøke å sette ord på det den andre virker opptatt av, før du prøver å berolige. En rolig tone fungerer best når den også viser at du lytter.",
         "experiment": "Velg ett anspent øyeblikk hver dag i en uke. Noter hva du la merke til, hva du undersøkte, og om den første vurderingen endret seg. Bruk eksemplene til å justere vurderingene dine."
       },
       "middle": {
@@ -61,20 +61,20 @@
         "experiment": "Noter mengden og typen samvær du har i fem dager, og hvordan du kjenner deg etterpå. Endre én ting neste uke, og se om det hjelper."
       },
       "high": {
-        "meaning": "Svarene dine heller mot aktiv kontakt med andre, å si fra og å ha ting som skjer. Du liker kanskje å tenke høyt sammen med andre og ha liv rundt deg. Fasettene viser at sosial varme, selvhevdelse og spenningssøking ikke trenger å være like sterke.",
-        "strength": "Lysten til å engasjere deg kan hjelpe med å starte samtaler og gjøre det lettere for andre å bli med. Det er nyttig når en oppgave trenger kontakt, synlig energi eller rask utveksling.",
+        "meaning": "Svarene dine heller mot aktiv kontakt med andre, å si fra og å ha mye på gang. Du liker kanskje å tenke høyt sammen med andre og ha liv rundt deg. Fasettene viser at sosial varme, selvhevdelse og spenningssøking ikke trenger å være like sterke.",
+        "strength": "Lysten til å engasjere deg kan hjelpe deg å starte samtaler og gjøre det lettere for andre å bli med. Det er nyttig når en oppgave trenger kontakt, synlig energi eller rask utveksling.",
         "watch": "Entusiasme kan ta mer plass i samtalen enn du hadde tenkt. En livlig diskusjon kan føles nyttig selv om gruppen ikke har bestemt noe, eller hørt de roligere stemmene.",
-        "work": "Bruk engasjementet til å invitere konkrete bidrag fra andre. Etter en diskusjon kan du oppsummere beslutningen, hvem som har ansvaret, og neste steg, slik at fremdriften følges opp.",
+        "work": "Bruk engasjementet til å be andre om konkrete bidrag. Etter en diskusjon kan du oppsummere beslutningen, hvem som har ansvaret, og neste steg, slik at fremdriften følges opp.",
         "life": "Undersøk om den andre ønsker en livlig samtale, rolig selskap eller tid alene. Ulike ønsker om sosialt samvær trenger ikke bety ulik grad av nærhet eller omtanke.",
         "experiment": "Still et spørsmål i tre samtaler, og la det bli en ordentlig pause før du legger til ditt eget syn. Noter om du får høre noe du ellers ville ha gått glipp av."
       }
     },
     "O": {
       "name": "Åpenhet",
-      "description": "Åpenhet omfatter fantasi, estetiske interesser, oppmerksomhet på følelser, vilje til å prøve uvante aktiviteter, utforsking av ideer og spørsmål ved konvensjoner. Det beskriver selvrapporterte preferanser, ikke intelligens, ekspertise, kreative prestasjoner eller politisk identitet.",
+      "description": "Åpenhet omfatter fantasi, estetiske interesser, oppmerksomhet på følelser, vilje til å prøve uvante aktiviteter, utforsking av ideer og det å stille spørsmål ved konvensjoner. Det beskriver selvrapporterte preferanser, ikke intelligens, ekspertise, kreative prestasjoner eller politisk identitet.",
       "low": {
         "meaning": "Svarene dine heller mot det kjente, konkrete og utprøvde. Du liker kanskje ideer best når de har en tydelig praktisk nytte. Enkelte fasetter kan likevel vise områder der du er mye mer nysgjerrig.",
-        "strength": "Du holder fokus på det som faktisk virker. Du kan like å forbedre en kjent måte å gjøre ting på, og gjøre den pålitelig for dem som bruker den.",
+        "strength": "Du holder oppmerksomheten på det som faktisk virker. Du kan like å forbedre en kjent måte å gjøre ting på, og gjøre den pålitelig for dem som bruker den.",
         "watch": "Et nytt forslag kan virke mindre nyttig bare fordi fordelene er vanskeligere å se for seg. Sjekk hva som taler for det før du sier nei bare fordi det er nytt.",
         "work": "Når noen foreslår en ny tilnærming, spør hvilket problem den løser, og hva en liten utprøving kan vise. Det kan gjøre endringen lettere å vurdere på et konkret grunnlag.",
         "life": "Behold rutinene du setter pris på, og gi samtidig litt plass til en annens interesser. En ny felles opplevelse kan være liten og avgrenset fremfor en stor omveltning.",
@@ -94,7 +94,7 @@
         "watch": "En ny mulighet kan konkurrere med å gjøre ferdig det du allerede har lovet. Andre kan også trenge mer forklaring før en idé du er begeistret for, virker gjennomførbar for dem.",
         "work": "Skill mellom tid til å skape alternativer og tid til å velge og fullføre ett av dem. Beskriv problemet, endringen du foreslår, og den minste nyttige måten å prøve den på.",
         "life": "Inviter andre inn i interessene dine uten å anta at de ønsker like mye nytt som deg. Avtal hvilke felles rutiner som gir stabilitet, og hvilke dere kan eksperimentere med.",
-        "experiment": "Velg én idé du allerede har, og gi den en liten form som kan fullføres. Noter hva gjennomføringen lærte deg som videre tenking alene ikke hadde avklart."
+        "experiment": "Velg én idé du allerede har, og gi den en liten form som kan fullføres. Noter hva du lærte av å gjennomføre den, som du ikke ville ha funnet ut bare ved å tenke videre."
       }
     },
     "A": {
@@ -117,8 +117,8 @@
         "experiment": "Se tilbake på ett nylig ja og ett nylig nei. Finn behovet du ivaretok i hvert tilfelle, og vurder om du formidlet det tydelig. Prøv en klarere formulering i neste lignende samtale."
       },
       "high": {
-        "meaning": "Svarene dine heller mot tillit, samarbeid og omtanke for andre. Du legger kanskje stor vekt på gode relasjoner og på å møte andres behov. Fasettene skiller medfølelse fra andre sider, som beskjedenhet eller å unngå konflikt.",
-        "strength": "Viljen til å hjelpe og se ting fra andres side kan gi gode relasjoner. Det holder best når forventningene er tydelige og du også har rom til å si hva du trenger.",
+        "meaning": "Svarene dine heller mot tillit, samarbeid og omtanke for andre. Du legger kanskje stor vekt på gode forhold til andre og på å møte andres behov. Fasettene skiller medfølelse fra andre sider, som beskjedenhet eller å unngå konflikt.",
+        "strength": "Viljen til å hjelpe og se ting fra andres side kan gi gode forhold til andre. Det holder best når forventningene er tydelige og du også har rom til å si hva du trenger.",
         "watch": "Et raskt ja kan skjule en praktisk grense eller en reell uenighet. En forespørsel som virker liten der og da, kan bli tung oppå forpliktelser andre ikke ser.",
         "work": "Sjekk kapasitet og prioriteringer før du tar på deg mer arbeid. Foreslå et realistisk omfang eller tidspunkt, og ta opp bekymringer tidlig nok til at gruppen kan gjøre noe med dem.",
         "life": "Se på en tydelig grense som nyttig informasjon i en relasjon. Du kan anerkjenne en annens skuffelse samtidig som du forklarer hva du faktisk har mulighet til å gjøre.",
@@ -127,7 +127,7 @@
     },
     "C": {
       "name": "Planmessighet",
-      "description": "Planmessighet omfatter opplevd mestring, orden, ansvar, målrettethet, utholdenhet og overveielse. Det beskriver selvrapporterte vaner og preferanser. Det fastslår ikke kompetanse, personlig verdi eller hvor pålitelig noen vil prestere i enhver situasjon.",
+      "description": "Planmessighet omfatter opplevd mestring, orden, ansvar, målrettethet, utholdenhet og ettertanke. Det beskriver selvrapporterte vaner og preferanser. Det fastslår ikke kompetanse, personlig verdi eller hvor pålitelig noen vil prestere i enhver situasjon.",
       "low": {
         "meaning": "Svarene dine heller bort fra stram planlegging og tett kontroll på oppgaver. Du foretrekker kanskje frihet, handler på impuls eller synes noen plikter er vanskelige å organisere. Fasettene viser forskjellen på orden, utholdenhet, ambisjoner og resten av bildet.",
         "strength": "Når du er mindre bundet av planer, har du rom til å tilpasse deg når ting endrer seg. Legg merke til når friheten hjelper deg, og hvor litt struktur kan beskytte det som betyr noe.",
@@ -142,7 +142,7 @@
         "watch": "Et system som virker for et spennende prosjekt, kan virke dårligere for vanlige hverdagsoppgaver. Legg merke til om noen typer oppgaver stadig glipper.",
         "work": "Tilpass mengden struktur til konsekvensen av å overse et steg. En enkel sjekkliste kan være nok for en gjentakende oppgave, mens en komplisert overlevering trenger tydelig ansvar og tidspunkt.",
         "life": "Velg noen få gjentakende forpliktelser som fortjener pålitelige påminnelser. Behold fleksibilitet ellers, slik at planleggingen støtter det viktige uten å fylle alle ledige timer.",
-        "experiment": "Sammenlign én oppgave du fullførte greit med én du utsatte. Noter tydelighet, tidspunkt, interesse og avbrytelser. Bruk én hjelpsom betingelse fra den første på neste krevende oppgave."
+        "experiment": "Sammenlign én oppgave du fullførte greit med én du utsatte. Noter tydelighet, tidspunkt, interesse og avbrytelser. Ta med deg én ting som hjalp med den første, til neste krevende oppgave."
       },
       "high": {
         "meaning": "Svarene dine heller mot planlegging, ansvar og jevn innsats. Du liker kanskje tydelige forventninger og tar løfter på alvor. Fasettene viser om dette mest handler om orden, ambisjoner, utholdenhet eller om å tenke seg godt om.",
@@ -171,7 +171,7 @@
       "high": "Du rapporterer mer irritasjon. Legg merke til hvilken forventning som ikke ble innfridd, og vurder å uttrykke et ønske når du kan gjøre det tydelig.",
       "middle": "Irritasjon kan være knyttet til bestemte frustrasjoner. Legg merke til hvilke forventninger som betyr mest.",
       "work": "Når en prosess frustrerer deg: beskriv hindringen og be om én endring.",
-      "life": "I en uenighet: sett ord på forventningen som ikke ble møtt før du velger respons."
+      "life": "I en uenighet: sett ord på forventningen som ikke ble møtt før du velger hvordan du reagerer."
     },
     "N3": {
       "name": "Depresjon",
@@ -197,14 +197,14 @@
       "low": "Du rapporterer mindre vanskelighet med å motstå fristelser. Legg merke til hva som støtter valgene dine, fremfor å anta at viljestyrken er konstant.",
       "high": "Du rapporterer mer vanskelighet med å motstå enkelte impulser. Prøv å gjøre det foretrukne valget lettere tilgjengelig i én hverdagssituasjon.",
       "middle": "Det kan være lettere å motstå en impuls under noen forhold enn andre. Se på tretthet, tilgjengelighet og rutiner rundt én hverdagsfristelse.",
-      "work": "Se hvilke distraksjoner som er lettest å følge, og endre tilgangen til én som avbryter arbeidet.",
+      "work": "Se hvilke forstyrrelser som lettest trekker deg vekk, og gjør én som avbryter arbeidet, vanskeligere å nå.",
       "life": "For én hverdagsfristelse: endre omgivelsene før du satser på viljestyrke."
     },
     "N6": {
       "name": "Sårbarhet",
       "description": "Selvrapportert tendens til å bli overveldet eller føle redusert mestring under press.",
       "low": "Du rapporterer forholdsvis god mestring under press. Undersøk likevel om den konkrete situasjonen krever mer informasjon, hvile eller hjelp.",
-      "high": "Du rapporterer større vanskeligheter under press. Det kan være verdt å dele ett krav opp i et neste steg og avklare hvilken støtte som finnes.",
+      "high": "Du rapporterer større vanskeligheter under press. Det kan være verdt å gjøre ett krav om til et konkret neste steg og avklare hvilken støtte som finnes.",
       "middle": "Opplevelsen av å mestre kan avhenge av presset og støtten du har. Sammenlign to krevende situasjoner fra den siste tiden.",
       "work": "For en krevende oppgave: avklar neste steg og hvem som kan hjelpe hvis du står fast.",
       "life": "Når flere krav kommer samtidig: skill det som må gjøres nå fra det som kan vente."
@@ -214,7 +214,7 @@
       "description": "Selvrapportert varme og letthet i å ta kontakt med mennesker. Fasetten måler ikke godhet.",
       "low": "Du kan være mer tilbakeholden når du nærmer deg andre. Et kort uttrykk for interesse kan gjøre hensikten din lettere å forstå.",
       "high": "Du kan ha lett for å uttrykke varme. Undersøk om en ny bekjent ønsker samme tempo i kontakten.",
-      "middle": "Du kan møte mennesker ulikt avhengig av hvor godt du kjenner dem og situasjonen. Se når varme kommer lett, og når du foretrekker mer avstand.",
+      "middle": "Du kan møte mennesker ulikt avhengig av situasjonen og hvor godt du kjenner dem. Se når varme kommer lett, og når du foretrekker mer avstand.",
       "work": "Se om kolleger kan oppfatte interessen din i måten du møter dem på.",
       "life": "Vis interesse på en naturlig måte, og se hvilket tempo den andre foretrekker."
     },
@@ -224,16 +224,16 @@
       "low": "Du kan foretrekke mindre sammenkomster eller mer tid alene. Foreslå samvær du liker, fremfor bare å takke nei til andres forslag.",
       "high": "Du kan like hyppig selskap og grupper. Planlegg sosial tid, og sjekk samtidig at roligere forpliktelser får oppmerksomhet.",
       "middle": "Både selskap og alenetid kan friste. Gruppestørrelse, hvor godt du kjenner folk og aktiviteten kan forklare hva du foretrekker.",
-      "work": "Sammenlign individuell konsentrasjonstid med samarbeid når du planlegger arbeidsdagen.",
+      "work": "Sammenlign tid til konsentrert arbeid alene med samarbeid når du planlegger arbeidsdagen.",
       "life": "Planlegg samvær du faktisk liker, fremfor å anta at alle sammenkomster passer."
     },
     "E3": {
       "name": "Selvhevdelse",
       "description": "Selvrapportert vilje til å ta ordet, lede og påvirke retningen i en gruppe.",
       "low": "Du kan være mindre tilbøyelig til å ta ledelsen. Forbered ett tydelig ønske eller bidrag når perspektivet ditt trenger å bli hørt.",
-      "high": "Du kan ha lett for å påvirke en diskusjon. Inviter et alternativt syn før du behandler din foretrukne retning som gruppens beslutning.",
+      "high": "Du kan ha lett for å påvirke en diskusjon. Spør etter andre syn før du tar for gitt at retningen du foretrekker, er gruppens beslutning.",
       "middle": "Du kan si fra eller ta ledelsen i utvalgte situasjoner. Sammenlign et tema du kjenner godt med et der du helst lytter først.",
-      "work": "Før en diskusjon: bestem hvilket bidrag du vil få frem og hvordan du vil invitere andre syn.",
+      "work": "Før en diskusjon: bestem hvilket bidrag du vil få frem og hvordan du vil be om andres syn.",
       "life": "Gjør én preferanse tydelig når dere avtaler en felles plan."
     },
     "E4": {
@@ -248,11 +248,11 @@
     "E5": {
       "name": "Spenningssøking",
       "description": "Selvrapportert interesse for stimulering og spennende opplevelser. Skåren påviser ikke uforsiktig atferd.",
-      "low": "Du kan foretrekke mindre intens stimulering. Velg omgivelser der du kan delta komfortabelt, uten å anta at alt nytt vil være ubehagelig.",
-      "high": "Du kan like stimulerende opplevelser. Vurder de praktiske konsekvensene separat fra hvor spennende et alternativ kjennes.",
-      "middle": "Behovet for stimulering kan variere med opplevelsen. Skill interesse for noe nytt fra hvor komfortabel du er med støy, intensitet eller risiko.",
+      "low": "Du kan foretrekke mindre intens stimulering. Velg omgivelser der du trives, uten å anta at alt nytt vil være ubehagelig.",
+      "high": "Du kan like stimulerende opplevelser. Vurder de praktiske konsekvensene uavhengig av hvor spennende et alternativ kjennes.",
+      "middle": "Behovet for stimulering kan variere med opplevelsen. Skill interesse for noe nytt fra hvor godt du tåler støy, intensitet eller risiko.",
       "work": "Skill stimuleringen du liker fra avbrytelsene som gjør en oppgave vanskeligere.",
-      "life": "Velg en opplevelse du liker og vurder praktiske konsekvenser separat fra spenningen."
+      "life": "Velg en opplevelse du liker og vurder praktiske konsekvenser uavhengig av spenningen."
     },
     "E6": {
       "name": "Munterhet",
@@ -266,7 +266,7 @@
     "O1": {
       "name": "Fantasi",
       "description": "Selvrapportert engasjement i fantasi og forestilte muligheter.",
-      "low": "Du kan foretrekke konkret informasjon. Å skissere ett alternativ kan likevel være nyttig når den nåværende tilnærmingen står fast.",
+      "low": "Du kan foretrekke konkret informasjon. Å skissere ett alternativ kan likevel være nyttig når du står fast med den nåværende fremgangsmåten.",
       "high": "Du kan ha lett for å forestille deg alternativer. Gi en lovende idé en liten, praktisk form for å undersøke hva den kan bidra med.",
       "middle": "Både konkret tenkning og forestilte muligheter kan være nyttige for deg. Sammenlign en praktisk oppgave med en åpen idé.",
       "work": "For et åpent problem: sammenlign et konkret eksempel med ett alternativ du kan forestille deg.",
@@ -283,7 +283,7 @@
     },
     "O3": {
       "name": "Følelsesbevissthet",
-      "description": "Selvrapportert oppmerksomhet på egne følelser. Dette skiller seg fra følelsesmessig ubehag og empati.",
+      "description": "Selvrapportert oppmerksomhet på egne følelser. Dette skiller seg fra følelsesmessig ubehag og innlevelse i andre.",
       "low": "Du kan gi følelser mindre oppmerksomhet når du beskriver erfaringer. Å sette navn på en følelse kan noen ganger avklare hva som betyr noe i et valg.",
       "high": "Du kan være svært oppmerksom på følelsene dine. Bruk dem som informasjon sammen med fakta og praktiske begrensninger i situasjonen.",
       "middle": "Oppmerksomhet på følelser kan avhenge av situasjonen. Sammenlign beslutninger der du merker følelsene dine med dem der praktiske fakta dominerer.",
@@ -293,7 +293,7 @@
     "O4": {
       "name": "Eventyrlyst",
       "description": "Selvrapportert vilje til å prøve uvante aktiviteter og bryte med rutiner.",
-      "low": "Kjente aktiviteter kan appellere mer til deg. Hvis en endring er nødvendig, kan en liten utprøving gjøre erfaringen lettere å vurdere.",
+      "low": "Kjente aktiviteter kan friste mer. Hvis en endring er nødvendig, kan en liten utprøving gjøre erfaringen lettere å vurdere.",
       "high": "Du kan ønske uvante opplevelser velkommen. Undersøk om en felles endring også fungerer for de andre som berøres.",
       "middle": "Du kan ønske noen endringer velkommen og foretrekke kjente rutiner ellers. Se hva som gjør en ukjent aktivitet verdt å prøve.",
       "work": "Ved en rutineendring: avtal en liten utprøving og hva som gjør den verdt å beholde.",
@@ -302,7 +302,7 @@
     "O5": {
       "name": "Intellekt",
       "description": "Et historisk navn for interesse for abstrakte ideer og utforsking av tanker. Dette er ingen IQ- eller evneskår.",
-      "low": "Abstrakte diskusjoner kan appellere mindre enn konkrete problemer. Det innebærer ikke lavere intelligens eller mindre ekspertise.",
+      "low": "Abstrakte diskusjoner kan friste mindre enn konkrete problemer. Det innebærer ikke lavere intelligens eller mindre ekspertise.",
       "high": "Du kan like å utforske komplekse ideer. Gjør resonnementet konkret med et eksempel når du formidler det til andre.",
       "middle": "Interessen for abstrakte ideer kan avhenge av temaet og relevansen. Resultatet sier ingenting om intelligensen din.",
       "work": "Velg et konkret eksempel når du forklarer en abstrakt idé til en kollega.",
@@ -310,7 +310,7 @@
     },
     "O6": {
       "name": "Liberalisme",
-      "description": "En historisk fasett som kombinerer politiske og konvensjonelle oppfatninger, blant annet om liberale eller konservative kandidater, kriminalpolitikk og absolutt rett og galt. Disse kulturelt spesifikke utsagnene fastslår ikke partitilhørighet eller stemmegivning.",
+      "description": "En historisk fasett som kombinerer oppfatninger om politikk og konvensjoner, blant annet om liberale eller konservative kandidater, kriminalpolitikk og absolutt rett og galt. Disse kulturbundne utsagnene fastslår ikke partitilhørighet eller stemmegivning.",
       "low": "Du kan legge mer vekt på etablerte konvensjoner. Se på begrunnelsen for en regel når du vurderer om den fortsatt tjener formålet sitt.",
       "high": "Du kan være tilbøyelig til å utfordre konvensjoner. Forklar hva et foreslått alternativ vil forbedre, og hvordan det kan vurderes.",
       "middle": "Svarene på disse kulturavhengige spørsmålene er blandede. De fastslår ingen politisk identitet; se på de enkelte oppfatningene fremfor en generell merkelapp.",
@@ -331,7 +331,7 @@
       "description": "Et historisk navn knyttet til selvrapportert oppriktighet og strategisk selvpresentasjon. Det måler ikke moralsk verdi.",
       "low": "Du kan være mer tilbakeholden eller strategisk med det du deler. Undersøk om andre likevel har informasjonen de trenger for en rettferdig avtale.",
       "high": "Du kan foretrekke direkte og oppriktig kommunikasjon. Ta hensyn til tidspunkt og privatliv så vel som åpenhet når du deler følsom informasjon.",
-      "middle": "Hvor åpent du kommuniserer kan avhenge av tillit, privatliv og situasjonen. Skåren er ingen vurdering av din moralske verdi.",
+      "middle": "Hvor åpent du kommuniserer, kan avhenge av tillit, privatliv og situasjonen. Skåren er ingen vurdering av din moralske verdi.",
       "work": "Avklar hva noen trenger å vite for en rettferdig avtale, og respekter fortrolighet.",
       "life": "Forklar en preferanse ærlig, og velg passende tidspunkt og detaljnivå."
     },
@@ -340,14 +340,14 @@
       "description": "Selvrapportert vilje til å hjelpe andre og glede ved å være til nytte.",
       "low": "Hjelp til andre kan være en mer selektiv forpliktelse for deg. Gjør forventningene tydelige, slik at andre vet hvilken støtte de kan regne med.",
       "high": "Du kan ha lett for å tilby hjelp. Undersøk hva personen faktisk ønsker, og hva du kan gi over tid.",
-      "middle": "Du kan tilby hjelp ut fra kapasitet og forespørselen. Se når hjelp føles meningsfullt og når en grense er nødvendig.",
+      "middle": "Du kan tilby hjelp ut fra kapasiteten din og hva du blir bedt om. Se når hjelp føles meningsfull, og når en grense er nødvendig.",
       "work": "Før du tilbyr hjelp: sjekk både forespørselen og kapasiteten din.",
       "life": "Spør hvilken støtte som ønskes før du bestemmer hva du kan tilby."
     },
     "A4": {
       "name": "Samarbeidsvilje",
-      "description": "Selvrapportert vilje til å inngå kompromisser og unngå mellommenneskelig konfrontasjon.",
-      "low": "Du kan være villig til å ta en uenighet direkte. Rett innvendingen mot saken og hold en vei til løsning åpen.",
+      "description": "Selvrapportert vilje til å inngå kompromisser og unngå konfrontasjoner med andre.",
+      "low": "Du kan være villig til å ta opp en uenighet direkte. Rett innvendingen mot saken og hold en vei til løsning åpen.",
       "high": "Du kan foretrekke kompromisser. Si fra om en viktig bekymring tidlig, slik at enigheten gjenspeiler dine behov så vel som andres.",
       "middle": "Du kan inngå kompromisser i noen saker og utfordre andre. Se hvilke uenigheter som krever et tydelig standpunkt og hvilke som gir rom for fleksibilitet.",
       "work": "Ved uenighet: finn punktet du trenger avklart og hva du kan inngå kompromiss om.",
@@ -355,10 +355,10 @@
     },
     "A5": {
       "name": "Beskjedenhet",
-      "description": "Selvrapportert komfort med selvpromotering og påstander om å være bedre enn andre. Dette måler ikke selvtillit eller verdi.",
-      "low": "Du kan være komfortabel med å fremheve egne styrker. Bruk konkrete holdepunkter og anerkjenn andres bidrag når du beskriver et godt resultat.",
+      "description": "Selvrapportert holdning til å fremheve seg selv og hevde at man er bedre enn andre. Dette måler ikke selvtillit eller verdi.",
+      "low": "Du kan synes det er greit å fremheve egne styrker. Bruk konkrete holdepunkter og anerkjenn andres bidrag når du beskriver et godt resultat.",
       "high": "Du kan unngå å trekke oppmerksomheten mot egne prestasjoner. En saklig beskrivelse av bidraget ditt kan hjelpe andre med å forstå arbeidet ditt.",
-      "middle": "Hvor komfortabel du er med å fremheve bidraget ditt kan variere. Sammenlign å beskrive en konkret prestasjon med å gi en generell vurdering av deg selv.",
+      "middle": "Hvor trygg du er på å fremheve bidraget ditt, kan variere. Sammenlign å beskrive en konkret prestasjon med å gi en generell vurdering av deg selv.",
       "work": "Beskriv bidraget ditt med konkrete resultater og anerkjenn andres arbeid.",
       "life": "Se når det å dele en prestasjon hjelper noen å bli bedre kjent med deg."
     },
@@ -367,7 +367,7 @@
       "description": "Selvrapportert omsorg for andre og oppmerksomhet på deres vanskeligheter.",
       "low": "Du kan legge mer vekt på nøkterne eller praktiske hensyn. Spør om den personlige virkningen før du avgjør hvilken hjelp som er nyttig.",
       "high": "Du kan bli sterkt berørt av andres vanskeligheter. Avklar hvilken støtte som ønskes, og hvilket ansvar du rimeligvis kan ta på deg.",
-      "middle": "Du kan vektlegge følelser og praktiske hensyn ulikt mellom situasjoner. Se hvordan begge påvirker responsen din til andre.",
+      "middle": "Du kan vektlegge følelser og praktiske hensyn ulikt mellom situasjoner. Se hvordan begge påvirker hvordan du møter andre.",
       "work": "Før du løser et problem: spør hvordan det påvirker personen som tok det opp.",
       "life": "Balanser omtanke med en tydelig beskrivelse av støtten du kan gi."
     },
@@ -387,11 +387,11 @@
       "high": "Du kan foretrekke tydelig organisering. Skill mellom struktur som hjelper og detaljer andre ikke trenger å ordne på din måte.",
       "middle": "Du kan foretrekke struktur på noen områder og tåle rot på andre. Finn ordninger som faktisk sparer tid eller frustrasjon.",
       "work": "Velg én ordning som gjør viktige materialer lettere å finne.",
-      "life": "Avtal et nyttig nivå av orden i et felles rom uten å gjøre preferansen til en universell standard."
+      "life": "Avtal et nyttig nivå av orden i et felles rom uten å gjøre preferansen din til en regel for alle."
     },
     "C3": {
       "name": "Pliktfølelse",
-      "description": "Selvrapportert tilslutning til forpliktelser og regler. Dette fastslår ikke pålitelighet i enhver situasjon.",
+      "description": "Selvrapportert vilje til å holde forpliktelser og følge regler. Dette fastslår ikke pålitelighet i enhver situasjon.",
       "low": "Du kan forholde deg mer fleksibelt til forpliktelser eller regler. Avklar avtaler andre er avhengige av før du endrer dem.",
       "high": "Du kan ta forpliktelser alvorlig. Ta en avtale opp til åpen vurdering når endrede forhold gjør den opprinnelige forpliktelsen urealistisk.",
       "middle": "Forholdet til forpliktelser kan avhenge av avtalen og formålet. Se hvilke løfter du behandler som faste og hvilke du reforhandler.",
@@ -404,14 +404,14 @@
       "low": "Ambisiøse prestasjoner kan være mindre sentrale i prioriteringene dine. Definer et godt resultat ut fra det du faktisk verdsetter og trenger å gjennomføre.",
       "high": "Du kan arbeide mot krevende mål. Sett et tydelig sluttpunkt og undersøk hvilke andre prioriteringer innsatsen fortrenger.",
       "middle": "Ambisjoner kan være selektive. Finn målene som betyr mye for deg og dem der et tilstrekkelig resultat er nok.",
-      "work": "Definer suksess og tilstrekkelig fullføring før du bruker mer innsats.",
+      "work": "Bestem hva som er et godt resultat, og hva som er godt nok, før du legger inn mer innsats.",
       "life": "Se hva et krevende mål fortrenger og om avveiningen passer prioriteringene dine."
     },
     "C5": {
       "name": "Selvdisiplin",
       "description": "Selvrapportert evne til å begynne og fortsette med oppgaver til tross for kjedsomhet eller distraksjoner.",
       "low": "Du kan synes noen oppgaver er vanskelige å starte eller holde fast ved. Prøv en liten første handling med en synlig påminnelse og en kort arbeidsøkt.",
-      "high": "Du kan ha lett for å holde fast ved oppgaver. Stopp av og til for å undersøke om fullføringen fortsatt støtter den gjeldende prioriteringen.",
+      "high": "Du kan ha lett for å holde fast ved oppgaver. Stopp av og til for å undersøke om det å fullføre fortsatt passer med det som er viktigst nå.",
       "middle": "Å komme i gang og holde ut kan avhenge av interesse, tydelighet eller distraksjoner. Sammenlign en fullført oppgave med en du stadig utsatte.",
       "work": "Gjør neste handling liten og synlig, og se om arbeidsforholdene hjelper deg å starte.",
       "life": "For én gjentakende oppgave: velg et realistisk signal og en kort periode for å komme i gang."
@@ -427,7 +427,7 @@
     }
   },
   "pattern": {
-    "mixed": "I dette trekket er høyeste rågjennomsnitt {high} ({highScore}/5), mens det laveste er {low} ({lowScore}/5). Gjennomsnittet skjuler denne forskjellen i svarene dine. Les tendensene sammen fremfor å la én beskrivelse oppsummere hele trekket.",
+    "mixed": "I dette trekket har {high} det høyeste rågjennomsnittet ({highScore}/5), mens {low} har det laveste ({lowScore}/5). Gjennomsnittet skjuler denne forskjellen i svarene dine. Les tendensene sammen fremfor å la én beskrivelse oppsummere hele trekket.",
     "close": "Gjennomsnittene for de seks fasettene ligger mindre enn ett svarpoeng fra hverandre. Ingen stor forskjell vises innenfor trekket; beskrivelsene nedenfor viser likevel hva hver del handler om.",
     "mixedPct": "I dette trekket ligger {high} høyest ({highScore}. persentil) og {low} lavest ({lowScore}. persentil). Den samlede skåren skjuler denne forskjellen, så les fasettene sammen i stedet for å la én beskrivelse oppsummere hele trekket.",
     "closePct": "De seks fasettene ligger ganske nær hverandre her. Ingen stor forskjell viser seg innenfor trekket; beskrivelsene nedenfor viser likevel hva hver del handler om."

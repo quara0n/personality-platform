@@ -262,3 +262,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Etter gjennomgangen «profilen skal ikke si imot Big Five-skårene» (2026-10-15) er flere navneord byttet, fordi de enten er de samme ordene appen bruker om hele trekk (og kan si det motsatte av kortene og videoen) eller beskriver en annen fasett: O5h «nysgjerrige» → «filosofiske», O1l «jordnære» → «konkrete», N6h «følsomme» → «lett overveldede», C1l «ydmyke» → «usikre», N5h «livsglade» → «nytelsesglade», E5l «fredelige» → «trygghetssøkende», A3l «selvhjulpne» → «selvfokuserte», C4l «tilfredse livsnyteren» → «nøysomme hengekøyeboeren» (Bon Vivant → Hammock Dweller, passer bildet), signaturen C4h+A5h «Den stille stjernen» → «Den beskjedne måljegeren». «Klippen alle ringer til» beholdes: bildet er en klippe, og «en klippe» betyr her pålitelig (pliktfølelse). Substantivet «selvbergeren» (A3l) beholdes inntil faglig vurdering.
 - Videoen bruker en egen avslutningslinje når alle fem trekk ligger i midten men en fasett skiller seg ut (navnet bygger på den): «Midt på treet i det store. Ikke i detaljene.» «Irriterende allsidig» brukes bare når ingen fasett skiller seg ut.
 - Før/etter-liste: /mnt/project-files/profilnavn/aerligere-beskrivelser.md (delt prosjektmappe, ikke i Git). Tekstene er fortsatt merket for faglig gjennomgang.
+
+## Korrektur av all norsk tekst 2026-10-15
+- Rune: «Ta å gå gjennom ALT på norsk og gjør dobbelsjekk at det stemmer grammatisk. bytt ut fremmedord med lettere ord også dersom det lar seg gjøre.»
+- 126 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
+- Beskrivelsen av fasetten Beskjedenhet (A5) er rettet fordi den pekte motsatt vei.
+- Testspørsmålene (data/questions-no.json) er ikke endret, fordi de er den attribuerte oversettelsen med kontrollsum i data/provenance.json. Forslag til rettelser venter på Runes beslutning.
+
