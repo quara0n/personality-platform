@@ -1091,3 +1091,10 @@ details.d-tailor-form{border:0;padding:0}
 
 /* "X of 100" comparison on facet cards */
 .d-compare{font-weight:600;color:var(--title);margin:0 0 .4em}
+.d-cmp{margin:4px 0 14px;max-width:320px}
+.d-cmp svg{display:block;width:100%;height:auto}
+.d-cmp-person{fill:#dfe5ec}
+.d-cmp-person.is-lit{fill:var(--lit)}
+.d-cmp figcaption{margin-top:6px;font-size:14px;color:#5d7792}
+.d-cmp figcaption strong{font:400 20px/1 Georgia,serif;color:var(--title);font-variant-numeric:tabular-nums}
+@media print{.d-cmp{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}

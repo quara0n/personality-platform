@@ -47,3 +47,23 @@ export function compareLine(f, language) {
   return no ? `Ut fra svarene dine ${phrase.replace(/^(\S+) /, '$1 du ')} enn omtrent ${n} av 100.`
     : `Based on your answers, you ${phrase} than about ${n} in 100 people.`;
 }
+
+/** Number of people in the comparison: the percentile from 50 up, otherwise 100 minus it. */
+export function compareCount(f) {
+  if (!Number.isFinite(f.percentile)) return null;
+  const p = shownPercentile(f.percentile);
+  return p >= 50 ? p : 100 - p;
+}
+
+/** The sentence followed by 100 small figures, the first N in the trait colour. '' without a percentile. */
+export function compareHtml(f, language, color, esc) {
+  const line = compareLine(f, language), n = compareCount(f);
+  if (!line) return '';
+  let figs = '';
+  for (let i = 0; i < 100; i++) {
+    const x = (i % 20) * 14 + 7, y = Math.floor(i / 20) * 20 + 4;
+    figs += `<g class="d-cmp-person${i < n ? ' is-lit' : ''}"><circle cx="${x}" cy="${y}" r="3.2"/><path d="M${x - 5} ${y + 13}v-3.5a5 5 0 0 1 10 0v3.5z"/></g>`;
+  }
+  const label = language === 'no' ? `${n} av 100 personer` : `${n} of 100 people`;
+  return `<p class="d-compare">${esc(line)}</p><figure class="d-cmp" style="--lit:${color}"><svg viewBox="0 0 280 100" role="img" aria-label="${esc(label)}">${figs}</svg><figcaption><strong>${n}</strong> ${language === 'no' ? 'av 100 personer' : 'of 100 people'}</figcaption></figure>`;
+}
