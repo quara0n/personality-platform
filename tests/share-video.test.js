@@ -76,3 +76,18 @@ test('the logo pieces land on the song’s opening eighth notes', async () => {
   LOGO_HITS.pieces.forEach((t, i) => assert.ok(Math.abs((t - LOGO_HITS.ring[0]) - .25 * (i + 1)) < 1e-9));
   assert.ok(LOGO_HITS.pieces.at(-1) < LOGO_HITS.ring[1]);
 });
+
+test('the stat follows the trait the name builds on, and never contradicts the facet scene', () => {
+  // Name rests on high Friendliness (E1) while Extraversion as a whole is very low and Conscientiousness high.
+  const d = profile({O: 50, C: 85, E: 3, A: 50, N: 50});
+  d[2].facets.push(f('E1', 97, {name: 'Friendliness'}));
+  const s = videoScript(d, {language: 'en', name});
+  assert.equal(s.facet.name, 'Friendliness');
+  assert.equal(s.trait, 'C');
+  assert.deepEqual([s.stat.above, s.stat.number], ['More structured than', 85]);
+  // Same name facet with Extraversion high: the stat is the name's own trait, even when another trait is further out.
+  const e = profile({O: 50, C: 2, E: 80, A: 50, N: 50});
+  e[2].facets.push(f('E1', 97, {name: 'Friendliness'}));
+  const t = videoScript(e, {language: 'en', name});
+  assert.deepEqual([t.trait, t.stat.above, t.stat.number], ['E', 'More outgoing than', 80]);
+});

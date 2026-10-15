@@ -44,18 +44,23 @@ const byExtremity = (a, b) => extremity(b) - extremity(a) || a.code.localeCompar
 export function videoScript(domains, {language, firstName = '', name, site = '', long = false}) {
   const tr = (en, no) => (language === 'no' ? no : en);
   const named = profileName(domains, language);
-  const trait = named.traits[0] || [...domains].sort(byExtremity)[0];
-  const p = pct(trait), band = trait.band;
-  const count = band === 'low' ? 100 - p : p;
-  const stat = band === 'middle'
-    ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
-    : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   // The facet scene shows the first facet of the profile name's image id, so the same
   // profile name always shows the same facet and a song made per profile name can name it.
   const top = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
   const facet = named.facets.find(f => f.code === named.image.slice(0, 2) && Number.isFinite(f.percentile)) || top;
   const standsOut = !!facet && Math.abs(pct(facet) - 50) >= Math.abs(pct(top) - 50);
   const facetTrait = facet && domains.find(d => d.code === facet.code[0]);
+  // The stat shows the trait the profile name builds on when it points the same way as the
+  // name's facet. Otherwise the trait furthest from the middle, but never one that says the
+  // opposite of the facet scene right after it (e.g. "Quieter than 97" then Friendliness 97).
+  const agrees = d => !facet || d.code !== facet.code[0] || d.band === facet.band;
+  const trait = (facetTrait && facetTrait.band !== 'middle' && facetTrait.band === facet.band ? facetTrait : null)
+    || named.traits.find(agrees) || [...domains].sort(byExtremity).find(d => d.band === 'middle' || agrees(d)) || [...domains].sort(byExtremity)[0];
+  const p = pct(trait), band = trait.band;
+  const count = band === 'low' ? 100 - p : p;
+  const stat = band === 'middle'
+    ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
+    : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
   const extra = long ? {
@@ -77,7 +82,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
+    closer: named.line || pick(band === 'middle' ? closers.balanced : closers[trait.code][band], language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Fem',

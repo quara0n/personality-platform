@@ -1,5 +1,5 @@
 // Report overview "Your profile at a glance": pentagon radar, 100-person grid per trait,
-// strongest trait, most distinctive facet and one combination sentence.
+// the trait and the facet furthest from the middle and one combination sentence.
 // Everything is drawn from the same percentiles (or 1–5 means when norms are missing) as the bars.
 // Animations start when a part scrolls into view and are skipped with reduced motion; until then
 // every element sits in its final state, so print and no-JS views stay complete.
@@ -46,7 +46,9 @@ export const peopleFor = (c, code) => people(c, c.domains.find(d => d.code === c
 
 export function glanceHtml(c) {
   const ds = c.domains, pct = c.pct;
-  const strongest = [...ds].sort((a, b) => c.barPos(b) - c.barPos(a) || a.code.localeCompare(b.code))[0];
+  // The trait furthest from the middle, in either direction. "Highest" read as "strong" even when
+  // every trait was below the middle (e.g. Extraversion at percentile 31 as the highest).
+  const strongest = [...ds].sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code))[0];
   const facet = ds.flatMap(d => d.facets).sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code))[0];
   const facetTrait = ds.find(d => d.code === facet.code[0]);
   const combo = combination(ds, c.language), named = profileName(ds, c.language);
@@ -60,7 +62,7 @@ export function glanceHtml(c) {
     <p class="d-pct-sub">${pct ? c.tr('A higher percentile means more of the trait, not a better result. The dashed ring is the middle (50).', 'Høyere persentil betyr mer av trekket, ikke et bedre resultat. Den stiplede ringen er midten (50).') : c.tr('Further out means you agreed more with statements about the trait. The dashed ring is the middle of the answer scale.', 'Lenger ut betyr at du sa deg mer enig i utsagn om trekket. Den stiplede ringen er midten av svarskalaen.')}</p>${c.pctInfo}
     <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}</div>${tabs}</div>
     <div class="d-glance-cards">
-      <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your highest trait', 'Ditt høyeste trekk')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
+      <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('The trait that stands out most', 'Trekket som skiller seg mest ut')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
       <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p><p>${c.esc(facet.interpretation)}</p></div></article>
     </div>
     <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
