@@ -110,7 +110,7 @@ export const strengthLists = {
       low: L(['Asks whether it will actually work|Spør om det faktisk vil virke', 'Concrete and realistic|Konkret og realistisk', 'Values proven methods|Verdsetter utprøvde metoder'],
         ['Needs time before changes settle|Trenger tid før endringer sitter', 'May miss better ways of working|Kan gå glipp av bedre måter å jobbe på', 'Less keen on brainstorming|Mindre glad i idémyldring']),
       middle: L(['Bridges the new and the proven|Bygger bro mellom nytt og utprøvd', 'Open when a change has a purpose|Åpen når en endring har et formål', 'Adapts to the task|Tilpasser deg oppgaven'],
-        ['Rarely the one who pushes for new ideas|Sjelden den som presser på for nye ideer', 'Rarely the one who defends the old either|Sjelden den som forsvarer det gamle heller', 'Can wait to see which way the wind blows|Kan vente og se hvor vinden blåser']),
+        ['Rarely the one who pushes for new ideas|Sjelden den som presser på for nye ideer', 'Does not defend the old either|Forsvarer heller ikke det gamle', 'Can wait to see which way the wind blows|Kan vente og se hvor vinden blåser']),
       high: L(['Sees new angles|Ser nye vinkler', 'Enjoys solving what is unsolved|Liker å løse det uløste', 'Improves how things are done|Forbedrer måten ting gjøres på'],
         ['Routine work drains you quickly|Rutinearbeid tapper deg fort', 'Can lose interest once it gets familiar|Kan miste interessen når det blir kjent', 'Ideas can run ahead of the plan|Ideene kan løpe fra planen']),
       veryHigh: L(['Invents where others copy|Finner opp der andre kopierer', 'Connects ideas far apart|Kobler ideer som ligger langt fra hverandre', 'Thrives in the unknown|Trives i det ukjente'],
@@ -136,21 +136,21 @@ export const strengthLists = {
       low: L(['Flexible|Fleksibel', 'Quick to try things|Rask til å prøve', 'Comfortable with loose plans|Trygg med løse planer'],
         ['Can put off the boring parts|Kan utsette de kjedelige delene', 'Checklists feel binding|Sjekklister kjennes bindende', 'Follow-up may need reminders|Oppfølging kan trenge påminnelser']),
       middle: L(['Plans when a lot is at stake|Planlegger når mye står på spill', 'Improvises when it is not|Improviserer når det ikke gjør det', 'Adjusts to the terrain|Tilpasser deg terrenget'],
-        ['Not always aware which mode you are in|Merker ikke alltid hvilken modus du er i', 'Can plan too little for big tasks|Kan planlegge for lite for store oppgaver', 'Or too much for small ones|Eller for mye for små']),
-      high: L(['Reliable|Pålitelig', 'Notices early when a plan slips|Merker tidlig når en plan skrider', 'Finishes what you start|Fullfører det du begynner på'],
+        ['Not always aware which mode you are in|Merker ikke alltid hvilken modus du er i', 'Can plan too little for big tasks|Kan planlegge for lite for store oppgaver', 'Can plan too much for small ones|Kan planlegge for mye for små oppgaver']),
+      high: L(['Reliable|Pålitelig', 'Notices early when a plan slips|Merker tidlig når en plan sklir ut', 'Finishes what you start|Fullfører det du begynner på'],
         ['Frequent changes cost energy|Hyppige endringer koster energi', 'Can be hard on yourself|Kan være streng mot deg selv', 'Others’ looseness can frustrate you|Andres løse stil kan frustrere deg']),
       veryHigh: L(['Delivers exactly as agreed|Leverer til punkt og prikke', 'Others can count on you completely|Andre kan stole helt på deg', 'Strong drive and discipline|Sterk driv og disiplin'],
         ['Hard to let go of details|Vanskelig å slippe detaljer', 'The bar can be set too high|Lista kan bli lagt for høyt', 'Rest comes last|Hvilen kommer sist'])
     },
     life: {
       veryLow: L(['Relaxed and easy to be around|Avslappet og lett å være sammen med', 'Spontaneous|Spontan', 'Makes the best of whatever happens|Gjør det beste ut av det som skjer'],
-        ['Bills and appointments pile up|Regninger og avtaler hoper seg opp', 'Others may carry the planning|Andre kan ende opp med planleggingen', 'Good intentions can stay intentions|Gode forsetter kan forbli forsetter']),
+        ['Bills and appointments pile up|Regninger og avtaler hoper seg opp', 'Others may carry the planning|Andre kan ende opp med planleggingen', 'Good intentions can stay intentions|Gode forsett kan forbli forsett']),
       low: L(['Takes things as they come|Tar ting som de kommer', 'Easy-going when plans fall apart|Grei når planer ryker', 'Not stressed by mess|Stresser ikke av rot'],
         ['Chores can sneak up on you|Gjøremål kan snike seg innpå deg', 'Habits are hard to keep|Vaner er vanskelige å holde', 'Deadlines come as a surprise|Frister kommer overraskende']),
       middle: L(['Keeps track of what matters|Har oversikt over det som betyr noe', 'Spontaneous at the weekend|Spontan i helgene', 'Structured when needed|Strukturert når det trengs'],
         ['Some areas get less order|Noen områder får mindre orden', 'New habits need a push|Nye vaner trenger et dytt', 'Things can be left half-done|Ting kan bli stående halvferdige']),
       high: L(['Keeps your promises|Holder det du lover', 'Finds calm in order|Finner ro i orden', 'Follows through on plans|Gjennomfører planer'],
-        ['Sudden changes are hard to enjoy|Plutselige endringer er vanskelige å nyte', 'Hard to relax before it is done|Vanskelig å slappe av før alt er gjort', 'Can expect the same of others|Kan forvente det samme av andre']),
+        ['Sudden changes are hard to enjoy|Plutselige endringer er vanskelige å nyte', 'Hard to relax before everything is done|Vanskelig å slappe av før alt er gjort', 'Can expect the same of others|Kan forvente det samme av andre']),
       veryHigh: L(['Home and week run like clockwork|Hjem og uke går som et urverk', 'Others feel safe with your planning|Andre føler seg trygge med planleggingen din', 'Strong self-control|Sterk selvkontroll'],
         ['Unplanned things feel very uncomfortable|Uplanlagte ting kjennes svært ubehagelige', 'Rest can feel like another task|Hvile kan kjennes som enda en oppgave', 'Others may feel managed|Andre kan føle seg styrt'])
     }
@@ -158,11 +158,11 @@ export const strengthLists = {
   E: {
     work: {
       veryLow: L(['Deep focus|Dyp konsentrasjon', 'Notices what others miss|Ser det andre overser', 'Thinks before speaking|Tenker før du snakker'],
-        ['Meetings and networking cost a lot|Møter og nettverksbygging koster mye', 'Your ideas may go unheard|Ideene dine kan forbli uhørt', 'Open offices drain you fast|Åpne landskap tapper deg fort']),
+        ['Meetings and networking cost a lot|Møter og nettverksbygging koster mye', 'Your ideas may go unheard|Ideene dine kan forbli uhørte', 'Open offices drain you fast|Åpne landskap tapper deg fort']),
       low: L(['Works well alone|Jobber godt alene', 'Listens well|Lytter godt', 'Well-prepared input|Godt forberedte innspill'],
         ['Back-to-back meetings drain you|Møter på rad tapper deg', 'Can be overlooked in loud groups|Kan bli oversett i høylytte grupper', 'Promoting yourself feels uncomfortable|Å fremheve deg selv kjennes ubehagelig']),
       middle: L(['Enjoys both teamwork and solo work|Trives med både samarbeid og alenearbeid', 'Speaks up when it matters|Tar ordet når det trengs', 'Does not need to fill every silence|Trenger ikke fylle hver stillhet'],
-        ['Not always aware what drains you|Merker ikke alltid hva som tapper deg', 'Can end up in too many meetings|Kan havne i for mange møter', 'Or too much time alone|Eller for mye tid alene']),
+        ['Not always aware what drains you|Merker ikke alltid hva som tapper deg', 'Can end up in too many meetings|Kan havne i for mange møter', 'Can spend too much time alone|Kan få for mye tid alene']),
       high: L(['Brings energy|Gir energi', 'Gets discussions going|Får i gang diskusjoner', 'Makes newcomers feel welcome|Får nye til å føle seg velkomne'],
         ['Long stretches alone drain you|Lange perioder alene tapper deg', 'Can speak before others have finished thinking|Kan snakke før andre har tenkt ferdig', 'Quiet colleagues may get less room|Stille kolleger kan få mindre plass']),
       veryHigh: L(['Lifts the whole team|Løfter hele teamet', 'Makes things happen fast|Får ting til å skje raskt', 'A natural networker|En naturlig nettverksbygger'],
@@ -176,7 +176,7 @@ export const strengthLists = {
       middle: L(['Enjoys both parties and quiet evenings|Liker både fest og rolige kvelder', 'Adapts to the company|Tilpasser deg selskapet', 'Balanced social energy|Balansert sosial energi'],
         ['Can say yes or no out of habit|Kan si ja eller nei av vane', 'Not always sure what you need this week|Ikke alltid sikker på hva du trenger denne uka', 'Energy can run out unexpectedly|Energien kan ta slutt uventet']),
       high: L(['Brings people together|Samler folk', 'Gets plans going|Får planer i gang', 'Lively and warm|Livlig og varm'],
-        ['Quiet weeks feel long|Rolige uker kjennes lange', 'Can overbook yourself|Kan booke deg for fullt', 'Others may need more space|Andre kan trenge mer rom']),
+        ['Quiet weeks feel long|Rolige uker kjennes lange', 'Can overbook yourself|Kan fylle kalenderen for fullt', 'Others may need more space|Andre kan trenge mer rom']),
       veryHigh: L(['Never short of company|Mangler aldri selskap', 'Makes life around you lively|Gjør livet rundt deg livlig', 'Connects easily with strangers|Får lett kontakt med fremmede'],
         ['Quiet weekends feel empty|Rolige helger kjennes tomme', 'Rest gets too little room|Hvile får for lite plass', 'Close relationships can get less time|Nære relasjoner kan få mindre tid'])
     }
@@ -188,10 +188,10 @@ export const strengthLists = {
       low: L(['Direct|Direkte', 'Challenges weak ideas|Utfordrer svake ideer', 'Stands up for your view|Står for ditt syn'],
         ['Directness lands harder than meant|Direktheten treffer hardere enn ment', 'Can win the argument and lose an ally|Kan vinne diskusjonen og miste en støttespiller', 'Praise may be rare|Ros kan bli sjelden']),
       middle: L(['Both kind and honest|Både vennlig og ærlig', 'Cooperates, and disagrees when needed|Samarbeider, og sier imot når det trengs', 'Trusted by different kinds of people|Får tillit fra ulike folk'],
-        ['May avoid a conflict that is needed|Kan unngå en konflikt som trengs', 'Or push when you should listen|Eller presse når du burde lytte', 'Others cannot always tell which you will do|Andre vet ikke alltid hva du vil gjøre']),
+        ['May avoid a conflict that is needed|Kan unngå en konflikt som trengs', 'Can push when you should listen|Kan presse på når du burde lytte', 'Others cannot always tell which you will do|Andre vet ikke alltid hva du vil gjøre']),
       high: L(['The glue in the team|Limet i teamet', 'Helps without being asked|Hjelper uten å bli spurt', 'Easy to come to|Lett å komme til'],
         ['Hard to stand your ground|Vanskelig å stå på ditt', 'Can take on others’ tasks|Kan ta på deg andres oppgaver', 'Negotiations cost a lot|Forhandlinger koster mye']),
-      veryHigh: L(['Deeply trusted|Har stor tillit', 'Creates a safe atmosphere|Skaper et trygt miljø', 'Sees what others need|Ser hva andre trenger'],
+      veryHigh: L(['Deeply trusted|Andre har stor tillit til deg', 'Creates a safe atmosphere|Skaper et trygt miljø', 'Sees what others need|Ser hva andre trenger'],
         ['Very hard to say no|Svært vanskelig å si nei', 'Takes on too much|Tar på deg for mye', 'Avoids conflicts that should be faced|Unngår konflikter som burde tas'])
     },
     life: {
@@ -200,7 +200,7 @@ export const strengthLists = {
       low: L(['Says what you mean|Sier det du mener', 'Not easily fooled|Lar deg ikke lett lure', 'Keeps your own needs in view|Har egne behov i sikte'],
         ['Others may want a gentler start|Andre kan ønske en mykere start', 'Can seem sceptical|Kan virke skeptisk', 'Comfort may come out as advice|Trøst kan komme ut som råd']),
       middle: L(['Generous, but no doormat|Raus, men ingen dørmatte', 'Considerate and looks after yourself|Omtenksom og tar vare på deg selv', 'Adjusts without always giving in|Tilpasser deg uten alltid å gi etter'],
-        ['May give way in the wrong places|Kan gi etter på feil steder', 'Or stand firm when it is not worth it|Eller stå på ditt når det ikke er verdt det', 'Mixed signals to people close to you|Blandede signaler til de nærmeste']),
+        ['May give way in the wrong places|Kan gi etter på feil steder', 'Can stand firm when it is not worth it|Kan stå på ditt når det ikke er verdt det', 'Mixed signals to people close to you|Blandede signaler til de nærmeste']),
       high: L(['Caring|Omsorgsfull', 'Others come to you for support|Andre kommer til deg for støtte', 'Creates warmth around you|Skaper varme rundt deg'],
         ['Your own needs end up last|Egne behov havner sist', 'Hard to disagree|Vanskelig å være uenig', 'Can be taken for granted|Kan bli tatt for gitt']),
       veryHigh: L(['People feel safe with you|Folk føler seg trygge hos deg', 'Generous with time and care|Raus med tid og omsorg', 'Forgives easily|Tilgir lett'],
