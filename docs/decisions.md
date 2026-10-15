@@ -267,5 +267,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «Ta å gå gjennom ALT på norsk og gjør dobbelsjekk at det stemmer grammatisk. bytt ut fremmedord med lettere ord også dersom det lar seg gjøre.»
 - 124 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
 - Beskrivelsen av fasetten Beskjedenhet (A5) er rettet fordi den pekte motsatt vei.
-- Testspørsmålene (data/questions-no.json) er ikke endret, fordi de er den attribuerte oversettelsen med kontrollsum i data/provenance.json. Forslag til rettelser venter på Runes beslutning.
+- Testspørsmålene (data/questions-no.json): Rune valgte «Bare skrivefeil». Fem rene skrive- og grammatikkfeil er rettet (nr. 21 «Har lett for å overdrive ting», 59 «dem som», 74 «overfor», 83 «ideer», 111 «i stand til å»). Ordlyden ellers er lik den attribuerte oversettelsen; endringene og ny kontrollsum står under norwegianLocalEdits i data/provenance.json. De sju forslagene som endrer ordlyd, er ikke tatt med.
 
