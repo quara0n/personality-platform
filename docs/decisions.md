@@ -305,3 +305,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Resten (det som tapper deg, når du leder, neste steg og hva du bør se etter) ligger sammenfoldet under «Hvordan henger dette sammen med trekkene dine?». Trekkortene står som før under kapittelet. På mobil stables alt i én kolonne. Ved utskrift foldes alt ut.
 - Prøv-forslaget hentes fra «krevende» først, så «tapper», «passer» og «energi». Avkrysningen lagres bare i nettleserfanen.
 
+## 2026-10-15: Ny logo
+
+- Rune valgte 2026-10-15 en ny logo: fem teksturerte papirtrekanter i virvel. Kantene er rensket, krem-trekanten er gjort litt mørkere med en tynn beige kant så den synes på lys bakgrunn, og trekantene står med jevne mellomrom (72°) rundt midten. Logoen brukes i toppfeltet og bunnfeltet (bilde + «Fem» i Georgia), i lasteanimasjonen, i rapporthodet og i delingsvideoen (app/assets/design/logo-mark.webp og logo-piece-*.webp). Trekkbitene (tri-*.png) er uendret. Favikon og app-ikoner (app/assets/icons/) bygger på den fasetterte vektorlogoen logo-fasett.svg som Rune sendte i Fasett-pakken, beskåret tettere for små størrelser. Kilde og skript ligger i prosjektmappen logo-ny.
+  - I delingsvideoen popper logoen litt mot seeren (8 %) etter at ringen er lukket, rett før den flytter seg opp til navnescenen (LOGO_POP i app/share-video.js).
