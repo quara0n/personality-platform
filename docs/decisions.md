@@ -329,3 +329,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Nye fasettbilder for Åpenhet i kvinne/mann 2026-10-15
 - Rune sendte tolv bilder i den nye fasettstilen (O1 Fantasi til O6 Liberalisme, hver i kvinne- og mannsversjon): «legg de inn hvor de skal». De ligger i app/assets/design/facets/female/ og male/, med bakgrunnen gjort gjennomsiktig og beskåret slik som de gamle fasettbildene.
 - Fasettkortene følger valget Kvinne/Mann. Uten valg brukes standardversjonen fra Runes manifest (O3 og O6 mann, resten kvinne); app/facet-art.js. Den nøytrale filen facets/O1–O6.webp er erstattet med standardversjonen, så andre steder som viser fasettbilder, også får den nye stilen.
+
+## Ny forside etter Runes mockup 2026-10-15
+- Forsiden følger mockupen Rune delte: stort hovedbilde i fasettstil med paret til høyre, båndet «Fem trekk. Din kombinasjon.», «Hva vil du forstå bedre?» og avsluttende knapp. Bildene er hentet fra mockupen (app/assets/design/home-*.webp).
+- Søylene fra det gamle eksempelkortet ligger nå i trekkbåndet: en tynn søyle under hvert trekknavn, merket «Eksempelprofil». Ingen egen boks.
+- Knappen heter «Ta testen» for nye besøkende og «Fortsett testen» når testen er påbegynt.
+- «Relasjonene dine» er byttet med «Dine neste steg», fordi rapporten ikke har et relasjonskapittel. De tre områdene er nå Hverdagen, Dine neste steg og Arbeidsliv og karriere, som alle finnes i rapporten.
