@@ -246,6 +246,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Begge kapitlene (Arbeidsliv og Hverdagsliv) bruker nå dette: tre kort per rad på PC, to på nettbrett og ett på mobil. Det første kortet er åpent. Ett panel er åpent om gangen, og et nytt klikk på samme kort lukker det.
 - Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
 - Ved utskrift vises alle paneler med styrker og svakheter.
+- Endret samme kveld (Rune: «har et kollapseable på den, men selve metaforen kan vises»): alle kortene starter lukket, så bare bildet, trekket, nivået og metaforen synes. Tekst, «Les mer» og Prøv-boksen åpnes med + på kortet.
 
 ## Nye hverdagsbilder og valg av kvinne/mann for bildene 2026-10-15
 - Rune sendte seks nye illustrasjoner i skarp profilstil til Hverdagsliv: Åpenhet (steget mellom blokkene), Planmessighet (kart og kompass) og Ekstroversjon (åpne døren), hver med kvinne- og mannsversjon. De ligger i app/assets/design/context/female/ og male/.
