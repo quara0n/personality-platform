@@ -234,6 +234,28 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune ønsket litt mer kontrast i innholdsmenyen og en rolig bevegelse som viser hvilket kapittel som er aktivt. Aktivt kapittel har nå litt sterkere bakgrunn, halvfet tekst, mørkere oransje nummer og en tynn aksentlinje som «puster» sakte (3,6 s); en svak lysstripe glir over omtrent hvert niende sekund. Inaktive numre er dempet grå slik at titlene skiller seg ut. På smale skjermer ligger aksentlinjen under fanen. Ved redusert bevegelse står linjen stille og lysstripen vises ikke.
 
+## Fem nivåer, styrker og svakheter på trekkortene i Arbeidsliv og Hverdagsliv 2026-10-15
+- Rune spurte hvor mange versjoner kortene har (tre per trekk og kapittel: lavere, midt, høyere; 30 tekstsett og 10 bilder, der bildene viser midtmetaforen) og ba om flere tekster og ordtak, og styrker og svakheter i hver sin kolonne.
+- Kortene følger nå de samme fem nivåene som fasettkortene: Mye lavere (under 10. persentil), Lavere (10–30), Midt (30–70), Høyere (70–90) og Mye høyere (over 90). De ytre nivåene krever også at nivåordet peker samme vei, og uten normtabell brukes de tre gamle nivåene. 20 nye kort med ordtak, tekst og Prøv er skrevet på begge språk (app/context-levels.js). Regel-id context-v2/….
+- Hvert kort har to kolonner, «Styrker» og «Svakheter», med tre punkter hver for alle fem nivåer. Tonen er vennlig, men ærlig: svakhetene beskriver hva som kan bli krevende, ikke diagnoser eller verdidommer.
+- Bilder: 40 nye trengs (fire nivåer × fem trekk × to kapitler). Liste med filnavn og motiv i prosjektmappen trekkort-bilder/bildeliste.md. Kortet bruker det nye bildet når filnavnet er lagt inn i levelArt i app/context-levels.js, ellers dagens bilde.
+- Tekstene er redaksjonelle og skal med i den faglige gjennomgangen.
+
+## Trekkortene som bildekort med panel 2026-10-15
+- Rune sendte en skisse for Hverdagsliv («skulle vi prøvd noe sånt?»): en rad med store bildekort (trekk, nivå, ordtak, +/−), og et panel under raden når man velger ett.
+- Begge kapitlene (Arbeidsliv og Hverdagsliv) bruker nå dette: tre kort per rad på PC, to på nettbrett og ett på mobil. Det første kortet er åpent. Ett panel er åpent om gangen, og et nytt klikk på samme kort lukker det.
+- Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
+- Ved utskrift vises alle paneler med styrker og svakheter.
+
+## 2026-10-14: Ærligere tekster til profilfigurene
+
+- Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»
+- Alle 91 beskrivelser (app/profile-name-copy.js) og 30 avslutningslinjer i videoen (signatureLines i app/profile-name.js) er gått gjennom mot hva hver IPIP-NEO-fasett faktisk måler. 76 beskrivelser og 7 videolinjer er skrevet om. Regelen er: teksten påstår bare det fasettene måler, og nevner den sannsynlige ulempen ved polen ved siden av styrken, i en vennlig tone.
+- Navnene er beholdt, men to adjektiver påsto mer enn fasetten måler: E6l «tørrvittige/Deadpan» er nå «alvorlige/Serious» (lav munterhet måler lite glede og latter, ikke vidd), og C2l «kreativt kaotiske/Creatively Chaotic» er nå «kaotiske/Chaotic».
+- Etter gjennomgangen «profilen skal ikke si imot Big Five-skårene» (2026-10-15) er flere navneord byttet, fordi de enten er de samme ordene appen bruker om hele trekk (og kan si det motsatte av kortene og videoen) eller beskriver en annen fasett: O5h «nysgjerrige» → «filosofiske», O1l «jordnære» → «konkrete», N6h «følsomme» → «lett overveldede», C1l «ydmyke» → «usikre», N5h «livsglade» → «nytelsesglade», E5l «fredelige» → «trygghetssøkende», A3l «selvhjulpne» → «selvfokuserte», C4l «tilfredse livsnyteren» → «nøysomme hengekøyeboeren» (Bon Vivant → Hammock Dweller, passer bildet), signaturen C4h+A5h «Den stille stjernen» → «Den beskjedne måljegeren». «Klippen alle ringer til» beholdes: bildet er en klippe, og «en klippe» betyr her pålitelig (pliktfølelse). Substantivet «selvbergeren» (A3l) beholdes inntil faglig vurdering.
+- Videoen bruker en egen avslutningslinje når alle fem trekk ligger i midten men en fasett skiller seg ut (navnet bygger på den): «Midt på treet i det store. Ikke i detaljene.» «Irriterende allsidig» brukes bare når ingen fasett skiller seg ut.
+- Før/etter-liste: /mnt/project-files/profilnavn/aerligere-beskrivelser.md (delt prosjektmappe, ikke i Git). Tekstene er fortsatt merket for faglig gjennomgang.
+
 ## 2026-10-15: Profilen skal ikke si imot skårene
 
 - Rune ba om en gjennomgang av at profilen aldri blander sammen eller sier det motsatte av det Big Five-skårene (trekk og fasetter) viser. Gjennomgått med 20 000 simulerte svarsett (realistiske, sprikende, tilfeldige og alle-like) på begge språk: skåring og omvendte utsagn, persentiler og nivåord, fasett-til-trekk, profilnavn, kort, kombinasjon, video, tilpasset arbeid/hverdag og fasettekstene.

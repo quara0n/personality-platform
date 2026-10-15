@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const bundle=process.env.PLAYWRIGHT_MODULE_PATH;
 const {chromium}=bundle?require(bundle):require('playwright');
 (async()=>{
-  const browser=await chromium.launch({channel:'chrome',headless:true});
+  const browser=await chromium.launch(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH,headless:true}:{channel:'chrome',headless:true});
   try {
   const page=await browser.newPage({viewport:{width:1440,height:1000},locale:'en-US'});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -26,6 +26,8 @@ const {chromium}=bundle?require(bundle):require('playwright');
     if(n<119)await page.waitForFunction(expected=>document.querySelector('.d-count')?.textContent.includes(`${expected} of 120`),n+2);
   }
   await page.waitForURL('**/#results');await page.locator('.d-panels').waitFor();
+  // After a finished test the share-video intro opens as a modal; close it like a user would.
+  const intro=page.locator('dialog.d-video-intro[open]');await intro.waitFor();await intro.locator('.d-video-intro-close').click();await intro.waitFor({state:'detached'}).catch(()=>{});assert.equal(await page.locator('dialog.d-video-intro[open]').count(),0);
   assert.equal(await page.locator('.d-tpanel').count(),5);await page.locator('.d-tpanel').nth(1).click();assert.equal(await page.locator('.d-tdetail:visible').count(),1);
   await page.screenshot({path:path.join(out,'results-desktop.png'),fullPage:true});
   await page.goto('http://127.0.0.1:4173/#demo');await page.locator('.d-report-body').waitFor();
