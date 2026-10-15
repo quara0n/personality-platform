@@ -42,6 +42,21 @@ function people(c, d) {
     <p class="d-people-key"><span class="d-key-lit" style="background:${lit}"></span>${c.tr('People you score higher than', 'Personer du skårer høyere enn')}<span class="d-key-you"></span>${c.tr('You', 'Du')}</p>`;
 }
 
+// The three highlights as a row of slanted picture cards, the same style as the five trait cards on the
+// free profile. A card opens its text in one shared reading area below the row; one at a time.
+function topPanels(c, strongest, facet, facetTrait, combo, named) {
+  const plain = s => s.replace(/\s*\(.*\)$/, '');
+  const cards = [
+    {key: 'trait', cls: `d-tpanel-${strongest.code}`, img: `assets/design/trait-${strongest.code}.webp`, eyebrow: c.tr('The trait that stands out most', 'Trekket som skiller seg mest ut'), title: c.shy(c.esc(plain(c.name(strongest)))), meta: c.countText(strongest),
+      body: `<h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p>`},
+    {key: 'facet', cls: 'd-gpanel-facet', img: `assets/design/facets/${facet.code}.webp`, eyebrow: c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut'), title: c.shy(c.esc(facet.name)), meta: c.countText(facet),
+      body: `<h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p>${compareHtml(facet, c.language, traitColors[facetTrait.code], c.esc)}<p>${c.esc(facet.interpretation)}</p>`},
+    {key: 'combo', cls: 'd-gpanel-combo', img: c.figureSrc(named.image), eyebrow: c.tr('Your combination', 'Kombinasjonen din'), title: c.shy(c.esc(combo.title)), meta: combo.traits.map(d => c.piece(d.code)).join(''),
+      body: `<h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}${combo.nuance ? ' ' + c.esc(combo.nuance) : ''}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}`}];
+  return `<div class="d-gpanels">${cards.map(k => `<button type="button" class="d-tpanel d-gpanel ${k.cls}" data-g="${k.key}" aria-expanded="false" aria-controls="gd-${k.key}"><span class="d-tpanel-art"><img src="${k.img}" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></span><span class="d-gpanel-eyebrow">${k.eyebrow}</span><span class="d-tpanel-name">${k.title}</span><span class="d-gpanel-meta">${k.meta}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`).join('')}</div>
+    ${cards.map(k => `<div class="d-gdetail d-gdetail-${k.key}" id="gd-${k.key}" role="region" aria-label="${c.esc(k.eyebrow)}" hidden><p class="d-glance-eyebrow">${k.eyebrow}</p>${k.body}</div>`).join('')}`;
+}
+
 /** Grid for one trait, used when switching tabs. */
 export const peopleFor = (c, code) => people(c, c.domains.find(d => d.code === code));
 
@@ -62,11 +77,7 @@ export function glanceHtml(c) {
     <p class="d-glance-name">${c.tr('Your profile character', 'Profilfiguren din')}: <strong>${c.esc(named.name)}</strong></p>
     <p class="d-pct-sub">${pct ? c.tr('A higher percentile means more of the trait, not a better result. The dashed ring is the middle (50).', 'Høyere persentil betyr mer av trekket, ikke et bedre resultat. Den stiplede ringen er midten (50).') : c.tr('Further out means you agreed more with statements about the trait. The dashed ring is the middle of the answer scale.', 'Lenger ut betyr at du sa deg mer enig i utsagn om trekket. Den stiplede ringen er midten av svarskalaen.')}</p>${c.pctInfo}
     <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}</div>${tabs}</div>
-    <div class="d-glance-cards">
-      <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('The trait that stands out most', 'Trekket som skiller seg mest ut')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
-      <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p>${compareHtml(facet, c.language, traitColors[facetTrait.code], c.esc)}<p>${c.esc(facet.interpretation)}</p></div></article>
-    </div>
-    <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}${combo.nuance ? ' ' + c.esc(combo.nuance) : ''}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
+    ${topPanels(c, strongest, facet, facetTrait, combo, named)}
   </section>`;
 }
 
@@ -100,8 +111,14 @@ export function initGlance(root, peopleFor) {
       if (e.key === 'Home' || e.key === 'End') {e.preventDefault(); select(tabs[e.key === 'Home' ? 0 : tabs.length - 1], true);}
     });
   });
+  const cards = [...box.querySelectorAll('.d-gpanel')];
+  cards.forEach(btn => btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    cards.forEach(b => {const on = open && b === btn; b.setAttribute('aria-expanded', String(on)); box.querySelector('#' + b.getAttribute('aria-controls')).hidden = !on;});
+    if (open) {const el = box.querySelector('#' + btn.getAttribute('aria-controls')); el.querySelectorAll('[data-count]').forEach(n => countUp(n, 700)); el.scrollIntoView({block: 'nearest', behavior: still() ? 'auto' : 'smooth'});}
+  }));
   if (still() || !('IntersectionObserver' in window)) return;
-  const parts = [box.querySelector('.d-radar-box'), panel, ...box.querySelectorAll('.d-glance-card, .d-combo')].filter(Boolean);
+  const parts = [box.querySelector('.d-radar-box'), panel, box.querySelector('.d-gpanels')].filter(Boolean);
   // Only parts below the fold wait for the reader; the rest play right away.
   const io = new IntersectionObserver(entries => entries.forEach(en => {if (en.isIntersecting) {play(en.target); io.unobserve(en.target);}}), {threshold: .2});
   requestAnimationFrame(() => parts.forEach(p => {const r = p.getBoundingClientRect(); if (r.height && r.top > innerHeight * .9) p.classList.add('is-waiting'); io.observe(p);}));

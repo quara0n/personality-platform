@@ -314,3 +314,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune valgte 2026-10-15 en ny logo: fem teksturerte papirtrekanter i virvel. Kantene er rensket, krem-trekanten er gjort litt mørkere med en tynn beige kant så den synes på lys bakgrunn, og trekantene står med jevne mellomrom (72°) rundt midten. Logoen brukes i toppfeltet og bunnfeltet (bilde + «Fem» i Georgia), i lasteanimasjonen, i rapporthodet og i delingsvideoen (app/assets/design/logo-mark.webp og logo-piece-*.webp). Trekkbitene (tri-*.png) er uendret. Favikon og app-ikoner bruker en flat vektorversjon uten tekstur (app/assets/icons/). Kilde og skript ligger i prosjektmappen logo-ny.
   - I delingsvideoen popper logoen litt mot seeren (8 %) etter at ringen er lukket, rett før den flytter seg opp til navnescenen (LOGO_POP i app/share-video.js).
+
+## 2026-10-15: Toppkortene i «Din profil på ett blikk» i samme stil som trekkortene
+
+- Rune likte de skrå bildekortene i «Utforsk trekkene dine» og sa ja til å bruke stilen på de tre toppkortene i rapportoversikten. Trekket som skiller seg mest ut, fasetten som skiller seg mest ut og kombinasjonen står nå som en rad med tre bildekort (trekkbildet, fasettbildet og profilfiguren). Teksten ligger bak «+» og åpnes i ett felles leseområde under raden, ett kort om gangen. Utskrift og PDF viser alle tre.
+- «Medmenneskelighet» brøt midt i ordet på smale trekkort. Navnet skaleres nå etter kortbredden så det lengste ordet får plass på én linje, og lange trekknavn har myke bindestreker som reserve, så et brudd alltid får bindestrek.
