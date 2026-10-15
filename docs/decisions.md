@@ -299,6 +299,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Testprofil: «Runes profil» ved siden av «Tilfeldig» (app/dev-profile.js) fyller svar som gir Runes oppgitte nivåer (lav reaktivitet, svært høy åpenhet, resten midt eller litt over). Fasettene er et anslag. Fjernes sammen med «Tilfeldig» før lansering. Knappen «Skriv med AI (test)» vises også bare bak samme testflagg (showRandom), så vanlige besøkende ikke kan utløse API-kostnader.
 - Før lansering må reglene og AI-teksten gjennomgås faglig, personvernerklæringen nevne Anthropic som databehandler, og endepunktet få bruksbegrensning slik at det ikke kan misbrukes til å bruke opp API-kreditt.
 
+## 2026-10-15: «Nyansene bak skårene» bak et pluss
+
+- I rapportoversikten vises de tre kortene (trekket som skiller seg mest ut, fasetten som skiller seg mest ut, kombinasjonen) med en gang. «Nyansene bak skårene» gjentar mye av det samme og er nå lagt bak en rad med + som åpnes ved trykk, som radene i «Dine fem trekk». Utskrift viser alltid innholdet. Runes beslutning.
+
 ## 2026-10-15: Oversiktlig oppsett for jobbkapittelet
 
 - Rune ba om at «Arbeidsliv og karriere» skulle se mer ut som skissen hans (01-overblikk): «mer oversiktelig». Etter at spørsmålene er besvart viser kapittelet nå «Din jobbkontekst» i toppen av kapittelet (yrket eller arbeidstypen, hvordan man jobber med andre og eventuelt lederansvar, med «Endre»), deretter to kolonner: til venstre «Dette kan fungere godt» og «Dette kan bli krevende», til høyre «Din energi» og «Prøv én ting denne uken» med avkrysningen «Jeg skal prøve dette». Hver blokk har en kort overskrift (emnet for svaret den bygger på), én forklaring, fasettene som merker og «Les mer» med prøv-forslaget, hvilket svar det kommer fra og de andre punktene.
