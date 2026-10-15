@@ -233,3 +233,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Innholdsmenyen i rapporten 2026-10-13
 
 - Rune ønsket litt mer kontrast i innholdsmenyen og en rolig bevegelse som viser hvilket kapittel som er aktivt. Aktivt kapittel har nå litt sterkere bakgrunn, halvfet tekst, mørkere oransje nummer og en tynn aksentlinje som «puster» sakte (3,6 s); en svak lysstripe glir over omtrent hvert niende sekund. Inaktive numre er dempet grå slik at titlene skiller seg ut. På smale skjermer ligger aksentlinjen under fanen. Ved redusert bevegelse står linjen stille og lysstripen vises ikke.
+
+## Fem nivåer, styrker og svakheter på trekkortene i Arbeidsliv og Hverdagsliv 2026-10-15
+- Rune spurte hvor mange versjoner kortene har (tre per trekk og kapittel: lavere, midt, høyere; 30 tekstsett og 10 bilder, der bildene viser midtmetaforen) og ba om flere tekster og ordtak, og styrker og svakheter i hver sin kolonne.
+- Kortene følger nå de samme fem nivåene som fasettkortene: Mye lavere (under 10. persentil), Lavere (10–30), Midt (30–70), Høyere (70–90) og Mye høyere (over 90). De ytre nivåene krever også at nivåordet peker samme vei, og uten normtabell brukes de tre gamle nivåene. 20 nye kort med ordtak, tekst og Prøv er skrevet på begge språk (app/context-levels.js). Regel-id context-v2/….
+- Hvert kort har to kolonner, «Styrker» og «Svakheter», med tre punkter hver for alle fem nivåer. Tonen er vennlig, men ærlig: svakhetene beskriver hva som kan bli krevende, ikke diagnoser eller verdidommer.
+- Bilder: 40 nye trengs (fire nivåer × fem trekk × to kapitler). Liste med filnavn og motiv i prosjektmappen trekkort-bilder/bildeliste.md. Kortet bruker det nye bildet når filnavnet er lagt inn i levelArt i app/context-levels.js, ellers dagens bilde.
+- Tekstene er redaksjonelle og skal med i den faglige gjennomgangen.

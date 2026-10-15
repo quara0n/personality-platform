@@ -299,6 +299,7 @@ function offer(){const price=new Intl.NumberFormat(language==='no'?'nb-NO':'en-U
         <article><img src="assets/design/offer-tri-blue.webp" alt="" aria-hidden="true"><div><h3>${tr('Everyday life','Hverdagsliv')}</h3><p>${tr('Understand your habits, social energy and the ways you respond to everyday demands.','Forstå vanene dine, den sosiale energien og hvordan du møter krav i hverdagen.')}</p><ul><li>${tr('Habits and routines','Vaner og rutiner')}</li><li>${tr('Communication and relationships','Kommunikasjon og relasjoner')}</li><li>${tr('Small changes to try','Små endringer å prøve')}</li></ul></div></article>
       </div>
     </div></section>`;}
+function levelShort(l){return l==='veryLow'?tr('Much lower','Mye lavere'):l==='veryHigh'?tr('Much higher','Mye høyere'):bandShort(l);}
 function bandShort(b){return b==='low'?tr('Lower','Lavere'):b==='high'?tr('Higher','Høyere'):tr('Middle','Midt');}
 const hasPct=x=>Number.isFinite(x?.percentile);
 const barPos=x=>Math.max(0,Math.min(100,hasPct(x)?x.percentile:(Number(x.mean)-1)*25));
@@ -313,7 +314,7 @@ function traitHead(d){const [infoBtn,infoPop]=hasPct(d)?pctInfoParts(true):['','
 function contextHtml(d,id){
   const c=contextCard(d,id,language);
   const full=name(d),m=full.match(/^(.*?)\s*(\(.*\))$/);
-  return `<article class="context-item d-context-card" data-rule="${c.ruleId}"><div class="d-context-body"><div class="d-context-title">${piece(d.code)}<h3>${esc(m?m[1]:full)}${m?`<span class="d-trait-alt">${esc(m[2])}</span>`:''}</h3><span class="d-chip d-chip-${d.band}">${bandShort(d.band)}</span></div><blockquote class="d-quote">${esc(c.quote)}</blockquote><p class="d-context-lead">${esc(c.text)}</p><p class="d-try"><span>${tr('Try','Prøv')}</span>${esc(c.try)}</p></div><img class="d-context-art" src="assets/design/context/${id}-${d.code}.webp" alt="" aria-hidden="true"></article>`;
+  return `<article class="context-item d-context-card" data-rule="${c.ruleId}"><div class="d-context-body"><div class="d-context-title">${piece(d.code)}<h3>${esc(m?m[1]:full)}${m?`<span class="d-trait-alt">${esc(m[2])}</span>`:''}</h3><span class="d-chip d-chip-${d.band}">${levelShort(c.level)}</span></div><blockquote class="d-quote">${esc(c.quote)}</blockquote><p class="d-context-lead">${esc(c.text)}</p>${c.good.length?`<div class="d-sw"><div class="d-sw-col is-good"><h4>${tr('Strengths','Styrker')}</h4><ul>${c.good.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="d-sw-col is-hard"><h4>${tr('Weaknesses','Svakheter')}</h4><ul>${c.hard.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>`:''}<p class="d-try"><span>${tr('Try','Prøv')}</span>${esc(c.try)}</p></div><img class="d-context-art" src="assets/design/context/${c.art}.webp" alt="" aria-hidden="true"></article>`;
 }
 function normNote(){
   if(!report.norms)return `<p class="d-norm-note d-footnote">${tr('Percentiles appear here once the US reference data is added. Until then, each bar shows where your average sits on the 1–5 answer scale; it is not a comparison with other people.','Persentiler vises her når de amerikanske referansedataene er lagt inn. Til da viser hver stolpe hvor gjennomsnittet ditt ligger på svarskalaen fra 1 til 5; den er ikke en sammenligning med andre.')}</p>`;
