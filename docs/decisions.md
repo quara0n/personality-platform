@@ -313,3 +313,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune valgte 2026-10-15 en ny logo: fem teksturerte papirtrekanter i virvel. Kantene er rensket, krem-trekanten er gjort litt mørkere med en tynn beige kant så den synes på lys bakgrunn, og trekantene står med jevne mellomrom (72°) rundt midten. Logoen brukes i toppfeltet og bunnfeltet (bilde + «Fem» i Georgia), i lasteanimasjonen, i rapporthodet og i delingsvideoen (app/assets/design/logo-mark.webp og logo-piece-*.webp). Trekkbitene (tri-*.png) er uendret. Favikon og app-ikoner (app/assets/icons/) bygger på den fasetterte vektorlogoen logo-fasett.svg som Rune sendte i Fasett-pakken, beskåret tettere for små størrelser. Kilde og skript ligger i prosjektmappen logo-ny.
   - I delingsvideoen popper logoen litt mot seeren (8 %) etter at ringen er lukket, rett før den flytter seg opp til navnescenen (LOGO_POP i app/share-video.js).
+
+## 2026-10-15: «X av 100» bruker alltid samme tall som persentilen
+
+- Rune syntes «lavere enn hos 73 av 100» ved 27. persentil var forvirrende. Tallet i setningen og figuren er nå alltid persentilen selv, uttrykt i mennesker, ikke prosent: «Når det gjelder orden, skårer du høyere enn omtrent 27 av 100 mennesker, så du ligger litt lavere enn de fleste.» Over 70 brukes den høye polen («… liker du mer orden enn omtrent 85 av 100 mennesker»). Figurteksten sier «27 av 100 mennesker skårer lavere enn deg» (app/facet-compare.js, brukt på fasettkortene, i gratisprofilen og i oversikten).
+- Jobbkapittelets AI-tekst følger samme regel (lib/career-llm.js). Delingsvideoen er ikke endret ennå.
