@@ -379,7 +379,7 @@ function stepsChapter(next){
     <p class="hint">${explore?tr('These explorations use the facets furthest from the midpoint, one from each trait. ','Utforskningene bruker fasettene lengst fra midtpunktet, én fra hvert trekk. '):tr('These steps follow the facets furthest from the midpoint, outside the middle range. ','Stegene følger fasettene lengst fra midtpunktet, utenfor midtområdet. ')}${tr('They are ideas to try, not predictions of what will work.','Dette er ideer å prøve, ikke spådommer om hva som virker.')}</p>
     <p class="hint">IPIP-NEO-120 · ${esc(report.instrumentVersion||'')} · ${esc(report.reportVersion)}${report.norms?` · ${esc(report.norms.version)}`:''} · ${tr('Method and references','Metode og referanser')}: <a href="#method">${tr('Read the evidence and limitations','Les om grunnlaget og begrensningene')}</a></p><p class="hint">Johnson (2014): <a href="https://doi.org/10.1016/j.jrp.2014.05.003">doi.org/10.1016/j.jrp.2014.05.003</a><br>IPIP: <a href="https://ipip.ori.org/newScoringInstructions.htm">ipip.ori.org/newScoringInstructions.htm</a></p>${next}</section>`;
 }
-function tailorCtx(){return {tr,esc,scoreText,bandShort,language,domains:sorted()};}
+function tailorCtx(){return {tr,esc,scoreText,bandShort,language,domains:sorted(),showDev:showRandom()};}
 function fullReport(active='overview'){
   const chapters=[['overview',tr('Overview','Oversikt')],['traits',tr('Your five traits','Dine fem trekk')],['work',tr('Work & career','Arbeidsliv og karriere')],['life',tr('Everyday life','Hverdagsliv')],['steps',tr('Your next steps','Dine neste steg')]];
   const all=[...chapters,['reading',tr('How to read your results','Slik leser du resultatene')]];

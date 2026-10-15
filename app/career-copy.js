@@ -15,47 +15,70 @@ export const questions = [
     ['service', 'Sales, service or customers', 'Salg, service eller kunder'],
     ['practical', 'Practical, technical or a trade', 'Praktisk, teknisk eller håndverk'],
     ['creative', 'Creative work', 'Kreativt arbeid'],
+    ['own', 'Self-employed or my own business', 'Selvstendig eller egen bedrift'],
     ['student', 'Studying', 'Studerer'],
-    ['none', 'Not working right now', 'Ikke i jobb nå']]},
+    ['none', 'Not working right now', 'Ikke i jobb nå'],
+    ['other', 'Something else (write your job)', 'Noe annet (skriv yrket ditt)']]},
   {id: 'lead', q: ['Are you responsible for other people?', 'Har du ansvar for andre?'], options: [
     ['no', 'No', 'Nei'],
     ['informal', 'Informally (a project or a subject area)', 'Uformelt (prosjekt eller fagansvar)'],
     ['small', 'I lead 1–5 people', 'Leder 1–5 personer'],
-    ['large', 'I lead more than 5 people', 'Leder flere enn 5']]},
+    ['large', 'I lead more than 5 people', 'Leder flere enn 5'],
+    ['owner', 'I run a business with employees', 'Driver egen bedrift med ansatte'],
+    ['other', 'Other', 'Annet']]},
   {id: 'with', q: ['How do you work with other people?', 'Hvordan jobber du sammen med andre?'], options: [
     ['alone', 'Mostly on my own', 'Mest alene'],
     ['team', 'In a fixed team', 'I et fast team'],
     ['many', 'With many different people', 'Med mange ulike'],
-    ['clients', 'With clients or patients most of the day', 'Med kunder, klienter eller pasienter det meste av dagen']]},
+    ['clients', 'With clients or patients most of the day', 'Med kunder, klienter eller pasienter det meste av dagen'],
+    ['remote', 'Mostly digitally or at a distance', 'Mest digitalt eller på avstand'],
+    ['other', 'Other', 'Annet']]},
   {id: 'structure', q: ['How fixed is your work?', 'Hvor fast er arbeidet ditt?'], options: [
     ['fixed', 'Fixed routines', 'Faste rutiner'],
     ['mixed', 'Some of both', 'Litt av begge'],
-    ['shifting', 'It changes a lot', 'Det endrer seg mye']]},
+    ['shifting', 'It changes a lot', 'Det endrer seg mye'],
+    ['projects', 'Project by project', 'Prosjekt for prosjekt'],
+    ['other', 'Other', 'Annet']]},
   {id: 'pressure', q: ['How much pressure and how many deadlines?', 'Hvor mye press og frister er det?'], options: [
     ['calm', 'Calm and predictable', 'Rolig og forutsigbart'],
     ['peaks', 'Busy periods now and then', 'Travle perioder innimellom'],
-    ['high', 'Often high pressure', 'Ofte høyt press']]},
+    ['high', 'Often high pressure', 'Ofte høyt press'],
+    ['uneven', 'Hard to predict', 'Vanskelig å forutsi'],
+    ['other', 'Other', 'Annet']]},
   {id: 'drains', multi: 2, q: ['What drains you most at work?', 'Hva tapper deg mest på jobb?'], options: [
     ['meetings', 'Many meetings and a lot of talk', 'Mange møter og mye prat'],
     ['unclear', 'Unclear expectations', 'Uklare forventninger'],
     ['conflict', 'Conflict and discontent', 'Konflikter og misnøye'],
     ['routine', 'Repetitive tasks', 'Ensformige oppgaver'],
     ['overload', 'Too much at once', 'For mye på en gang'],
-    ['judged', 'Being assessed or criticised', 'Å bli vurdert eller kritisert']]},
+    ['judged', 'Being assessed or criticised', 'Å bli vurdert eller kritisert'],
+    ['alone', 'Too much time alone', 'For mye alenetid'],
+    ['noinfluence', 'Little say over my own day', 'Lite å si over egen arbeidsdag'],
+    ['other', 'Other', 'Annet']]},
   {id: 'energy', multi: 2, q: ['What gives you the most energy?', 'Hva gir deg mest energi?'], options: [
     ['problems', 'Solving hard problems', 'Å løse vanskelige problemer'],
     ['help', 'Helping someone', 'Å hjelpe noen'],
     ['finish', 'Getting things done', 'Å få ting ferdig'],
     ['learn', 'Learning something new', 'Å lære noe nytt'],
     ['people', 'Being with people', 'Å være sammen med folk'],
-    ['create', 'Making something of my own', 'Å lage noe eget']]},
+    ['create', 'Making something of my own', 'Å lage noe eget'],
+    ['recognition', 'Recognition for what I do', 'Å få anerkjennelse for det jeg gjør'],
+    ['variety', 'Variety and new places', 'Variasjon og nye steder'],
+    ['other', 'Other', 'Annet']]},
   {id: 'goal', q: ['What would you most like to achieve in the next year?', 'Hva vil du helst få til det neste året?'], options: [
     ['thrive', 'Enjoy the job I have more', 'Trives bedre der jeg er'],
     ['more', 'Take on more responsibility or lead', 'Få mer ansvar eller lede'],
     ['change', 'Change direction', 'Bytte retning'],
     ['calm', 'Less stress', 'Mindre stress'],
-    ['people', 'Work better with others', 'Bli bedre sammen med andre']]}
+    ['people', 'Work better with others', 'Bli bedre sammen med andre'],
+    ['balance', 'Better balance between work and free time', 'Bedre balanse mellom jobb og fritid'],
+    ['skills', 'Get better at my craft', 'Bli flinkere faglig'],
+    ['other', 'Other', 'Annet']]}
 ];
+
+// «Other» opens a short text field. The text is the reader's own words: it is shown back to them and,
+// when AI writing is used, sent along as context (capped at OTHER_MAX characters). No rule fires on it.
+export const OTHER_MAX = 80;
 
 const LIMIT = {good: 3, hard: 3, drain: 3, energy: 2, lead: 3, next: 3, lookfor: 5};
 
@@ -80,6 +103,11 @@ export const rules = [
   R('good', 'role', 'care', 'O5', 'high', 'Intellect is high, so you probably want to understand more of your field than the job strictly requires. That is a strength in health and teaching, where knowledge keeps changing.', 'Intellekt er høy, så du vil trolig forstå mer av faget enn jobben krever. Det er en styrke i helse og undervisning, der kunnskapen stadig endrer seg.', 'Pick one question from your practice this month and read up on it properly.', 'Velg ett spørsmål fra praksisen din denne måneden og les deg skikkelig opp på det.'),
   R('good', 'role', 'care', 'O3', 'high', 'Emotionality is high, so you probably notice what happens in yourself when you meet others, and can use it in your work.', 'Følelsesbevissthet er høy, så du merker trolig hva som skjer i deg selv i møte med andre, og kan bruke det i arbeidet.', 'After a demanding meeting, name to yourself what you felt, in one word.', 'Etter et krevende møte: sett ett ord på hva du kjente.'),
   R('hard', 'role', 'care', 'A6', 'high', 'In caring work, high Sympathy can make you carry other people’s problems after work.', 'I omsorgsarbeid kan høy Medfølelse gjøre at du bærer med deg andres problemer etter arbeidstid.', 'Make a fixed transition between work and free time, such as a short walk before you go home.', 'Lag en fast overgang mellom jobb og fritid, for eksempel en kort tur før du går inn døra.'),
+  R('hard', 'pressure', 'uneven', 'C6', 'high', 'When work is hard to predict, high Cautiousness can make it stressful not to be able to plan ahead.', 'Når arbeidet er vanskelig å forutsi, kan høy Varsomhet gjøre det stressende at du ikke kan planlegge.', 'Plan what you can control, and keep one buffer slot free each day.', 'Planlegg det du kan styre, og hold av én buffer i løpet av dagen.'),
+  R('good', 'with', 'remote', 'E2', 'low', 'You mostly work digitally or at a distance, and Gregariousness is low. That probably gives you peace to concentrate.', 'Du jobber mest digitalt eller på avstand, og Selskapelighet er lav. Det gir deg trolig ro til å konsentrere deg.', 'Agree on fixed times when others can reach you, so the rest stays undisturbed.', 'Avtal faste tider der andre kan nå deg, så resten får være uforstyrret.'),
+  R('hard', 'with', 'remote', 'E2', 'high', 'You mostly work digitally or at a distance, while Gregariousness is high. You may miss people more than you notice.', 'Du jobber mest digitalt eller på avstand, mens Selskapelighet er høy. Du kan savne folk mer enn du merker.', 'Meet someone from work in person at least once a week.', 'Møt noen fra jobben ansikt til ansikt minst én gang i uka.'),
+  R('good', 'role', 'own', 'O4', 'high', 'Running your own work and high Adventurousness probably fit well: you shape your own days.', 'Egen virksomhet og høy Eventyrlyst passer trolig godt: du former dagene dine selv.', 'Set aside time each month to try one new idea in the business.', 'Sett av tid hver måned til å teste én ny idé i virksomheten.'),
+  R('hard', 'role', 'own', 'C5', 'low', 'With your own business there is no one to set deadlines for you, and Self-Discipline is low.', 'Med egen virksomhet er det ingen som setter frister for deg, og Selvdisiplin er lav.', 'Give yourself weekly deadlines and tell someone about them.', 'Gi deg selv ukentlige frister og fortell noen om dem.'),
   R('good', 'role', 'knowledge', 'O5', 'high', 'Knowledge work and high Intellect probably fit well together.', 'Kunnskapsarbeid og høy Intellekt passer trolig godt sammen.', 'Ask for the problem nobody has solved yet.', 'Be om det problemet ingen har løst ennå.'),
   R('good', 'role', 'creative', 'O1', 'high', 'Creative work and high Imagination probably fit well together.', 'Kreativt arbeid og høy Fantasi passer trolig godt sammen.', 'Keep one list of ideas and test one each month.', 'Ha én liste med ideer og test én hver måned.'),
   R('good', 'role', 'practical', 'C2', 'high', 'Practical work and high Orderliness probably fit well: you like things to be done properly.', 'Praktisk arbeid og høy Orden passer trolig godt: du liker at ting gjøres skikkelig.', 'Suggest one improvement to a routine that others will also benefit from.', 'Foreslå én forbedring av en rutine som andre også har nytte av.'),
@@ -89,8 +117,8 @@ export const rules = [
   R('hard', 'structure', 'fixed', 'O4', 'high', 'Fixed routines and high Adventurousness can make weeks feel too alike.', 'Faste rutiner og høy Eventyrlyst kan gjøre at ukene kjennes for like.', 'Give yourself one small project that is new to you, alongside the fixed work.', 'Gi deg selv ett lite prosjekt som er nytt for deg, ved siden av det faste.'),
   R('hard', 'structure', 'fixed', 'C2', 'low', 'The work has fixed routines, while Orderliness is low. Routines can feel like a constraint, and small things may slip.', 'Arbeidet har faste rutiner, mens Orden er lav. Rutinene kan kjennes som tvang, og småting kan glippe.', 'Make one checklist for what slips most often, and let it do the work.', 'Lag én sjekkliste for det som oftest glipper, og la den gjøre jobben for deg.'),
   R('good', 'structure', 'fixed', 'O4', 'low', 'Adventurousness is low, so fixed frames probably feel safe rather than boring.', 'Eventyrlyst er lav, så faste rammer gir trolig trygghet heller enn kjedsomhet.', 'Become the person who knows the routines best.', 'Bli den som kan rutinene best.'),
-  R('good', 'structure', 'mixed', 'O4', 'high', 'The work mixes fixed and new tasks, and high Adventurousness means you probably enjoy the variety.', 'Arbeidet blander faste og nye oppgaver, og høy Eventyrlyst gjør at du trolig setter pris på variasjonen.', 'Say yes to new tasks, but choose them on purpose.', 'Si ja til nye oppgaver, men velg dem bevisst.'),
-  R('hard', 'structure', 'mixed', 'C2', 'low', 'With both fixed and changing tasks, low Orderliness can make the fixed ones pile up.', 'Med både faste og skiftende oppgaver kan lav Orden gjøre at det faste blir liggende.', 'Do the fixed tasks at the same time every week.', 'Gjør de faste oppgavene på samme tid hver uke.'),
+  R('good', 'structure', ['mixed', 'projects'], 'O4', 'high', 'The work mixes fixed and new tasks, and high Adventurousness means you probably enjoy the variety.', 'Arbeidet blander faste og nye oppgaver, og høy Eventyrlyst gjør at du trolig setter pris på variasjonen.', 'Say yes to new tasks, but choose them on purpose.', 'Si ja til nye oppgaver, men velg dem bevisst.'),
+  R('hard', 'structure', ['mixed', 'projects'], 'C2', 'low', 'With both fixed and changing tasks, low Orderliness can make the fixed ones pile up.', 'Med både faste og skiftende oppgaver kan lav Orden gjøre at det faste blir liggende.', 'Do the fixed tasks at the same time every week.', 'Gjør de faste oppgavene på samme tid hver uke.'),
   R('good', 'structure', 'shifting', 'O4', 'high', 'The work changes a lot, and Adventurousness is high. The variety probably gives you energy.', 'Arbeidet endrer seg mye, og Eventyrlyst er høy. Variasjonen gir deg trolig energi.', 'Keep a short list of what you learned each month.', 'Før en kort liste over hva du lærte hver måned.'),
   R('good', 'structure', 'shifting', 'O5', 'high', 'New, unsolved problems probably suit high Intellect well.', 'Nye, uløste problemer passer trolig godt med høy Intellekt.', 'Ask for the hardest case once a month.', 'Be om den vanskeligste saken én gang i måneden.'),
   R('hard', 'structure', 'shifting', 'C2', 'high', 'When the work changes a lot, high Orderliness can make it stressful that plans keep being redone.', 'Når arbeidet endrer seg mye, kan høy Orden gjøre det stressende at planene stadig må lages på nytt.', 'Plan in short pieces, one week at a time.', 'Lag planer i korte biter, én uke av gangen.'),
@@ -99,8 +127,8 @@ export const rules = [
   R('good', 'pressure', 'high', 'N6', 'low', 'You often work under high pressure, and Vulnerability is low. You probably keep a cool head when a lot happens at once.', 'Du jobber ofte under høyt press, og Sårbarhet er lav. Du holder trolig hodet kaldt når mye skjer samtidig.', 'Notice who around you finds busy periods harder.', 'Legg merke til hvem rundt deg som har det tyngre i travle perioder.'),
   R('hard', 'pressure', 'high', 'N1', 'high', 'High pressure and high Anxiety can make you take work home in your head.', 'Høyt press og høy Angst kan gjøre at du tar med deg jobben hjem i tankene.', 'Write down what is on your mind before you leave, and decide when to pick it up again.', 'Skriv ned det som surrer før du går hjem, og bestem når du skal ta det opp igjen.'),
   R('good', 'pressure', 'high', 'C4', 'high', 'Achievement-Striving is high, so deadlines probably drive you forward rather than stop you.', 'Prestasjonsstreben er høy, så frister driver deg trolig fremover heller enn å stoppe deg.', 'Set your own finish line a day before the real one.', 'Sett din egen frist en dag før den ekte.'),
-  R('good', 'pressure', 'peaks', 'N6', 'low', 'Vulnerability is low, so you probably keep calm in busy periods and rarely feel overwhelmed.', 'Sårbarhet er lav, så du holder trolig roen i travle perioder og blir sjelden overveldet.', 'Use the quiet periods to prepare for the next busy one.', 'Bruk de rolige periodene til å forberede den neste travle.'),
-  R('hard', 'pressure', 'peaks', 'N6', 'high', 'Busy periods can feel heavier for you than for others; Vulnerability is high.', 'Travle perioder kan kjennes tyngre for deg enn for andre; Sårbarhet er høy.', 'Plan a quieter day right after the busiest periods.', 'Planlegg en roligere dag rett etter de travleste periodene.'),
+  R('good', 'pressure', ['peaks', 'uneven'], 'N6', 'low', 'Vulnerability is low, so you probably keep calm in busy periods and rarely feel overwhelmed.', 'Sårbarhet er lav, så du holder trolig roen i travle perioder og blir sjelden overveldet.', 'Use the quiet periods to prepare for the next busy one.', 'Bruk de rolige periodene til å forberede den neste travle.'),
+  R('hard', 'pressure', ['peaks', 'uneven'], 'N6', 'high', 'Busy periods can feel heavier for you than for others; Vulnerability is high.', 'Travle perioder kan kjennes tyngre for deg enn for andre; Sårbarhet er høy.', 'Plan a quieter day right after the busiest periods.', 'Planlegg en roligere dag rett etter de travleste periodene.'),
   R('hard', 'pressure', 'peaks', 'C5', 'low', 'Between busy periods, low Self-Discipline can make tasks wait until the pressure comes.', 'Mellom travle perioder kan lav Selvdisiplin gjøre at oppgaver venter til presset kommer.', 'Split large tasks into small pieces with their own deadlines.', 'Del store oppgaver i små biter med egne frister.'),
   R('hard', 'pressure', 'calm', 'E5', 'high', 'Calm work and high Excitement-Seeking can give too little pulse in the day.', 'Rolig arbeid og høy Spenningssøking kan gi for lite puls i hverdagen.', 'Seek out one task with a clear deadline or challenge.', 'Søk deg til én oppgave med en tydelig frist eller utfordring.'),
   R('good', 'pressure', 'calm', 'N6', 'high', 'Calm, predictable work probably suits high Vulnerability well.', 'Rolig og forutsigbart arbeid passer trolig godt når Sårbarhet er høy.', 'Notice what keeps it calm, so you can ask for it if the job changes.', 'Legg merke til hva som holder det rolig, så du kan be om det hvis jobben endrer seg.'),
@@ -125,6 +153,11 @@ export const rules = [
   R('drain', 'drains', 'judged', 'C1', 'low', 'Self-Efficacy is low, so criticism can make you doubt yourself more than it should.', 'Mestringstro er lav, så kritikk kan få deg til å tvile mer på deg selv enn den burde.', 'Write down one thing you got done every Friday. Evidence beats feelings.', 'Skriv ned én ting du fikk til hver fredag. Bevis slår følelser.'),
   R('drain', 'drains', 'judged', 'N3', 'high', 'Depression is high, so criticism can linger and colour the rest of the day.', 'Depresjon er høy, så kritikk kan bli hengende og farge resten av dagen.', 'Ask for feedback in writing, so you can read it when you are ready.', 'Be om tilbakemelding skriftlig, så du kan lese den når du er klar.'),
 
+  R('drain', 'drains', 'alone', 'E2', 'high', 'Too much time alone drains you, which fits high Gregariousness.', 'For mye alenetid tapper deg, og det passer med høy Selskapelighet.', 'Plan your solo tasks next to a colleague, or in a café.', 'Legg alenearbeid ved siden av en kollega, eller på en kafé.'),
+  R('drain', 'drains', 'alone', 'E1', 'high', 'High Friendliness means contact with people is part of what keeps you going.', 'Høy Vennlighet gjør at kontakt med folk er noe av det som holder deg i gang.', 'Start the day with a short chat with someone.', 'Start dagen med en kort prat med noen.'),
+  R('drain', 'drains', 'noinfluence', 'E3', 'high', 'Little say over your day drains more when Assertiveness is high: you want to influence.', 'Lite å si over egen arbeidsdag tapper mer når Selvhevdelse er høy: du vil gjerne påvirke.', 'Ask to decide the order of your own tasks one day a week.', 'Be om å få bestemme rekkefølgen på oppgavene dine selv én dag i uka.'),
+  R('drain', 'drains', 'noinfluence', 'O4', 'high', 'High Adventurousness makes it hard to follow someone else’s plan with no room to try things.', 'Høy Eventyrlyst gjør det tungt å følge andres plan uten rom for å prøve noe selv.', 'Suggest one small experiment you can be responsible for.', 'Foreslå ett lite forsøk du kan ha ansvaret for.'),
+
   // ── What gives you energy ───────────────────────────────────────────────
   R('energy', 'energy', 'problems', 'O5', 'high', 'Hard problems give you energy, which fits high Intellect.', 'Vanskelige problemer gir deg energi, og det passer med høy Intellekt.', 'Take on one case a month that nobody else has solved.', 'Ta på deg én sak i måneden som ingen andre har løst.'),
   R('energy', 'energy', 'problems', 'C1', 'high', 'High Self-Efficacy means you probably trust that you will find a way.', 'Høy Mestringstro gjør at du trolig stoler på at du finner en vei.', 'Say yes to one problem that is slightly beyond what you know today.', 'Si ja til ett problem som er litt utenfor det du kan i dag.'),
@@ -139,19 +172,23 @@ export const rules = [
   R('energy', 'energy', 'people', 'E6', 'high', 'High Cheerfulness means your good mood probably spreads to people around you.', 'Høy Munterhet gjør at det gode humøret ditt trolig smitter over på dem rundt deg.', 'Notice which days you bring the most energy, and what made them so.', 'Legg merke til hvilke dager du gir mest energi, og hva som gjorde dem slik.'),
   R('energy', 'energy', 'create', 'O1', 'high', 'High Imagination means you probably have many ideas.', 'Høy Fantasi gjør at du trolig får mange ideer.', 'Keep the ideas in one list and pick one to test each month.', 'Skriv ideene i én liste og velg én å teste hver måned.'),
   R('energy', 'energy', 'create', 'O2', 'high', 'High Artistic Interests mean making something that looks or works well probably gives you energy.', 'Høye kunstneriske interesser gjør at det å lage noe som ser bra ut eller fungerer fint, trolig gir deg energi.', 'Give yourself one small creative task each week, also at work.', 'Gi deg selv én liten kreativ oppgave i uka, også på jobb.'),
+  R('energy', 'energy', 'recognition', 'A5', 'low', 'Modesty is low, so being seen for what you achieve probably matters to you.', 'Beskjedenhet er lav, så det betyr trolig mye for deg å bli sett for det du får til.', 'Tell your manager about one result each month, rather than waiting to be asked.', 'Fortell lederen din om ett resultat hver måned, heller enn å vente på at noen spør.'),
+  R('energy', 'energy', 'recognition', 'E3', 'high', 'High Assertiveness means visible results and influence give you energy.', 'Høy Selvhevdelse gjør at synlige resultater og innflytelse gir deg energi.', 'Present your own work to others once a month.', 'Legg fram ditt eget arbeid for andre én gang i måneden.'),
+  R('energy', 'energy', 'variety', 'O4', 'high', 'Variety gives you energy, which fits high Adventurousness.', 'Variasjon gir deg energi, og det passer med høy Eventyrlyst.', 'Swap one routine task for something new each week.', 'Bytt ut én rutineoppgave med noe nytt hver uke.'),
+  R('energy', 'energy', 'variety', 'E5', 'high', 'High Excitement-Seeking means new places and a bit of pace give you a lift.', 'Høy Spenningssøking gjør at nye steder og litt tempo gir deg et løft.', 'Say yes to the next work trip or field visit.', 'Si ja til neste jobbreise eller befaring.'),
 
   // ── When you lead (only with responsibility for others) ─────────────────
-  R('lead', 'lead', ['informal', 'small', 'large'], 'N6', 'low', 'Low Vulnerability means you are probably a calm presence when things get stormy, and that rubs off on others.', 'Lav Sårbarhet gjør at du trolig er en rolig kraft når det stormer, og det smitter over på andre.', 'Say out loud what you will handle first when things get busy, so others can relax.', 'Si høyt hva du tar først når det blir travelt, så andre kan senke skuldrene.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'E3', 'high', 'High Assertiveness means you probably take the floor and set direction easily.', 'Høy Selvhevdelse gjør at du trolig tar ordet og retningen lett.', 'In the next meeting, let others speak first.', 'La andre snakke først i neste møte.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'E3', 'low', 'Low Assertiveness can make you wait too long to decide or to say clearly what you want.', 'Lav Selvhevdelse kan gjøre at du venter for lenge med å bestemme eller si tydelig hva du vil.', 'End each meeting by saying out loud what has been decided.', 'Avslutt hvert møte med å si høyt hva som er bestemt.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'A1', 'low', 'Low Trust can make it tempting to take tasks back yourself. Others may feel you do not trust them.', 'Lav Tillit kan gjøre det fristende å ta over oppgaver selv. Andre kan oppleve at du ikke stoler på dem.', 'Hand over one task a week that you would rather do yourself, and agree in advance what “good enough” looks like.', 'Gi bort én oppgave i uka som du helst ville gjort selv, og avtal på forhånd hvordan «bra nok» ser ut.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'A1', 'high', 'High Trust means you probably give people responsibility and room to act.', 'Høy Tillit gjør at du trolig gir folk ansvar og handlingsrom.', 'Agree on a simple check-in, so trust does not become absence.', 'Avtal en enkel oppfølging, så tillit ikke blir til fravær.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'A6', 'high', 'High Sympathy means you probably notice early when someone is struggling.', 'Høy Medfølelse gjør at du trolig merker tidlig når noen sliter.', 'Ask one person a week how things are really going.', 'Spør én person i uka hvordan det egentlig går.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'O4', 'high', 'High Adventurousness means you are probably open to new ways of doing things, and others get to try new ideas.', 'Høy Eventyrlyst gjør at du trolig er åpen for nye måter å gjøre ting på, og at andre får prøve nye ideer.', 'Introduce one idea at a time, so others can keep up.', 'Innfør én idé om gangen, så andre rekker å følge med.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'C2', 'low', 'Low Orderliness can leave others missing clear plans and follow-up.', 'Lav Orden kan gjøre at andre savner tydelige planer og oppfølging.', 'Agree on one fixed weekly summary of what happens next.', 'Avtal én fast ukentlig oppsummering av hva som skal skje.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'C4', 'high', 'High Achievement-Striving means you set high goals, for yourself and for others.', 'Høy Prestasjonsstreben gjør at du setter høye mål, for deg selv og for andre.', 'Ask whether the goal feels realistic for the others too.', 'Spør om målet kjennes realistisk for de andre også.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'A5', 'high', 'High Modesty can make you underrate your own contribution and take less room than a leader needs.', 'Høy Beskjedenhet kan gjøre at du undervurderer egne bidrag og tar mindre plass enn en leder trenger.', 'Tell your manager about one thing you achieved this month.', 'Fortell lederen din om én ting du fikk til denne måneden.'),
-  R('lead', 'lead', ['informal', 'small', 'large'], 'E1', 'high', 'High Friendliness means people probably feel safe with you.', 'Høy Vennlighet gjør at folk trolig er trygge på deg.', 'Use that safety to give honest feedback early.', 'Bruk tryggheten til å gi ærlige tilbakemeldinger tidlig.')
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'N6', 'low', 'Low Vulnerability means you are probably a calm presence when things get stormy, and that rubs off on others.', 'Lav Sårbarhet gjør at du trolig er en rolig kraft når det stormer, og det smitter over på andre.', 'Say out loud what you will handle first when things get busy, so others can relax.', 'Si høyt hva du tar først når det blir travelt, så andre kan senke skuldrene.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'E3', 'high', 'High Assertiveness means you probably take the floor and set direction easily.', 'Høy Selvhevdelse gjør at du trolig tar ordet og retningen lett.', 'In the next meeting, let others speak first.', 'La andre snakke først i neste møte.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'E3', 'low', 'Low Assertiveness can make you wait too long to decide or to say clearly what you want.', 'Lav Selvhevdelse kan gjøre at du venter for lenge med å bestemme eller si tydelig hva du vil.', 'End each meeting by saying out loud what has been decided.', 'Avslutt hvert møte med å si høyt hva som er bestemt.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'A1', 'low', 'Low Trust can make it tempting to take tasks back yourself. Others may feel you do not trust them.', 'Lav Tillit kan gjøre det fristende å ta over oppgaver selv. Andre kan oppleve at du ikke stoler på dem.', 'Hand over one task a week that you would rather do yourself, and agree in advance what “good enough” looks like.', 'Gi bort én oppgave i uka som du helst ville gjort selv, og avtal på forhånd hvordan «bra nok» ser ut.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'A1', 'high', 'High Trust means you probably give people responsibility and room to act.', 'Høy Tillit gjør at du trolig gir folk ansvar og handlingsrom.', 'Agree on a simple check-in, so trust does not become absence.', 'Avtal en enkel oppfølging, så tillit ikke blir til fravær.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'A6', 'high', 'High Sympathy means you probably notice early when someone is struggling.', 'Høy Medfølelse gjør at du trolig merker tidlig når noen sliter.', 'Ask one person a week how things are really going.', 'Spør én person i uka hvordan det egentlig går.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'O4', 'high', 'High Adventurousness means you are probably open to new ways of doing things, and others get to try new ideas.', 'Høy Eventyrlyst gjør at du trolig er åpen for nye måter å gjøre ting på, og at andre får prøve nye ideer.', 'Introduce one idea at a time, so others can keep up.', 'Innfør én idé om gangen, så andre rekker å følge med.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'C2', 'low', 'Low Orderliness can leave others missing clear plans and follow-up.', 'Lav Orden kan gjøre at andre savner tydelige planer og oppfølging.', 'Agree on one fixed weekly summary of what happens next.', 'Avtal én fast ukentlig oppsummering av hva som skal skje.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'C4', 'high', 'High Achievement-Striving means you set high goals, for yourself and for others.', 'Høy Prestasjonsstreben gjør at du setter høye mål, for deg selv og for andre.', 'Ask whether the goal feels realistic for the others too.', 'Spør om målet kjennes realistisk for de andre også.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'A5', 'high', 'High Modesty can make you underrate your own contribution and take less room than a leader needs.', 'Høy Beskjedenhet kan gjøre at du undervurderer egne bidrag og tar mindre plass enn en leder trenger.', 'Tell your manager about one thing you achieved this month.', 'Fortell lederen din om én ting du fikk til denne måneden.'),
+  R('lead', 'lead', ['informal', 'small', 'large', 'owner'], 'E1', 'high', 'High Friendliness means people probably feel safe with you.', 'Høy Vennlighet gjør at folk trolig er trygge på deg.', 'Use that safety to give honest feedback early.', 'Bruk tryggheten til å gi ærlige tilbakemeldinger tidlig.')
 ];
 
 // Next steps for the goal: facet-specific first, then general steps to fill three.
@@ -192,6 +229,27 @@ const goalSteps = {
     ['Choose one fixed break in the day and keep it for four weeks.', 'Velg én fast pause i løpet av dagen og hold den i fire uker.'],
     ['Note the situations that give the most stress, every day for a week.', 'Noter situasjonene som gir mest stress, hver dag i en uke.'],
     ['Say no to one thing a week that is not yours.', 'Si nei til én ting i uka som ikke er din.']]},
+  balance: {facet: [
+    S('C4', 'high', 'Decide what “good enough” is for one task each day, and stop there.', 'Bestem hva som er «godt nok» for én oppgave hver dag, og stopp der.'),
+    S('A3', 'high', 'Say no to one request a week that someone else can take.', 'Si nei til én forespørsel i uka som noen andre kan ta.'),
+    S('N1', 'high', 'Write down what is on your mind before you go home.', 'Skriv ned det som surrer før du går hjem.')],
+  general: [
+    ['Choose a fixed time when the working day is over, and keep it for four weeks.', 'Velg et fast tidspunkt da arbeidsdagen er over, og hold det i fire uker.'],
+    ['Put one thing you look forward to in the calendar each week, outside work.', 'Legg én ting du gleder deg til inn i kalenderen hver uke, utenom jobben.'],
+    ['Notice which days the balance feels right, and what made them so.', 'Legg merke til hvilke dager balansen kjennes riktig, og hva som gjorde dem slik.']]},
+  skills: {facet: [
+    S('O5', 'high', 'Pick one question from your work this month and go deep on it.', 'Velg ett faglig spørsmål fra jobben denne måneden og gå i dybden på det.'),
+    S('C5', 'low', 'Book a fixed hour a week for learning, like a meeting.', 'Sett av en fast time i uka til læring, som et møte.'),
+    S('E2', 'high', 'Learn together with a colleague, or join a professional group.', 'Lær sammen med en kollega, eller bli med i en faggruppe.')],
+  general: [
+    ['Name one skill you want to be better at in six months.', 'Skriv ned én ferdighet du vil være bedre i om seks måneder.'],
+    ['Ask someone skilled to watch you work and give feedback.', 'Be en dyktig kollega se deg jobbe og gi tilbakemelding.'],
+    ['Take one course or read one book in your field this quarter.', 'Ta ett kurs eller les én fagbok dette kvartalet.']]},
+  other: {facet: [],
+  general: [
+    ['Write your goal in one sentence and share it with someone.', 'Skriv målet ditt i én setning og del det med noen.'],
+    ['Decide how you will know that you are on your way.', 'Bestem hvordan du vil merke at du er på vei.'],
+    ['Choose one small step you can take this week.', 'Velg ett lite steg du kan ta denne uka.']]},
   people: {facet: [
     S('A4', 'low', 'Start with what you agree with before you say what you would do differently.', 'Start med det du er enig i før du sier hva du ville gjort annerledes.'),
     S('A1', 'low', 'Trust one colleague with a task you usually check.', 'Gi én kollega tillit på en oppgave du vanligvis kontrollerer.'),
@@ -228,10 +286,16 @@ const pick = (pair, language) => pair[language === 'no' ? 1 : 0];
 export const question = id => questions.find(q => q.id === id);
 const asList = v => Array.isArray(v) ? v : v ? [v] : [];
 
-export function optionLabel(qid, value, language) {
+/** The label for an answer; «Other» shows the reader's own text when they wrote one. */
+export function optionLabel(qid, value, language, answers = null) {
   const o = question(qid)?.options.find(([v]) => v === value);
-  return o ? (language === 'no' ? o[2] : o[1]) : '';
+  if (!o) return '';
+  const base = language === 'no' ? o[2] : o[1], text = value === 'other' ? cleanOther(answers?.other?.[qid]) : '';
+  // A written job title stands on its own («kiropraktor»), other notes keep the option name in front.
+  if (text && qid === 'role') return text;
+  return text ? `${base}: ${text}` : base;
 }
+export const cleanOther = v => typeof v === 'string' ? v.replace(/\s+/g, ' ').trim().slice(0, OTHER_MAX) : '';
 
 /** True when every question has a valid answer (multi questions need 1–max choices). */
 export function isComplete(answers = {}) {
@@ -259,7 +323,7 @@ export function buildCareer(domains, answers, language = 'en') {
   const answered = {};
   for (const q of questions) answered[q.id] = asList(answers[q.id]);
   const leads = answered.lead[0] !== 'no', candidates = {drain: {}, energy: {}};
-  const item = (r, f, hit) => ({ruleId: `career-${r.section}-${r.q}-${hit}-${r.facet}-${r.dir}`, text: pick(r.text, language), try: pick(r.try, language), facets: [fact(f)], answers: [{q: r.q, value: hit, label: optionLabel(r.q, hit, language)}]});
+  const item = (r, f, hit) => ({ruleId: `career-${r.section}-${r.q}-${hit}-${r.facet}-${r.dir}`, text: pick(r.text, language), try: pick(r.try, language), facets: [fact(f)], answers: [{q: r.q, value: hit, label: optionLabel(r.q, hit, language, answers)}]});
   rules.forEach(r => {
     const f = facets[r.facet];
     if (!f || f.band !== r.dir || used[r.section].has(r.facet)) return;
@@ -288,6 +352,7 @@ export function buildCareer(domains, answers, language = 'en') {
   // that this is probably more about the situation than about personality.
   for (const [section, qid] of [['drain', 'drains'], ['energy', 'energy']]) {
     for (const value of answered[qid]) {
+      if (value === 'other') continue;
       if (out[section].some(x => x.answers.some(a => a.value === value)) || candidates[section][value]?.length) continue;
       const label = optionLabel(qid, value, language);
       const text = section === 'drain'
@@ -296,7 +361,7 @@ export function buildCareer(domains, answers, language = 'en') {
       out[section].push({ruleId: `career-${section}-${qid}-${value}-situation`, text, try: '', facets: [], answers: [{q: qid, value, label}]});
     }
   }
-  const goal = answered.goal[0], plan = goalSteps[goal], goalAnswer = {q: 'goal', value: goal, label: optionLabel('goal', goal, language)};
+  const goal = answered.goal[0], plan = goalSteps[goal], goalAnswer = {q: 'goal', value: goal, label: optionLabel('goal', goal, language, answers)};
   for (const s of plan.facet) {
     const f = facets[s.facet];
     if (out.next.length < LIMIT.next && f && f.band === s.dir) out.next.push({ruleId: `career-next-${goal}-${s.facet}-${s.dir}`, text: pick(s.text, language), try: '', facets: [fact(f)], answers: [goalAnswer]});
@@ -319,7 +384,7 @@ export function careerRequest(career, domains, answers, language) {
     version: CAREER_VERSION,
     language: language === 'no' ? 'no' : 'en',
     traits: (domains || []).map(d => ({code: d.code, percentile: Number.isFinite(d.percentile) ? d.percentile : null, band: d.band})),
-    answers: questions.map(q => ({q: q.id, question: pick(q.q, language), values: asList(answers[q.id]), labels: asList(answers[q.id]).map(v => optionLabel(q.id, v, language))})),
+    answers: questions.map(q => ({q: q.id, question: pick(q.q, language), values: asList(answers[q.id]), labels: asList(answers[q.id]).map(v => optionLabel(q.id, v, language, answers))})),
     sections: career.sections.map(s => ({id: s.id, items: s.items.map(x => ({ruleId: x.ruleId, draft: x.text, try: x.try, facets: x.facets, answers: x.answers.map(a => a.q)}))}))
   };
 }

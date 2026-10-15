@@ -18,6 +18,14 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   for(const t of ['Kontor','Leder 1–5','I et fast team','Det endrer seg mye','Ofte høyt press'])await opt(t);
   await opt('Uklare forventninger');await page.locator('[data-career="next"]').click();
   await opt('løse vanskelige');await page.locator('[data-career="next"]').click();
+  // «Other» on a single question stays on the page, shows a short text field and needs «Videre».
+  await page.locator('#work .d-career-opt[data-value="other"]').click();await page.locator('#work [data-career-other]').fill('Starte egen praksis');
+  await page.locator('[data-career="next"]').click();
+  await page.locator('#work .d-career-sec').first().waitFor();
+  assert.match(await page.locator('#work .d-career-answers').innerText(),/Annet: Starte egen praksis/);
+  // Back to the goal question and pick a plain option for the rest of the check.
+  await page.locator('[data-career="edit"]').click();
+  for(let i=0;i<7;i++){if(i===5||i===6)await page.locator('[data-career="next"]').click();else await page.locator('#work .d-career-opt[aria-pressed="true"]').first().click();}
   await opt('Få mer ansvar');
   await page.locator('#work .d-career-sec').first().waitFor();
   assert.match(await page.locator('#work .d-career-answers').innerText(),/Kontor- eller kunnskapsarbeid · Leder 1–5 personer · I et fast team · Det endrer seg mye · Ofte høyt press/);

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {questions, rules, buildCareer, careerRequest, isComplete} from '../app/career-copy.js';
+import {questions, rules, buildCareer, careerRequest, isComplete, optionLabel, OTHER_MAX} from '../app/career-copy.js';
 import {validateRequest, checkOutput, handleCareerRequest} from '../lib/career-llm.js';
 import {profileAnswers, RUNE_TARGETS} from '../app/dev-profile.js';
 import {scoreAssessment} from '../app/scoring.js';
@@ -29,6 +29,22 @@ test('completeness requires every answer and at most two choices on multi questi
   assert.ok(isComplete(answers));
   assert.ok(!isComplete({...answers, goal: undefined}));
   assert.ok(!isComplete({...answers, drains: ['routine', 'overload', 'judged']}));
+});
+
+test('«Other» is offered on every question, its text is capped and only shown on its own answer', () => {
+  for (const q of questions) assert.ok(q.options.some(o => o[0] === 'other'), q.id);
+  const withOther = {...answers, goal: 'other', drains: ['routine', 'other'], other: {goal: '  Starte  egen klinikk ', drains: 'x'.repeat(200)}};
+  assert.ok(isComplete(withOther));
+  assert.equal(optionLabel('goal', 'other', 'no', withOther), 'Annet: Starte egen klinikk');
+  assert.equal(optionLabel('drains', 'other', 'en', withOther).length, 'Other: '.length + OTHER_MAX);
+  assert.equal(optionLabel('role', 'care', 'no', withOther), optionLabel('role', 'care', 'no'));
+  assert.equal(optionLabel('role', 'other', 'no', {other: {role: 'kiropraktor'}}), 'kiropraktor');
+  assert.equal(optionLabel('role', 'other', 'no'), 'Noe annet (skriv yrket ditt)');
+  const domains = profile({O5: 95, C2: 15});
+  const request = careerRequest(buildCareer(domains, withOther, 'no'), domains, withOther, 'no');
+  assert.equal(validateRequest(request), '');
+  assert.ok(request.answers.find(a => a.q === 'goal').labels[0].startsWith('Annet: Starte'));
+  for (const s of buildCareer(domains, withOther, 'no').sections) for (const x of s.items) if (x.answers.some(a => a.value === 'other')) assert.equal(x.facets.length, 0, x.ruleId);
 });
 
 test('a middle-only profile gets no facet claims, only situation lines and general steps', () => {

@@ -2,7 +2,7 @@
 // links the answers with the facet scores. The pre-written rule text shows at once; «Write with AI»
 // sends only the picked facts to /api/career-report (lib/career-llm.js) and shows the checked result.
 // Answers and any AI text stay in this browser tab (sessionStorage).
-import {questions, isComplete, optionLabel, buildCareer, careerRequest} from './career-copy.js';
+import {questions, isComplete, optionLabel, buildCareer, careerRequest, OTHER_MAX} from './career-copy.js';
 
 export const CAREER_KEY = 'fem-career-v1';
 let pending = null, message = '';
@@ -20,12 +20,13 @@ function facetMap(domains) { const m = {}; for (const d of domains) for (const f
 
 function stepHtml(s, ctx) {
   const {tr, esc, language} = ctx, q = questions[s.step], chosen = asList(s.answers[q.id]);
-  const first = s.step === 0 && !Object.keys(s.answers).length;
+  const first = s.step === 0 && !Object.keys(s.answers).length, other = chosen.includes('other');
   return `${first ? `<p class="d-career-lead">${tr('Answer eight short questions about your work. It takes two or three minutes. We link your answers with your facets and write a chapter about you and your job.', 'Svar på åtte korte spørsmål om jobben din. Det tar to–tre minutter. Vi kobler svarene med fasettene dine og skriver et kapittel om deg og jobben din.')}</p>` : ''}
     <div class="d-career-progress"><span>${tr('About your work', 'Om jobben din')}</span><span class="d-career-bar" aria-hidden="true"><i style="width:${Math.round(100 * s.step / questions.length)}%"></i></span><span>${tr(`${s.step + 1} of ${questions.length}`, `${s.step + 1} av ${questions.length}`)}</span></div>
     <fieldset class="d-career-q"><legend>${esc(q.q[language === 'no' ? 1 : 0])}</legend>${q.multi ? `<p class="d-career-hint">${tr('Choose up to two.', 'Velg opptil to.')}</p>` : ''}
-    <div class="d-career-options">${q.options.map(([value, en, no]) => `<button type="button" class="d-career-opt" data-value="${value}" aria-pressed="${chosen.includes(value)}">${q.multi ? '<b aria-hidden="true"></b>' : ''}${esc(tr(en, no))}</button>`).join('')}</div></fieldset>
-    <div class="d-career-nav">${s.step > 0 ? `<button type="button" class="text-button" data-career="back">${tr('Back', 'Tilbake')}</button>` : '<span></span>'}${q.multi ? `<button type="button" class="button" data-career="next" ${chosen.length ? '' : 'disabled'}>${tr('Next', 'Videre')}</button>` : ''}</div>`;
+    <div class="d-career-options">${q.options.map(([value, en, no]) => `<button type="button" class="d-career-opt" data-value="${value}" aria-pressed="${chosen.includes(value)}">${q.multi ? '<b aria-hidden="true"></b>' : ''}${esc(tr(en, no))}</button>`).join('')}</div>
+    ${other ? `<label class="d-career-other"><span>${q.id === 'role' ? tr('Your job (optional)', 'Yrket ditt (valgfritt)') : tr('Specify (optional)', 'Spesifiser (valgfritt)')}</span><input type="text" maxlength="${OTHER_MAX}" autocomplete="off" data-career-other value="${esc(s.answers.other?.[q.id] || '')}" placeholder="${q.id === 'role' ? tr('For example chiropractor', 'For eksempel kiropraktor') : tr('A few words, no names', 'Noen få ord, ingen navn')}"></label>` : ''}</fieldset>
+    <div class="d-career-nav">${s.step > 0 ? `<button type="button" class="text-button" data-career="back">${tr('Back', 'Tilbake')}</button>` : '<span></span>'}${q.multi || other ? `<button type="button" class="button" data-career="next" ${chosen.length ? '' : 'disabled'}>${tr('Next', 'Videre')}</button>` : ''}</div>`;
 }
 
 function itemHtml(item, ctx) {
@@ -37,7 +38,7 @@ function itemHtml(item, ctx) {
 
 function sectionsFor(s, ctx, career) {
   const {domains, language} = ctx, map = facetMap(domains);
-  const labels = q => asList(s.answers[q]).map(v => ({q, label: optionLabel(q, v, language)}));
+  const labels = q => asList(s.answers[q]).map(v => ({q, label: optionLabel(q, v, language, s.answers)}));
   if (s.view !== 'rules' && s.ai?.key === career.key && Array.isArray(s.ai.sections)) {
     return s.ai.sections.map(sec => ({id: sec.id, source: sec.source, items: sec.items.map(x => ({text: x.text, try: x.try, facets: x.facets.map(c => map[c]).filter(Boolean), answers: x.answers.flatMap(labels)}))}));
   }
@@ -46,8 +47,8 @@ function sectionsFor(s, ctx, career) {
 
 function resultHtml(s, ctx, career) {
   const {tr, esc, language} = ctx;
-  const goal = optionLabel('goal', asList(s.answers.goal)[0], language).toLowerCase();
-  const summary = questions.map(q => asList(s.answers[q.id]).map(v => optionLabel(q.id, v, language)).join(', ')).join(' · ');
+  const goalValue = asList(s.answers.goal)[0], goalText = goalValue === 'other' ? (s.answers.other?.goal || '').trim() : optionLabel('goal', goalValue, language).toLowerCase();
+  const summary = questions.map(q => asList(s.answers[q.id]).map(v => optionLabel(q.id, v, language, s.answers)).join(', ')).join(' · ');
   const sections = sectionsFor(s, ctx, career), by = id => sections.find(x => x.id === id);
   const usingAi = sections.some(x => x.source === 'ai');
   const list = items => items.length ? `<ul class="d-career-list">${items.map(x => itemHtml(x, ctx)).join('')}</ul>` : `<p class="d-tailor-empty">${tr('Nothing stands out clearly here for your answers.', 'Ingenting skiller seg tydelig ut her for svarene dine.')}</p>`;
@@ -55,7 +56,7 @@ function resultHtml(s, ctx, career) {
     drain: tr('What drains you, and why', 'Det som tapper deg, og hvorfor'),
     energy: tr('What gives you energy', 'Det som gir deg energi'),
     lead: tr('When you lead', 'Når du leder'),
-    next: tr(`Your next step: ${goal}`, `Ditt neste steg: ${goal}`),
+    next: goalText ? tr(`Your next step: ${esc(goalText)}`, `Ditt neste steg: ${esc(goalText)}`) : tr('Your next step', 'Ditt neste steg'),
     lookfor: tr('Look for this in your next job', 'Se etter dette i neste jobb')
   };
   const block = id => {
@@ -65,9 +66,9 @@ function resultHtml(s, ctx, career) {
     return `<div class="d-career-sec${id === 'lead' || id === 'drain' ? ' is-warm' : ''}"><h4>${titles[id]}</h4>${list(sec.items)}</div>`;
   };
   const status = pending ? `<p class="d-career-status" role="status">${tr('Writing your chapter…', 'Skriver kapittelet ditt …')}</p>` : message ? `<p class="d-career-status is-error" role="status">${esc(message)}</p>` : '';
-  const aiBar = s.ai?.key === career.key
+  const aiBar = !ctx.showDev ? '' : s.ai?.key === career.key
     ? `<div class="d-career-ai no-print"><p>${usingAi && s.view !== 'rules' ? tr('Written by AI from your scores and answers, within fixed rules.', 'Skrevet av AI ut fra skårene og svarene dine, innenfor faste regler.') : tr('Pre-written text from fixed rules.', 'Ferdigskrevet tekst fra faste regler.')}</p><button type="button" class="text-button" data-career="toggle">${s.view === 'rules' ? tr('Show the AI text', 'Vis AI-teksten') : tr('Show the pre-written text', 'Vis den ferdigskrevne teksten')}</button></div>`
-    : `<div class="d-career-ai no-print"><p>${tr('You are seeing pre-written text from fixed rules. The AI version combines the same facts into text written for you. Only your facet scores and ticked answers are sent, no name, e-mail or free text.', 'Du ser ferdigskrevet tekst fra faste regler. AI-versjonen setter de samme fakta sammen til tekst skrevet for deg. Bare fasettskårene og avkrysningene dine sendes, ingen navn, e-post eller fritekst.')}</p><button type="button" class="button" data-career="ai" ${pending ? 'disabled' : ''}>${tr('Write with AI (test)', 'Skriv med AI (test)')}</button></div>`;
+    : `<div class="d-career-ai no-print"><p>${tr('You are seeing pre-written text from fixed rules. The AI version combines the same facts into text written for you. Only your facet scores, your ticked answers and anything you wrote under «Other» are sent, no name or e-mail. So do not write names or health details there.', 'Du ser ferdigskrevet tekst fra faste regler. AI-versjonen setter de samme fakta sammen til tekst skrevet for deg. Bare fasettskårene, avkrysningene og det du skrev under «Annet» sendes, ingen navn eller e-post. Ikke skriv navn eller helseopplysninger der.')}</p><button type="button" class="button" data-career="ai" ${pending ? 'disabled' : ''}>${tr('Write with AI (test)', 'Skriv med AI (test)')}</button></div>`;
   return `<div class="d-career-answers no-print"><span>${tr('Your answers', 'Svarene dine')}: ${esc(summary)}</span><button type="button" class="text-button" data-career="edit">${tr('Change', 'Endre')}</button></div>
     ${aiBar}${status}
     <div class="d-career-sec"><h4>${tr('How you and the job fit right now', 'Slik passer du og jobben sammen nå')}</h4><div class="d-tailor-cols"><div class="d-tailor-col is-help"><h4>${tr('What fits', 'Det passer')}</h4>${list(by('good').items)}</div><div class="d-tailor-col is-hard"><h4>${tr('What clashes', 'Det skurrer')}</h4>${list(by('hard').items)}</div></div></div>
@@ -120,6 +121,12 @@ async function writeWithAi(section, ctx) {
 }
 
 export function initCareer(root, ctx) {
+  root.querySelectorAll('[data-career-root]').forEach(section => section.addEventListener('input', e => {
+    if (!e.target.matches('[data-career-other]')) return;
+    const s = state(), q = questions[s.step];
+    s.answers.other = {...(s.answers.other || {}), [q.id]: e.target.value.slice(0, OTHER_MAX)};
+    store(s);
+  }));
   root.querySelectorAll('[data-career-root]').forEach(section => section.addEventListener('click', e => {
     const opt = e.target.closest('.d-career-opt'), act = e.target.closest('[data-career]')?.dataset.career;
     const s = state();
@@ -129,10 +136,12 @@ export function initCareer(root, ctx) {
         const now = asList(s.answers[q.id]), v = opt.dataset.value;
         s.answers[q.id] = now.includes(v) ? now.filter(x => x !== v) : now.length < q.multi ? [...now, v] : [...now.slice(1), v];
         store(s);
-        rerender(section, ctx, `.d-career-opt[data-value="${v}"]`);
+        rerender(section, ctx, v === 'other' && s.answers[q.id].includes('other') ? '[data-career-other]' : `.d-career-opt[data-value="${v}"]`);
         return;
       }
       s.answers[q.id] = opt.dataset.value;
+      // Stay on the question (in the stepper, even when every answer is now filled in) so the text field can be used.
+      if (opt.dataset.value === 'other') { s.editing = true; store(s); rerender(section, ctx, '[data-career-other]'); return; }
       if (s.step < questions.length - 1) s.step++; else { s.step = 0; s.editing = false; }
       message = '';
       store(s);
