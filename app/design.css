@@ -1162,3 +1162,9 @@ details.d-ctx-more>div{padding:0}
 
 /* One-line note above the facet cards when a trait's facets spread widely */
 .facet-pattern.d-pattern-note{margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--apricot,#f6b18d);background:#fbf6ef;font-size:15px;line-height:1.5;color:#3a4a5e}
+
+/* "Your five traits": the chapter intro sits behind an (i) next to the heading */
+.d-title-info .d-info-btn{margin-left:12px;padding:0;color:#5a7290;vertical-align:.35em}
+.d-title-info .d-info-i{width:26px;height:26px;font-size:16px;letter-spacing:0}
+.d-intro-pop{max-width:680px;margin:0 0 18px}
+@media print{.d-title-info .d-info-btn{display:none!important}.d-info-pop.d-intro-pop{display:block!important;border:0;padding:0}}
