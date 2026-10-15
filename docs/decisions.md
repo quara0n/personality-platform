@@ -265,7 +265,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Korrektur av all norsk tekst 2026-10-15
 - Rune: «Ta å gå gjennom ALT på norsk og gjør dobbelsjekk at det stemmer grammatisk. bytt ut fremmedord med lettere ord også dersom det lar seg gjøre.»
-- 126 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
+- 124 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
 - Beskrivelsen av fasetten Beskjedenhet (A5) er rettet fordi den pekte motsatt vei.
 - Testspørsmålene (data/questions-no.json) er ikke endret, fordi de er den attribuerte oversettelsen med kontrollsum i data/provenance.json. Forslag til rettelser venter på Runes beslutning.
 
