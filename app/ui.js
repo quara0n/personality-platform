@@ -1,5 +1,5 @@
 import { scoreAssessment, createReport, extremity } from './scoring.js';
-import {applyNorms,shownPercentile} from './norms.js';
+import {applyNorms,shownPercentile,sampleAnswers} from './norms.js';
 import {traitLogoHtml,initTraitLogo} from './trait-logo.js';
 import {contextCard} from './context-copy.js';
 import {traitColors,traitPiece,profileSummary,traitLine,panelCopy,traitQuestion,reflection} from './design-copy.js';
@@ -67,7 +67,7 @@ const SHOW_RANDOM=true;
 const showRandom=()=>SHOW_RANDOM||devMode();
 function devMode(){try{const v=new URLSearchParams(location.search).get('dev');if(v==='1')localStorage.setItem('fem-dev','1');if(v==='0')localStorage.removeItem('fem-dev');return localStorage.getItem('fem-dev')==='1';}catch{return false;}}
 // Preview only: fills all 120 answers at random and takes the same way as a real finish (sign-in step, loading, video, free profile).
-function devRandom(replace=false){answerToken++;answers=Object.fromEntries(questions.map(q=>[q.id,1+Math.floor(Math.random()*5)]));index=119;demo=false;save();const to='#'+(askSignIn()?'signin':'loading');if(replace)location.replace(to);else location.hash=to;}
+function devRandom(replace=false){answerToken++;answers=norms?.scales?sampleAnswers(questions,norms):Object.fromEntries(questions.map(q=>[q.id,1+Math.floor(Math.random()*5)]));index=119;demo=false;save();const to='#'+(askSignIn()?'signin':'loading');if(replace)location.replace(to);else location.hash=to;}
 // Cairns count the questions you have passed, so going back takes the last stone off again.
 let shownCairns=null,milestone=0,flight=null;
 const MILESTONES={30:()=>tr('A quarter done. Your profile is starting to show.','En fjerdedel er gjort. Profilen din begynner å vise seg.'),60:()=>tr('Halfway! Your profile is taking shape.','Halvveis! Profilen din tar form.'),90:()=>tr('Three quarters done. Almost there.','Tre fjerdedeler er gjort. Snart i mål.')};
