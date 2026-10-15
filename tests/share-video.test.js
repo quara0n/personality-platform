@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {videoScript, closers, timeline, duration, musicCues} from '../app/share-video.js';
+import {videoScript, closers, facetClosers, timeline, duration, musicCues} from '../app/share-video.js';
 import {profileName} from '../app/profile-name.js';
 import {songPlan, SONG} from '../app/share-music.js';
 
@@ -28,13 +28,13 @@ test('a low score is phrased by its own pole, never as lacking', () => {
   assert.equal(s.closer, closers.N.low[1]);
 });
 
-test('shows the facet furthest from the middle, and a balanced line when nothing stands out', () => {
+test('shows the facet furthest from the middle, with the closer of the facet behind the name', () => {
   const ds = profile({O: 50, C: 55, E: 45, A: 52, N: 48});
   ds[2].facets.push(f('E3', 6, {name: 'Assertiveness'}));
   const s = videoScript(ds, {language: 'en', name});
   assert.equal(s.facet.name, 'Assertiveness');
   assert.equal(s.facet.caption, 'Percentile 6 · Extraversion');
-  assert.equal(s.closer, closers.balanced[0]);
+  assert.equal(s.closer, facetClosers.E3l[0]);
   assert.match(s.ruleId, /^share-video-v1\//);
 });
 
@@ -90,4 +90,11 @@ test('the stat follows the trait the name builds on, and never contradicts the f
   e[2].facets.push(f('E1', 97, {name: 'Friendliness'}));
   const t = videoScript(e, {language: 'en', name});
   assert.deepEqual([t.trait, t.stat.above, t.stat.number], ['E', 'More outgoing than', 80]);
+});
+
+test('every facet and direction has its own closing line in both languages', () => {
+  const all = Object.values(facetClosers).flat();
+  assert.equal(Object.keys(facetClosers).length, 60);
+  assert.ok(all.every(x => x.trim().length > 10));
+  assert.equal(new Set(all).size, all.length);
 });
