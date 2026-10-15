@@ -268,6 +268,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - 124 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
 - Beskrivelsen av fasetten Beskjedenhet (A5) er rettet fordi den pekte motsatt vei.
 - Testspørsmålene (data/questions-no.json): Rune valgte «Bare skrivefeil». Fem rene skrive- og grammatikkfeil er rettet (nr. 21 «Har lett for å overdrive ting», 59 «dem som», 74 «overfor», 83 «ideer», 111 «i stand til å»). Ordlyden ellers er lik den attribuerte oversettelsen; endringene og ny kontrollsum står under norwegianLocalEdits i data/provenance.json. De sju forslagene som endrer ordlyd, er ikke tatt med.
+- Andre runde samme dag: 36 rettelser i tekst som kom inn med senere sammenslåinger (de nye «svært lav/svært høy»-tekstene, fasettsammenligningen, kombinasjonslinjene og en videolinje), for eksempel «sluttet deg til» → «var enig i» og «fair play» → «redelighet».
 
 
 ## 2026-10-15: Profilen skal ikke si imot skårene

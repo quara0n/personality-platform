@@ -67,7 +67,7 @@ export const facetClosers = {
   E5l: ['Picks a calm evening over a wild one.', 'Velger en rolig kveld fremfor en vill en.'],
   E6h: ['Laughs easily. And loudly.', 'Ler lett. Og høyt.'],
   E6l: ['Does not laugh at everything. Means it when it happens.', 'Ler ikke av alt. Mener det når det skjer.'],
-  O1h: ['Already halfway into a daydream.', 'Er allerede halvveis inn i en dagdrøm.'],
+  O1h: ['Already halfway into a daydream.', 'Er allerede halvveis inne i en dagdrøm.'],
   O1l: ['Prefers facts to fantasies.', 'Foretrekker fakta fremfor fantasier.'],
   O2h: ['Stops to look at things others walk past.', 'Stopper opp ved ting andre går forbi.'],
   O2l: ['Happy to skip the art museum.', 'Hopper gjerne over kunstmuseet.'],
