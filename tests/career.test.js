@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {questions, rules, buildCareer, careerRequest, isComplete, optionLabel, OTHER_MAX} from '../app/career-copy.js';
+import {questions, rules, buildCareer, careerRequest, isComplete, optionLabel, answerTopic, OTHER_MAX} from '../app/career-copy.js';
 import {validateRequest, checkOutput, handleCareerRequest} from '../lib/career-llm.js';
 import {profileAnswers, RUNE_TARGETS} from '../app/dev-profile.js';
 import {scoreAssessment} from '../app/scoring.js';
@@ -45,6 +45,14 @@ test('«Other» is offered on every question, its text is capped and only shown 
   assert.equal(validateRequest(request), '');
   assert.ok(request.answers.find(a => a.q === 'goal').labels[0].startsWith('Annet: Starte'));
   for (const s of buildCareer(domains, withOther, 'no').sections) for (const x of s.items) if (x.answers.some(a => a.value === 'other')) assert.equal(x.facets.length, 0, x.ruleId);
+});
+
+test('every answer has a short headline in both languages, «Other» uses the reader\'s text', () => {
+  for (const q of questions) for (const [v] of q.options) {
+    assert.ok(answerTopic(q.id, v, 'en') && answerTopic(q.id, v, 'no'), `${q.id}=${v}`);
+    assert.ok(answerTopic(q.id, v, 'no').length <= 32, `${q.id}=${v} is short`);
+  }
+  assert.equal(answerTopic('role', 'other', 'no', {other: {role: 'kiropraktor'}}), 'Kiropraktor');
 });
 
 test('a middle-only profile gets no facet claims, only situation lines and general steps', () => {
