@@ -1078,6 +1078,113 @@ details.d-tailor-form{border:0;padding:0}
 .d-video-intro .d-share-bar span{font-size:13px}
 .d-share.is-still .d-share-bar,.d-share.is-still .d-share-sound{display:none}
 
+/* "X of 100" comparison on facet cards */
+.d-compare{font-weight:600;color:var(--title);margin:0 0 .4em}
+.d-cmp{margin:4px 0 14px;max-width:320px}
+.d-cmp svg{display:block;width:100%;height:auto}
+.d-cmp-person{fill:#dfe5ec}
+.d-cmp-person.is-lit{fill:var(--lit)}
+.d-cmp figcaption{margin-top:6px;font-size:14px;color:#5d7792}
+.d-cmp figcaption strong{font:400 20px/1 Georgia,serif;color:var(--title);font-variant-numeric:tabular-nums}
+@media print{.d-cmp{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* Strengths and harder sides on the Work & career and Everyday life cards (context-levels.js) */
+.d-sw{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 4px}
+.d-sw-col :is(h4,h5){margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid #8fb4d0;font:700 13px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--title)}
+.d-sw-col.is-hard :is(h4,h5){border-color:#f6b18d}
+.d-sw-col ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.d-sw-col li{position:relative;padding-left:18px;font-size:15px;line-height:1.4;color:var(--title)}
+.d-sw-col li::before{content:'+';position:absolute;left:2px;top:0;font-weight:700;color:#4f78a0}
+.d-sw-col.is-hard li::before{content:'–';color:#c0622f}
+@media(max-width:520px){.d-sw{grid-template-columns:1fr}}
+@media print{.d-sw{break-inside:avoid}}
+
+/* Trait cards in Work & Everyday life: a row of picture cards; the chosen one opens a panel underneath.
+   grid-auto-flow:dense lets the cards after the open one fill the rest of its row, so the panel lands below that row. */
+.d-ctx-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:16px;margin-top:8px}
+.d-ctx-card{position:relative;min-width:0;border:1px solid #cfdbe6;border-radius:8px;background:#fffefb;transition:border-color .2s,background-color .2s}
+.d-ctx-card.is-open{border-color:#7f9bc0;background:#f1f6fb;box-shadow:inset 0 -3px 0 var(--title)}
+.d-ctx-card.is-open::after{content:'';position:absolute;left:50%;bottom:-11px;width:0;height:0;border:10px solid transparent;border-bottom:0;border-top-color:var(--title);transform:translateX(-50%)}
+.d-ctx-h{margin:0;font:inherit;height:100%}
+.d-ctx-toggle{position:relative;display:flex;flex-direction:column;width:100%;height:100%;padding:0;border:0;background:none;text-align:left;color:inherit;cursor:pointer;border-radius:8px}
+.d-ctx-toggle:focus-visible{outline:3px solid #a44e24;outline-offset:2px}
+.d-ctx-art{display:flex;align-items:flex-end;justify-content:center;height:190px;margin:10px 10px 0;border-radius:6px;background:var(--sky);overflow:hidden}
+.d-ctx-art img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.d-ctx-text{display:block;padding:14px 18px 18px}
+.d-ctx-name{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:400 24px/1.15 Georgia,serif;letter-spacing:-.02em;color:var(--title);overflow-wrap:anywhere;hyphens:auto}
+.d-ctx-name .d-trait-alt{font-size:.6em}
+.d-ctx-name .d-chip{font-family:Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.d-ctx-quote{display:block;margin-top:8px;font:italic 400 19px/1.3 Georgia,serif;color:var(--title)}
+.d-ctx-plus{position:absolute;top:20px;right:20px;width:32px;height:32px;border:1.5px solid var(--title);border-radius:50%;background:#fffefb}
+.d-ctx-plus::before,.d-ctx-plus::after,.d-ctx-more-plus::before,.d-ctx-more-plus::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--title);transform:translate(-50%,-50%)}
+.d-ctx-plus::after,.d-ctx-more-plus::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+.d-ctx-card.is-open .d-ctx-plus::after,.d-ctx-more[open] .d-ctx-more-plus::after{transform:translate(-50%,-50%) rotate(0)}
+@media(hover:hover){.d-ctx-toggle:hover .d-ctx-quote{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.d-ctx-card:not(.is-open):hover{border-color:#9fb6d0}}
+.d-ctx-panel{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,36%);margin-top:4px;border:1px solid #cfdbe6;border-radius:8px;background:#fffefb;overflow:hidden}
+.d-ctx-panel[hidden]{display:none}
+.d-ctx-main{padding:22px 28px 20px}
+.d-ctx-eyebrow{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4f6e95}
+.d-ctx-main h4{margin:0 0 8px;font:400 28px/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--title)}
+.d-ctx-main>p{margin:0 0 6px;font-size:16px}
+details.d-ctx-more{margin-top:12px;padding:0;border:0}
+details.d-ctx-more>div{padding:0}
+.d-ctx-more summary{margin:0;font:600 15px/1.3 Arial,Helvetica,sans-serif;display:inline-flex;align-items:center;gap:10px;padding:4px 0;list-style:none;color:#1f4fa0;font-weight:600;border-bottom:1.5px solid #1f4fa0;cursor:pointer}
+.d-ctx-more summary::-webkit-details-marker{display:none}
+.d-ctx-more summary::marker{content:''}
+.d-ctx-more-plus{position:relative;display:inline-block;width:14px;height:14px}
+.d-ctx-more-plus::before,.d-ctx-more-plus::after{background:#1f4fa0}
+.d-ctx-more .d-sw{margin-top:14px}
+.d-ctx-try{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:22px 26px;background:var(--warm);border-left:1px solid #f3d9c9}
+.d-ctx-try span{align-self:flex-start;padding:2px 10px;border-radius:999px;background:#f6b18d;color:var(--title);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.d-ctx-try p{margin:0;font:400 21px/1.3 Georgia,serif;color:var(--title)}
+@media(max-width:1000px){.d-ctx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+  .d-ctx-grid{grid-template-columns:1fr;gap:12px}
+  .d-ctx-art{height:150px}
+  .d-ctx-name{font-size:22px}
+  .d-ctx-quote{font-size:18px}
+  .d-ctx-plus{top:16px;right:16px}
+  .d-ctx-panel{grid-template-columns:1fr}
+  .d-ctx-main{padding:18px 18px 16px}
+  .d-ctx-main h4{font-size:23px}
+  .d-ctx-try{padding:16px 18px;border-left:0;border-top:1px solid #f3d9c9}
+  .d-ctx-try p{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.d-ctx-card,.d-ctx-plus::after,.d-ctx-more-plus::after{transition:none}}
+@media print{
+  .d-ctx-grid{grid-template-columns:1fr;gap:8px}
+  .d-ctx-panel[hidden]{display:grid!important}
+  .d-ctx-card,.d-ctx-panel{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .d-ctx-card.is-open{box-shadow:none;background:#fffefb;border-color:#cfdbe6}
+  .d-ctx-card.is-open::after,.d-ctx-plus,.d-ctx-more summary{display:none}
+  .d-ctx-art{height:110px}
+}
+/* Full-scene illustrations (3:2) fill the picture area instead of floating in it. */
+.d-ctx-art.is-scene{height:auto;aspect-ratio:3/2;background:#fffaf2}
+.d-ctx-art.is-scene img{width:100%;height:100%;object-fit:cover}
+@media print{.d-ctx-art.is-scene{height:110px;aspect-ratio:auto}.d-ctx-art.is-scene img{object-fit:contain}}
+
+/* «Pictures in your report show»: optional woman / man / prefer-not choice for the chapter illustrations. */
+.d-rfig{display:flex;flex-wrap:wrap;align-items:center;gap:8px 8px;margin:18px 0 12px}
+.d-rfig-label{margin-right:4px;font-size:14px;font-weight:600;color:var(--title)}
+.d-rfig button{padding:6px 14px;border:1px solid #b9c9da;border-radius:999px;background:#fffefb;color:var(--title);font:inherit;font-size:14px;cursor:pointer}
+.d-rfig button[aria-pressed="true"]{border-color:var(--title);background:var(--title);color:#fff}
+@media(hover:hover){.d-rfig button:not([aria-pressed="true"]):hover{border-color:var(--title)}}
+.d-rfig button:focus-visible{outline:3px solid #a44e24;outline-offset:2px}
+.d-rfig-note{flex-basis:100%;font-size:13px;color:#5d7088}
+.d-rfig.is-home{position:relative;z-index:2;justify-content:center;margin:6px auto 36px;max-width:560px}
+.d-rfig.is-home .d-rfig-note{text-align:center}
+@media(max-width:640px){.d-rfig-label{flex-basis:100%}.d-rfig.is-home .d-rfig-label{text-align:center}}
+
+/* One-line note above the facet cards when a trait's facets spread widely */
+.facet-pattern.d-pattern-note{margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--apricot,#f6b18d);background:#fbf6ef;font-size:15px;line-height:1.5;color:#3a4a5e}
+
+/* "Your five traits": the chapter intro sits behind an (i) next to the heading */
+.d-title-info .d-info-btn{margin-left:12px;padding:0;color:#5a7290;vertical-align:.35em}
+.d-title-info .d-info-i{width:26px;height:26px;font-size:16px;letter-spacing:0}
+.d-intro-pop{max-width:680px;margin:0 0 18px}
+@media print{.d-title-info .d-info-btn{display:none!important}.d-info-pop.d-intro-pop{display:block!important;border:0;padding:0}}
+
 /* «Din jobb, din profil» (prototype, app/career.js) */
 .d-career-lead{margin:8px 0 0;font-size:17px;max-width:640px}
 .d-career-progress{display:flex;gap:14px;align-items:center;margin:18px 0 6px;font-size:13px;color:#4f6d8c}

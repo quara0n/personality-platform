@@ -3,6 +3,8 @@
 // and one idea to try. Selected deterministically from the domain band, so each card stays
 // traceable to the score. Each pair is [English, Norwegian bokmål], written for each language.
 
+import {outerCards, strengthLists, contextLevel, levelArt, genderArt, mixedFigure} from './context-levels.js';
+
 const cards = {
   O: {
     work: {
@@ -21,7 +23,7 @@ const cards = {
         text: ['You probably enjoy books, places, conversations and experiences that show you something new. Curiosity can make everyday life rich, and it can also make routines feel tight. You may notice that you get restless when every week looks the same.', 'Du liker trolig bøker, steder, samtaler og opplevelser som viser deg noe nytt. Nysgjerrigheten kan gjøre hverdagen rik, men den kan også gjøre at rutiner føles trange. Kanskje merker du at du blir rastløs når hver uke ser lik ut.'],
         try: ['Plan one small first this week: a new route, a new recipe or a conversation with someone you rarely talk to.', 'Planlegg én liten premiere denne uken: en ny rute, en ny oppskrift eller en prat med noen du sjelden snakker med.']},
       middle: {quote: ['You love your usual café, and now and then you order something new.', 'Du går gjerne på stamkafeen, og bestiller av og til noe nytt.'],
-        text: ['You appreciate habits that work, and you are open to new experiences when they fit your life. That balance gives you stability without making you rigid.', 'Du setter pris på vaner som fungerer, og er åpen for nye opplevelser når de passer inn i livet ditt. Den balansen gir deg stabilitet uten å gjøre deg rigid.'],
+        text: ['You appreciate habits that work, and you are open to new experiences when they fit your life. That balance gives you stability without making you rigid.', 'Du setter pris på vaner som fungerer, og er åpen for nye opplevelser når de passer inn i livet ditt. Den balansen gir deg stabilitet uten å gjøre deg stiv.'],
         try: ['Choose one routine you like and change one small detail in it. Notice whether the change adds something or just gets in the way.', 'Velg én rutine du liker, og endre én liten detalj i den. Legg merke til om endringen gir noe, eller bare forstyrrer.']},
       low: {quote: ['You know what you like, and you like what you know.', 'Du vet hva du liker, og du liker det du vet.'],
         text: ['You tend to find calm in familiar places, traditions and practical tasks. That can give you a steady base that others lean on. New things are not off-limits; they simply need to earn their place.', 'Du finner gjerne ro i kjente steder, tradisjoner og praktiske gjøremål. Det kan gi deg et stødig fundament som andre lener seg på. Nye ting er ikke uaktuelle; de må bare gjøre seg fortjent til plassen.'],
@@ -31,11 +33,11 @@ const cards = {
   C: {
     work: {
       high: {quote: ['You lay the tracks before the train leaves.', 'Du legger skinnene før toget kjører.'],
-        text: ['You work best when you know what will be delivered, when and by whom. People can usually count on what you promise getting done, and you tend to notice early when a plan starts to slip. Workplaces that change direction all the time may cost you more energy than others.', 'Du jobber best når du vet hva som skal leveres, når og av hvem. Folk kan som regel stole på at det du lover, blir gjort, og du merker gjerne tidlig når en plan begynner å skli. Miljøer som skifter retning hele tiden, kan koste deg mer energi enn andre.'],
+        text: ['You work best when you know what will be delivered, when and by whom. People can usually count on what you promise getting done, and you tend to notice early when a plan starts to slip. Workplaces that change direction all the time may cost you more energy than others.', 'Du jobber best når du vet hva som skal leveres, når og av hvem. Folk kan som regel stole på at det du lover, blir gjort, og du merker gjerne tidlig når en plan begynner å skli ut. Miljøer som skifter retning hele tiden, kan koste deg mer energi enn andre.'],
         try: ['Pick one task this week where you deliberately leave 20 percent open. Notice whether the result got worse, or just different.', 'Velg én oppgave denne uken der du bevisst lar 20 prosent stå åpent. Legg merke til om resultatet ble dårligere, eller bare annerledes.']},
       middle: {quote: ['You carry both a map and a compass, and switch depending on the terrain.', 'Du har både kart og kompass, og bytter etter terrenget.'],
         text: ['You can build structure when a lot is at stake and improvise when it is not. Your strength is that you adapt. The catch is that you may not always notice which mode you are in.', 'Du kan lage struktur når mye står på spill, og improvisere når det ikke gjør det. Styrken er at du tilpasser deg. Fallgruven er at du ikke alltid merker hvilken modus du er i.'],
-        try: ['Write down one task where you planned and one where you improvised. Which went better, and why?', 'Skriv ned én oppgave der du planla og én der du improviserte. Hvilken gikk best, og hvorfor?']},
+        try: ['Write down one task where you planned and one where you improvised. Which went better, and why?', 'Skriv ned én oppgave der du planla, og én der du improviserte. Hvilken gikk best, og hvorfor?']},
       low: {quote: ['You find the path by walking it.', 'Du finner veien mens du går.'],
         text: ['You tend to work well when things are moving and plans have to change. You can respond quickly, try things out and get going while others are still planning. Long, detailed processes with strict checklists may feel heavier for you than for others.', 'Du fungerer gjerne godt når ting er i bevegelse og planer må endres. Du kan reagere raskt, prøve deg frem og komme i gang mens andre fortsatt planlegger. Lange, detaljerte prosesser med strenge sjekklister kan kjennes tyngre for deg enn for andre.'],
         try: ['Before your most important task this week, write down just three steps and one deadline. Keep it short enough that it helps rather than binds.', 'Før den viktigste oppgaven din denne uken: skriv ned bare tre steg og én frist. Hold det så kort at det hjelper i stedet for å binde.']}
@@ -55,7 +57,7 @@ const cards = {
   E: {
     work: {
       high: {quote: ['You bring the room to life.', 'Du får liv i rommet.'],
-        text: ['You often get energy from meetings, collaboration and quick exchanges. You may be the one who gets a discussion going or makes newcomers feel welcome. Long stretches of solo work without contact can drain you.', 'Du får ofte energi av møter, samarbeid og raske utvekslinger. Kanskje er det du som får i gang diskusjonen eller får nye til å føle seg velkomne. Lange perioder med alenearbeid uten kontakt kan tappe deg.'],
+        text: ['You often get energy from meetings, collaboration and quick exchanges. You may be the one who gets a discussion going or makes newcomers feel welcome. Long stretches of solo work without contact can drain you.', 'Du får ofte energi av møter, samarbeid og korte samtaler. Kanskje er det du som får i gang diskusjonen eller får nye til å føle seg velkomne. Lange perioder med alenearbeid uten kontakt kan tappe deg.'],
         try: ['In your next meeting, wait until two others have spoken before you share your view. Notice what you hear that you might otherwise have missed.', 'Vent til to andre har sagt sitt før du deler ditt syn i neste møte. Legg merke til hva du hører som du ellers kanskje ville gått glipp av.']},
       middle: {quote: ['You can open the door to the room, and close it behind you.', 'Du kan både åpne døra til rommet og lukke den bak deg.'],
         text: ['You can enjoy teamwork and also need time to work undisturbed. You can speak up when it matters, and you do not need to fill every silence.', 'Du kan trives med samarbeid og samtidig trenge tid til å jobbe uforstyrret. Du kan ta ordet når det trengs, og du trenger ikke fylle hver stillhet.'],
@@ -72,7 +74,7 @@ const cards = {
         text: ['You can enjoy both busy social weeks and quiet evenings alone. You can adjust to the people around you without losing yourself.', 'Du kan trives både med sosiale uker og rolige kvelder alene. Du kan tilpasse deg folkene rundt deg uten å miste deg selv.'],
         try: ['After your next social plan, rate your energy from 1 to 10. After a quiet evening, do the same. Which did you need most this week?', 'Gi energien din en karakter fra 1 til 10 etter neste sosiale avtale. Gjør det samme etter en rolig kveld. Hva trengte du mest denne uken?']},
       low: {quote: ['You recharge in the quiet that others overlook.', 'Du lader i stillheten andre overser.'],
-        text: ['You probably value close relationships and time on your own more than large gatherings. A few deep conversations may matter more to you than many short ones. The people closest to you often know you better than most.', 'Du verdsetter trolig nære relasjoner og tid alene mer enn store sammenkomster. Få og dype samtaler kan bety mer for deg enn mange korte. De som står deg nærmest, kjenner deg ofte bedre enn de fleste.'],
+        text: ['You probably value close relationships and time on your own more than large gatherings. A few deep conversations may matter more to you than many short ones. The people closest to you often know you better than most.', 'Du verdsetter trolig nære forhold og tid alene mer enn store sammenkomster. Få og dype samtaler kan bety mer for deg enn mange korte. De som står deg nærmest, kjenner deg ofte bedre enn de fleste.'],
         try: ['Send a message to someone you care about and suggest a plan for just the two of you.', 'Send en melding til noen du bryr deg om, og foreslå en avtale bare for dere to.']}
     }
   },
@@ -82,7 +84,7 @@ const cards = {
         text: ['You often notice how others are doing and help without being asked. Colleagues may find it easy to come to you, and you help create a good atmosphere. In tough negotiations or conflicts, standing your ground may cost you more.', 'Du merker ofte hvordan andre har det, og hjelper uten å bli spurt. Kolleger synes kanskje det er lett å komme til deg, og du bidrar til et godt miljø. I tøffe forhandlinger eller konflikter kan det koste deg mer å stå på ditt.'],
         try: ['Say no to one request this week that you would normally accept without thinking. Notice what happens.', 'Si nei til én forespørsel denne uken som du vanligvis ville sagt ja til uten å tenke deg om. Legg merke til hva som skjer.']},
       middle: {quote: ['You can lend a hand, and you can draw a line.', 'Du kan både rekke ut en hånd og sette en grense.'],
-        text: ['You can cooperate and accommodate others, and you can also disagree when something matters. That makes you someone others can trust to be both kind and honest.', 'Du kan samarbeide og strekke deg for andre, og du kan si imot når noe er viktig. Det gjør deg til en som andre kan stole på er både vennlig og ærlig.'],
+        text: ['You can cooperate and accommodate others, and you can also disagree when something matters. That makes you someone others can trust to be both kind and honest.', 'Du kan samarbeide og strekke deg for andre, og du kan si imot når noe er viktig. Det gjør deg til en andre kan stole på, fordi du er både vennlig og ærlig.'],
         try: ['Think of a disagreement you have avoided raising. Write down how you could say it kindly and clearly in two sentences.', 'Tenk på en uenighet du har latt være å ta opp. Skriv ned hvordan du kan si det vennlig og tydelig i to setninger.']},
       low: {quote: ['You say what others only think.', 'Du sier det andre bare tenker.'],
         text: ['You tend to be direct, challenge ideas and stand up for your view. That can make you valuable when decisions need sharpening or someone has to ask the hard questions. In close collaboration, others may experience your directness more strongly than you intend.', 'Du er gjerne direkte, utfordrer ideer og står for ditt syn. Det kan gjøre deg verdifull når beslutninger må skjerpes, eller noen må stille de vanskelige spørsmålene. I tett samarbeid kan andre oppleve direktheten sterkere enn du mener den.'],
@@ -96,7 +98,7 @@ const cards = {
         text: ['You show consideration for others and can also take care of yourself. You can adjust to the people around you without always giving in.', 'Du viser omtanke for andre og kan samtidig ta vare på deg selv. Du kan tilpasse deg folk rundt deg uten alltid å gi etter.'],
         try: ['Notice one situation this week where you gave in, and one where you held your ground. What decided it?', 'Legg merke til én situasjon denne uken der du ga etter, og én der du sto på ditt. Hva avgjorde det?']},
       low: {quote: ['With you, people know where they stand.', 'Hos deg vet folk hvor de har deg.'],
-        text: ['You probably value honesty over politeness and say what you mean. People rarely need to guess what you think. In close relationships, others may sometimes want a gentler start.', 'Du setter trolig ærlighet foran høflighet og sier det du mener. Folk trenger sjelden å gjette hva du tenker. I nære relasjoner kan andre av og til ønske en mykere start.'],
+        text: ['You probably value honesty over politeness and say what you mean. People rarely need to guess what you think. In close relationships, others may sometimes want a gentler start.', 'Du setter trolig ærlighet foran høflighet og sier det du mener. Folk trenger sjelden å gjette hva du tenker. I nære forhold kan andre av og til ønske en mykere start.'],
         try: ['Ask someone close to you one question about how they are doing, and just listen, without giving advice.', 'Still en du står nær ett spørsmål om hvordan de har det, og bare lytt, uten å gi råd.']}
     }
   },
@@ -106,7 +108,7 @@ const cards = {
         text: ['You often notice risks, unclear expectations and tension early. That sensitivity can make you careful and thorough. Under a lot of pressure, worries may take up more room than the task itself.', 'Du merker ofte risiko, uklare forventninger og spenninger tidlig. Den følsomheten kan gjøre deg nøye og grundig. Under mye press kan bekymringene ta mer plass enn selve oppgaven.'],
         try: ['When a worry about work comes up, write it down and add the next concrete step. Then put the note away until tomorrow.', 'Når en bekymring om jobben dukker opp, skriv den ned og legg til neste konkrete steg. Legg så lappen bort til i morgen.']},
       middle: {quote: ['You feel the waves, and keep your balance.', 'Du kjenner bølgene, men holder balansen.'],
-        text: ['You can feel pressure without being overwhelmed by it. Stress probably affects you more in some situations than in others, which gives you useful clues about what you need.', 'Du kan kjenne press uten å bli overveldet av det. Stress påvirker deg trolig mer i noen situasjoner enn andre, og det gir deg nyttige hint om hva du trenger.'],
+        text: ['You can feel pressure without being overwhelmed by it. Stress probably affects you more in some situations than in others, which gives you useful clues about what you need.', 'Du kan kjenne press uten å bli overveldet av det. Stress påvirker deg trolig mer i noen situasjoner enn andre, og det gir deg nyttige pekepinner om hva du trenger.'],
         try: ['Note the moment this week when work felt heaviest. What was going on, and what helped?', 'Noter øyeblikket denne uken da jobben kjentes tyngst. Hva skjedde, og hva hjalp?']},
       low: {quote: ['You are the calm in the storm.', 'Du er roen i stormen.'],
         text: ['You tend to stay steady when deadlines tighten or things go wrong. Others may find it reassuring to work with you under pressure. Because you rarely worry, you may sometimes underestimate a risk others feel strongly.', 'Du holder deg ofte stødig når fristene strammes eller noe går galt. Andre kan synes det er betryggende å jobbe med deg under press. Fordi du sjelden bekymrer deg, kan du av og til undervurdere en risiko andre kjenner sterkt.'],
@@ -114,7 +116,7 @@ const cards = {
     },
     life: {
       high: {quote: ['You experience life in high definition.', 'Du opplever livet i høy oppløsning.'],
-        text: ['You probably feel both joy and worry strongly. That depth can make you empathetic and attentive to the people you care about. When a lot happens at once, you may need more time to land.', 'Du kjenner trolig både glede og bekymring sterkt. Den dybden kan gjøre deg empatisk og oppmerksom på dem du er glad i. Når mye skjer samtidig, kan du trenge mer tid til å lande.'],
+        text: ['You probably feel both joy and worry strongly. That depth can make you empathetic and attentive to the people you care about. When a lot happens at once, you may need more time to land.', 'Du kjenner trolig både glede og bekymring sterkt. Den dybden kan gjøre deg innlevende og oppmerksom på dem du er glad i. Når mye skjer samtidig, kan du trenge mer tid til å lande.'],
         try: ['Choose one thing that reliably calms you, like a walk or music, and schedule it before a day you know will be demanding.', 'Velg én ting som pleier å roe deg ned, som en gåtur eller musikk, og legg den inn før en dag du vet blir krevende.']},
       middle: {quote: ['You pack both an umbrella and sunglasses.', 'Du har både paraply og solbriller i veska.'],
         text: ['You react to ups and downs, but you usually find your footing again. Some situations probably get to you more than others.', 'Du reagerer på opp- og nedturer, men finner som regel fotfestet igjen. Noen situasjoner går trolig mer innpå deg enn andre.'],
@@ -126,12 +128,30 @@ const cards = {
   }
 };
 
-/** The card for one domain in one chapter ('work' or 'life'), in the given language. */
-export function contextCard(d, chapter, language) {
-  const c = cards[d.code]?.[chapter]?.[d.band];
+/** The illustration for a card, as a path under assets/design/context/ without extension.
+ * figure is 'female', 'male' or anything else for the mixed set. It only picks the picture; scores never use it.
+ * A level-specific picture wins over the shared one; a woman/man version wins over the neutral one. */
+export function contextArt(code, chapter, level, figure) {
+  const who = figure === 'female' || figure === 'male' ? figure : mixedFigure[code];
+  for (const name of [`${chapter}-${code}-${level}`, `${chapter}-${code}`]) {
+    if (genderArt.has(name)) return `${who}/${name}`;
+    if (levelArt.has(name)) return name;
+  }
+  return `${chapter}-${code}`;
+}
+
+/** The card for one domain in one chapter ('work' or 'life'), in the given language.
+ * Uses five levels (context-levels.js): the outer cards below the 10th and above the 90th percentile. */
+export function contextCard(d, chapter, language, figure = '') {
+  const level = contextLevel(d);
+  const c = outerCards[d.code]?.[chapter]?.[level] || cards[d.code]?.[chapter]?.[d.band];
   if (!c) return null;
-  const i = language === 'no' ? 1 : 0;
-  return {quote: c.quote[i], text: c.text[i], try: c.try[i], ruleId: `context-v1/${d.code}/${chapter}/${d.band}`};
+  const used = outerCards[d.code]?.[chapter]?.[level] ? level : d.band;
+  const i = language === 'no' ? 1 : 0, lists = strengthLists[d.code]?.[chapter]?.[used];
+  return {quote: c.quote[i], text: c.text[i], try: c.try[i], level: used,
+    good: lists ? lists.good.map(x => x[i]) : [], hard: lists ? lists.hard.map(x => x[i]) : [],
+    art: contextArt(d.code, chapter, used, figure),
+    ruleId: `context-v2/${d.code}/${chapter}/${used}`};
 }
 
 export const contextCards = cards;

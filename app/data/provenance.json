@@ -14,5 +14,37 @@
   "officialScoring": "https://ipip.ori.org/newScoringInstructions.htm",
   "permission": "https://ipip.ori.org/newPermission.htm",
   "verification": "All 120 English texts and facet/key assignments compared against official key, ignoring terminal punctuation. All 120 Norwegian IDs and keys matched English.",
-  "translationValidity": "An available attributed translation; no Norwegian psychometric validation or representative Norwegian norms established in this implementation."
+  "translationValidity": "An available attributed translation; no Norwegian psychometric validation or representative Norwegian norms established in this implementation.",
+  "norwegianLocalEdits": {
+    "date": "2026-10-15",
+    "decision": "Rune: fix only clear spelling and grammar errors; meaning and wording otherwise unchanged (docs/decisions.md).",
+    "items": [
+      {
+        "id": "481efd08-c810-43b1-a952-f8ac9052f96b",
+        "from": "Lett for å overdrive ting",
+        "to": "Har lett for å overdrive ting"
+      },
+      {
+        "id": "c2038c12-7a37-47a8-9983-831bd6692aab",
+        "from": "Føler sympati for de som er verre stilt enn meg selv",
+        "to": "Føler sympati for dem som er verre stilt enn meg selv"
+      },
+      {
+        "id": "cd54bd76-ca9c-4030-b325-bb8d896bcb3f",
+        "from": "Er likegyldig ovenfor andres følelser",
+        "to": "Er likegyldig overfor andres følelser"
+      },
+      {
+        "id": "fecc35f7-681e-4889-a404-4a973a3dfef0",
+        "from": "Har problemer med å forstå abstrakte idéer",
+        "to": "Har problemer med å forstå abstrakte ideer"
+      },
+      {
+        "id": "49a85680-53aa-4208-86b5-dccc7a6f8e37",
+        "from": "Er i stand til kontrollere mine lyster",
+        "to": "Er i stand til å kontrollere mine lyster"
+      }
+    ],
+    "sha256AfterEdits": "9d5631b1065623ecdd58b8827e93ae791c23f4ae4bc1b65179839f674ad00005"
+  }
 }

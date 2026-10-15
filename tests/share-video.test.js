@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {videoScript, closers, timeline, duration, musicCues} from '../app/share-video.js';
+import {videoScript, closers, facetClosers, timeline, duration, musicCues} from '../app/share-video.js';
 import {profileName} from '../app/profile-name.js';
 import {songPlan, SONG} from '../app/share-music.js';
 
@@ -28,13 +28,13 @@ test('a low score is phrased by its own pole, never as lacking', () => {
   assert.equal(s.closer, closers.N.low[1]);
 });
 
-test('shows the facet furthest from the middle, and a facet line when only a facet stands out', () => {
+test('shows the facet furthest from the middle, with the closer of the facet behind the name', () => {
   const ds = profile({O: 50, C: 55, E: 45, A: 52, N: 48});
   ds[2].facets.push(f('E3', 6, {name: 'Assertiveness'}));
   const s = videoScript(ds, {language: 'en', name});
   assert.equal(s.facet.name, 'Assertiveness');
   assert.equal(s.facet.caption, 'Percentile 6 · Extraversion');
-  assert.equal(s.closer, closers.facets[0]);
+  assert.equal(s.closer, facetClosers.E3l[0]);
   assert.match(s.ruleId, /^share-video-v1\//);
   assert.equal(videoScript(profile({O: 50, C: 55, E: 45, A: 52, N: 48}), {language: 'en', name}).closer, closers.balanced[0]);
 });
@@ -76,4 +76,26 @@ test('the logo pieces land on the song’s opening eighth notes', async () => {
   const {LOGO_HITS} = await import('../app/share-video.js');
   LOGO_HITS.pieces.forEach((t, i) => assert.ok(Math.abs((t - LOGO_HITS.ring[0]) - .25 * (i + 1)) < 1e-9));
   assert.ok(LOGO_HITS.pieces.at(-1) < LOGO_HITS.ring[1]);
+});
+
+test('the stat follows the trait the name builds on, and never contradicts the facet scene', () => {
+  // Name rests on high Friendliness (E1) while Extraversion as a whole is very low and Conscientiousness high.
+  const d = profile({O: 50, C: 85, E: 3, A: 50, N: 50});
+  d[2].facets.push(f('E1', 97, {name: 'Friendliness'}));
+  const s = videoScript(d, {language: 'en', name});
+  assert.equal(s.facet.name, 'Friendliness');
+  assert.equal(s.trait, 'C');
+  assert.deepEqual([s.stat.above, s.stat.number], ['More structured than', 85]);
+  // Same name facet with Extraversion high: the stat is the name's own trait, even when another trait is further out.
+  const e = profile({O: 50, C: 2, E: 80, A: 50, N: 50});
+  e[2].facets.push(f('E1', 97, {name: 'Friendliness'}));
+  const t = videoScript(e, {language: 'en', name});
+  assert.deepEqual([t.trait, t.stat.above, t.stat.number], ['E', 'More outgoing than', 80]);
+});
+
+test('every facet and direction has its own closing line in both languages', () => {
+  const all = Object.values(facetClosers).flat();
+  assert.equal(Object.keys(facetClosers).length, 60);
+  assert.ok(all.every(x => x.trim().length > 10));
+  assert.equal(new Set(all).size, all.length);
 });

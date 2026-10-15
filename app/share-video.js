@@ -31,12 +31,78 @@ const poles = {
 export const closers = {
   O: {high: ['Probably has 14 tabs open right now.', 'Har sannsynligvis 14 faner åpne akkurat nå.'], low: ['Knows what works. Sees no reason to reinvent the wheel.', 'Vet hva som virker. Ser ingen grunn til å finne opp hjulet på nytt.']},
   C: {high: ['Has a plan B. And a colour-coded plan C.', 'Har en plan B. Og en fargekodet plan C.'], low: ['The plan is to see how it goes. It usually goes fine.', 'Planen er å se det an. Det pleier å gå fint.']},
-  E: {high: ['Has probably told someone about this video already.', 'Har sikkert fortalt noen om denne videoen allerede.'], low: ['Recharges best with the door closed and the phone on silent.', 'Lader best med døra lukket og telefonen på lydløs.']},
+  E: {high: ['Has probably told someone about this video already.', 'Har sikkert fortalt noen om denne videoen allerede.'], low: ['Recharges best with the door closed and the phone on silent.', 'Lader opp best med døra lukket og telefonen på lydløs.']},
   A: {high: ['Says sorry when someone else steps on their toes.', 'Sier unnskyld når andre tråkker dem på tærne.'], low: ['Will tell you there is spinach in your teeth.', 'Sier ifra hvis du har spinat mellom tennene.']},
   N: {high: ['Has already thought of everything that could go wrong. So it usually goes right.', 'Har allerede tenkt på alt som kan gå galt. Derfor går det ofte bra.'], low: ['Keeps the coffee steady while everyone else spills.', 'Holder kaffekoppen stødig mens alle andre søler.']},
   balanced: ['A bit of everything. Annoyingly well-rounded.', 'Litt av alt. Irriterende allsidig.'],
   // All five traits in the middle, but a facet stands out (the profile name is built on it).
   facets: ['Middle of the road overall. Not in the details.', 'Midt på treet i det store. Ikke i detaljene.']
+};
+
+// One closer per facet and direction, used for the facet the profile name's noun comes from
+// (signature names keep their own line). Kind in both directions, and they only claim what the
+// facet measures, so people who share their video get as many different lines as names.
+export const facetClosers = {
+  N1h: ['Has a plan for the worst case. And for the worst-worst case.', 'Har en plan for det verste. Og for det aller verste.'],
+  N1l: ['Rarely loses sleep over what might happen.', 'Mister sjelden søvn over hva som kan skje.'],
+  N2h: ['Feels it fast when something is unfair. So does everyone nearby.', 'Kjenner det fort når noe er urettferdig. Det merker alle rundt også.'],
+  N2l: ['It takes a lot to get this one worked up.', 'Det skal mye til før denne blir sint.'],
+  N3h: ['Feels the heavy days properly. Is not alone in that.', 'Kjenner de tunge dagene ordentlig. Er ikke alene om det.'],
+  N3l: ['Mostly at home in their own skin.', 'Stort sett trygg i eget skinn.'],
+  N4h: ['Would rather prepare three times than improvise once on stage.', 'Forbereder seg heller tre ganger enn å improvisere én gang foran folk.'],
+  N4l: ['Happy to take the mic. Even unprepared.', 'Tar gjerne mikrofonen. Også uforberedt.'],
+  N5h: ['Just one more. Then just one more.', 'Bare én til. Så bare én til.'],
+  N5l: ['Can open a bag of crisps and close it again.', 'Kan åpne en chipspose og lukke den igjen.'],
+  N6h: ['Feels it when everything comes at once.', 'Kjenner det når alt kommer på én gang.'],
+  N6l: ['Stays steady when things get rough.', 'Står støtt når det stormer.'],
+  E1h: ['Talks to strangers like old friends.', 'Prater med fremmede som om de var gamle venner.'],
+  E1l: ['Takes a while before new people get in.', 'Bruker tid før nye folk slipper inn.'],
+  E2h: ['The more people, the better the party.', 'Jo flere folk, jo bedre fest.'],
+  E2l: ['Best party: a small one. Or none at all.', 'Beste festen: en liten en. Eller ingen.'],
+  E3h: ['Takes the lead before anyone has asked.', 'Tar styringen før noen har spurt.'],
+  E3l: ['Happy to let someone else take the lead.', 'Lar gjerne noen andre ta styringen.'],
+  E4h: ['Calendar full. Still says yes to more.', 'Full kalender. Sier likevel ja til mer.'],
+  E4l: ['Never in a hurry, if it can be avoided.', 'Har aldri dårlig tid, hvis det kan unngås.'],
+  E5h: ['Gets bored without a bit of thrill.', 'Kjeder seg uten litt spenning.'],
+  E5l: ['Picks a calm evening over a wild one.', 'Velger en rolig kveld fremfor en vill en.'],
+  E6h: ['Laughs easily. And loudly.', 'Ler lett. Og høyt.'],
+  E6l: ['Does not laugh at everything. Means it when it happens.', 'Ler ikke av alt. Mener det når det skjer.'],
+  O1h: ['Already halfway into a daydream.', 'Er allerede halvveis inne i en dagdrøm.'],
+  O1l: ['Prefers facts to fantasies.', 'Foretrekker fakta fremfor fantasier.'],
+  O2h: ['Stops to look at things others walk past.', 'Stopper opp ved ting andre går forbi.'],
+  O2l: ['Happy to skip the art museum.', 'Hopper gjerne over kunstmuseet.'],
+  O3h: ['Feels things fully. The good and the hard.', 'Kjenner ting fullt ut. Både det gode og det vonde.'],
+  O3l: ['Keeps feelings out of the spreadsheet.', 'Holder følelsene utenfor regnearket.'],
+  O4h: ['Never orders the same thing twice.', 'Bestiller aldri det samme to ganger.'],
+  O4l: ['Orders the usual. Every time.', 'Bestiller det vanlige. Hver gang.'],
+  O5h: ['Can talk about one big question all night.', 'Kan snakke om ett stort spørsmål hele natta.'],
+  O5l: ['Prefers problems you can solve with your hands.', 'Foretrekker problemer man kan løse med hendene.'],
+  O6h: ['Asks "why?" about every rule.', 'Spør «hvorfor?» om hver eneste regel.'],
+  O6l: ['Old traditions exist for a reason.', 'Gamle tradisjoner finnes av en grunn.'],
+  A1h: ['Believes the best about people until proven otherwise.', 'Tror det beste om folk til det motsatte er bevist.'],
+  A1l: ['Trusts people. After checking.', 'Stoler på folk. Etter å ha sjekket.'],
+  A2h: ['Would not cheat even at a board game.', 'Jukser ikke engang i brettspill.'],
+  A2l: ['Knows how the game is played, and plays to win.', 'Kan spillet, og spiller for å vinne.'],
+  A3h: ['First to show up when someone is moving house.', 'Først til å stille opp når noen skal flytte.'],
+  A3l: ['Helps, but picks the moments.', 'Hjelper, men velger anledningene selv.'],
+  A4h: ['Would rather find a compromise than win the argument.', 'Finner heller et kompromiss enn å vinne diskusjonen.'],
+  A4l: ['Will tell you there is spinach in your teeth.', 'Sier ifra hvis du har spinat mellom tennene.'],
+  A5h: ['Does the work. Skips the applause.', 'Gjør jobben. Hopper over applausen.'],
+  A5l: ['Knows their strengths, and says so out loud.', 'Vet hva den er god for, og sier det høyt.'],
+  A6h: ['Feels it when others are having a hard time.', 'Kjenner på det når andre har det tøft.'],
+  A6l: ['Solves the problem first. Comforts later.', 'Løser problemet først. Trøster etterpå.'],
+  C1h: ['Trusts they can handle it, whatever it is.', 'Stoler på at den takler det, uansett hva det er.'],
+  C1l: ['Often unsure it will go well.', 'Er ofte usikker på om det skal gå bra.'],
+  C2h: ['Has a place for everything.', 'Har en plass til alt.'],
+  C2l: ['Knows roughly where everything is. Roughly.', 'Vet omtrent hvor alt ligger. Omtrent.'],
+  C3h: ['If they said yes, it gets done.', 'Har den sagt ja, blir det gjort.'],
+  C3l: ['Rules are more like guidelines.', 'Regler er mer som retningslinjer.'],
+  C4h: ['Always has a next goal.', 'Har alltid et nytt mål.'],
+  C4l: ['Good enough is good enough.', 'Godt nok er godt nok.'],
+  C5h: ['Starts on time. Finishes on time.', 'Begynner i tide. Blir ferdig i tide.'],
+  C5l: ['Will start right after this video.', 'Begynner rett etter denne videoen.'],
+  C6h: ['Thinks twice. Sometimes three times.', 'Tenker seg om to ganger. Noen ganger tre.'],
+  C6l: ['Decides first. Thinks on the way.', 'Bestemmer seg først. Tenker underveis.']
 };
 
 const pct = x => Math.round(shownPercentile(x.percentile));
@@ -46,18 +112,23 @@ const byExtremity = (a, b) => extremity(b) - extremity(a) || a.code.localeCompar
 export function videoScript(domains, {language, firstName = '', name, site = '', long = false}) {
   const tr = (en, no) => (language === 'no' ? no : en);
   const named = profileName(domains, language);
-  const trait = named.traits[0] || [...domains].sort(byExtremity)[0];
-  const p = pct(trait), band = trait.band;
-  const count = band === 'low' ? 100 - p : p;
-  const stat = band === 'middle'
-    ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
-    : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   // The facet scene shows the first facet of the profile name's image id, so the same
   // profile name always shows the same facet and a song made per profile name can name it.
   const top = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile)).sort(byExtremity)[0];
   const facet = named.facets.find(f => f.code === named.image.slice(0, 2) && Number.isFinite(f.percentile)) || top;
   const standsOut = !!facet && Math.abs(pct(facet) - 50) >= Math.abs(pct(top) - 50);
   const facetTrait = facet && domains.find(d => d.code === facet.code[0]);
+  // The stat shows the trait the profile name builds on when it points the same way as the
+  // name's facet. Otherwise the trait furthest from the middle, but never one that says the
+  // opposite of the facet scene right after it (e.g. "Quieter than 97" then Friendliness 97).
+  const agrees = d => !facet || d.code !== facet.code[0] || d.band === facet.band;
+  const trait = (facetTrait && facetTrait.band !== 'middle' && facetTrait.band === facet.band ? facetTrait : null)
+    || named.traits.find(agrees) || [...domains].sort(byExtremity).find(d => d.band === 'middle' || agrees(d)) || [...domains].sort(byExtremity)[0];
+  const p = pct(trait), band = trait.band;
+  const count = band === 'low' ? 100 - p : p;
+  const stat = band === 'middle'
+    ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
+    : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
   const extra = long ? {
@@ -79,7 +150,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : named.facets.length ? closers.facets : closers.balanced, language),
+    closer: named.line || pick(facet && facet.band !== 'middle' ? facetClosers[`${facet.code}${facet.band[0]}`] : band === 'middle' ? closers.balanced : closers[trait.code][band], language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Fem',
