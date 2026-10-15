@@ -319,3 +319,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune likte de skrå bildekortene i «Utforsk trekkene dine» og sa ja til å bruke stilen på de tre toppkortene i rapportoversikten. Trekket som skiller seg mest ut, fasetten som skiller seg mest ut og kombinasjonen står nå som en rad med tre bildekort (trekkbildet, fasettbildet og profilfiguren). Teksten ligger bak «+» og åpnes i ett felles leseområde under raden, ett kort om gangen. Utskrift og PDF viser alle tre.
 - «Medmenneskelighet» brøt midt i ordet på smale trekkort. Navnet skaleres nå etter kortbredden så det lengste ordet får plass på én linje, og lange trekknavn har myke bindestreker som reserve, så et brudd alltid får bindestrek.
+
+## 2026-10-15: «X av 100» bruker alltid samme tall som persentilen
+
+- Rune syntes «lavere enn hos 73 av 100» ved 27. persentil var forvirrende. Tallet i setningen og figuren er nå alltid persentilen selv, uttrykt i mennesker, ikke prosent: «Når det gjelder orden, skårer du høyere enn omtrent 27 av 100 mennesker, så du ligger litt lavere enn de fleste.» Over 70 brukes den høye polen («… liker du mer orden enn omtrent 85 av 100 mennesker»). Figurteksten sier «27 av 100 mennesker skårer lavere enn deg» (app/facet-compare.js, brukt på fasettkortene, i gratisprofilen og i oversikten).
+- Jobbkapittelets AI-tekst følger samme regel (lib/career-llm.js). Delingsvideoen er ikke endret ennå.

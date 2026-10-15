@@ -1,10 +1,12 @@
-// "X of 100" line on the facet cards, e.g. «Ut fra svarene dine blir du lettere irritert enn omtrent
-// 85 av 100.» From percentile 50 and up the higher pole is used with the percentile; below 50 the
-// lower pole is used with 100 minus the percentile, so the sentence always reads as a plain
-// comparison and never as a lack. Based on the person's own answers, compared with the reference group.
+// "X of 100 people" line on the facet cards. The number is always the percentile itself, the same
+// number as on the card, so the reader can compare it directly: «Når det gjelder orden, skårer du
+// høyere enn omtrent 27 av 100 mennesker, så du ligger litt lavere enn de fleste.» Above 70 the
+// higher pole carries the sentence («… liker du mer orden enn omtrent 85 av 100 mennesker»).
+// Based on the person's own answers, compared with the reference group.
 import {shownPercentile} from './norms.js';
 
 // code: [higher EN, higher NO, lower EN, lower NO]; each completes "You … than about N in 100" / "Du … enn omtrent N av 100".
+// Only the higher pole is used in compareLine today; the lower pole is kept for other copy.
 export const poles = {
   N1: ['worry more', 'bekymrer deg mer', 'worry less', 'bekymrer deg mindre'],
   N2: ['get irritated more easily', 'blir lettere irritert', 'get irritated less often', 'blir sjeldnere irritert'],
@@ -42,20 +44,29 @@ export const poles = {
 export function compareLine(f, language) {
   const pair = poles[f.code];
   if (!pair || !Number.isFinite(f.percentile)) return '';
-  const p = shownPercentile(f.percentile), up = p >= 50, n = up ? p : 100 - p, no = language === 'no';
-  const phrase = pair[(up ? 0 : 2) + (no ? 1 : 0)];
-  return no ? `Ut fra svarene dine ${phrase.replace(/^(\S+) /, '$1 du ')} enn omtrent ${n} av 100.`
-    : `Based on your answers, you ${phrase} than about ${n} in 100 people.`;
+  const p = shownPercentile(f.percentile), no = language === 'no';
+  const name = String(f.name || '').replace(/^\p{Lu}(?!\p{Lu})/u, c => c.toLowerCase());
+  if (p > 70 || !name) {
+    const phrase = pair[no ? 1 : 0];
+    return no ? `Ut fra svarene dine ${phrase.replace(/^(\S+) /, '$1 du ')} enn omtrent ${p} av 100 mennesker.`
+      : `Based on your answers, you ${phrase} than about ${p} in 100 people.`;
+  }
+  const head = no ? `Når det gjelder ${name}, skårer du høyere enn omtrent ${p} av 100 mennesker`
+    : `For ${name}, you score higher than about ${p} in 100 people`;
+  if (p < 10) return no ? `${head}. De fleste ligger altså over deg her.` : `${head}. So most people sit above you here.`;
+  if (p < 30) return no ? `${head}, så du ligger litt lavere enn de fleste.` : `${head}, so you sit a little lower than most.`;
+  if (p < 50) return no ? `${head}. Det er litt under midten.` : `${head}. That is a little below the middle.`;
+  if (p === 50) return no ? `${head}. Det er midt på.` : `${head}. That is right in the middle.`;
+  return no ? `${head}. Det er litt over midten.` : `${head}. That is a little above the middle.`;
 }
 
-/** Number of people in the comparison: the percentile from 50 up, otherwise 100 minus it. */
+/** Number of people in the comparison: the percentile, so it matches the number on the card. */
 export function compareCount(f) {
   if (!Number.isFinite(f.percentile)) return null;
-  const p = shownPercentile(f.percentile);
-  return p >= 50 ? p : 100 - p;
+  return shownPercentile(f.percentile);
 }
 
-/** The sentence followed by 100 small figures, the first N in the trait colour. '' without a percentile. */
+/** The sentence followed by 100 small figures, the first N (the people you score higher than) in the trait colour. */
 export function compareHtml(f, language, color, esc) {
   const line = compareLine(f, language), n = compareCount(f);
   if (!line) return '';
@@ -64,6 +75,6 @@ export function compareHtml(f, language, color, esc) {
     const x = (i % 20) * 14 + 7, y = Math.floor(i / 20) * 20 + 4;
     figs += `<g class="d-cmp-person${i < n ? ' is-lit' : ''}"><circle cx="${x}" cy="${y}" r="3.2"/><path d="M${x - 5} ${y + 13}v-3.5a5 5 0 0 1 10 0v3.5z"/></g>`;
   }
-  const label = language === 'no' ? `${n} av 100 personer` : `${n} of 100 people`;
-  return `<p class="d-compare">${esc(line)}</p><figure class="d-cmp" style="--lit:${color}"><svg viewBox="0 0 280 100" role="img" aria-label="${esc(label)}">${figs}</svg><figcaption><strong>${n}</strong> ${language === 'no' ? 'av 100 personer' : 'of 100 people'}</figcaption></figure>`;
+  const no = language === 'no', rest = no ? 'av 100 mennesker skårer lavere enn deg' : 'in 100 people score lower than you';
+  return `<p class="d-compare">${esc(line)}</p><figure class="d-cmp" style="--lit:${color}"><svg viewBox="0 0 280 100" role="img" aria-label="${esc(`${n} ${rest}`)}">${figs}</svg><figcaption><strong>${n}</strong> ${rest}</figcaption></figure>`;
 }
