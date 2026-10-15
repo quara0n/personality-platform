@@ -34,7 +34,9 @@ export const closers = {
   E: {high: ['Has probably told someone about this video already.', 'Har sikkert fortalt noen om denne videoen allerede.'], low: ['Recharges best with the door closed and the phone on silent.', 'Lader best med døra lukket og telefonen på lydløs.']},
   A: {high: ['Says sorry when someone else steps on their toes.', 'Sier unnskyld når andre tråkker dem på tærne.'], low: ['Will tell you there is spinach in your teeth.', 'Sier ifra hvis du har spinat mellom tennene.']},
   N: {high: ['Has already thought of everything that could go wrong. So it usually goes right.', 'Har allerede tenkt på alt som kan gå galt. Derfor går det ofte bra.'], low: ['Keeps the coffee steady while everyone else spills.', 'Holder kaffekoppen stødig mens alle andre søler.']},
-  balanced: ['A bit of everything. Annoyingly well-rounded.', 'Litt av alt. Irriterende allsidig.']
+  balanced: ['A bit of everything. Annoyingly well-rounded.', 'Litt av alt. Irriterende allsidig.'],
+  // All five traits in the middle, but a facet stands out (the profile name is built on it).
+  facets: ['Middle of the road overall. Not in the details.', 'Midt på treet i det store. Ikke i detaljene.']
 };
 
 const pct = x => Math.round(shownPercentile(x.percentile));
@@ -77,7 +79,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : closers.balanced, language),
+    closer: named.line || pick(named.traits.length ? closers[trait.code][band] : named.facets.length ? closers.facets : closers.balanced, language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Fem',

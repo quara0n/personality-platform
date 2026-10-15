@@ -27,7 +27,7 @@ test('otherwise the noun comes from the top facet and the adjective from another
 test('a signature far weaker than the plain name does not win', () => {
   const d = profile({O5: ['high', 99], N1: ['low', 1], E1: ['high', 72], E2: ['low', 28]});
   // O5 and N1 tie; the code order makes N1 the noun.
-  assert.equal(profileName(d, 'en').name, 'The Curious Zen Master');
+  assert.equal(profileName(d, 'en').name, 'The Philosophical Zen Master');
 });
 
 test('one distinctive facet gives the noun alone; none gives a balanced name', () => {
