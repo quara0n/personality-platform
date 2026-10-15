@@ -28,14 +28,15 @@ test('a low score is phrased by its own pole, never as lacking', () => {
   assert.equal(s.closer, closers.N.low[1]);
 });
 
-test('shows the facet furthest from the middle, and a balanced line when nothing stands out', () => {
+test('shows the facet furthest from the middle, and a facet line when only a facet stands out', () => {
   const ds = profile({O: 50, C: 55, E: 45, A: 52, N: 48});
   ds[2].facets.push(f('E3', 6, {name: 'Assertiveness'}));
   const s = videoScript(ds, {language: 'en', name});
   assert.equal(s.facet.name, 'Assertiveness');
   assert.equal(s.facet.caption, 'Percentile 6 · Extraversion');
-  assert.equal(s.closer, closers.balanced[0]);
+  assert.equal(s.closer, closers.facets[0]);
   assert.match(s.ruleId, /^share-video-v1\//);
+  assert.equal(videoScript(profile({O: 50, C: 55, E: 45, A: 52, N: 48}), {language: 'en', name}).closer, closers.balanced[0]);
 });
 
 test('every trait and direction has a closing line in both languages', () => {

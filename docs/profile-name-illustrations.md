@@ -25,7 +25,7 @@ Lagre bildene som `app/assets/names/<id>.webp` (kvadratisk, gjerne 600 × 600, s
 | O5h-E2l.webp | Filosofen i lesekroken | The Reading-Nook Philosopher | Høy intellekt + lav selskapelighet | En filosof i en lesekrok med bøker og en kopp te. Videolinje: «Beste samtalene: med en bok og en kopp te.» |
 | O5h-A4l.webp | Djevelens advokat | The Devil's Advocate | Høy intellekt + lav samarbeidsvilje | En person med en liten djevel-advokatkappe som løfter fingeren: 'men…'. Videolinje: «Er enig med deg. Bare ikke ennå.» |
 | C4h-C5l.webp | Den ambisiøse sisteliten-kunstneren | The Ambitious Last-Minute Artist | Høy prestasjonsstreben + lav selvdisiplin | En kunstner som leverer et mesterverk med klokka på 23.59. Videolinje: «Store mål. Begynner i morgen. Leverer 23.59.» |
-| C4h-A5h.webp | Den stille stjernen | The Quiet High Achiever | Høy prestasjonsstreben + høy beskjedenhet | En person som står i skyggen mens en stjerne de har laget lyser. Videolinje: «Gjør store ting og håper ingen lager noe styr.» |
+| C4h-A5h.webp | Den beskjedne måljegeren | The Quiet High Achiever | Høy prestasjonsstreben + høy beskjedenhet | En person som står i skyggen mens en stjerne de har laget lyser. Videolinje: «Gjør store ting og håper ingen lager noe styr.» |
 | E4h-C5l.webp | Virvelvinden med ti faner åpne | The Whirlwind with Ten Tabs Open | Høy aktivitetsnivå + lav selvdisiplin | En virvelvind med ti nettleserfaner som svever rundt. Videolinje: «Holder på med fem ting samtidig. Alle er gøy.» |
 | N5h-C5l.webp | Bare-én-episode-til-entusiasten | The Just-One-More-Episode Enthusiast | Høy manglende måtehold + lav selvdisiplin | En person i sofaen med fjernkontroll og 'neste episode' på skjermen. Videolinje: «Vet nøyaktig hvor mange episoder «bare én til» er.» |
 | A3h-N1h.webp | Den bekymrede skytsengelen | The Worried Guardian Angel | Høy altruisme + høy angst | En skytsengel med bekymret panne som holder paraply over noen. Videolinje: «Bekymrer seg for deg, så du slipper.» |
@@ -64,7 +64,7 @@ Lagre bildene som `app/assets/names/<id>.webp` (kvadratisk, gjerne 600 × 600, s
 | C3h.webp | Ordholderen | The Promise Keeper | Høy pliktfølelse (Planmessighet) er den mest utpregede fasetten | En person som rekker fram hånden for et løfte, med en klokke som viser at de kom presis. |
 | C3l.webp | Frifuglen | The Free Spirit | Lav pliktfølelse (Planmessighet) er den mest utpregede fasetten | En fugl som flyr fritt ut av et åpent bur. |
 | C4h.webp | Måljegeren | The Goal Hunter | Høy prestasjonsstreben (Planmessighet) er den mest utpregede fasetten | En jeger med kikkert som sikter på en blinkende stjerne (et mål). |
-| C4l.webp | Livsnyteren | The Bon Vivant | Lav prestasjonsstreben (Planmessighet) er den mest utpregede fasetten | En person i hengekøye med en god kopp, helt tilfreds. |
+| C4l.webp | Hengekøyeboeren | The Hammock Dweller | Lav prestasjonsstreben (Planmessighet) er den mest utpregede fasetten | En person i hengekøye med en god kopp, helt tilfreds. |
 | C5h.webp | Fullføreren | The Finisher | Høy selvdisiplin (Planmessighet) er den mest utpregede fasetten | En løper som krysser målstreken med jevn, rolig stil. |
 | C5l.webp | Sisteliten-kunstneren | The Last-Minute Artist | Lav selvdisiplin (Planmessighet) er den mest utpregede fasetten | En kunstner som maler ferdig med en klokke som viser to minutter på tolv. |
 | C6h.webp | Sikkerhetssjefen | The Safety Officer | Høy varsomhet (Planmessighet) er den mest utpregede fasetten | En person med refleksvest og hjelm som sjekker en sjekkliste. |
