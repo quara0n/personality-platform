@@ -57,7 +57,7 @@ export const traitQuestion = (d, language) => pick(traitQuestions[d.code], langu
 /** Reflection question for the most distinctive domain, or a neutral prompt. */
 export function reflection(domains, language) {
   const [d] = distinctive(domains);
-  return d ? pick(reflections[d.code][d.band], language) : pick(['Which situation this week brings out a side of you that surprised you?', 'Hvilken situasjon denne uken får frem en side av deg som overrasket deg?'], language);
+  return d ? pick(reflections[d.code][d.band], language) : pick(['Which situation this week brings out a side of you that surprised you?', 'Hvilken situasjon denne uken fikk frem en side av deg som overrasket deg?'], language);
 }
 
 // Expanded trait panel on the free result: a short strength, one thing to try and a caveat.
@@ -67,7 +67,7 @@ const panels = {
     caveat: ['Curiosity can vary between topics and situations.', 'Nysgjerrighet kan variere mellom temaer og situasjoner.'],
     high: {strength: ['You spot options others walk past.', 'Du ser muligheter andre går forbi.'], strengthText: ['Your curiosity can get a stuck discussion moving or find a new way forward.', 'Nysgjerrigheten din kan få en fastlåst diskusjon i gang eller finne en ny vei.'],
       try: ['Test one idea on a small scale.', 'Test én idé i det små.'], tryQuestion: ['What did you learn, even if it was not perfect?', 'Hva lærte du, selv om det ikke ble perfekt?']},
-    middle: {strength: ['Try new things. Keep what works.', 'Prøve nytt. Beholde det som virker.'], strengthText: ['You can build on what already works and add a new twist.', 'Du kan bygge videre på det som fungerer, og legge til en ny vri.'],
+    middle: {strength: ['Try new things. Keep what works.', 'Prøver nytt. Beholder det som virker.'], strengthText: ['You can build on what already works and add a new twist.', 'Du kan bygge videre på det som fungerer, og legge til en ny vri.'],
       try: ['Pick one routine. Change one small detail.', 'Velg én rutine. Endre én liten detalj.'], tryQuestion: ['What got better, and what do you want to keep?', 'Hva ble bedre, og hva vil du beholde?']},
     low: {strength: ['Steady on what works.', 'Står støtt på det som virker.'], strengthText: ['You make sure good solutions are done properly, not swapped out just for the sake of change.', 'Du sørger for at gode løsninger blir gjort skikkelig, ikke byttet ut bare for å bytte.'],
       try: ['Give one new idea a small trial.', 'Gi én ny idé en liten prøve.'], tryQuestion: ['What would it take to convince you?', 'Hva skulle til for at den overbeviste deg?']}
@@ -86,12 +86,12 @@ const panels = {
     high: {strength: ['You bring people along.', 'Du får folk med deg.'], strengthText: ['You can get conversations going and make it easier for others to join in.', 'Du kan starte samtaler og gjøre det lettere for andre å bli med.'],
       try: ['Let someone else speak first next time.', 'La noen andre snakke først neste gang.'], tryQuestion: ['What did you hear that you might have missed?', 'Hva fikk du høre som du ellers kunne gått glipp av?']},
     middle: {strength: ['At home in a group and on your own.', 'Trives både i gruppa og alene.'], strengthText: ['You can join in with others and still enjoy quiet time to yourself.', 'Du kan bidra sammen med andre og samtidig ha godt av rolig tid for deg selv.'],
-      try: ['Notice your energy after a social and a quiet evening.', 'Kjenn etter energien etter en sosial og en rolig kveld.'], tryQuestion: ['What did you need most this week?', 'Hva trengte du mest denne uken?']},
+      try: ['Notice your energy after a social and a quiet evening.', 'Kjenn etter hvordan energien er etter en sosial og etter en rolig kveld.'], tryQuestion: ['What did you need most this week?', 'Hva trengte du mest denne uken?']},
     low: {strength: ['You listen well and think things through.', 'Du lytter godt og tenker grundig.'], strengthText: ['You give conversations room for detail and think before you speak.', 'Du gir samtaler plass til detaljer og tenker deg om før du sier noe.'],
       try: ['Share one thought early in your next meeting.', 'Si én tanke tidlig i neste møte.'], tryQuestion: ['How was it received?', 'Hvordan ble den tatt imot?']}
   },
   A: {
-    caveat: ['How much you give way can depend on the relationship and what is at stake.', 'Hvor mye du gir etter, kan avhenge av relasjonen og hva som står på spill.'],
+    caveat: ['How much you give way can depend on the relationship and what is at stake.', 'Hvor mye du gir etter, kan avhenge av forholdet og hva som står på spill.'],
     high: {strength: ['You make people feel seen.', 'Du får andre til å føle seg sett.'], strengthText: ['You notice what others need and help build good teamwork.', 'Du merker hva andre trenger, og bidrar til godt samarbeid.'],
       try: ['Say no to one small thing this week.', 'Si nei til én liten ting denne uken.'], tryQuestion: ['What happened, and how did it feel?', 'Hva skjedde, og hvordan føltes det?']},
     middle: {strength: ['Kind, but clear.', 'Vennlig, men tydelig.'], strengthText: ['You can go out of your way for others and still speak up when it matters.', 'Du kan strekke deg for andre og samtidig si fra når noe er viktig.'],

@@ -247,6 +247,13 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
 - Ved utskrift vises alle paneler med styrker og svakheter.
 
+## Nye hverdagsbilder og valg av kvinne/mann for bildene 2026-10-15
+- Rune sendte seks nye illustrasjoner i skarp profilstil til Hverdagsliv: Åpenhet (steget mellom blokkene), Planmessighet (kart og kompass) og Ekstroversjon (åpne døren), hver med kvinne- og mannsversjon. De ligger i app/assets/design/context/female/ og male/.
+- Rune: «Hvis brukeren velger "mann" eller "kvinne" i begynnelsen, skal da alle bildene tilpasses» for Hverdagsliv og Arbeidsliv; gratisprofilen og «Dine 5 trekk» beholder blandede bilder. Svar «Ja» på forslaget om et tredje valg og at valget bare brukes til bilder.
+- Forsiden og toppen av Arbeidsliv og Hverdagsliv har nå et valgfritt «Bildene i rapporten viser: Kvinne / Mann / Vil ikke oppgi». Valget lagres i nettleseren (localStorage, fem-report-figure-v1) og bytter bildene med en gang. Det brukes aldri til skåring; persentilene sammenlignes fortsatt med hele normgruppen.
+- Uten valg eller med «Vil ikke oppgi» vises en fast blanding: Åpenhet, Ekstroversjon og Følelsesmessig reaktivitet med kvinne, Planmessighet og Medmenneskelighet med mann.
+- Mangler et bilde, brukes nivåbildet, så midtbildet i valgt versjon, og til slutt det gamle felles bildet. Bildeliste med begge versjoner: trekkort-bilder/bildeliste.md i prosjektmappen (94 bilder gjenstår, de 40 ytterste først).
+- Profilfiguren i gratisprofilen har fortsatt sitt eget Kvinne/Mann-valg.
 ## 2026-10-14: Ærligere tekster til profilfigurene
 
 - Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»
@@ -255,6 +262,14 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Etter gjennomgangen «profilen skal ikke si imot Big Five-skårene» (2026-10-15) er flere navneord byttet, fordi de enten er de samme ordene appen bruker om hele trekk (og kan si det motsatte av kortene og videoen) eller beskriver en annen fasett: O5h «nysgjerrige» → «filosofiske», O1l «jordnære» → «konkrete», N6h «følsomme» → «lett overveldede», C1l «ydmyke» → «usikre», N5h «livsglade» → «nytelsesglade», E5l «fredelige» → «trygghetssøkende», A3l «selvhjulpne» → «selvfokuserte», C4l «tilfredse livsnyteren» → «nøysomme hengekøyeboeren» (Bon Vivant → Hammock Dweller, passer bildet), signaturen C4h+A5h «Den stille stjernen» → «Den beskjedne måljegeren». «Klippen alle ringer til» beholdes: bildet er en klippe, og «en klippe» betyr her pålitelig (pliktfølelse). Substantivet «selvbergeren» (A3l) beholdes inntil faglig vurdering.
 - Videoen bruker en egen avslutningslinje når alle fem trekk ligger i midten men en fasett skiller seg ut (navnet bygger på den): «Midt på treet i det store. Ikke i detaljene.» «Irriterende allsidig» brukes bare når ingen fasett skiller seg ut.
 - Før/etter-liste: /mnt/project-files/profilnavn/aerligere-beskrivelser.md (delt prosjektmappe, ikke i Git). Tekstene er fortsatt merket for faglig gjennomgang.
+
+## Korrektur av all norsk tekst 2026-10-15
+- Rune: «Ta å gå gjennom ALT på norsk og gjør dobbelsjekk at det stemmer grammatisk. bytt ut fremmedord med lettere ord også dersom det lar seg gjøre.»
+- 124 rettelser i appens norske tekst (grammatikk, komma, anglisismer og enklere ord, for eksempel rigid → stiv, empatisk → innlevende, komfortabel → trygg/greit). Faste fagord beholdes: persentil, fasett, trekk og trekknavnene. Før/etter-lister: korrektur/ i prosjektmappen (ikke i Git).
+- Beskrivelsen av fasetten Beskjedenhet (A5) er rettet fordi den pekte motsatt vei.
+- Testspørsmålene (data/questions-no.json): Rune valgte «Bare skrivefeil». Fem rene skrive- og grammatikkfeil er rettet (nr. 21 «Har lett for å overdrive ting», 59 «dem som», 74 «overfor», 83 «ideer», 111 «i stand til å»). Ordlyden ellers er lik den attribuerte oversettelsen; endringene og ny kontrollsum står under norwegianLocalEdits i data/provenance.json. De sju forslagene som endrer ordlyd, er ikke tatt med.
+- Andre runde samme dag: 36 rettelser i tekst som kom inn med senere sammenslåinger (de nye «svært lav/svært høy»-tekstene, fasettsammenligningen, kombinasjonslinjene og en videolinje), for eksempel «sluttet deg til» → «var enig i» og «fair play» → «redelighet».
+
 
 ## 2026-10-15: Profilen skal ikke si imot skårene
 

@@ -39,7 +39,7 @@ function people(c, d) {
   return `<svg class="d-people" viewBox="0 0 300 300" role="img" aria-label="${c.esc(c.tr(`You score higher than about ${p} of 100 people in the reference group.`, `Du skårer høyere enn omtrent ${p} av 100 i referansegruppen.`))}" style="--lit:${lit}">
     <defs><symbol id="d-person" viewBox="0 0 18 26"><circle cx="9" cy="5" r="4.4"/><path d="M1.5 25.5v-8.2a7.5 7.5 0 0 1 15 0v8.2z"/></symbol></defs>${figs}</svg>
     <p class="d-people-line">${c.tr(`You score higher than about <strong data-count="${p}">${p}</strong> of 100`, `Du skårer høyere enn omtrent <strong data-count="${p}">${p}</strong> av 100`)}</p>
-    <p class="d-people-key"><span class="d-key-lit" style="background:${lit}"></span>${c.tr('People you score higher than', 'Personer du skårer høyere enn')}<span class="d-key-you"></span>${c.tr('You', 'Deg')}</p>`;
+    <p class="d-people-key"><span class="d-key-lit" style="background:${lit}"></span>${c.tr('People you score higher than', 'Personer du skårer høyere enn')}<span class="d-key-you"></span>${c.tr('You', 'Du')}</p>`;
 }
 
 /** Grid for one trait, used when switching tabs. */

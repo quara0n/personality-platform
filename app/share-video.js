@@ -31,7 +31,7 @@ const poles = {
 export const closers = {
   O: {high: ['Probably has 14 tabs open right now.', 'Har sannsynligvis 14 faner åpne akkurat nå.'], low: ['Knows what works. Sees no reason to reinvent the wheel.', 'Vet hva som virker. Ser ingen grunn til å finne opp hjulet på nytt.']},
   C: {high: ['Has a plan B. And a colour-coded plan C.', 'Har en plan B. Og en fargekodet plan C.'], low: ['The plan is to see how it goes. It usually goes fine.', 'Planen er å se det an. Det pleier å gå fint.']},
-  E: {high: ['Has probably told someone about this video already.', 'Har sikkert fortalt noen om denne videoen allerede.'], low: ['Recharges best with the door closed and the phone on silent.', 'Lader best med døra lukket og telefonen på lydløs.']},
+  E: {high: ['Has probably told someone about this video already.', 'Har sikkert fortalt noen om denne videoen allerede.'], low: ['Recharges best with the door closed and the phone on silent.', 'Lader opp best med døra lukket og telefonen på lydløs.']},
   A: {high: ['Says sorry when someone else steps on their toes.', 'Sier unnskyld når andre tråkker dem på tærne.'], low: ['Will tell you there is spinach in your teeth.', 'Sier ifra hvis du har spinat mellom tennene.']},
   N: {high: ['Has already thought of everything that could go wrong. So it usually goes right.', 'Har allerede tenkt på alt som kan gå galt. Derfor går det ofte bra.'], low: ['Keeps the coffee steady while everyone else spills.', 'Holder kaffekoppen stødig mens alle andre søler.']},
   balanced: ['A bit of everything. Annoyingly well-rounded.', 'Litt av alt. Irriterende allsidig.'],
@@ -67,7 +67,7 @@ export const facetClosers = {
   E5l: ['Picks a calm evening over a wild one.', 'Velger en rolig kveld fremfor en vill en.'],
   E6h: ['Laughs easily. And loudly.', 'Ler lett. Og høyt.'],
   E6l: ['Does not laugh at everything. Means it when it happens.', 'Ler ikke av alt. Mener det når det skjer.'],
-  O1h: ['Already halfway into a daydream.', 'Er allerede halvveis inn i en dagdrøm.'],
+  O1h: ['Already halfway into a daydream.', 'Er allerede halvveis inne i en dagdrøm.'],
   O1l: ['Prefers facts to fantasies.', 'Foretrekker fakta fremfor fantasier.'],
   O2h: ['Stops to look at things others walk past.', 'Stopper opp ved ting andre går forbi.'],
   O2l: ['Happy to skip the art museum.', 'Hopper gjerne over kunstmuseet.'],
