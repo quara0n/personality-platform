@@ -17,7 +17,11 @@ const box=l=>l.evaluate(e=>({y:e.offsetTop,height:e.offsetHeight}));
     const grid=page.locator(`#${ch} .d-ctx-grid`);await grid.waitFor();
     const cards=grid.locator('.d-ctx-card'),toggles=grid.locator('.d-ctx-toggle'),panels=grid.locator('.d-ctx-panel');
     assert.equal(await cards.count(),5);
-    assert.equal(await grid.locator('.d-ctx-panel:not([hidden])').count(),1,'one panel open from the start');
+    // All cards start closed: only picture, trait, level and metaphor show.
+    assert.equal(await grid.locator('.d-ctx-panel:not([hidden])').count(),0,'no panel open from the start');
+    assert.equal(await toggles.nth(0).getAttribute('aria-expanded'),'false');
+    if(SHOTS&&ch==='work')await page.locator('#work .d-ctx-grid').screenshot({path:`${SHOTS}/kort-lukket.png`});
+    await toggles.nth(0).click();
     assert.equal(await toggles.nth(0).getAttribute('aria-expanded'),'true');
     // Cards 1–3 share the first row and the open panel sits below it.
     const [b0,b2,p0]=[await box(cards.nth(0)),await box(cards.nth(2)),await box(panels.nth(0))];
