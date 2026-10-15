@@ -171,7 +171,10 @@ function initShare(){
   const ctx=canvas.getContext('2d'),input=document.querySelector('#share-first'),make=document.querySelector('#share-make'),send=document.querySelector('#share-send'),dl=document.querySelector('#share-dl'),status=document.querySelector('#share-status');
   const seek=document.querySelector('#share-seek'),left=document.querySelector('#share-left'),soundBtn=document.querySelector('#share-sound');
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches,site=/^(localhost|127\.)/.test(location.hostname)?'':location.hostname.replace(/^www\./,'');
-  const long=canvas.closest('.d-share').dataset.long==='true',script=()=>videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long});
+  // A recording started on the results page keeps running if the person leaves it (report is then
+  // cleared), so it keeps using the last script it had.
+  let lastScript=null;
+  const long=canvas.closest('.d-share').dataset.long==='true',script=()=>report?(lastScript=videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long})):lastScript;
   let imgs={},playing=false,visible=false,recording=false,pos=0,from=0,since=0,file=null,url='',sound=false,voice=null,monitor=null,music=null;
   // The profile character goes on the name slide, in the figure the person chose on the profile.
   const character=()=>new Promise(ok=>{const img=new Image();img.onload=()=>ok(img);img.onerror=()=>ok(null);img.src=figureSrc(script().image);});
