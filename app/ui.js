@@ -135,6 +135,9 @@ function animateResults(){
 }
 const tryIcon='<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10a10 10 0 0 0-6 18c1.5 1.2 2 2.6 2 4h8c0-1.4.5-2.8 2-4a10 10 0 0 0-6-18zM20 36h8M21 40h6M24 2v3M10 8l2 2M38 8l-2 2M5 20h3M40 20h3"/></svg>';
 const lockIcon='<svg class="d-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+// Soft hyphens: a long trait name that has to break on a narrow card breaks at a syllable with a hyphen, never mid-word.
+const SHY={Medmenneskelighet:'Medmenneske\u00adlighet',Planmessighet:'Plan\u00admessighet',Ekstroversjon:'Ekstro\u00adversjon',Følelsesmessig:'Følelses\u00admessig',Conscientiousness:'Conscien\u00adtiousness',Agreeableness:'Agree\u00adableness',Extraversion:'Extra\u00adversion'};
+const shy=s=>s.replace(/\p{L}+/gu,w=>SHY[w]||w);
 const yourTrait=c=>({O:tr('Your Openness','Åpenheten din'),C:tr('Your Conscientiousness','Planmessigheten din'),E:tr('Your Extraversion','Ekstroversjonen din'),A:tr('Your Agreeableness','Medmenneskeligheten din'),N:tr('Your Emotional reactivity','Den følelsesmessige reaktiviteten din')})[c];
 const topFacet=d=>[...d.facets].sort((a,b)=>extremity(b)-extremity(a)||a.code.localeCompare(b.code))[0];
 // Only Openness, the first trait on the free profile, shows an open facet.
@@ -261,7 +264,7 @@ function results(){main.innerHTML=`<section class="d-results">${notice()}
     <div class="d-first-look"><h2>${tr('A first look at your patterns','Et første blikk på mønstrene dine')}</h2><p>${esc(profileSummary(sorted(),language))}</p><p class="d-small">${tr('The traits describe tendencies, not fixed types.','Trekkene beskriver tendenser, ikke faste typer.')}</p></div>
     ${shareBox()}
     <div class="d-explore"><div class="d-explore-inner"><h2 class="d-panels-title">${tr('Explore your traits','Utforsk trekkene dine')}</h2>
-      <div class="d-panels">${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<button type="button" class="d-tpanel d-tpanel-${c}" data-trait="${c}" aria-expanded="false" aria-controls="td-${c}"><span class="d-tpanel-art"><img src="assets/design/trait-${c}.webp" alt="" aria-hidden="true"></span><span class="d-tpanel-name">${esc(name(d).replace(/\s*\(.*\)$/,''))}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`;}).join('')}</div>
+      <div class="d-panels">${order.map(c=>{const d=sorted().find(x=>x.code===c);return `<button type="button" class="d-tpanel d-tpanel-${c}" data-trait="${c}" aria-expanded="false" aria-controls="td-${c}"><span class="d-tpanel-art"><img src="assets/design/trait-${c}.webp" alt="" aria-hidden="true"></span><span class="d-tpanel-name">${shy(esc(name(d).replace(/\s*\(.*\)$/,'')))}</span><span class="d-tpanel-plus" aria-hidden="true"></span></button>`;}).join('')}</div>
       ${order.map(c=>{const d=sorted().find(x=>x.code===c),pc=panelCopy(d,language),art=c==='O'?'facets/strength-O.webp':`facets/head-${c}.webp`;return `<div class="d-tdetail d-tdetail-${c}" id="td-${c}" hidden><div class="d-tdetail-head">${piece(c)}<h3>${esc(name(d))}</h3></div><p class="d-tdetail-level">${bandText(d.band)}${hasPct(d)?'':` · ${Number(d.mean).toFixed(2)} / 5`}</p><p class="d-tdetail-line">${esc(traitLine(d,language))}</p>
         <div class="d-tdetail-strength"><div><p class="d-tdetail-eyebrow d-tdetail-eyebrow-warm">${tr('A possible strength','En mulig styrke')}</p><h4>${esc(pc.strength)}</h4><p>${esc(pc.strengthText)}</p></div><img src="assets/design/${art}" alt="" aria-hidden="true"></div>
         <p class="d-tdetail-caveat">${esc(pc.caveat)}</p>
@@ -346,7 +349,7 @@ function pctPanel(){
     <div class="d-pct-row d-pct-axis-row" aria-hidden="true"><span></span><span></span><div class="d-pct-axis"><span>${tr('Lower','Lavere')}</span><span>${tr('Middle','Midten')}</span><span>${tr('Higher','Høyere')}</span></div><span></span></div></div></div>`;
 }
 function glanceCtx(){const pct=!!report.norms,value=x=>pct&&hasPct(x)?shownPercentile(x.percentile):Number(x.mean).toFixed(1);
-  return {domains:sorted(),language,pct,tr,esc,name,scoreText,barPos,value,piece,traitLine:d=>traitLine(d,language),pctInfo:pctInfo(),
+  return {domains:sorted(),language,pct,tr,esc,shy,name,scoreText,barPos,value,piece,figureSrc,traitLine:d=>traitLine(d,language),pctInfo:pctInfo(),
     countText:x=>hasPct(x)?tr(`Percentile <span data-count="${value(x)}">${value(x)}</span>`,`<span data-count="${value(x)}">${value(x)}</span>. persentil`):esc(scoreText(x))};}
 function nuances(){
   const dist=x=>hasPct(x)?Math.abs(x.percentile-50)/50:Math.abs(x.mean-3)/2;

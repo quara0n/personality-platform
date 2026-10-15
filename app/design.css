@@ -515,12 +515,15 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-tpanel:nth-child(even){clip-path:polygon(0 12%,100% 0,100% 100%,0 100%)}
 .d-tpanel-C{--bg:#fdc9a8}
 .d-tpanel-E{--bg:#6b98c5;--ink:#fffefb}
-.d-tpanel-A{--bg:#fefaf2;background:linear-gradient(#fefaf2,#fefaf2) padding-box;box-shadow:inset 0 0 0 1.5px #9fc0de}
+.d-tpanel-A,.d-gpanel-combo{--bg:#fefaf2;background:linear-gradient(#fefaf2,#fefaf2) padding-box;box-shadow:inset 0 0 0 1.5px #9fc0de}
 .d-tpanel-N{--bg:#132e5b;--ink:#fffefb}
-.d-tpanel-A::before{content:'';position:absolute;inset:0;background:#9fc0de;clip-path:polygon(0 12%,100% 0,100% calc(0% + 2px),0 calc(12% + 2px));pointer-events:none}
+.d-tpanel-A::before,.d-gpanel-combo::before{content:'';position:absolute;inset:0;background:#9fc0de;clip-path:polygon(0 12%,100% 0,100% calc(0% + 2px),0 calc(12% + 2px));pointer-events:none}
 .d-tpanel-art{display:block;width:100%;padding-top:14%}
 .d-tpanel-art img{display:block;width:100%;aspect-ratio:300/308;object-fit:cover}
-.d-tpanel-name{display:flex;align-items:center;min-height:2.3em;margin:12px 8px 12px;font:400 clamp(15px,1.75vw,24px)/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.03em;overflow-wrap:anywhere}
+/* The card width sets the type size, so the longest single word («Medmenneskelighet») fits on one line;
+   below that it breaks at a soft hyphen with a hyphen sign, never as a lone letter. */
+.d-tpanel{container-type:inline-size}
+.d-tpanel-name{display:flex;align-items:center;justify-content:center;min-height:2.3em;margin:12px 8px 12px;font:400 min(clamp(15px,1.75vw,24px),calc((100cqi - 16px) / 9.2))/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.03em;overflow-wrap:normal;hyphens:manual}
 .d-tpanel-plus{position:relative;width:34px;height:34px;border:1.5px solid currentColor;border-radius:50%;flex:none}
 .d-tpanel-plus::before,.d-tpanel-plus::after{content:'';position:absolute;left:50%;top:50%;width:14px;height:1.5px;margin:-.75px 0 0 -7px;background:currentColor;transition:transform .2s}
 .d-tpanel-plus::after{transform:rotate(90deg)}
@@ -541,11 +544,11 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 @media(max-width:760px){
   .d-panels{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:58%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 10px;scroll-padding:0 20px;scrollbar-width:thin}
   .d-tpanel{scroll-snap-align:start}
-  .d-tpanel-name{font-size:20px}
+  .d-tpanel-name{font-size:min(20px,calc((100cqi - 16px) / 9.2))}
   .d-tdetail{padding:20px 18px}
 }
 @media print{.d-panels{display:none}.d-tdetail[hidden]{display:block!important}}
-.d-tpanel-A .d-tpanel-art{padding-left:1.5px;padding-right:1.5px}
+.d-tpanel-A .d-tpanel-art,.d-gpanel-combo .d-tpanel-art{padding-left:1.5px;padding-right:1.5px}
 
 /* Trait band + compact facet cards (design: facet overview per trait) */
 .d-trait-chapter{background:#fff}
@@ -808,21 +811,31 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-people-key{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:0;font-size:13px;color:#5d7792}
 .d-key-lit,.d-key-you{width:12px;height:12px;border-radius:3px}
 .d-key-you{margin-left:10px;border:2px solid #13284f}
-.d-glance-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
-.d-glance-card{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:start;padding:20px;border-radius:10px}
-.d-glance-card.is-warm{background:#fdebe3}
-.d-glance-card.is-cool{background:#eaf1f7}
-.d-glance-card img{width:104px;height:104px;object-fit:contain}
 .d-glance-eyebrow{margin:0 0 4px!important;font-size:12px!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5d7792!important}
-.d-glance-card h3,.d-combo h3{margin:0 0 6px;font:400 26px/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
-.d-glance-card p,.d-combo p{margin:0;font-size:15.5px;line-height:1.5;color:#2c4566}
-.d-glance-card .d-glance-score{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--title)}
-.d-combo{display:flex;gap:20px;align-items:center;margin-top:18px;padding:22px 24px;border:1.5px solid #e7dccd;border-radius:10px;background:#fffdf8}
-.d-combo-pieces{display:flex;flex:none;gap:4px}
-.d-combo-pieces .d-piece-icon{width:40px;height:40px}
-.d-combo .d-small{margin-top:10px}
+.d-gdetail h3{margin:0 0 6px;font:400 26px/1.15 Georgia,serif;letter-spacing:-.025em;color:var(--title)}
+.d-gdetail p{margin:0;font-size:15.5px;line-height:1.5;color:#2c4566}
+.d-gdetail .d-glance-score{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--title)}
 .d-glance-name{margin:6px 0 0;color:#5a7290;font-size:15px}
 .d-glance-name strong{font:400 22px/1.2 Georgia,serif;color:var(--title)}
+/* The three highlights: slanted picture cards like the five trait cards on the free profile, text below */
+.d-gpanels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:34px;align-items:stretch}
+.d-gpanel{padding-bottom:18px}
+.d-gpanel-facet{--bg:#dcebf7}
+.d-gpanel .d-tpanel-art img{aspect-ratio:1}
+.d-gpanel-facet .d-tpanel-art img{object-fit:contain;object-position:center bottom;padding:8% 6% 0}
+.d-gpanel-eyebrow{margin:16px 12px 0;font:700 11px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.78}
+.d-gpanel .d-tpanel-name{min-height:0;margin:8px 10px 6px;font-size:min(clamp(19px,2vw,26px),calc((100cqi - 20px) / 9.2))}
+.d-gpanel-meta{display:block;min-height:26px;margin:0 8px 14px;font-size:14px;line-height:26px;font-weight:700}
+.d-gpanel-meta .d-piece-icon{display:inline-block;width:26px;height:26px;margin:0 2px;vertical-align:middle}
+.d-gdetail{margin-top:14px;padding:24px 28px;border-radius:6px;background:#fffefb;border:1px solid #e3e9f0;border-top:5px solid #9fc0de;box-shadow:0 10px 30px rgba(16,39,71,.07)}
+.d-gdetail-trait{border-top-color:#f6b18d}
+.d-gdetail p+p{margin-top:10px}
+@media(max-width:760px){
+  .d-gpanels{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:64%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin}
+  .d-gpanel{scroll-snap-align:start}
+  .d-gdetail{padding:20px 18px}
+}
+@media print{.d-gpanels{display:none}.d-gdetail[hidden]{display:block!important}}
 /* Motion: parts wait in a start state only after the script has seen they are off screen. */
 .d-radar-box.is-waiting .d-radar-shape{transform:scale(0);opacity:0}
 .d-radar-box.is-playing .d-radar-shape{animation:d-radar-grow 1s cubic-bezier(.2,.8,.2,1) both}
@@ -830,20 +843,18 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-people-panel.is-waiting .d-person.is-lit{fill:#dfe5ec}
 .d-people-panel.is-playing .d-person.is-lit{animation:d-person-in .3s ease both;animation-delay:calc(var(--i) * 9ms)}
 @keyframes d-person-in{from{fill:#dfe5ec;transform:scale(.7)}to{fill:var(--lit);transform:scale(1)}}
-.d-glance-card.is-waiting,.d-combo.is-waiting{opacity:0;transform:translateY(12px)}
-.d-glance-card.is-playing,.d-combo.is-playing{animation:d-rise .55s ease both}
-.d-glance-cards .d-glance-card+.d-glance-card.is-playing{animation-delay:.12s}
+.d-gpanels.is-waiting{opacity:0;transform:translateY(12px)}
+.d-gpanels.is-playing{animation:d-rise .55s ease both}
 @keyframes d-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(max-width:900px){.d-glance-grid,.d-glance-cards{grid-template-columns:1fr}.d-people-box{border-top:1px solid #e3e9f0;padding-top:22px}}
-@media(max-width:500px){.d-glance-card{grid-template-columns:72px minmax(0,1fr);padding:16px}.d-glance-card img{width:72px;height:72px}.d-combo{flex-direction:column;align-items:flex-start;padding:18px}.d-people-line{font-size:19px}}
+@media(max-width:900px){.d-glance-grid{grid-template-columns:1fr}.d-people-box{border-top:1px solid #e3e9f0;padding-top:22px}}
+@media(max-width:500px){.d-people-line{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.is-waiting,.is-waiting *{opacity:1!important;transform:none!important}.d-people-panel.is-waiting .d-person.is-lit{fill:var(--lit)}}
-@media print{.is-waiting,.is-waiting *,.is-playing,.is-playing *{animation:none!important;opacity:1!important;transform:none!important}.d-people-panel .d-person.is-lit{fill:var(--lit)!important}.d-people-tabs{display:none}.d-glance-card,.d-combo{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media print{.is-waiting,.is-waiting *,.is-playing,.is-playing *{animation:none!important;opacity:1!important;transform:none!important}.d-people-panel .d-person.is-lit{fill:var(--lit)!important}.d-people-tabs{display:none}.d-gdetail{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 /* Facet cards: the bar fills and the number counts up when a card opens */
 .d-fcard.is-filling .d-mini span{animation:d-bar-fill .7s cubic-bezier(.25,.8,.3,1) both}
 .d-fcard.is-filling .d-mini i{animation:d-mark-slide .7s cubic-bezier(.25,.8,.3,1) both}
 @keyframes d-bar-fill{from{width:0}}
 @keyframes d-mark-slide{from{left:0}}
-@media(max-width:500px){.d-glance-card{grid-template-columns:1fr}.d-glance-card img{width:64px;height:64px}}
 @media(prefers-reduced-motion:reduce){.d-fcard.is-filling .d-mini span,.d-fcard.is-filling .d-mini i{animation:none}}
 /* Free profile: locked facet teaser */
 .d-teaser{margin-top:20px;padding:22px 24px;border:1px solid #d8e1ec;border-radius:10px;background:#fff}
