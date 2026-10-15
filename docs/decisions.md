@@ -332,6 +332,6 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Ny forside etter Runes mockup 2026-10-15
 - Forsiden følger mockupen Rune delte: stort hovedbilde i fasettstil med paret til høyre, båndet «Fem trekk. Din kombinasjon.», «Hva vil du forstå bedre?» og avsluttende knapp. Bildene er hentet fra mockupen (app/assets/design/home-*.webp).
-- Søylene fra det gamle eksempelkortet ligger nå i trekkbåndet: en tynn søyle under hvert trekknavn, merket «Eksempelprofil». Ingen egen boks.
+- Søylene fra det gamle eksempelkortet ligger nå i trekkbåndet: en tynn søyle under hvert trekknavn, merket «Illustrert eksempel» ved siden av overskriften. Ingen egen boks. «Hva vil du forstå bedre?» og avslutningen ligger på lys bakgrunn med fasettflater, som i Runes andre mockup.
 - Knappen heter «Ta testen» for nye besøkende og «Fortsett testen» når testen er påbegynt.
 - «Relasjonene dine» er byttet med «Dine neste steg», fordi rapporten ikke har et relasjonskapittel. De tre områdene er nå Hverdagen, Dine neste steg og Arbeidsliv og karriere, som alle finnes i rapporten.
