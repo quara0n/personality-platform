@@ -55,3 +55,10 @@ test('the outer levels need both the percentile and the matching band', () => {
   assert.equal(c.art, 'life-E');
   assert.equal(contextCard({code: 'E', band: 'middle', percentile: 50}, 'work', 'en').hard[0], 'Not always aware what drains you');
 });
+
+test('Everyday life cards for O, C and E use the woman/man illustrations', () => {
+  const d = {code: 'E', band: 'middle', percentile: 50};
+  assert.equal(contextCard(d, 'life', 'no').figure, true);
+  assert.equal(contextCard(d, 'work', 'no').figure, false);
+  assert.equal(contextCard({code: 'A', band: 'middle', percentile: 50}, 'life', 'no').figure, false);
+});

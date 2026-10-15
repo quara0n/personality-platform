@@ -248,3 +248,7 @@ export function contextLevel(d) {
 // Level-specific illustrations that exist under assets/design/context/ as `${chapter}-${code}-${level}.webp`.
 // Until a file is added here, the card uses the trait's shared chapter image.
 export const levelArt = new Set([]);
+
+// Illustrations with a woman and a man version, under assets/design/context/female/ and male/.
+// The report shows the version chosen with the profile figure (Woman/Man), and the woman version until one is chosen.
+export const figureArt = new Set(['life-O', 'life-C', 'life-E']);

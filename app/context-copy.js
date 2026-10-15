@@ -3,7 +3,7 @@
 // and one idea to try. Selected deterministically from the domain band, so each card stays
 // traceable to the score. Each pair is [English, Norwegian bokmål], written for each language.
 
-import {outerCards, strengthLists, contextLevel, levelArt} from './context-levels.js';
+import {outerCards, strengthLists, contextLevel, levelArt, figureArt} from './context-levels.js';
 
 const cards = {
   O: {
@@ -139,6 +139,7 @@ export function contextCard(d, chapter, language) {
   return {quote: c.quote[i], text: c.text[i], try: c.try[i], level: used,
     good: lists ? lists.good.map(x => x[i]) : [], hard: lists ? lists.hard.map(x => x[i]) : [],
     art: levelArt.has(`${chapter}-${d.code}-${used}`) ? `${chapter}-${d.code}-${used}` : `${chapter}-${d.code}`,
+    figure: figureArt.has(`${chapter}-${d.code}`),
     ruleId: `context-v2/${d.code}/${chapter}/${used}`};
 }
 

@@ -1149,3 +1149,7 @@ details.d-ctx-more>div{padding:0}
   .d-ctx-card.is-open::after,.d-ctx-plus,.d-ctx-more summary{display:none}
   .d-ctx-art{height:110px}
 }
+/* Full-scene illustrations (3:2) fill the picture area instead of floating in it. */
+.d-ctx-art.is-scene{height:auto;aspect-ratio:3/2;background:#fffaf2}
+.d-ctx-art.is-scene img{width:100%;height:100%;object-fit:cover}
+@media print{.d-ctx-art.is-scene{height:110px;aspect-ratio:auto}.d-ctx-art.is-scene img{object-fit:contain}}

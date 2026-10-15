@@ -247,6 +247,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
 - Ved utskrift vises alle paneler med styrker og svakheter.
 
+## Nye hverdagsbilder med kvinne og mann 2026-10-15
+- Rune sendte seks nye illustrasjoner i skarp profilstil til Hverdagsliv: Åpenhet (steget mellom blokkene), Planmessighet (kart og kompass) og Ekstroversjon (åpne døren), hver med kvinne- og mannsversjon. Ingen tekst i bildene.
+- Kortene for disse tre trekkene i Hverdagsliv bruker nå de nye bildene (app/assets/design/context/female/ og male/). Rapporten viser versjonen brukeren har valgt for profilfiguren (Kvinne/Mann), og kvinneversjonen til et valg er gjort. Bildet byttes med en gang når valget endres.
+- Medmenneskelighet og Følelsesmessig reaktivitet, og alle kortene i Arbeidsliv, har fortsatt de gamle bildene til nye kommer. Bildene gjelder alle fem nivåene; nivåspesifikke bilder fra bildelisten kan fortsatt legges inn senere.
+
 ## 2026-10-14: Ærligere tekster til profilfigurene
 
 - Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»
