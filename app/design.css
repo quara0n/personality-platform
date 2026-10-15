@@ -1159,3 +1159,6 @@ details.d-ctx-more>div{padding:0}
   .d-ctx-card.is-open::after,.d-ctx-plus,.d-ctx-more summary{display:none}
   .d-ctx-art{height:110px}
 }
+
+/* One-line note above the facet cards when a trait's facets spread widely */
+.facet-pattern.d-pattern-note{margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--apricot,#f6b18d);background:#fbf6ef;font-size:15px;line-height:1.5;color:#3a4a5e}
