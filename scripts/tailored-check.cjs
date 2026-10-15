@@ -1,4 +1,4 @@
-// Tailored block in Work & career and Everyday life, and the 149 kr tier on the offer page.
+// «Din jobb, din profil» in Work & career, the tailored block in Everyday life, and the 149 kr tier on the offer page.
 // Uses synthetic answers only. Run with the app on http://127.0.0.1:4173 (npm start).
 // Set SHOTS=<folder> to save screenshots.
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -10,25 +10,23 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.hero
 const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click();
 (async()=>{const browser=await chromium.launch();try{
   const page=await browser.newPage({viewport:{width:1440,height:900},locale:'nb-NO'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await seed(page);await page.evaluate(()=>location.hash='report/work');
-  const work=page.locator('#work .d-tailor');await work.waitFor();
-  assert.equal(await work.locator('.d-tailor-cols').count(),0,'no result before the answers');
-  assert.equal(await work.locator('fieldset').count(),4);
-  await pick(page,'work','role','lead');await pick(page,'work','people','people');await pick(page,'work','structure','shifting');
-  assert.equal(await page.locator('#work .d-tailor-cols').count(),0);
-  await pick(page,'work','pressure','high');
-  const cols=page.locator('#work .d-tailor-cols');await cols.waitFor();
-  const lines=await page.locator('#work .d-tailor-col li').count();
-  assert.ok(lines>0,'at least one tailored line');
-  const ids=await page.locator('#work .d-tailor-col li').evaluateAll(l=>l.map(x=>x.dataset.rule));
-  assert.ok(ids.every(id=>/^tailored-v1\/work\/[\w-]+\/(low|high)$/.test(id)),ids.join());
-  assert.match(await page.locator('#work .d-tailor summary').innerText(),/Leder for andre · Mest med folk · Det endrer seg mye · Ofte høyt press/);
+  await seed(page);await page.evaluate(()=>{sessionStorage.removeItem('fem-career-v1');location.hash='report/work';});
+  // Work: «Din jobb, din profil», eight questions one at a time (app/career.js).
+  const work=page.locator('#work .d-career');await work.waitFor();
+  assert.equal(await work.locator('.d-career-sec').count(),0,'no result before the answers');
+  const opt=t=>page.locator('#work .d-career-opt',{hasText:t}).first().click();
+  for(const t of ['Kontor','Leder 1–5','I et fast team','Det endrer seg mye','Ofte høyt press'])await opt(t);
+  await opt('Uklare forventninger');await page.locator('[data-career="next"]').click();
+  await opt('løse vanskelige');await page.locator('[data-career="next"]').click();
+  await opt('Få mer ansvar');
+  await page.locator('#work .d-career-sec').first().waitFor();
+  assert.match(await page.locator('#work .d-career-answers').innerText(),/Kontor- eller kunnskapsarbeid · Leder 1–5 personer · I et fast team · Det endrer seg mye · Ofte høyt press/);
+  assert.ok(await page.locator('#work .d-career-sec h4',{hasText:'Når du leder'}).count(),'lead section with responsibility');
   if(SHOTS)await work.screenshot({path:`${SHOTS}/arbeid-desktop.png`});
-  // Answers survive a reload, and changing one updates the result.
-  await page.reload();await page.locator('#work .d-tailor-cols').waitFor();
-  await page.locator('#work .d-tailor summary').click();await pick(page,'work','role','care');
-  assert.match(await page.locator('#work .d-tailor summary').innerText(),/Omsorg, helse eller undervisning/);
-  assert.ok(await page.locator('#work details[open]').count(),'the form stays open while changing');
+  // Answers survive a reload; «Change» starts the questions again with the answers kept.
+  await page.reload();await page.locator('#work .d-career-sec').first().waitFor();
+  await page.locator('[data-career="edit"]').click();
+  assert.equal(await page.locator('#work .d-career-opt[aria-pressed="true"]').innerText(),'Kontor- eller kunnskapsarbeid');
   // Everyday life: the children question appears only with children.
   await page.evaluate(()=>location.hash='report/life');const life=page.locator('#life .d-tailor');await life.waitFor();
   assert.equal(await life.locator('fieldset').count(),3);
@@ -42,8 +40,8 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   if(SHOTS)await page.locator('#life .d-tailor').screenshot({path:`${SHOTS}/hverdag-mobil.png`});
   // English.
   await page.setViewportSize({width:1440,height:900});await page.locator('#header-language').selectOption('en');await page.evaluate(()=>location.hash='report/work');
-  await page.locator('#work .d-tailor-cols').waitFor();assert.match(await page.locator('#work .d-tailor h3').innerText(),/Tailored to your work/);
-  if(SHOTS)await page.locator('#work .d-tailor').screenshot({path:`${SHOTS}/work-english.png`});
+  await page.locator('#work .d-career').waitFor();assert.match(await page.locator('#work .d-career h3').innerText(),/Your work, your profile/);
+  if(SHOTS)await page.locator('#work .d-career').screenshot({path:`${SHOTS}/work-english.png`});
   // Offer page: both tiers, prices follow the country.
   await page.locator('#header-language').selectOption('no');await page.evaluate(()=>location.hash='offer');await page.locator('.d-offer-plus').waitFor();
   await page.locator('#header-country').selectOption('NO');
@@ -57,6 +55,7 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   // Clearing answers also clears the tailored answers.
   page.on('dialog',d=>d.accept());await page.locator('#clear-data').click();
   assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-tailor-v1')),null);
+  assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-career-v1')),null);
   assert.deepEqual(errors,[]);
   console.log('tailored-check: ok');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});
