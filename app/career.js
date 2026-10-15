@@ -44,7 +44,9 @@ function headline(item, s, ctx) {
   return a ? answerTopic(a.q, a.value, ctx.language, s.answers) : item.facets[0]?.name || '';
 }
 
-const chips = (item, ctx) => item.facets.length ? `<p class="d-career-chips">${item.facets.map(f => `<span title="${ctx.esc(ctx.scoreText(f))}">${ctx.esc(f.name)}</span>`).join('')}</p>` : '';
+// Facet chips say the direction in words («Orden: lav»), so no badge is needed to read them.
+const level = (f, tr) => f.band === 'high' ? tr('high', 'høy') : f.band === 'low' ? tr('low', 'lav') : tr('middle', 'middels');
+const chips = (item, ctx) => item.facets.length ? `<p class="d-career-chips">${item.facets.map(f => `<span title="${ctx.esc(ctx.scoreText(f))}">${ctx.esc(f.name)}: ${level(f, ctx.tr)}</span>`).join('')}</p>` : '';
 
 // One overview block: eyebrow, headline, one line, facet chips and «Read more» with the rest.
 function featureHtml(kind, eyebrow, sec, s, ctx) {
@@ -78,8 +80,11 @@ function resultHtml(s, ctx, career) {
     next: goalText ? tr(`Your next step: ${esc(goalText)}`, `Ditt neste steg: ${esc(goalText)}`) : tr('Your next step', 'Ditt neste steg'),
     lookfor: tr('Look for this in your next job', 'Se etter dette i neste jobb')
   };
+  // When no answer clearly clashes with a facet, «demanding» shows the strongest drain instead, and the folded drain list skips it.
+  const hardSec = by('hard')?.items.length ? by('hard') : by('drain'), drainShown = hardSec === by('drain');
   const block = id => {
-    const sec = by(id);
+    const sec = id === 'drain' && drainShown ? {...by('drain'), items: by('drain').items.slice(1)} : by(id);
+    if (sec && id === 'drain' && !sec.items.length) return '';
     if (!sec) return '';
     if (id === 'next') return `<div class="d-career-sec"><h4>${titles.next}</h4><ol class="d-career-steps">${sec.items.map(x => `<li>${esc(x.text)}</li>`).join('')}</ol><p class="d-career-why">${tr('Three things to try in the next 30 days.', 'Tre ting å prøve de neste 30 dagene.')}</p></div>`;
     return `<div class="d-career-sec"><h4>${titles[id]}</h4>${list(sec.items)}</div>`;
@@ -93,7 +98,7 @@ function resultHtml(s, ctx, career) {
   const deep = `${block('drain')}${block('lead')}${block('next')}${block('lookfor')}`;
   return `${aiBar}${status}
     <div class="d-career-grid">
-      <div class="d-career-main">${featureHtml('good', tr('This can work well', 'Dette kan fungere godt'), by('good'), s, ctx)}${featureHtml('hard', tr('This can be demanding', 'Dette kan bli krevende'), by('hard'), s, ctx)}</div>
+      <div class="d-career-main">${featureHtml('good', tr('This can work well', 'Dette kan fungere godt'), by('good'), s, ctx)}${featureHtml('hard', tr('This can be demanding', 'Dette kan bli krevende'), hardSec, s, ctx)}</div>
       <div class="d-career-side">${featureHtml('energy', tr('Your energy', 'Din energi'), by('energy'), s, ctx)}${tryBox}</div>
     </div>
     <details class="d-career-deep"><summary><span class="d-career-deep-icon" aria-hidden="true"><i></i><i></i><i></i></span>${tr('How does this connect with your traits?', 'Hvordan henger dette sammen med trekkene dine?')}<span class="d-career-plus" aria-hidden="true">+</span></summary>

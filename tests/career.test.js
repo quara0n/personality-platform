@@ -55,6 +55,13 @@ test('every answer has a short headline in both languages, «Other» uses the re
   assert.equal(answerTopic('role', 'other', 'no', {other: {role: 'kiropraktor'}}), 'Kiropraktor');
 });
 
+test('a mixed workday is not a clash for low Orderliness, project work is', () => {
+  const domains = profile({C2: 15});
+  const hard = a => buildCareer(domains, {...answers, structure: a}, 'no').sections.find(x => x.id === 'hard').items;
+  assert.ok(!hard('mixed').some(x => x.facets.some(f => f.code === 'C2')));
+  assert.ok(hard('projects').some(x => x.facets.some(f => f.code === 'C2')));
+});
+
 test('a middle-only profile gets no facet claims, only situation lines and general steps', () => {
   const c = buildCareer(profile(), answers, 'no');
   for (const s of c.sections) for (const x of s.items) assert.equal(x.facets.length, 0, x.ruleId);
