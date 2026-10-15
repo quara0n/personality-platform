@@ -168,24 +168,27 @@ const easeOutBack = t => {t = clamp(t); const c = 1.6; return 1 + (c + 1) * Math
 
 // The song opens with quick plucks on every eighth note (0.25 s) from 0.157 s. The ring starts on the
 // first one, each logo piece lands on one of the next five, and the ring closes on the beat at 1.9 s.
+export const LOGO_POP = .08;
 export const LOGO_HITS = {ring: [.157, 1.9], pieces: [.407, .657, .907, 1.157, 1.407], flight: .32};
 const span = (t, a, b) => clamp((t - a) / (b - a));
 // Fade in over `inn` after a, out over `out` before b.
 const life = (t, a, b, inn = .45, out = .35) => Math.min(ease(span(t, a, a + inn)), 1 - span(t, b - out, b));
 
-// Assembled logo from the loading screen (285 × 288 box), piece name → [left, top, width].
-const LOGO = {navy: [5, 18, 119], apricot: [129, 0, 130], ivory: [160, 125, 125], steel: [88, 163, 121], sky: [0, 132, 134]};
+// Assembled logo from the loading screen (285 px box, pinwheel centre at 142/148), piece name → [left, top, width].
+const LOGO = {navy: [22, 20, 110], apricot: [137, 5, 125], ivory: [159, 133, 122], steel: [80, 160, 121], sky: [12, 131, 123]};
 const FLY = {navy: [-700, -900, -38], apricot: [800, -700, 42], ivory: [900, 500, -30], steel: [-200, 1100, 34], sky: [-900, 300, -46]};
 export const PIECES = Object.keys(LOGO);
 
 export function loadPieces(base = 'assets/design/') {
-  return Promise.all([...PIECES, 'sand'].map(p => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = `${base}tri-${p}.png`;}))).then(Object.fromEntries);
+  // tri-* are the trait pieces; logo-* are the pieces of the logo itself.
+  const files = [...[...PIECES, 'sand'].map(p => [p, `tri-${p}.png`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`])];
+  return Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
 }
 
 /** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop. */
 function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null) {
   PIECES.forEach((p, i) => {
-    const img = imgs[p]; if (!img) return;
+    const img = imgs[`logo-${p}`] || imgs[p]; if (!img) return;
     const hit = LOGO_HITS.pieces[i], pop = at === null ? 1 : 1 + .14 * clamp(1 - Math.abs(at - hit) / .12);
     const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = at === null ? easeInOut(span(t, i * .09, i * .09 + .55)) : easeOutBack(span(at, hit - LOGO_HITS.flight, hit));
     const [fx, fy, fr] = FLY[p];
@@ -381,8 +384,10 @@ export function drawFrame(ctx, t, s, imgs) {
   const name = at('name');
   if (t < name.end) {
     const move = easeInOut(span(t, name.start - .5, name.start + .3));
+    // Once the ring has closed, the logo pops a little toward the viewer just before it moves up.
+    const pop = 1 + LOGO_POP * Math.sin(Math.PI * span(t, name.start - 1.1, name.start - .35));
     ctx.save(); ctx.globalAlpha = 1 - span(t, name.end - .4, name.end);
-    logo(ctx, imgs, W / 2, 760 - 400 * move, 1.25 - .7 * move, 1, span(t, ...LOGO_HITS.ring), t);
+    logo(ctx, imgs, W / 2, 760 - 400 * move, (1.25 - .7 * move) * pop, 1, span(t, ...LOGO_HITS.ring), t);
     ctx.restore();
   }
   for (const sc of tl) {

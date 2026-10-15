@@ -297,6 +297,24 @@ export function optionLabel(qid, value, language, answers = null) {
 }
 export const cleanOther = v => typeof v === 'string' ? v.replace(/\s+/g, ' ').trim().slice(0, OTHER_MAX) : '';
 
+// Short headlines for the overview (one per answer). «Other» uses the reader's own text when there is one.
+const topics = {
+  role: {knowledge: ['Knowledge work', 'Kunnskapsarbeid'], care: ['Care and health', 'Omsorg og helse'], service: ['Customer contact', 'Kundekontakt'], practical: ['Hands-on work', 'Praktisk arbeid'], creative: ['Creative work', 'Kreativt arbeid'], own: ['Your own business', 'Egen bedrift'], student: ['Your studies', 'Studiene'], none: ['Time between jobs', 'Tiden uten jobb'], other: ['Your job', 'Jobben din']},
+  lead: {no: ['No one to lead', 'Uten lederansvar'], informal: ['Informal responsibility', 'Uformelt ansvar'], small: ['Leading a small team', 'Et lite team å lede'], large: ['Leading many people', 'Å lede mange'], owner: ['Responsibility for staff', 'Ansvar for ansatte'], other: ['Your responsibility', 'Ansvaret ditt']},
+  with: {alone: ['Plenty of time alone', 'Mye alenetid'], team: ['A steady team', 'Et fast team'], many: ['Many different people', 'Mange ulike mennesker'], clients: ['Contact with people', 'Kontakt med mennesker'], remote: ['Working at a distance', 'Arbeid på avstand'], other: ['How you work with others', 'Samarbeidet ditt']},
+  structure: {fixed: ['Fixed routines', 'Faste rutiner'], mixed: ['Fixed and changing tasks', 'Faste og skiftende oppgaver'], shifting: ['A lot of change', 'Mye forandring'], projects: ['Project by project', 'Prosjekt for prosjekt'], other: ['How your work is set up', 'Arbeidsformen din']},
+  pressure: {calm: ['A calm pace', 'Rolig tempo'], peaks: ['Busy periods', 'Travle perioder'], high: ['High pressure', 'Høyt press'], uneven: ['Unpredictable pressure', 'Uforutsigbart press'], other: ['Pressure at work', 'Presset i jobben']},
+  drains: {meetings: ['Many meetings', 'Mange møter'], unclear: ['Unclear expectations', 'Uklare forventninger'], conflict: ['Conflict', 'Konflikter'], routine: ['Repetitive tasks', 'Ensformige oppgaver'], overload: ['Many tasks at once', 'Mange oppgaver samtidig'], judged: ['Being assessed', 'Å bli vurdert'], alone: ['Too much time alone', 'For mye alenetid'], noinfluence: ['Little say', 'Lite innflytelse'], other: ['What drains you', 'Det som tapper deg']},
+  energy: {problems: ['Hard problems', 'Vanskelige problemer'], help: ['Helping others', 'Å hjelpe andre'], finish: ['Getting things done', 'Å få ting ferdig'], learn: ['Learning something new', 'Å lære noe nytt'], people: ['People around you', 'Folk rundt deg'], create: ['Making something of your own', 'Å skape noe eget'], recognition: ['Recognition', 'Anerkjennelse'], variety: ['Variety', 'Variasjon'], other: ['What gives you energy', 'Det som gir deg energi']},
+  goal: {thrive: ['Enjoying where you are', 'Trives der du er'], more: ['More responsibility', 'Mer ansvar'], change: ['A new direction', 'En ny retning'], calm: ['Less stress', 'Mindre stress'], people: ['Working with others', 'Samarbeid'], balance: ['Balance', 'Balanse'], skills: ['Your craft', 'Faget ditt'], other: ['Your goal', 'Målet ditt']}
+};
+export function answerTopic(qid, value, language, answers = null) {
+  const own = value === 'other' ? cleanOther(answers?.other?.[qid]) : '';
+  if (own) return own.charAt(0).toUpperCase() + own.slice(1);
+  const t = topics[qid]?.[value];
+  return t ? pick(t, language) : optionLabel(qid, value, language, answers);
+}
+
 /** True when every question has a valid answer (multi questions need 1–max choices). */
 export function isComplete(answers = {}) {
   return questions.every(q => {

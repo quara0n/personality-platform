@@ -21,18 +21,23 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   // «Other» on a single question stays on the page, shows a short text field and needs «Videre».
   await page.locator('#work .d-career-opt[data-value="other"]').click();await page.locator('#work [data-career-other]').fill('Starte egen praksis');
   await page.locator('[data-career="next"]').click();
-  await page.locator('#work .d-career-sec').first().waitFor();
-  assert.match(await page.locator('#work .d-career-answers').innerText(),/Annet: Starte egen praksis/);
+  await page.locator('#work .d-career-grid').waitFor();
+  assert.match(await page.locator('#work .d-career-deep').textContent(),/Ditt neste steg: Starte egen praksis/);
   // Back to the goal question and pick a plain option for the rest of the check.
   await page.locator('[data-career="edit"]').click();
   for(let i=0;i<7;i++){if(i===5||i===6)await page.locator('[data-career="next"]').click();else await page.locator('#work .d-career-opt[aria-pressed="true"]').first().click();}
   await opt('Få mer ansvar');
-  await page.locator('#work .d-career-sec').first().waitFor();
-  assert.match(await page.locator('#work .d-career-answers').innerText(),/Kontor- eller kunnskapsarbeid · Leder 1–5 personer · I et fast team · Det endrer seg mye · Ofte høyt press/);
+  await page.locator('#work .d-career-grid').waitFor();
+  assert.match(await page.locator('#work [data-career-bar]').innerText(),/Kontor- eller kunnskapsarbeid · Et fast team · Et lite team å lede/);
+  // Overview: two columns with what fits and what is demanding, energy and one thing to try; the rest is folded away.
+  for(const t of ['Dette kan fungere godt','Dette kan bli krevende','Din energi'])assert.ok(await page.locator('#work .d-career-eyebrow',{hasText:t}).count(),t);
+  assert.equal(await page.locator('#work .d-career-deep').getAttribute('open'),null,'details start folded');
+  if(await page.locator('#work [data-career-try]').count()){await page.locator('#work [data-career-try]').check();await page.reload();await page.locator('#work [data-career-try]').waitFor();assert.ok(await page.locator('#work [data-career-try]').isChecked(),'try box remembered');}
+  await page.locator('#work .d-career-deep>summary').click();
   assert.ok(await page.locator('#work .d-career-sec h4',{hasText:'Når du leder'}).count(),'lead section with responsibility');
   if(SHOTS)await work.screenshot({path:`${SHOTS}/arbeid-desktop.png`});
   // Answers survive a reload; «Change» starts the questions again with the answers kept.
-  await page.reload();await page.locator('#work .d-career-sec').first().waitFor();
+  await page.reload();await page.locator('#work .d-career-grid').waitFor();
   await page.locator('[data-career="edit"]').click();
   assert.equal(await page.locator('#work .d-career-opt[aria-pressed="true"]').innerText(),'Kontor- eller kunnskapsarbeid');
   // Everyday life: the children question appears only with children.
