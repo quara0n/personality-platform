@@ -3,6 +3,8 @@
 // and one idea to try. Selected deterministically from the domain band, so each card stays
 // traceable to the score. Each pair is [English, Norwegian bokmål], written for each language.
 
+import {outerCards, strengthLists, contextLevel, levelArt} from './context-levels.js';
+
 const cards = {
   O: {
     work: {
@@ -126,12 +128,18 @@ const cards = {
   }
 };
 
-/** The card for one domain in one chapter ('work' or 'life'), in the given language. */
+/** The card for one domain in one chapter ('work' or 'life'), in the given language.
+ * Uses five levels (context-levels.js): the outer cards below the 10th and above the 90th percentile. */
 export function contextCard(d, chapter, language) {
-  const c = cards[d.code]?.[chapter]?.[d.band];
+  const level = contextLevel(d);
+  const c = outerCards[d.code]?.[chapter]?.[level] || cards[d.code]?.[chapter]?.[d.band];
   if (!c) return null;
-  const i = language === 'no' ? 1 : 0;
-  return {quote: c.quote[i], text: c.text[i], try: c.try[i], ruleId: `context-v1/${d.code}/${chapter}/${d.band}`};
+  const used = outerCards[d.code]?.[chapter]?.[level] ? level : d.band;
+  const i = language === 'no' ? 1 : 0, lists = strengthLists[d.code]?.[chapter]?.[used];
+  return {quote: c.quote[i], text: c.text[i], try: c.try[i], level: used,
+    good: lists ? lists.good.map(x => x[i]) : [], hard: lists ? lists.hard.map(x => x[i]) : [],
+    art: levelArt.has(`${chapter}-${d.code}-${used}`) ? `${chapter}-${d.code}-${used}` : `${chapter}-${d.code}`,
+    ruleId: `context-v2/${d.code}/${chapter}/${used}`};
 }
 
 export const contextCards = cards;
