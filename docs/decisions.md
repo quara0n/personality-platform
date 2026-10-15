@@ -325,3 +325,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune syntes «lavere enn hos 73 av 100» ved 27. persentil var forvirrende. Tallet i setningen og figuren er nå alltid persentilen selv, uttrykt i mennesker, ikke prosent: «Når det gjelder orden, skårer du høyere enn omtrent 27 av 100 mennesker, så du ligger litt lavere enn de fleste.» Over 70 brukes den høye polen («… liker du mer orden enn omtrent 85 av 100 mennesker»). Figurteksten sier «27 av 100 mennesker skårer lavere enn deg» (app/facet-compare.js, brukt på fasettkortene, i gratisprofilen og i oversikten).
 - Jobbkapittelets AI-tekst følger samme regel (lib/career-llm.js). Delingsvideoen er ikke endret ennå.
+
+## Nye fasettbilder for Åpenhet i kvinne/mann 2026-10-15
+- Rune sendte tolv bilder i den nye fasettstilen (O1 Fantasi til O6 Liberalisme, hver i kvinne- og mannsversjon): «legg de inn hvor de skal». De ligger i app/assets/design/facets/female/ og male/, med bakgrunnen gjort gjennomsiktig og beskåret slik som de gamle fasettbildene.
+- Fasettkortene følger valget Kvinne/Mann. Uten valg brukes standardversjonen fra Runes manifest (O3 og O6 mann, resten kvinne); app/facet-art.js. Den nøytrale filen facets/O1–O6.webp er erstattet med standardversjonen, så andre steder som viser fasettbilder, også får den nye stilen.
