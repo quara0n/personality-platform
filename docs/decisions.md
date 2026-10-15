@@ -307,12 +307,18 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune ba om at «Arbeidsliv og karriere» skulle se mer ut som skissen hans (01-overblikk): «mer oversiktelig». Etter at spørsmålene er besvart viser kapittelet nå «Din jobbkontekst» i toppen av kapittelet (yrket eller arbeidstypen, hvordan man jobber med andre og eventuelt lederansvar, med «Endre»), deretter to kolonner: til venstre «Dette kan fungere godt» og «Dette kan bli krevende», til høyre «Din energi» og «Prøv én ting denne uken» med avkrysningen «Jeg skal prøve dette». Hver blokk har en kort overskrift (emnet for svaret den bygger på), én forklaring, fasettene som merker og «Les mer» med prøv-forslaget, hvilket svar det kommer fra og de andre punktene.
 - Resten (det som tapper deg, når du leder, neste steg og hva du bør se etter) ligger sammenfoldet under «Hvordan henger dette sammen med trekkene dine?». Trekkortene står som før under kapittelet. På mobil stables alt i én kolonne. Ved utskrift foldes alt ut.
+- Rune spurte om «Det skurrer» var feil for «Litt av begge» med lav Orden. Det var det: en blandet arbeidsdag skurrer ikke mot lav Orden, så regelen gjelder nå bare «Prosjekt for prosjekt». «Krevende» skal bare vise svar og fasetter som tydelig drar mot hverandre (står også i AI-prompten). Finnes ingen slik, viser blokken det sterkeste punktet fra «Det som tapper deg». Fasettmerkene sier retningen med ord («Orden: lav») i stedet for HØYERE/LAVERE. Formuleringen av «X av 100» tas i tråden «Tall som er lette å forstå».
 - Prøv-forslaget hentes fra «krevende» først, så «tapper», «passer» og «energi». Avkrysningen lagres bare i nettleserfanen.
 
 ## 2026-10-15: Ny logo
 
-- Rune valgte 2026-10-15 en ny logo: fem teksturerte papirtrekanter i virvel. Kantene er rensket, krem-trekanten er gjort litt mørkere med en tynn beige kant så den synes på lys bakgrunn, og trekantene står med jevne mellomrom (72°) rundt midten. Logoen brukes i toppfeltet og bunnfeltet (bilde + «Fem» i Georgia), i lasteanimasjonen, i rapporthodet og i delingsvideoen (app/assets/design/logo-mark.webp og logo-piece-*.webp). Trekkbitene (tri-*.png) er uendret. Favikon og app-ikoner (app/assets/icons/) bygger på den fasetterte vektorlogoen logo-fasett.svg som Rune sendte i Fasett-pakken, beskåret tettere for små størrelser. Kilde og skript ligger i prosjektmappen logo-ny.
+- Rune valgte 2026-10-15 en ny logo: fem teksturerte papirtrekanter i virvel. Kantene er rensket, krem-trekanten er gjort litt mørkere med en tynn beige kant så den synes på lys bakgrunn, og trekantene står med jevne mellomrom (72°) rundt midten. Logoen brukes i toppfeltet og bunnfeltet (bilde + «Fem» i Georgia), i lasteanimasjonen, i rapporthodet og i delingsvideoen (app/assets/design/logo-mark.webp og logo-piece-*.webp). Trekkbitene (tri-*.png) er uendret. Favikon og app-ikoner bruker en flat vektorversjon uten tekstur (app/assets/icons/). Kilde og skript ligger i prosjektmappen logo-ny.
   - I delingsvideoen popper logoen litt mot seeren (8 %) etter at ringen er lukket, rett før den flytter seg opp til navnescenen (LOGO_POP i app/share-video.js).
+
+## 2026-10-15: Toppkortene i «Din profil på ett blikk» i samme stil som trekkortene
+
+- Rune likte de skrå bildekortene i «Utforsk trekkene dine» og sa ja til å bruke stilen på de tre toppkortene i rapportoversikten. Trekket som skiller seg mest ut, fasetten som skiller seg mest ut og kombinasjonen står nå som en rad med tre bildekort (trekkbildet, fasettbildet og profilfiguren). Teksten ligger bak «+» og åpnes i ett felles leseområde under raden, ett kort om gangen. Utskrift og PDF viser alle tre.
+- «Medmenneskelighet» brøt midt i ordet på smale trekkort. Navnet skaleres nå etter kortbredden så det lengste ordet får plass på én linje, og lange trekknavn har myke bindestreker som reserve, så et brudd alltid får bindestrek.
 
 ## 2026-10-15: «X av 100» bruker alltid samme tall som persentilen
 
