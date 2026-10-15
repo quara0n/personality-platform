@@ -162,7 +162,9 @@
       "high": "Du sluttet deg i større grad til utsagn om bekymring. Prøv å skille en konkret bekymring fra et ubesvart spørsmål før du bestemmer hva du vil gjøre.",
       "middle": "Bekymring kan variere med hvor usikker eller viktig en situasjon føles. Sammenlign en kjent oppgave med en ukjent.",
       "work": "For en usikker oppgave: skriv ned den konkrete risikoen og neste opplysning du trenger.",
-      "life": "Sammenlign reaksjonen din på en kjent plan og en uventet endring."
+      "life": "Sammenlign reaksjonen din på en kjent plan og en uventet endring.",
+      "veryLow": "Du sluttet deg til svært få utsagn om bekymring; få i referansegruppen bekymrer seg mindre. Andre deler kanskje ikke roen din, så spør hvordan en plan kjennes for dem før du går videre.",
+      "veryHigh": "Du sluttet deg til mange utsagn om bekymring; få i referansegruppen rapporterer mer. Når en bekymring kommer igjen, skriv den ned én gang med ett neste steg, og bestem når du skal se på den igjen."
     },
     "N2": {
       "name": "Sinne",
@@ -171,7 +173,9 @@
       "high": "Du rapporterer mer irritasjon. Legg merke til hvilken forventning som ikke ble innfridd, og vurder å uttrykke et ønske når du kan gjøre det tydelig.",
       "middle": "Irritasjon kan være knyttet til bestemte frustrasjoner. Legg merke til hvilke forventninger som betyr mest.",
       "work": "Når en prosess frustrerer deg: beskriv hindringen og be om én endring.",
-      "life": "I en uenighet: sett ord på forventningen som ikke ble møtt før du velger hvordan du reagerer."
+      "life": "I en uenighet: sett ord på forventningen som ikke ble møtt før du velger hvordan du reagerer.",
+      "veryLow": "Du rapporterer svært lite irritasjon, mindre enn de fleste. Pass på at reelle problemer likevel blir sagt høyt, selv når de ikke gjør deg sint.",
+      "veryHigh": "Du rapporterer mye irritasjon, mer enn de fleste. En kort pause før du svarer kan hjelpe deg å si hva du trenger, i stedet for hvor irritert du er."
     },
     "N3": {
       "name": "Depresjon",
@@ -180,7 +184,9 @@
       "high": "Du sluttet deg i større grad til utsagn om nedstemthet. Ta hensyn til den siste tidens omstendigheter når du tolker resultatet. Dette er ingen klinisk konklusjon.",
       "middle": "Svarene peker ikke konsekvent mot én ende av skalaen for nedstemthet. Det som nylig har skjedd, kan bidra til å forklare variasjonen.",
       "work": "Se hvordan dagens situasjon påvirker motivasjonen; skåren fastslår ingen helsetilstand.",
-      "life": "Se om svarene passer din vanlige opplevelse eller en særlig vanskelig periode nylig."
+      "life": "Se om svarene passer din vanlige opplevelse eller en særlig vanskelig periode nylig.",
+      "veryLow": "Du sluttet deg til svært få utsagn om nedstemthet, færre enn de fleste. Det beskytter ikke mot tunge perioder; legg merke til om det endrer seg.",
+      "veryHigh": "Du sluttet deg til mange utsagn om nedstemthet, flere enn de fleste. Dette er ingen diagnose, men hvis det stemmer med hvordan du har hatt det en stund, kan det være verdt å snakke med noen du stoler på eller en lege."
     },
     "N4": {
       "name": "Sosial selvbevissthet",
@@ -189,7 +195,9 @@
       "high": "Du rapporterer mer ubehag ved vurdering fra andre. Å forberede ett bidrag kan gjøre en bestemt sosial oppgave mer håndterbar.",
       "middle": "Oppmerksomhet kan føles behagelig i noen situasjoner og ubehagelig i andre. Sammenlign kjente mennesker med et ukjent publikum.",
       "work": "Sammenlign å bidra i et lite, kjent møte med å presentere for et ukjent publikum.",
-      "life": "Velg en sosial situasjon der du kan delta i et behagelig tempo."
+      "life": "Velg en sosial situasjon der du kan delta i et behagelig tempo.",
+      "veryLow": "Du rapporterer svært lite ubehag ved å bli lagt merke til, mindre enn de fleste. Andre kan trenge mer tid før de tar ordet, så gi dem plass.",
+      "veryHigh": "Du rapporterer mye ubehag i sosiale situasjoner, mer enn de fleste. Velg én liten, kjent setting å øve i, og forbered det du vil si."
     },
     "N5": {
       "name": "Manglende måtehold",
@@ -198,7 +206,9 @@
       "high": "Du rapporterer mer vanskelighet med å motstå enkelte impulser. Prøv å gjøre det foretrukne valget lettere tilgjengelig i én hverdagssituasjon.",
       "middle": "Det kan være lettere å motstå en impuls under noen forhold enn andre. Se på tretthet, tilgjengelighet og rutiner rundt én hverdagsfristelse.",
       "work": "Se hvilke forstyrrelser som lettest trekker deg vekk, og gjør én som avbryter arbeidet, vanskeligere å nå.",
-      "life": "For én hverdagsfristelse: endre omgivelsene før du satser på viljestyrke."
+      "life": "For én hverdagsfristelse: endre omgivelsene før du satser på viljestyrke.",
+      "veryLow": "Du rapporterer at du har svært lett for å motstå fristelser, lettere enn de fleste. Sjekk at streng kontroll gir plass til ting du liker.",
+      "veryHigh": "Du rapporterer at du har svært vanskelig for å motstå enkelte impulser, vanskeligere enn de fleste. Velg den vanen som koster deg mest, og gjør den vanskeligere å få tak i."
     },
     "N6": {
       "name": "Sårbarhet",
@@ -207,7 +217,9 @@
       "high": "Du rapporterer større vanskeligheter under press. Det kan være verdt å gjøre ett krav om til et konkret neste steg og avklare hvilken støtte som finnes.",
       "middle": "Opplevelsen av å mestre kan avhenge av presset og støtten du har. Sammenlign to krevende situasjoner fra den siste tiden.",
       "work": "For en krevende oppgave: avklar neste steg og hvem som kan hjelpe hvis du står fast.",
-      "life": "Når flere krav kommer samtidig: skill det som må gjøres nå fra det som kan vente."
+      "life": "Når flere krav kommer samtidig: skill det som må gjøres nå fra det som kan vente.",
+      "veryLow": "Du rapporterer at du takler press svært godt, bedre enn de fleste. Andre kan streve der du ikke gjør det, så sjekk hvordan de har det.",
+      "veryHigh": "Du rapporterer at press er svært krevende, mer enn for de fleste. Avtal på forhånd hvem du kan be om hjelp, og del store krav opp i ett lite neste steg."
     },
     "E1": {
       "name": "Vennlighet",
@@ -216,7 +228,9 @@
       "high": "Du kan ha lett for å uttrykke varme. Undersøk om en ny bekjent ønsker samme tempo i kontakten.",
       "middle": "Du kan møte mennesker ulikt avhengig av situasjonen og hvor godt du kjenner dem. Se når varme kommer lett, og når du foretrekker mer avstand.",
       "work": "Se om kolleger kan oppfatte interessen din i måten du møter dem på.",
-      "life": "Vis interesse på en naturlig måte, og se hvilket tempo den andre foretrekker."
+      "life": "Vis interesse på en naturlig måte, og se hvilket tempo den andre foretrekker.",
+      "veryLow": "Du er svært tilbakeholden når du nærmer deg andre, mer enn de fleste. Andre kan tolke avstand som lite interesse; ett vennlig spørsmål kan hjelpe.",
+      "veryHigh": "Du uttrykker varme svært lett, mer enn de fleste. Ikke alle ønsker nærhet like raskt som deg; la nye folk bestemme noe av tempoet."
     },
     "E2": {
       "name": "Selskapelighet",
@@ -225,7 +239,9 @@
       "high": "Du kan like hyppig selskap og grupper. Planlegg sosial tid, og sjekk samtidig at roligere forpliktelser får oppmerksomhet.",
       "middle": "Både selskap og alenetid kan friste. Gruppestørrelse, hvor godt du kjenner folk og aktiviteten kan forklare hva du foretrekker.",
       "work": "Sammenlign tid til konsentrert arbeid alene med samarbeid når du planlegger arbeidsdagen.",
-      "life": "Planlegg samvær du faktisk liker, fremfor å anta at alle sammenkomster passer."
+      "life": "Planlegg samvær du faktisk liker, fremfor å anta at alle sammenkomster passer.",
+      "veryLow": "Du foretrekker tydelig små sammenkomster eller å være alene, mer enn de fleste. Si hva slags samvær du liker, så invitasjonene passer.",
+      "veryHigh": "Du trives tydelig med store grupper og mye selskap, mer enn de fleste. Legg merke til dem som trenger en roligere setting for å bli med."
     },
     "E3": {
       "name": "Selvhevdelse",
@@ -234,7 +250,9 @@
       "high": "Du kan ha lett for å påvirke en diskusjon. Spør etter andre syn før du tar for gitt at retningen du foretrekker, er gruppens beslutning.",
       "middle": "Du kan si fra eller ta ledelsen i utvalgte situasjoner. Sammenlign et tema du kjenner godt med et der du helst lytter først.",
       "work": "Før en diskusjon: bestem hvilket bidrag du vil få frem og hvordan du vil be om andres syn.",
-      "life": "Gjør én preferanse tydelig når dere avtaler en felles plan."
+      "life": "Gjør én preferanse tydelig når dere avtaler en felles plan.",
+      "veryLow": "Du er mye mindre tilbøyelig til å ta ledelsen enn de fleste. Forbered én setning til når synet ditt trenger å bli hørt.",
+      "veryHigh": "Du tar styringen mye lettere enn de fleste. Spør etter andres syn før du bestemmer, så gruppens valg virkelig blir felles."
     },
     "E4": {
       "name": "Aktivitetsnivå",
@@ -243,7 +261,9 @@
       "high": "Du kan like en full og aktiv kalender. Undersøk om tempoet gir nok rom til å fullføre oppgaver og håndtere overraskelser.",
       "middle": "Høyt tempo kan passe noen dager, mens roligere tempo passer andre. Se hvilke forpliktelser som gir energi og hvilke som blir for mange.",
       "work": "Planlegg forpliktelser i et tempo som gir rom for overganger og uventet arbeid.",
-      "life": "Sammenlign en full dag med en roligere dag og se hvilket tempo du foretrekker."
+      "life": "Sammenlign en full dag med en roligere dag og se hvilket tempo du foretrekker.",
+      "veryLow": "Du foretrekker et mye roligere tempo enn de fleste. Si tidlig fra når en plan blir for full for deg, heller enn sent.",
+      "veryHigh": "Du liker en mye fullere kalender enn de fleste. La én luke stå tom hver uke, så det uventede har et sted å gå."
     },
     "E5": {
       "name": "Spenningssøking",
@@ -252,7 +272,9 @@
       "high": "Du kan like stimulerende opplevelser. Vurder de praktiske konsekvensene uavhengig av hvor spennende et alternativ kjennes.",
       "middle": "Behovet for stimulering kan variere med opplevelsen. Skill interesse for noe nytt fra hvor godt du tåler støy, intensitet eller risiko.",
       "work": "Skill stimuleringen du liker fra avbrytelsene som gjør en oppgave vanskeligere.",
-      "life": "Velg en opplevelse du liker og vurder praktiske konsekvenser uavhengig av spenningen."
+      "life": "Velg en opplevelse du liker og vurder praktiske konsekvenser uavhengig av spenningen.",
+      "veryLow": "Du foretrekker mye mindre intens stimulering enn de fleste. Velg rolige omgivelser uten å anta at alt nytt blir ubehagelig.",
+      "veryHigh": "Du søker spenning mye mer enn de fleste. Før et risikabelt valg, spør hva det koster hvis det går galt, adskilt fra hvor gøy det høres ut."
     },
     "E6": {
       "name": "Munterhet",
@@ -261,7 +283,9 @@
       "high": "Du sluttet deg i større grad til oppstemte utsagn. Entusiasmen din kan være velkommen. Gi også plass til andres skuffelse eller bekymring.",
       "middle": "Positive følelser kan variere mellom situasjoner eller uttrykkes stille. Legg merke til hva du liker uten å kreve konstant entusiasme.",
       "work": "Se hvordan følelsesuttrykket ditt påvirker tonen i en samtale på jobb.",
-      "life": "Del et godt øyeblikk på din egen måte og gi rom for andres følelser."
+      "life": "Del et godt øyeblikk på din egen måte og gi rom for andres følelser.",
+      "veryLow": "Du sluttet deg til svært få oppstemte utsagn, færre enn de fleste. Et roligere følelsesuttrykk er helt greit; hvis gleden har manglet en stund, kan det være verdt å legge merke til.",
+      "veryHigh": "Du sluttet deg til mange oppstemte utsagn, flere enn de fleste. Energien din kan løfte et rom; gi også plass når noen andre har en dårlig dag."
     },
     "O1": {
       "name": "Fantasi",
@@ -270,7 +294,9 @@
       "high": "Du kan ha lett for å forestille deg alternativer. Gi en lovende idé en liten, praktisk form for å undersøke hva den kan bidra med.",
       "middle": "Både konkret tenkning og forestilte muligheter kan være nyttige for deg. Sammenlign en praktisk oppgave med en åpen idé.",
       "work": "For et åpent problem: sammenlign et konkret eksempel med ett alternativ du kan forestille deg.",
-      "life": "Gjør én forestilt mulighet konkret gjennom en skisse, et notat eller en liten utprøving."
+      "life": "Gjør én forestilt mulighet konkret gjennom en skisse, et notat eller en liten utprøving.",
+      "veryLow": "Du foretrekker det konkrete mye mer enn de fleste. Når en plan står fast, be en fantasifull person om ett vilt alternativ.",
+      "veryHigh": "Du forsvinner inn i fantasien mye mer enn de fleste. Gi én idé en frist og et lite, ekte første steg."
     },
     "O2": {
       "name": "Kunstneriske interesser",
@@ -279,7 +305,9 @@
       "high": "Estetiske opplevelser kan bety mye for deg. Vurder å gi bevisst plass til de formene du faktisk liker.",
       "middle": "Estetiske interesser kan være selektive. Bestemt musikk, steder eller kunstformer kan bety mer enn en bred kunstinteresse.",
       "work": "Se om omgivelsenes uttrykk påvirker hvordan du opplever å jobbe der.",
-      "life": "Gi plass til en estetisk opplevelse du liker; kunstneriske ferdigheter kreves ikke."
+      "life": "Gi plass til en estetisk opplevelse du liker; kunstneriske ferdigheter kreves ikke.",
+      "veryLow": "Kunst og skjønnhet betyr mye mindre for deg enn for de fleste. Det sier ingenting om smak eller evner, bare om interessene dine.",
+      "veryHigh": "Kunst og skjønnhet betyr mye mer for deg enn for de fleste. Gi fast plass til formene du er glad i, ikke bare når det er tid."
     },
     "O3": {
       "name": "Følelsesbevissthet",
@@ -288,7 +316,9 @@
       "high": "Du kan være svært oppmerksom på følelsene dine. Bruk dem som informasjon sammen med fakta og praktiske begrensninger i situasjonen.",
       "middle": "Oppmerksomhet på følelser kan avhenge av situasjonen. Sammenlign beslutninger der du merker følelsene dine med dem der praktiske fakta dominerer.",
       "work": "Ved en beslutning: identifiser både fakta og hva du føler om alternativene.",
-      "life": "Sett ord på en følelse og situasjonen rundt den uten å la den bli hele forklaringen."
+      "life": "Sett ord på en følelse og situasjonen rundt den uten å la den bli hele forklaringen.",
+      "veryLow": "Du legger mye mindre merke til følelsene dine enn de fleste. Å sette navn på én følelse før et stort valg kan vise hva som betyr noe for deg.",
+      "veryHigh": "Du kjenner følelsene dine mye sterkere enn de fleste. Bruk dem som informasjon, og sjekk fakta før du handler på en sterk følelse."
     },
     "O4": {
       "name": "Eventyrlyst",
@@ -297,7 +327,9 @@
       "high": "Du kan ønske uvante opplevelser velkommen. Undersøk om en felles endring også fungerer for de andre som berøres.",
       "middle": "Du kan ønske noen endringer velkommen og foretrekke kjente rutiner ellers. Se hva som gjør en ukjent aktivitet verdt å prøve.",
       "work": "Ved en rutineendring: avtal en liten utprøving og hva som gjør den verdt å beholde.",
-      "life": "Sammenlign en kjent aktivitet med én liten, ukjent variant."
+      "life": "Sammenlign en kjent aktivitet med én liten, ukjent variant.",
+      "veryLow": "Du foretrekker det kjente mye mer enn de fleste. Når en endring kommer, be om en liten prøve først.",
+      "veryHigh": "Du søker variasjon mye mer enn de fleste. Sjekk om andre som berøres av en endring ønsker den like mye som deg."
     },
     "O5": {
       "name": "Intellekt",
@@ -306,7 +338,9 @@
       "high": "Du kan like å utforske komplekse ideer. Gjør resonnementet konkret med et eksempel når du formidler det til andre.",
       "middle": "Interessen for abstrakte ideer kan avhenge av temaet og relevansen. Resultatet sier ingenting om intelligensen din.",
       "work": "Velg et konkret eksempel når du forklarer en abstrakt idé til en kollega.",
-      "life": "Utforsk et tema som interesserer deg uten å tolke skåren som et intelligensmål."
+      "life": "Utforsk et tema som interesserer deg uten å tolke skåren som et intelligensmål.",
+      "veryLow": "Abstrakte diskusjoner appellerer mye mindre til deg enn til de fleste. Dette handler om interesse, ikke intelligens; praktiske problemer passer deg kanskje bedre.",
+      "veryHigh": "Du liker komplekse ideer mye mer enn de fleste. Når du forklarer dem, start med et konkret eksempel."
     },
     "O6": {
       "name": "Liberalisme",
@@ -315,7 +349,9 @@
       "high": "Du kan være tilbøyelig til å utfordre konvensjoner. Forklar hva et foreslått alternativ vil forbedre, og hvordan det kan vurderes.",
       "middle": "Svarene på disse kulturavhengige spørsmålene er blandede. De fastslår ingen politisk identitet; se på de enkelte oppfatningene fremfor en generell merkelapp.",
       "work": "Disse kulturavhengige spørsmålene gir ikke grunnlag for råd om yrkesvalg. Vurder en konkret regel ut fra formålet.",
-      "life": "Vurder en konkret konvensjon og betydningen for de berørte; unngå konklusjoner om stemmegivning."
+      "life": "Vurder en konkret konvensjon og betydningen for de berørte; unngå konklusjoner om stemmegivning.",
+      "veryLow": "Du legger mye mer vekt på etablerte konvensjoner enn de fleste. Disse utsagnene er delvis politiske og kulturbundne, så les dette med forsiktighet.",
+      "veryHigh": "Du utfordrer konvensjoner mye mer enn de fleste. Disse utsagnene er delvis politiske og kulturbundne, så les dette med forsiktighet."
     },
     "A1": {
       "name": "Tillit",
@@ -324,7 +360,9 @@
       "high": "Du kan ha lett for å forvente gode hensikter. Kombiner velvilje med tydelige avtaler og oppfølging ved viktige forpliktelser.",
       "middle": "Tillit kan avhenge av personen og hva som står på spill. Sammenlign førsteinntrykket med informasjonen du bruker før en viktig avtale.",
       "work": "Ved en viktig overlevering: kombiner forventninger til folk med tydelig ansvar og et avtalt sjekkpunkt.",
-      "life": "Sammenlign et førsteinntrykk med det personens handlinger viser."
+      "life": "Sammenlign et førsteinntrykk med det personens handlinger viser.",
+      "veryLow": "Du er mye mer forsiktig med andres hensikter enn de fleste. Se på hva en person faktisk gjør før du bestemmer deg om dem.",
+      "veryHigh": "Du forventer gode hensikter mye lettere enn de fleste. Ved viktige saker, legg tydelige avtaler til velviljen."
     },
     "A2": {
       "name": "Moral",
@@ -333,7 +371,9 @@
       "high": "Du kan foretrekke direkte og oppriktig kommunikasjon. Ta hensyn til tidspunkt og privatliv så vel som åpenhet når du deler følsom informasjon.",
       "middle": "Hvor åpent du kommuniserer, kan avhenge av tillit, privatliv og situasjonen. Skåren er ingen vurdering av din moralske verdi.",
       "work": "Avklar hva noen trenger å vite for en rettferdig avtale, og respekter fortrolighet.",
-      "life": "Forklar en preferanse ærlig, og velg passende tidspunkt og detaljnivå."
+      "life": "Forklar en preferanse ærlig, og velg passende tidspunkt og detaljnivå.",
+      "veryLow": "Du rapporterer at du er mye mer strategisk med hva du deler enn de fleste. Sjekk at andre likevel får det de trenger for en rettferdig avtale.",
+      "veryHigh": "Du legger mye mer vekt på ærlighet og fair play enn de fleste. Tidspunkt og privatliv betyr likevel noe når sannheten er tung å høre."
     },
     "A3": {
       "name": "Altruisme",
@@ -342,7 +382,9 @@
       "high": "Du kan ha lett for å tilby hjelp. Undersøk hva personen faktisk ønsker, og hva du kan gi over tid.",
       "middle": "Du kan tilby hjelp ut fra kapasiteten din og hva du blir bedt om. Se når hjelp føles meningsfull, og når en grense er nødvendig.",
       "work": "Før du tilbyr hjelp: sjekk både forespørselen og kapasiteten din.",
-      "life": "Spør hvilken støtte som ønskes før du bestemmer hva du kan tilby."
+      "life": "Spør hvilken støtte som ønskes før du bestemmer hva du kan tilby.",
+      "veryLow": "Å hjelpe andre er en mye mer selektiv forpliktelse for deg enn for de fleste. Si tydelig hva andre kan regne med deg til.",
+      "veryHigh": "Du tilbyr hjelp mye lettere enn de fleste. Sjekk at du fortsatt har plass til dine egne behov."
     },
     "A4": {
       "name": "Samarbeidsvilje",
@@ -351,7 +393,9 @@
       "high": "Du kan foretrekke kompromisser. Si fra om en viktig bekymring tidlig, slik at enigheten gjenspeiler dine behov så vel som andres.",
       "middle": "Du kan inngå kompromisser i noen saker og utfordre andre. Se hvilke uenigheter som krever et tydelig standpunkt og hvilke som gir rom for fleksibilitet.",
       "work": "Ved uenighet: finn punktet du trenger avklart og hva du kan inngå kompromiss om.",
-      "life": "Si fra om ett viktig behov før du går med på en felles beslutning."
+      "life": "Si fra om ett viktig behov før du går med på en felles beslutning.",
+      "veryLow": "Du er mye mer villig til konfrontasjon enn de fleste. Rett innvendingen mot saken, og hold en vei tilbake til enighet åpen.",
+      "veryHigh": "Du unngår konflikt mye mer enn de fleste. Si fra om en viktig bekymring tidlig, før enigheten gjør det vanskeligere."
     },
     "A5": {
       "name": "Beskjedenhet",
@@ -360,7 +404,9 @@
       "high": "Du kan unngå å trekke oppmerksomheten mot egne prestasjoner. En saklig beskrivelse av bidraget ditt kan hjelpe andre med å forstå arbeidet ditt.",
       "middle": "Hvor trygg du er på å fremheve bidraget ditt, kan variere. Sammenlign å beskrive en konkret prestasjon med å gi en generell vurdering av deg selv.",
       "work": "Beskriv bidraget ditt med konkrete resultater og anerkjenn andres arbeid.",
-      "life": "Se når det å dele en prestasjon hjelper noen å bli bedre kjent med deg."
+      "life": "Se når det å dele en prestasjon hjelper noen å bli bedre kjent med deg.",
+      "veryLow": "Du er mye mer komfortabel med å fremheve styrkene dine enn de fleste. Underbygg dem med konkrete eksempler, og gi andre æren også.",
+      "veryHigh": "Du toner ned prestasjonene dine mye mer enn de fleste. En enkel, saklig beskrivelse av hva du gjorde er ikke skryt."
     },
     "A6": {
       "name": "Medfølelse",
@@ -369,7 +415,9 @@
       "high": "Du kan bli sterkt berørt av andres vanskeligheter. Avklar hvilken støtte som ønskes, og hvilket ansvar du rimeligvis kan ta på deg.",
       "middle": "Du kan vektlegge følelser og praktiske hensyn ulikt mellom situasjoner. Se hvordan begge påvirker hvordan du møter andre.",
       "work": "Før du løser et problem: spør hvordan det påvirker personen som tok det opp.",
-      "life": "Balanser omtanke med en tydelig beskrivelse av støtten du kan gi."
+      "life": "Balanser omtanke med en tydelig beskrivelse av støtten du kan gi.",
+      "veryLow": "Du legger mye mer vekt på praktiske hensyn enn de fleste. Spør hvordan et problem kjennes for personen før du løser det.",
+      "veryHigh": "Du blir mye sterkere berørt av andres vanskeligheter enn de fleste. Bestem hva du kan bære, så omsorgen ikke sliter deg ut."
     },
     "C1": {
       "name": "Mestringstro",
@@ -378,7 +426,9 @@
       "high": "Du kan føle deg i stand til å håndtere oppgaver. Undersøk om tryggheten støttes av informasjonen og forberedelsen den aktuelle oppgaven krever.",
       "middle": "Tro på å mestre oppgaver kan variere med erfaring og forberedelser. Finn én oppgave du føler deg klar for og én der støtte ville hjelpe.",
       "work": "For en oppgave du er usikker på: finn forberedelsen eller tilbakemeldingen som ville hjelpe.",
-      "life": "Sjekk troen på egen mestring mot ett konkret eksempel på noe du har håndtert før."
+      "life": "Sjekk troen på egen mestring mot ett konkret eksempel på noe du har håndtert før.",
+      "veryLow": "Du føler deg mye mindre sikker på egen mestring enn de fleste. Dette måler tro, ikke ferdigheter; skriv ned tre ting du har klart før.",
+      "veryHigh": "Du føler deg mye mer i stand enn de fleste. Sjekk at tryggheten hviler på forberedelse til akkurat denne oppgaven."
     },
     "C2": {
       "name": "Orden",
@@ -387,7 +437,9 @@
       "high": "Du kan foretrekke tydelig organisering. Skill mellom struktur som hjelper og detaljer andre ikke trenger å ordne på din måte.",
       "middle": "Du kan foretrekke struktur på noen områder og tåle rot på andre. Finn ordninger som faktisk sparer tid eller frustrasjon.",
       "work": "Velg én ordning som gjør viktige materialer lettere å finne.",
-      "life": "Avtal et nyttig nivå av orden i et felles rom uten å gjøre preferansen din til en regel for alle."
+      "life": "Avtal et nyttig nivå av orden i et felles rom uten å gjøre preferansen din til en regel for alle.",
+      "veryLow": "Du lever med mye mindre orden enn de fleste. Velg én fast plass til tingene som skaper reelle problemer når de blir borte.",
+      "veryHigh": "Du foretrekker orden mye mer enn de fleste. La andre ordne felles rom på sin måte der det ikke betyr noe."
     },
     "C3": {
       "name": "Pliktfølelse",
@@ -396,7 +448,9 @@
       "high": "Du kan ta forpliktelser alvorlig. Ta en avtale opp til åpen vurdering når endrede forhold gjør den opprinnelige forpliktelsen urealistisk.",
       "middle": "Forholdet til forpliktelser kan avhenge av avtalen og formålet. Se hvilke løfter du behandler som faste og hvilke du reforhandler.",
       "work": "Gjør en forpliktelse tydelig og reforhandle tidlig hvis situasjonen endres.",
-      "life": "Velg en påminnelse for ett løfte en annen person er avhengig av."
+      "life": "Velg en påminnelse for ett løfte en annen person er avhengig av.",
+      "veryLow": "Du forholder deg mye løsere til regler og løfter enn de fleste. Avklar hvilke forpliktelser andre faktisk er avhengige av.",
+      "veryHigh": "Du tar forpliktelser mye mer alvorlig enn de fleste. Når forholdene endrer seg, er det lov å forhandle om et løfte."
     },
     "C4": {
       "name": "Prestasjonsstreben",
@@ -405,7 +459,9 @@
       "high": "Du kan arbeide mot krevende mål. Sett et tydelig sluttpunkt og undersøk hvilke andre prioriteringer innsatsen fortrenger.",
       "middle": "Ambisjoner kan være selektive. Finn målene som betyr mye for deg og dem der et tilstrekkelig resultat er nok.",
       "work": "Bestem hva som er et godt resultat, og hva som er godt nok, før du legger inn mer innsats.",
-      "life": "Se hva et krevende mål fortrenger og om avveiningen passer prioriteringene dine."
+      "life": "Se hva et krevende mål fortrenger og om avveiningen passer prioriteringene dine.",
+      "veryLow": "Ambisiøse mål er mye mindre sentrale for deg enn for de fleste. Definer et godt resultat ut fra det du faktisk bryr deg om.",
+      "veryHigh": "Du presser deg mot krevende mål mye mer enn de fleste. Bestem på forhånd når godt nok er nok."
     },
     "C5": {
       "name": "Selvdisiplin",
@@ -414,7 +470,9 @@
       "high": "Du kan ha lett for å holde fast ved oppgaver. Stopp av og til for å undersøke om det å fullføre fortsatt passer med det som er viktigst nå.",
       "middle": "Å komme i gang og holde ut kan avhenge av interesse, tydelighet eller distraksjoner. Sammenlign en fullført oppgave med en du stadig utsatte.",
       "work": "Gjør neste handling liten og synlig, og se om arbeidsforholdene hjelper deg å starte.",
-      "life": "For én gjentakende oppgave: velg et realistisk signal og en kort periode for å komme i gang."
+      "life": "For én gjentakende oppgave: velg et realistisk signal og en kort periode for å komme i gang.",
+      "veryLow": "Du synes det er mye vanskeligere enn de fleste å starte på eller holde fast ved oppgaver. Gjør første steg bitte lite, og legg en synlig påminnelse der du ser den.",
+      "veryHigh": "Du holder fast ved oppgaver mye lettere enn de fleste. Stopp av og til og sjekk at oppgaven fortsatt er riktig prioritet."
     },
     "C6": {
       "name": "Varsomhet",
@@ -423,7 +481,9 @@
       "high": "Du kan vurdere beslutninger grundig. Sett en beslutningsfrist når mer informasjon neppe vil endre valget.",
       "middle": "Du kan tenke grundigere gjennom noen beslutninger enn andre. Se om tiden du bruker står i forhold til konsekvensene av valget.",
       "work": "Tilpass tiden til ettertanke etter konsekvensene og hvor lett valget kan gjøres om.",
-      "life": "For ett valg: bestem hvilken informasjon som er tilstrekkelig og når du skal bestemme deg."
+      "life": "For ett valg: bestem hvilken informasjon som er tilstrekkelig og når du skal bestemme deg.",
+      "veryLow": "Du bestemmer deg mye raskere enn de fleste. Ved valg som er vanskelige å angre, legg inn én sjekk av hva som kan gå galt.",
+      "veryHigh": "Du veier beslutninger mye grundigere enn de fleste. Sett en frist når mer informasjon ikke vil endre valget."
     }
   },
   "pattern": {

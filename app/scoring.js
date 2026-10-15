@@ -44,10 +44,12 @@ function selectDirectionalFacets(facets,limit){
 export function createReport(result,content){
   const format=(template,values)=>template.replace(/\{(\w+)\}/g,(_,key)=>values[key]);
   const domains=result.domains.map(d=>{
+    // Clearer wording beyond the 10th and 90th percentile, when the content has it.
+    const level=f=>f.percentile<10&&f.band==='low'&&content.facets[f.code].veryLow?'veryLow':f.percentile>90&&f.band==='high'&&content.facets[f.code].veryHigh?'veryHigh':f.band;
     const facets=d.facets.map(f=>({...f,name:content.facets[f.code].name,content:content.facets[f.code],
-      interpretation:content.facets[f.code][f.band],
+      interpretation:content.facets[f.code][level(f)],
       nearBoundary:Number.isFinite(f.percentile)?Math.min(Math.abs(f.percentile-30),Math.abs(f.percentile-70))<=5:Math.min(Math.abs(f.mean-2.5),Math.abs(f.mean-3.5))<=0.25,
-      ruleId:`${INSTRUMENT_VERSION}/${f.code}/${f.band}`}));
+      ruleId:`${INSTRUMENT_VERSION}/${f.code}/${level(f)}`}));
     const pct=facets.every(f=>Number.isFinite(f.percentile)),shown=p=>Math.min(99,Math.max(1,p));
     const ranked=[...facets].sort((a,b)=>(pct?b.percentile-a.percentile:b.mean-a.mean)||a.code.localeCompare(b.code));
     const high=ranked[0],low=ranked.at(-1),mixed=pct?high.percentile-low.percentile>=30:high.mean-low.mean>=1;

@@ -162,7 +162,9 @@
       "high": "You endorsed more worry-related statements. Try separating a concrete concern from an unanswered question before deciding what to do.",
       "middle": "Worry may depend on how uncertain or consequential a situation feels. Compare a familiar task with an unfamiliar one.",
       "work": "For an uncertain task, write down the specific risk and the next piece of information you need.",
-      "life": "Compare how you react to a familiar plan and an unexpected change."
+      "life": "Compare how you react to a familiar plan and an unexpected change.",
+      "veryLow": "You endorsed very few worry statements; few people in the reference group worry less. Others may not share your calm, so ask how a plan feels to them before you move on.",
+      "veryHigh": "You endorsed many worry statements; few people in the reference group report more. When a worry repeats, write it down once with one next step, then decide when to look at it again."
     },
     "N2": {
       "name": "Anger",
@@ -171,7 +173,9 @@
       "high": "You report more irritation. Notice the specific unmet expectation and consider expressing a request once you can do so clearly.",
       "middle": "Irritation may arise around particular frustrations rather than across your whole day. Notice which expectations matter most.",
       "work": "When a process frustrates you, describe the obstacle and request one change.",
-      "life": "In a disagreement, name the expectation that was not met before deciding how to respond."
+      "life": "In a disagreement, name the expectation that was not met before deciding how to respond.",
+      "veryLow": "You report very little irritation, less than most people. Make sure that real problems still get said out loud, even when they do not make you angry.",
+      "veryHigh": "You report a lot of irritation, more than most people. A short pause before you answer can help you say what you need instead of how annoyed you are."
     },
     "N3": {
       "name": "Depression",
@@ -180,7 +184,9 @@
       "high": "You endorsed more low-spirited statements. Consider your recent circumstances when interpreting this result; it is not a clinical conclusion.",
       "middle": "Your answers do not point consistently toward either end of the low-spirits scale. Recent circumstances may help explain the variation.",
       "work": "Consider how your current circumstances affect motivation; this score does not establish a health condition.",
-      "life": "Notice whether the answers fit your usual experience or a particularly difficult recent period."
+      "life": "Notice whether the answers fit your usual experience or a particularly difficult recent period.",
+      "veryLow": "You endorsed very few low-spirited statements, fewer than most people. That does not protect against hard periods; notice if that changes.",
+      "veryHigh": "You endorsed many low-spirited statements, more than most people. This is not a diagnosis, but if it matches how you have felt for a while, it may be worth talking to someone you trust or a doctor."
     },
     "N4": {
       "name": "Self-Consciousness",
@@ -189,7 +195,9 @@
       "high": "You report more discomfort with evaluation. Preparing one contribution in advance may make a specific social task feel more manageable.",
       "middle": "Being noticed may feel comfortable in some settings and awkward in others. Compare familiar people with unfamiliar audiences.",
       "work": "Compare contributing in a small familiar meeting with presenting to an unfamiliar audience.",
-      "life": "Choose a social setting where you can participate at a comfortable pace."
+      "life": "Choose a social setting where you can participate at a comfortable pace.",
+      "veryLow": "You report very little discomfort with being noticed, less than most people. Others may need more time before they speak up, so leave room for them.",
+      "veryHigh": "You report a lot of discomfort in social situations, more than most people. Choose one small, familiar setting to practise in, and prepare what you want to say."
     },
     "N5": {
       "name": "Immoderation",
@@ -198,7 +206,9 @@
       "high": "You report more difficulty resisting some urges. For one everyday temptation, try making your preferred choice easier to access.",
       "middle": "Resisting an urge may be easier under some conditions than others. Look at tiredness, access and routines around one everyday temptation.",
       "work": "Notice which distractions are easiest to act on, and change access to one that interrupts your work.",
-      "life": "For one everyday temptation, change the surroundings before relying on willpower."
+      "life": "For one everyday temptation, change the surroundings before relying on willpower.",
+      "veryLow": "You report finding it very easy to resist temptations, easier than most people. Check that strict control leaves room for things you enjoy.",
+      "veryHigh": "You report finding it very hard to resist some urges, harder than most people. Pick the one habit that costs you most and make it harder to reach."
     },
     "N6": {
       "name": "Vulnerability",
@@ -207,7 +217,9 @@
       "high": "You report more difficulty under pressure. Breaking one demand into a next step and clarifying available support may be worth trying.",
       "middle": "Your sense of coping may depend on the kind of pressure and the support available. Compare two recent demanding situations.",
       "work": "For a demanding task, clarify the next step and who can help if you get stuck.",
-      "life": "When several demands arrive together, separate what needs action now from what can wait."
+      "life": "When several demands arrive together, separate what needs action now from what can wait.",
+      "veryLow": "You report feeling very capable under pressure, more than most people. Others may struggle where you do not, so check how they are doing.",
+      "veryHigh": "You report finding pressure very hard, harder than most people. Agree in advance who you can ask for help, and split big demands into the next small step."
     },
     "E1": {
       "name": "Friendliness",
@@ -216,7 +228,9 @@
       "high": "You may readily express warmth. Check whether a new acquaintance welcomes the same pace of connection.",
       "middle": "You may approach people differently depending on familiarity and setting. Notice when warmth comes easily and when you prefer more distance.",
       "work": "Notice whether colleagues can read your interest from how you approach them.",
-      "life": "Express interest in a way that feels natural, while checking the other person’s preferred pace."
+      "life": "Express interest in a way that feels natural, while checking the other person’s preferred pace.",
+      "veryLow": "You approach people very reservedly, more than most. People may read distance as lack of interest; one friendly question can help.",
+      "veryHigh": "You express warmth very readily, more than most people. Not everyone wants closeness as fast as you; let new people set part of the pace."
     },
     "E2": {
       "name": "Gregariousness",
@@ -225,7 +239,9 @@
       "high": "You may enjoy frequent company and groups. Plan social time while checking that quieter commitments also get attention.",
       "middle": "Company and time alone may both appeal to you. Group size, familiarity and the activity may explain which you prefer.",
       "work": "Compare individual focus time with collaborative time when planning a working day.",
-      "life": "Plan a form of connection you actually enjoy, rather than assuming every gathering suits you."
+      "life": "Plan a form of connection you actually enjoy, rather than assuming every gathering suits you.",
+      "veryLow": "You strongly prefer small gatherings or being alone, more than most people. Say what kind of company you do enjoy, so invitations fit.",
+      "veryHigh": "You strongly enjoy large groups and lots of company, more than most people. Notice the people who need a quieter setting to join in."
     },
     "E3": {
       "name": "Assertiveness",
@@ -234,7 +250,9 @@
       "high": "You may readily influence a discussion. Invite an alternative view before treating your preferred direction as the group's decision.",
       "middle": "You may speak up or take the lead selectively. Compare a subject you know well with one where you prefer to listen first.",
       "work": "Before a discussion, decide what contribution you want heard and how you will invite other views.",
-      "life": "Make one preference explicit when agreeing on a shared plan."
+      "life": "Make one preference explicit when agreeing on a shared plan.",
+      "veryLow": "You are much less inclined to take the lead than most people. Prepare one sentence for when your view needs to be heard.",
+      "veryHigh": "You take charge much more readily than most people. Ask for others' views before you decide, so the group's choice is really shared."
     },
     "E4": {
       "name": "Activity Level",
@@ -243,7 +261,9 @@
       "high": "You may enjoy a full, active schedule. Check whether the pace leaves enough room to finish tasks and respond to surprises.",
       "middle": "A busy pace may suit some days, while a slower pace suits others. Notice which commitments energise you and which create overload.",
       "work": "Plan commitments at a pace that leaves room for transitions and unexpected work.",
-      "life": "Compare a full day with a quieter day and notice which pace you prefer."
+      "life": "Compare a full day with a quieter day and notice which pace you prefer.",
+      "veryLow": "You prefer a much slower pace than most people. Say early when a plan is too full for you, rather than late.",
+      "veryHigh": "You enjoy a much fuller schedule than most people. Leave one empty slot each week, so the unexpected has somewhere to go."
     },
     "E5": {
       "name": "Excitement-Seeking",
@@ -252,7 +272,9 @@
       "high": "You may enjoy stimulating experiences. Consider the practical consequences separately from how exciting an option feels.",
       "middle": "Your appetite for stimulation may vary by experience. Separate interest in novelty from comfort with noise, intensity or risk.",
       "work": "Distinguish the stimulation you enjoy from the interruptions that make a task harder.",
-      "life": "Choose an enjoyable experience and assess its practical consequences separately from its excitement."
+      "life": "Choose an enjoyable experience and assess its practical consequences separately from its excitement.",
+      "veryLow": "You prefer much less intense stimulation than most people. Choose calm settings without assuming everything new will be unpleasant.",
+      "veryHigh": "You seek excitement much more than most people. Before a risky choice, ask what it costs if it goes wrong, separately from how fun it sounds."
     },
     "E6": {
       "name": "Cheerfulness",
@@ -261,7 +283,9 @@
       "high": "You endorsed more upbeat statements. Your enthusiasm may be welcome; also leave space for someone else's disappointment or concern.",
       "middle": "Positive feelings may vary across situations or be expressed quietly. Notice what you enjoy without requiring constant enthusiasm.",
       "work": "Notice how your emotional expression affects the tone of a team conversation.",
-      "life": "Share an enjoyable moment in your own style, leaving room for other people’s feelings."
+      "life": "Share an enjoyable moment in your own style, leaving room for other people’s feelings.",
+      "veryLow": "You endorsed very few upbeat statements, fewer than most people. A quieter emotional style is fine; if joy has been missing for a while, it may be worth noticing.",
+      "veryHigh": "You endorsed many upbeat statements, more than most people. Your energy can lift a room; also leave space when someone else is having a bad day."
     },
     "O1": {
       "name": "Imagination",
@@ -270,7 +294,9 @@
       "high": "You may readily imagine alternatives. Capture a promising idea in a small practical form to see what it offers.",
       "middle": "Concrete thinking and imagined possibilities may both be useful to you. Compare how you approach a practical task and an open-ended idea.",
       "work": "For an open problem, compare a concrete example with one alternative you can imagine.",
-      "life": "Try making one imagined possibility concrete through a sketch, note or small trial."
+      "life": "Try making one imagined possibility concrete through a sketch, note or small trial.",
+      "veryLow": "You prefer the concrete much more than most people. When a plan is stuck, ask someone imaginative for one wild alternative.",
+      "veryHigh": "You get lost in imagination much more than most people. Give one idea a deadline and a small, real first step."
     },
     "O2": {
       "name": "Artistic Interests",
@@ -279,7 +305,9 @@
       "high": "Aesthetic experiences may matter to you. Consider making intentional room for the forms you actually enjoy.",
       "middle": "Your aesthetic interests may be selective. Particular music, places or art forms may matter more than a broad interest in art.",
       "work": "Notice whether the appearance of your surroundings affects your experience of working there.",
-      "life": "Make room for an aesthetic experience you enjoy; no artistic skill is required."
+      "life": "Make room for an aesthetic experience you enjoy; no artistic skill is required.",
+      "veryLow": "Art and beauty matter much less to you than to most people. That says nothing about your taste or ability, only your interests.",
+      "veryHigh": "Art and beauty matter much more to you than to most people. Make regular room for the forms you love, not just when there is time."
     },
     "O3": {
       "name": "Emotionality",
@@ -288,7 +316,9 @@
       "high": "You may attend closely to your feelings. Treat them as information alongside the facts and practical constraints of a situation.",
       "middle": "Attention to feelings may depend on the situation. Compare decisions where you notice your emotions with those where practical facts dominate.",
       "work": "When making a decision, identify both the facts and how you feel about the options.",
-      "life": "Name a feeling and the situation around it without treating it as the whole explanation."
+      "life": "Name a feeling and the situation around it without treating it as the whole explanation.",
+      "veryLow": "You pay much less attention to your feelings than most people. Naming one feeling before a big decision can show what matters to you.",
+      "veryHigh": "You feel your emotions much more intensely than most people. Use them as information, and check the facts before acting on a strong feeling."
     },
     "O4": {
       "name": "Adventurousness",
@@ -297,7 +327,9 @@
       "high": "You may welcome unfamiliar experiences. Check whether a shared change also works for the people affected by it.",
       "middle": "You may welcome some changes while preferring familiar routines elsewhere. Notice what makes an unfamiliar activity worth trying.",
       "work": "For a change in routine, agree on a small trial and what would make it worth keeping.",
-      "life": "Compare a familiar activity with one small unfamiliar variation."
+      "life": "Compare a familiar activity with one small unfamiliar variation.",
+      "veryLow": "You prefer the familiar much more than most people. When change is coming, ask for a small trial first.",
+      "veryHigh": "You seek variety much more than most people. Check whether others affected by a change want it as much as you do."
     },
     "O5": {
       "name": "Intellect",
@@ -306,7 +338,9 @@
       "high": "You may enjoy exploring complex ideas. Translate your reasoning into a concrete example when communicating it to others.",
       "middle": "Interest in abstract ideas may depend on the topic and its relevance. This result says nothing about your intelligence.",
       "work": "Choose a concrete example when explaining an abstract idea to a colleague.",
-      "life": "Explore a topic that interests you without treating this score as a measure of intelligence."
+      "life": "Explore a topic that interests you without treating this score as a measure of intelligence.",
+      "veryLow": "Abstract discussion appeals much less to you than to most people. This is about interest, not intelligence; practical problems may suit you better.",
+      "veryHigh": "You enjoy complex ideas much more than most people. When you explain them, start with a concrete example."
     },
     "O6": {
       "name": "Liberalism",
@@ -315,7 +349,9 @@
       "high": "You may be inclined to question conventions. Explain what a proposed alternative would improve and how it could be evaluated.",
       "middle": "These culturally specific answers are mixed. They cannot establish a political identity; consider the individual beliefs rather than a general label.",
       "work": "These culturally specific items do not support advice about job fit. Examine a particular rule on its merits.",
-      "life": "Consider a specific convention and what it does for the people affected; avoid drawing conclusions about voting."
+      "life": "Consider a specific convention and what it does for the people affected; avoid drawing conclusions about voting.",
+      "veryLow": "You value established conventions much more than most people. These items are partly political and culture-bound, so read this with care.",
+      "veryHigh": "You question conventions much more than most people. These items are partly political and culture-bound, so read this with care."
     },
     "A1": {
       "name": "Trust",
@@ -324,7 +360,9 @@
       "high": "You may readily expect good intentions. For important commitments, combine goodwill with clear agreements and follow-through.",
       "middle": "Trust may depend on the person and the stakes. Compare initial expectations with the evidence you use before an important commitment.",
       "work": "For an important handoff, combine expectations about people with clear ownership and a check-in.",
-      "life": "Compare a first impression with evidence from the person’s actions."
+      "life": "Compare a first impression with evidence from the person’s actions.",
+      "veryLow": "You are much more cautious about others' intentions than most people. Look at what a person actually does before you decide about them.",
+      "veryHigh": "You expect good intentions much more readily than most people. For important matters, add clear agreements to your goodwill."
     },
     "A2": {
       "name": "Morality",
@@ -333,7 +371,9 @@
       "high": "You may favor straightforward communication. Consider timing and privacy as well as candor when sharing sensitive information.",
       "middle": "How openly you communicate may depend on trust, privacy and the situation. This score is not a judgment of your moral worth.",
       "work": "Clarify what someone needs to know for a fair agreement, while respecting confidentiality.",
-      "life": "Explain a preference honestly while choosing an appropriate time and level of detail."
+      "life": "Explain a preference honestly while choosing an appropriate time and level of detail.",
+      "veryLow": "You report being much more strategic about what you disclose than most people. Check that others still get what they need for a fair deal.",
+      "veryHigh": "You favour honesty and fair play much more than most people. Timing and privacy still matter when the truth is hard to hear."
     },
     "A3": {
       "name": "Altruism",
@@ -342,7 +382,9 @@
       "high": "You may readily offer help. Check what the person actually wants and what you can sustainably provide.",
       "middle": "You may offer help selectively, depending on capacity and the request. Notice when helping feels worthwhile and when a limit is needed.",
       "work": "Before offering help, check both the request and your available capacity.",
-      "life": "Ask what support is wanted before deciding what to offer."
+      "life": "Ask what support is wanted before deciding what to offer.",
+      "veryLow": "Helping others is a much more selective commitment for you than for most people. Say clearly what others can count on you for.",
+      "veryHigh": "You offer help much more readily than most people. Check that you still have room for your own needs."
     },
     "A4": {
       "name": "Cooperation",
@@ -351,7 +393,9 @@
       "high": "You may prefer compromise. State an important concern early so agreement reflects your needs as well as others'.",
       "middle": "You may compromise on some issues and challenge others. Notice which disagreements deserve a clear position and which allow flexibility.",
       "work": "In a disagreement, identify the point you need resolved and what you can compromise on.",
-      "life": "State one important need before agreeing to a shared decision."
+      "life": "State one important need before agreeing to a shared decision.",
+      "veryLow": "You are much more willing to confront than most people. Aim the challenge at the issue, and keep a way back to agreement open.",
+      "veryHigh": "You avoid conflict much more than most people. Say an important concern early, before agreeing makes it harder."
     },
     "A5": {
       "name": "Modesty",
@@ -360,7 +404,9 @@
       "high": "You may avoid drawing attention to your achievements. A factual account of your contribution can help others understand your work.",
       "middle": "Comfort with highlighting your contribution may vary by setting. Compare sharing a factual achievement with making a broad claim about yourself.",
       "work": "Describe your contribution using concrete outcomes and acknowledge others’ work.",
-      "life": "Notice when sharing an achievement helps someone know you better."
+      "life": "Notice when sharing an achievement helps someone know you better.",
+      "veryLow": "You are much more comfortable highlighting your strengths than most people. Back them with concrete examples and credit others too.",
+      "veryHigh": "You play down your achievements much more than most people. A plain, factual account of what you did is not bragging."
     },
     "A6": {
       "name": "Sympathy",
@@ -369,7 +415,9 @@
       "high": "You may be strongly moved by others' difficulties. Clarify what support is wanted and which responsibilities you can reasonably take on.",
       "middle": "You may weigh personal feelings and practical considerations differently across situations. Notice how both inform your response to another person.",
       "work": "Before solving a problem, ask how it affects the person who brought it to you.",
-      "life": "Balance concern with a clear account of the support you can provide."
+      "life": "Balance concern with a clear account of the support you can provide.",
+      "veryLow": "You put much more weight on practical considerations than most people. Ask how a problem feels to the person before you solve it.",
+      "veryHigh": "You are much more strongly moved by others' difficulties than most people. Decide what you can carry, so caring does not wear you out."
     },
     "C1": {
       "name": "Self-Efficacy",
@@ -378,7 +426,9 @@
       "high": "You may feel capable of handling tasks. Check that your confidence is supported by the information and preparation this task requires.",
       "middle": "Confidence in handling tasks may vary with experience and preparation. Identify one task you feel ready for and one where support would help.",
       "work": "For a task you are unsure about, identify the preparation or feedback that would help.",
-      "life": "Check your confidence against one concrete example of what you have handled before."
+      "life": "Check your confidence against one concrete example of what you have handled before.",
+      "veryLow": "You feel much less sure of your own effectiveness than most people. This measures belief, not skill; list three things you have handled before.",
+      "veryHigh": "You feel much more capable than most people. Check that the confidence rests on preparation for this particular task."
     },
     "C2": {
       "name": "Orderliness",
@@ -387,7 +437,9 @@
       "high": "You may prefer clear organization. Distinguish the structure that helps from details that others need not arrange your way.",
       "middle": "You may prefer structure in some areas and tolerate disorder in others. Identify which arrangements actually save you time or friction.",
       "work": "Choose one arrangement that makes important materials easier to find.",
-      "life": "Agree on a useful level of order in a shared space without treating preference as a universal standard."
+      "life": "Agree on a useful level of order in a shared space without treating preference as a universal standard.",
+      "veryLow": "You live with much less order than most people. Pick one place for the things that cause real trouble when lost.",
+      "veryHigh": "You prefer order much more than most people. Let others keep shared spaces their way where it does not matter."
     },
     "C3": {
       "name": "Dutifulness",
@@ -396,7 +448,9 @@
       "high": "You may take obligations seriously. Revisit an agreement openly when changed circumstances make the original commitment unrealistic.",
       "middle": "Your approach to obligations may depend on the commitment and its purpose. Notice which promises you treat as fixed and which you renegotiate.",
       "work": "Make a commitment explicit and renegotiate it early if circumstances change.",
-      "life": "Choose a reminder for one promise another person relies on."
+      "life": "Choose a reminder for one promise another person relies on.",
+      "veryLow": "You treat rules and promises much more loosely than most people. Clarify the commitments others really depend on.",
+      "veryHigh": "You take obligations much more seriously than most people. When circumstances change, renegotiating a promise is allowed."
     },
     "C4": {
       "name": "Achievement-Striving",
@@ -405,7 +459,9 @@
       "high": "You may pursue demanding goals. Set a clear stopping point and check what other priorities the effort displaces.",
       "middle": "Ambition may be selective rather than constant. Identify the goals that matter to you and those where a sufficient result is enough.",
       "work": "Define what success and sufficient completion mean before spending more effort.",
-      "life": "Check what a demanding goal displaces and whether the trade-off matches your priorities."
+      "life": "Check what a demanding goal displaces and whether the trade-off matches your priorities.",
+      "veryLow": "Ambitious goals are much less central for you than for most people. Define success around what you actually care about.",
+      "veryHigh": "You push towards demanding goals much more than most people. Decide in advance when good enough is enough."
     },
     "C5": {
       "name": "Self-Discipline",
@@ -414,7 +470,9 @@
       "high": "You may persist with tasks readily. Pause occasionally to check that completing the task still serves the current priority.",
       "middle": "Starting and persisting may depend on interest, clarity or distractions. Compare one task you completed with one you kept postponing.",
       "work": "Make the next action small and visible, then check whether your working conditions help you start.",
-      "life": "For one recurring task, choose a realistic cue and a short starting period."
+      "life": "For one recurring task, choose a realistic cue and a short starting period.",
+      "veryLow": "You find it much harder than most people to start or keep going on tasks. Make the first step tiny and put a visible reminder where you will see it.",
+      "veryHigh": "You keep going on tasks much more readily than most people. Stop now and then to check the task is still the right priority."
     },
     "C6": {
       "name": "Cautiousness",
@@ -423,7 +481,9 @@
       "high": "You may weigh decisions carefully. Set a decision deadline when further information is unlikely to change the choice.",
       "middle": "You may deliberate more for some decisions than others. Notice whether your time spent thinking matches the consequences of the choice.",
       "work": "Match time spent deliberating to the consequences and reversibility of the decision.",
-      "life": "For one choice, decide what information is enough and when you will decide."
+      "life": "For one choice, decide what information is enough and when you will decide.",
+      "veryLow": "You decide much faster than most people. For choices that are hard to undo, add one check of what could go wrong.",
+      "veryHigh": "You weigh decisions much more carefully than most people. Set a deadline when more information will not change the choice."
     }
   },
   "pattern": {

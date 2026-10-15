@@ -62,18 +62,93 @@ const extremity = x => Number.isFinite(x.percentile) ? Math.abs(x.percentile - 5
 /** Up to two traits outside the middle range, furthest from the middle first. Shared with the profile name. */
 export const standouts = domains => domains.filter(d => d.band !== 'middle').sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code)).slice(0, 2);
 
+// One "you may" line per facet and direction. The combination adds the line for the most
+// distinctive facet that points the same way as its trait, so two people with the same pair of
+// traits usually read different sentences. [English, Norwegian bokmål], same editorial status.
+export const facetLines = {
+  N1h: ['you may often think through what could go wrong.', 'du kan ofte tenke gjennom hva som kan gå galt.'],
+  N1l: ['you may rarely let worries take over.', 'du lar sjelden bekymringer ta over.'],
+  N2h: ['you may react quickly when something annoys you.', 'du kan reagere raskt når noe irriterer deg.'],
+  N2l: ['you may stay patient when others get annoyed.', 'du kan holde deg tålmodig når andre blir irritert.'],
+  N3h: ['you may feel low periods quite strongly.', 'du kan kjenne tunge perioder ganske sterkt.'],
+  N3l: ['you may usually feel comfortable with yourself.', 'du kjenner deg som regel vel med deg selv.'],
+  N4h: ['you may feel uneasy when attention is on you.', 'du kan kjenne ubehag når oppmerksomheten er på deg.'],
+  N4l: ['you may handle awkward social moments without much fuss.', 'du kan takle kleine sosiale øyeblikk uten mye styr.'],
+  N5h: ['you may find it hard to stop once you have started something you enjoy.', 'du kan synes det er vanskelig å stoppe når du først har begynt på noe du liker.'],
+  N5l: ['you may find it fairly easy to resist temptations.', 'du kan ha ganske lett for å motstå fristelser.'],
+  N6h: ['you may feel overwhelmed when a lot happens at once.', 'du kan bli overveldet når mye skjer samtidig.'],
+  N6l: ['you may stay calm when the pressure is on.', 'du kan holde roen når presset er på.'],
+  E1h: ['you may find it easy to make new friends.', 'du kan ha lett for å få nye venner.'],
+  E1l: ['you may take time before you let new people close.', 'du kan bruke tid før du slipper nye folk inn på deg.'],
+  E2h: ['you may enjoy big gatherings with many people.', 'du kan trives i store samlinger med mange folk.'],
+  E2l: ['you may prefer small groups or time alone.', 'du kan foretrekke små grupper eller tid alene.'],
+  E3h: ['you may readily take charge.', 'du kan ha lett for å ta styringen.'],
+  E3l: ['you may prefer to let others lead.', 'du kan foretrekke å la andre lede an.'],
+  E4h: ['you may like a full and busy schedule.', 'du kan like en full og travel kalender.'],
+  E4l: ['you may prefer a relaxed pace.', 'du kan foretrekke et rolig tempo.'],
+  E5h: ['you may seek out excitement and new thrills.', 'du kan oppsøke spenning og nye kick.'],
+  E5l: ['you may prefer calm experiences to wild ones.', 'du kan foretrekke rolige opplevelser fremfor ville.'],
+  E6h: ['you may often feel joy and show it.', 'du kan ofte kjenne glede og vise den.'],
+  E6l: ['you may show high spirits less often than others.', 'du kan vise lystighet sjeldnere enn andre.'],
+  O1h: ['you may often get lost in your own thoughts and fantasies.', 'du kan ofte forsvinne inn i egne tanker og fantasier.'],
+  O1l: ['you may prefer what is concrete to what is imagined.', 'du kan foretrekke det konkrete fremfor det fantaserte.'],
+  O2h: ['you may notice beauty that others walk past.', 'du kan legge merke til skjønnhet andre går forbi.'],
+  O2l: ['you may care less for art and poetry.', 'du kan bry deg mindre om kunst og poesi.'],
+  O3h: ['you may feel your emotions intensely.', 'du kan kjenne følelsene dine sterkt.'],
+  O3l: ['you may pay less attention to your own feelings.', 'du kan legge mindre merke til dine egne følelser.'],
+  O4h: ['you may prefer variety to routine.', 'du kan foretrekke variasjon fremfor rutiner.'],
+  O4l: ['you may prefer what you know to what is new.', 'du kan foretrekke det kjente fremfor det nye.'],
+  O5h: ['you may enjoy abstract and challenging ideas.', 'du kan like abstrakte og krevende ideer.'],
+  O5l: ['you may prefer practical problems to theoretical ones.', 'du kan foretrekke praktiske problemer fremfor teoretiske.'],
+  O6h: ['you may question rules and conventions.', 'du kan stille spørsmål ved regler og konvensjoner.'],
+  O6l: ['you may value established ways and traditions.', 'du kan verdsette etablerte måter og tradisjoner.'],
+  A1h: ['you may expect good intentions from others.', 'du kan forvente gode hensikter hos andre.'],
+  A1l: ['you may be cautious about trusting others.', 'du kan være forsiktig med å stole på andre.'],
+  A2h: ['you may be straightforward and play fair.', 'du kan være rett frem og spille med åpne kort.'],
+  A2l: ['you may be strategic about what you share.', 'du kan være strategisk med hva du deler.'],
+  A3h: ['you may readily spend time helping others.', 'du kan ha lett for å bruke tid på å hjelpe andre.'],
+  A3l: ['you may be selective about when you help.', 'du kan være selektiv med når du hjelper.'],
+  A4h: ['you may prefer to avoid open conflict.', 'du kan helst unngå åpen konflikt.'],
+  A4l: ['you may stand your ground in a confrontation.', 'du kan stå i en konfrontasjon uten å trekke deg.'],
+  A5h: ['you may play down your own achievements.', 'du kan tone ned egne prestasjoner.'],
+  A5l: ['you may be comfortable talking about your strengths.', 'du kan være komfortabel med å snakke om styrkene dine.'],
+  A6h: ['you may be strongly moved by others’ difficulties.', 'du kan bli sterkt berørt av andres vanskeligheter.'],
+  A6l: ['you may focus more on practical solutions than on feelings.', 'du kan fokusere mer på praktiske løsninger enn på følelser.'],
+  C1h: ['you may trust that you can handle what comes.', 'du kan stole på at du takler det som kommer.'],
+  C1l: ['you may doubt whether you will manage a task.', 'du kan tvile på om du får til en oppgave.'],
+  C2h: ['you may like having things in order around you.', 'du kan like å ha orden rundt deg.'],
+  C2l: ['you may live fine with some mess.', 'du kan leve fint med litt rot.'],
+  C3h: ['you may take promises and rules seriously.', 'du kan ta løfter og regler på alvor.'],
+  C3l: ['you may treat rules and promises more loosely.', 'du kan forholde deg løsere til regler og løfter.'],
+  C4h: ['you may push yourself towards demanding goals.', 'du kan presse deg mot krevende mål.'],
+  C4l: ['you may be content with doing what is needed.', 'du kan være fornøyd med å gjøre det som trengs.'],
+  C5h: ['you may get started on tasks without putting them off.', 'du kan komme i gang med oppgaver uten å utsette dem.'],
+  C5l: ['you may find it hard to get started on tasks.', 'du kan synes det er vanskelig å komme i gang med oppgaver.'],
+  C6h: ['you may think carefully before you act.', 'du kan tenke deg nøye om før du handler.'],
+  C6l: ['you may act quickly, sometimes before thinking it through.', 'du kan handle raskt, noen ganger før du har tenkt det gjennom.']
+};
+
+/** The most distinctive facet of the given traits that points the same way as its own trait. */
+function nuance(traits, language) {
+  const f = traits.flatMap(d => (d.facets || []).filter(x => x.band === d.band))
+    .sort((a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code))[0];
+  if (!f) return {facet: null, nuance: ''};
+  const name = language === 'no' ? f.name.toLowerCase() : f.name;
+  return {facet: f, nuance: pick([`It shows most in ${name}: ${facetLines[`${f.code}${f.band[0]}`][0]}`, `Det synes mest i ${name}: ${facetLines[`${f.code}${f.band[0]}`][1]}`], language)};
+}
+
 /** Title, sentence and the traits it rests on; falls back gracefully when few traits stand out. */
 export function combination(domains, language) {
   const out = standouts(domains);
   if (out.length < 2) {
     if (out.length === 1) {
       const d = out[0];
-      return {title: pick(words[d.code][d.band], language), traits: out, text: pick(['One trait stands out while the other four sit near the middle, so the situation may shape much of how they show.', 'Ett trekk skiller seg ut, mens de fire andre ligger nær midten. Situasjonen kan derfor forme mye av hvordan de viser seg.'], language)};
+      return {title: pick(words[d.code][d.band], language), traits: out, ...nuance(out, language), text: pick(['One trait stands out while the other four sit near the middle, so the situation may shape much of how they show.', 'Ett trekk skiller seg ut, mens de fire andre ligger nær midten. Situasjonen kan derfor forme mye av hvordan de viser seg.'], language)};
     }
-    return {title: pick(['Balanced', 'Balansert'], language), traits: [], text: pick(['All five traits sit near the middle, so you may adapt a lot to the situation you are in.', 'Alle fem trekkene ligger nær midten, så du kan tilpasse deg mye etter situasjonen du er i.'], language)};
+    return {title: pick(['Balanced', 'Balansert'], language), traits: [], facet: null, nuance: '', text: pick(['All five traits sit near the middle, so you may adapt a lot to the situation you are in.', 'Alle fem trekkene ligger nær midten, så du kan tilpasse deg mye etter situasjonen du er i.'], language)};
   }
   const [a, b] = out.sort((x, y) => ORDER.indexOf(x.code) - ORDER.indexOf(y.code));
   const key = `${a.code}${a.band[0]}${b.code}${b.band[0]}`;
   const second = pick(words[b.code][b.band], language);
-  return {title: `${pick(words[a.code][a.band], language)} ${language === 'no' ? 'og' : 'and'} ${second.charAt(0).toLowerCase()}${second.slice(1)}`, traits: [a, b], text: pick(pairs[key], language)};
+  return {title: `${pick(words[a.code][a.band], language)} ${language === 'no' ? 'og' : 'and'} ${second.charAt(0).toLowerCase()}${second.slice(1)}`, traits: [a, b], ...nuance([a, b], language), text: pick(pairs[key], language)};
 }
