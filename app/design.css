@@ -1088,3 +1088,6 @@ details.d-tailor-form{border:0;padding:0}
 .d-video-intro .d-share-bar{left:14px;right:14px;bottom:12px}
 .d-video-intro .d-share-bar span{font-size:13px}
 .d-share.is-still .d-share-bar,.d-share.is-still .d-share-sound{display:none}
+
+/* "X of 100" comparison on facet cards */
+.d-compare{font-weight:600;color:var(--title);margin:0 0 .4em}

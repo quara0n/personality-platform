@@ -6,6 +6,7 @@
 import {traitColors} from './design-copy.js';
 import {combination} from './combination-copy.js';
 import {profileName} from './profile-name.js';
+import {compareLine} from './facet-compare.js';
 
 const ORDER = ['O', 'C', 'E', 'A', 'N'];
 const still = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -63,7 +64,7 @@ export function glanceHtml(c) {
     <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}</div>${tabs}</div>
     <div class="d-glance-cards">
       <article class="d-glance-card is-warm"><img src="assets/design/trait-${strongest.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('The trait that stands out most', 'Trekket som skiller seg mest ut')}</p><h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p></div></article>
-      <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p><p>${c.esc(facet.interpretation)}</p></div></article>
+      <article class="d-glance-card is-cool"><img src="assets/design/facets/${facet.code}.webp" alt="" aria-hidden="true"><div><p class="d-glance-eyebrow">${c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut')}</p><h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p>${compareLine(facet, c.language) ? `<p class="d-compare">${c.esc(compareLine(facet, c.language))}</p>` : ''}<p>${c.esc(facet.interpretation)}</p></div></article>
     </div>
     <article class="d-combo"><div class="d-combo-pieces" aria-hidden="true">${combo.traits.map(d => c.piece(d.code)).join('')}</div><div><p class="d-glance-eyebrow">${c.tr('Your combination', 'Kombinasjonen din')}</p><h3>${c.esc(combo.title)}</h3><p>${c.esc(combo.text)}${combo.nuance ? ' ' + c.esc(combo.nuance) : ''}</p>${combo.traits.length === 2 ? `<p class="d-small">${c.tr(`Based on the two traits furthest from the middle: ${c.name(combo.traits[0])} and ${c.name(combo.traits[1])}.`, `Bygger på de to trekkene som ligger lengst fra midten: ${c.name(combo.traits[0])} og ${c.name(combo.traits[1])}.`)}</p>` : ''}</div></article>
   </section>`;
