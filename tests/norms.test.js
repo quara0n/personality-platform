@@ -76,3 +76,18 @@ test('applyNorms leaves the result unchanged without norms or for another instru
   assert.equal(applyNorms(result, null), result);
   assert.equal(applyNorms({...result, instrumentVersion: 'other'}, norms).norms, undefined);
 });
+
+test('the random test profile spreads over lower, middle and higher like the reference group', async () => {
+  const {sampleAnswers} = await import('../app/norms.js');
+  const {scoreAssessment} = await import('../app/scoring.js');
+  const q = read('../app/data/questions.json'), norms = read('../app/data/norms-us.json');
+  let seed = 1; const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const count = {low: 0, middle: 0, high: 0};
+  for (let i = 0; i < 300; i++) {
+    const a = sampleAnswers(q, norms, rand);
+    assert.equal(Object.keys(a).length, 120);
+    const d = applyNorms(scoreAssessment(q, a), norms).domains.find(x => x.code === 'A');
+    count[d.band]++;
+  }
+  for (const band of ['low', 'middle', 'high']) assert.ok(count[band] > 60, `${band}: ${count[band]}`);
+});

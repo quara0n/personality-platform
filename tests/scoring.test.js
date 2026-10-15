@@ -76,3 +76,16 @@ test('neutral profile does not invent distinctive facets and all 30 middle inter
     for(const d of r.domains){assert.equal(d.pattern.mixed,false);for(const f of d.facets)assert.equal(f.interpretation,content.facets[f.code].middle);}
   }
 });
+
+test('facets beyond the 10th and 90th percentile get their own clearer text',async()=>{
+  const {applyNorms}=await import('../app/norms.js');
+  const norms=JSON.parse(readFileSync(new URL('../app/data/norms-us.json',import.meta.url)));
+  const content=JSON.parse(readFileSync(new URL('../app/data/report-content-no.json',import.meta.url)));
+  for(const f of Object.values(content.facets))assert.ok(f.veryLow&&f.veryHigh);
+  const q=questions.map(x=>({...x}));
+  const answers=Object.fromEntries(q.map(x=>[x.id,x.domain==='N'&&x.facet===2?(x.keyed==='minus'?5:1):3]));
+  const n2=createReport(applyNorms(scoreAssessment(q,answers),norms),content).domains.find(d=>d.code==='N').facets.find(f=>f.code==='N2');
+  assert.ok(n2.percentile<10);
+  assert.equal(n2.interpretation,content.facets.N2.veryLow);
+  assert.match(n2.ruleId,/N2\/veryLow$/);
+});

@@ -1078,6 +1078,16 @@ details.d-tailor-form{border:0;padding:0}
 .d-video-intro .d-share-bar span{font-size:13px}
 .d-share.is-still .d-share-bar,.d-share.is-still .d-share-sound{display:none}
 
+/* "X of 100" comparison on facet cards */
+.d-compare{font-weight:600;color:var(--title);margin:0 0 .4em}
+.d-cmp{margin:4px 0 14px;max-width:320px}
+.d-cmp svg{display:block;width:100%;height:auto}
+.d-cmp-person{fill:#dfe5ec}
+.d-cmp-person.is-lit{fill:var(--lit)}
+.d-cmp figcaption{margin-top:6px;font-size:14px;color:#5d7792}
+.d-cmp figcaption strong{font:400 20px/1 Georgia,serif;color:var(--title);font-variant-numeric:tabular-nums}
+@media print{.d-cmp{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
 /* Strengths and harder sides on the Work & career and Everyday life cards (context-levels.js) */
 .d-sw{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 4px}
 .d-sw-col :is(h4,h5){margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid #8fb4d0;font:700 13px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--title)}
