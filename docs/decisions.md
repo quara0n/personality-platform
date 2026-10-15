@@ -241,6 +241,12 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Bilder: 40 nye trengs (fire nivåer × fem trekk × to kapitler). Liste med filnavn og motiv i prosjektmappen trekkort-bilder/bildeliste.md. Kortet bruker det nye bildet når filnavnet er lagt inn i levelArt i app/context-levels.js, ellers dagens bilde.
 - Tekstene er redaksjonelle og skal med i den faglige gjennomgangen.
 
+## Trekkortene som bildekort med panel 2026-10-15
+- Rune sendte en skisse for Hverdagsliv («skulle vi prøvd noe sånt?»): en rad med store bildekort (trekk, nivå, ordtak, +/−), og et panel under raden når man velger ett.
+- Begge kapitlene (Arbeidsliv og Hverdagsliv) bruker nå dette: tre kort per rad på PC, to på nettbrett og ett på mobil. Det første kortet er åpent. Ett panel er åpent om gangen, og et nytt klikk på samme kort lukker det.
+- Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
+- Ved utskrift vises alle paneler med styrker og svakheter.
+
 ## 2026-10-14: Ærligere tekster til profilfigurene
 
 - Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»
