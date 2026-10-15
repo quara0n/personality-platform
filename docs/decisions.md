@@ -247,11 +247,13 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Panelet viser første setning av teksten som overskrift, resten som brødtekst, «Les mer om dette» med Styrker og Svakheter, og Prøv-boksen til høyre (under på mobil). Innholdet er det samme som før; bare oppsettet er endret.
 - Ved utskrift vises alle paneler med styrker og svakheter.
 
-## Nye hverdagsbilder med kvinne og mann 2026-10-15
-- Rune sendte seks nye illustrasjoner i skarp profilstil til Hverdagsliv: Åpenhet (steget mellom blokkene), Planmessighet (kart og kompass) og Ekstroversjon (åpne døren), hver med kvinne- og mannsversjon. Ingen tekst i bildene.
-- Kortene for disse tre trekkene i Hverdagsliv bruker nå de nye bildene (app/assets/design/context/female/ og male/). Rapporten viser versjonen brukeren har valgt for profilfiguren (Kvinne/Mann), og kvinneversjonen til et valg er gjort. Bildet byttes med en gang når valget endres.
-- Medmenneskelighet og Følelsesmessig reaktivitet, og alle kortene i Arbeidsliv, har fortsatt de gamle bildene til nye kommer. Bildene gjelder alle fem nivåene; nivåspesifikke bilder fra bildelisten kan fortsatt legges inn senere.
-
+## Nye hverdagsbilder og valg av kvinne/mann for bildene 2026-10-15
+- Rune sendte seks nye illustrasjoner i skarp profilstil til Hverdagsliv: Åpenhet (steget mellom blokkene), Planmessighet (kart og kompass) og Ekstroversjon (åpne døren), hver med kvinne- og mannsversjon. De ligger i app/assets/design/context/female/ og male/.
+- Rune: «Hvis brukeren velger "mann" eller "kvinne" i begynnelsen, skal da alle bildene tilpasses» for Hverdagsliv og Arbeidsliv; gratisprofilen og «Dine 5 trekk» beholder blandede bilder. Svar «Ja» på forslaget om et tredje valg og at valget bare brukes til bilder.
+- Forsiden og toppen av Arbeidsliv og Hverdagsliv har nå et valgfritt «Bildene i rapporten viser: Kvinne / Mann / Vil ikke oppgi». Valget lagres i nettleseren (localStorage, fem-report-figure-v1) og bytter bildene med en gang. Det brukes aldri til skåring; persentilene sammenlignes fortsatt med hele normgruppen.
+- Uten valg eller med «Vil ikke oppgi» vises en fast blanding: Åpenhet, Ekstroversjon og Følelsesmessig reaktivitet med kvinne, Planmessighet og Medmenneskelighet med mann.
+- Mangler et bilde, brukes nivåbildet, så midtbildet i valgt versjon, og til slutt det gamle felles bildet. Bildeliste med begge versjoner: trekkort-bilder/bildeliste.md i prosjektmappen (94 bilder gjenstår, de 40 ytterste først).
+- Profilfiguren i gratisprofilen har fortsatt sitt eget Kvinne/Mann-valg.
 ## 2026-10-14: Ærligere tekster til profilfigurene
 
 - Rune reagerte på at «Den tørrvittige lærlingen» ble beskrevet som «alltid klar for å lære mer», mens lav mestringstro (C1) heller handler om å vegre seg for utfordringer. Rune: «Skjønner at vi skal være snille, men vi må være litt mer ærlige om antatt svakheter og styrker.»

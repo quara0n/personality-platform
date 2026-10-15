@@ -249,6 +249,10 @@ export function contextLevel(d) {
 // Until a file is added here, the card uses the trait's shared chapter image.
 export const levelArt = new Set([]);
 
-// Illustrations with a woman and a man version, under assets/design/context/female/ and male/.
-// The report shows the version chosen with the profile figure (Woman/Man), and the woman version until one is chosen.
-export const figureArt = new Set(['life-O', 'life-C', 'life-E']);
+// Illustrations with a woman and a man version, as female/<name>.webp and male/<name>.webp under
+// assets/design/context/. <name> is `${chapter}-${code}` (used for all levels) or `${chapter}-${code}-${level}`.
+export const genderArt = new Set(['life-O', 'life-C', 'life-E']);
+
+// Which version a card shows when the reader has not chosen, or chose «Prefer not to say»:
+// a fixed mix, so the chapter shows both women and men.
+export const mixedFigure = {O: 'female', C: 'male', E: 'female', A: 'male', N: 'female'};

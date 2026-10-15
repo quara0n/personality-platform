@@ -52,13 +52,19 @@ test('the outer levels need both the percentile and the matching band', () => {
   assert.equal(c.quote, 'Din idé om en god fest har tre gjester.');
   assert.equal(c.ruleId, 'context-v2/E/life/veryLow');
   assert.equal(c.good.length, 3);
-  assert.equal(c.art, 'life-E');
+  assert.equal(c.art, 'female/life-E');
   assert.equal(contextCard({code: 'E', band: 'middle', percentile: 50}, 'work', 'en').hard[0], 'Not always aware what drains you');
 });
 
-test('Everyday life cards for O, C and E use the woman/man illustrations', () => {
-  const d = {code: 'E', band: 'middle', percentile: 50};
-  assert.equal(contextCard(d, 'life', 'no').figure, true);
-  assert.equal(contextCard(d, 'work', 'no').figure, false);
-  assert.equal(contextCard({code: 'A', band: 'middle', percentile: 50}, 'life', 'no').figure, false);
+test('the picture follows the woman/man choice, and a fixed mix without one', () => {
+  const E = {code: 'E', band: 'middle', percentile: 50}, C = {code: 'C', band: 'middle', percentile: 50};
+  assert.equal(contextCard(E, 'life', 'no', 'male').art, 'male/life-E');
+  assert.equal(contextCard(E, 'life', 'no', 'female').art, 'female/life-E');
+  assert.equal(contextCard(E, 'life', 'no', 'none').art, 'female/life-E');
+  assert.equal(contextCard(C, 'life', 'no', '').art, 'male/life-C');
+  // No woman/man version yet: the shared picture.
+  assert.equal(contextCard({code: 'A', band: 'middle', percentile: 50}, 'life', 'no', 'male').art, 'life-A');
+  assert.equal(contextCard(E, 'work', 'no', 'male').art, 'work-E');
+  // The choice never changes the text or the level.
+  assert.deepEqual({...contextCard(E, 'life', 'no', 'male'), art: 0}, {...contextCard(E, 'life', 'no', 'female'), art: 0});
 });

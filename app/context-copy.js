@@ -3,7 +3,7 @@
 // and one idea to try. Selected deterministically from the domain band, so each card stays
 // traceable to the score. Each pair is [English, Norwegian bokmål], written for each language.
 
-import {outerCards, strengthLists, contextLevel, levelArt, figureArt} from './context-levels.js';
+import {outerCards, strengthLists, contextLevel, levelArt, genderArt, mixedFigure} from './context-levels.js';
 
 const cards = {
   O: {
@@ -128,9 +128,21 @@ const cards = {
   }
 };
 
+/** The illustration for a card, as a path under assets/design/context/ without extension.
+ * figure is 'female', 'male' or anything else for the mixed set. It only picks the picture; scores never use it.
+ * A level-specific picture wins over the shared one; a woman/man version wins over the neutral one. */
+export function contextArt(code, chapter, level, figure) {
+  const who = figure === 'female' || figure === 'male' ? figure : mixedFigure[code];
+  for (const name of [`${chapter}-${code}-${level}`, `${chapter}-${code}`]) {
+    if (genderArt.has(name)) return `${who}/${name}`;
+    if (levelArt.has(name)) return name;
+  }
+  return `${chapter}-${code}`;
+}
+
 /** The card for one domain in one chapter ('work' or 'life'), in the given language.
  * Uses five levels (context-levels.js): the outer cards below the 10th and above the 90th percentile. */
-export function contextCard(d, chapter, language) {
+export function contextCard(d, chapter, language, figure = '') {
   const level = contextLevel(d);
   const c = outerCards[d.code]?.[chapter]?.[level] || cards[d.code]?.[chapter]?.[d.band];
   if (!c) return null;
@@ -138,8 +150,7 @@ export function contextCard(d, chapter, language) {
   const i = language === 'no' ? 1 : 0, lists = strengthLists[d.code]?.[chapter]?.[used];
   return {quote: c.quote[i], text: c.text[i], try: c.try[i], level: used,
     good: lists ? lists.good.map(x => x[i]) : [], hard: lists ? lists.hard.map(x => x[i]) : [],
-    art: levelArt.has(`${chapter}-${d.code}-${used}`) ? `${chapter}-${d.code}-${used}` : `${chapter}-${d.code}`,
-    figure: figureArt.has(`${chapter}-${d.code}`),
+    art: contextArt(d.code, chapter, used, figure),
     ruleId: `context-v2/${d.code}/${chapter}/${used}`};
 }
 

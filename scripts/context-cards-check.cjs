@@ -46,14 +46,24 @@ const box=l=>l.evaluate(e=>({y:e.offsetTop,height:e.offsetHeight}));
     const ids=await cards.evaluateAll(l=>l.map(x=>x.dataset.rule));
     assert.ok(ids.every(id=>new RegExp(`^context-v2/[OCEAN]/${ch}/(veryLow|low|middle|high|veryHigh)$`).test(id)),ids.join());
   }
-  // Everyday life O, C and E use the woman illustration until the man figure is chosen.
-  const art=()=>page.locator('#life [data-ctx-art]').evaluateAll(l=>l.map(x=>x.getAttribute('src')));
-  let srcs=await art();assert.equal(srcs.length,3);assert.ok(srcs.every(x=>/context\/female\/life-[OCE]\.webp$/.test(x)),srcs.join());
-  assert.ok(await page.locator('#life [data-ctx-art]').first().evaluate(i=>i.complete&&i.naturalWidth>0),'image loads');
-  await page.evaluate(()=>localStorage.setItem('five-figure-v1','male'));await page.reload();await page.locator('#life .d-ctx-grid').waitFor();
-  srcs=await art();assert.ok(srcs.every(x=>/context\/male\/life-[OCE]\.webp$/.test(x)),srcs.join());
+  // Pictures: a fixed woman/man mix until the reader chooses; the choice in the chapter swaps them at once.
+  const art=()=>page.locator('#life .d-ctx-art img').evaluateAll(l=>l.map(x=>x.getAttribute('src').replace('assets/design/context/','')));
+  assert.deepEqual((await art()).filter(x=>x.includes('/')).sort(),['female/life-E.webp','female/life-O.webp','male/life-C.webp']);
+  const pick=v=>page.locator(`#life [data-report-figure="${v}"]`).click();
+  await pick('male');let srcs=await art();
+  assert.deepEqual(srcs.filter(x=>x.includes('/')).sort(),['male/life-C.webp','male/life-E.webp','male/life-O.webp']);
+  assert.equal(await page.locator('#work [data-report-figure="male"]').getAttribute('aria-pressed'),'true','both chapters show the choice');
+  assert.ok(await page.locator('#life .d-ctx-art.is-scene img').first().evaluate(i=>i.complete&&i.naturalWidth>0),'image loads');
   if(SHOTS)await page.locator('#life .d-ctx-grid').screenshot({path:`${SHOTS}/ny-hverdag-mann.png`});
-  await page.evaluate(()=>localStorage.removeItem('five-figure-v1'));await page.reload();
+  await pick('female');assert.ok((await art()).filter(x=>x.includes('/')).every(x=>x.startsWith('female/')));
+  await page.reload();await page.locator('#life .d-ctx-grid').waitFor();
+  assert.ok((await art()).filter(x=>x.includes('/')).every(x=>x.startsWith('female/')),'the choice is remembered');
+  await pick('none');assert.deepEqual((await art()).filter(x=>x.includes('/')).sort(),['female/life-E.webp','female/life-O.webp','male/life-C.webp']);
+  // The choice is offered on the start page too.
+  await page.evaluate(()=>location.hash='home');await page.locator('.hero .d-rfig').waitFor();
+  assert.equal(await page.locator('.hero [data-report-figure="none"]').getAttribute('aria-pressed'),'true');
+  if(SHOTS)await page.locator('.hero').screenshot({path:`${SHOTS}/start-valg.png`});
+  await page.evaluate(()=>{localStorage.removeItem('fem-report-figure-v1');location.hash='report/life';});await page.reload();
   // Mobile: one column, the panel follows its card, no sideways scroll.
   await page.setViewportSize({width:390,height:844});await page.evaluate(()=>location.hash='report/life');
   const grid=page.locator('#life .d-ctx-grid');await grid.waitFor();await page.waitForTimeout(150);
