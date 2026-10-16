@@ -341,3 +341,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Hovedbildet og trekkbåndet skal synes ved innlasting på vanlig PC-skjerm (1440×900). Sideteksten nede til venstre skjules på lave skjermer for å få plass.
 - «Relasjonene dine» står som i mockupen. Hverdagslivkapittelet tar med partner og familie når brukeren oppgir det.
 - Valget «Bildene i rapporten viser» er tatt bort fra forsiden og finnes fortsatt øverst i Arbeidsliv og Hverdagsliv.
+
+## 2026-10-16: Renere innloggingsskjerm etter spørsmålene
+
+- Rune ville ha skjermen «litt mer clean»: logoen og «Fem» øverst i stedet for de fem trekantene, standard Google-knapp slik folk kjenner den fra andre sider, og minst mulig tekst.
+- Teksten er kortet ned til «Lagre profilen din», «Åpne den igjen på alle enheter.» og én linje om sletting med lenke til personvern.
+- «Fortsett uten å logge inn» er fortsatt tilgjengelig, men som en liten, dempet lenke nederst, fordi vi helst vil at folk logger inn.
