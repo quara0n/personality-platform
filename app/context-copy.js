@@ -3,7 +3,7 @@
 // and one idea to try. Selected deterministically from the domain band, so each card stays
 // traceable to the score. Each pair is [English, Norwegian bokmål], written for each language.
 
-import {outerCards, strengthLists, contextLevel, levelArt, genderArt, mixedFigure} from './context-levels.js';
+import {outerCards, strengthLists, contextLevel, levelArt, genderArt, mixedFigure, altQuotes} from './context-levels.js';
 
 const cards = {
   O: {
@@ -131,13 +131,21 @@ const cards = {
 /** The illustration for a card, as a path under assets/design/context/ without extension.
  * figure is 'female', 'male' or anything else for the mixed set. It only picks the picture; scores never use it.
  * A level-specific picture wins over the shared one; a woman/man version wins over the neutral one. */
-export function contextArt(code, chapter, level, figure) {
+export function contextArt(code, chapter, level, figure, variant = 1) {
   const who = figure === 'female' || figure === 'male' ? figure : mixedFigure[code];
-  for (const name of [`${chapter}-${code}-${level}`, `${chapter}-${code}`]) {
+  const names = [`${chapter}-${code}-${level}`, `${chapter}-${code}`];
+  if (Number(variant) === 2) names.unshift(`${chapter}-${code}-${level}-2`);
+  for (const name of names) {
     if (genderArt.has(name)) return `${who}/${name}`;
     if (levelArt.has(name)) return name;
   }
   return `${chapter}-${code}`;
+}
+
+/** Which of the two metaphors a reader sees: fixed by the raw score, so the same answers always give
+ * the same card, while people on the same level see different ones. Without a raw score: the first. */
+export function contextVariant(d, chapter) {
+  return Number.isFinite(d.sum) && (Math.round(d.sum) + (chapter === 'life' ? 1 : 0)) % 2 ? 2 : 1;
 }
 
 /** The card for one domain in one chapter ('work' or 'life'), in the given language.
@@ -148,9 +156,10 @@ export function contextCard(d, chapter, language, figure = '') {
   if (!c) return null;
   const used = outerCards[d.code]?.[chapter]?.[level] ? level : d.band;
   const i = language === 'no' ? 1 : 0, lists = strengthLists[d.code]?.[chapter]?.[used];
-  return {quote: c.quote[i], text: c.text[i], try: c.try[i], level: used,
+  const alt = altQuotes[d.code]?.[chapter]?.[used], variant = alt ? contextVariant(d, chapter) : 1;
+  return {quote: variant === 2 ? alt.split('|')[i] : c.quote[i], text: c.text[i], try: c.try[i], level: used, variant,
     good: lists ? lists.good.map(x => x[i]) : [], hard: lists ? lists.hard.map(x => x[i]) : [],
-    art: contextArt(d.code, chapter, used, figure),
+    art: contextArt(d.code, chapter, used, figure, variant),
     ruleId: `context-v2/${d.code}/${chapter}/${used}`};
 }
 

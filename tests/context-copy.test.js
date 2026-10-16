@@ -52,7 +52,7 @@ test('the outer levels need both the percentile and the matching band', () => {
   assert.equal(c.quote, 'Din idé om en god fest har tre gjester.');
   assert.equal(c.ruleId, 'context-v2/E/life/veryLow');
   assert.equal(c.good.length, 3);
-  assert.equal(c.art, 'female/life-E');
+  assert.equal(c.art, 'female/life-E-veryLow');
   assert.equal(contextCard({code: 'E', band: 'middle', percentile: 50}, 'work', 'en').hard[0], 'Not always aware what drains you');
 });
 
@@ -62,9 +62,39 @@ test('the picture follows the woman/man choice, and a fixed mix without one', ()
   assert.equal(contextCard(E, 'life', 'no', 'female').art, 'female/life-E');
   assert.equal(contextCard(E, 'life', 'no', 'none').art, 'female/life-E');
   assert.equal(contextCard(C, 'life', 'no', '').art, 'male/life-C');
-  // No woman/man version yet: the shared picture.
-  assert.equal(contextCard({code: 'A', band: 'middle', percentile: 50}, 'life', 'no', 'male').art, 'life-A');
-  assert.equal(contextCard(E, 'work', 'no', 'male').art, 'work-E');
+  assert.equal(contextCard({code: 'A', band: 'middle', percentile: 50}, 'life', 'no', 'male').art, 'male/life-A');
+  assert.equal(contextCard(E, 'work', 'no', 'male').art, 'male/work-E');
   // The choice never changes the text or the level.
   assert.deepEqual({...contextCard(E, 'life', 'no', 'male'), art: 0}, {...contextCard(E, 'life', 'no', 'female'), art: 0});
+});
+
+import {existsSync} from 'node:fs';
+import {altQuotes, genderArt} from '../app/context-levels.js';
+
+test('every card has a picture in both versions, also for the second metaphor', () => {
+  for (const name of genderArt) for (const who of ['female', 'male'])
+    assert.ok(existsSync(new URL(`../app/assets/design/context/${who}/${name}.webp`, import.meta.url)), `${who}/${name}`);
+  for (const code of ['O', 'C', 'E', 'A', 'N']) for (const chapter of ['work', 'life'])
+    for (const level of ['veryLow', 'low', 'middle', 'high', 'veryHigh']) {
+      const q = altQuotes[code][chapter][level].split('|');
+      assert.equal(q.length, 2, `${code}/${chapter}/${level}`);
+      assert.ok(q.every(s => s.trim().length > 10));
+    }
+});
+
+test('the second metaphor follows the raw score, keeps the text and switches picture with it', () => {
+  const one = contextCard({code: 'C', band: 'high', percentile: 80, sum: 92}, 'work', 'no', 'female');
+  const two = contextCard({code: 'C', band: 'high', percentile: 80, sum: 93}, 'work', 'no', 'female');
+  assert.equal(one.variant, 1);
+  assert.equal(one.quote, 'Du legger skinnene før toget kjører.');
+  assert.equal(one.art, 'female/work-C-high');
+  assert.equal(two.variant, 2);
+  assert.equal(two.quote, 'Du knyter de løse trådene før du går hjem.');
+  assert.equal(two.art, 'female/work-C-high-2');
+  assert.equal(two.text, one.text);
+  assert.equal(two.ruleId, one.ruleId);
+  // Same score, other chapter: the other metaphor, so one person sees both kinds.
+  assert.equal(contextCard({code: 'C', band: 'high', percentile: 80, sum: 92}, 'life', 'en').variant, 2);
+  assert.equal(contextCard({code: 'N', band: 'middle', sum: 60}, 'work', 'en', 'male').art, 'male/work-N');
+  assert.equal(contextCard({code: 'N', band: 'middle', sum: 61}, 'work', 'en', 'male').art, 'male/work-N-middle-2');
 });
