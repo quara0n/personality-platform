@@ -1315,3 +1315,7 @@ details.d-ctx-more>div{padding:0}
 @media(max-width:760px){.d-career-options{grid-template-columns:1fr}.d-career-ai{flex-direction:column;align-items:flex-start}.d-career-ai p{flex:none}}
 @media(prefers-reduced-motion:reduce){.d-career-opt{transition:none}}
 @media print{.d-career-list li,.d-career-steps li{break-inside:avoid}}
+/* Paid overview opens with the same profile character as the free profile. */
+.d-report-hero{padding:0;margin-top:8px}
+.d-radar-box .d-info{margin:14px auto 0;max-width:380px}
+.d-report-hero{margin-bottom:28px}

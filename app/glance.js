@@ -73,10 +73,8 @@ export function glanceHtml(c) {
     <div class="d-people-tabs" role="tablist" aria-label="${c.tr('Choose a trait', 'Velg et trekk')}">${ORDER.map(code => {const d = ds.find(x => x.code === code); return `<button type="button" role="tab" id="pt-${code}" aria-controls="people-panel" aria-selected="${d === first}" tabindex="${d === first ? 0 : -1}" data-trait="${code}" style="--tc:${traitColors[code]}">${c.esc(c.name(d).replace(/\s*\(.*\)$/, '').replace(/^Følelsesmessig r/, 'R').replace(/^Emotional r/, 'R'))}</button>`;}).join('')}</div>
     <div class="d-people-panel" id="people-panel" role="tabpanel" aria-labelledby="pt-${first.code}">${people(c, first)}</div></div>` : '';
   return `<section class="d-panel d-glance" aria-labelledby="glance-title">
-    <h2 class="d-panel-title" id="glance-title">${c.tr('Your profile at a glance', 'Din profil på ett blikk')}</h2>
-    <p class="d-glance-name">${c.tr('Your profile character', 'Profilfiguren din')}: <strong>${c.esc(named.name)}</strong></p>
-    <p class="d-pct-sub">${pct ? c.tr('A higher percentile means more of the trait, not a better result. The dashed ring is the middle (50).', 'Høyere persentil betyr mer av trekket, ikke et bedre resultat. Den stiplede ringen er midten (50).') : c.tr('Further out means you agreed more with statements about the trait. The dashed ring is the middle of the answer scale.', 'Lenger ut betyr at du sa deg mer enig i utsagn om trekket. Den stiplede ringen er midten av svarskalaen.')}</p>${c.pctInfo}
-    <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}</div>${tabs}</div>
+    <h2 class="sr-only" id="glance-title">${c.tr('Your profile at a glance', 'Din profil på ett blikk')}</h2>
+    <div class="d-glance-grid${pct ? '' : ' is-single'}"><div class="d-radar-box">${radar(c)}${c.pctInfo}</div>${tabs}</div>
     ${topPanels(c, strongest, facet, facetTrait, combo, named)}
   </section>`;
 }

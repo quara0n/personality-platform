@@ -329,3 +329,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Nye fasettbilder for Åpenhet i kvinne/mann 2026-10-15
 - Rune sendte tolv bilder i den nye fasettstilen (O1 Fantasi til O6 Liberalisme, hver i kvinne- og mannsversjon): «legg de inn hvor de skal». De ligger i app/assets/design/facets/female/ og male/, med bakgrunnen gjort gjennomsiktig og beskåret slik som de gamle fasettbildene.
 - Fasettkortene følger valget Kvinne/Mann. Uten valg brukes standardversjonen fra Runes manifest (O3 og O6 mann, resten kvinne); app/facet-art.js. Den nøytrale filen facets/O1–O6.webp er erstattet med standardversjonen, så andre steder som viser fasettbilder, også får den nye stilen.
+
+## Trekkikoner som logobiter og ny topp i rapportoversikten 2026-10-16
+- Rune ba om at trekantikonene ved trekkene skal se ut som bitene i logoen, med samme 3D-følelse. Alle trekkikoner i gratisprofilen og rapporten bruker nå logo-piece-*.webp (Åpenhet sky, Planmessighet aprikos, Ekstroversjon stål, Medmenneskelighet elfenben, Reaktivitet marine), samme biter og retning som trekkbåndet på den nye forsiden. tri-*.png brukes fortsatt i varder, innloggingssteget og delingsvideoen.
+- Rapportens «Oversikt» starter nå med samme topp som gratisprofilen (Personlighetsprofil, profilfiguren med Kvinne/Mann, navn og forklaring). Overskriften «Din profil på ett blikk», profilfigurlinjen og forklaringsteksten over radaren er fjernet; «Hva betyr persentilen?» ligger under radarlegenden.
