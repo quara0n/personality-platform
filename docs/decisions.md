@@ -375,3 +375,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «Fordypningsrapporten må være mer markert og synlig.» «Gå dypere» er nå en ferskenboks med illustrasjonen fra kjøpssiden, en kort linje om innholdet og den fasetterte hovedknappen. Rutersymbolet er ikke lenger brukt der.
 - Forklaringen av persentiler og ordene lavere/midt/høyere ligger bak «Les mer om tallene». Teksten under e-postfeltet er fjernet.
 - Hopp-til-innhold-lenken er helt skjult til den får tastaturfokus.
+
+## 2026-10-16 – Alle bilder i fasettstil fra Codex, og to metaforer per trekkort
+- Rune leverte FEM-bilder.zip fra Codex (laget etter bildeoppdrag/ i prosjektmappen): 257 bilder. Erstattet: trekkpanelene (trait-O…N), trekkbåndene (facets/head-*, strength-O), kapittelhodene (context/*-head), kjøpsbildene (offer-*, ikke i bruk nå) og landskapet på spørsmålssiden. Nye: alle 94 trekkort og 48 fasettbilder (C, E, A, N) i kvinne- og mannsversjon.
+- Standardversjon for fasettene uten valg (`facetFigure`) følger figurene i de gamle bildene; `facets/{kode}.webp` er en kopi av den.
+- Hvert trekkort har nå en andre metafor med eget bilde (`{kapittel}-{trekk}-{nivå}-2`, tekst i `altQuotes` i app/context-levels.js). Hvilken leseren ser, er fast ut fra råskåren (`contextVariant`): samme svar gir alltid samme kort, mens folk på samme nivå ofte ser ulike. Arbeidsliv og Hverdagsliv veksler, så hver leser ser begge slags. Teksten under kortet er den samme for begge. Metaforene er fra bildeoppdrag/2-nye-metaforer.md og trenger faglig og språklig gjennomgang sammen med resten av rapportteksten.

@@ -236,6 +236,91 @@ export const strengthLists = {
   }
 };
 
+// A second metaphor for every card (variant 2) with its own picture `${chapter}-${code}-${level}-2`.
+// Each item is "English|Norsk". Source: bildeoppdrag/2-nye-metaforer.md (2026-10-16).
+export const altQuotes = {
+  O: {
+    work: {
+      veryLow: 'You sharpen the tools you have instead of buying new ones.|Du sliper verktøyet du har, i stedet for å kjøpe nytt.',
+      low: 'You want to see the bridge hold before you cross it.|Du vil se at brua bærer før du går over.',
+      middle: 'You follow the recipe and still taste as you go.|Du følger oppskriften og smaker underveis.',
+      high: 'You open drawers others didn’t know were there.|Du åpner skuffer andre ikke visste fantes.',
+      veryHigh: 'Your ideas arrive in flocks.|Ideene dine kommer i flokk.'
+    },
+    life: {
+      veryLow: 'Your traditions are roots, not chains.|Tradisjonene dine er røtter, ikke lenker.',
+      low: 'The best way home is the one you know.|Den beste veien hjem er den du kjenner.',
+      middle: 'You love to travel, and you bring your own pillow.|Du reiser gjerne, men tar med deg hjemmeputa.',
+      high: 'You’ll gladly take the long way if it’s new.|Du tar gjerne omveien hvis den er ny.',
+      veryHigh: 'Your mind is an attic full of treasures.|Hodet ditt er et loft fullt av skatter.'
+    }
+  },
+  C: {
+    work: {
+      veryLow: 'You make the plan on the back of your ticket.|Du lager planen på baksiden av billetten.',
+      low: 'You play jazz where others read sheet music.|Du spiller jazz der andre leser noter.',
+      middle: 'You pack the night before, not the week before.|Du pakker kvelden før, ikke uka før.',
+      high: 'You tie up the loose ends before you go home.|Du knyter de løse trådene før du går hjem.',
+      veryHigh: 'You have a plan B for your plan B.|Du har en plan B for plan B.'
+    },
+    life: {
+      veryLow: 'You find your keys, just never where you left them.|Du finner nøklene, bare aldri der du la dem.',
+      low: 'You shop for dinner on the way home, not on Sunday.|Du handler middag på vei hjem, ikke på søndag.',
+      middle: 'You tidy up when it’s needed, not when the clock says so.|Du rydder når det trengs, ikke når klokka sier det.',
+      high: 'Your lunch is packed the night before.|Matpakka di er smurt kvelden før.',
+      veryHigh: 'Even your spices stand to attention.|Selv krydderne dine står i giv akt.'
+    }
+  },
+  E: {
+    work: {
+      veryLow: 'You take the deep dive while others splash at the surface.|Du tar dypdykket mens andre plasker i overflaten.',
+      low: 'You say little in the meeting, but what you say gets written down.|Du sier lite i møtet, men det du sier, blir skrevet ned.',
+      middle: 'You switch easily between the microphone and the notepad.|Du bytter lett mellom mikrofonen og notatblokka.',
+      high: 'You turn the coffee corner into an idea workshop.|Du gjør kaffekroken til et idéverksted.',
+      veryHigh: 'You know someone on every floor.|Du kjenner noen i hver etasje.'
+    },
+    life: {
+      veryLow: 'One good conversation beats ten small talks.|Én god samtale slår ti småprat.',
+      low: 'A walk alone in the woods is your charging station.|En tur alene i skogen er ladestasjonen din.',
+      middle: 'You keep both party shoes and slippers by the door.|Du har både festskoene og tøflene klare i gangen.',
+      high: 'Your kitchen always becomes the heart of the party.|Kjøkkenet ditt blir alltid festens midtpunkt.',
+      veryHigh: 'You could start a sing-along at a bus stop.|Du kan starte allsang på en busstopp.'
+    }
+  },
+  A: {
+    work: {
+      veryLow: 'You are the referee who cheers for no team.|Du er dommeren som ikke heier på noe lag.',
+      low: 'You play with your cards face up.|Du spiller med åpne kort.',
+      middle: 'You know when to hold the rope and when to give some slack.|Du vet når du skal holde i tauet, og når du skal gi slakk.',
+      high: 'You notice who is outside the circle, and open it.|Du ser hvem som står utenfor ringen, og åpner den.',
+      veryHigh: 'You are the umbrella that is always on loan.|Du er paraplyen som alltid er lånt ut.'
+    },
+    life: {
+      veryLow: 'You say no without wrapping it in gift paper.|Du sier nei uten å pakke det inn i gavepapir.',
+      low: 'Friends come to you for an honest mirror.|Venner kommer til deg for et ærlig speil.',
+      middle: 'You share the cake, and still take your own slice.|Du deler kaka, og tar ditt eget stykke.',
+      high: 'You remember how everyone takes their coffee.|Du husker hvordan alle tar kaffen.',
+      veryHigh: 'Your heart always has a spare guest room.|Hjertet ditt har alltid et ledig gjesterom.'
+    }
+  },
+  N: {
+    work: {
+      veryLow: 'You carry your coffee steady through the turbulence.|Du bærer kaffekoppen stødig gjennom turbulensen.',
+      low: 'You keep breathing calmly when the printer goes on strike.|Du puster rolig når skriveren streiker.',
+      middle: 'You feel the butterflies, and get them flying in formation.|Du kjenner sommerfuglene, og får dem til å fly i formasjon.',
+      high: 'You buckle up before the car starts.|Du har beltet på før bilen starter.',
+      veryHigh: 'You hear the small creak before something breaks.|Du hører det lille knirket før noe ryker.'
+    },
+    life: {
+      veryLow: 'You sleep as soundly through thunder as through silence.|Du sover like godt i torden som i stillhet.',
+      low: 'You let rainy days pass on their own.|Du lar regnværsdagene gå over av seg selv.',
+      middle: 'You feel the storm, and you know where the lantern is.|Du kjenner stormen, og vet hvor lykta står.',
+      high: 'Your heart has finely tuned strings.|Hjertet ditt har fintstemte strenger.',
+      veryHigh: 'You feel the weather with your whole body, and you know how to find shelter.|Du kjenner været i hele kroppen, og vet å finne ly.'
+    }
+  }
+};
+
 /** Five-level key from the percentile when a norm exists, otherwise the three-level band. */
 export function contextLevel(d) {
   if (Number.isFinite(d.percentile)) {
@@ -251,7 +336,13 @@ export const levelArt = new Set([]);
 
 // Illustrations with a woman and a man version, as female/<name>.webp and male/<name>.webp under
 // assets/design/context/. <name> is `${chapter}-${code}` (used for all levels) or `${chapter}-${code}-${level}`.
-export const genderArt = new Set(['life-O', 'life-C', 'life-E']);
+// Every card now has both versions: the shared picture, one per level and one per level for the second metaphor.
+const LEVELS = ['veryLow', 'low', 'middle', 'high', 'veryHigh'];
+export const genderArt = new Set(['work', 'life'].flatMap(chapter => [...'OCEAN'].flatMap(code => [
+  `${chapter}-${code}`,
+  ...LEVELS.filter(l => l !== 'middle').map(l => `${chapter}-${code}-${l}`),
+  ...LEVELS.map(l => `${chapter}-${code}-${l}-2`)
+])));
 
 // Which version a card shows when the reader has not chosen, or chose «Prefer not to say»:
 // a fixed mix, so the chapter shows both women and men.

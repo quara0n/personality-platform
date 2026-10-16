@@ -52,17 +52,19 @@ const box=l=>l.evaluate(e=>({y:e.offsetTop,height:e.offsetHeight}));
   }
   // Pictures: a fixed woman/man mix until the reader chooses; the choice in the chapter swaps them at once.
   const art=()=>page.locator('#life .d-ctx-art img').evaluateAll(l=>l.map(x=>x.getAttribute('src').replace('assets/design/context/','')));
-  assert.deepEqual((await art()).filter(x=>x.includes('/')).sort(),['female/life-E.webp','female/life-O.webp','male/life-C.webp']);
+  // Every card has both versions now; without a choice each trait keeps its fixed version (mixedFigure).
+  const mixed=()=>page.locator('#life .d-ctx-art img').evaluateAll(l=>l.length===5&&l.every(x=>x.getAttribute('src').startsWith('assets/design/context/'+({O:'female',C:'male',E:'female',A:'male',N:'female'})[x.dataset.ctxArt[0]]+'/')));
+  assert.ok(await mixed(),'fixed woman/man mix');
   const pick=v=>page.locator(`#life [data-report-figure="${v}"]`).click();
   await pick('male');let srcs=await art();
-  assert.deepEqual(srcs.filter(x=>x.includes('/')).sort(),['male/life-C.webp','male/life-E.webp','male/life-O.webp']);
+  assert.ok(srcs.length===5&&srcs.every(x=>x.startsWith('male/')),srcs.join());
   assert.equal(await page.locator('#work [data-report-figure="male"]').getAttribute('aria-pressed'),'true','both chapters show the choice');
   assert.ok(await page.locator('#life .d-ctx-art.is-scene img').first().evaluate(i=>i.complete&&i.naturalWidth>0),'image loads');
   if(SHOTS)await page.locator('#life .d-ctx-grid').screenshot({path:`${SHOTS}/ny-hverdag-mann.png`});
   await pick('female');assert.ok((await art()).filter(x=>x.includes('/')).every(x=>x.startsWith('female/')));
   await page.reload();await page.locator('#life .d-ctx-grid').waitFor();
   assert.ok((await art()).filter(x=>x.includes('/')).every(x=>x.startsWith('female/')),'the choice is remembered');
-  await pick('none');assert.deepEqual((await art()).filter(x=>x.includes('/')).sort(),['female/life-E.webp','female/life-O.webp','male/life-C.webp']);
+  await pick('none');assert.ok(await mixed(),'back to the fixed mix');
   // The choice is offered on the start page too.
   await page.evaluate(()=>location.hash='home');await page.locator('.hero .d-rfig').waitFor();
   assert.equal(await page.locator('.hero [data-report-figure="none"]').getAttribute('aria-pressed'),'true');
