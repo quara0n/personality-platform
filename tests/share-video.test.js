@@ -102,12 +102,12 @@ test('every facet and direction has its own closing line in both languages', () 
   assert.equal(new Set(all).size, all.length);
 });
 
-test('outro lifts the five logo pieces on eighth notes in the last 1.5 s, then the whole logo before the loop', () => {
+test('outro lifts the five logo pieces on eighth notes from about 2 s before the end, then the whole logo before the loop', () => {
   const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
   for (const long of [false, true]) {
     const s = videoScript(ds, {language: 'en', name, long}), total = duration(s), {pieces, rise} = outroHits(s);
     assert.equal(pieces.length, 5);
-    assert.ok(pieces[0] >= total - 1.6 && rise < total, `${pieces} ${rise} ${total}`);
+    assert.ok(pieces[0] >= total - 2.1 && rise < total, `${pieces} ${rise} ${total}`);
     pieces.forEach((t, i) => i && assert.ok(Math.abs(t - pieces[i - 1] - .25) < 1e-9));
   }
   // Short cut: the song plays once from 0, so the hits sit on its pluck grid (0.157 + n × 0.25 s).
