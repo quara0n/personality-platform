@@ -1571,9 +1571,11 @@ details.d-ctx-more>div{padding:0}
   .d-continue{padding:18px 22px;font-size:18px}
 }
 /* One box style for the whole app (Rune, 2026-10-16: «samme bokser/kanter gjennom hele appen»), taken from the
-   soft answer cards in Rune's question-page mockup: thin cool border, 12 px corners, a faint lift. Use these
+   soft answer cards in Rune's question-page mockup: thin cool border, 14 px corners, a faint lift. The --card-*
+   tokens are shared with .soft-card on the question page (PR #64); --box-* are aliases. Use these
    variables for any new card; accent boxes keep their colour but share radius and shadow. */
-:root{--box-bg:#fffefb;--box-border:#e1e7ee;--box-radius:12px;--box-shadow:0 1px 2px rgba(16,39,71,.04),0 6px 18px rgba(16,39,71,.05);--field-border:#cfd9e4;--field-radius:10px}
+:root{--card-bg:#fffefb;--card-border:#dde4ec;--card-radius:14px;--card-shadow:0 2px 8px rgba(16,39,71,.05);--card-hover:#fdf1e8;--card-on:#fbe0cf;--card-on-border:#efb894;
+  --box-bg:var(--card-bg);--box-border:var(--card-border);--box-radius:var(--card-radius);--box-shadow:var(--card-shadow);--field-border:#cfd9e4;--field-radius:10px}
 .d-panel,.d-trait-chapter,.d-facet,.d-context-card,.d-nuance-fold,.d-journey-card,.d-tdetail,.d-info-pop,.d-teaser,.d-email,.d-account-box,.d-account-page .d-account-panel,.d-tailor,.d-tailor-col li,.d-ctx-card,.d-ctx-panel,.d-career-list li,.d-offer-list,.d-offer-pricebox{border:1px solid var(--box-border)!important;border-radius:var(--box-radius)!important;background-color:var(--box-bg);box-shadow:var(--box-shadow)}
 .d-offer-pricebox{background-color:#e7f0f8;border-color:#dbe6f1!important}
 .d-tdetail-more,.d-career-opt{border:1px solid var(--box-border)!important;border-radius:var(--box-radius)!important;box-shadow:var(--box-shadow)}
