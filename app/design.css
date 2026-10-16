@@ -208,7 +208,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-explore-cards{display:grid;grid-template-columns:1fr 1fr}
 .d-explore-cards article{padding:0 30px 10px 0}
 .d-explore-cards article+article{padding:0 0 10px 30px;border-left:1px solid #cfdbe6}
-.d-explore-cards img{display:block;width:100%;max-width:364px}
+.d-explore-cards img{display:block;width:100%;max-width:420px;mix-blend-mode:multiply}
 .d-explore-cards h3{margin:12px 0 6px;font:400 32px/1.1 Georgia,serif;letter-spacing:-.04em;color:var(--title)}
 .d-explore-cards p{margin:0 0 14px;color:#1f4fa0;font-size:17px}
 .d-explore-cards a{color:#1f4fa0;font-size:17px;text-decoration:none;border-bottom:2px solid #1f4fa0;padding-bottom:3px}
@@ -1315,6 +1315,10 @@ details.d-ctx-more>div{padding:0}
 @media(max-width:760px){.d-career-options{grid-template-columns:1fr}.d-career-ai{flex-direction:column;align-items:flex-start}.d-career-ai p{flex:none}}
 @media(prefers-reduced-motion:reduce){.d-career-opt{transition:none}}
 @media print{.d-career-list li,.d-career-steps li{break-inside:avoid}}
+/* Paid overview opens with the same profile character as the free profile. */
+.d-report-hero{padding:0;margin-top:8px}
+.d-radar-box .d-info{margin:14px auto 0;max-width:380px}
+.d-report-hero{margin-bottom:28px}
 /* Front page (2026-10-16): Rune's landing mockup. Hero art and card pictures are cut from it; band icons are the logo pieces, turned as in the logo. */
 .h-hero,.h-traits,.h-areas{max-width:1320px;margin:0 auto;padding-left:40px;padding-right:40px}
 .h-hero{position:relative;display:grid;grid-template-columns:minmax(380px,.72fr) 1.28fr;align-items:start;padding-top:clamp(18px,3vh,44px)}
