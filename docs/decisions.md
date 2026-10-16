@@ -357,3 +357,4 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Flate trekanter er byttet med logobitene (kjøpssiden, «En mulig styrke», vardene og trekkikonene i delevideoen).
 - Under 100-figurene på fasettkortene står ikke lenger «N av 100 mennesker skårer lavere enn deg», fordi setningen over sier det samme.
 - Kjøpssiden og «Din styrke»/«Prøv i hverdagen» er kopiert fra Runes Codex-mockuper. Illustrasjonene er klippet fra mockupene. Kapittelbytte i rapporten bruker knappen «Fortsett utforskningen» med neste kapittel under.
+- Rune: samme bokser og kanter i hele appen. Kort og bokser bruker felles variabler i app/design.css (`--box-*`, `--field-*`): tynn kjølig kant, 12 px hjørner og en svak skygge, hentet fra svarkortene i mockupen av spørsmålssiden. Nye kort skal bruke variablene.

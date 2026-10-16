@@ -87,7 +87,7 @@ body.in-loading footer{display:none}
 @media(prefers-reduced-motion:reduce){.d-piece,.d-loading h1,.d-loading p{animation:d-fade .4s ease forwards!important;transform:none!important}.d-assemble{animation:none}}
 
 /* Shared profile card */
-.d-profile-card{background:#fffefb;border-radius:6px;box-shadow:0 10px 30px rgba(16,39,71,.07);padding:30px 34px 34px}
+.d-profile-card{background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:var(--box-shadow);padding:30px 34px 34px}
 .d-profile-name{position:relative;max-width:620px;margin:22px auto 0;text-align:center}
 .d-profile-name-art{display:block;width:100%;max-width:620px;aspect-ratio:1;object-fit:contain;margin:0 auto;border-radius:14px}
 .d-figure-pick{position:absolute;top:12px;right:12px;display:flex;gap:6px;margin:0}
@@ -197,7 +197,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-tris img{position:absolute}
 .d-overview-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:20px;margin-top:30px}
 .d-panel{border:1px solid #cfdbe6;border-radius:6px;background:#fffefb;padding:26px 26px 20px}
-.d-panel .d-profile-card{box-shadow:none;padding:0;background:none}
+.d-panel .d-profile-card{box-shadow:none;padding:0;background:none;border:0}
 .d-panel-title{margin:0 0 18px;font:400 32px/1.1 Georgia,serif;letter-spacing:-.035em;color:var(--title)}
 .d-warm{background:var(--warm);border-color:var(--warm)}
 .d-warm p{color:var(--title);font-size:18px;line-height:1.45}
@@ -919,7 +919,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 @keyframes d-lock-shake{0%,100%{transform:none}20%{transform:rotate(-16deg)}40%{transform:rotate(13deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
 
 /* Shareable profile video */
-.d-share{display:grid;grid-template-columns:minmax(200px,270px) 1fr;gap:36px;align-items:center;max-width:860px;margin:44px auto 0;padding:28px;border-radius:12px;background:#fffefb;box-shadow:0 10px 30px rgba(16,39,71,.07);color:var(--title)}
+.d-share{display:grid;grid-template-columns:minmax(200px,270px) 1fr;gap:36px;align-items:center;max-width:860px;margin:44px auto 0;padding:28px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow);color:var(--title)}
 .d-share-frame{aspect-ratio:9/16;border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(16,39,71,.16);background:#fbf9f4}
 .d-share-frame canvas{display:block;width:100%;height:100%}
 .d-share .eyebrow{margin:0;color:#d9764a}
@@ -1038,7 +1038,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 /* The first window after the test: only the video, as large as the screen allows. */
 .d-video-intro{width:fit-content;max-width:none;max-height:none;padding:0;border:0;background:transparent;overflow:visible}
 .d-video-intro::backdrop{background:rgba(8,16,40,.86)}
-.d-video-intro .d-share{display:block;margin:0;padding:0;background:none;box-shadow:none}
+.d-video-intro .d-share{display:block;margin:0;padding:0;background:none;box-shadow:none;border:0}
 .d-video-intro .d-share-body{display:none}
 .d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 76px)*9/16));margin:0 auto;border-radius:16px}
 .d-video-intro .d-share-fab{font-size:14px}
@@ -1570,3 +1570,16 @@ details.d-ctx-more>div{padding:0}
   .d-report-try-mark{width:52px;height:40px;top:10px;right:12px}
   .d-continue{padding:18px 22px;font-size:18px}
 }
+/* One box style for the whole app (Rune, 2026-10-16: «samme bokser/kanter gjennom hele appen»), taken from the
+   soft answer cards in Rune's question-page mockup: thin cool border, 12 px corners, a faint lift. Use these
+   variables for any new card; accent boxes keep their colour but share radius and shadow. */
+:root{--box-bg:#fffefb;--box-border:#e1e7ee;--box-radius:12px;--box-shadow:0 1px 2px rgba(16,39,71,.04),0 6px 18px rgba(16,39,71,.05);--field-border:#cfd9e4;--field-radius:10px}
+.d-panel,.d-trait-chapter,.d-facet,.d-context-card,.d-nuance-fold,.d-journey-card,.d-tdetail,.d-info-pop,.d-teaser,.d-email,.d-account-box,.d-account-page .d-account-panel,.d-tailor,.d-tailor-col li,.d-ctx-card,.d-ctx-panel,.d-career-list li,.d-offer-list,.d-offer-pricebox{border:1px solid var(--box-border)!important;border-radius:var(--box-radius)!important;background-color:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-offer-pricebox{background-color:#e7f0f8;border-color:#dbe6f1!important}
+.d-tdetail-more,.d-career-opt{border:1px solid var(--box-border)!important;border-radius:var(--box-radius)!important;box-shadow:var(--box-shadow)}
+.d-offer-plus{border:1.5px solid #f6b18d!important;border-radius:var(--box-radius)!important;box-shadow:var(--box-shadow)}
+.d-ctx-toggle{border-radius:var(--box-radius)}
+.d-tlpanel .d-trait-chapter,.d-panel .d-trait-chapter{box-shadow:var(--box-shadow)}
+.d-email-row input,.d-share input:not([type=range]),.d-signin-email input,.d-career-other input{border:1px solid var(--field-border)!important;border-radius:var(--field-radius)!important;background:#fff;box-shadow:inset 0 1px 2px rgba(16,39,71,.04)}
+.d-email-row input:focus,.d-share input:not([type=range]):focus,.d-signin-email input:focus,.d-career-other input:focus{border-color:#8fb0d0!important;outline:3px solid rgba(143,176,208,.35);outline-offset:0}
+@media print{.d-panel,.d-trait-chapter,.d-facet,.d-tdetail,.d-offer-list,.d-journey-card{box-shadow:none!important}}
