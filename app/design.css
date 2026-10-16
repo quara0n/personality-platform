@@ -86,6 +86,15 @@ body.in-loading footer{display:none}
 @media(max-width:600px){.d-assemble{transform:scale(.7);margin:-40px 0 10px}.d-assemble{animation:none}}
 @media(prefers-reduced-motion:reduce){.d-piece,.d-loading h1,.d-loading p{animation:d-fade .4s ease forwards!important;transform:none!important}.d-assemble{animation:none}}
 
+/* Opening the in-depth report: same assembling logo, then the real chapters one by one */
+.d-opening h1{font-size:clamp(30px,3.6vw,52px)}
+.d-opening-list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:12px;text-align:left;font-size:clamp(16px,1.5vw,20px);color:var(--title)}
+.d-opening-list li{display:flex;align-items:center;gap:14px;opacity:0;animation:d-rise .6s ease forwards;animation-delay:calc(1.3s + var(--i)*.38s)}
+.d-opening-list img{width:22px;height:22px;object-fit:contain;flex:none}
+@keyframes d-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.d-opening{padding-top:24px}.d-opening-list{margin-top:22px;gap:10px}}
+@media(prefers-reduced-motion:reduce){.d-opening-list li{animation:d-fade .4s ease forwards!important;transform:none}}
+
 /* Shared profile card */
 .d-profile-card{background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:var(--box-shadow);padding:30px 34px 34px}
 .d-profile-name{position:relative;max-width:620px;margin:22px auto 0;text-align:center}
