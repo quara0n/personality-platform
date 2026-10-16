@@ -353,5 +353,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Spørsmålssiden i ny stil (2026-10-16)
 - Rune likte Codex-skissen av spørsmålssiden på mobil. Svarene er nå myke kort (tynn lys kant, avrundede hjørner, svak skygge) med en pil til høyre, uten runde valgsirkler til venstre (Runes ønske). Fremdriften vises som fem segmenter med prosent og tall. Tilfeldig/Runes profil har ikoner.
-- Rune vil ha samme bokser og kanter i hele appen. Kortstilen ligger i app/question.css som `.soft-card` og variablene `--card-*`, så andre sider kan bruke den.
+- Rune vil ha samme bokser og kanter i hele appen. Svarkortene bruker de felles `--box-*`-variablene fra PR #63 (med samme verdier som reserve til den er merget).
 - Landskapet nederst beholdes til nytt bilde er laget (bildeoppdrag). Automatisk overgang ved valg er uendret.
