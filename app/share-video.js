@@ -280,12 +280,12 @@ export function timeline(s) {
 }
 export const duration = s => timeline(s).at(-1).end;
 
-/** Outro: in the last 1.5 s each logo piece lifts on one of the song's eighth notes (the same grid as
+/** Outro: from about 2 s before the end (Rune moved it 0.5 s earlier) each logo piece lifts on one of the song's eighth notes (the same grid as
  *  LOGO_HITS, followed through the song plan so the long cut's restart stays on it), then the whole logo
  *  rises on the next one. Times in seconds from the start of the video. */
 export function outroHits(s) {
   const total = duration(s), part = songPlan(total, {restartAt: musicCues(s).restartAt}).at(-1), shift = part.from - part.at;
-  const step = LOGO_HITS.ring[0], first = Math.ceil((total - 1.6 + shift - step) / .25) * .25 + step - shift;
+  const step = LOGO_HITS.ring[0], first = Math.ceil((total - 2.1 + shift - step) / .25) * .25 + step - shift;
   const pieces = PIECES.map((_, i) => first + i * .25);
   return {pieces, rise: pieces.at(-1) + .25};
 }
