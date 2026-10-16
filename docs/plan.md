@@ -45,7 +45,9 @@ Testhjelp 2026-10-11: «Tilfeldig»-knappen på spørsmålssiden (vises etter at
 Utvidet 2026-10-14: snarveien går nå samme vei som en ekte fullføring (innloggingssiden, lasteanimasjonen, videoen og gratisprofilen). Adressen `?dev=1#random` fyller ut svarene og starter flyten direkte, og gratisprofilen har knappen «Ny tilfeldig profil» for å trekke på nytt. Uten dev-modus sender #random til forsiden.
 Endret 2026-10-14 (Rune): knappen vises for alle frem til lansering, også uten ?dev=1. Slå av med SHOW_RANDOM=false øverst ved devMode() i app/ui.js før lansering.
 
-Trekkliste 2026-10-15 (slått sammen): «Dine fem trekk» i rapporten vises som en liste med én rad per trekk (bilde, navn, søyle, persentil, nivå og +), samme oppsett som fasettkortene, og erstatter logovelgeren fra 2026-10-13. Raden åpner trekkpanelet rett under seg, ett trekk om gangen; utskrift viser alle. Kode i app/trait-list.js, kontrolleres med scripts/trait-list-check.cjs.
+Logomeny 2026-10-16 (Rune): trekklisten under er erstattet av logoen som meny (app/logo-nav.js), også i gratisprofilen. Se docs/decisions.md.
+
+Trekkliste 2026-10-15 (slått sammen, erstattet 2026-10-16): «Dine fem trekk» i rapporten vises som en liste med én rad per trekk (bilde, navn, søyle, persentil, nivå og +), samme oppsett som fasettkortene, og erstatter logovelgeren fra 2026-10-13. Raden åpner trekkpanelet rett under seg, ett trekk om gangen; utskrift viser alle. Kode i app/trait-list.js, kontrolleres med scripts/trait-list-check.cjs.
 
 Nyanser 2026-10-15 (Rune): boksen «Nyanser i profilen din» nederst i hvert trekk er fjernet fordi søylene og tekstene gjentok fasettkortene. Når fasettene spriker mye (minst 30 persentilpoeng), står den samme setningen som én linje rett over fasettkortene; ellers vises ingenting.
 

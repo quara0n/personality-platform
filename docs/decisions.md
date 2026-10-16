@@ -350,3 +350,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
 - «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
 - I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
+
+## 2026-10-16 – Trekkene som logo, fasettknapper og to mockuper
+- Rune: listen med de fem trekkene byttes ut med logoen. Hver logobit er ett trekk og viser persentil og nivå; trykk løfter biten ut og åpner trekket med fasettene under. Gjelder «Dine fem trekk» i rapporten og «Utforsk trekkene dine» i gratisprofilen. På mobil fyller logoen hele bredden.
+- Alle knapper bruker forsidens fasettknapp (marine fasetter med aprikoshjørne). Lyse papirfasetter for sekundærknapper, aprikos der siden allerede brukte aprikos.
+- Flate trekanter er byttet med logobitene (kjøpssiden, «En mulig styrke», vardene og trekkikonene i delevideoen).
+- Under 100-figurene på fasettkortene står ikke lenger «N av 100 mennesker skårer lavere enn deg», fordi setningen over sier det samme.
+- Kjøpssiden og «Din styrke»/«Prøv i hverdagen» er kopiert fra Runes Codex-mockuper. Illustrasjonene er klippet fra mockupene. Kapittelbytte i rapporten bruker knappen «Fortsett utforskningen» med neste kapittel under.
