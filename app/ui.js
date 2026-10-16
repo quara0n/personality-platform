@@ -411,11 +411,6 @@ function fullReport(active='overview'){
     <p class="eyebrow">${demo?tr('Illustrative profile','Illustrert profil'):tr('Your Big Five report','Din Big Five-rapport')}</p>
     <div class="d-results-hero d-report-hero"><h1>${tr('Personality profile','Personlighetsprofil')}</h1>${profileNameHtml(false)}</div>
     ${glanceHtml(glanceCtx())}${nuances()}${shareBox(true)}
-    <h2 class="d-section-title">${tr('Explore your report','Utforsk rapporten din')}</h2>
-    <div class="d-explore-cards">
-      <article><img src="assets/design/report-work.webp" alt="" aria-hidden="true"><h3>${tr('Work & career','Arbeidsliv og karriere')}</h3><p>${tr('Working style, collaboration and environments to explore.','Arbeidsstil, samarbeid og miljøer å utforske.')}</p><a href="#report/work">${tr('See what it means for you','Se hva det betyr for deg')} <span aria-hidden="true">→</span></a></article>
-      <article><img src="assets/design/report-life.webp" alt="" aria-hidden="true"><h3>${tr('Everyday life','Hverdagsliv')}</h3><p>${tr('Social energy, communication and everyday habits.','Sosial energi, kommunikasjon og hverdagsvaner.')}</p><a href="#report/life">${tr('See what it means for you','Se hva det betyr for deg')} <span aria-hidden="true">→</span></a></article>
-    </div>
     <div class="d-step-box"><span class="d-report-try-ico">${tryIcon}</span><div><h2>${tr('One small step to try','Ett lite steg å prøve')}</h2><p>${step?esc(step.content.life):tr('Choose one facet that interests you and compare two everyday situations this week.','Velg en fasett du er nysgjerrig på, og sammenlign to hverdagssituasjoner denne uken.')}</p><hr><p class="eyebrow">${tr('Reflect','Reflekter')}</p><p class="d-reflect">${esc(reflection(sorted(),language))}</p></div></div>
     <div class="notice d-disclaimer">${tr('This is a self-reflection tool, not a diagnosis, ability test, or recommendation for a particular job. Results reflect your self-reported answers today.','Dette er et verktøy for selvrefleksjon, ikke en diagnose, evnetest eller anbefaling av et bestemt yrke. Resultatene bygger på dine egne svar i dag.')}</div>
     ${normNote()}${nextLink('overview')}</section>`;
