@@ -215,6 +215,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
   - Rune ønsket at logoen bygges i takt med de raske lydene i starten av sangen. Sangen har plukk på hvert åttendedelsslag (0,25 s) fra 0,16 s. Ringen starter på første lyd, hver av de fem logobitene lander på de neste fem med et lite sprett, og ringen lukkes på slaget ved 1,9 s (LOGO_HITS i app/share-video.js). Opptaket venter 0,4 s på første bilde før klokke og sang starter, så starten ikke mister bilder mens koderen kommer i gang.
   - Rune ba 2026-10-16 om at sluttkortet varer 3 sekunder med outroen, og at sitatbildet får 2 sekunder mer. Sitatbildet varer nå 5 s (lang 5,5 s) og sluttkortet 3 s, så lengden er uendret (23,5 s / 42,5 s). I de siste 1,5 sekundene løftes logobitene én og én på sangens åttendedelsslag (samme rutenett som LOGO_HITS, fulgt gjennom sangplanen i lang versjon), og deretter løfter hele logoen seg og toner ut før videoen starter på nytt (outroHits i app/share-video.js).
   - Rune syntes samme dag at løftet startet ca. 0,5 s for sent. Det starter nå ett slag tidligere, ca. 2 s før slutten (21,4 s i kort versjon), og hele logoen løfter seg fra ca. 0,85 s før slutten.
+  - Rune syntes trekantene så fysisk feil ut når de gled over ringen. De løfter seg nå mot seeren i stedet: de vokser litt på stedet og kaster en myk skygge, så de blir innenfor ringen. Hele logoen med ringen løfter seg fortsatt samlet til slutt.
 
 
 ## Tilpasset arbeid og hverdag, nytt kjøpsnivå 2026-10-13
@@ -375,6 +376,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «Fordypningsrapporten må være mer markert og synlig.» «Gå dypere» er nå en ferskenboks med illustrasjonen fra kjøpssiden, en kort linje om innholdet og den fasetterte hovedknappen. Rutersymbolet er ikke lenger brukt der.
 - Forklaringen av persentiler og ordene lavere/midt/høyere ligger bak «Les mer om tallene». Teksten under e-postfeltet er fjernet.
 - Hopp-til-innhold-lenken er helt skjult til den får tastaturfokus.
+
+## 2026-10-16 – Lasteskjerm når fordypningsrapporten åpnes
+- Rune spurte om det skal komme en lasteskjerm når man går til fordypningsrapporten. «Utforsk fordypningsrapporten» fører fortsatt til kjøpssiden. Kjøpsknappene der («Få hele rapporten» og «Få den tilpassede rapporten») går nå via en kort overgang (#opening) der logobitene samles og det faktiske innholdet nevnes: 30 fasetter med persentiler, arbeidsliv og karriere, hverdagsliv, ukeplan med tre eksperimenter, og at rapporten kan lagres som PDF. Etterpå åpnes rapporten (tilbakeknappen går til kjøpssiden).
+- Rune 2026-10-16: overgangen skal føles som at noe jobbes hardt med. Den har nå en teller fra 0 til 100 % som går ujevnt, og logobitene hever seg én om gangen mens tilhørende linje dukker opp (ca. 6 s, 1,6 s med redusert bevegelse).
+- Ingen sidetall nevnes. PDF-en er nettleserens utskrift av rapporten, ikke et eget designet dokument, og lengden varierer.
 
 ## 2026-10-16 – Alle bilder i fasettstil fra Codex, og to metaforer per trekkort
 - Rune leverte FEM-bilder.zip fra Codex (laget etter bildeoppdrag/ i prosjektmappen): 257 bilder. Erstattet: trekkpanelene (trait-O…N), trekkbåndene (facets/head-*, strength-O), kapittelhodene (context/*-head), kjøpsbildene (offer-*, ikke i bruk nå) og landskapet på spørsmålssiden. Nye: alle 94 trekkort og 48 fasettbilder (C, E, A, N) i kvinne- og mannsversjon.

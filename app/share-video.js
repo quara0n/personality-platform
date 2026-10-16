@@ -1,7 +1,7 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
 // Short (about 24 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
-// a light closing line and a three-second end card where the logo pieces lift one by one on the
+// a light closing line and a three-second end card where the logo pieces rise toward the viewer one by one on the
 // song's eighth notes before the whole logo rises, and the clip loops.
 // The song from share-music.js is recorded into the same file.
 // Long (about 42 s, in-depth report): adds all five traits, the combination sentence and a
@@ -187,7 +187,8 @@ export function loadPieces(base = 'assets/design/') {
 }
 
 /** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop.
- *  `lift` (piece index → 0..1, past 1 overshoots) raises single pieces above the assembled logo. */
+ *  `lift` (piece index → 0..1, past 1 overshoots) raises single pieces toward the viewer: they grow a little in
+ *  place and cast a soft shadow on the paper, so they stay inside the ring instead of sliding across it. */
 function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null, lift = null) {
   PIECES.forEach((p, i) => {
     const img = imgs[`logo-${p}`] || imgs[p]; if (!img) return;
@@ -196,9 +197,10 @@ function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null, lift = null)
     const [fx, fy, fr] = FLY[p], up = lift ? lift(i) : 0;
     ctx.save();
     ctx.globalAlpha *= clamp(k * 3);
-    ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k) - 80 * up) * scale);
+    ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k) ) * scale);
     ctx.rotate(fr * (1 - k) * Math.PI / 180);
-    ctx.scale(pop * (1 + .06 * clamp(up)), pop * (1 + .06 * clamp(up))); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
+    if (up > 0) {ctx.shadowColor = `rgba(12,23,66,${.28 * clamp(up)})`; ctx.shadowBlur = 30 * up * scale; ctx.shadowOffsetY = 22 * up * scale;}
+    ctx.scale(pop * (1 + .1 * up), pop * (1 + .1 * up)); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
     ctx.restore();
   });
   if (ring > 0) {
@@ -368,7 +370,7 @@ const scenes = {
   },
   end(ctx, lt, d, a, s, imgs) {
     const k = ease(span(lt, 0, .5));
-    // Pieces lift on their hit with a small overshoot, then the whole logo rises and fades before the loop.
+    // Pieces rise toward the viewer on their hit with a small overshoot, then the whole logo rises and fades before the loop.
     const start = duration(s) - d, {pieces, rise} = outroHits(s), r = easeInOut(span(lt, rise - start, d));
     ctx.save(); ctx.globalAlpha = k * (1 - r);
     logo(ctx, imgs, W / 2, 700 - 240 * r, .95, span(lt, -.1, .8), span(lt, .2, 1), null, i => easeOutBack(span(lt, pieces[i] - start - .05, pieces[i] - start + .2)));
