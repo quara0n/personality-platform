@@ -351,6 +351,14 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
 - I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
 
+## 2026-10-16 – Trekkene som logo, fasettknapper og to mockuper
+- Rune: listen med de fem trekkene byttes ut med logoen. Hver logobit er ett trekk og viser persentil og nivå; trykk løfter biten ut og åpner trekket med fasettene under. Gjelder «Dine fem trekk» i rapporten og «Utforsk trekkene dine» i gratisprofilen. På mobil fyller logoen hele bredden.
+- Alle knapper bruker forsidens fasettknapp (marine fasetter med aprikoshjørne). Lyse papirfasetter for sekundærknapper, aprikos der siden allerede brukte aprikos.
+- Flate trekanter er byttet med logobitene (kjøpssiden, «En mulig styrke», vardene og trekkikonene i delevideoen).
+- Under 100-figurene på fasettkortene står ikke lenger «N av 100 mennesker skårer lavere enn deg», fordi setningen over sier det samme.
+- Kjøpssiden og «Din styrke»/«Prøv i hverdagen» er kopiert fra Runes Codex-mockuper. Illustrasjonene er klippet fra mockupene. Kapittelbytte i rapporten bruker knappen «Fortsett utforskningen» med neste kapittel under.
+- Rune: samme bokser og kanter i hele appen. Kort og bokser bruker felles variabler i app/design.css (`--box-*`, `--field-*`): tynn kjølig kant, 14 px hjørner og en svak skygge, hentet fra svarkortene i mockupen av spørsmålssiden. Nye kort skal bruke variablene.
+
 ## Spørsmålssiden i ny stil (2026-10-16)
 - Rune likte Codex-skissen av spørsmålssiden på mobil. Svarene er nå myke kort (tynn lys kant, avrundede hjørner, svak skygge) med en pil til høyre, uten runde valgsirkler til venstre (Runes ønske). Fremdriften vises som fem segmenter med prosent og tall. Tilfeldig/Runes profil har ikoner.
 - Rune vil ha samme bokser og kanter i hele appen. Svarkortene bruker de felles `--box-*`-variablene fra PR #63 (med samme verdier som reserve til den er merget).

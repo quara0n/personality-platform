@@ -66,7 +66,8 @@ export function compareCount(f) {
   return shownPercentile(f.percentile);
 }
 
-/** The sentence followed by 100 small figures, the first N (the people you score higher than) in the trait colour. */
+/** The sentence followed by 100 small figures, the first N (the people you score higher than) in the trait colour.
+ *  No caption under the figures: the sentence above already gives the number (Rune, 2026-10-16). */
 export function compareHtml(f, language, color, esc) {
   const line = compareLine(f, language), n = compareCount(f);
   if (!line) return '';
@@ -76,5 +77,5 @@ export function compareHtml(f, language, color, esc) {
     figs += `<g class="d-cmp-person${i < n ? ' is-lit' : ''}"><circle cx="${x}" cy="${y}" r="3.2"/><path d="M${x - 5} ${y + 13}v-3.5a5 5 0 0 1 10 0v3.5z"/></g>`;
   }
   const no = language === 'no', rest = no ? 'av 100 mennesker skårer lavere enn deg' : 'in 100 people score lower than you';
-  return `<p class="d-compare">${esc(line)}</p><figure class="d-cmp" style="--lit:${color}"><svg viewBox="0 0 280 100" role="img" aria-label="${esc(`${n} ${rest}`)}">${figs}</svg><figcaption><strong>${n}</strong> ${rest}</figcaption></figure>`;
+  return `<p class="d-compare">${esc(line)}</p><figure class="d-cmp" style="--lit:${color}"><svg viewBox="0 0 280 100" role="img" aria-label="${esc(`${n} ${rest}`)}">${figs}</svg></figure>`;
 }

@@ -38,7 +38,7 @@ const total=s=>Object.values(s).reduce((a,b)=>a+b,0);
   await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>document.activeElement.dataset.trait),'A');
   assert.equal(await page.locator('.d-gpanel').count(),3);assert.equal(await page.locator('.d-gdetail h3').count(),3);
   assert.equal(await page.locator('.d-glance .d-info-btn').count(),1);assert.equal(await page.locator('#overview .d-norm-note').count(),1);
-  await page.evaluate(()=>location.hash='report/traits');await page.locator('.d-tacc-toggle').first().click();await page.locator('.d-tlpanel:not([hidden]) .d-fcard-toggle').first().click();
+  await page.evaluate(()=>location.hash='report/traits');await page.locator('.d-lnav-key').first().click();await page.locator('.d-tlpanel:not([hidden]) .d-fcard-toggle').first().click();
   assert.ok(await page.locator('.d-fcard.is-filling').count()===1);await page.waitForTimeout(900);
   const score=await page.locator('.d-fcard.is-filling .d-facet-score').innerText();assert.match(score,/\d+\. persentil/);
   // Reduced motion: no finale, stones appear without animation, glance parts never wait.

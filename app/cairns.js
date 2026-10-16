@@ -36,7 +36,7 @@ export function cairnsHtml(counts, prev, milestone = '') {
     let stones = '';
     for (let s = 0; s < Math.max(now, before); s++) stones += stone(code, s, s >= now ? ' is-leaving' : s >= before ? ' is-new' : '');
     const [x, y] = SPOTS[code];
-    return `<span class="d-cairn" data-code="${code}" style="--x:${(x / 18).toFixed(2)}%;--y:${((372 - y) / 3.72).toFixed(2)}%"><svg viewBox="0 20 100 72" aria-hidden="true" focusable="false"><ellipse class="d-cairn-ground" cx="50" cy="90" rx="30" ry="3"/><g filter="url(#d-stone-tex)">${stones}</g></svg><img class="d-cairn-piece" src="assets/design/tri-${loadingPiece[code]}.png" alt=""></span>`;
+    return `<span class="d-cairn" data-code="${code}" style="--x:${(x / 18).toFixed(2)}%;--y:${((372 - y) / 3.72).toFixed(2)}%"><svg viewBox="0 20 100 72" aria-hidden="true" focusable="false"><ellipse class="d-cairn-ground" cx="50" cy="90" rx="30" ry="3"/><g filter="url(#d-stone-tex)">${stones}</g></svg><img class="d-cairn-piece" src="assets/design/logo-piece-${loadingPiece[code]}.webp" alt=""></span>`;
   };
   const esc = v => String(v).replace(/[&<>"']/g, c => `&#${c.charCodeAt(0)};`);
   return `<div class="d-cairns${milestone ? ' is-glow' : ''}" aria-hidden="true">${defs}${ORDER.map(cairn).join('')}<p class="d-milestone d-milestone-land">${esc(milestone)}</p></div>`;
