@@ -378,4 +378,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## 2026-10-16 – Lasteskjerm når fordypningsrapporten åpnes
 - Rune spurte om det skal komme en lasteskjerm når man går til fordypningsrapporten. «Utforsk fordypningsrapporten» fører fortsatt til kjøpssiden. Kjøpsknappene der («Få hele rapporten» og «Få den tilpassede rapporten») går nå via en kort overgang (#opening) der logobitene samles og det faktiske innholdet nevnes: 30 fasetter med persentiler, arbeidsliv og karriere, hverdagsliv, ukeplan med tre eksperimenter, og at rapporten kan lagres som PDF. Etterpå åpnes rapporten (tilbakeknappen går til kjøpssiden).
+- Rune 2026-10-16: overgangen skal føles som at noe jobbes hardt med. Den har nå en teller fra 0 til 100 % som går ujevnt, og logobitene hever seg én om gangen mens tilhørende linje dukker opp (ca. 6 s, 1,6 s med redusert bevegelse).
 - Ingen sidetall nevnes. PDF-en er nettleserens utskrift av rapporten, ikke et eget designet dokument, og lengden varierer.
