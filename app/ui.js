@@ -78,20 +78,24 @@ function devRune(replace=false){devRandom(replace,profileAnswers(questions,norms
 let shownCairns=null,milestone=0,flight=null;
 const MILESTONES={30:()=>tr('A quarter done. Your profile is starting to show.','En fjerdedel er gjort. Profilen din begynner å vise seg.'),60:()=>tr('Halfway! Your profile is taking shape.','Halvveis! Profilen din tar form.'),90:()=>tr('Three quarters done. Almost there.','Tre fjerdedeler er gjort. Snart i mål.')};
 function passedCounts(upto){const c={O:0,C:0,E:0,A:0,N:0};questions.slice(0,upto).forEach(q=>{if(answers[q.id])c[q.domain]++;});return c;}
+// Question page icons (2026-10-16 redesign from Rune's mockup): chevron on each answer card, icons on the test chips.
+const CHEVRON='<svg class="d-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>';
+const DICE='<svg class="d-dev-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.8l8 4.4v9.6l-8 4.4-8-4.4V7.2z"/><path d="M4 7.2l8 4.4 8-4.4M12 11.6v9.6"/><circle cx="12" cy="7.1" r=".9"/><circle cx="7.6" cy="12.6" r=".9"/><circle cx="16.4" cy="12.6" r=".9"/><circle cx="16.4" cy="16.4" r=".9"/></svg>';
+const PERSON='<svg class="d-dev-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.8-3.8 3.7-6 7.5-6s6.7 2.2 7.5 6z"/></svg>';
 function assessment(focus=false){demo=false;report=null;
   const q=questions[index],count=Object.keys(answers).length,percent=Math.round(count/120*100);
   const cairns=passedCounts(index),glow=milestone;milestone=0;
   main.innerHTML=`<section class="d-question">
     ${cairnsHtml(cairns,shownCairns,glow?MILESTONES[glow]():'')}
     <div class="d-question-inner">
-      <div class="d-progress"><span>${tr('Progress','Fremdrift')}</span><progress max="120" value="${count}" aria-label="${tr('Answered questions','Besvarte spørsmål')}: ${count} / 120"></progress><span class="d-pct">${percent} %</span><span class="d-qnum">${index+1}/120</span><p class="d-milestone d-milestone-top" aria-hidden="true">${glow?esc(MILESTONES[glow]()):''}</p></div><p class="sr-only" role="status">${glow?esc(MILESTONES[glow]()):''}</p>
+      <div class="d-progress"><span>${tr('Progress','Fremdrift')}</span><progress class="sr-only" max="120" value="${count}" aria-label="${tr('Answered questions','Besvarte spørsmål')}: ${count} / 120"></progress><span class="d-segs" aria-hidden="true">${[0,1,2,3,4].map(i=>`<i${index>=i*24&&index<i*24+24?' class="is-now"':''} style="--f:${Math.max(0,Math.min(1,(count-i*24)/24)).toFixed(3)}"></i>`).join('')}</span><span class="d-pct">${percent} %</span><span class="d-qnum">${index+1}/120</span><p class="d-milestone d-milestone-top" aria-hidden="true">${glow?esc(MILESTONES[glow]()):''}</p></div><p class="sr-only" role="status">${glow?esc(MILESTONES[glow]()):''}</p>
       <p class="d-instruction">${tr('Answer based on how you usually are.','Svar ut fra hvordan du vanligvis er.')}</p>
       <p class="d-count">${tr('Question','Spørsmål')} ${index+1} ${tr('of','av')} 120</p>
       <div class="d-title-slot"><h1 class="d-question-title${q.text.length>38?' is-long':''}" id="question" tabindex="-1">${esc(q.text)}</h1></div>
-      <div class="d-choices" role="radiogroup" aria-labelledby="question" aria-describedby="auto-note">${anchors().map((a,i)=>`<label class="d-choice"><input type="radio" name="response" value="${i+1}" ${answers[q.id]===i+1?'checked':''}><span class="d-check" aria-hidden="true"></span><span class="d-choice-text">${a}</span></label>`).join('')}</div>
+      <div class="d-choices" role="radiogroup" aria-labelledby="question" aria-describedby="auto-note">${anchors().map((a,i)=>`<label class="d-choice"><input type="radio" name="response" value="${i+1}" ${answers[q.id]===i+1?'checked':''}><span class="d-choice-text">${a}</span>${CHEVRON}</label>`).join('')}</div>
       <p class="sr-only" id="auto-note">${tr('Choosing an answer continues automatically. Use Tab, arrow keys and Space to select.','Når du velger et svar, går testen videre automatisk. Bruk Tab, piltaster og mellomrom for å velge.')}</p>
       <div class="d-actions"><button class="d-back" id="back" ${index===0?'disabled':''}><span aria-hidden="true">←</span> ${tr('Back','Tilbake')}</button><button class="d-next" id="forward" ${!answers[q.id]?'disabled':''}>${index===119?tr('See results','Se resultat'):tr('Next','Neste')} <span aria-hidden="true">→</span></button></div>
-      <p class="d-note">${tr('You can go back and change your answer.','Du kan gå tilbake og endre svaret ditt.')}</p>${showRandom()?`<button type="button" class="d-dev-random" id="dev-random">${tr('Random','Tilfeldig')}</button> <button type="button" class="d-dev-random" id="dev-rune">${tr('Rune’s profile','Runes profil')}</button>`:''}
+      <p class="d-note">${tr('You can go back and change your answer.','Du kan gå tilbake og endre svaret ditt.')}</p>${showRandom()?`<div class="d-dev-row"><button type="button" class="d-dev-random" id="dev-random">${DICE}${tr('Random','Tilfeldig')}</button><button type="button" class="d-dev-random" id="dev-rune">${PERSON}${tr('Rune’s profile','Runes profil')}</button></div>`:''}
     </div>
     <img class="d-question-land" src="assets/design/question-landscape.webp" alt="" aria-hidden="true">
   </section>`;

@@ -358,3 +358,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Under 100-figurene på fasettkortene står ikke lenger «N av 100 mennesker skårer lavere enn deg», fordi setningen over sier det samme.
 - Kjøpssiden og «Din styrke»/«Prøv i hverdagen» er kopiert fra Runes Codex-mockuper. Illustrasjonene er klippet fra mockupene. Kapittelbytte i rapporten bruker knappen «Fortsett utforskningen» med neste kapittel under.
 - Rune: samme bokser og kanter i hele appen. Kort og bokser bruker felles variabler i app/design.css (`--box-*`, `--field-*`): tynn kjølig kant, 14 px hjørner og en svak skygge, hentet fra svarkortene i mockupen av spørsmålssiden. Nye kort skal bruke variablene.
+
+## Spørsmålssiden i ny stil (2026-10-16)
+- Rune likte Codex-skissen av spørsmålssiden på mobil. Svarene er nå myke kort (tynn lys kant, avrundede hjørner, svak skygge) med en pil til høyre, uten runde valgsirkler til venstre (Runes ønske). Fremdriften vises som fem segmenter med prosent og tall. Tilfeldig/Runes profil har ikoner.
+- Rune vil ha samme bokser og kanter i hele appen. Svarkortene bruker de felles `--box-*`-variablene fra PR #63 (med samme verdier som reserve til den er merget).
+- Landskapet nederst beholdes til nytt bilde er laget (bildeoppdrag). Automatisk overgang ved valg er uendret.
