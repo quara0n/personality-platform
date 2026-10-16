@@ -341,6 +341,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Hovedbildet og trekkbåndet skal synes ved innlasting på vanlig PC-skjerm (1440×900). Sideteksten nede til venstre skjules på lave skjermer for å få plass.
 - «Relasjonene dine» står som i mockupen. Hverdagslivkapittelet tar med partner og familie når brukeren oppgir det.
 - Valget «Bildene i rapporten viser» er tatt bort fra forsiden og finnes fortsatt øverst i Arbeidsliv og Hverdagsliv.
+- Oppfølging samme dag etter Runes mobilskjermbilde: tittelen er «Ingen boks. Bare deg.» («No box. Just you.»), som erstatter «Du er mer enn én type». På mobil samles lenkene og språk/land bak en menyknapp ved logoen, og teksten er strammet opp. «Start testen»-knappene har trekantfasetter i logofargene.
 
 ## 2026-10-16: Innlogging kreves før resultatene
 

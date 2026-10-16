@@ -1415,3 +1415,34 @@ details.d-ctx-more>div{padding:0}
   .h-closing-actions{flex-direction:column;align-items:stretch;gap:16px;text-align:center}
   .h-burst{display:none}
 }
+
+/* Faceted "Start testen" buttons, in the style of the logo pieces */
+.h-hero .button,.h-closing .button{position:relative;overflow:hidden;border:0;background:linear-gradient(118deg,transparent 0 63%,rgba(255,255,255,.08) 63% 76%,transparent 76%),linear-gradient(58deg,rgba(255,255,255,.07) 0 24%,transparent 24% 47%,rgba(0,0,0,.2) 47% 61%,transparent 61%),linear-gradient(162deg,#1f4176 0 34%,#15305c 34% 69%,#0e2246 69%);box-shadow:0 6px 16px rgba(16,39,71,.18)}
+.h-hero .button,.h-closing .button{clip-path:none}
+.h-hero .button::after,.h-closing .button::after{content:'';position:absolute;right:0;top:0;width:26px;height:22px;background:linear-gradient(225deg,#f8c2a2 0 50%,#f0a07a 50%);clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none}
+.h-hero .button:hover,.h-closing .button:hover{filter:brightness(1.12)}
+/* Mobile header: logo and name, menu behind a button */
+.menu-toggle{display:none}
+@media(max-width:700px){
+  header{position:relative;flex-wrap:nowrap;align-items:center;padding:12px 20px}
+  .brand{font-size:32px}.brand .mark{width:36px;height:36px}
+  .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-left:auto;padding:10px;border:0;background:none;cursor:pointer}
+  .menu-toggle span{display:block;height:2px;border-radius:2px;background:var(--title);transition:transform .2s,opacity .2s}
+  header.menu-open .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.menu-open .menu-toggle span:nth-child(2){opacity:0}
+  header.menu-open .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  header nav,header .locale-bar{display:none}
+  header.menu-open{flex-wrap:wrap}
+  header.menu-open nav{display:flex;order:3;width:100%;flex-direction:column;align-items:stretch;gap:0;margin:8px 0 0}
+  header.menu-open nav a{padding:13px 0;border-top:1px solid #dfe3e6;font-size:17px}
+  header.menu-open nav .small-button{display:flex;justify-content:space-between;margin-top:6px;padding:13px 16px;border:1px solid var(--title)}
+  header.menu-open nav .d-exit{display:none}
+  header.menu-open .locale-bar{display:flex;order:4;width:100%;justify-content:flex-start;gap:12px;padding:12px 0 4px;border-top:1px solid #dfe3e6;margin-top:10px}
+  header.menu-open .locale-bar select{font-size:15px;max-width:none;border-color:#cfd6dc;padding:8px 26px 8px 10px}
+  body.in-test header nav{display:flex;margin-left:auto}
+  body.in-test .menu-toggle,body.in-loading .menu-toggle{display:none}
+  .h-eyebrow{font-size:10px;letter-spacing:.3em;margin-bottom:10px}
+  .h-hero h1{font-size:clamp(46px,13vw,64px);margin-bottom:14px}
+  .h-lead{font-size:18px;line-height:1.45;text-wrap:balance;margin-bottom:20px}
+  .h-hint{font-size:13px;text-align:center}
+}
