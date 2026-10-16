@@ -1361,13 +1361,7 @@ details.d-ctx-more>div{padding:0}
 .h-closing-actions{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
 .h-closing .button{background:var(--ink);color:#fff}
 .h-sample{font-size:16px;color:var(--title);text-decoration:underline;text-underline-offset:4px}
-.h-burst{position:relative;width:190px;height:172px}
-.h-burst img{position:absolute}
-.h-burst-navy{left:6px;top:4px;width:72px;transform:translate(-4px,-6px)}
-.h-burst-apricot{left:86px;top:-4px;width:82px;transform:translate(10px,-4px)}
-.h-burst-ivory{left:104px;top:84px;width:80px;transform:translate(12px,8px)}
-.h-burst-steel{left:52px;top:102px;width:80px;transform:translate(-2px,14px)}
-.h-burst-sky{left:4px;top:82px;width:80px;transform:translate(-12px,4px)}
+.h-burst{display:block;width:190px;height:auto}
 @media(max-width:1100px){.h-hero{grid-template-columns:minmax(340px,.8fr) 1.2fr}.h-hero-art{margin-left:-28%}.h-tile{padding-left:12px;padding-right:12px}.h-name{font-size:15px}.h-closing{grid-template-columns:1fr auto}.h-side-cta{display:none}}
 @media(max-width:860px){
   .h-hero,.h-traits,.h-areas{padding-left:20px;padding-right:20px}
