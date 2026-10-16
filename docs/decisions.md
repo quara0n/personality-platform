@@ -215,6 +215,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
   - Rune ønsket at logoen bygges i takt med de raske lydene i starten av sangen. Sangen har plukk på hvert åttendedelsslag (0,25 s) fra 0,16 s. Ringen starter på første lyd, hver av de fem logobitene lander på de neste fem med et lite sprett, og ringen lukkes på slaget ved 1,9 s (LOGO_HITS i app/share-video.js). Opptaket venter 0,4 s på første bilde før klokke og sang starter, så starten ikke mister bilder mens koderen kommer i gang.
   - Rune ba 2026-10-16 om at sluttkortet varer 3 sekunder med outroen, og at sitatbildet får 2 sekunder mer. Sitatbildet varer nå 5 s (lang 5,5 s) og sluttkortet 3 s, så lengden er uendret (23,5 s / 42,5 s). I de siste 1,5 sekundene løftes logobitene én og én på sangens åttendedelsslag (samme rutenett som LOGO_HITS, fulgt gjennom sangplanen i lang versjon), og deretter løfter hele logoen seg og toner ut før videoen starter på nytt (outroHits i app/share-video.js).
   - Rune syntes samme dag at løftet startet ca. 0,5 s for sent. Det starter nå ett slag tidligere, ca. 2 s før slutten (21,4 s i kort versjon), og hele logoen løfter seg fra ca. 0,85 s før slutten.
+  - Rune syntes trekantene så fysisk feil ut når de gled over ringen. De løfter seg nå mot seeren i stedet: de vokser litt på stedet og kaster en myk skygge, så de blir innenfor ringen. Hele logoen med ringen løfter seg fortsatt samlet til slutt.
 
 
 ## Tilpasset arbeid og hverdag, nytt kjøpsnivå 2026-10-13
