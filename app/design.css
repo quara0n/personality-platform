@@ -722,12 +722,19 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-dev-random:hover{opacity:1}
 
 /* Free result: closing link to the in-depth report */
-.d-deeper{display:flex;align-items:center;justify-content:center;gap:22px;margin:40px auto 22px;text-align:left}
-.d-deeper-mark{flex:none;width:68px;height:52px}
-.d-deeper h2{margin:0 0 10px;font:400 clamp(26px,3.2vw,40px)/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.03em;color:var(--title)}
-.d-deeper a{display:inline-flex;gap:12px;padding-bottom:6px;border-bottom:1.5px solid var(--title);color:var(--title);font-size:clamp(16px,1.6vw,19px);text-decoration:none}
-.d-deeper a:hover{color:#2f5f93;border-color:#2f5f93}
-@media(max-width:500px){.d-deeper{gap:14px}.d-deeper-mark{width:48px;height:38px}}
+/* Rune 2026-10-16: the in-depth report must stand out on the free profile — one peach box with art and the faceted button */
+.d-deeper{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);align-items:center;gap:28px;max-width:860px;margin:44px auto 26px;padding:26px 32px;border:1px solid #f3dccd;border-radius:var(--box-radius);background:linear-gradient(135deg,#fde8dd,#fdf3ec);box-shadow:var(--box-shadow);color:var(--title);text-decoration:none;text-align:left}
+.d-deeper-art{width:100%;height:auto;display:block}
+.d-deeper-eyebrow{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#d9774a}
+.d-deeper h2{margin:0 0 10px;font:400 clamp(28px,3.2vw,40px)/1.12 Georgia,'Times New Roman',serif;letter-spacing:-.03em;color:var(--title)}
+.d-deeper-text>p:not(.d-deeper-eyebrow){margin:0 0 18px;font-size:17px;line-height:1.5}
+.d-deeper .d-deeper-btn{gap:14px}
+.d-deeper:hover .d-deeper-btn{filter:brightness(1.12)}
+@media(max-width:600px){.d-deeper{grid-template-columns:1fr;gap:12px;margin:32px 0 22px;padding:22px 20px 24px;text-align:center}.d-deeper-art{max-width:170px;margin:0 auto}.d-deeper .d-deeper-btn{width:100%}}
+.d-readmore{max-width:860px;margin:16px auto 0;border:0;padding:0;text-align:center}
+.d-readmore>summary{display:inline-block;margin:0;padding:6px 0;font:inherit;font-size:14px;color:var(--title);text-decoration:underline;text-underline-offset:4px;cursor:pointer;list-style:none}
+.d-readmore>summary::-webkit-details-marker{display:none}
+.d-readmore>p{margin:8px auto 0;padding:0 16px;max-width:720px}
 
 /* Percentile explanation (i) */
 .d-info{margin-top:14px;font-size:14px;color:#33496b}
@@ -1641,3 +1648,6 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-gpanel::before{display:none}.d-gpanel.d-tpanel-A{border:1px solid var(--box-border);box-shadow:var(--box-shadow)}.d-gpanel .d-tpanel-art{padding-top:0}
 /* R5: no reserved row under the first career question, where there is no Back button yet */
 .d-career-nav:not(:has(button,a)){min-height:0;margin-top:0}
+
+/* The skip link stays fully hidden until it gets keyboard focus (it showed mid-page in phone screenshots) */
+.skip:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}

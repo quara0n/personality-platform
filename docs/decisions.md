@@ -370,3 +370,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Ett lite steg å prøve» bruker samme ferskenkort med lyspære som «Prøv i hverdagen»; papirflyet er byttet med logobiten.
 - Nedtrekkslister for språk og land er felt (10 px, `#cfd9e4`). Pluss i sirkel overalt. Del-video-boksen har marg på mobil. Tomrommet under første jobbspørsmål er fjernet.
 - Åpne spørsmål venter på Rune: bildekortene på forsiden uten boks (1.1) og rutersymbolet i «Gå dypere»/«Prøv i hverdagen» (F11). Spørsmålssiden (2.1, 2.2) tas i den tråden.
+
+## 2026-10-16 – Fordypningsrapporten tydeligere på gratisprofilen
+- Rune: «Fordypningsrapporten må være mer markert og synlig.» «Gå dypere» er nå en ferskenboks med illustrasjonen fra kjøpssiden, en kort linje om innholdet og den fasetterte hovedknappen. Rutersymbolet er ikke lenger brukt der.
+- Forklaringen av persentiler og ordene lavere/midt/høyere ligger bak «Les mer om tallene». Teksten under e-postfeltet er fjernet.
+- Hopp-til-innhold-lenken er helt skjult til den får tastaturfokus.
