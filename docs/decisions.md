@@ -342,3 +342,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Relasjonene dine» står som i mockupen. Hverdagslivkapittelet tar med partner og familie når brukeren oppgir det.
 - Valget «Bildene i rapporten viser» er tatt bort fra forsiden og finnes fortsatt øverst i Arbeidsliv og Hverdagsliv.
 - Oppfølging samme dag etter Runes mobilskjermbilde: tittelen er «Ingen boks. Bare deg.» («No box. Just you.»), som erstatter «Du er mer enn én type». På mobil samles lenkene og språk/land bak en menyknapp ved logoen, og teksten er strammet opp. «Start testen»-knappene har trekantfasetter i logofargene.
+
+## 2026-10-16: Innlogging kreves før resultatene
+
+- Rune: «de MÅ logge inn», etter 10–15 minutter på testen. Når innlogging er koblet til (Supabase), må man logge inn før lasteskjermen, gratisprofilen, rapporten og profillenker (#p=…) vises. Eksempelrapporten (#demo) er åpen.
+- Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
+- «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
+- I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
