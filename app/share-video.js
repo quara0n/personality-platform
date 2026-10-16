@@ -181,8 +181,8 @@ const FLY = {navy: [-700, -900, -38], apricot: [800, -700, 42], ivory: [900, 500
 export const PIECES = Object.keys(LOGO);
 
 export function loadPieces(base = 'assets/design/') {
-  // tri-* are the trait pieces; logo-* are the pieces of the logo itself.
-  const files = [...[...PIECES, 'sand'].map(p => [p, `tri-${p}.png`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`])];
+  // Trait icons and the logo both use the logo pieces (Rune, 2026-10-16); 'sand' is the ivory piece.
+  const files = [...[...PIECES, 'sand'].map(p => [p, `logo-piece-${p === 'sand' ? 'ivory' : p}.webp`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`])];
   return Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
 }
 
