@@ -330,8 +330,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune sendte tolv bilder i den nye fasettstilen (O1 Fantasi til O6 Liberalisme, hver i kvinne- og mannsversjon): «legg de inn hvor de skal». De ligger i app/assets/design/facets/female/ og male/, med bakgrunnen gjort gjennomsiktig og beskåret slik som de gamle fasettbildene.
 - Fasettkortene følger valget Kvinne/Mann. Uten valg brukes standardversjonen fra Runes manifest (O3 og O6 mann, resten kvinne); app/facet-art.js. Den nøytrale filen facets/O1–O6.webp er erstattet med standardversjonen, så andre steder som viser fasettbilder, også får den nye stilen.
 
-## Ny forside etter Runes mockup 2026-10-15
-- Forsiden følger mockupen Rune delte: stort hovedbilde i fasettstil med paret til høyre, båndet «Fem trekk. Din kombinasjon.», «Hva vil du forstå bedre?» og avsluttende knapp. Bildene er hentet fra mockupen (app/assets/design/home-*.webp).
-- Søylene fra det gamle eksempelkortet ligger nå i trekkbåndet: en tynn søyle under hvert trekknavn, merket «Illustrert eksempel» ved siden av overskriften. Ingen egen boks. «Hva vil du forstå bedre?» og avslutningen ligger på lys bakgrunn med fasettflater, som i Runes andre mockup.
-- Knappen heter «Ta testen» for nye besøkende og «Fortsett testen» når testen er påbegynt.
-- «Relasjonene dine» er byttet med «Dine neste steg», fordi rapporten ikke har et relasjonskapittel. De tre områdene er nå Hverdagen, Dine neste steg og Arbeidsliv og karriere, som alle finnes i rapporten.
+## Ny forside etter Runes mockup 2026-10-16
+- Forsiden følger mockupen Rune delte 2026-10-16 («lag den akkurat som den er på bilde»): hovedbilde med paret, plante og fasetter, båndet «Fem trekk. Din kombinasjon.» med søyler, «Hva vil du forstå bedre?» med tre bildekort og et lyseblått avslutningsfelt. Hovedbildet og kortbildene er hentet fra mockupen (app/assets/design/home-*.webp), med teksten fjernet.
+- Logoen er dagens logo, ikke den i mockupen. Trekantene i trekkbåndet og i avslutningsfeltet er logobitene, vendt som i logoen (Åpenhet himmelblå, Planmessighet aprikos, Ekstroversjon stålblå, Medmenneskelighet elfenben, Følelsesmessig reaktivitet marine).
+- Knappene heter «Start testen» (Runes valg).
+- Hovedbildet og trekkbåndet skal synes ved innlasting på vanlig PC-skjerm (1440×900). Sideteksten nede til venstre skjules på lave skjermer for å få plass.
+- «Relasjonene dine» står som i mockupen. Hverdagslivkapittelet tar med partner og familie når brukeren oppgir det.
+- Valget «Bildene i rapporten viser» er tatt bort fra forsiden og finnes fortsatt øverst i Arbeidsliv og Hverdagsliv.
