@@ -26,3 +26,11 @@ test('the build writes only public settings to config.js', async () => {
   const build = await readFile(new URL('../scripts/build.js', import.meta.url), 'utf8');
   assert.ok(!/SERVICE_ROLE/i.test(build));
 });
+
+test('the email sign-in accepts only a plausible address', async () => {
+  const {validEmail} = await import('../app/account.js');
+  assert.ok(validEmail(' rune@example.no '));
+  assert.ok(!validEmail('rune@example'));
+  assert.ok(!validEmail('rune example.no'));
+  assert.ok(!validEmail(''));
+});

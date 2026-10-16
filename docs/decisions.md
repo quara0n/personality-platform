@@ -342,8 +342,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Relasjonene dine» står som i mockupen. Hverdagslivkapittelet tar med partner og familie når brukeren oppgir det.
 - Valget «Bildene i rapporten viser» er tatt bort fra forsiden og finnes fortsatt øverst i Arbeidsliv og Hverdagsliv.
 
-## 2026-10-16: Renere innloggingsskjerm etter spørsmålene
+## 2026-10-16: Innlogging kreves før resultatene
 
-- Rune ville ha skjermen «litt mer clean»: logoen og «Fem» øverst i stedet for de fem trekantene, standard Google-knapp slik folk kjenner den fra andre sider, og minst mulig tekst.
-- Teksten er kortet ned til «Lagre profilen din», «Åpne den igjen på alle enheter.» og én linje om sletting med lenke til personvern.
-- «Fortsett uten å logge inn» er fortsatt tilgjengelig, men som en liten, dempet lenke nederst, fordi vi helst vil at folk logger inn.
+- Rune: «de MÅ logge inn», etter 10–15 minutter på testen. Når innlogging er koblet til (Supabase), må man logge inn før lasteskjermen, gratisprofilen, rapporten og profillenker (#p=…) vises. Eksempelrapporten (#demo) er åpen.
+- Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
+- «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
+- I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
