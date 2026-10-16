@@ -364,3 +364,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune likte Codex-skissen av spørsmålssiden på mobil. Svarene er nå myke kort (tynn lys kant, avrundede hjørner, svak skygge) med en pil til høyre, uten runde valgsirkler til venstre (Runes ønske). Fremdriften vises som fem segmenter med prosent og tall. Tilfeldig/Runes profil har ikoner.
 - Rune vil ha samme bokser og kanter i hele appen. Svarkortene bruker de felles `--box-*`-variablene fra PR #63 (med samme verdier som reserve til den er merget).
 - Landskapet nederst beholdes til nytt bilde er laget (bildeoppdrag). Automatisk overgang ved valg er uendret.
+
+## 2026-10-16 – Stilsjekken rettet (stilsjekk/avvik.md)
+- Bokser, merknader, ferskenbokser («Ett lite steg å prøve», «En plassering, ikke en fasit»), toppkort, bildekort i «Utforsk rapporten din», valgknapper og innloggingsknapper bruker nå de felles `--box-*`/`--field-*`-variablene. Ingen nye kombinasjoner av kant, hjørner og skygge.
+- «Ett lite steg å prøve» bruker samme ferskenkort med lyspære som «Prøv i hverdagen»; papirflyet er byttet med logobiten.
+- Nedtrekkslister for språk og land er felt (10 px, `#cfd9e4`). Pluss i sirkel overalt. Del-video-boksen har marg på mobil. Tomrommet under første jobbspørsmål er fjernet.
+- Åpne spørsmål venter på Rune: bildekortene på forsiden uten boks (1.1) og rutersymbolet i «Gå dypere»/«Prøv i hverdagen» (F11). Spørsmålssiden (2.1, 2.2) tas i den tråden.
