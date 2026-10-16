@@ -1,13 +1,12 @@
-// «Din jobb, din profil» in Work & career, the tailored block in Everyday life, and the 149 kr tier on the offer page.
+// «Din jobb, din profil» in Work & career, «Din hverdag, dine relasjoner» in Everyday life & relationships, and the 149 kr tier on the offer page.
 // Uses synthetic answers only. Run with the app on http://127.0.0.1:4173 (npm start).
 // Set SHOTS=<folder> to save screenshots.
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
 const assert=require('node:assert/strict');
 const URL='http://127.0.0.1:4173/',SHOTS=process.env.SHOTS;
-async function seed(page){await page.goto(URL+'#home');await page.locator('.hero').waitFor();
-  await page.evaluate(async()=>{const q=await (await fetch('data/questions.json')).json();const a={};q.forEach((x,i)=>a[x.id]=1+(i*7+Math.floor(i/7))%5);sessionStorage.setItem('five-assessment-v1',JSON.stringify({answers:a,index:119}));sessionStorage.removeItem('fem-tailor-v1');},);
+async function seed(page){await page.goto(URL+'#home');await page.locator('.h-hero').waitFor();
+  await page.evaluate(async()=>{const q=await (await fetch('data/questions.json')).json();const a={};q.forEach((x,i)=>a[x.id]=1+(i*7+Math.floor(i/7))%5);sessionStorage.setItem('five-assessment-v1',JSON.stringify({answers:a,index:119}));sessionStorage.removeItem('fem-life-v1');},);
   await page.reload();}
-const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click();
 (async()=>{const browser=await chromium.launch();try{
   const page=await browser.newPage({viewport:{width:1440,height:900},locale:'nb-NO'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await seed(page);await page.evaluate(()=>{sessionStorage.removeItem('fem-career-v1');location.hash='report/work';});
@@ -40,17 +39,30 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   await page.reload();await page.locator('#work .d-career-grid').waitFor();
   await page.locator('[data-career="edit"]').click();
   assert.equal(await page.locator('#work .d-career-opt[aria-pressed="true"]').innerText(),'Kontor- eller kunnskapsarbeid');
-  // Everyday life: the children question appears only with children.
-  await page.evaluate(()=>location.hash='report/life');const life=page.locator('#life .d-tailor');await life.waitFor();
-  assert.equal(await life.locator('fieldset').count(),3);
-  await pick(page,'life','household','family');assert.equal(await page.locator('#life .d-tailor fieldset').count(),4);
-  await pick(page,'life','kids','small');await pick(page,'life','week','packed');await pick(page,'life','wish','calm');
-  await page.locator('#life .d-tailor-cols').waitFor();
-  if(SHOTS)await page.locator('#life .d-tailor').screenshot({path:`${SHOTS}/hverdag-desktop.png`});
+  // Everyday life and relationships: the same stepper as the job chapter (app/life.js). The children question appears only with children.
+  await page.evaluate(()=>{sessionStorage.removeItem('fem-life-v1');location.hash='report/life';});const life=page.locator('#life .d-career');await life.waitFor();
+  const lopt=t=>page.locator('#life .d-career-opt',{hasText:t}).first().click();
+  const total=async()=>(await page.locator('#life .d-career-progress span').last().innerText()).split(' ').pop();
+  assert.equal(await total(),'8','eight questions without children');
+  await lopt('Partner og barn');assert.equal(await total(),'9','children question added');
+  await lopt('Under 6 år');await page.locator('[data-life="next"]').click();
+  for(const t of ['Partneren min','Noen få nære','Jeg gir meg','Stappfull'])await lopt(t);
+  await lopt('For lite tid for meg selv');await page.locator('[data-life="next"]').click();
+  await lopt('Tid alene');await page.locator('[data-life="next"]').click();
+  await lopt('En nærere relasjon');
+  await page.locator('#life .d-career-grid').waitFor();
+  assert.match(await page.locator('#life [data-life-bar]').innerText(),/^Partner og barn · barn: under 6 år$/m);
+  for(const t of ['Dette hjelper deg','Dette kan bli krevende','Deg og de nærmeste','Din energi'])assert.ok(await page.locator('#life .d-career-eyebrow',{hasText:t}).count(),t);
+  await page.locator('#life .d-career-deep>summary').click();
+  assert.match(await page.locator('#life .d-career-deep').textContent(),/Ditt neste steg: en nærere relasjon/);
+  if(SHOTS)await life.screenshot({path:`${SHOTS}/hverdag-desktop.png`});
+  // Without children the children question goes away again, and the answer to it no longer counts.
+  await page.locator('[data-life="edit"]').click();await lopt('Partner');
+  assert.equal(await total(),'8','children question removed');
   // Mobile: no sideways scroll, columns stack.
   await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no sideways scroll on mobile');
-  if(SHOTS)await page.locator('#life .d-tailor').screenshot({path:`${SHOTS}/hverdag-mobil.png`});
+  if(SHOTS)await page.locator('#life .d-career').screenshot({path:`${SHOTS}/hverdag-mobil.png`});
   // English.
   await page.setViewportSize({width:1440,height:900});await page.locator('#header-language').selectOption('en');await page.evaluate(()=>location.hash='report/work');
   await page.locator('#work .d-career').waitFor();assert.match(await page.locator('#work .d-career h3').innerText(),/Your work, your profile/);
@@ -67,7 +79,7 @@ const pick=(page,ch,q,v)=>page.locator(`label[for="tq-${ch}-${q}-${v}"]`).click(
   if(SHOTS)await page.locator('.d-offer-plus').screenshot({path:`${SHOTS}/kjopsside-mobil.png`});
   // Clearing answers also clears the tailored answers.
   page.on('dialog',d=>d.accept());await page.locator('#clear-data').click();
-  assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-tailor-v1')),null);
+  assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-life-v1')),null);
   assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-career-v1')),null);
   assert.deepEqual(errors,[]);
   console.log('tailored-check: ok');
