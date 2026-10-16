@@ -350,3 +350,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
 - «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
 - I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
+
+## Spørsmålssiden i ny stil (2026-10-16)
+- Rune likte Codex-skissen av spørsmålssiden på mobil. Svarene er nå myke kort (tynn lys kant, avrundede hjørner, svak skygge) med en pil til høyre, uten runde valgsirkler til venstre (Runes ønske). Fremdriften vises som fem segmenter med prosent og tall. Tilfeldig/Runes profil har ikoner.
+- Rune vil ha samme bokser og kanter i hele appen. Kortstilen ligger i app/question.css som `.soft-card` og variablene `--card-*`, så andre sider kan bruke den.
+- Landskapet nederst beholdes til nytt bilde er laget (bildeoppdrag). Automatisk overgang ved valg er uendret.

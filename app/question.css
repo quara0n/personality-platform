@@ -1,0 +1,55 @@
+/* Shared soft card (Rune's mockup, 2026-10-16): the gentle border, shape and shadow of the answer
+   cards. Rune wants the same boxes across the whole app, so other cards can use .soft-card or the tokens. */
+:root{--card-bg:#fffefb;--card-border:#dde4ec;--card-radius:14px;--card-shadow:0 2px 8px rgba(16,39,71,.05);--card-hover:#fdf1e8;--card-on:#fbe0cf;--card-on-border:#efb894}
+.soft-card{border:1px solid var(--card-border);border-radius:var(--card-radius);background:var(--card-bg);box-shadow:var(--card-shadow)}
+
+/* Question page in the mockup style: segmented progress, soft answer cards with a chevron,
+   quiet Back link and the test chips with icons. Layout and fit rules stay in design.css. */
+.d-progress .d-segs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;min-width:0}
+.d-segs i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,#7ea6c8 calc(var(--f) * 100%),#e6eaef 0);transition:background .3s ease}
+.d-segs i.is-now{background:linear-gradient(90deg,#7ea6c8 calc(var(--f) * 100%),#c9dbea 0)}
+.d-progress>span:first-child{color:#4e6a8a}
+.d-pct,.d-qnum{color:#4e6a8a!important;font-variant-numeric:tabular-nums}
+
+.d-question-title{letter-spacing:-.025em}
+
+.d-choice.soft-card{border:1px solid var(--card-border);border-radius:var(--card-radius);background:var(--card-bg);box-shadow:var(--card-shadow);color:var(--title);transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.d-chev{flex:none;width:22px;height:22px;fill:none;stroke:#7c95b3;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.d-choice.soft-card:hover{background:var(--card-hover);border-color:#ecd2c0;transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,39,71,.08)}}
+.d-choice.soft-card:has(input:checked){background:var(--card-on);border-color:var(--card-on-border);transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,39,71,.09)}
+.d-choice.soft-card:has(input:checked) .d-chev{stroke:var(--title)}
+.d-choice.soft-card:has(input:focus-visible){outline:3px solid #b2542a;outline-offset:3px}
+
+.d-back{color:#4e6a8a;display:inline-flex;align-items:center;gap:10px}
+
+.d-dev-row{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:14px}
+.d-dev-random{display:inline-flex;align-items:center;gap:8px;margin:0;padding:7px 16px;border:1px solid var(--card-border);border-radius:10px;background:var(--card-bg);color:#4e6a8a;font-size:14px;opacity:1;box-shadow:var(--card-shadow)}
+.d-dev-random:hover{border-color:#b9c8d6;color:var(--title)}
+.d-dev-icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
+.d-dev-icon circle{fill:currentColor;stroke:none}
+.d-dev-icon circle[r="4"]{fill:none;stroke:currentColor}
+
+/* Desktop and tablet: five cards in a row, text centred with the chevron under it */
+@media(min-width:761px){
+  .d-choice.soft-card{padding:16px 10px 30px}
+  .d-choice.soft-card .d-chev{position:absolute;left:50%;bottom:10px;width:18px;height:18px;margin-left:-9px}
+}
+
+/* Phones: one card per line, text left and the chevron right, like the mockup */
+@media(max-width:760px){
+  .d-progress .d-segs{gap:6px}
+  .d-segs i{height:8px}
+  .d-choice.soft-card{flex-direction:row;justify-content:space-between;gap:12px;padding:8px 14px 8px 20px;text-align:left}
+  .d-dev-row{margin-top:8px}
+  .d-dev-random{padding:6px 14px}
+}
+@media(max-width:760px) and (min-height:740px){
+  .d-progress{margin-bottom:10px}
+  .d-title-slot{min-height:calc(3 * 1.12 * clamp(28px,8.4vw,36px));margin:14px auto 18px}
+  .d-title-slot .d-question-title,.d-title-slot .d-question-title.is-long{font-size:clamp(28px,8.4vw,36px)}
+  .d-choices{gap:10px}
+  .d-choice.soft-card{min-height:56px;font-size:18px}
+  .d-actions{margin-top:20px}
+  .d-back,.d-next{font-size:18px}
+  .d-note{margin-top:14px;font-size:14px}
+}
