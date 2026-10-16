@@ -208,7 +208,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-explore-cards{display:grid;grid-template-columns:1fr 1fr}
 .d-explore-cards article{padding:0 30px 10px 0}
 .d-explore-cards article+article{padding:0 0 10px 30px;border-left:1px solid #cfdbe6}
-.d-explore-cards img{display:block;width:100%;max-width:364px}
+.d-explore-cards img{display:block;width:100%;max-width:420px;mix-blend-mode:multiply}
 .d-explore-cards h3{margin:12px 0 6px;font:400 32px/1.1 Georgia,serif;letter-spacing:-.04em;color:var(--title)}
 .d-explore-cards p{margin:0 0 14px;color:#1f4fa0;font-size:17px}
 .d-explore-cards a{color:#1f4fa0;font-size:17px;text-decoration:none;border-bottom:2px solid #1f4fa0;padding-bottom:3px}
