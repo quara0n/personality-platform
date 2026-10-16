@@ -375,3 +375,6 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «Fordypningsrapporten må være mer markert og synlig.» «Gå dypere» er nå en ferskenboks med illustrasjonen fra kjøpssiden, en kort linje om innholdet og den fasetterte hovedknappen. Rutersymbolet er ikke lenger brukt der.
 - Forklaringen av persentiler og ordene lavere/midt/høyere ligger bak «Les mer om tallene». Teksten under e-postfeltet er fjernet.
 - Hopp-til-innhold-lenken er helt skjult til den får tastaturfokus.
+
+## 2026-10-16 – Oversikt uten «Utforsk rapporten din»
+- Rune: kortene for Arbeidsliv og Hverdagsliv trengs ikke på Oversikt, de kommer på sine egne faner. Overskriften og de to kortene er fjernet; «Ett lite steg å prøve» og forbeholdet står.
