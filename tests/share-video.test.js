@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {videoScript, closers, facetClosers, timeline, duration, musicCues} from '../app/share-video.js';
+import {videoScript, closers, facetClosers, timeline, duration, musicCues, outroHits} from '../app/share-video.js';
 import {profileName} from '../app/profile-name.js';
 import {songPlan, SONG} from '../app/share-music.js';
 
@@ -43,12 +43,14 @@ test('every trait and direction has a closing line in both languages', () => {
   for (const code of 'OCEAN') for (const band of ['low', 'high']) assert.ok(closers[code][band].every(x => x.trim().length > 10));
 });
 
-test('short cut is under 20 s of content plus a 5-second end card and keeps paid content out; long cut is under 40 s plus the end card', () => {
+test('short cut is about 20 s of content plus a 3-second end card and keeps paid content out; long cut is under 40 s plus the end card', () => {
   const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
   const short = videoScript(ds, {language: 'en', name}), long = videoScript(ds, {language: 'no', name, long: true});
-  assert.ok(timeline(short).at(-1).start <= 20 && duration(short) <= 25);
+  assert.ok(timeline(short).at(-1).start <= 21 && duration(short) <= 25);
   assert.ok(timeline(long).at(-1).start <= 40 && duration(long) <= 45);
-  assert.ok(Math.abs(timeline(short).at(-1).end - timeline(short).at(-1).start - 5) < 1e-9);
+  assert.ok(Math.abs(timeline(short).at(-1).end - timeline(short).at(-1).start - 3) < 1e-9);
+  const closer = timeline(short).find(x => x.id === 'closer');
+  assert.equal(closer.end - closer.start, 5);
   assert.equal(short.traits, undefined);
   assert.equal(short.combo, undefined);
   assert.deepEqual(timeline(long).map(x => x.id), ['hook', 'name', 'traits', 'stat', 'facet', 'combo', 'strength', 'closer', 'end']);
@@ -98,4 +100,17 @@ test('every facet and direction has its own closing line in both languages', () 
   assert.equal(Object.keys(facetClosers).length, 60);
   assert.ok(all.every(x => x.trim().length > 10));
   assert.equal(new Set(all).size, all.length);
+});
+
+test('outro lifts the five logo pieces on eighth notes in the last 1.5 s, then the whole logo before the loop', () => {
+  const ds = profile({O: 92, C: 81, E: 45, A: 60, N: 35});
+  for (const long of [false, true]) {
+    const s = videoScript(ds, {language: 'en', name, long}), total = duration(s), {pieces, rise} = outroHits(s);
+    assert.equal(pieces.length, 5);
+    assert.ok(pieces[0] >= total - 1.6 && rise < total, `${pieces} ${rise} ${total}`);
+    pieces.forEach((t, i) => i && assert.ok(Math.abs(t - pieces[i - 1] - .25) < 1e-9));
+  }
+  // Short cut: the song plays once from 0, so the hits sit on its pluck grid (0.157 + n × 0.25 s).
+  const {pieces} = outroHits(videoScript(ds, {language: 'en', name}));
+  assert.ok(Math.abs(((pieces[0] - .157) / .25) - Math.round((pieces[0] - .157) / .25)) < 1e-6);
 });

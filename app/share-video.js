@@ -1,7 +1,8 @@
 // Shareable profile video, vertical 1080 × 1920 for Stories, Reels and TikTok, in two cuts.
 // Short (about 24 s, free profile): hook, profile name, the trait furthest from the middle as
 // "more X than N of 100", the facet that stands out most (already open in the free profile),
-// a light closing line and an end card that stays for five seconds before the clip loops.
+// a light closing line and a three-second end card where the logo pieces lift one by one on the
+// song's eighth notes before the whole logo rises, and the clip loops.
 // The song from share-music.js is recorded into the same file.
 // Long (about 42 s, in-depth report): adds all five traits, the combination sentence and a
 // possible strength, which are part of the paid report.
@@ -13,7 +14,7 @@ import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
-import {SONG} from './share-music.js';
+import {SONG, songPlan} from './share-music.js';
 
 export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
@@ -185,18 +186,19 @@ export function loadPieces(base = 'assets/design/') {
   return Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
 }
 
-/** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop. */
-function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null) {
+/** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop.
+ *  `lift` (piece index → 0..1, past 1 overshoots) raises single pieces above the assembled logo. */
+function logo(ctx, imgs, cx, cy, scale, t = 1, ring = 1, at = null, lift = null) {
   PIECES.forEach((p, i) => {
     const img = imgs[`logo-${p}`] || imgs[p]; if (!img) return;
     const hit = LOGO_HITS.pieces[i], pop = at === null ? 1 : 1 + .14 * clamp(1 - Math.abs(at - hit) / .12);
     const [l, top, w] = LOGO[p], h = w * img.height / img.width, k = at === null ? easeInOut(span(t, i * .09, i * .09 + .55)) : easeOutBack(span(at, hit - LOGO_HITS.flight, hit));
-    const [fx, fy, fr] = FLY[p];
+    const [fx, fy, fr] = FLY[p], up = lift ? lift(i) : 0;
     ctx.save();
     ctx.globalAlpha *= clamp(k * 3);
-    ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k)) * scale);
+    ctx.translate(cx + ((l + w / 2 - 142) + fx * (1 - k)) * scale, cy + ((top + h / 2 - 148) + fy * (1 - k) - 80 * up) * scale);
     ctx.rotate(fr * (1 - k) * Math.PI / 180);
-    ctx.scale(pop, pop); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
+    ctx.scale(pop * (1 + .06 * clamp(up)), pop * (1 + .06 * clamp(up))); ctx.drawImage(img, -w / 2 * scale, -h / 2 * scale, w * scale, h * scale);
     ctx.restore();
   });
   if (ring > 0) {
@@ -266,9 +268,10 @@ function footer(ctx, imgs, a) {
 
 // Scene lengths in seconds, on the beat of the song (120 BPM, 0.5 s per beat); each content scene
 // got one more second so it is easier to read. The short cut lasts as long as the song. Scenes play back to back and cross-fade at the edges.
+// Rune moved two seconds from the end card to the closing quote, so the end card lasts 3 s with the outro.
 const CUTS = {
-  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 3.0], ['end', 5.0]],
-  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 3.5], ['end', 5.0]]
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 5.0], ['end', 3.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 5.5], ['end', 3.0]]
 };
 /** Scenes with start and end times for this script; skips the facet when there is none. */
 export function timeline(s) {
@@ -276,6 +279,16 @@ export function timeline(s) {
   return CUTS[s.long ? 'long' : 'short'].filter(([id]) => id !== 'facet' || s.facet).map(([id, d]) => {const x = {id, start: at, end: at + d}; at += d; return x;});
 }
 export const duration = s => timeline(s).at(-1).end;
+
+/** Outro: in the last 1.5 s each logo piece lifts on one of the song's eighth notes (the same grid as
+ *  LOGO_HITS, followed through the song plan so the long cut's restart stays on it), then the whole logo
+ *  rises on the next one. Times in seconds from the start of the video. */
+export function outroHits(s) {
+  const total = duration(s), part = songPlan(total, {restartAt: musicCues(s).restartAt}).at(-1), shift = part.from - part.at;
+  const step = LOGO_HITS.ring[0], first = Math.ceil((total - 1.6 + shift - step) / .25) * .25 + step - shift;
+  const pieces = PIECES.map((_, i) => first + i * .25);
+  return {pieces, rise: pieces.at(-1) + .25};
+}
 
 const scenes = {
   hook(ctx, lt, d, a, s) {
@@ -355,7 +368,11 @@ const scenes = {
   },
   end(ctx, lt, d, a, s, imgs) {
     const k = ease(span(lt, 0, .5));
-    ctx.save(); ctx.globalAlpha = k; logo(ctx, imgs, W / 2, 700, .95, span(lt, -.1, .8), span(lt, .2, 1)); ctx.restore();
+    // Pieces lift on their hit with a small overshoot, then the whole logo rises and fades before the loop.
+    const start = duration(s) - d, {pieces, rise} = outroHits(s), r = easeInOut(span(lt, rise - start, d));
+    ctx.save(); ctx.globalAlpha = k * (1 - r);
+    logo(ctx, imgs, W / 2, 700 - 240 * r, .95, span(lt, -.1, .8), span(lt, .2, 1), null, i => easeOutBack(span(lt, pieces[i] - start - .05, pieces[i] - start + .2)));
+    ctx.restore();
     text(ctx, s.end, 1150, {size: 84, alpha: k, maxLines: 2, lh: 1.1, max: W - 100});
     text(ctx, s.cta, 1330, {size: 54, font: SANS, alpha: k});
     pill(ctx, s.button, 1470, k * ease(span(lt, .3, .8)));
