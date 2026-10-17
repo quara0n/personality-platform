@@ -1680,3 +1680,50 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-ai-partner-button span{position:absolute;right:28px}
 .d-ai-partner-note{grid-area:note;margin:12px 2px 0;font-size:13px;line-height:1.5;color:var(--muted)}
 @media(max-width:560px){.d-ai-partner{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);padding:22px 16px 18px}.d-ai-partner-text{padding-top:6px}.d-ai-partner-text h3{font-size:30px;margin-bottom:14px}.d-ai-partner-text p{font-size:15px}.d-ai-partner-art{margin:0 -16px -30px 0;width:calc(100% + 16px);max-width:none}.d-ai-partner-button{font-size:19px}}
+
+/* Facets as a swipeable row (Rune, 2026-10-17) */
+.d-fcarousel{margin:6px 0 24px}
+.d-fnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.d-fnav-btn{padding:7px 14px;border:1px solid var(--box-border);border-radius:999px;background:var(--box-bg);color:#33496b;font:inherit;font-size:14px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.d-fnav-btn[aria-current="true"]{background:#13284f;border-color:#13284f;color:#fff}
+.d-fnav-btn:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.facet-grid.d-fslides{display:flex;gap:14px;margin:0;padding:2px 2px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;align-items:flex-start}
+.d-fslides::-webkit-scrollbar{display:none}
+.d-fslides:focus-visible{outline:2px solid #a44e24;outline-offset:2px;border-radius:var(--box-radius)}
+.d-fslides.is-dragging{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
+.d-fslides>.d-fcard{position:relative;flex:0 0 min(72%,560px);scroll-snap-align:start}
+.d-fslides::after{content:'';flex:0 0 1px}
+.d-fcard-info{position:absolute;top:12px;right:12px;z-index:1;padding:0;color:#5a7290}
+.d-fcard-info .d-info-i{width:24px;height:24px;font-size:14px;background:var(--box-bg)}
+.d-fcard-toggle{padding-right:0}
+.d-fcard .d-fcard-name{padding-right:30px}
+.d-fcard-about{margin:0 14px 14px;max-width:none}
+.d-fdots{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.d-fdot{width:8px;height:8px;border-radius:50%;background:#cfdbe6;transition:background .2s,transform .2s}
+.d-fdot.is-on{background:#13284f;transform:scale(1.25)}
+.d-fcount{margin:0 6px;font-size:13px;color:#6b7f95;min-width:3.2em;text-align:center}
+.d-fstep{display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid var(--box-border);border-radius:50%;background:var(--box-bg);color:#13284f;font:400 22px/1 Georgia,serif;cursor:pointer}
+.d-fstep:disabled{opacity:.35;cursor:default}
+.d-trait-about{margin:0 0 12px}
+.d-lnav-head h3.d-title-info .d-info-btn{margin-left:10px;vertical-align:.2em}
+.d-lnav-float{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border:1px solid var(--box-border);border-radius:999px;background:var(--box-bg);box-shadow:0 8px 24px rgba(16,39,71,.18);color:#13284f;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.d-lnav-float[hidden]{display:none}
+.d-lnav-float img{width:32px;height:32px;object-fit:contain}
+@media(max-width:700px){
+  .d-fnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 12px;padding:0 16px}
+  .d-fnav::-webkit-scrollbar{display:none}
+  .d-fnav-btn{flex:none;font-size:13px;padding:6px 12px}
+  .d-fslides>.d-fcard{flex-basis:86%}
+}
+@media print{
+  .d-fnav,.d-fdots,.d-fcard-info{display:none!important}
+  .facet-grid.d-fslides{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+  .d-fcard-about[hidden]{display:block!important;border:0;padding:0 18px}
+}
+/* Carousel on phones and portrait tablets only; wider screens keep the two-column grid (Rune, 2026-10-17). */
+@media(min-width:901px){
+  .facet-grid.d-fslides{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding:0;scroll-snap-type:none}
+  .d-fslides::after{content:none}
+  .d-fnav,.d-fdots{display:none}
+}
+@media(min-width:901px){.d-hint-swipe{display:none}}

@@ -426,3 +426,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-17 – «Din personlige AI-partner» i Hverdagsliv og relasjoner
 - Rune sendte en skisse («Fint design dette. Bruk det på ai seksjon på hverdag og forhold»). AI-knappen i Hverdagsliv og relasjoner er nå et kort med tittelen «Din personlige AI-partner», teksten «Få innsikt, forslag og veiledning basert på dine styrker.», bildet av kvinnen og roboten (klippet fra skissen, app/assets/design/ai-partner.webp) og den fasetterte knappen «AI-hjelp». Personvernlinjen står under knappen.
 - Gjelder bare Hverdagsliv (`aiCard` i app/life.js); Arbeidsliv har den gamle linjen. Vises fortsatt bare i testmodus. Når AI-teksten er skrevet, vises den vanlige linjen med «Vis den ferdigskrevne teksten».
+
+## Fasettkarusell og (i) i «Dine fem trekk» (2026-10-17)
+
+- Rune: de seks fasettene i hvert trekk vises som en karusell man sveiper i, med fasettnavnene øverst som markerer hvor man er, og prikker/piler under. Bare på mobil og nettbrett i stående format (opptil 900 px). PC og liggende nettbrett beholder rutenettet med to kolonner.
+- Trekkbeskrivelsen er flyttet til en (i) ved trekknavnet, og fasettforklaringen («Selvrapportert tendens …») til en (i) øverst til høyre i hvert fasettkort. Teksten er uendret.
+- Når man er inne i et trekk og logoen er ute av syne, flyter en liten «Alle trekk»-knapp med logoen nederst til høyre. Den lukker trekket og går tilbake til logoen.
