@@ -105,8 +105,13 @@
         "id": "13c58810-3864-42ba-aa87-d4166f858756",
         "from": "Blir overveldet av det som skjer",
         "to": "Blir overveldet når mye skjer på en gang"
+      },
+      {
+        "id": "f08e1b27-3673-4898-9cae-896482d0d9f9",
+        "from": "Tror at det ikke er noe som er helt sant eller helt galt",
+        "to": "Tror at det ikke finnes noe absolutt rett og galt"
       }
     ],
-    "sha256AfterEdits": "cfc23d505735ea8c1b2a7d3ed90a715fcc0e8a5b74744524c380720a32ecce21"
+    "sha256AfterEdits": "f8871d720e15d81e4151568fa211faae51a7421fd2a173dcbaaaf9960d12471d"
   }
 }
