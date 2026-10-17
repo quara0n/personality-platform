@@ -48,7 +48,7 @@ function topPanels(c, strongest, facet, facetTrait, combo, named) {
   const plain = s => s.replace(/\s*\(.*\)$/, '');
   const cards = [
     {key: 'trait', cls: `d-tpanel-${strongest.code}`, img: `assets/design/trait-${strongest.code}.webp`, eyebrow: c.tr('The trait that stands out most', 'Trekket som skiller seg mest ut'), title: c.shy(c.esc(plain(c.name(strongest)))), meta: c.countText(strongest),
-      body: `<h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p><p>${c.esc(c.traitLine(strongest))}</p>`},
+      body: `<h3>${c.esc(c.name(strongest))}</h3><p class="d-glance-score">${c.countText(strongest)}</p>${compareHtml({code: strongest.code, name: plain(c.name(strongest)), percentile: strongest.percentile}, c.language, traitColors[strongest.code], c.esc)}<p>${c.esc(c.traitLine(strongest))}</p>`},
     {key: 'facet', cls: 'd-gpanel-facet', img: `assets/design/facets/${facet.code}.webp`, eyebrow: c.tr('Your most distinctive facet', 'Fasetten som skiller seg mest ut'), title: c.shy(c.esc(facet.name)), meta: c.countText(facet),
       body: `<h3>${c.esc(facet.name)}</h3><p class="d-glance-score">${c.countText(facet)} · ${c.esc(c.name(facetTrait))}</p>${compareHtml(facet, c.language, traitColors[facetTrait.code], c.esc)}<p>${c.esc(facet.interpretation)}</p>`},
     {key: 'combo', cls: 'd-gpanel-combo', img: c.figureSrc(named.image), eyebrow: c.tr('Your combination', 'Kombinasjonen din'), title: c.shy(c.esc(combo.title)), meta: combo.traits.map(d => c.piece(d.code)).join(''),
