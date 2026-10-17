@@ -5,6 +5,8 @@
 // picked facts to /api/career-report and shows the checked result. Answers and any AI text stay in this
 // browser tab (sessionStorage). Each chapter passes its copy module, texts and layout in `cfg`.
 
+import {initFacetCarousels} from './carousel.js';
+
 const asList = v => Array.isArray(v) ? v : v ? [v] : [];
 const hash = text => { let h = 5381; for (let i = 0; i < text.length; i++) h = (h * 33 + text.charCodeAt(i)) >>> 0; return h.toString(36); };
 const smooth = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
@@ -68,12 +70,15 @@ export function createTailoredChapter(cfg) {
 
   const emptyLine = tr => `<p class="d-tailor-empty">${tr('Nothing stands out clearly here for your answers.', 'Ingenting skiller seg tydelig ut her for svarene dine.')}</p>`;
 
-  // One overview block: eyebrow, headline, one line, facet chips and «Read more» with the rest.
+  // One overview card in the swipeable row: a logo piece, eyebrow, headline, one line, facet chips and
+  // «Read more» behind the facets' gem «+» with the rest.
+  const KIND_PIECE = {good: 'sky', hard: 'apricot', energy: 'navy', close: 'steel'};
   function featureHtml(kind, eyebrow, sec, s, ctx) {
     const {tr, esc} = ctx, [top, ...rest] = sec?.items || [];
-    if (!top) return `<div class="d-career-feature is-${kind}"><p class="d-career-eyebrow">${eyebrow}</p>${emptyLine(tr)}</div>`;
+    const piece = `<img class="d-jcard-piece" src="assets/design/logo-piece-${KIND_PIECE[kind] || 'sky'}.webp" alt="" aria-hidden="true">`;
+    if (!top) return `<article class="d-jcard is-${kind}">${piece}<p class="d-career-eyebrow">${eyebrow}</p>${emptyLine(tr)}</article>`;
     const more = `${top.try ? `<p class="d-try"><span>${tr('Try', 'Prøv')}</span>${esc(top.try)}</p>` : ''}${top.answers.length ? `<p class="d-career-why">${tr('From your answer', 'Fra svaret ditt')}: ${esc(top.answers.map(a => a.label).join(' · '))}</p>` : ''}${rest.length ? `<ul class="d-career-list">${rest.map(x => itemHtml(x, ctx, s, headline(top, s, ctx))).join('')}</ul>` : ''}`;
-    return `<div class="d-career-feature is-${kind}"><span class="d-career-mark" aria-hidden="true"></span><div><p class="d-career-eyebrow">${eyebrow}</p><h4>${esc(headline(top, s, ctx))}</h4><p class="d-career-line">${esc(top.text)}</p>${chips(top, ctx)}${more.trim() ? `<details class="d-career-more"><summary>${tr('Read more', 'Les mer')} <span aria-hidden="true">+</span></summary>${more}</details>` : ''}</div></div>`;
+    return `<article class="d-jcard is-${kind}">${piece}<p class="d-career-eyebrow">${eyebrow}</p><h4>${esc(headline(top, s, ctx))}</h4><p class="d-career-line">${esc(top.text)}</p>${chips(top, ctx)}${more.trim() ? `<details class="d-jcard-more"><summary>${tr('Read more', 'Les mer')}<span class="d-gem-plus" aria-hidden="true"></span></summary><div class="d-jcard-body">${more}</div></details>` : ''}</article>`;
   }
 
   function itemHtml(item, ctx, s, skipHead = '') {
@@ -114,14 +119,16 @@ export function createTailoredChapter(cfg) {
       : cfg.aiCard ? `<div class="d-ai-partner no-print"><div class="d-ai-partner-text"><h3>${tr('Your personal AI partner', 'Din personlige AI&#8209;partner')}</h3><p>${tr('Get insight, suggestions and guidance based on your strengths.', 'Få innsikt, forslag og veiledning basert på dine styrker.')}</p></div><img class="d-ai-partner-art" src="assets/design/ai-partner.webp" alt="" aria-hidden="true"><button type="button" class="button d-ai-partner-button" ${A}="ai" ${pending ? 'disabled' : ''}>${tr('AI help', 'AI-hjelp')}<span aria-hidden="true">→</span></button><p class="d-ai-partner-note">${tr('Only your facet scores, your ticked answers and anything you wrote under «Other» are sent, no name or e-mail.', 'Bare fasettskårene, avkrysningene og det du skrev under «Annet» sendes, ingen navn eller e-post.')}</p></div>`
       : `<div class="d-career-ai no-print"><p>${tr('You are seeing pre-written text from fixed rules. The AI version combines the same facts into text written for you. Only your facet scores, your ticked answers and anything you wrote under «Other» are sent, no name or e-mail. So do not write names or health details there.', 'Du ser ferdigskrevet tekst fra faste regler. AI-versjonen setter de samme fakta sammen til tekst skrevet for deg. Bare fasettskårene, avkrysningene og det du skrev under «Annet» sendes, ingen navn eller e-post. Ikke skriv navn eller helseopplysninger der.')}</p><button type="button" class="button" ${A}="ai" ${pending ? 'disabled' : ''}>${tr('Write with AI (test)', 'Skriv med AI (test)')}</button></div>`;
     const tryText = weekTry(by), tried = !!tryText && s.tried === hash(tryText);
-    const tryBox = tryText ? `<div class="d-career-week"><p class="d-career-eyebrow">${tr('Try one thing this week', 'Prøv én ting denne uken')}</p><p class="d-career-week-text">${esc(tryText)}</p><label class="d-career-check"><input type="checkbox" ${A}-try ${tried ? 'checked' : ''}><span>${tr('I will try this', 'Jeg skal prøve dette')}</span></label></div>` : '';
+    const tryBox = tryText ? `<div class="d-career-week"><img class="d-career-week-piece" src="assets/design/logo-piece-apricot.webp" alt="" aria-hidden="true"><p class="d-career-eyebrow">${tr('Try one thing this week', 'Prøv én ting denne uken')}</p><p class="d-career-week-text">${esc(tryText)}</p><label class="d-career-check"><input type="checkbox" ${A}-try ${tried ? 'checked' : ''}><span>${tr('I will try this', 'Jeg skal prøve dette')}</span></label></div>` : '';
+    // The overview cards swipe sideways on phones and portrait tablets like the facet cards, with the same
+    // dot toggle; wider screens show them side by side (Rune, 2026-10-17).
+    const cards = [...cfg.main, ...cfg.side];
     const feature = ([id, eyebrow]) => featureHtml(id, eyebrow(ctx), shown[id] ?? by(id), s, ctx);
     return `${aiBar}${status}
-    <div class="d-career-grid">
-      <div class="d-career-main">${cfg.main.map(feature).join('')}</div>
-      <div class="d-career-side">${cfg.side.map(feature).join('')}${tryBox}</div>
-    </div>
-    <details class="d-career-deep"><summary><span class="d-career-deep-icon" aria-hidden="true"><i></i><i></i><i></i></span>${tr('How does this connect with your traits?', 'Hvordan henger dette sammen med trekkene dine?')}<span class="d-career-plus" aria-hidden="true">+</span></summary>
+    <div class="d-fcarousel d-jcarousel" data-fcarousel><div class="d-jcarousel-top"><div class="d-fdots" role="group" aria-label="${tr('Your overview', 'Oversikten din')}">${cards.map(([, eyebrow], i) => `<button type="button" class="d-fdot" aria-label="${eyebrow(ctx)}"${i ? '' : ' aria-current="true"'}></button>`).join('')}</div><button type="button" class="d-jnext" data-fnext aria-label="${tr('Next card', 'Neste kort')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button></div>
+      <div class="d-fslides d-jslides${cards.length % 2 ? '' : ' is-even'}" tabindex="0" aria-label="${tr('Overview, swipe sideways', 'Oversikt, sveip sidelengs')}">${cards.map(feature).join('')}</div></div>
+    ${tryBox}
+    <details class="d-career-deep"><summary><span class="d-career-deep-icon" aria-hidden="true"><i></i><i></i><i></i></span>${tr('How does this connect with your traits?', 'Hvordan henger dette sammen med trekkene dine?')}<span class="d-career-plus" aria-hidden="true"></span></summary>
       <div class="d-career-deep-body">${cfg.deep.map(block).join('')}<p class="d-tailor-note">${tr('Each point links your answers with facets that sit clearly high or low. They are ideas to test, not established facts about you. Your answers stay in this browser tab.', 'Hvert punkt kobler svarene dine med fasetter som ligger tydelig høyt eller lavt. Det er ideer å teste, ikke fastslåtte sannheter om deg. Svarene blir bare lagret i denne nettleserfanen.')}</p></div></details>`;
   }
 
@@ -198,6 +205,7 @@ export function createTailoredChapter(cfg) {
     if (root.nodeType === 1) root.querySelectorAll(`[${A}-bar]`).forEach(bar => bindBar(bar, ctx));
     if (!printHook) { printHook = true; addEventListener('beforeprint', () => document.querySelectorAll(`[${A}-root] details`).forEach(d => { d.open = true; })); }
     root.querySelectorAll(`[${A}-root]`).forEach(section => {
+      initFacetCarousels(section);
       section.addEventListener('change', e => {
         if (!e.target.matches(`[${A}-try]`)) return;
         const s = state(), text = e.target.closest('.d-career-week')?.querySelector('.d-career-week-text')?.textContent || '';

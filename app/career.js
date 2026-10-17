@@ -15,6 +15,8 @@ const chapter = createTailoredChapter({
   key: CAREER_KEY,
   copy: {questions, isComplete, optionLabel, answerTopic, build: buildCareer, request: careerRequest, OTHER_MAX},
   icon: briefcase,
+  // The AI partner card with the robot, as in Everyday life (Rune, 2026-10-17).
+  aiCard: true,
   // Rune's question mockup (2026-10-17): the chapter opens straight on the questions, with the picture
   // and the answer pictures cropped from it. Other answers show a logo piece.
   jumpIn: true,

@@ -20,15 +20,19 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   // «Other» on a single question stays on the page, shows a short text field and needs «Videre».
   await page.locator('#work .d-career-opt[data-value="other"]').click();await page.locator('#work [data-career-other]').fill('Starte egen praksis');
   await page.locator('[data-career="next"]').click();
-  await page.locator('#work .d-career-grid').waitFor();
+  await page.locator('#work .d-jcarousel').waitFor();
   assert.match(await page.locator('#work .d-career-deep').textContent(),/Ditt neste steg: Starte egen praksis/);
   // Back to the goal question and pick a plain option for the rest of the check.
   await page.locator('[data-career="edit"]').click();
   for(let i=0;i<7;i++){if(i===5||i===6)await page.locator('[data-career="next"]').click();else await page.locator('#work .d-career-opt[aria-pressed="true"]').first().click();}
   await opt('Få mer ansvar');
-  await page.locator('#work .d-career-grid').waitFor();
+  await page.locator('#work .d-jcarousel').waitFor();
   assert.match(await page.locator('#work [data-career-bar]').innerText(),/Kontor- eller kunnskapsarbeid · Et fast team · Et lite team å lede/);
-  // Overview: two columns with what fits and what is demanding, energy and one thing to try; the rest is folded away.
+  // Phones: the overview cards swipe sideways; the arrow moves one card on and the dot follows.
+  await page.setViewportSize({width:390,height:844});await page.locator('#work [data-fnext]').click();await page.waitForTimeout(900);
+  assert.equal(await page.locator('#work .d-fdot[aria-current]').getAttribute('aria-label'),'Dette kan bli krevende','arrow moves the carousel');
+  await page.setViewportSize({width:1440,height:900});
+  // Overview: cards side by side with what fits and what is demanding, energy and one thing to try; the rest is folded away.
   for(const t of ['Dette kan fungere godt','Dette kan bli krevende','Din energi'])assert.ok(await page.locator('#work .d-career-eyebrow',{hasText:t}).count(),t);
   assert.equal(await page.locator('#work .d-career-deep').getAttribute('open'),null,'details start folded');
   if(await page.locator('#work [data-career-try]').count()){await page.locator('#work [data-career-try]').check();await page.reload();await page.locator('#work [data-career-try]').waitFor();assert.ok(await page.locator('#work [data-career-try]').isChecked(),'try box remembered');}
@@ -36,13 +40,13 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   assert.ok(await page.locator('#work .d-career-sec h4',{hasText:'Når du leder'}).count(),'lead section with responsibility');
   if(SHOTS)await work.screenshot({path:`${SHOTS}/arbeid-desktop.png`});
   // Answers survive a reload; «Change» starts the questions again with the answers kept.
-  await page.reload();await page.locator('#work .d-career-grid').waitFor();
+  await page.reload();await page.locator('#work .d-jcarousel').waitFor();
   await page.locator('[data-career="edit"]').click();
   assert.equal(await page.locator('#work .d-career-opt[aria-pressed="true"]').innerText(),'Kontor- eller kunnskapsarbeid');
   // Everyday life and relationships: the same stepper as the job chapter (app/life.js). The children question appears only with children.
   await page.evaluate(()=>{sessionStorage.removeItem('fem-life-v1');location.hash='report/life';});const life=page.locator('#life .d-career');await life.waitFor();
   const lopt=t=>page.locator('#life .d-career-opt',{hasText:t}).first().click();
-  const total=async()=>(await page.locator('#life .d-career-progress span').last().innerText()).split(' ').pop();
+  const total=async()=>(await page.locator('#life .d-q2-row>span').last().innerText()).split(' ').pop();
   assert.equal(await total(),'8','eight questions without children');
   await lopt('Partner og barn');assert.equal(await total(),'9','children question added');
   await lopt('Under 6 år');await page.locator('[data-life="next"]').click();
@@ -50,7 +54,7 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   await lopt('For lite tid for meg selv');await page.locator('[data-life="next"]').click();
   await lopt('Tid alene');await page.locator('[data-life="next"]').click();
   await lopt('En nærere relasjon');
-  await page.locator('#life .d-career-grid').waitFor();
+  await page.locator('#life .d-jcarousel').waitFor();
   assert.match(await page.locator('#life [data-life-bar]').innerText(),/^Partner og barn · barn: under 6 år$/m);
   for(const t of ['Dette hjelper deg','Dette kan bli krevende','Deg og de nærmeste','Din energi'])assert.ok(await page.locator('#life .d-career-eyebrow',{hasText:t}).count(),t);
   await page.locator('#life .d-career-deep>summary').click();
@@ -65,7 +69,7 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   if(SHOTS)await page.locator('#life .d-career').screenshot({path:`${SHOTS}/hverdag-mobil.png`});
   // English.
   await page.setViewportSize({width:1440,height:900});await page.locator('#header-language').selectOption('en');await page.evaluate(()=>location.hash='report/work');
-  await page.locator('#work .d-career').waitFor();assert.match(await page.locator('#work .d-career h3').innerText(),/Your work, your profile/);
+  await page.locator('#work .d-career').waitFor();assert.match(await page.locator('#work .d-career').getAttribute('aria-label'),/Your work, your profile/);
   if(SHOTS)await page.locator('#work .d-career').screenshot({path:`${SHOTS}/work-english.png`});
   // Offer page: both tiers, prices follow the country.
   await page.locator('#header-language').selectOption('no');await page.evaluate(()=>location.hash='offer');await page.locator('.d-offer-plus').waitFor();
