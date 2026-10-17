@@ -400,3 +400,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Å møte noen nye» er med som valg (standardvalg mens Rune ikke har svart); reglene handler om sosial energi og trygghet, ikke dateråd.
 - Tekstene er redaksjonelle og skal med i den faglige gjennomgangen og testen med 5–10 personer.
 
+
+## 2026-10-17 – Norske svaralternativer: «Stemmer …»
+- Rune: «ganske» leses sterkere på norsk enn «moderately», så trinn 4 føltes nær «svært». De norske svarene er nå «Stemmer svært dårlig», «Stemmer nokså dårlig», «Stemmer verken godt eller dårlig», «Stemmer nokså godt» og «Stemmer svært godt» (var «Svært unøyaktig» … «Svært nøyaktig» fra upstream-oversettelsen). «Nokså» er mildere enn «ganske», og «stemmer» er mer naturlig enn «nøyaktig» om seg selv.
+- Engelsk er uendret (standard IPIP-ankre). Skåringen 1–5 er uendret. Ordlyden er en redaksjonell vurdering, ikke en validert norsk skala, og avviker fra upstream-oversettelsen.
+- Målt på mobil (390 × 664): svarknappene har samme høyde og plassering som før.
