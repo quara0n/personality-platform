@@ -437,6 +437,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Etter Runes mockup (kveld 2026-10-17): på mobil er fasettkortene store, med stort fasettnavn og et bilde som fyller kortet. +-knappen er en fasettert diamant (beskåret fra mockupen, app/assets/design/facet-gem.webp), og den åpner et panel under bildet med «Om fasetten», fasettforklaringen og «X av 100 mennesker». (i)-knappen i fasettkortet er dermed fjernet. Trekkbiten i overskriften er større, og en rund «‹»-knapp øverst går tilbake til de fem trekkene.
 - Rune: bildet til Angst viser en smilende kvinne og passer ikke. Det må byttes.
 - Nye Angst-bilder (N1, kvinne og mann) laget med Higgsfield 2026-10-17 (0,5 kreditter): ettertenksomt, litt bekymret uttrykk i stedet for smil. Bakgrunnen er fjernet slik at de er utklipp som de andre fasettbildene.
+- Nye bilder for Sinne (N2) og Depresjon (N3), kvinne og mann, laget med Higgsfield 2026-10-17 (1 kreditt): irritert ved feilmelding for Sinne og nedstemt på gulvet for Depresjon. Rune mente de forrige ikke viste følelsen.
 
 ## Spørsmålskort i Arbeidsliv, ryddigere trekkside og 100-figurer på trekk-boksen (2026-10-17, kveld)
 
