@@ -444,3 +444,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune (mockup): spørsmålene i de tilpassede kapitlene vises som store kort. Øverst står fremdriften («Om jobben din», «1 av 8»), så et stort spørsmål med bilde ved siden av, og deretter ett kort per svar med bilde og pil (avkrysningsboks der man kan velge to). Arbeidsliv åpner rett på spørsmålene, og kapittelhodet skjules til de er besvart. Bildet og de sju svarbildene til arbeidsspørsmålet er beskåret fra mockupen. Svar uten eget bilde viser en logobit. «Ikke i jobb nå» og «Noe annet» er med som før.
 - Verktøylinjen (Gratisprofilen din, Lagre svarene mine, Last ned PDF) står bare i Oversikt, slik at «Dine fem trekk» starter med logoen. «Hva betyr persentilen?» er flyttet inn i kapittelets (i), så logoen og trekknavnene får plass på én mobilskjerm.
 - «Trekket som skiller seg mest ut» i oversikten har fått samme «X av 100 mennesker»-setning og 100-figurer som fasett-boksen. De fem trekkene har fått egne poler i app/facet-compare.js.
+
+## Resultatet i Arbeidsliv og Hverdagsliv som kortkarusell, og én «+» overalt (2026-10-17, kveld)
+
+- Rune: oversikten etter de tilpassede spørsmålene vises som store kort i samme sveipbare rad som fasettene (prikker øverst, mobil og stående nettbrett). Hvert kort har en logobit, overskrift, én linje, fasettbrikker og «Les mer». En pil til høyre for prikkene viser at man kan bla. Bredere skjermer viser kortene side om side. «Prøv én ting denne uken» og «Hvordan henger dette sammen …» står under.
+- Arbeidsliv har fått AI-partnerkortet med roboten, slik Hverdagsliv allerede har.
+- Alle «+» som åpner noe, bruker fasettenes slipte edelsten med hvit pluss (app/design.css). De flate CSS-trekantene i kapitlene er byttet med logobitene.
+- Gjenstår: en mannlig versjon av toppbildet i Arbeidsliv (Higgsfield-grensen var nådd).

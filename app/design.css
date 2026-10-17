@@ -1289,31 +1289,15 @@ details.d-ctx-more>div{padding:0}
 .d-career-context .text-button{flex:none;align-self:center;padding:0;font-size:16px;text-decoration:underline;text-underline-offset:5px}
 .d-career.is-result{margin:6px 0 34px;color:var(--title)}
 .d-career.is-result>.d-tailor-badge{margin-bottom:6px}
-.d-career-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0;margin:18px 0 0}
-.d-career-main{padding-right:40px;border-right:1px solid #cfd9e3}
-.d-career-side{padding-left:36px;display:grid;align-content:start;gap:30px}
-.d-career-feature{display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 26px;padding:22px 0 26px}
-.d-career-main .d-career-feature+.d-career-feature{border-top:1px solid #cfd9e3}
-.d-career-feature>.d-career-eyebrow,.d-career-feature>.d-tailor-empty{grid-column:1/-1}
-.d-career-mark{width:0;height:0;margin-top:2px;border-style:solid;border-width:30px 0 30px 44px;border-color:transparent transparent transparent #9cc3e8}
-.d-career-feature.is-hard .d-career-mark{border-left-color:#f7b08c}
-.d-career-feature.is-energy .d-career-mark{border-width:30px 44px 30px 0;border-color:transparent #9cc3e8 transparent transparent;position:relative}
-.d-career-feature h4{margin:0 0 8px;font:400 clamp(28px,3.2vw,40px)/1.1 Georgia,serif;letter-spacing:-.035em}
 .d-career-line{margin:0;font-size:19px;line-height:1.45}
 .d-career-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
 .d-career-chips span{padding:6px 16px;border-radius:999px;background:var(--sky);font-size:16px}
 .d-career details{border:0;padding:0}
 .d-career details>summary{margin:0;padding-left:0;font:inherit}
-.d-career-more{margin:14px 0 0}
-.d-career .d-career-more summary{display:inline-flex;gap:6px;cursor:pointer;list-style:none;font-size:16px;padding-bottom:2px;border-bottom:1px solid currentColor}
-.d-career-more summary::-webkit-details-marker{display:none}
-.d-career-more[open] summary span{transform:rotate(45deg)}
-.d-career-more .d-career-list{margin-top:14px}
 .d-career-list h5{margin:0 0 6px;font:400 20px/1.2 Georgia,serif}
 .d-career-list .d-career-chips{margin:8px 0 0}
 .d-career-list .d-career-chips span{padding:3px 12px;font-size:14px}
 .d-career-week{position:relative;padding:28px 30px;border-radius:10px;background:var(--warm)}
-.d-career-week::after{content:"";position:absolute;top:24px;right:26px;width:0;height:0;border-top:30px solid #f7b08c;border-left:30px solid transparent}
 .d-career-week .d-career-eyebrow{padding-right:50px}
 .d-career-week-text{margin:0 0 20px;font:400 clamp(22px,2.4vw,28px)/1.25 Georgia,serif;letter-spacing:-.025em}
 .d-career-check{display:inline-flex;gap:14px;align-items:center;font-size:17px;cursor:pointer}
@@ -1325,16 +1309,10 @@ details.d-ctx-more>div{padding:0}
 .d-career-deep-icon i{display:block;width:3px;background:var(--title);border-radius:2px}
 .d-career-deep-icon i:nth-child(1){height:12px}.d-career-deep-icon i:nth-child(2){height:24px}.d-career-deep-icon i:nth-child(3){height:17px}
 .d-career-plus{margin-left:auto;font-size:30px;line-height:1;font-weight:300;transition:transform .2s ease}
-.d-career-deep[open] .d-career-plus{transform:rotate(45deg)}
+
 .d-career-deep-body{padding:0 0 10px}
 .d-career-deep-body>.d-career-sec:first-child{margin-top:4px}
 @media(max-width:860px){
-  .d-career-grid{grid-template-columns:1fr}
-  .d-career-main{padding-right:0;border-right:0}
-  .d-career-side{padding-left:0;border-top:1px solid #cfd9e3;padding-top:4px;gap:18px}
-  .d-career-feature{grid-template-columns:30px minmax(0,1fr);gap:0 16px}
-  .d-career-mark{border-width:20px 0 20px 28px}
-  .d-career-feature.is-energy .d-career-mark{border-width:20px 28px 20px 0}
   .d-career-context{padding:14px 16px;gap:14px;max-width:none}
   .d-career-context-icon{padding-right:14px}
   .d-career-context-text{font-size:17px}
@@ -1342,7 +1320,7 @@ details.d-ctx-more>div{padding:0}
   .d-career .d-career-deep>summary{gap:14px;font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){.d-career-plus{transition:none}}
-@media print{.d-career-week,.d-career-feature{break-inside:avoid}.d-career-check{display:none}}
+@media print{.d-career-week,.d-jcard{break-inside:avoid}.d-career-check{display:none}}
 @media(max-width:760px){.d-career-options{grid-template-columns:1fr}.d-career-ai{flex-direction:column;align-items:flex-start}.d-career-ai p{flex:none}}
 @media(prefers-reduced-motion:reduce){.d-career-opt{transition:none}}
 @media print{.d-career-list li,.d-career-steps li{break-inside:avoid}}
@@ -1772,3 +1750,45 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-q2 .d-tailor-note{margin-top:18px;font-size:13px;color:#6b7f95}
 @media(min-width:761px){.d-q2-options{grid-template-columns:1fr 1fr}.d-q2-hero{right:0}}
 @media(prefers-reduced-motion:reduce){.d-q2-opt.d-career-opt{transition:none}.d-q2-opt.d-career-opt:hover{transform:none}}
+
+/* The tailored chapters' overview as cards in the facets' swipeable row (Rune, 2026-10-17). */
+.d-jcarousel{margin:18px 0 22px}
+.d-jcarousel-top{display:none}
+.d-jnext{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:#13284f;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(16,39,71,.22)}
+.d-jnext svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.d-jnext:focus-visible{outline:2px solid #a44e24;outline-offset:3px}
+@media(prefers-reduced-motion:no-preference){.d-jnext svg{animation:d-jnudge 1.6s ease-in-out 3}}
+@keyframes d-jnudge{50%{transform:translateX(4px)}}
+.d-jslides{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.d-jslides.is-even{grid-template-columns:repeat(2,minmax(0,1fr))}
+.d-jcard{position:relative;display:flex;flex-direction:column;min-width:0;padding:26px 24px 18px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-jcard-piece{position:absolute;top:18px;right:18px;width:46px;height:46px;object-fit:contain}
+.d-jcard .d-career-eyebrow{padding-right:58px}
+.d-jcard h4{margin:0 0 10px;font:400 clamp(28px,3vw,36px)/1.1 Georgia,serif;letter-spacing:-.035em;color:var(--title)}
+.d-jcard .d-career-line{margin:0 0 12px}
+.d-jcard-more{margin-top:auto;padding-top:6px}
+.d-jcard-more>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;font-size:16px;color:var(--title)}
+.d-jcard-more>summary::-webkit-details-marker{display:none}
+.d-jcard-more>summary:focus-visible{outline:2px solid #a44e24;outline-offset:3px;border-radius:6px}
+.d-jcard-body{padding-top:10px}
+.d-jcard-body .d-career-list{margin-top:12px}
+.d-career-week-piece{position:absolute;top:22px;right:24px;width:40px;height:40px;object-fit:contain}
+@media(max-width:900px){
+  .d-jcarousel{margin-inline:calc(50% - 50vw)}
+  .d-jcarousel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 7vw 12px}
+  .d-jcarousel .d-fdots{margin:0 0 0 -8px}
+  .d-jslides,.d-jslides.is-even{display:flex;gap:12px;padding:4px 7vw 10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scroll-padding-inline:7vw;overscroll-behavior-x:contain;scrollbar-width:none;align-items:flex-start}
+  .d-jslides>.d-jcard{flex:0 0 86vw;max-width:520px;scroll-snap-align:center}
+  .d-career-week-piece{top:18px;right:18px;width:34px;height:34px}
+}
+@media print{.d-jcarousel-top{display:none!important}.d-jslides,.d-jslides.is-even{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding:0}.d-jslides::after{content:none}.d-jcard-more>summary .d-gem-plus{display:none}}
+
+/* Every «+» that opens something is the facets' faceted gem with a white plus (Rune, 2026-10-17). */
+.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus{width:40px;height:40px;flex:none;border:0!important;border-radius:0;background:radial-gradient(circle closest-side,#13284f 0 46%,transparent 50%) center/100% 100% no-repeat,url(assets/design/facet-gem.webp) center/contain no-repeat!important;filter:drop-shadow(0 3px 6px rgba(16,39,71,.22))}
+.d-gem-plus,.d-ctx-more-plus,.d-career-plus{position:relative;display:inline-block}
+:is(.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus)::before,:is(.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus)::after{content:''!important;position:absolute;left:50%;top:50%;width:32%!important;height:2px!important;margin:0!important;background:#fff!important;transform:translate(-50%,-50%);z-index:1}
+:is(.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus)::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+.d-jcard-more[open] .d-gem-plus::after,.d-career-deep[open] .d-career-plus::after,.d-tpanel[aria-expanded="true"] .d-tpanel-plus::after{transform:translate(-50%,-50%) rotate(0)}
+.d-ctx-more-plus{width:30px;height:30px;vertical-align:middle}
+.d-tacc-toggle .d-fcard-plus{width:36px;height:36px}
+@media(prefers-reduced-motion:reduce){:is(.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus)::after{transition:none}}
