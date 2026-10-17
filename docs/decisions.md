@@ -400,3 +400,20 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Å møte noen nye» er med som valg (standardvalg mens Rune ikke har svart); reglene handler om sosial energi og trygghet, ikke dateråd.
 - Tekstene er redaksjonelle og skal med i den faglige gjennomgangen og testen med 5–10 personer.
 
+
+## 2026-10-17 – Norske svaralternativer: «Stemmer …»
+- Rune: «ganske» leses sterkere på norsk enn «moderately», så trinn 4 føltes nær «svært». De norske svarene er nå «Stemmer svært dårlig», «Stemmer nokså dårlig», «Stemmer verken godt eller dårlig», «Stemmer nokså godt» og «Stemmer svært godt» (var «Svært unøyaktig» … «Svært nøyaktig» fra upstream-oversettelsen). «Nokså» er mildere enn «ganske», og «stemmer» er mer naturlig enn «nøyaktig» om seg selv.
+- Engelsk er uendret (standard IPIP-ankre). Skåringen 1–5 er uendret. Ordlyden er en redaksjonell vurdering, ikke en validert norsk skala, og avviker fra upstream-oversettelsen.
+- Målt på mobil (390 × 664): svarknappene har samme høyde og plassering som før.
+
+## 2026-10-17 – «Liker … veldig godt» i stedet for «Elsker»
+- Rune: «Bytt ut "elsker" med liker veldig godt. Passer bedre i alle spm.» Sju utsagn er endret («Love …» i originalen), for eksempel «Liker veldig godt å hjelpe andre» og «Liker livet veldig godt».
+- E2 «Talk to a lot of different people at parties» er nå «Snakker med mange forskjellige folk på fester» (var «i selskapslivet»). A4 «Love a good fight» er nå «Liker en god krangel veldig godt» («kamp» ble lest som idrett). O5 «Love to read challenging material» er nå «Liker veldig godt å lese utfordrende tekster».
+- O2 «See beauty in things that others might not notice» er nå «Ser det vakre i ting …» (var «Ser skjønnheten i ting …»), etter Runes ønske.
+- N5 «Rarely overindulge» er nå «Overdriver sjelden med mat, drikke eller andre fristelser». Rune: «Å ta for mye av det gode gir ikke mening for oss.»
+- N6 «Become overwhelmed by events» er nå «Blir overveldet når mye skjer på en gang» (var «… av det som skjer»), etter Runes ønske.
+- O6 «Believe that there is no absolute right and wrong» er nå «Tror at det ikke finnes noe absolutt rett og galt» (var «… helt sant eller helt galt», som leses som et spørsmål om fakta).
+- C4 «Do just enough work to get by» er nå «Gjør bare det minste jeg kan slippe unna med» (var «Gjør akkurat nok arbeid, verken mer eller mindre», som leses som balanse).
+- O6 «Tend to vote for conservative/liberal political candidates» er nå «Pleier å stemme på konservative partier» og «… liberale partier». Rune: «partier»; i Norge stemmer man på partier, ikke kandidater.
+- C2 «Leave my belongings around» er nå «Lar tingene mine ligge og slenge», A5 «Boast about my virtues» er nå «Skryter av mine gode sider» og O4 «Am attached to conventional ways» er nå «Holder fast på vante måter å gjøre ting på» (godkjent av Rune med 👍).
+- Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.
