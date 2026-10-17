@@ -415,4 +415,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - O6 «Believe that there is no absolute right and wrong» er nå «Tror at det ikke finnes noe absolutt rett og galt» (var «… helt sant eller helt galt», som leses som et spørsmål om fakta).
 - C4 «Do just enough work to get by» er nå «Gjør bare det minste jeg kan slippe unna med» (var «Gjør akkurat nok arbeid, verken mer eller mindre», som leses som balanse).
 - O6 «Tend to vote for conservative/liberal political candidates» er nå «Pleier å stemme på konservative partier» og «… liberale partier». Rune: «partier»; i Norge stemmer man på partier, ikke kandidater.
+- C2 «Leave my belongings around» er nå «Lar tingene mine ligge og slenge», A5 «Boast about my virtues» er nå «Skryter av mine gode sider» og O4 «Am attached to conventional ways» er nå «Holder fast på vante måter å gjøre ting på» (godkjent av Rune med 👍).
 - Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.

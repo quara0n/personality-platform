@@ -125,8 +125,23 @@
         "id": "96ba77b2-1a44-4dfd-95f9-ae4d1f714460",
         "from": "Pleier å stemme på konservative politiske kandidater",
         "to": "Pleier å stemme på konservative partier"
+      },
+      {
+        "id": "50418d86-712c-45d9-adc4-ea0231c93cf5",
+        "from": "Strør omkring meg med eiendelene mine",
+        "to": "Lar tingene mine ligge og slenge"
+      },
+      {
+        "id": "a7f43928-8982-4ed5-8656-7a80346fe979",
+        "from": "Vil helst ta tradisjonelle valg",
+        "to": "Holder fast på vante måter å gjøre ting på"
+      },
+      {
+        "id": "80c1d149-7050-481a-9953-aefb441642e7",
+        "from": "Skryter av mine fortrinn",
+        "to": "Skryter av mine gode sider"
       }
     ],
-    "sha256AfterEdits": "ecf755a7e419e57379276cab52eaea1e5b394e0747cc11ec54481df9d687d35f"
+    "sha256AfterEdits": "2f64254bb0020368d4773c182b3f7108d2266526de7e519a0ce1edaa3dea7b27"
   }
 }
