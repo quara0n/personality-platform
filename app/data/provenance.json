@@ -100,8 +100,13 @@
         "id": "9891b7ba-a494-4307-aafe-301d8db506c6",
         "from": "Tar sjelden for mye av det gode",
         "to": "Overdriver sjelden med mat, drikke eller andre fristelser"
+      },
+      {
+        "id": "13c58810-3864-42ba-aa87-d4166f858756",
+        "from": "Blir overveldet av det som skjer",
+        "to": "Blir overveldet når mye skjer på en gang"
       }
     ],
-    "sha256AfterEdits": "b1367b116f779b5b3f0347959072a4839e114194362105726ffa981c4537dcf6"
+    "sha256AfterEdits": "cfc23d505735ea8c1b2a7d3ed90a715fcc0e8a5b74744524c380720a32ecce21"
   }
 }
