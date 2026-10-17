@@ -1792,3 +1792,44 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-ctx-more-plus{width:30px;height:30px;vertical-align:middle}
 .d-tacc-toggle .d-fcard-plus{width:36px;height:36px}
 @media(prefers-reduced-motion:reduce){:is(.d-gem-plus,.d-fcard-plus,.d-tpanel-plus,.d-ctx-plus,.d-ctx-more-plus,.d-career-plus)::after{transition:none}}
+
+/* The purchase choice as a sheet over the page: two short cards, blurred background (Rune, 2026-10-17). */
+.d-osheet{width:min(92vw,820px);max-width:none;max-height:min(88dvh,760px);margin:auto;padding:0;border:0;border-radius:var(--box-radius);background:transparent;overflow:visible;color:var(--title)}
+.d-osheet::backdrop{background:rgba(16,39,71,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.d-osheet-box{position:relative;max-height:inherit;overflow:auto;padding:26px 26px 18px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--ivory);box-shadow:0 24px 60px rgba(16,39,71,.28);text-align:center}
+.d-osheet h2{margin:0 0 18px;font:400 clamp(28px,4vw,38px)/1.05 Georgia,serif;letter-spacing:-.035em}
+.d-osheet .d-offer-eyebrow{margin:0 0 6px;font-size:12px}
+.d-osheet-close{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:#e8eef5;color:var(--title);font:400 26px/1 Georgia,serif;cursor:pointer}
+.d-osheet-close span{margin-top:-3px}
+.d-osheet-close:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.d-ocards{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.d-ocard{position:relative;display:flex;flex-direction:column;padding:20px 20px 18px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-ocard.is-plus{border-color:var(--title)}
+.d-ocard .d-offer-recommended{top:-12px;right:18px;padding:4px 12px;font-size:11px}
+.d-ocard-piece{position:absolute;top:16px;right:16px;width:36px;height:36px;object-fit:contain}
+.d-ocard h3{margin:0 0 10px;padding-right:44px;font:400 24px/1.1 Georgia,serif;letter-spacing:-.03em}
+.d-ocard ul{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:6px}
+.d-ocard li{position:relative;padding-left:20px;font-size:15px;line-height:1.35;color:#2c4566}
+.d-ocard li::before{content:'';position:absolute;left:0;top:.5em;width:10px;height:6px;border-left:2px solid #1f4fa0;border-bottom:2px solid #1f4fa0;transform:rotate(-45deg)}
+.d-ocard-buy{margin-top:auto}
+.d-ocard-price{margin:0 0 10px;font:400 38px/1 Georgia,serif;letter-spacing:-.03em}
+.d-ocard .d-offer-buy{padding:13px 16px;font-size:16px}
+.d-osheet-terms{margin:14px 0 6px;font-size:14px;color:#4f6d8c}
+.d-osheet-foot{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin:0;font-size:13px;color:#6b7f95}
+.d-osheet-foot a{color:var(--title);font-weight:700}
+@media(max-width:640px){
+  .d-osheet{width:calc(100vw - 24px);max-height:calc(100dvh - 24px)}
+  .d-osheet-box{padding:18px 14px 12px}
+  .d-osheet h2{margin-bottom:14px;font-size:26px;padding:0 40px}
+  .d-ocards{grid-template-columns:1fr;gap:14px}
+  .d-ocard{padding:14px 14px 12px}
+  .d-ocard h3{font-size:20px;margin-bottom:6px}
+  .d-ocard ul{gap:2px;margin-bottom:10px}
+  .d-ocard li{font-size:13.5px}
+  .d-ocard-buy{display:flex;align-items:center;gap:12px}
+  .d-ocard-price{margin:0;font-size:28px;white-space:nowrap}
+  .d-ocard .d-offer-buy{flex:1;padding:11px 12px;font-size:14px}
+  .d-osheet-terms{margin:10px 0 4px;font-size:12.5px}
+}
+@media(prefers-reduced-motion:no-preference){.d-osheet[open] .d-osheet-box{animation:d-osheet-in .25s ease-out}}
+@keyframes d-osheet-in{from{opacity:0;transform:translateY(16px) scale(.98)}}

@@ -451,3 +451,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Arbeidsliv har fått AI-partnerkortet med roboten, slik Hverdagsliv allerede har.
 - Alle «+» som åpner noe, bruker fasettenes slipte edelsten med hvit pluss (app/design.css). De flate CSS-trekantene i kapitlene er byttet med logobitene.
 - Gjenstår: en mannlig versjon av toppbildet i Arbeidsliv (Higgsfield-grensen var nådd).
+
+## Kjøpsvalget som sprett-opp (2026-10-17, kveld)
+
+- Rune valgte sprett-opp: lenkene til kjøpssiden fra gratisprofilen åpner to korte kort (Fordypningsrapport 49 kr / $4.99 og Fordypning + tilpasset 149 kr / $14.99) over siden med uskarp bakgrunn, slik at begge priser og knapper synes uten å rulle, også på små telefoner. «Se alt som er med» åpner hele #offer-siden, som står som før.
