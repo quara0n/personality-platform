@@ -95,8 +95,13 @@
         "id": "b5919f2f-cded-4745-a9ce-c02703cee807",
         "from": "Ser skjønnheten i ting som andre kanskje ikke legger merke til",
         "to": "Ser det vakre i ting som andre kanskje ikke legger merke til"
+      },
+      {
+        "id": "9891b7ba-a494-4307-aafe-301d8db506c6",
+        "from": "Tar sjelden for mye av det gode",
+        "to": "Overdriver sjelden med mat, drikke eller andre fristelser"
       }
     ],
-    "sha256AfterEdits": "3ed2243c60381f89f7515b504159a8ddbf27e8ac7a191d1da011688a4889698f"
+    "sha256AfterEdits": "b1367b116f779b5b3f0347959072a4839e114194362105726ffa981c4537dcf6"
   }
 }
