@@ -19,7 +19,6 @@ const chapter = createTailoredChapter({
   text: ({tr}) => ({
     title: tr('Your everyday life, your relationships', 'Din hverdag, dine relasjoner'),
     badge: tr('Tailored', 'Tilpasset deg'),
-    lead: tr('Answer eight short questions about your everyday life and the people close to you. It takes two or three minutes. We link your answers with your facets and write a chapter about you, your home and your relationships.', 'Svar på åtte korte spørsmål om hverdagen din og dem som står deg nær. Det tar to–tre minutter. Vi kobler svarene med fasettene dine og skriver et kapittel om deg, hjemmet ditt og relasjonene dine.'),
     progress: tr('About your everyday life', 'Om hverdagen din'),
     otherLabel: () => tr('Specify (optional)', 'Utdyp (valgfritt)'),
     otherPlaceholder: () => tr('A few words, no names', 'Noen få ord, ingen navn'),

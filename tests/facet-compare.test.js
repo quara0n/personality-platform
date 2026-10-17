@@ -18,7 +18,13 @@ test('the figure lights the same number as the card', () => {
   assert.equal(compareCount({code: 'C2', percentile: 85}), 85);
 });
 
-test('all 30 facets have both poles in both languages', () => {
-  assert.equal(Object.keys(poles).length, 30);
+test('all 30 facets and the five traits have both poles in both languages', () => {
+  assert.equal(Object.keys(poles).filter(k => k.length === 2).length, 30);
+  assert.deepEqual(Object.keys(poles).filter(k => k.length === 1).sort(), ['A', 'C', 'E', 'N', 'O']);
   for (const p of Object.values(poles)) assert.ok(p.length === 4 && p.every(x => x.length > 5));
+});
+
+test('the trait that stands out most gets an X-of-100 line too', () => {
+  assert.match(compareLine({code: 'C', name: 'Planmessighet', percentile: 98}, 'no'), /er du mer planmessig og grundig enn omtrent 98 av 100 mennesker/);
+  assert.match(compareLine({code: 'N', name: 'Følelsesmessig reaktivitet', percentile: 20}, 'no'), /følelsesmessig reaktivitet, skårer du høyere enn omtrent 20 av 100/);
 });

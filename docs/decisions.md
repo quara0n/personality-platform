@@ -436,3 +436,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Prøve: større bilde på kortet Angst (N1) før vi eventuelt gjør det på alle.
 - Etter Runes mockup (kveld 2026-10-17): på mobil er fasettkortene store, med stort fasettnavn og et bilde som fyller kortet. +-knappen er en fasettert diamant (beskåret fra mockupen, app/assets/design/facet-gem.webp), og den åpner et panel under bildet med «Om fasetten», fasettforklaringen og «X av 100 mennesker». (i)-knappen i fasettkortet er dermed fjernet. Trekkbiten i overskriften er større, og en rund «‹»-knapp øverst går tilbake til de fem trekkene.
 - Rune: bildet til Angst viser en smilende kvinne og passer ikke. Det må byttes.
+- Nye Angst-bilder (N1, kvinne og mann) laget med Higgsfield 2026-10-17 (0,5 kreditter): ettertenksomt, litt bekymret uttrykk i stedet for smil. Bakgrunnen er fjernet slik at de er utklipp som de andre fasettbildene.
+- Nye bilder for Sinne (N2) og Depresjon (N3), kvinne og mann, laget med Higgsfield 2026-10-17 (1 kreditt): irritert ved feilmelding for Sinne og nedstemt på gulvet for Depresjon. Rune mente de forrige ikke viste følelsen.
+
+## Spørsmålskort i Arbeidsliv, ryddigere trekkside og 100-figurer på trekk-boksen (2026-10-17, kveld)
+
+- Rune (mockup): spørsmålene i de tilpassede kapitlene vises som store kort. Øverst står fremdriften («Om jobben din», «1 av 8»), så et stort spørsmål med bilde ved siden av, og deretter ett kort per svar med bilde og pil (avkrysningsboks der man kan velge to). Arbeidsliv åpner rett på spørsmålene, og kapittelhodet skjules til de er besvart. Bildet og de sju svarbildene til arbeidsspørsmålet er beskåret fra mockupen. Svar uten eget bilde viser en logobit. «Ikke i jobb nå» og «Noe annet» er med som før.
+- Verktøylinjen (Gratisprofilen din, Lagre svarene mine, Last ned PDF) står bare i Oversikt, slik at «Dine fem trekk» starter med logoen. «Hva betyr persentilen?» er flyttet inn i kapittelets (i), så logoen og trekknavnene får plass på én mobilskjerm.
+- «Trekket som skiller seg mest ut» i oversikten har fått samme «X av 100 mennesker»-setning og 100-figurer som fasett-boksen. De fem trekkene har fått egne poler i app/facet-compare.js.

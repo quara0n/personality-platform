@@ -37,7 +37,13 @@ export const poles = {
   C3: ['take rules and promises more seriously', 'tar regler og løfter mer alvorlig', 'treat rules and promises more loosely', 'forholder deg løsere til regler og løfter'],
   C4: ['push harder towards demanding goals', 'presser deg hardere mot krevende mål', 'are more content with doing what is needed', 'er oftere fornøyd med å gjøre det som trengs'],
   C5: ['get started on tasks more easily', 'kommer lettere i gang med oppgaver', 'find it harder to get started on tasks', 'har vanskeligere for å komme i gang med oppgaver'],
-  C6: ['think things through more before acting', 'tenker deg mer om før du handler', 'decide more quickly', 'bestemmer deg raskere']
+  C6: ['think things through more before acting', 'tenker deg mer om før du handler', 'decide more quickly', 'bestemmer deg raskere'],
+  // The five broad traits, for «The trait that stands out most» on the overview.
+  O: ['are more open to new ideas and experiences', 'er mer åpen for nye ideer og opplevelser', 'prefer the familiar and practical more', 'foretrekker oftere det kjente og praktiske'],
+  C: ['are more organised and thorough', 'er mer planmessig og grundig', 'are more spontaneous and flexible', 'er mer spontan og fleksibel'],
+  E: ['seek out people and activity more', 'søker mer mot folk og aktivitet', 'prefer calm and smaller groups more', 'foretrekker oftere ro og små grupper'],
+  A: ['put more weight on cooperation and consideration', 'legger mer vekt på samarbeid og hensyn', 'stand your ground more readily', 'står lettere på ditt'],
+  N: ['react more strongly to stress and setbacks', 'reagerer sterkere på stress og motgang', 'stay calmer under stress and setbacks', 'holder deg roligere under stress og motgang']
 };
 
 /** One sentence comparing the facet with the reference group, or '' without a percentile. */

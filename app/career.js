@@ -5,6 +5,7 @@ import {questions, isComplete, optionLabel, answerTopic, buildCareer, careerRequ
 import {createTailoredChapter} from './tailored-chapter.js';
 
 export const CAREER_KEY = 'fem-career-v1';
+const ROLE_ART = new Set(['knowledge', 'care', 'service', 'practical', 'creative', 'own', 'student']);
 const asList = v => Array.isArray(v) ? v : v ? [v] : [];
 
 const briefcase = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18M10.5 12v2h3v-2"/></svg>';
@@ -14,10 +15,14 @@ const chapter = createTailoredChapter({
   key: CAREER_KEY,
   copy: {questions, isComplete, optionLabel, answerTopic, build: buildCareer, request: careerRequest, OTHER_MAX},
   icon: briefcase,
+  // Rune's question mockup (2026-10-17): the chapter opens straight on the questions, with the picture
+  // and the answer pictures cropped from it. Other answers show a logo piece.
+  jumpIn: true,
+  questionArt: () => 'assets/design/career/question-hero.webp',
+  optionArt: (qid, value) => qid === 'role' && ROLE_ART.has(value) ? `assets/design/career/${value}.webp` : '',
   text: ({tr}) => ({
     title: tr('Your work, your profile', 'Din jobb, din profil'),
     badge: tr('Tailored · prototype', 'Tilpasset deg · prototype'),
-    lead: tr('Answer eight short questions about your work. It takes two or three minutes. We link your answers with your facets and write a chapter about you and your job.', 'Svar på åtte korte spørsmål om jobben din. Det tar to–tre minutter. Vi kobler svarene med fasettene dine og skriver et kapittel om deg og jobben din.'),
     progress: tr('About your work', 'Om jobben din'),
     otherLabel: qid => qid === 'role' ? tr('Your job (optional)', 'Yrket ditt (valgfritt)') : tr('Specify (optional)', 'Utdyp (valgfritt)'),
     otherPlaceholder: qid => qid === 'role' ? tr('For example chiropractor', 'For eksempel kiropraktor') : tr('A few words, no names', 'Noen få ord, ingen navn'),

@@ -16,8 +16,8 @@ const chips = (item, ctx) => item.facets.length ? `<p class="d-career-chips">${i
 
 /**
  * cfg: {name, key, copy: {questions, visibleQuestions?, isComplete, optionLabel, answerTopic, build, request, OTHER_MAX},
- * text(ctx) → {title, lead, progress, otherLabel(qid), otherPlaceholder(qid), contextEyebrow, aria},
- * contextParts(answers, language) → [labels], icon, main: [[id, eyebrow(ctx), fallbackId?]], side: [[id, eyebrow(ctx)]],
+ * text(ctx) → {title, progress, otherLabel(qid), otherPlaceholder(qid), contextEyebrow, aria},
+ * contextParts(answers, language) → [labels], icon, jumpIn?, questionArt(qid)?, optionArt(qid, value)?, main: [[id, eyebrow(ctx), fallbackId?]], side: [[id, eyebrow(ctx)]],
  * deep: [ids], hideEmpty: [ids], titles(ctx, answers) → {id: title}, weekOrder: [ids]}
  */
 export function createTailoredChapter(cfg) {
@@ -32,14 +32,22 @@ export function createTailoredChapter(cfg) {
   const clear = () => { try { sessionStorage.removeItem(key); } catch {} };
   const current = s => { const qs = visible(s.answers); return {qs, q: qs[Math.min(s.step, qs.length - 1)]}; };
 
+  // One question as Rune's card layout (mockup 2026-10-17): progress on top, a large question with the
+  // chapter picture beside it, then one card per answer with its picture and an arrow (a tick box when
+  // several may be chosen). Answers without their own picture show a logo piece.
+  const PIECES = ['sky', 'apricot', 'steel', 'ivory', 'navy'];
   function stepHtml(s, ctx) {
     const {tr, esc, language} = ctx, t = cfg.text(ctx), {qs, q} = current(s), step = qs.indexOf(q), chosen = asList(s.answers[q.id]);
-    const first = step === 0 && !Object.keys(s.answers).length, other = chosen.includes('other');
-    return `${first ? `<p class="d-career-lead">${t.lead}</p>` : ''}
-    <div class="d-career-progress"><span>${t.progress}</span><span class="d-career-bar" aria-hidden="true"><i style="width:${Math.round(100 * step / qs.length)}%"></i></span><span>${tr(`${step + 1} of ${qs.length}`, `${step + 1} av ${qs.length}`)}</span></div>
-    <fieldset class="d-career-q"><legend>${esc(q.q[language === 'no' ? 1 : 0])}</legend>${q.multi ? `<p class="d-career-hint">${tr('Choose up to two.', 'Velg opptil to.')}</p>` : ''}
-    <div class="d-career-options">${q.options.map(([value, en, no]) => `<button type="button" class="d-career-opt" data-value="${value}" aria-pressed="${chosen.includes(value)}">${q.multi ? '<b aria-hidden="true"></b>' : ''}${esc(tr(en, no))}</button>`).join('')}</div>
-    ${other ? `<label class="d-career-other"><span>${t.otherLabel(q.id)}</span><input type="text" maxlength="${copy.OTHER_MAX}" autocomplete="off" ${A}-other value="${esc(s.answers.other?.[q.id] || '')}" placeholder="${t.otherPlaceholder(q.id)}"></label>` : ''}</fieldset>
+    const other = chosen.includes('other'), hero = cfg.questionArt?.(q.id);
+    const art = (value, i) => cfg.optionArt?.(q.id, value) || `assets/design/logo-piece-${PIECES[i % PIECES.length]}.webp`;
+    return `<div class="d-q2-progress"><span class="d-q2-label">${t.progress}</span><span class="d-q2-row"><span class="d-career-bar" aria-hidden="true"><i style="width:${Math.round(100 * (step + 1) / qs.length)}%"></i></span><span>${tr(`${step + 1} of ${qs.length}`, `${step + 1} av ${qs.length}`)}</span></span></div>
+    <div class="d-q2-head${hero ? ' has-art' : ''}"><h3 class="d-q2-title" id="${name}-q">${esc(q.q[language === 'no' ? 1 : 0])}</h3>${hero ? `<img class="d-q2-hero" src="${hero}" alt="" aria-hidden="true">` : ''}</div>
+    ${q.multi ? `<p class="d-career-hint">${tr('Choose up to two.', 'Velg opptil to.')}</p>` : ''}
+    <div class="d-q2-options" role="group" aria-labelledby="${name}-q">${q.options.map(([value, en, no], i) => {
+      const own = !!cfg.optionArt?.(q.id, value);
+      return `<button type="button" class="d-career-opt d-q2-opt" data-value="${value}" aria-pressed="${chosen.includes(value)}"><span class="d-q2-icon${own ? '' : ' is-piece'}"><img src="${art(value, i)}" alt="" aria-hidden="true"></span><span class="d-q2-text">${esc(tr(en, no))}</span><span class="d-q2-go${q.multi ? ' is-check' : ''}" aria-hidden="true">${q.multi ? '' : '<svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg>'}</span></button>`;
+    }).join('')}</div>
+    ${other ? `<label class="d-career-other"><span>${t.otherLabel(q.id)}</span><input type="text" maxlength="${copy.OTHER_MAX}" autocomplete="off" ${A}-other value="${esc(s.answers.other?.[q.id] || '')}" placeholder="${t.otherPlaceholder(q.id)}"></label>` : ''}
     <div class="d-career-nav">${step > 0 ? `<button type="button" class="text-button" ${A}="back">${tr('Back', 'Tilbake')}</button>` : '<span></span>'}${q.multi || other ? `<button type="button" class="button" ${A}="next" ${chosen.length ? '' : 'disabled'}>${tr('Next', 'Videre')}</button>` : ''}</div>`;
   }
 
@@ -135,7 +143,8 @@ export function createTailoredChapter(cfg) {
     const {tr} = ctx, s = state(), t = cfg.text(ctx);
     const done = copy.isComplete(s.answers) && !s.editing;
     if (done) return `<section class="d-career is-result" ${A}-root aria-label="${t.title}"><p class="d-tailor-badge">${t.badge}</p>${resultHtml(s, ctx, build(ctx, s.answers))}</section>`;
-    return `<section class="d-tailor d-career" ${A}-root aria-labelledby="${name}-title"><div class="d-tailor-head"><p class="d-tailor-badge">${t.badge}</p><h3 id="${name}-title">${t.title}</h3></div>
+    // While the questions are open, the chapter shows them first (cfg.jumpIn hides the chapter header).
+    return `<section class="d-tailor d-career d-q2" ${A}-root aria-label="${t.title}"${cfg.jumpIn ? ' data-jump' : ''}>
     ${stepHtml(s, ctx)}
     <p class="d-tailor-note">${tr('Each point links your answers with facets that sit clearly high or low. They are ideas to test, not established facts about you. Your answers stay in this browser tab.', 'Hvert punkt kobler svarene dine med fasetter som ligger tydelig høyt eller lavt. Det er ideer å teste, ikke fastslåtte sannheter om deg. Svarene blir bare lagret i denne nettleserfanen.')}</p></section>`;
   }
