@@ -422,3 +422,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-17 – Samme lasting før gratisprofilen, stor F i Fordypningsrapporten
 - Rune: lastingen etter testen («Vi setter sammen profilen din.») skal ha samme 0–100 %-teller og logoanimasjon som når Fordypningsrapporten åpnes. Listen viser det gratisprofilen faktisk gir: profilvideoen, de fem trekkene, én fasett fra hvert trekk, profilfiguren og en mulig styrke. Fordypningsrapporten listes ikke, og ingenting vises som utilgjengelig. Bitene flyr fortsatt inn fra vardene først når testen nettopp er fullført.
 - «Fordypningsrapporten» skrives med stor F også midt i setninger i norsk tekst, som et produktnavn.
+
+## 2026-10-17 – «Din personlige AI-partner» i Hverdagsliv og relasjoner
+- Rune sendte en skisse («Fint design dette. Bruk det på ai seksjon på hverdag og forhold»). AI-knappen i Hverdagsliv og relasjoner er nå et kort med tittelen «Din personlige AI-partner», teksten «Få innsikt, forslag og veiledning basert på dine styrker.», bildet av kvinnen og roboten (klippet fra skissen, app/assets/design/ai-partner.webp) og den fasetterte knappen «AI-hjelp». Personvernlinjen står under knappen.
+- Gjelder bare Hverdagsliv (`aiCard` i app/life.js); Arbeidsliv har den gamle linjen. Vises fortsatt bare i testmodus. Når AI-teksten er skrevet, vises den vanlige linjen med «Vis den ferdigskrevne teksten».
