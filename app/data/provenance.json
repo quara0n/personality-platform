@@ -90,8 +90,13 @@
         "id": "79d956e8-1118-402a-a0e2-9380af18243e",
         "from": "Elsker livet",
         "to": "Liker livet veldig godt"
+      },
+      {
+        "id": "b5919f2f-cded-4745-a9ce-c02703cee807",
+        "from": "Ser skjønnheten i ting som andre kanskje ikke legger merke til",
+        "to": "Ser det vakre i ting som andre kanskje ikke legger merke til"
       }
     ],
-    "sha256AfterEdits": "989508168868775ef82feab17bcfb718b9c3302dea1740bc187be11c30227d29"
+    "sha256AfterEdits": "3ed2243c60381f89f7515b504159a8ddbf27e8ac7a191d1da011688a4889698f"
   }
 }

@@ -409,4 +409,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-17 – «Liker … veldig godt» i stedet for «Elsker»
 - Rune: «Bytt ut "elsker" med liker veldig godt. Passer bedre i alle spm.» Sju utsagn er endret («Love …» i originalen), for eksempel «Liker veldig godt å hjelpe andre» og «Liker livet veldig godt».
 - E2 «Talk to a lot of different people at parties» er nå «Snakker med mange forskjellige folk på fester» (var «i selskapslivet»). A4 «Love a good fight» er nå «Liker en god krangel veldig godt» («kamp» ble lest som idrett). O5 «Love to read challenging material» er nå «Liker veldig godt å lese utfordrende tekster».
+- O2 «See beauty in things that others might not notice» er nå «Ser det vakre i ting …» (var «Ser skjønnheten i ting …»), etter Runes ønske.
 - Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.
