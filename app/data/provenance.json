@@ -115,8 +115,18 @@
         "id": "a9c97d6b-6721-4150-8d84-64ef3082f164",
         "from": "Gjør akkurat nok arbeid, verken mer eller mindre",
         "to": "Gjør bare det minste jeg kan slippe unna med"
+      },
+      {
+        "id": "79186f48-e7fa-4df4-b74b-b0627ee244e1",
+        "from": "Pleier å stemme på politikere som er liberale",
+        "to": "Pleier å stemme på liberale partier"
+      },
+      {
+        "id": "96ba77b2-1a44-4dfd-95f9-ae4d1f714460",
+        "from": "Pleier å stemme på konservative politiske kandidater",
+        "to": "Pleier å stemme på konservative partier"
       }
     ],
-    "sha256AfterEdits": "c3b2e96729c9429cbbb55ba35293ca4765e7ef2538db5ff24d4c58a270bdf34a"
+    "sha256AfterEdits": "ecf755a7e419e57379276cab52eaea1e5b394e0747cc11ec54481df9d687d35f"
   }
 }

@@ -190,7 +190,7 @@
   },
   {
     "id": "79186f48-e7fa-4df4-b74b-b0627ee244e1",
-    "text": "Pleier å stemme på politikere som er liberale",
+    "text": "Pleier å stemme på liberale partier",
     "keyed": "plus",
     "domain": "O",
     "facet": 6
@@ -610,7 +610,7 @@
   },
   {
     "id": "96ba77b2-1a44-4dfd-95f9-ae4d1f714460",
-    "text": "Pleier å stemme på konservative politiske kandidater",
+    "text": "Pleier å stemme på konservative partier",
     "keyed": "minus",
     "domain": "O",
     "facet": 6
