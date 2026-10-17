@@ -415,9 +415,14 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - O6 «Believe that there is no absolute right and wrong» er nå «Tror at det ikke finnes noe absolutt rett og galt» (var «… helt sant eller helt galt», som leses som et spørsmål om fakta).
 - C4 «Do just enough work to get by» er nå «Gjør bare det minste jeg kan slippe unna med» (var «Gjør akkurat nok arbeid, verken mer eller mindre», som leses som balanse).
 - O6 «Tend to vote for conservative/liberal political candidates» er nå «Pleier å stemme på konservative partier» og «… liberale partier». Rune: «partier»; i Norge stemmer man på partier, ikke kandidater.
+- Rune 2026-10-17: «Venstreorienterte partier ja heller på norsk. Liberal v konservativ på engelsk.» Norsk O6 er nå «Pleier å stemme på venstreorienterte partier»; «liberale» leses som Venstre/sentrum i Norge. Engelsk er uendret.
 - C2 «Leave my belongings around» er nå «Lar tingene mine ligge og slenge», A5 «Boast about my virtues» er nå «Skryter av mine gode sider» og O4 «Am attached to conventional ways» er nå «Holder fast på vante måter å gjøre ting på» (godkjent av Rune med 👍).
 - Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.
 
 ## 2026-10-17 – Samme lasting før gratisprofilen, stor F i Fordypningsrapporten
 - Rune: lastingen etter testen («Vi setter sammen profilen din.») skal ha samme 0–100 %-teller og logoanimasjon som når Fordypningsrapporten åpnes. Listen viser det gratisprofilen faktisk gir: profilvideoen, de fem trekkene, én fasett fra hvert trekk, profilfiguren og en mulig styrke. Fordypningsrapporten listes ikke, og ingenting vises som utilgjengelig. Bitene flyr fortsatt inn fra vardene først når testen nettopp er fullført.
 - «Fordypningsrapporten» skrives med stor F også midt i setninger i norsk tekst, som et produktnavn.
+
+## 2026-10-17 – «Din personlige AI-partner» i Hverdagsliv og relasjoner
+- Rune sendte en skisse («Fint design dette. Bruk det på ai seksjon på hverdag og forhold»). AI-knappen i Hverdagsliv og relasjoner er nå et kort med tittelen «Din personlige AI-partner», teksten «Få innsikt, forslag og veiledning basert på dine styrker.», bildet av kvinnen og roboten (klippet fra skissen, app/assets/design/ai-partner.webp) og den fasetterte knappen «AI-hjelp». Personvernlinjen står under knappen.
+- Gjelder bare Hverdagsliv (`aiCard` i app/life.js); Arbeidsliv har den gamle linjen. Vises fortsatt bare i testmodus. Når AI-teksten er skrevet, vises den vanlige linjen med «Vis den ferdigskrevne teksten».

@@ -140,8 +140,13 @@
         "id": "80c1d149-7050-481a-9953-aefb441642e7",
         "from": "Skryter av mine fortrinn",
         "to": "Skryter av mine gode sider"
+      },
+      {
+        "id": "79186f48-e7fa-4df4-b74b-b0627ee244e1",
+        "from": "Pleier å stemme på liberale partier",
+        "to": "Pleier å stemme på venstreorienterte partier"
       }
     ],
-    "sha256AfterEdits": "2f64254bb0020368d4773c182b3f7108d2266526de7e519a0ce1edaa3dea7b27"
+    "sha256AfterEdits": "09c2152619bb37cfc9043d69a511c317ac66977d68141e29bb6aad876e71bd36"
   }
 }

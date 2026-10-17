@@ -14,6 +14,8 @@ const chapter = createTailoredChapter({
   key: LIFE_KEY,
   copy: {questions, visibleQuestions, isComplete, optionLabel, answerTopic, build: buildLife, request: lifeRequest, OTHER_MAX},
   icon: house,
+  // The AI button is shown as Rune's «Din personlige AI-partner» card (mockup 2026-10-17).
+  aiCard: true,
   text: ({tr}) => ({
     title: tr('Your everyday life, your relationships', 'Din hverdag, dine relasjoner'),
     badge: tr('Tailored', 'Tilpasset deg'),

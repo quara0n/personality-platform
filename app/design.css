@@ -1670,3 +1670,13 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 
 /* The skip link stays fully hidden until it gets keyboard focus (it showed mid-page in phone screenshots) */
 .skip:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}
+/* «Din personlige AI-partner» in Hverdagsliv og relasjoner, after Rune's mockup (2026-10-17). */
+.d-ai-partner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"text art" "button button" "note note";align-items:center;max-width:860px;margin:18px 0 6px;padding:28px 28px 22px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:#fefdfa;box-shadow:var(--box-shadow);overflow:hidden}
+.d-ai-partner-text{grid-area:text;align-self:start;padding-top:18px;position:relative;z-index:1}
+.d-ai-partner-text h3{font-size:clamp(32px,4.4vw,46px);line-height:1.08;letter-spacing:-.03em;color:var(--title,#13284f);margin:0 0 18px}
+.d-ai-partner-text p{font-size:17px;line-height:1.55;color:var(--muted);margin:0;max-width:300px}
+.d-ai-partner-art{grid-area:art;width:100%;max-width:440px;justify-self:end;display:block;margin:-10px -10px -46px 0;-webkit-mask-image:linear-gradient(to right,transparent,#000 4%),linear-gradient(to bottom,transparent,#000 6%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 4%),linear-gradient(to bottom,transparent,#000 6%);mask-composite:intersect}
+.d-ai-partner-button{grid-area:button;position:relative;z-index:1;width:100%;justify-content:center;font:400 22px Georgia,'Times New Roman',serif;min-height:60px}
+.d-ai-partner-button span{position:absolute;right:28px}
+.d-ai-partner-note{grid-area:note;margin:12px 2px 0;font-size:13px;line-height:1.5;color:var(--muted)}
+@media(max-width:560px){.d-ai-partner{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);padding:22px 16px 18px}.d-ai-partner-text{padding-top:6px}.d-ai-partner-text h3{font-size:30px;margin-bottom:14px}.d-ai-partner-text p{font-size:15px}.d-ai-partner-art{margin:0 -16px -30px 0;width:calc(100% + 16px);max-width:none}.d-ai-partner-button{font-size:19px}}
