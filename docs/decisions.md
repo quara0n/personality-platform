@@ -417,3 +417,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - O6 «Tend to vote for conservative/liberal political candidates» er nå «Pleier å stemme på konservative partier» og «… liberale partier». Rune: «partier»; i Norge stemmer man på partier, ikke kandidater.
 - C2 «Leave my belongings around» er nå «Lar tingene mine ligge og slenge», A5 «Boast about my virtues» er nå «Skryter av mine gode sider» og O4 «Am attached to conventional ways» er nå «Holder fast på vante måter å gjøre ting på» (godkjent av Rune med 👍).
 - Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.
+
+## 2026-10-17 – Samme lasting før gratisprofilen, stor F i Fordypningsrapporten
+- Rune: lastingen etter testen («Vi setter sammen profilen din.») skal ha samme 0–100 %-teller og logoanimasjon som når Fordypningsrapporten åpnes. Listen viser det gratisprofilen faktisk gir: profilvideoen, de fem trekkene, én fasett fra hvert trekk, profilfiguren og en mulig styrke. Fordypningsrapporten listes ikke, og ingenting vises som utilgjengelig. Bitene flyr fortsatt inn fra vardene først når testen nettopp er fullført.
+- «Fordypningsrapporten» skrives med stor F også midt i setninger i norsk tekst, som et produktnavn.
