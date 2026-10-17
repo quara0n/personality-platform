@@ -66,12 +66,12 @@ body.in-loading footer{display:none}
 .d-loading{min-height:calc(100vh - 110px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px 80px;overflow:hidden}
 .d-assemble{position:relative;width:285px;height:278px;margin-bottom:56px}
 .d-piece{position:absolute;opacity:0;animation:d-fall 1.5s cubic-bezier(.22,.9,.3,1.12) forwards}
-/* Pieces of the logo (assets/design/logo-piece-*.webp) in a 285 px box, pinwheel centre at 142/148 */
-.d-tri-navy{left:22px;top:20px;width:110px}
-.d-tri-apricot{left:137px;top:5px;width:125px}
-.d-tri-ivory{left:159px;top:133px;width:122px}
-.d-tri-steel{left:80px;top:160px;width:121px}
-.d-tri-sky{left:12px;top:131px;width:123px}
+/* Pieces of the logo (assets/design/logo-piece-*.webp) in a 285 px box, placed exactly as in logo-mark-1024.webp */
+.d-tri-navy{left:16px;top:16px;width:112px}
+.d-tri-apricot{left:132px;top:1px;width:128px}
+.d-tri-ivory{left:156px;top:131px;width:124px}
+.d-tri-steel{left:75px;top:159px;width:124px}
+.d-tri-sky{left:5px;top:129px;width:124px}
 .d-piece.d-tri-navy{animation-delay:.1s;--r:-38deg;--x:-60px}
 .d-piece.d-tri-apricot{animation-delay:.45s;--r:42deg;--x:50px}
 .d-piece.d-tri-ivory{animation-delay:.8s;--r:-30deg;--x:70px}
@@ -79,7 +79,8 @@ body.in-loading footer{display:none}
 .d-piece.d-tri-sky{animation-delay:1.5s;--r:-46deg;--x:-70px}
 .d-assemble{animation:d-settle .6s ease 3.1s both}
 @keyframes d-fall{0%{opacity:0;transform:translate(var(--x),-60vh) rotate(var(--r))}25%{opacity:1}100%{opacity:1;transform:translate(0,0) rotate(0)}}
-@keyframes d-settle{0%{transform:scale(1)}45%{transform:scale(1.04)}100%{transform:scale(1)}}
+/* Uses scale, not transform, so the phone size (transform:scale(.7)) is kept when the logo settles */
+@keyframes d-settle{0%{scale:1}45%{scale:1.04}100%{scale:1}}
 .d-loading h1{margin:0;font:400 clamp(32px,4.4vw,64px)/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.04em;color:var(--title);opacity:0;animation:d-fade .8s ease .5s forwards}
 .d-loading p{margin:22px 0 0;font-size:clamp(18px,2vw,28px);color:var(--title);opacity:0;animation:d-fade .8s ease .9s forwards}
 @keyframes d-fade{to{opacity:1}}
@@ -88,7 +89,7 @@ body.in-loading footer{display:none}
 
 /* Opening the in-depth report: same assembling logo, then the real chapters one by one */
 .d-opening .d-piece{animation:none;opacity:.13;filter:grayscale(1);transition:opacity .45s ease,filter .45s ease,transform .5s cubic-bezier(.22,.9,.3,1.25)}
-.d-opening .d-piece.is-lift{opacity:1;filter:none drop-shadow(0 14px 14px #10274730);transform:translateY(-16px) scale(1.08)}
+.d-opening .d-piece.is-lift{opacity:1;filter:drop-shadow(0 14px 14px #10274730);transform:translateY(-8px) scale(1.04)}
 .d-opening .d-piece.is-done{opacity:1;filter:none}
 .d-opening .d-assemble{animation:none}
 .d-opening.is-complete .d-assemble{animation:d-settle .6s ease both}
