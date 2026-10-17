@@ -400,3 +400,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - «Å møte noen nye» er med som valg (standardvalg mens Rune ikke har svart); reglene handler om sosial energi og trygghet, ikke dateråd.
 - Tekstene er redaksjonelle og skal med i den faglige gjennomgangen og testen med 5–10 personer.
 
+
+## 2026-10-17 – Samme lasting før gratisprofilen, stor F i Fordypningsrapporten
+- Rune: lastingen etter testen («Vi setter sammen profilen din.») skal ha samme 0–100 %-teller og logoanimasjon som når Fordypningsrapporten åpnes. Listen viser det gratisprofilen faktisk gir: profilvideoen, de fem trekkene, én fasett fra hvert trekk, profilfiguren og en mulig styrke. Fordypningsrapporten listes ikke, og ingenting vises som utilgjengelig. Bitene flyr fortsatt inn fra vardene først når testen nettopp er fullført.
+- «Fordypningsrapporten» skrives med stor F også midt i setninger i norsk tekst, som et produktnavn.
