@@ -429,6 +429,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 ## Fasettkarusell og (i) i «Dine fem trekk» (2026-10-17)
 
-- Rune: de seks fasettene i hvert trekk vises som en karusell man sveiper i, med fasettnavnene øverst som markerer hvor man er, og prikker/piler under. Bare på mobil og nettbrett i stående format (opptil 900 px). PC og liggende nettbrett beholder rutenettet med to kolonner.
+- Rune: de seks fasettene i hvert trekk vises som en karusell man sveiper i, med én enkel prikk-toggle øverst som viser hvor man er (ingen navneknapper, piler eller hjelpetekst). Bare på mobil og nettbrett i stående format (opptil 900 px). PC og liggende nettbrett beholder rutenettet med to kolonner.
 - Trekkbeskrivelsen er flyttet til en (i) ved trekknavnet, og fasettforklaringen («Selvrapportert tendens …») til en (i) øverst til høyre i hvert fasettkort. Teksten er uendret.
 - Når man er inne i et trekk og logoen er ute av syne, flyter en liten «Alle trekk»-knapp med logoen nederst til høyre. Den lukker trekket og går tilbake til logoen.
+- Et åpnet fasettkort viser bare «… høyere enn omtrent X av 100 mennesker» og 100-figurene. Tolkningsavsnittet er fjernet fra kortet, og mønsterteksten om sprikende fasetter er flyttet inn i trekkets (i).
+- Prøve: større bilde på kortet Angst (N1) før vi eventuelt gjør det på alle.
