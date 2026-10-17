@@ -434,3 +434,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Når man er inne i et trekk og logoen er ute av syne, flyter en liten «Alle trekk»-knapp med logoen nederst til høyre. Den lukker trekket og går tilbake til logoen.
 - Et åpnet fasettkort viser bare «… høyere enn omtrent X av 100 mennesker» og 100-figurene. Tolkningsavsnittet er fjernet fra kortet, og mønsterteksten om sprikende fasetter er flyttet inn i trekkets (i).
 - Prøve: større bilde på kortet Angst (N1) før vi eventuelt gjør det på alle.
+- Etter Runes mockup (kveld 2026-10-17): på mobil er fasettkortene store, med stort fasettnavn og et bilde som fyller kortet. +-knappen er en fasettert diamant (beskåret fra mockupen, app/assets/design/facet-gem.webp), og den åpner et panel under bildet med «Om fasetten», fasettforklaringen og «X av 100 mennesker». (i)-knappen i fasettkortet er dermed fjernet. Trekkbiten i overskriften er større, og en rund «‹»-knapp øverst går tilbake til de fem trekkene.
+- Rune: bildet til Angst viser en smilende kvinne og passer ikke. Det må byttes.

@@ -1689,11 +1689,8 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-fslides.is-dragging{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
 .d-fslides>.d-fcard{position:relative;flex:0 0 min(72%,560px);scroll-snap-align:start}
 .d-fslides::after{content:'';flex:0 0 1px}
-.d-fcard-info{position:absolute;top:12px;right:12px;z-index:1;padding:0;color:#5a7290}
-.d-fcard-info .d-info-i{width:24px;height:24px;font-size:14px;background:var(--box-bg)}
 .d-fcard-toggle{padding-right:0}
 .d-fcard .d-fcard-name{padding-right:30px}
-.d-fcard-about{margin:0 14px 14px;max-width:none}
 .d-trait-about{margin:0 0 12px}
 .d-lnav-head h3.d-title-info .d-info-btn{margin-left:10px;vertical-align:.2em}
 .d-lnav-float{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border:1px solid var(--box-border);border-radius:999px;background:var(--box-bg);box-shadow:0 8px 24px rgba(16,39,71,.18);color:#13284f;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
@@ -1706,9 +1703,8 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-fdot:focus-visible{outline:2px solid #a44e24;outline-offset:-2px;border-radius:50%}
 @media(max-width:700px){.d-fslides>.d-fcard{flex-basis:86%}}
 @media print{
-  .d-fdots,.d-fcard-info{display:none!important}
+  .d-fdots{display:none!important}
   .facet-grid.d-fslides{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
-  .d-fcard-about[hidden]{display:block!important;border:0;padding:0 18px}
 }
 /* Carousel on phones and portrait tablets only; wider screens keep the two-column grid (Rune, 2026-10-17). */
 @media(min-width:901px){
@@ -1716,7 +1712,31 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
   .d-fslides::after{content:none}
   .d-fdots{display:none}
 }
-/* Trial on one card (Angst) before the rest: a larger picture that fills more of the card (Rune, 2026-10-17). */
-.d-fcard.is-big-art .d-fcard-toggle{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);min-height:210px;padding-top:18px}
-.d-fcard.is-big-art .d-fcard-art{max-height:none;height:200px;width:calc(100% + 18px);object-fit:contain;object-position:right bottom;padding-right:0;margin-left:-18px}
-@media(max-width:700px){.d-fcard.is-big-art .d-fcard-toggle{min-height:190px}.d-fcard.is-big-art .d-fcard-art{height:180px}}
+
+/* Back to the five traits (mockup «<»), the faceted gem + and the info sheet under the picture (Rune, 2026-10-17). */
+.d-lnav-back{display:grid;place-items:center;width:44px;height:44px;margin:4px 0 2px;padding:0;border:0;border-radius:50%;background:#e8eef5;color:#13284f;font:400 30px/1 Georgia,serif;cursor:pointer}
+.d-lnav-back span{margin-top:-4px}
+.d-lnav-back:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.d-fcards .d-fcard-plus{width:46px;height:46px;border:0;border-radius:0;background:radial-gradient(circle,#13284f 0 10.5px,transparent 11.5px) center/auto no-repeat,url(assets/design/facet-gem.webp) center/contain no-repeat;filter:drop-shadow(0 3px 6px rgba(16,39,71,.22))}
+.d-fcards .d-fcard-plus::before,.d-fcards .d-fcard-plus::after{width:14px;height:2px;background:#fff;z-index:1}
+.d-fcard-sheet-head{display:flex;align-items:center;gap:14px;margin:4px 0 10px}
+.d-fcard-sheet-head img{width:46px;height:46px;flex:none}
+.d-fcard-sheet-head strong{display:block;font:400 24px/1.1 Georgia,serif;color:var(--title);letter-spacing:-.02em}
+.d-fcard-sheet-head span{display:block;margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#6b7f95}
+.d-fcard-more .d-fcard-desc{margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid #e3ebf2;color:#33496b}
+@media print{.d-lnav-back{display:none!important}.d-fcard-sheet-head img{display:none}}
+@media(max-width:900px){
+  .d-lnav-head .d-piece-icon{width:96px;height:96px}
+  .d-fcarousel{margin-inline:calc(50% - 50vw)}
+  .d-fdots{margin-bottom:12px}
+  .facet-grid.d-fslides{padding:4px 7vw 10px;scroll-padding-inline:7vw;gap:12px}
+  .d-fslides>.d-fcard{flex:0 0 86vw;max-width:520px;scroll-snap-align:center}
+  .d-fslides .d-fcard-toggle{display:block;min-height:0;padding:22px 0 0}
+  .d-fslides .d-fcard-text{position:relative;z-index:1;padding:0 22px}
+  .d-fslides .d-fcard-name{font-size:clamp(34px,10vw,48px);line-height:1.05}
+  .d-fslides .d-fcard-text .d-mini{width:62%;margin:14px 0 8px}
+  .d-fslides .d-fcard-art{width:100%;height:auto;aspect-ratio:1;max-height:none;margin-top:-34px;padding:0;object-fit:cover;object-position:center bottom}
+  .d-fslides .d-fcard-plus{right:14px;bottom:14px;width:58px;height:58px;background-image:radial-gradient(circle,#13284f 0 13px,transparent 14px),url(assets/design/facet-gem.webp)}
+  .d-fslides .d-fcard-plus::before,.d-fslides .d-fcard-plus::after{width:16px}
+  .d-fslides .d-fcard-more{padding:18px 22px 10px}
+}
