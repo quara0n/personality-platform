@@ -81,6 +81,13 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'offer: no sideways scroll on mobile');
   if(SHOTS)await page.locator('.d-offer-plus').screenshot({path:`${SHOTS}/kjopsside-mobil.png`});
+  // Links to the offer from the free profile open the purchase sheet: both prices and buttons fit on a small phone.
+  await page.setViewportSize({width:1440,height:900});await page.locator('#header-country').selectOption('NO');await page.setViewportSize({width:360,height:640});await page.evaluate(()=>location.hash='results');
+  await page.locator('a[href="#offer"]').first().click();await page.locator('dialog.d-osheet').waitFor();
+  assert.deepEqual((await page.locator('.d-ocard-price').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')),['49 kr','149 kr']);
+  assert.ok(await page.evaluate(()=>{const b=document.querySelector('.d-osheet-box');return b.scrollHeight<=b.clientHeight+1;}),'sheet fits without scrolling');
+  await page.keyboard.press('Escape');await page.waitForTimeout(200);assert.equal(await page.locator('dialog.d-osheet').count(),0,'Escape closes the sheet');
+  await page.setViewportSize({width:390,height:844});
   // Clearing answers also clears the tailored answers.
   page.on('dialog',d=>d.accept());await page.locator('#clear-data').click();
   assert.equal(await page.evaluate(()=>sessionStorage.getItem('fem-life-v1')),null);
