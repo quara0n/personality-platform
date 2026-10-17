@@ -46,5 +46,52 @@
       }
     ],
     "sha256AfterEdits": "9d5631b1065623ecdd58b8827e93ae791c23f4ae4bc1b65179839f674ad00005"
+  },
+  "norwegianWordingEdits": {
+    "date": "2026-10-17",
+    "decision": "Rune: «Elsker» reads too strong in Norwegian; use «Liker … veldig godt». Also «på fester» (original: at parties), «krangel» (original: a good fight) and «utfordrende tekster» (original: challenging material). IDs, facets and keys unchanged (docs/decisions.md).",
+    "items": [
+      {
+        "id": "458f3957-2359-4077-ade1-34525d633063",
+        "from": "Elsker store selskaper og fester",
+        "to": "Liker store selskaper og fester veldig godt"
+      },
+      {
+        "id": "ccf3a5c8-fb50-4bd4-8e7a-22af3d657279",
+        "from": "Elsker å hjelpe andre",
+        "to": "Liker veldig godt å hjelpe andre"
+      },
+      {
+        "id": "e2028ad3-b128-4f76-be57-398bfe2aff22",
+        "from": "Elsker en god kamp",
+        "to": "Liker en god krangel veldig godt"
+      },
+      {
+        "id": "987efee2-899f-4a65-b9b5-1589ef0460d7",
+        "from": "Elsker spenning",
+        "to": "Liker spenning veldig godt"
+      },
+      {
+        "id": "e1e804c7-4a1d-498f-8610-f95147af9d1d",
+        "from": "Elsker å lese ting som krever noe av meg",
+        "to": "Liker veldig godt å lese utfordrende tekster"
+      },
+      {
+        "id": "28ab59a0-e7cd-4fce-94e3-bba2ecc023b6",
+        "from": "Snakker med mange ulike folk i selskapslivet",
+        "to": "Snakker med mange forskjellige folk på fester"
+      },
+      {
+        "id": "23a1034f-fab7-4887-a66e-5ef4eaafb25e",
+        "from": "Elsker å dagdrømme",
+        "to": "Liker veldig godt å dagdrømme"
+      },
+      {
+        "id": "79d956e8-1118-402a-a0e2-9380af18243e",
+        "from": "Elsker livet",
+        "to": "Liker livet veldig godt"
+      }
+    ],
+    "sha256AfterEdits": "989508168868775ef82feab17bcfb718b9c3302dea1740bc187be11c30227d29"
   }
 }
