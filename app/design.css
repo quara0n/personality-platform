@@ -1680,3 +1680,63 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-ai-partner-button span{position:absolute;right:28px}
 .d-ai-partner-note{grid-area:note;margin:12px 2px 0;font-size:13px;line-height:1.5;color:var(--muted)}
 @media(max-width:560px){.d-ai-partner{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);padding:22px 16px 18px}.d-ai-partner-text{padding-top:6px}.d-ai-partner-text h3{font-size:30px;margin-bottom:14px}.d-ai-partner-text p{font-size:15px}.d-ai-partner-art{margin:0 -16px -30px 0;width:calc(100% + 16px);max-width:none}.d-ai-partner-button{font-size:19px}}
+
+/* Facets as a swipeable row (Rune, 2026-10-17): one simple dot toggle on top, no other text. */
+.d-fcarousel{margin:6px 0 24px}
+.facet-grid.d-fslides{display:flex;gap:14px;margin:0;padding:2px 2px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;align-items:flex-start}
+.d-fslides::-webkit-scrollbar{display:none}
+.d-fslides:focus-visible{outline:2px solid #a44e24;outline-offset:2px;border-radius:var(--box-radius)}
+.d-fslides.is-dragging{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
+.d-fslides>.d-fcard{position:relative;flex:0 0 min(72%,560px);scroll-snap-align:start}
+.d-fslides::after{content:'';flex:0 0 1px}
+.d-fcard-toggle{padding-right:0}
+.d-fcard .d-fcard-name{padding-right:30px}
+.d-trait-about{margin:0 0 12px}
+.d-lnav-head h3.d-title-info .d-info-btn{margin-left:10px;vertical-align:.2em}
+.d-lnav-float{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border:1px solid var(--box-border);border-radius:999px;background:var(--box-bg);box-shadow:0 8px 24px rgba(16,39,71,.18);color:#13284f;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.d-lnav-float[hidden]{display:none}
+.d-lnav-float img{width:32px;height:32px;object-fit:contain}
+.d-fdots{display:flex;justify-content:center;gap:2px;margin:0 0 8px}
+.d-fdot{display:grid;place-items:center;width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer}
+.d-fdot::before{content:'';width:9px;height:9px;border-radius:50%;background:#cfdbe6;transition:background .2s,width .2s}
+.d-fdot[aria-current="true"]::before{width:22px;border-radius:5px;background:#13284f}
+.d-fdot:focus-visible{outline:2px solid #a44e24;outline-offset:-2px;border-radius:50%}
+@media(max-width:700px){.d-fslides>.d-fcard{flex-basis:86%}}
+@media print{
+  .d-fdots{display:none!important}
+  .facet-grid.d-fslides{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+}
+/* Carousel on phones and portrait tablets only; wider screens keep the two-column grid (Rune, 2026-10-17). */
+@media(min-width:901px){
+  .facet-grid.d-fslides{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding:0;scroll-snap-type:none}
+  .d-fslides::after{content:none}
+  .d-fdots{display:none}
+}
+
+/* Back to the five traits (mockup «<»), the faceted gem + and the info sheet under the picture (Rune, 2026-10-17). */
+.d-lnav-back{display:grid;place-items:center;width:44px;height:44px;margin:4px 0 2px;padding:0;border:0;border-radius:50%;background:#e8eef5;color:#13284f;font:400 30px/1 Georgia,serif;cursor:pointer}
+.d-lnav-back span{margin-top:-4px}
+.d-lnav-back:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.d-fcards .d-fcard-plus{width:46px;height:46px;border:0;border-radius:0;background:radial-gradient(circle,#13284f 0 10.5px,transparent 11.5px) center/auto no-repeat,url(assets/design/facet-gem.webp) center/contain no-repeat;filter:drop-shadow(0 3px 6px rgba(16,39,71,.22))}
+.d-fcards .d-fcard-plus::before,.d-fcards .d-fcard-plus::after{width:14px;height:2px;background:#fff;z-index:1}
+.d-fcard-sheet-head{display:flex;align-items:center;gap:14px;margin:4px 0 10px}
+.d-fcard-sheet-head img{width:46px;height:46px;flex:none}
+.d-fcard-sheet-head strong{display:block;font:400 24px/1.1 Georgia,serif;color:var(--title);letter-spacing:-.02em}
+.d-fcard-sheet-head span{display:block;margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#6b7f95}
+.d-fcard-more .d-fcard-desc{margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid #e3ebf2;color:#33496b}
+@media print{.d-lnav-back{display:none!important}.d-fcard-sheet-head img{display:none}}
+@media(max-width:900px){
+  .d-lnav-head .d-piece-icon{width:96px;height:96px}
+  .d-fcarousel{margin-inline:calc(50% - 50vw)}
+  .d-fdots{margin-bottom:12px}
+  .facet-grid.d-fslides{padding:4px 7vw 10px;scroll-padding-inline:7vw;gap:12px}
+  .d-fslides>.d-fcard{flex:0 0 86vw;max-width:520px;scroll-snap-align:center}
+  .d-fslides .d-fcard-toggle{display:block;min-height:0;padding:22px 0 0}
+  .d-fslides .d-fcard-text{position:relative;z-index:1;padding:0 22px}
+  .d-fslides .d-fcard-name{font-size:clamp(34px,10vw,48px);line-height:1.05}
+  .d-fslides .d-fcard-text .d-mini{width:62%;margin:14px 0 8px}
+  .d-fslides .d-fcard-art{width:100%;height:auto;aspect-ratio:1;max-height:none;margin-top:-34px;padding:0;object-fit:cover;object-position:center bottom}
+  .d-fslides .d-fcard-plus{right:14px;bottom:14px;width:58px;height:58px;background-image:radial-gradient(circle,#13284f 0 13px,transparent 14px),url(assets/design/facet-gem.webp)}
+  .d-fslides .d-fcard-plus::before,.d-fslides .d-fcard-plus::after{width:16px}
+  .d-fslides .d-fcard-more{padding:18px 22px 10px}
+}

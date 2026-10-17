@@ -46,7 +46,8 @@ export function logoNavHtml(items, {key, panelId, tr, esc}) {
   return `<div class="d-lnav${sel ? ' has-open' : ''}" data-key="${key}">
     <p class="d-lnav-hint">${tr('Tap a piece of the logo to open that trait.', 'Trykk på en bit av logoen for å åpne trekket.')}</p>
     <svg class="d-lnav-logo" viewBox="1.5 -19.5 523 502" aria-label="${esc(tr('Your five traits', 'Dine fem trekk'))}">${pieces}</svg>
-    <ul class="d-lnav-keys">${keys}</ul></div>`;
+    <ul class="d-lnav-keys">${keys}</ul>
+    <button type="button" class="d-lnav-float no-print" hidden><img src="assets/design/logo-mark.webp" alt="" aria-hidden="true"><span>${tr('All traits', 'Alle trekk')}</span></button></div>`;
 }
 
 /** Wires the pieces and the name keys. onOpen(code|null) runs after a change. */
@@ -71,6 +72,14 @@ export function initLogoNav(root, {panelId, onOpen = () => {}}) {
     if (el.tagName !== 'BUTTON') el.addEventListener('keydown', e => {if (e.key === 'Enter' || e.key === ' ') {e.preventDefault(); toggle(el.dataset.trait);}});
   });
   root.querySelectorAll('[data-lnav-close]').forEach(b => b.addEventListener('click', () => set(null, b.dataset.lnavClose)));
+  // Inside a trait, a small logo button floats at the bottom so the way back is always one tap (Rune, 2026-10-17).
+  const float = nav.querySelector('.d-lnav-float');
+  let logoSeen = true;
+  const showFloat = () => {float.hidden = logoSeen || !open[key];};
+  float.addEventListener('click', () => {const from = open[key]; set(null, from); nav.scrollIntoView({block: 'start', behavior: still() ? 'auto' : 'smooth'});});
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => {logoSeen = es[es.length - 1].isIntersecting; showFloat();}).observe(nav.querySelector('.d-lnav-logo'));
+  const done = onOpen;
+  onOpen = code => {showFloat(); done(code);};
   // The pieces fly together the first time the logo comes into view.
   if (still() || !('IntersectionObserver' in window)) {nav.classList.add('is-in'); return;}
   const io = new IntersectionObserver(es => {if (es.some(e => e.isIntersecting)) {nav.classList.add('is-in'); io.disconnect();}}, {threshold: .35});
