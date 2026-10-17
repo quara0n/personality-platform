@@ -110,8 +110,13 @@
         "id": "f08e1b27-3673-4898-9cae-896482d0d9f9",
         "from": "Tror at det ikke er noe som er helt sant eller helt galt",
         "to": "Tror at det ikke finnes noe absolutt rett og galt"
+      },
+      {
+        "id": "a9c97d6b-6721-4150-8d84-64ef3082f164",
+        "from": "Gjør akkurat nok arbeid, verken mer eller mindre",
+        "to": "Gjør bare det minste jeg kan slippe unna med"
       }
     ],
-    "sha256AfterEdits": "f8871d720e15d81e4151568fa211faae51a7421fd2a173dcbaaaf9960d12471d"
+    "sha256AfterEdits": "c3b2e96729c9429cbbb55ba35293ca4765e7ef2538db5ff24d4c58a270bdf34a"
   }
 }

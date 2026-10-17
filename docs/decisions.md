@@ -413,4 +413,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - N5 «Rarely overindulge» er nå «Overdriver sjelden med mat, drikke eller andre fristelser». Rune: «Å ta for mye av det gode gir ikke mening for oss.»
 - N6 «Become overwhelmed by events» er nå «Blir overveldet når mye skjer på en gang» (var «… av det som skjer»), etter Runes ønske.
 - O6 «Believe that there is no absolute right and wrong» er nå «Tror at det ikke finnes noe absolutt rett og galt» (var «… helt sant eller helt galt», som leses som et spørsmål om fakta).
+- C4 «Do just enough work to get by» er nå «Gjør bare det minste jeg kan slippe unna med» (var «Gjør akkurat nok arbeid, verken mer eller mindre», som leses som balanse).
 - Dette avviker fra upstream-oversettelsen; ID, fasett og nøkkel er uendret. Endringene og ny kontrollsum står under norwegianWordingEdits i app/data/provenance.json.
