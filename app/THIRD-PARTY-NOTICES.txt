@@ -19,3 +19,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+--------------------------------------------------------------------------------
+Simple Icons 13.21.0 (https://simpleicons.org), CC0 1.0 Universal.
+Used for the payment marks in app/pay-marks.js (Apple Pay, Google Pay, Visa,
+Mastercard, Stripe). The marks are trademarks of their respective owners and
+are shown only to identify the payment method.

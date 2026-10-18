@@ -1,6 +1,7 @@
 import { scoreAssessment, createReport, extremity } from './scoring.js';
 import {applyNorms,shownPercentile,sampleAnswers} from './norms.js';
 import {logoNavHtml,initLogoNav} from './logo-nav.js';
+import {PAY_MARKS} from './pay-marks.js';
 import {contextCard, contextArt} from './context-copy.js';
 import {facetArt} from './facet-art.js';
 import {traitColors,traitPiece,profileSummary,traitLine,panelCopy,traitQuestion,reflection} from './design-copy.js';
@@ -346,12 +347,12 @@ function openOfferSheet(){document.querySelector('dialog.d-osheet')?.remove();co
   // Payment is not wired yet, so every method opens the report for free in this preview.
   const tiers=[{id:'plus',piece:'apricot',title:tr('In-depth + tailored','Fordypning + tilpasset'),lines:[tr('Everything in the in-depth report','Alt i Fordypningsrapporten'),tr('Tailored to your work and everyday life','Tilpasset jobben og hverdagen din')],price:money([149,14.99]),href:'#opening/work',flag:tr('Recommended','Anbefalt')},{id:'base',piece:'sky',title:tr('In-depth report','Fordypningsrapport'),lines:[tr('All 30 facets with percentiles','Alle 30 fasettene med persentiler'),tr('Work, everyday life and a one-week plan','Arbeidsliv, hverdagsliv og ukeplan')],price:money([49,4.99]),href:'#opening'}];
   const apple=/iPhone|iPad|Macintosh/.test(navigator.userAgent);
-  const methods=[[tr('Card','Kort'),'card'],...(country==='NO'?[['Vipps','vipps']]:[]),[apple?'Apple Pay':'Google Pay',apple?'apple':'google']];
+  const methods=[[`<span>${tr('Card','Kort')}</span><span class="d-paymarks">${PAY_MARKS.visa}${PAY_MARKS.mastercard}</span>`,'card'],...(country==='NO'?[['<span class="d-vipps-word" aria-label="Vipps">vipps</span>','vipps']]:[]),[apple?PAY_MARKS.applepay:PAY_MARKS.googlepay,apple?'apple':'google']];
   const tier=t=>`<label class="d-ocard d-otier is-${t.id}"><input type="radio" name="osheet-tier" value="${t.id}" data-href="${t.href}" ${t.id==='plus'?'checked':''}>${t.flag?`<p class="d-offer-recommended">${t.flag}</p>`:''}<img class="d-ocard-piece" src="assets/design/logo-piece-${t.piece}.webp" alt="" aria-hidden="true"><span class="d-otier-check" aria-hidden="true"></span><span class="d-otier-text"><span class="d-otier-title">${t.title}</span><ul>${t.lines.map(l=>`<li>${l}</li>`).join('')}</ul></span><span class="d-ocard-price">${t.price}</span></label>`;
   dlg.innerHTML=`<div class="d-osheet-box"><button type="button" class="d-osheet-close" aria-label="${tr('Close','Lukk')}"><span aria-hidden="true">×</span></button>
     <p class="d-osheet-brand" aria-hidden="true"><span class="d-osheet-logo"></span><b>Fem</b></p><h2 id="osheet-title">${tr('Choose your report','Velg rapporten din')}</h2>
     <div class="d-osplit"><div class="d-otiers" role="radiogroup" aria-label="${tr('Report','Rapport')}">${tiers.map(tier).join('')}</div>
-    <div class="d-opay"><p class="d-opay-h">${tr('Pay with','Betal med')}</p>${methods.map(([label,k])=>`<a class="d-opay-btn is-${k}" href="#opening/work">${label} <span aria-hidden="true">→</span></a>`).join('')}<p class="d-osheet-terms">${tr('One payment. No subscription.','Én betaling. Ingen abonnement.')}</p></div></div>
+    <div class="d-opay"><p class="d-opay-h">${tr('Pay with','Betal med')}</p>${methods.map(([label,k])=>`<a class="d-opay-btn is-${k}" href="#opening/work">${label} <span aria-hidden="true">→</span></a>`).join('')}<p class="d-osheet-terms">${tr('One payment. No subscription.','Én betaling. Ingen abonnement.')}</p><p class="d-opay-secure">${tr('Secure payment with','Sikker betaling med')} ${PAY_MARKS.stripe}<span>Stripe</span></p></div></div>
     <p class="d-osheet-foot"><a href="#offer" data-full-offer>${tr('See everything included','Se alt som er med')}</a><span>${tr('Preview: opens for free.','Forhåndsvisning: åpnes gratis.')}</span></p></div>`;
   document.body.append(dlg);
   dlg.querySelectorAll('input[name="osheet-tier"]').forEach(r=>r.addEventListener('change',()=>dlg.querySelectorAll('.d-opay-btn').forEach(a=>a.setAttribute('href',r.dataset.href))));
