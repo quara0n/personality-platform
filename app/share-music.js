@@ -1,4 +1,4 @@
-// Music for the share video: «Who Are You?», Rune's own song for Fem (120 BPM, about 23 s).
+// Music for the share video: «Who Are You?», Rune's own song for Kaleido (120 BPM, about 23 s).
 // The short cut is timed to the song, so the end card arrives as the song ends. The long cut plays
 // the song from the start, then starts it again at a scene change, on a beat, so that the song ends
 // together with the video.

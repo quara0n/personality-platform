@@ -1,4 +1,4 @@
-# Personality platform — arbeidsnavn «5»
+# Personality platform — «Kaleido»
 
 Big Five-tjeneste på engelsk og norsk bokmål. Samarbeid med Rune foregår på norsk bokmål.
 
@@ -18,7 +18,7 @@ Kjør `npm start` og åpne http://127.0.0.1:4173. `npm test` kontrollerer skåri
 
 ## Viktig
 Produktet finnes på **engelsk og norsk bokmål**. USA/USD og Norge/NOK er første markeder. Brukeren har valgt 49 kr og $4.99 som engangspriser (endret fra 99 kr/$9.99 2026-10-13), med Stripe.
-«Fem» er arbeidsnavnet og brukerens originale logo brukes i grensesnittet. Stripe-sandbox er koblet til, med produkt, priser og to testlenker; kjøp er ikke koblet til rapporttilgang.
+Produktet heter «Kaleido» (fra 2026-10-18, tidligere arbeidsnavn «Fem»); domenet er ikke valgt. Brukerens originale logo (fem logobiter) brukes i grensesnittet, med ordmerket satt i Georgia. Stripe-sandbox er koblet til, med produkt, priser og to testlenker; kjøp er ikke koblet til rapporttilgang.
 Rapportenes eksempelprofiler er syntetiske, ikke Runes personlighet.
 Gratisresultatet skal gi nyttig verdi før et valgfritt engangskjøp av én rapport med både arbeidsliv og hverdagsliv.
 
