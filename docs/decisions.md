@@ -554,3 +554,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Runes nye grafdesign: stolpene får trekkets farge som en lys-til-dyp gradient med papirfasetter (trekanter) oppå, og den marineblå prikken. Gjelder gratisprofilen, rapportens stolper og forsiden (forsiden bruker nå trekkfargene og har prikk). Ekstroversjon følger samme mønster med egen farge.
 - Rolig, levende bevegelse: fasettene i stolpene glir sakte, et svakt lysskjær går over dem av og til, og logobitene vugger litt. Alt stopper når brukeren har valgt redusert bevegelse.
+
+## 2026-10-18 – Slagord
+
+- Rune valgte to slagord som gir navnet Kaleido noe å feste seg ved: «Se alle sidene dine.» / «See every side of you.» og «Se mønsteret ditt.» / «See your pattern.»
+- Forsiden: «Se alle sidene dine.» står øverst over «Ingen boks. Bare deg.» (erstatter «Kjenn deg selv bedre»), og «Se mønsteret ditt.» står over «Nysgjerrig på hvem du er?» nederst.
+- Delevideoen: «Se alle sidene dine.» står under Kaleido-ordmerket i bunnteksten og over spørsmålet på sluttkortet.
+- Rune (samme kveld): «Se alle sidene dine.» er nå hovedtittelen på forsiden og erstatter «Ingen boks. Bare deg.»; linjen over er igjen «Kjenn deg selv bedre». Trekkoverskriften er «Fem trekk. Tretti fasetter. Én deg.» «Mer innsikt. Flere muligheter.», «Tendenser, ikke faste typer.» og lenken «Utforsk en eksempelrapport» er fjernet fra forsiden; selve rapporten skal være en overraskelse. Eksempelrapporten (#demo) finnes fortsatt for testing.
