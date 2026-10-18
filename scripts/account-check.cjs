@@ -20,11 +20,17 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await page.locator('dialog.d-video-intro #share-fab[data-state="busy"]').waitFor({timeout:5000});
   await page.locator('.d-video-intro-close').click();
   await page.locator('dialog.d-video-intro').waitFor({state:'detached'});assert.equal(await page.locator('.d-results .d-share').count(),1);
-  const box=page.locator('[data-account="box"]');await box.locator('.d-signin-btn').first().waitFor({timeout:20000});
+  // No account box under the profile (Rune 2026-10-18); signing in and saving happen under «My profile».
+  assert.equal(await page.locator('[data-account="box"]').count(),0);
+  await page.goto('http://127.0.0.1:4173/?dev=1#account');
+  const box=page.locator('[data-account="page"]');await box.locator('.d-signin-btn').first().waitFor({timeout:20000});
   assert.equal(await box.locator('.d-signin-btn').count(),3);
   await box.locator('.d-signin-google').click();
-  await page.waitForURL(/#results$/);await box.locator('.d-account-saved').waitFor();
+  await page.waitForURL(/#account$/);await box.locator('[data-account-action="save"]').click();await box.locator('.d-account-saved').waitFor();
   assert.match(await box.textContent(),/rune@example\.com/);
+  // The test is done, so the corner shows the profile character with the initials instead of «Take the test».
+  assert.equal(await page.locator('header .small-button').count(),0);
+  assert.equal(await page.locator('.d-avatar .d-avatar-initials').textContent(),'RH');
   assert.ok(!page.url().includes('code='),'the sign-in code is removed from the address');
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('fake-db')).answers);
   assert.match(saved,/^1[1-5]{120}$/);
@@ -46,7 +52,8 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   await step.locator('.d-results').waitFor({timeout:20000});await step.locator('dialog.d-video-intro[open]').waitFor();
   assert.equal(await step.locator('#share-first').inputValue(),'Rune','first name comes from the sign-in');
   if(process.env.SHOT_INTRO)await step.screenshot({path:process.env.SHOT_INTRO});
-  await step.keyboard.press('Escape');await step.locator('dialog.d-video-intro').waitFor({state:'detached'});await step.locator('[data-account="box"] .d-account-saved').waitFor();
+  await step.keyboard.press('Escape');await step.locator('dialog.d-video-intro').waitFor({state:'detached'});await step.locator('.d-avatar').waitFor();
+  assert.equal(await step.locator('.d-avatar .d-avatar-initials').textContent(),'RH');
   assert.equal(await step.evaluate(()=>localStorage.getItem('fake-provider')),'"apple"');
   await page.screenshot({path:process.env.SHOT||'/dev/null'}).catch(()=>{});
   assert.deepEqual(errors,[]);console.log('account check passed');
