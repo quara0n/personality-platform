@@ -1842,3 +1842,17 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
   .d-ctx-carousel+.d-ctx-panel{margin:0 0 18px}
 }
 @media print{.d-ctx-grid.d-fslides{display:grid;overflow:visible;padding:0}.d-ctx-grid.d-fslides::after{content:none}}
+
+/* «My profile» in the menu: PDF, e-mail, answer file and the 120 answers (Rune 2026-10-18). */
+.d-profile-tools{margin-top:34px}
+.d-profile-tools>h2{margin:0 0 14px}
+.d-profile-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-bottom:22px}
+.d-profile-tools .d-email{margin:0 0 22px}
+.d-myanswers{border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-myanswers>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;cursor:pointer;list-style:none;font:600 17px/1.3 Arial,Helvetica,sans-serif;color:var(--title)}
+.d-myanswers>summary::-webkit-details-marker{display:none}
+.d-myanswers[open] .d-gem-plus::after{transform:translate(-50%,-50%) rotate(0)}
+.d-myanswers ol{list-style:none;margin:0;padding:0 18px 12px}
+.d-myanswers li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--box-border);font-size:15px}
+.d-myanswers-a{flex:none;max-width:45%;text-align:right;color:var(--title);font-weight:600}
+@media(max-width:560px){.d-myanswers li{flex-direction:column;gap:2px}.d-myanswers-a{max-width:none;text-align:left}}

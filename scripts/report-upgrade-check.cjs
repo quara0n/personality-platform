@@ -20,7 +20,7 @@ const answers=Object.fromEntries(questions.map(q=>{
     const ePattern=await page.locator('.d-trait-chapter').filter({hasText:'Extraversion'}).locator('.facet-pattern').textContent();
     assert.ok(/Friendliness is highest \(percentile \d+\) and Gregariousness is lowest \(percentile \d+\)/.test(ePattern),ePattern);
     assert.equal(await page.locator('.step').count(),3);
-    const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#report-save').click()]);
+    const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#backup-save').click()]);
     const backup=fs.readFileSync(await download.path(),'utf8');assert.deepEqual(JSON.parse(backup).answers,answers);
     const restored=await context.newPage();await restored.goto('http://127.0.0.1:4173');await restored.locator('.hero').waitFor();
     await restored.locator('#backup-restore').setInputFiles({name:'fem-answers.json',mimeType:'application/json',buffer:Buffer.from(backup)});

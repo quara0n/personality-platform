@@ -464,3 +464,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## «Hvordan henger dette sammen med trekkene dine?» som kort med bilde og «+» (2026-10-18)
 
 - Rune sendte et kort med tittelen og en illustrasjon av fasetterte former og ba om at det åpnes med «+». Seksjonen i Arbeidsliv og Hverdagsliv er nå et kort med tittel, illustrasjonen (app/assets/design/context/deep-traits.webp, beskåret fra Runes bilde) og samme edelstein-pluss som fasettene. Innholdet åpner seg i kortet ved trykk, og bildet blir mindre mens det er åpent.
+
+## Bare «Last ned PDF» øverst i rapporten, «Min profil» i menyen (2026-10-18)
+
+- Rune: fjern «← Gratisprofilen din» og «Lagre svarene mine» øverst i rapporten; bare «Last ned PDF» står igjen.
+- «Min side» i hamburgermenyen heter nå «Min profil» og vises så snart alle 120 svar finnes. Siden har kontoen (som før), «Last ned PDF» (åpner rapporten og utskriftsdialogen), «Lagre svarene mine i en fil», «Send profilen til e-posten din» og en sammenleggbar liste med svaret på hvert av de 120 spørsmålene.
+- E-post går fortsatt via brukerens eget e-postprogram (mailto). Ekte utsending fra Fem med rapporten vedlagt krever egen SMTP/e-posttjeneste, som ikke er satt opp.
