@@ -139,6 +139,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Krav: logo, fremdrift, spørsmål, alle fem svar og knappene skal synes uten å rulle på mobil, nettbrett og desktop. Kontrollert i 360×640, 390×664, 390×844, 768×1024, 820×1180, 1024×768, 1280×720, 1366×768, 1440×900 og 1920×1080, også med det lengste spørsmålet.
 - Fremdriftslinjen viser alltid både prosent og spørsmålsnummer (for eksempel «12 % 14/120»). På skjermer lavere enn 860 px skjules «Svar ut fra hvordan du vanligvis er / Spørsmål X av 120», og spørsmålet og svarboksene blir litt mindre. Under 760 px skjules også notatet under knappene.
 - På mobil vises venstre del av landskapet (kvinnen og trærne) i fast høyde.
+- 2026-10-18: Rune ville ha landskapet lenger opp, så hele landskapet med kvinnen synes nederst på første skjerm på mobil. Svarboksene og knappene står litt tettere, og notatet under knappene skjules på telefoner lavere enn 700 px. Kontrollert i 360×640, 375×600, 390×664 og 414×736 på norsk og engelsk (uten testknappene «Tilfeldig» og «Runes profil», som skal fjernes).
 - «Worry about things» er rettet fra «Bekymrer meg for mye» til «Bekymrer meg for ting», fordi «for mye» endret betydningen av utsagnet.
 
 ## Utvidet trekkpanel og lettere språk 2026-10-11
