@@ -687,8 +687,25 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
   .d-question{padding-bottom:calc(14.2vw + 8px)}
 }
 @media(max-width:760px){
-  .d-question{min-height:calc(100svh - 62px);padding:12px 16px 96px}
+  .d-question{min-height:calc(100svh - 66px);padding:8px 16px 96px}
   .d-question-land{left:0;right:auto;width:auto;height:110px;max-width:none}
+}
+/* Phones (Rune 2026-10-18): the whole landscape, figure included, shows on the first
+   screen, so the answers sit a little tighter and the reassurance line goes on short screens. */
+@media(max-width:760px){
+  .d-title-slot{margin:6px auto 10px}
+  .d-choices{gap:6px}
+  .d-choice{min-height:44px;padding:7px 12px}
+  .d-actions{margin-top:10px}
+  .d-back{padding:10px 8px}
+  .d-next{padding:10px 34px}
+}
+@media(max-width:760px) and (max-height:700px){
+  .d-note{display:none}
+}
+@media(max-width:760px) and (max-height:620px){
+  .d-question{padding-bottom:84px}
+  .d-question-land{height:96px}
 }
 /* Progress row always carries both percent and question count */
 @media(min-width:761px){
