@@ -524,3 +524,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Personvernerklæringen erstatter den gamle teksten om at svarene aldri forlater nettleseren, som ikke lenger stemte med innlogging (Supabase) og AI-skriving av de tilpassede kapitlene (Anthropic). Den beskriver hva som lagres, rettslig grunnlag, databehandlere og overføring til USA, sikkerhet, rettigheter, aldersgrense 16 år og at resultatene ikke brukes til reklame eller automatiserte avgjørelser.
 - Brukervilkårene sier at Kaleido er selvrefleksjon og ikke diagnose eller rådgivning, forbyr bruk til å vurdere andre (f.eks. jobbsøkere), beskriver engangskjøp og angrerett (angrerettloven § 22 bokstav n), begrenser ansvar så langt loven tillater og lar ufravikelige forbrukerrettigheter stå.
 - Navn, organisasjonsnummer og kontaktadresse står i `CONTROLLER` i app/privacy-copy.js og mangler fortsatt; sidene sier at de kommer. Se docs/personvern.md for hva som gjenstår.
+
+## 2026-10-18 – Logo foran ordmerket og kundeserviceadresse
+
+- Rune: «Ønsker logoen til venstre for kaleido». Pinwheel-logoen (logo-mark.webp) står nå til venstre for ordmerket i topplinjen, bunnteksten, innloggingen, kjøpsarket og delingsvideoen. Delingsbildene har allerede logoen stort til venstre og er uendret.
+- Rune: «Må ha en customerservice@Kaleido.com». Kaleido.com eies ikke av oss, så adressen er customerservice@kaleidotest.com, brukt som kontaktadresse i personvernerklæringen og vilkårene. E-posten må settes opp hos en leverandør før den virker.

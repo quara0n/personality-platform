@@ -33,7 +33,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const names={O:()=>tr('Openness','Åpenhet'),C:()=>tr('Conscientiousness','Planmessighet'),E:()=>tr('Extraversion','Ekstroversjon'),A:()=>tr('Agreeableness','Medmenneskelighet'),N:()=>tr('Emotional reactivity','Følelsesmessig reaktivitet')};
 const order=['O','C','E','A','N'];
 const anchors=()=>[tr('Very inaccurate','Stemmer svært dårlig'),tr('Moderately inaccurate','Stemmer nokså dårlig'),tr('Neither accurate nor inaccurate','Stemmer verken godt eller dårlig'),tr('Moderately accurate','Stemmer nokså godt'),tr('Very accurate','Stemmer svært godt')];
-const wordmark='<img class="wordmark" src="assets/design/kaleido-wordmark.webp" alt="" width="562" height="150">';
+const wordmark='<span class="brand-mark" aria-hidden="true"></span><img class="wordmark" src="assets/design/kaleido-wordmark.webp" alt="" width="562" height="150">';
 const button=(label,url,secondary=false)=>`<a class="button${secondary?' secondary':''}" href="${url}">${label}<span aria-hidden="true">→</span></a>`;
 function save(){try{sessionStorage.setItem(KEY,JSON.stringify({answers,index}));}catch{storageAvailable=false;const status=document.querySelector('#backup-status');if(status)status.textContent=tr('This browser cannot save progress. Download an answer file before leaving.','Nettleseren kan ikke lagre fremdrift. Last ned en svarfil før du forlater siden.');}document.querySelector('#backup-save')?.removeAttribute('disabled');}
 function downloadAnswers(){

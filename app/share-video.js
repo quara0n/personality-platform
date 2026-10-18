@@ -263,9 +263,10 @@ function footer(ctx, imgs, a) {
   if (a <= 0) return;
   ctx.save(); ctx.globalAlpha = a;
   const mark = imgs.wordmark;
-  if (mark) { // the «Kaleido» wordmark image, centred (Rune 2026-10-18)
-    const h = 64, w = h * mark.width / mark.height;
-    ctx.drawImage(mark, W / 2 - w / 2, H - 150 - h / 2, w, h);
+  if (mark) { // pinwheel logo left of the «Kaleido» wordmark image, centred as one unit (Rune 2026-10-18)
+    const h = 64, w = h * mark.width / mark.height, x = W / 2 - (76 + w) / 2;
+    logo(ctx, imgs, x + 30, H - 150, .21, 1, 1);
+    ctx.drawImage(mark, x + 76, H - 150 - h / 2, w, h);
   } else { // fallback while the image is missing: pinwheel and name in Georgia
     ctx.fillStyle = INK; ctx.font = `400 52px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const x = W / 2 - (80 + ctx.measureText('Kaleido').width) / 2;
