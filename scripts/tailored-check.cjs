@@ -84,7 +84,9 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   // Links to the offer from the free profile open the purchase sheet: both prices and buttons fit on a small phone.
   await page.setViewportSize({width:1440,height:900});await page.locator('#header-country').selectOption('NO');await page.setViewportSize({width:360,height:640});await page.evaluate(()=>location.hash='results');
   await page.locator('a[href="#offer"]').first().click();await page.locator('dialog.d-osheet').waitFor();
-  assert.deepEqual((await page.locator('.d-ocard-price').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')),['49 kr','149 kr']);
+  assert.deepEqual((await page.locator('.d-ocard-price').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')),['149 kr','49 kr']);
+  assert.equal(await page.locator('.d-opay-btn').first().getAttribute('href'),'#opening/work','the recommended report is chosen');
+  await page.locator('.d-otier.is-base').click();assert.equal(await page.locator('.d-opay-btn').first().getAttribute('href'),'#opening','a tap on 49 kr switches the choice');
   assert.ok(await page.evaluate(()=>{const b=document.querySelector('.d-osheet-box');return b.scrollHeight<=b.clientHeight+1;}),'sheet fits without scrolling');
   await page.keyboard.press('Escape');await page.waitForTimeout(200);assert.equal(await page.locator('dialog.d-osheet').count(),0,'Escape closes the sheet');
   await page.setViewportSize({width:390,height:844});
