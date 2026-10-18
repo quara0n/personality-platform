@@ -460,3 +460,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: de fem trekkortene i Arbeidsliv og Hverdagsliv sveipes som fasettene på mobil og stående nettbrett (prikker og pil). Det åpne kortets tekst vises under raden; bredere skjermer beholder rutenettet med teksten rett under kortet.
 - Ingressen under kapitteltittelen («Bruk ideene til …», «Legg merke til …») ligger nå bak en (i) ved tittelen, som i «Dine fem trekk».
+
+## «Hvordan henger dette sammen med trekkene dine?» som kort med bilde og «+» (2026-10-18)
+
+- Rune sendte et kort med tittelen og en illustrasjon av fasetterte former og ba om at det åpnes med «+». Seksjonen i Arbeidsliv og Hverdagsliv er nå et kort med tittel, illustrasjonen (app/assets/design/context/deep-traits.webp, beskåret fra Runes bilde) og samme edelstein-pluss som fasettene. Innholdet åpner seg i kortet ved trykk, og bildet blir mindre mens det er åpent.
