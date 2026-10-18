@@ -16,7 +16,7 @@ Filer ligger i selected/ relativt til designmappen; vis dem samlet i ../design/i
 Opphavsfilnavn og SHA-256 finnes i ../design/manifest.json.
 
 ## Retning
-Blekk, aprikos, støvete blått, varm elfenben; rolige flater og god luft. Serif til sentrale overskrifter, lettlest sans-serif til kontroller og løpende tekst. Fontfamilier er ikke valgt.
+Blekk, aprikos, støvete blått, varm elfenben; rolige flater og god luft. Serif til sentrale overskrifter, lettlest sans-serif til kontroller og løpende tekst. Fonter (valgt 2026-10-18): Source Serif 4 til overskrifter og Manrope til tekst og knapper, lagt i app/assets/fonts og brukt via `var(--serif)` og `var(--sans)`. Tekststørrelser under 24 px følger skalaen 10, 11, 12, 13, 14, 15, 16, 18, 20, 22 px; nye regler bruker disse.
 Foreløpige implementeringsforslag (ikke målte verdier fra bildene): ink #102747, apricot #F6B18D, dusty blue #93B7CD, ivory #FBF9F4. Kontrast må verifiseres når UI bygges.
 Figurene er voksne i hverdagsklær med klare, geometriske kanter. Inspirasjon fra 16Personalities og InsightfulTraits, men eget uttrykk.
 
