@@ -6,8 +6,8 @@ const fs=require('node:fs'),path=require('node:path');
 const app=path.join(__dirname,'..','app'),ref='data:image/png;base64,'+fs.readFileSync(path.join(app,'assets/fem-logo-reference.png')).toString('base64'),
   mark='data:image/png;base64,'+fs.readFileSync(path.join(app,'assets/design/kaleido-wordmark.png')).toString('base64');
 const pages={
-  en:{title:'Free Big Five<br>personality test',lines:['120 questions · about 15 minutes','A free profile of your five traits']},
-  no:{title:'Gratis personlighetstest<br>– Big Five',lines:['120 spørsmål · rundt 15 minutter','En gratis profil av dine fem trekk']}};
+  en:{title:'Free Big Five<br>personality test',lines:['120 questions · about 10 minutes','A free profile of your five traits']},
+  no:{title:'Gratis personlighetstest<br>– Big Five',lines:['120 spørsmål · rundt 10 minutter','En gratis profil av dine fem trekk']}};
 const html=p=>`<!doctype html><meta charset="utf-8"><style>
 body{margin:0;width:1200px;height:630px;background:#fefdf8;position:relative;overflow:hidden}
 .art{position:absolute;left:60px;top:120px;width:440px;height:410px;background:url(${ref}) -775.25px -312.5px/1920px 1280px no-repeat}

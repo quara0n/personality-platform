@@ -1,4 +1,4 @@
-// «Din jobb, din profil» in Work & career, «Din hverdag, dine relasjoner» in Everyday life & relationships, and the 149 kr tier on the offer page.
+// «Din jobb, din profil» in Work & career, «Din hverdag, dine relasjoner» in Everyday life & relationships, and the 79 kr tier on the offer page.
 // Uses synthetic answers only. Run with the app on http://127.0.0.1:4173 (npm start).
 // Set SHOTS=<folder> to save screenshots.
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -74,19 +74,19 @@ async function seed(page){await page.goto(URL+'#home');await page.locator('.h-he
   // Offer page: both tiers, prices follow the country.
   await page.locator('#header-language').selectOption('no');await page.evaluate(()=>location.hash='offer');await page.locator('.d-offer-plus').waitFor();
   await page.locator('#header-country').selectOption('NO');
-  assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/149/);
+  assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/79/);
   assert.equal(await page.locator('.d-offer-plus .d-offer-recommended').innerText(),'ANBEFALT');
   if(SHOTS)await page.screenshot({path:`${SHOTS}/kjopsside.png`,fullPage:true});
-  await page.locator('#header-country').selectOption('US');assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/14[.,]99/);
+  await page.locator('#header-country').selectOption('US');assert.match(await page.locator('.d-offer-plus .d-offer-price').innerText(),/7[.,]99/);
   await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'offer: no sideways scroll on mobile');
   if(SHOTS)await page.locator('.d-offer-plus').screenshot({path:`${SHOTS}/kjopsside-mobil.png`});
   // Links to the offer from the free profile open the purchase sheet: both prices and buttons fit on a small phone.
   await page.setViewportSize({width:1440,height:900});await page.locator('#header-country').selectOption('NO');await page.setViewportSize({width:360,height:640});await page.evaluate(()=>location.hash='results');
   await page.locator('a[href="#offer"]').first().click();await page.locator('dialog.d-osheet').waitFor();
-  assert.deepEqual((await page.locator('.d-ocard-price').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')),['149 kr','49 kr']);
-  assert.equal(await page.locator('.d-opay-btn').first().getAttribute('href'),'#report/work','the recommended report is chosen');
-  assert.ok((await page.locator('.d-opay-amt').allInnerTexts()).every(t=>/149/.test(t)),'every payment button shows 149 kr');
+  assert.deepEqual((await page.locator('.d-ocard-price').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')),['79 kr','49 kr']);
+  assert.equal(await page.locator('.d-opay-btn').first().getAttribute('href'),'#report','both reports open on the overview');
+  assert.ok((await page.locator('.d-opay-amt').allInnerTexts()).every(t=>/79/.test(t)),'every payment button shows 79 kr');
   assert.match(await page.locator('.d-opay-consent').innerText(),/angreretten/,'Norway: consent to immediate delivery by the buttons');
   assert.match(await page.locator('.d-osheet-teaser').innerText(),/^Du ligger /,'one line about the buyer\'s own result');
   if(SHOTS)await page.screenshot({path:`${SHOTS}/kjopsark-360.png`});

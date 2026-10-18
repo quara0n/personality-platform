@@ -1,4 +1,4 @@
-// «Din jobb, din profil»: the deeper work module in the 149 kr / $14.99 tier (prototype, 2026-10-15).
+// «Din jobb, din profil»: the deeper work module in the 79 kr / $7.99 tier (149 kr until 2026-10-18) (prototype, 2026-10-15).
 // The reader answers eight questions about their work. Fixed rules then pick what the report says:
 // each rule names one answer and one facet, and fires only when that facet sits outside the middle
 // range in the named direction. The rule text is a complete, pre-written fallback. When AI writing is

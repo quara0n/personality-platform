@@ -1978,3 +1978,11 @@ body.in-oprep{overflow:hidden}
 body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 @media(max-width:700px){.d-avatar{width:40px;height:40px;margin-left:auto}.d-avatar~.menu-toggle{margin-left:6px}header.menu-open .d-avatar{order:1}header.menu-open .menu-toggle{order:2}}
 @media print{.d-avatar{display:none}}
+/* The 49 kr report: what «In-depth + tailored» adds, where its questions would be */
+.d-tailor-up{display:flex;gap:18px;align-items:flex-start;margin:22px 0;padding:22px 24px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-tailor-up img{width:46px;height:46px;flex:none}
+.d-tailor-up h3{margin:4px 0 8px;font-size:24px}
+.d-tailor-up p{margin:0 0 10px;color:#2c4566}
+.d-tailor-up a{color:var(--title);font-weight:600;text-underline-offset:3px}
+.d-otier-not{color:#6a7d94;font-style:italic}
+.d-ocard li:has(>.d-otier-not)::before{top:.62em;width:9px;height:0;border-left:0;transform:none;border-color:#9fb3c8}
