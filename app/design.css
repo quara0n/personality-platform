@@ -228,7 +228,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-explore-cards{display:grid;grid-template-columns:1fr 1fr}
 .d-explore-cards article{padding:0 30px 10px 0}
 .d-explore-cards article+article{padding:0 0 10px 30px;border-left:1px solid #cfdbe6}
-.d-explore-cards img{display:block;width:100%;max-width:420px;mix-blend-mode:multiply}
+.d-explore-cards img{display:block;width:100%;max-width:420px}
 .d-explore-cards h3{margin:12px 0 6px;font:400 32px/1.1 Georgia,serif;letter-spacing:-.04em;color:var(--title)}
 .d-explore-cards p{margin:0 0 14px;color:#2c4566;font-size:17px}
 .d-explore-cards a{color:var(--title);font-size:17px;font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--title);padding-bottom:3px}
@@ -1302,22 +1302,22 @@ details.d-ctx-more>div{padding:0}
 .d-career-week-text{margin:0 0 20px;font:400 clamp(22px,2.4vw,28px)/1.25 Georgia,serif;letter-spacing:-.025em}
 .d-career-check{display:inline-flex;gap:14px;align-items:center;font-size:17px;cursor:pointer}
 .d-career-check input{width:30px;height:30px;margin:0;accent-color:var(--title)}
-.d-career .d-career-deep{margin:20px 0 0;border-top:1px solid #cfd9e3;border-bottom:1px solid #cfd9e3}
-.d-career .d-career-deep>summary{display:flex;align-items:center;gap:22px;padding:22px 0;cursor:pointer;list-style:none;font-size:19px}
+/* The «connect with your traits» section is a card with Rune's illustration and the gem plus (2026-10-18). */
+.d-career .d-career-deep{margin:24px 0 0;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-career .d-career-deep>summary{display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 22px 22px;cursor:pointer;list-style:none;text-align:center}
 .d-career-deep>summary::-webkit-details-marker{display:none}
-.d-career-deep-icon{display:inline-flex;align-items:flex-end;gap:5px;height:24px}
-.d-career-deep-icon i{display:block;width:3px;background:var(--title);border-radius:2px}
-.d-career-deep-icon i:nth-child(1){height:12px}.d-career-deep-icon i:nth-child(2){height:24px}.d-career-deep-icon i:nth-child(3){height:17px}
-.d-career-plus{margin-left:auto;font-size:30px;line-height:1;font-weight:300;transition:transform .2s ease}
-
-.d-career-deep-body{padding:0 0 10px}
+.d-career-deep-title{font:400 26px/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--title);max-width:24ch;text-wrap:balance}
+.d-career-deep-art{display:block;width:100%;max-width:300px;height:auto}
+.d-career-deep[open] .d-career-deep-art{max-width:150px}
+.d-career .d-career-plus{margin:0}
+.d-career-deep-body{padding:0 22px 14px}
 .d-career-deep-body>.d-career-sec:first-child{margin-top:4px}
 @media(max-width:860px){
   .d-career-context{padding:14px 16px;gap:14px;max-width:none}
   .d-career-context-icon{padding-right:14px}
   .d-career-context-text{font-size:17px}
   .d-career-week{padding:22px 20px}
-  .d-career .d-career-deep>summary{gap:14px;font-size:17px}
+  .d-career-deep-title{font-size:22px}
 }
 @media(prefers-reduced-motion:reduce){.d-career-plus{transition:none}}
 @media print{.d-career-week,.d-jcard{break-inside:avoid}.d-career-check{display:none}}
