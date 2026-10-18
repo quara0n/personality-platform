@@ -497,12 +497,12 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Hver side har søkeordtittel («Free Big Five personality test – 120 questions | Fem» / «Gratis personlighetstest (Big Five) – 120 spørsmål | Fem»), beskrivelse, canonical, hreflang (en, nb, x-default), Open Graph, Twitter-kort og JSON-LD (WebSite og Organization «Fem»). Alt lages i scripts/seo.js, som brukes av både build.js og serve.js.
 - `<main>` har en kort statisk introduksjon med h1 og lenke til testen, slik at delingsroboter og AI-roboter som ikke kjører JavaScript ser innhold. JavaScript erstatter den straks. Statisk bunntekst viser «Fem» (ikke «5»).
 - Delingsbilder 1200×630: app/assets/og/fem-en.png og fem-no.png (logobitene fra fem-logo-reference.png på lys bakgrunn med overskrift).
-- robots.txt (alt tillatt) og sitemap.xml (/ og /no med hreflang) lages i dist. Domenet styres av `SITE_URL` i Vercel (standard https://personality-platform-sage.vercel.app); settes når endelig domene er valgt.
+- robots.txt (alt tillatt) og sitemap.xml (/ og /no med hreflang) lages i dist. Domenet styres av `SITE_URL` i Vercel (standard https://kaleidotest.com fra 2026-10-18).
 
 ## 2026-10-18 – Produktnavnet er «Kaleido»
 - Rune har valgt «Kaleido» som produktnavn, inspirert av det kaleidoskopaktige logomerket med de fem trekantene. «Fem» (arbeidsnavnet) og «Cinko» ble vurdert først; «Cinko» ble forkastet samme dag.
 - Navnet står overalt brukeren ser det: sidetitler, ordmerket i topp og bunn, innloggingssiden, kjøpsvalget, e-posttekst, filnavn ved nedlasting (kaleido-profile/kaleido-profil, kaleido-report/kaleido-rapport, kaleido-answers.json), delingsvideoens sluttkort, og SEO (titler, og:site_name, JSON-LD).
-- Domenet er ikke valgt. bigfive.no er foreslått som norsk viderekoblingsadresse. `SITE_URL` settes i Vercel når domenet er på plass; standardverdien er uendret.
+- Domenet er kaleidotest.com (Rune 2026-10-18; kaleido.com og kaleidoapp.com var tatt). `SITE_URL` har kaleidotest.com som standard og kan fortsatt overstyres i Vercel. bigfive.no er foreslått som norsk viderekoblingsadresse.
 - Ordmerket står i samme skrift som før: Georgia (live tekst, `.brand b` i app/design.css; Times New Roman som reserve). Logomerket med de fem trekantene er uendret.
 - Delingsbildene heter nå app/assets/og/kaleido-en.png og kaleido-no.png og lages av scripts/og-images.cjs (krever at Georgia er installert).
 - Ordet «fem» (tallet) er ikke endret, f.eks. «Fem trekk. Din kombinasjon.» og «dine fem trekk». Interne nøkler (localStorage/sessionStorage `fem-…`, `window.FEM_CONFIG`, svarfilformatet `fem-answers-v1`) og fem-logo-reference.png er beholdt, så lagrede data og svarfiler fortsatt virker.

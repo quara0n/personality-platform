@@ -1,6 +1,6 @@
 // Head tags, static crawlable intro and robots/sitemap for / (English) and /no (Norwegian). Used by build.js and serve.js.
 // The domain is one setting: SITE_URL (default: the Vercel preview address).
-export const siteUrl=(process.env.SITE_URL||'https://personality-platform-sage.vercel.app').replace(/\/+$/,'');
+export const siteUrl=(process.env.SITE_URL||'https://kaleidotest.com').replace(/\/+$/,'');
 const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 export const pages={
   en:{path:'/',file:'index.html',lang:'en',locale:'en_US',alt:'nb_NO',image:'assets/og/kaleido-en.png',
