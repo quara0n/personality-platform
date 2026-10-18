@@ -542,3 +542,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: kontoboksen («Kontoen din») nederst på gratisprofilen fjernes. Innlogging og lagring ligger under «Min profil».
 - Når testen er tatt, byttes «Ta testen» øverst til høyre med et rundt merke: profilfiguren (beskåret rundt ansiktet, samme figurvalg kvinne/mann) og initialene fra innloggingen. Merket lenker til profilen. På mobil står det ved menyknappen.
+
+## 2026-10-18 – «Fordypning + tilpasset» til 79 kr, og hva 49 kr ikke har
+
+- Rune: 149 kr blir 79 kr. Valgt dollarpris: $7.99 (samme forhold som 49 kr / $4.99). Stripe-katalogen i sandkassen må få samme pris før betaling kobles til.
+- Begge nivåene åpner rapporten på Oversikt (79 kr hoppet før rett til kapittel 3).
+- 49 kr-rapporten har arbeidsliv, hverdagsliv og relasjoner med trekkortene og ukeplanen, men ikke de tilpassede spørsmålene i kapittel 3 og 4 eller AI-partneren. Der spørsmålene ville stått, forklarer et kort hva «Fordypning + tilpasset» gir. Kjøpskortene sier det samme («Tilpassede spørsmål og AI-partner» / «Uten tilpassede spørsmål og AI-partner»). Valget huskes i nettleseren til betaling er koblet til; uten valg (forhåndsvisning, eksempelrapport) vises alt.
+- Rune: testen skal stå som «10 minutter» (forsiden, Google-teksten og delingsbildene).

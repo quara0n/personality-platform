@@ -1,4 +1,4 @@
-// The tailored chapter in the 149 kr tier, shared by «Din jobb, din profil» (career.js) and
+// The tailored chapter in the 79 kr tier, shared by «Din jobb, din profil» (career.js) and
 // «Hverdagsliv og relasjoner» (life.js): questions one at a time, then a chapter that links the answers
 // with the facet scores, in the same layout (context bar in the chapter header, two columns, the rest
 // folded). The pre-written rule text shows at once; «Write with AI» (test flag only) sends only the

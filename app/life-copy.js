@@ -1,4 +1,4 @@
-// «Hverdagsliv og relasjoner»: the deeper everyday-life module in the 149 kr / $14.99 tier (2026-10-16).
+// «Hverdagsliv og relasjoner»: the deeper everyday-life module in the 79 kr / $7.99 tier (149 kr until 2026-10-18) (2026-10-16).
 // Built like «Din jobb, din profil» (career-copy.js): the reader answers eight questions about their
 // everyday life and the people close to them, and fixed rules pick what the report says. Each rule names
 // one answer and one facet, and fires only when that facet sits outside the middle range in the named
