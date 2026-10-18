@@ -455,3 +455,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Kjøpsvalget som sprett-opp (2026-10-17, kveld)
 
 - Rune valgte sprett-opp: lenkene til kjøpssiden fra gratisprofilen åpner to korte kort (Fordypningsrapport 49 kr / $4.99 og Fordypning + tilpasset 149 kr / $14.99) over siden med uskarp bakgrunn, slik at begge priser og knapper synes uten å rulle, også på små telefoner. «Se alt som er med» åpner hele #offer-siden, som står som før.
+
+## Trekkortene i Arbeidsliv og Hverdagsliv som karusell, ingressen bak (i) (2026-10-18)
+
+- Rune: de fem trekkortene i Arbeidsliv og Hverdagsliv sveipes som fasettene på mobil og stående nettbrett (prikker og pil). Det åpne kortets tekst vises under raden; bredere skjermer beholder rutenettet med teksten rett under kortet.
+- Ingressen under kapitteltittelen («Bruk ideene til …», «Legg merke til …») ligger nå bak en (i) ved tittelen, som i «Dine fem trekk».

@@ -1833,3 +1833,12 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 }
 @media(prefers-reduced-motion:no-preference){.d-osheet[open] .d-osheet-box{animation:d-osheet-in .25s ease-out}}
 @keyframes d-osheet-in{from{opacity:0;transform:translateY(16px) scale(.98)}}
+
+/* The trait cards in Work and Everyday life swipe like the facets on phones and portrait tablets (Rune, 2026-10-18). */
+.d-ctx-carousel{margin-top:8px}
+@media(max-width:900px){
+  .d-ctx-grid.d-fslides{display:flex;gap:12px;margin:0;padding:4px 7vw 10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scroll-padding-inline:7vw;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch}
+  .d-ctx-grid.d-fslides>.d-ctx-card{flex:0 0 86vw;max-width:520px;scroll-snap-align:center}
+  .d-ctx-carousel+.d-ctx-panel{margin:0 0 18px}
+}
+@media print{.d-ctx-grid.d-fslides{display:grid;overflow:visible;padding:0}.d-ctx-grid.d-fslides::after{content:none}}
