@@ -1899,7 +1899,7 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
   .d-opay{padding:12px;gap:8px}
   .d-opay-btn{padding:11px 14px;font-size:15px}
 }
-/* The Fem logo at the top of the offer sheet (Rune 2026-10-18). */
+/* The Cinko logo at the top of the offer sheet (Rune 2026-10-18). */
 .d-osheet-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 6px}
 .d-osheet-logo{display:block;width:40px;height:40px;background:url('assets/design/logo-mark.webp') center/contain no-repeat}
 .d-osheet-brand b{font:400 30px/1 Georgia,serif;letter-spacing:-.03em;color:var(--title)}

@@ -1,7 +1,7 @@
 # Gjeldende prosjektstatus — 11. oktober 2026
 
 ## Ferdig
-- Original Fem-logo og godkjente designreferanser implementert. Språk-/landvalg og mobiltilpasning.
+- Original logo (nå med ordmerket «Cinko») og godkjente designreferanser implementert. Språk-/landvalg og mobiltilpasning.
 - Verifisert Johnson IPIP-NEO-120: 120 spørsmål, fem trekk, 30 fasetter, reversering og dokumenterte kilder/lisenser.
 - Engelsk og norsk test, gratisresultat, full rapport om arbeidsliv/hverdag, tre neste steg og PDF-utskrift.
 - USA/USD 4.99 og Norge/NOK 49, med uavhengig valg av språk og marked.

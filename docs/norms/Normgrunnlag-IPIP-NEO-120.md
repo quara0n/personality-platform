@@ -1,10 +1,10 @@
 # Normgrunnlag for IPIP-NEO-120 i USA og Norge
 
-Kontrollert 11. oktober 2026. Gjelder Johnsons IPIP-NEO-120 fra 2014, som Fem bruker, med fem domener og 30 fasetter.
+Kontrollert 11. oktober 2026. Gjelder Johnsons IPIP-NEO-120 fra 2014, som Cinko bruker, med fem domener og 30 fasetter.
 
-**Fem skal bruke den amerikanske referansegruppen til persentiler på både engelsk og norsk bokmål.** Dette er brukerens beslutning etter gjennomgangen av forskningsgrunnlaget. De 120 spørsmålene beholdes. Norske resultater skal også merkes som en sammenligning med amerikanske nettdeltakere, med en kort forklaring om at referansen er amerikansk og ikke en validert norsk befolkningsnorm.
+**Cinko skal bruke den amerikanske referansegruppen til persentiler på både engelsk og norsk bokmål.** Dette er brukerens beslutning etter gjennomgangen av forskningsgrunnlaget. De 120 spørsmålene beholdes. Norske resultater skal også merkes som en sammenligning med amerikanske nettdeltakere, med en kort forklaring om at referansen er amerikansk og ikke en validert norsk befolkningsnorm.
 
-USA har et tilgjengelig datagrunnlag for denne sammenligningen. Norge har et lite engelsk referanseutvalg og en norsk valideringspilot, men ingen verifisert representativ norm for Fems norske oversettelse. Beslutningen om å bruke amerikansk referanse på begge språk endrer ikke disse forskningsfunnene. Sammenligningen gir ikke grunnlag for å hevde at en bruker ligger over en bestemt andel av hele landets befolkning.
+USA har et tilgjengelig datagrunnlag for denne sammenligningen. Norge har et lite engelsk referanseutvalg og en norsk valideringspilot, men ingen verifisert representativ norm for Cinkos norske oversettelse. Beslutningen om å bruke amerikansk referanse på begge språk endrer ikke disse forskningsfunnene. Sammenligningen gir ikke grunnlag for å hevde at en bruker ligger over en bestemt andel av hele landets befolkning.
 
 ## Hva originaldataene inneholder
 
@@ -43,17 +43,17 @@ Den norske gruppen er spesielt lite egnet for aldersdelte normer for eldre voksn
 
 [Johnson 2014](https://doi.org/10.1016/j.jrp.2014.05.003) beskriver utviklingen og valideringen av den eksakte kortformen. Det direkte administrerte 120-item-utvalget hadde 619 150 rader etter screening, fra 690 863 før screening. Dette er et internasjonalt nettutvalg, ikke 619 150 amerikanere. Det er også forskjell på å svare på 120 spørsmål og å få 120 spørsmål skåret som et delsett av 300.
 
-[Kajonius og Johnson 2019](https://ejop.psychopen.eu/index.php/ejop/article/download/1671/1671.html?inline=1) undersøkte 320 128 amerikanske deltakere i alderen 19–69, med gjennomsnittsalder 28,1 og 60 % kvinner. Forfatterne beskriver frivillig nettrekruttering og sier uttrykkelig at utvalget sannsynligvis ikke er landsrepresentativt. Studien fjernet enkelte responsmønstre og duplikater og erstattet manglende verdier med itemgjennomsnitt. Dens antall er derfor ikke forventet å samsvare med vår komplette voksenavgrensning. Tabell A1 gir gjennomsnitt og standardavvik, men ikke empiriske persentilfordelinger. Domeneverdiene i tabellen bruker dessuten en annen aggregering enn Fems domenesummer på 24–120.
+[Kajonius og Johnson 2019](https://ejop.psychopen.eu/index.php/ejop/article/download/1671/1671.html?inline=1) undersøkte 320 128 amerikanske deltakere i alderen 19–69, med gjennomsnittsalder 28,1 og 60 % kvinner. Forfatterne beskriver frivillig nettrekruttering og sier uttrykkelig at utvalget sannsynligvis ikke er landsrepresentativt. Studien fjernet enkelte responsmønstre og duplikater og erstattet manglende verdier med itemgjennomsnitt. Dens antall er derfor ikke forventet å samsvare med vår komplette voksenavgrensning. Tabell A1 gir gjennomsnitt og standardavvik, men ikke empiriske persentilfordelinger. Domeneverdiene i tabellen bruker dessuten en annen aggregering enn Cinkos domenesummer på 24–120.
 
 [Vispoel og kolleger 2026](https://pubmed.ncbi.nlm.nih.gov/41504337/) analyserer målepresisjon i 447 500 svar. Sammendraget støtter at domener generelt måles mer presist enn fasetter, og at fasetter kan gi tilleggsinformasjon. Det etablerer ikke en ny representativ USA- eller Norge-norm. Denne kilden er kontrollert på sammendragsnivå.
 
 **Produktmerking på begge språk etter kontroll av normberegningen:** Sammenlignet med amerikanske voksne som tok denne testen på engelsk på nett. Oppgi utvalgsstørrelse, aldersavgrensning, innsamlingsperiode og at utvalget var selvvalgt i en tilgjengelig forklaring. Unngå «sammenlignet med alle amerikanere», «landsrepresentativ USA-norm» og «norsk norm».
 
-## Norsk evidens og oversettelsen i Fem
+## Norsk evidens og oversettelsen i Cinko
 
 Pran, Gustavson og Grønnerød ved Universitetet i Oslo presenterte en norsk IPIP-NEO-120-pilot med 298 deltakere. Rekrutteringen skjedde hovedsakelig gjennom sosiale medier. Konferansesammendraget beskriver faktorstruktur og intern konsistens som lik originalens og etterlyser et større og mer representativt norsk utvalg. Det er foreløpig støtte for en norsk versjon, men ingen publisert normtabell i sammendraget. [SPA 2022, trykt side 102](https://spa-convention.org/wp-content/uploads/2022/03/Conv-22-Book-3-02-22.pdf#page=102).
 
-Fem bruker oversettelsen som upstream tilskriver Eli Huseby, med kildeversjon og hash i `app/data/provenance.json`. Det er ikke dokumentert at dette er samme ordlyd som UiO-piloten. Pilotens resultater kan derfor ikke uten videre beskrives som validering av akkurat Fems norske spørsmål.
+Cinko bruker oversettelsen som upstream tilskriver Eli Huseby, med kildeversjon og hash i `app/data/provenance.json`. Det er ikke dokumentert at dette er samme ordlyd som UiO-piloten. Pilotens resultater kan derfor ikke uten videre beskrives som validering av akkurat Cinkos norske spørsmål.
 
 Den offisielle [IPIP-oversikten over oversettelser](https://ipip.ori.org/newItemTranslations.htm) beskriver Harald Engviks omfattende norske itemarbeid, AB5C-studier og 100-item faktor-markører hos 1 100 rekrutter. Dette er andre spørsmålssett og utvalg, og gir ingen direkte norm for Johnsons 120 spørsmål og 30 fasetter.
 
@@ -80,7 +80,7 @@ Eugene-Springfield Community Sample er et alternativt amerikansk metodegrunnlag,
 
 ## Beregning og formidling av en fremtidig sammenligning
 
-Fems nåværende 0–100-verdi er `25 × (itemgjennomsnitt − 1)`. Den viser hvor svaret ligger på den mulige skalaen. **Den er ikke en persentil.** En bruker med 75 på denne visningen ligger derfor ikke nødvendigvis over 75 % av andre.
+Cinkos nåværende 0–100-verdi er `25 × (itemgjennomsnitt − 1)`. Den viser hvor svaret ligger på den mulige skalaen. **Den er ikke en persentil.** En bruker med 75 på denne visningen ligger derfor ikke nødvendigvis over 75 % av andre.
 
 En foreslått metode er empirisk persentilrang med lik behandling av like skårer:
 
@@ -99,13 +99,13 @@ To forskjellige usikkerheter må holdes fra hverandre: hvor stabil referanseford
 ## Arbeid som gjenstår før persentiler kan publiseres
 
 1. Lås målgruppen og analyseutvalget. Dokumenter alder, landdefinisjon, innsamlingsperiode, eksklusjoner, manglende data og konsekvensene av selvseleksjon. Avgrens sammenligningen til grupper med tilstrekkelig dekning.
-2. Kontroller alle itemposisjoner mot originalnøkkelen og Fem. `DAT120.doc` fastslår at negative items allerede er reversert i arkivet. Sum dem direkte; bruk Fems reversering bare på nye råsvar. Kontroller også instruerende tekst og svarankere: kodeboken bruker nøyaktighet, mens 2019-artikkelens metode beskriver frekvens.
+2. Kontroller alle itemposisjoner mot originalnøkkelen og Cinko. `DAT120.doc` fastslår at negative items allerede er reversert i arkivet. Sum dem direkte; bruk Cinkos reversering bare på nye råsvar. Kontroller også instruerende tekst og svarankere: kodeboken bruker nøyaktighet, mens 2019-artikkelens metode beskriver frekvens.
 3. Gjennomfør og dokumenter sensitivitetsanalyser for manglende data, alder og responskvalitet. Arkivet er allerede screenet av Johnson, men nye renseregler kan fortsatt endre rangeringen. Samme svarprofil hos to personer er ikke alene et bevis på duplikat.
 4. Lag egne aggregerte fordelinger og kontroller lavere/like/høyere-tellinger, monotoni, ytterpunkter og at referanse-N stemmer. Lagre kildehash, filterversjon, normversjon og lisensattribusjon. Publiser aggregater, ikke deltakerrekker i appen.
-5. For norsk språk: sammenlign Fems eksakte oversettelse med forskningsversjonen, gjør forståelsesintervjuer og undersøk måleegenskaper og forskjeller i itemfunksjon. Rekrutter deretter en bred norsk referansegruppe med planlagt alders-, region- og utdanningsdekning. Fastsett størrelse etter ønsket presisjon per gruppe og målemodell; et bestemt totalantall alene garanterer ikke gode normer.
-6. Få faglig gjennomgang av utvalg og beregning før rapporten kaller en sammenligning validert. Dersom egen rekruttering skjer blant Fems kunder, kall gruppen «Fem-deltakere» frem til annen representativitet er dokumentert.
+5. For norsk språk: sammenlign Cinkos eksakte oversettelse med forskningsversjonen, gjør forståelsesintervjuer og undersøk måleegenskaper og forskjeller i itemfunksjon. Rekrutter deretter en bred norsk referansegruppe med planlagt alders-, region- og utdanningsdekning. Fastsett størrelse etter ønsket presisjon per gruppe og målemodell; et bestemt totalantall alene garanterer ikke gode normer.
+6. Få faglig gjennomgang av utvalg og beregning før rapporten kaller en sammenligning validert. Dersom egen rekruttering skjer blant Cinkos kunder, kall gruppen «Cinko-deltakere» frem til annen representativitet er dokumentert.
 
-Fem skal bruke en merket historisk amerikansk nettreferanse for både engelske og norske rapporter, etter kontroll av filterregler og persentilberegning. De 748 norske svarene og pilotstudien med 298 deltakere skal ikke brukes til å beregne en separat norsk persentil. Norsk validering og nyere norske referansedata er videre forskningsarbeid, ikke en forutsetning for den valgte produktretningen.
+Cinko skal bruke en merket historisk amerikansk nettreferanse for både engelske og norske rapporter, etter kontroll av filterregler og persentilberegning. De 748 norske svarene og pilotstudien med 298 deltakere skal ikke brukes til å beregne en separat norsk persentil. Norsk validering og nyere norske referansedata er videre forskningsarbeid, ikke en forutsetning for den valgte produktretningen.
 
 Foreslått kort merking i norske rapporter: «Sammenlignet med amerikanske nettdeltakere. Sammenligningen bygger på den engelske testen; overføring til norsk språk er ikke særskilt validert.» Den utdypende forklaringen skal beskrive referanseutvalget og at dette ikke er en norsk befolkningsnorm. På engelsk brukes tilsvarende merking av den amerikanske nettreferansen.
 
@@ -115,7 +115,7 @@ Eksisterende lagrede item-svar kan skåres mot en ny normversjon uten at persone
 
 Opptellingene ligger i [norm-source-audit.json](norm-source-audit.json), og [audit_norm_source.py](../scripts/audit_norm_source.py) gjenskaper dem. Analyseprogrammet lager ingen produksjonsnormer og gjør ingen ytterligere kvalitetsfiltrering utover kompletthet og den beskrevne aldersavgrensningen. N viser svarrekker, ikke garantert unike personer.
 
-- Originalarkiv: Kajonius, P. J. og Johnson, J. A. (2019), Supplementary materials, DOI [10.23668/psycharchives.2448](https://doi.org/10.23668/psycharchives.2448), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Våre opptellinger og filtre er egne bearbeidelser; opphavspersonene har ikke godkjent Fems anvendelse.
+- Originalarkiv: Kajonius, P. J. og Johnson, J. A. (2019), Supplementary materials, DOI [10.23668/psycharchives.2448](https://doi.org/10.23668/psycharchives.2448), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Våre opptellinger og filtre er egne bearbeidelser; opphavspersonene har ikke godkjent Cinkos anvendelse.
 - Nedlastet ZIP: 170 157 431 byte, MD5 `e1bd2b3b385d0ad77dfbb1d0496589c6`.
 - Analysert `IPIP120.dat`: 94 729 950 byte, SHA-256 `526daf7ebe7d480ba71258cd20f0fc3b37ab3a43a2e4191c19a49e185a1df53b`.
 - Format: 151 tegn per rad før linjeskift; COUNTRY i tegn 23–31, I1–I120 i tegn 32–151; null betyr manglende verdi. Årskoden legges til 1900.

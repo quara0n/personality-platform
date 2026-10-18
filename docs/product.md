@@ -9,7 +9,7 @@ Landing → spørsmål → kort logoovergang → gratisresultat → rapportens k
 Betaling er en kommende funksjon, ikke ferdig implementert. Tilgang må i produksjon knyttes til verifisert betaling, med håndtering av avbrudd og nytt forsøk uten dobbeltbelastning.
 
 ## Spørsmål
-- Ett utsagn om gangen. Fem viste svarvalg fra Strongly disagree til Strongly agree; dette er UX-retningen, endelig skala avhenger av instrument.
+- Ett utsagn om gangen. Designkonseptet viste svarvalg fra Strongly disagree til Strongly agree; dette er UX-retningen, endelig skala avhenger av instrument.
 - Klikk/touch velger; hover velger aldri.
 - Kort visuell bekreftelse med farge og hake før automatisk neste spørsmål.
 - Tilbake gjenåpner tidligere svar. Endring erstatter det gamle svaret.

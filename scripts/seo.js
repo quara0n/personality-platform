@@ -4,34 +4,34 @@ export const siteUrl=(process.env.SITE_URL||'https://personality-platform-sage.v
 const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 export const pages={
   en:{path:'/',file:'index.html',lang:'en',locale:'en_US',alt:'nb_NO',image:'assets/og/fem-en.png',
-    title:'Free Big Five personality test – 120 questions | Fem',
+    title:'Free Big Five personality test – 120 questions | Cinko',
     description:'Take a free Big Five personality test: 120 research-based questions, about 15 minutes, and a clear profile of your five traits. No sign-up needed.',
-    imageAlt:'Fem – free Big Five personality test',
+    imageAlt:'Cinko – free Big Five personality test',
     skip:'Skip to content',
     nav:'<a href="#method">The science</a><a href="#privacy">Privacy</a><a class="small-button" href="#test">Take the test <span aria-hidden="true">→</span></a>',
-    main:'<article class="page narrow seo-intro"><p class="eyebrow">Fem</p><h1>A free Big Five personality test</h1><p>Answer 120 research-based questions (IPIP-NEO-120) in about 15 minutes. You get a free profile of the five traits – openness, conscientiousness, extraversion, agreeableness and emotional reactivity – and can choose an optional in-depth report on work and everyday life.</p><a class="button" href="#test">Start the test <span aria-hidden="true">→</span></a></article>',
-    footer:'<a class="footer-brand" href="#home">Fem <span>Your personality, in context.</span></a><div><a href="no">Norsk</a><a href="#method">Method & sources</a><a href="#privacy">Privacy</a><button id="clear-data" class="text-button">Clear my answers</button></div><p>Research-based self-reflection.</p>',
+    main:'<article class="page narrow seo-intro"><p class="eyebrow">Cinko</p><h1>A free Big Five personality test</h1><p>Answer 120 research-based questions (IPIP-NEO-120) in about 15 minutes. You get a free profile of the five traits – openness, conscientiousness, extraversion, agreeableness and emotional reactivity – and can choose an optional in-depth report on work and everyday life.</p><a class="button" href="#test">Start the test <span aria-hidden="true">→</span></a></article>',
+    footer:'<a class="footer-brand" href="#home">Cinko <span>Your personality, in context.</span></a><div><a href="no">Norsk</a><a href="#method">Method & sources</a><a href="#privacy">Privacy</a><button id="clear-data" class="text-button">Clear my answers</button></div><p>Research-based self-reflection.</p>',
     noscript:'This assessment needs JavaScript to calculate your answers in your browser.'},
   no:{path:'/no',file:'no.html',lang:'nb',locale:'nb_NO',alt:'en_US',image:'assets/og/fem-no.png',
-    title:'Gratis personlighetstest (Big Five) – 120 spørsmål | Fem',
+    title:'Gratis personlighetstest (Big Five) – 120 spørsmål | Cinko',
     description:'Ta en gratis personlighetstest basert på Big Five: 120 forskningsbaserte spørsmål, rundt 15 minutter og en tydelig profil av dine fem trekk.',
-    imageAlt:'Fem – gratis personlighetstest basert på Big Five',
+    imageAlt:'Cinko – gratis personlighetstest basert på Big Five',
     skip:'Hopp til innhold',
     nav:'<a href="#method">Faglig grunnlag</a><a href="#privacy">Personvern</a><a class="small-button" href="#test">Ta testen <span aria-hidden="true">→</span></a>',
-    main:'<article class="page narrow seo-intro"><p class="eyebrow">Fem</p><h1>Gratis personlighetstest basert på Big Five</h1><p>Svar på 120 forskningsbaserte spørsmål (IPIP-NEO-120) på rundt 15 minutter. Du får en gratis profil av de fem trekkene – åpenhet, planmessighet, ekstroversjon, medmenneskelighet og følelsesmessig reaktivitet – og kan velge en fordypningsrapport om arbeidsliv og hverdagsliv.</p><a class="button" href="#test">Start testen <span aria-hidden="true">→</span></a></article>',
-    footer:'<a class="footer-brand" href="#home">Fem <span>Personligheten din, i sammenheng.</span></a><div><a href="./">English</a><a href="#method">Metode og kilder</a><a href="#privacy">Personvern</a><button id="clear-data" class="text-button">Slett svarene mine</button></div><p>Forskningsbasert selvrefleksjon.</p>',
+    main:'<article class="page narrow seo-intro"><p class="eyebrow">Cinko</p><h1>Gratis personlighetstest basert på Big Five</h1><p>Svar på 120 forskningsbaserte spørsmål (IPIP-NEO-120) på rundt 15 minutter. Du får en gratis profil av de fem trekkene – åpenhet, planmessighet, ekstroversjon, medmenneskelighet og følelsesmessig reaktivitet – og kan velge en fordypningsrapport om arbeidsliv og hverdagsliv.</p><a class="button" href="#test">Start testen <span aria-hidden="true">→</span></a></article>',
+    footer:'<a class="footer-brand" href="#home">Cinko <span>Personligheten din, i sammenheng.</span></a><div><a href="./">English</a><a href="#method">Metode og kilder</a><a href="#privacy">Personvern</a><button id="clear-data" class="text-button">Slett svarene mine</button></div><p>Forskningsbasert selvrefleksjon.</p>',
     noscript:'Testen trenger JavaScript for å regne ut svarene dine i nettleseren.'}
 };
 const url=(p,site)=>site+(p==='/'?'/':p);
 export function head(key,site=siteUrl){
   const p=pages[key],img=`${site}/${p.image}`;
   const ld={'@context':'https://schema.org','@graph':[
-    {'@type':'Organization','@id':`${site}/#org`,name:'Fem',url:`${site}/`,logo:`${site}/assets/icons/icon-512.png`},
-    {'@type':'WebSite','@id':`${site}/#website`,name:'Fem',url:`${site}/`,inLanguage:['en','nb'],publisher:{'@id':`${site}/#org`},description:pages.en.description}]};
+    {'@type':'Organization','@id':`${site}/#org`,name:'Cinko',url:`${site}/`,logo:`${site}/assets/icons/icon-512.png`},
+    {'@type':'WebSite','@id':`${site}/#website`,name:'Cinko',url:`${site}/`,inLanguage:['en','nb'],publisher:{'@id':`${site}/#org`},description:pages.en.description}]};
   return [`<title>${esc(p.title)}</title>`,`<meta name="description" content="${esc(p.description)}">`,
     `<link rel="canonical" href="${url(p.path,site)}">`,
     `<link rel="alternate" hreflang="en" href="${url('/',site)}">`,`<link rel="alternate" hreflang="nb" href="${url('/no',site)}">`,`<link rel="alternate" hreflang="x-default" href="${url('/',site)}">`,
-    `<meta property="og:type" content="website">`,`<meta property="og:site_name" content="Fem">`,`<meta property="og:title" content="${esc(p.title)}">`,`<meta property="og:description" content="${esc(p.description)}">`,`<meta property="og:url" content="${url(p.path,site)}">`,
+    `<meta property="og:type" content="website">`,`<meta property="og:site_name" content="Cinko">`,`<meta property="og:title" content="${esc(p.title)}">`,`<meta property="og:description" content="${esc(p.description)}">`,`<meta property="og:url" content="${url(p.path,site)}">`,
     `<meta property="og:image" content="${img}">`,`<meta property="og:image:width" content="1200">`,`<meta property="og:image:height" content="630">`,`<meta property="og:image:alt" content="${esc(p.imageAlt)}">`,
     `<meta property="og:locale" content="${p.locale}">`,`<meta property="og:locale:alternate" content="${p.alt}">`,
     `<meta name="twitter:card" content="summary_large_image">`,`<meta name="twitter:title" content="${esc(p.title)}">`,`<meta name="twitter:description" content="${esc(p.description)}">`,`<meta name="twitter:image" content="${img}">`,

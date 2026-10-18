@@ -154,7 +154,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     closer: named.line || pick(facet && facet.band !== 'middle' ? facetClosers[`${facet.code}${facet.band[0]}`] : band === 'middle' ? closers.balanced : closers[trait.code][band], language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
-    button: site || 'Fem',
+    button: site || 'Cinko',
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
     ruleId: `share-video-v1/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}`
@@ -262,9 +262,10 @@ function brush(ctx, x1, x2, y, color, k, alpha = 1) {
 function footer(ctx, imgs, a) {
   if (a <= 0) return;
   ctx.save(); ctx.globalAlpha = a;
-  logo(ctx, imgs, W / 2 - 70, H - 150, .2, 1, 1);
   ctx.fillStyle = INK; ctx.font = `400 52px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-  ctx.fillText('Fem', W / 2 - 18, H - 148);
+  const x = W / 2 - (80 + ctx.measureText('Cinko').width) / 2; // mark and name centred as one unit
+  logo(ctx, imgs, x + 28, H - 150, .2, 1, 1);
+  ctx.fillText('Cinko', x + 80, H - 148);
   ctx.restore();
 }
 
