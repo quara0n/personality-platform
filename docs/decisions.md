@@ -470,3 +470,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: fjern «← Gratisprofilen din» og «Lagre svarene mine» øverst i rapporten; bare «Last ned PDF» står igjen.
 - «Min side» i hamburgermenyen heter nå «Min profil» og vises så snart alle 120 svar finnes. Siden har kontoen (som før), «Last ned PDF» (åpner rapporten og utskriftsdialogen), «Lagre svarene mine i en fil», «Send profilen til e-posten din» og en sammenleggbar liste med svaret på hvert av de 120 spørsmålene.
 - E-post går fortsatt via brukerens eget e-postprogram (mailto). Ekte utsending fra Fem med rapporten vedlagt krever egen SMTP/e-posttjeneste, som ikke er satt opp.
+
+## Delene i «Hvordan henger dette sammen …» som karusell (2026-10-18)
+
+- Rune: når kortet åpnes, sveipes delene («Det som tapper deg», «Når du leder», «Ditt neste steg» osv.) sidelengs som et eget kort hver, med prikker og pil, mens illustrasjonen står synlig over. Gjelder Arbeidsliv og Hverdagsliv, på alle skjermbredder. Utskrift viser delene under hverandre.
