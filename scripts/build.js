@@ -4,7 +4,9 @@ const root=new URL('../',import.meta.url);
 await mkdir(new URL('dist',root),{recursive:true});
 await cp(new URL('app/',root),new URL('dist/',root),{recursive:true});
 // Public sign-in settings from the environment (see app/config.js). The service-role key is never read here.
-const config={supabaseUrl:process.env.SUPABASE_URL||'',supabaseAnonKey:process.env.SUPABASE_ANON_KEY||'',xProvider:process.env.SUPABASE_X_PROVIDER||'',providers:process.env.SUPABASE_PROVIDERS||''};
+// Payments: only whether they are on (and Vipps) reaches the browser, never a key.
+const payments=Boolean(process.env.STRIPE_SECRET_KEY);
+const config={supabaseUrl:process.env.SUPABASE_URL||'',supabaseAnonKey:process.env.SUPABASE_ANON_KEY||'',xProvider:process.env.SUPABASE_X_PROVIDER||'',providers:process.env.SUPABASE_PROVIDERS||'',payments,vipps:payments&&String(process.env.STRIPE_VIPPS||'').toLowerCase()==='on'};
 await writeFile(new URL('dist/config.js',root),`window.FEM_CONFIG = ${JSON.stringify(config)};\n`);
 // SEO: / in English, /no (no.html via cleanUrls) in Norwegian, robots and sitemap for SITE_URL.
 const template=await readFile(new URL('app/index.html',root),'utf8');

@@ -135,3 +135,17 @@ export async function signOut() {
   const c = await client();
   await c.auth.signOut();
 }
+
+/** Payments are switched on in this deployment (build flag; the keys stay on the server). */
+export const paymentsOn = (c = cfg()) => enabled(c) && Boolean(c.payments);
+export const vippsOn = (c = cfg()) => paymentsOn(c) && Boolean(c.vipps);
+
+/** Calls /api/purchase as the signed-in user: 'status' → {tier}, 'checkout' → {url}, 'confirm' → {tier, paid}. */
+export async function purchase(action, body = {}) {
+  const c = await client(), {data} = await c.auth.getSession(), token = data?.session?.access_token;
+  if (!token) throw new Error('signed-out');
+  const r = await fetch('api/purchase', {method: 'POST', headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}, body: JSON.stringify({...body, action})});
+  const out = await r.json().catch(() => ({}));
+  if (!r.ok && r.status !== 409) throw Object.assign(new Error(out.error || `purchase ${r.status}`), {status: r.status});
+  return out;
+}

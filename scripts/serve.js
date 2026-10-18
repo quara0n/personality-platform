@@ -14,6 +14,15 @@ http.createServer(async(req,res)=>{
     const result=await handleCareerRequest(body);
     res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
   }
+  if(req.method==='POST'&&(req.url==='/api/purchase'||req.url==='/api/stripe-webhook')){
+    // Same handlers as api/purchase.js and api/stripe-webhook.js; need the Stripe and Supabase keys in the environment.
+    let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>200000)break;}
+    const {handlePurchase,handleWebhook}=await import('../lib/payments.js');
+    let result;
+    if(req.url==='/api/stripe-webhook')result=await handleWebhook(raw,req.headers['stripe-signature']);
+    else{let body=null;try{body=JSON.parse(raw);}catch{}result=await handlePurchase(body,String(req.headers.authorization||'').replace(/^Bearer\s+/i,''),process.env,req.headers);}
+    res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
+  }
   try{
     const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
     // Same pages as the build: / and /no from app/index.html, plus robots and sitemap.

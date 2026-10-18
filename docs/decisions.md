@@ -549,3 +549,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Begge nivåene åpner rapporten på Oversikt (79 kr hoppet før rett til kapittel 3).
 - 49 kr-rapporten har arbeidsliv, hverdagsliv og relasjoner med trekkortene og ukeplanen, men ikke de tilpassede spørsmålene i kapittel 3 og 4 eller AI-partneren. Der spørsmålene ville stått, forklarer et kort hva «Fordypning + tilpasset» gir. Kjøpskortene sier det samme («Tilpassede spørsmål og AI-partner» / «Uten tilpassede spørsmål og AI-partner»). Valget huskes i nettleseren til betaling er koblet til; uten valg (forhåndsvisning, eksempelrapport) vises alt.
 - Rune: testen skal stå som «10 minutter» (forsiden, Google-teksten og delingsbildene).
+
+## 2026-10-18 – Betaling med Stripe Checkout, Apple Pay, Google Pay og Vipps
+
+- Rune: «Stripe på, Google Pay, Vipps». Bygget med Stripes ferdige betalingsside (Checkout). Kort, Apple Pay og Google Pay kommer automatisk; Vipps er en lukket forhåndsversjon hos Stripe og slås på med `STRIPE_VIPPS=on` når Stripe har gitt tilgang. Vipps-knappen åpner en side med bare Vipps.
+- Prisene ligger fast på serveren (49 kr / $4.99, 79 kr / $7.99). Den som har 49 kr-rapporten, betaler mellomlegget (30 kr / $3.00) for «Fordypning + tilpasset».
+- Kjøpet lagres i Supabase (tabellen purchases) først når serveren har lest en betalt økt fra Stripe. Rapporten krever kjøp når betaling er slått på; eksempelrapporten er åpen. Uten kjøp åpnes gratisprofilen med kjøpsvalget.
+- Først testmodus. Livebetaling venter på Runes ja.
