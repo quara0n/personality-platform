@@ -474,3 +474,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Delene i «Hvordan henger dette sammen …» som karusell (2026-10-18)
 
 - Rune: når kortet åpnes, sveipes delene («Det som tapper deg», «Når du leder», «Ditt neste steg» osv.) sidelengs som et eget kort hver, med prikker og pil, mens illustrasjonen står synlig over. Gjelder Arbeidsliv og Hverdagsliv, på alle skjermbredder. Utskrift viser delene under hverandre.
+
+## Kjøpsvalget delt: rapportene til venstre, betaling til høyre (2026-10-18)
+
+- Rune: i sprett-opp-vinduet ligger de to rapportene over hverandre til venstre, med «Fordypning + tilpasset» (149 kr / $14.99, anbefalt) allerede valgt. Til høyre står betalingsvalgene: Kort, Vipps (bare Norge) og Apple Pay eller Google Pay etter enheten. Ett trykk på et betalingsvalg går rett videre med den valgte rapporten; ett trykk på 49 kr-boksen bytter valget. På mobil står betalingen under boksene, og alt får plass uten å rulle.
+- Betaling er ikke koblet til ennå: i forhåndsvisningen åpner alle betalingsvalgene rapporten gratis via forbereder-animasjonen (#opening). Vipps krever egen avtale eller støtte i betalingsløsningen før lansering.

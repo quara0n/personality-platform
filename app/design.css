@@ -1866,3 +1866,36 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-deep-slides>.d-career-sec>h4{font-size:21px}
 .d-career-deep[open] .d-career-deep-art{max-width:200px}
 @media print{.d-career-deep .d-deep-carousel .d-jcarousel-top{display:none!important}.d-deep-slides{display:block;overflow:visible;padding:0}.d-deep-slides>.d-career-sec{margin:14px 0!important;box-shadow:none}}
+
+/* Offer sheet split (Rune 2026-10-18): the two reports stacked on the left, recommended one chosen; payment methods on the right. */
+.d-osplit{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;text-align:left;align-items:start}
+.d-otiers{display:grid;gap:12px}
+.d-otier{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px 14px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.d-otier input{position:absolute;opacity:0;pointer-events:none}
+.d-otier .d-ocard-piece{display:none}
+.d-otier .d-offer-recommended{top:-11px;left:16px;right:auto}
+.d-otier-check{width:22px;height:22px;border:2px solid #9fb3c8;border-radius:50%;background:#fff}
+.d-otier-title{display:block;margin:0 0 4px;font:400 21px/1.1 Georgia,serif;letter-spacing:-.02em;color:var(--title)}
+.d-otier ul{margin:0;gap:2px}
+.d-otier li{font-size:13.5px}
+.d-otier .d-ocard-price{margin:0;font-size:28px;white-space:nowrap}
+.d-otier:has(input:checked){border-color:var(--title);box-shadow:0 0 0 2px var(--title),var(--box-shadow)}
+.d-otier:has(input:checked) .d-otier-check{border:6px solid var(--title)}
+.d-otier:has(input:focus-visible){outline:2px solid #a44e24;outline-offset:3px}
+.d-otier.is-plus{border-color:var(--box-border)}
+.d-opay{display:grid;gap:10px;padding:16px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow)}
+.d-opay-h{margin:0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4f6d8c}
+.d-opay-btn{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-radius:var(--field-radius);background:var(--title);color:#fff;font-weight:700;font-size:16px;text-decoration:none}
+.d-opay-btn.is-vipps{background:#ff5b24}
+.d-opay-btn.is-apple,.d-opay-btn.is-google{background:#000}
+.d-opay-btn:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.d-opay .d-osheet-terms{margin:2px 0 0;text-align:center}
+@media(max-width:700px){
+  .d-osplit{grid-template-columns:1fr;gap:12px}
+  .d-otier{padding:13px 12px 11px;gap:4px 10px}
+  .d-otier-title{font-size:18px}
+  .d-otier li{font-size:12.5px}
+  .d-otier .d-ocard-price{font-size:22px}
+  .d-opay{padding:12px;gap:8px}
+  .d-opay-btn{padding:11px 14px;font-size:15px}
+}
