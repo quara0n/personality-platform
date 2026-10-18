@@ -27,7 +27,7 @@ Lag kapittelmaler og kildegrunnlag, knytt tolkning til resultat. Faglig gjennomg
 Ferdig når eksempeltilfeller kan spores fra svar til skår og relevant rapporttekst.
 
 ## 4. Betaling og levering
-Fastsett pris/valuta/avgifter, leverings- og tilgangsmodell. Verifiser betaling server-side og håndter repetert betalingsmelding, avbrutt kjøp og tilgang etter kjøp.
+Fastsett pris/valuta/avgifter, leverings- og tilgangsmodell. Verifiser betaling server-side og håndter repetert betalingsmelding, avbrutt kjøp og tilgang etter kjøp. Før livebetaling: samtykke til umiddelbar levering bekreftes i kvitteringen (vurder avkrysning), og pris inkl. mva. avklares.
 Implementer PDF som lesbart dokument. Avklar lagring, sletting og nødvendig personverninformasjon for reelle brukere.
 
 ## 5. Brukertest og lanseringsgrunnlag

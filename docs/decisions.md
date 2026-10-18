@@ -484,6 +484,13 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune 2026-10-18: åpningsanimasjonen spilles når man trykker på Fordypning-knappen, før kjøpsvalget, og ikke etter betaling (den som trykker Kort eller Vipps har allerede bestemt seg). To versjoner: «Fordypning + tilpasset» (apricot-biten først, «Tilpasset deg», egne linjer) spilles fra alle Fordypning-knapper fordi den er forhåndsvalgt; den opprinnelige for Fordypningsrapporten spilles fra 49 kr-knappen på «Se alt som er med», som også åpner kjøpsvalget med 49 kr valgt. Gamle #opening-lenker går rett til rapporten.
 - Hvert rapportkort i kjøpsvalget har en «+» (fasett-edelstenen) som folder ut alt rapporten inneholder (Rune 2026-10-18).
 
+## 2026-10-18 – Kjøpsvalget etter evidensgjennomgangen
+- Rune ba om evidensen bak en god betalingsside og deretter at det som bør gjøres, blir gjort. Notatet ligger i /mnt/project-files/betalingsside-evidens/evidens.md.
+- Prisen står på hver betalingsknapp («Kort … 149 kr →») og følger valgt rapport, så ingen betaler et beløp de ikke så (angrerettloven § 16; standardvalget 149 kr er beholdt).
+- I Norge står samtykket ved knappene: «Rapporten åpnes med en gang. Ved å betale samtykker du til det og godtar at angreretten da faller bort.» (angrerettloven § 22 n). Dette er en tekst ved knappen, ikke en avkrysning; en avkrysning er det sikreste juridisk og kan legges til før livebetaling. Samtykket må også bekreftes i kvitteringen når Stripe kobles til. USA får ikke linjen.
+- Under overskriften står én setning om kjøperens eget resultat: de to mest særpregede trekkene utenfor midten, med samme nivåord som profilen («Du ligger lavere på medmenneskelighet og planmessighet.»). Ligger alle fem i midten, står det at rapporten viser om noen av de 30 fasettene skiller seg ut. Vises ikke for eksempelprofilen. På lave skjermer (under 700 px høyde) vises bare første setning, under 660 px ingen.
+- Ikke gjort, med vilje: lokkedue eller tredje pakke, overstrøket førpris, nedtellingsur. Prisforsøk (49 mot 79 kr) og lanseringspris med sluttdato venter på at betaling er koblet til og Rune har valgt pris og dato.
+
 ## SEO-grunnmur: /no for norsk, metadata, delingsbilde, robots og sitemap (2026-10-18)
 
 - Rune ba om søkemotoroptimalisering. Engelsk side ligger på `/`, norsk på `/no` (bygget lager dist/no.html; `cleanUrls` og `trailingSlash: false` i vercel.json). `/no` gir norsk språk og Norge/NOK som standard; en lagret språkvalg-preferanse går fortsatt foran. Relative stier fra `/no` peker til roten, så samme filer brukes.

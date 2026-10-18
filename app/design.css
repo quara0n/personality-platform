@@ -1932,3 +1932,14 @@ body.in-oprep{overflow:hidden}
 .d-otier-all{grid-column:2/-1;margin:6px 0 2px!important;padding-top:8px!important;border-top:1px solid var(--box-border);gap:6px!important}
 .d-otier-all[hidden]{display:none}
 @media(max-width:700px){.d-otier-more .d-gem-plus{width:28px;height:28px}.d-otier-all{grid-column:1/-1}}
+/* Offer sheet (2026-10-18, evidence note): the price on each payment button, one line about the buyer's own result,
+   and in Norway the consent to immediate delivery next to the buttons. */
+.d-opay-go{display:inline-flex;align-items:center;gap:10px;margin-left:auto;padding-left:12px;font-variant-numeric:tabular-nums}
+.d-opay-amt{font-weight:700}
+.d-opay-consent{margin:0;font-size:12px;line-height:1.4;color:#6b7f95;text-align:center}
+.d-osheet-teaser{max-width:560px;margin:-4px auto 14px;font-size:15px;line-height:1.45;color:#2b4565;text-align:center}
+.d-osheet-teaser b{color:var(--title)}
+@media(max-width:700px){.d-osheet-teaser{margin:-2px auto 10px;font-size:13.5px}.d-opay-consent{font-size:11px}}
+@media(max-height:700px){.d-osheet-teaser{margin-bottom:8px}.d-osheet-teaser span{display:none}.d-opay-consent{font-size:10.5px;line-height:1.3}}
+@media(max-height:680px){.d-opay-btn{height:38px}.d-opay-btn.is-apple .d-paymark,.d-opay-btn.is-google .d-paymark{height:44px}.d-opay{gap:6px}}
+@media(max-height:660px){.d-osheet-teaser{display:none}.d-opay{gap:5px}}
