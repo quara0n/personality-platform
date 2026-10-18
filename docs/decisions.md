@@ -537,3 +537,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-18 – Lyden i delingsvideoen er på fra start
 
 - Rune: lyden i videoen etter testen må være på automatisk. Nettlesere (særlig Safari, iPhone og Firefox) starter bare lyd fra et trykk, og videoen åpnes etter siste svar uten et nytt trykk, så den startet ofte uten lyd. Lyden vekkes nå (stille) ved hvert trykk eller tastetrykk i appen, og ventetiden på lydkortet er økt fra 0,3 til 1,5 sekunder, så videoen starter med musikk når nettleseren tillater det.
+
+## 2026-10-18 – Profilmerke i hjørnet, ingen kontoboks under profilen
+
+- Rune: kontoboksen («Kontoen din») nederst på gratisprofilen fjernes. Innlogging og lagring ligger under «Min profil».
+- Når testen er tatt, byttes «Ta testen» øverst til høyre med et rundt merke: profilfiguren (beskåret rundt ansiktet, samme figurvalg kvinne/mann) og initialene fra innloggingen. Merket lenker til profilen. På mobil står det ved menyknappen.
