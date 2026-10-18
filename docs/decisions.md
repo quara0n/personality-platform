@@ -561,3 +561,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Forsiden: «Se alle sidene dine.» står øverst over «Ingen boks. Bare deg.» (erstatter «Kjenn deg selv bedre»), og «Se mønsteret ditt.» står over «Nysgjerrig på hvem du er?» nederst.
 - Delevideoen: «Se alle sidene dine.» står under Kaleido-ordmerket i bunnteksten og over spørsmålet på sluttkortet.
 - Rune (samme kveld): «Se alle sidene dine.» er nå hovedtittelen på forsiden og erstatter «Ingen boks. Bare deg.»; linjen over er igjen «Kjenn deg selv bedre». Trekkoverskriften er «Fem trekk. Tretti fasetter. Én deg.» «Mer innsikt. Flere muligheter.», «Tendenser, ikke faste typer.» og lenken «Utforsk en eksempelrapport» er fjernet fra forsiden; selve rapporten skal være en overraskelse. Eksempelrapporten (#demo) finnes fortsatt for testing.
+
+## 2026-10-18 – Egne fonter
+
+- Rune sa ja til et eget fontpar: Source Serif 4 i overskrifter og Manrope i brødtekst og knapper. Før brukte appen Georgia og Arial, som Android ikke har (der ble det Noto Serif og Roboto), så appen så ulik ut fra enhet til enhet.
+- Fontene ligger i app/assets/fonts (SIL Open Font License), kuttet til latinske tegn med æ, ø og å; til sammen omtrent 125 KB med kursiv. Delevideoen venter på fontene før den tegner.
+- Tekststørrelsene er samlet fra 28 til en fast skala (10–22 px under overskriftene; halve piksler, 17, 19, 21 og 23 px er borte). Manrope er litt bredere enn Arial, så 17 px ble 16 px.
