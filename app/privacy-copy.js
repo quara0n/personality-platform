@@ -3,7 +3,7 @@
 // Keep this page in step with what the app actually does: if a feature starts sending or storing something new,
 // add it here in both languages and in docs/personvern.md. Terms of use are in terms-copy.js.
 
-export const CONTROLLER = {name: 'Rune Finne', orgNo: '915 553 346', email: 'customerservice@kaleidotest.com'};
+export const CONTROLLER = {name: 'Rune Finne', orgNo: '915 553 346', email: 'support@kaleidotest.com'};
 export const UPDATED = '2026-10-18';
 
 /** «Kaleido is run by …» with contact address, or a note that the details are coming. Shared with terms-copy.js. */

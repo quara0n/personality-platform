@@ -528,4 +528,4 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-18 – Logo foran ordmerket og kundeserviceadresse
 
 - Rune: «Ønsker logoen til venstre for kaleido». Pinwheel-logoen (logo-mark.webp) står nå til venstre for ordmerket i topplinjen, bunnteksten, innloggingen, kjøpsarket og delingsvideoen. Delingsbildene har allerede logoen stort til venstre og er uendret.
-- Rune: «Må ha en customerservice@Kaleido.com». Kaleido.com eies ikke av oss, så adressen er customerservice@kaleidotest.com, brukt som kontaktadresse i personvernerklæringen og vilkårene. E-posten må settes opp hos en leverandør før den virker.
+- Rune: «Må ha en customerservice@Kaleido.com». Kaleido.com eies ikke av oss; Rune valgte deretter support@kaleidotest.com (kortere) på et beslutningskort, brukt som kontaktadresse i personvernerklæringen og vilkårene. E-posten må settes opp hos en leverandør før den virker.
