@@ -1956,3 +1956,10 @@ body.in-oprep{overflow:hidden}
 @media(max-height:700px){.d-osheet-teaser{margin-bottom:8px}.d-osheet-teaser span{display:none}.d-opay-consent{font-size:10.5px;line-height:1.3}}
 @media(max-height:680px){.d-opay-btn{height:38px}.d-opay-btn.is-apple .d-paymark,.d-opay-btn.is-google .d-paymark{height:44px}.d-opay{gap:6px}}
 @media(max-height:660px){.d-osheet-teaser{display:none}.d-opay{gap:5px}}
+/* Legal pages (#legal, #privacy, #terms; Rune 2026-10-18): a hub with two cards, then readable long text. */
+.d-legal-back{margin:0 0 18px;font-size:15px}.d-legal-back a{color:var(--muted,#53667c)}
+.d-legal h2{margin:34px 0 10px;font-size:24px}.d-legal p,.d-legal li{line-height:1.6}
+.d-legal-list{padding-left:20px}.d-legal-list li{margin:0 0 8px}
+.d-legal-links{display:grid;gap:14px;margin:26px 0 30px}
+.d-legal-card{display:block;padding:20px 22px;background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:var(--box-shadow);color:var(--title);text-decoration:none}
+.d-legal-card:hover{background:var(--card-hover)}.d-legal-card b{display:block;font:400 24px/1.2 Georgia,serif;margin-bottom:6px}.d-legal-card span{color:var(--muted,#53667c);font-size:16px;line-height:1.5}
