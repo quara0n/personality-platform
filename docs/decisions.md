@@ -533,3 +533,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-18 – Metodesiden forklarer persentiler også før testen
 
 - Metodesiden sa at stolpen viser gjennomsnitt fra 1 til 5 og «ikke er en persentil» når den ble åpnet uten en rapport, selv om alle resultater vises som persentiler. Den bruker nå persentilforklaringen så lenge normtabellen er lastet. Funnet under Runes gjennomgang av appen.
+
+## 2026-10-18 – Lyden i delingsvideoen er på fra start
+
+- Rune: lyden i videoen etter testen må være på automatisk. Nettlesere (særlig Safari, iPhone og Firefox) starter bare lyd fra et trykk, og videoen åpnes etter siste svar uten et nytt trykk, så den startet ofte uten lyd. Lyden vekkes nå (stille) ved hvert trykk eller tastetrykk i appen, og ventetiden på lydkortet er økt fra 0,3 til 1,5 sekunder, så videoen starter med musikk når nettleseren tillater det.
