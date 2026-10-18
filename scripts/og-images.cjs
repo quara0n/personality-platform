@@ -1,4 +1,4 @@
-// Share images (1200×630) for / and /no: the logo pieces from fem-logo-reference.png, the «Cinko» wordmark and the headline.
+// Share images (1200×630) for / and /no: the logo pieces from fem-logo-reference.png, the «Kaleido» wordmark and the headline.
 // The wordmark uses the header's typeface (Georgia, see .brand b in app/design.css); install Georgia before running, or the
 // browser falls back to another serif. Run: node scripts/og-images.cjs
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -15,10 +15,10 @@ body{margin:0;width:1200px;height:630px;background:#fefdf8;position:relative;ove
 h1{display:inline-block;margin:62px 0 0;font:400 var(--size,68px)/1.14 Georgia,serif;letter-spacing:-.01em;color:#102747;white-space:nowrap}
 .bar{width:65px;height:6px;margin:26px 0 22px;background:#f6b18d}
 p.l{margin:0;font:400 26px/1.46 Arial,Helvetica,sans-serif;color:#53667c}
-</style><div class="art"></div><div class="text"><p class="brand">Cinko</p><h1>${p.title}</h1><div class="bar"></div>${p.lines.map(l=>`<p class="l">${l}</p>`).join('')}</div>`;
+</style><div class="art"></div><div class="text"><p class="brand">Kaleido</p><h1>${p.title}</h1><div class="bar"></div>${p.lines.map(l=>`<p class="l">${l}</p>`).join('')}</div>`;
 (async()=>{const browser=await chromium.launch();try{const page=await browser.newPage({viewport:{width:1200,height:630}});
   for(const [k,p] of Object.entries(pages)){await page.setContent(html(p));await page.evaluate(()=>document.fonts.ready);
     // Shrink the headline until its longest line fits the column.
     await page.evaluate(()=>{const h=document.querySelector('h1');let s=68;while(h.offsetWidth>590&&s>40){s-=2;h.style.setProperty('--size',s+'px');}});
-    await page.screenshot({path:path.join(app,`assets/og/fem-${k}.png`)});}
+    await page.screenshot({path:path.join(app,`assets/og/kaleido-${k}.png`)});}
 }finally{await browser.close();}})();

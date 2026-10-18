@@ -162,7 +162,7 @@ def run(repo, out):
                                uniqueness='N counts response records, not guaranteed unique individuals'),
                 source=dict(doi='10.23668/psycharchives.2448', url='https://doi.org/10.23668/psycharchives.2448',
                             license='CC-BY-4.0', licenseUrl='https://creativecommons.org/licenses/by/4.0/',
-                            attribution='Derived from Kajonius, P. J. & Johnson, J. A. (2019), Supplementary materials, PsychArchives. Filters and percentile calculations by Cinko; no endorsement implied.',
+                            attribution='Derived from Kajonius, P. J. & Johnson, J. A. (2019), Supplementary materials, PsychArchives. Filters and percentile calculations by Kaleido; no endorsement implied.',
                             filename='IPIP120.dat', sha256=source_hash,
                             archiveMd5=hashlib.md5(archive_path.read_bytes()).hexdigest(),
                             scoringKeySha256=digest(key_bytes), appQuestionsSha256=digest(questions_path.read_bytes())),

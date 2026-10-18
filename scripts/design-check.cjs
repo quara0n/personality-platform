@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({channel:'chrome'});try{
  const page=await browser.newPage({viewport:{width:1440,height:1000},locale:'nb-NO'});
  await page.goto('http://127.0.0.1:4173/#home');await page.locator('.hero').waitFor();
- assert.equal(await page.locator('.brand b').textContent(),'Cinko');
+ assert.equal(await page.locator('.brand b').textContent(),'Kaleido');
  assert.match(await page.locator('.hero').innerText(),/120 spørsmål/);
  assert.doesNotMatch(await page.locator('.hero').innerText(),/stemmegivning|utsagn/);
  assert.equal(await page.locator('header .locale-bar').count(),1);

@@ -499,10 +499,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Delingsbilder 1200×630: app/assets/og/fem-en.png og fem-no.png (logobitene fra fem-logo-reference.png på lys bakgrunn med overskrift).
 - robots.txt (alt tillatt) og sitemap.xml (/ og /no med hreflang) lages i dist. Domenet styres av `SITE_URL` i Vercel (standard https://personality-platform-sage.vercel.app); settes når endelig domene er valgt.
 
-## 2026-10-18 – Produktnavnet er «Cinko»
-- Rune: «bare bytt ut navnet med Cinko». Navnet «Fem» er erstattet med «Cinko» overalt brukeren ser det: sidetitler, ordmerket i topp og bunn, innloggingssiden, kjøpsvalget, e-posttekst, filnavn ved nedlasting (cinko-profile/cinko-profil, cinko-report/cinko-rapport, cinko-answers.json), delingsvideoens sluttkort, og SEO (titler, og:site_name, JSON-LD).
-- Hoveddomenet blir bigcinko.com (cinko.com er tatt). Domenet er ikke kjøpt; `SITE_URL` settes i Vercel når det er på plass, og standardverdien er uendret.
+## 2026-10-18 – Produktnavnet er «Kaleido»
+- Rune har valgt «Kaleido» som produktnavn, inspirert av det kaleidoskopaktige logomerket med de fem trekantene. «Fem» (arbeidsnavnet) og «Cinko» ble vurdert først; «Cinko» ble forkastet samme dag.
+- Navnet står overalt brukeren ser det: sidetitler, ordmerket i topp og bunn, innloggingssiden, kjøpsvalget, e-posttekst, filnavn ved nedlasting (kaleido-profile/kaleido-profil, kaleido-report/kaleido-rapport, kaleido-answers.json), delingsvideoens sluttkort, og SEO (titler, og:site_name, JSON-LD).
+- Domenet er ikke valgt. bigfive.no er foreslått som norsk viderekoblingsadresse. `SITE_URL` settes i Vercel når domenet er på plass; standardverdien er uendret.
 - Ordmerket står i samme skrift som før: Georgia (live tekst, `.brand b` i app/design.css; Times New Roman som reserve). Logomerket med de fem trekantene er uendret.
-- Delingsbildene app/assets/og/fem-en.png og fem-no.png er laget på nytt med «Cinko» i Georgia av scripts/og-images.cjs (krever at Georgia er installert). Filnavnene er beholdt.
-- Ordet «fem» (tallet) er ikke endret, f.eks. «Fem trekk. Din kombinasjon.» og «dine fem trekk». Interne nøkler (localStorage/sessionStorage `fem-…`, `window.FEM_CONFIG`, svarfilformatet `fem-answers-v1`) og filnavn på bilder er beholdt, så lagrede data og svarfiler fortsatt virker.
-- Eldre oppføringer i denne loggen og historiske notater (verification.md, docs/norms/overlevering-codex.md, research) beholder «Fem» som historikk. app/assets/fem-logo-reference.png er designreferansen med det gamle ordmerket; den vises ikke som ordmerke i appen (topp, bunn og lasting bruker logo-mark.webp og live tekst).
+- Delingsbildene heter nå app/assets/og/kaleido-en.png og kaleido-no.png og lages av scripts/og-images.cjs (krever at Georgia er installert).
+- Ordet «fem» (tallet) er ikke endret, f.eks. «Fem trekk. Din kombinasjon.» og «dine fem trekk». Interne nøkler (localStorage/sessionStorage `fem-…`, `window.FEM_CONFIG`, svarfilformatet `fem-answers-v1`) og fem-logo-reference.png er beholdt, så lagrede data og svarfiler fortsatt virker.
+- Eldre oppføringer i denne loggen og historiske notater (verification.md, docs/norms/overlevering-codex.md, research) beholder «Fem» som historikk. app/assets/fem-logo-reference.png er designreferansen med det gamle ordmerket; den vises ikke som ordmerke i appen.

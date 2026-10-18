@@ -41,7 +41,7 @@ const answers=Object.fromEntries(questions.map(q=>{
     await restored.locator('.d-tlpanel:not([hidden]) .facet-pattern').scrollIntoViewIfNeeded();
     await restored.screenshot({path:'artifacts/report-upgraded-mobile.png'});
     await restored.locator('#backup-restore').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"answers":{}}')});
-    await restored.getByText('Filen er ikke en gyldig Cinko-svarkopi. Svarene dine er ikke endret.',{exact:true}).waitFor();
+    await restored.getByText('Filen er ikke en gyldig Kaleido-svarkopi. Svarene dine er ikke endret.',{exact:true}).waitFor();
     assert.deepEqual(await restored.evaluate(()=>JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers),answers);
     // Delay a real file read to prove that clearing wins over an older import.
     await restored.evaluate(()=>{
