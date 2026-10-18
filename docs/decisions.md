@@ -479,4 +479,5 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: i sprett-opp-vinduet ligger de to rapportene over hverandre til venstre, med «Fordypning + tilpasset» (149 kr / $14.99, anbefalt) allerede valgt. Til høyre står betalingsvalgene: Kort, Vipps (bare Norge) og Apple Pay eller Google Pay etter enheten. Ett trykk på et betalingsvalg går rett videre med den valgte rapporten; ett trykk på 49 kr-boksen bytter valget. På mobil står betalingen under boksene, og alt får plass uten å rulle.
 - Fem-logoen står øverst i vinduet i stedet for «Gå dypere» (Rune 2026-10-18).
+- Betalingsknappene viser merkene: Kort med Visa og Mastercard, Vipps-ordmerket, Apple Pay eller Google Pay, og «Sikker betaling med Stripe» under (Rune 2026-10-18). Merkene er fra Simple Icons (CC0); Vipps er skrevet som ordmerke til den offisielle logoen kommer med Vipps-avtalen.
 - Betaling er ikke koblet til ennå: i forhåndsvisningen åpner alle betalingsvalgene rapporten gratis via forbereder-animasjonen (#opening). Vipps krever egen avtale eller støtte i betalingsløsningen før lansering.
