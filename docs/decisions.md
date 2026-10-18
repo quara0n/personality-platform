@@ -483,3 +483,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Betaling er ikke koblet til ennå: i forhåndsvisningen åpner alle betalingsvalgene rapporten gratis. Vipps krever egen avtale eller støtte i betalingsløsningen før lansering.
 - Rune 2026-10-18: åpningsanimasjonen spilles når man trykker på Fordypning-knappen, før kjøpsvalget, og ikke etter betaling (den som trykker Kort eller Vipps har allerede bestemt seg). To versjoner: «Fordypning + tilpasset» (apricot-biten først, «Tilpasset deg», egne linjer) spilles fra alle Fordypning-knapper fordi den er forhåndsvalgt; den opprinnelige for Fordypningsrapporten spilles fra 49 kr-knappen på «Se alt som er med», som også åpner kjøpsvalget med 49 kr valgt. Gamle #opening-lenker går rett til rapporten.
 - Hvert rapportkort i kjøpsvalget har en «+» (fasett-edelstenen) som folder ut alt rapporten inneholder (Rune 2026-10-18).
+
+## SEO-grunnmur: /no for norsk, metadata, delingsbilde, robots og sitemap (2026-10-18)
+
+- Rune ba om søkemotoroptimalisering. Engelsk side ligger på `/`, norsk på `/no` (bygget lager dist/no.html; `cleanUrls` og `trailingSlash: false` i vercel.json). `/no` gir norsk språk og Norge/NOK som standard; en lagret språkvalg-preferanse går fortsatt foran. Relative stier fra `/no` peker til roten, så samme filer brukes.
+- Hver side har søkeordtittel («Free Big Five personality test – 120 questions | Fem» / «Gratis personlighetstest (Big Five) – 120 spørsmål | Fem»), beskrivelse, canonical, hreflang (en, nb, x-default), Open Graph, Twitter-kort og JSON-LD (WebSite og Organization «Fem»). Alt lages i scripts/seo.js, som brukes av både build.js og serve.js.
+- `<main>` har en kort statisk introduksjon med h1 og lenke til testen, slik at delingsroboter og AI-roboter som ikke kjører JavaScript ser innhold. JavaScript erstatter den straks. Statisk bunntekst viser «Fem» (ikke «5»).
+- Delingsbilder 1200×630: app/assets/og/fem-en.png og fem-no.png (logobitene fra fem-logo-reference.png på lys bakgrunn med overskrift).
+- robots.txt (alt tillatt) og sitemap.xml (/ og /no med hreflang) lages i dist. Domenet styres av `SITE_URL` i Vercel (standard https://personality-platform-sage.vercel.app); settes når endelig domene er valgt.
