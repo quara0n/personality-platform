@@ -1963,3 +1963,9 @@ body.in-oprep{overflow:hidden}
 .d-legal-links{display:grid;gap:14px;margin:26px 0 30px}
 .d-legal-card{display:block;padding:20px 22px;background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:var(--box-shadow);color:var(--title);text-decoration:none}
 .d-legal-card:hover{background:var(--card-hover)}.d-legal-card b{display:block;font:400 24px/1.2 Georgia,serif;margin-bottom:6px}.d-legal-card span{color:var(--muted,#53667c);font-size:16px;line-height:1.5}
+/* The pinwheel logo to the left of the wordmark (Rune 2026-10-18: «Ønsker logoen til venstre for kaleido»). */
+.brand-mark{display:block;flex:none;background:url('assets/design/logo-mark.webp') center/contain no-repeat;width:54px;height:54px}
+.brand,.footer-brand,.d-signin-step-brand,.d-osheet-brand{display:flex;align-items:center;gap:10px}
+.footer-brand .brand-mark{width:44px;height:44px}.d-signin-step-brand .brand-mark{width:62px;height:62px}.d-osheet-brand .brand-mark{width:42px;height:42px}
+@media(max-width:700px){.brand .brand-mark{width:42px;height:42px}.brand{gap:8px}.d-signin-step-brand .brand-mark{width:52px;height:52px}.d-osheet-brand .brand-mark{width:36px;height:36px}}
+.footer-brand>span.brand-mark{display:block}
