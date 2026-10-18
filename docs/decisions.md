@@ -549,3 +549,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Begge nivåene åpner rapporten på Oversikt (79 kr hoppet før rett til kapittel 3).
 - 49 kr-rapporten har arbeidsliv, hverdagsliv og relasjoner med trekkortene og ukeplanen, men ikke de tilpassede spørsmålene i kapittel 3 og 4 eller AI-partneren. Der spørsmålene ville stått, forklarer et kort hva «Fordypning + tilpasset» gir. Kjøpskortene sier det samme («Tilpassede spørsmål og AI-partner» / «Uten tilpassede spørsmål og AI-partner»). Valget huskes i nettleseren til betaling er koblet til; uten valg (forhåndsvisning, eksempelrapport) vises alt.
 - Rune: testen skal stå som «10 minutter» (forsiden, Google-teksten og delingsbildene).
+
+## 2026-10-18 – Fasetterte grafer og rolig bevegelse
+
+- Runes nye grafdesign: stolpene får trekkets farge som en lys-til-dyp gradient med papirfasetter (trekanter) oppå, og den marineblå prikken. Gjelder gratisprofilen, rapportens stolper og forsiden (forsiden bruker nå trekkfargene og har prikk). Ekstroversjon følger samme mønster med egen farge.
+- Rolig, levende bevegelse: fasettene i stolpene glir sakte, et svakt lysskjær går over dem av og til, og logobitene vugger litt. Alt stopper når brukeren har valgt redusert bevegelse.
