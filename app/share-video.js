@@ -157,6 +157,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     button: site || 'Kaleido',
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
+    tagline: tr('See every side of you.', 'Se alle sidene dine.'),
     ruleId: `share-video-v1/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}`
   };
 }
@@ -259,7 +260,7 @@ function brush(ctx, x1, x2, y, color, k, alpha = 1) {
   ctx.restore();
 }
 
-function footer(ctx, imgs, a) {
+function footer(ctx, imgs, a, tagline) {
   if (a <= 0) return;
   ctx.save(); ctx.globalAlpha = a;
   const mark = imgs.wordmark;
@@ -274,6 +275,8 @@ function footer(ctx, imgs, a) {
     ctx.fillText('Kaleido', x + 80, H - 148);
   }
   ctx.restore();
+  // The slogan under the name gives «Kaleido» something to hold on to (Rune 2026-10-18).
+  if (tagline) text(ctx, tagline, H - 62, {size: 34, font: SANS, color: MUTED, alpha: a});
 }
 
 // Scene lengths in seconds, on the beat of the song (120 BPM, 0.5 s per beat); each content scene
@@ -383,6 +386,7 @@ const scenes = {
     ctx.save(); ctx.globalAlpha = k * (1 - r);
     logo(ctx, imgs, W / 2, 700 - 240 * r, .95, span(lt, -.1, .8), span(lt, .2, 1), null, i => easeOutBack(span(lt, pieces[i] - start - .05, pieces[i] - start + .2)));
     ctx.restore();
+    text(ctx, s.tagline.toUpperCase(), 1000, {size: 36, font: SANS, weight: '700', color: '#d9764a', alpha: k * ease(span(lt, .2, .7)), spacing: 4});
     text(ctx, s.end, 1150, {size: 84, alpha: k, maxLines: 2, lh: 1.1, max: W - 100});
     text(ctx, s.cta, 1330, {size: 54, font: SANS, alpha: k});
     pill(ctx, s.button, 1470, k * ease(span(lt, .3, .8)));
@@ -423,7 +427,7 @@ export function drawFrame(ctx, t, s, imgs) {
     if (a > 0) scenes[sc.id](ctx, t - sc.start, sc.end - sc.start, a, s, imgs);
   }
   const closer = at('closer');
-  footer(ctx, imgs, t > name.start + .1 && t < closer.end ? Math.min(ease(span(t, name.start + .1, name.start + .7)), 1 - span(t, closer.end - .4, closer.end)) : 0);
+  footer(ctx, imgs, t > name.start + .1 && t < closer.end ? Math.min(ease(span(t, name.start + .1, name.start + .7)), 1 - span(t, closer.end - .4, closer.end)) : 0, s.tagline);
 }
 // A button-like address on the end card. A video cannot hold a link, so the address is what people type or search for.
 function pill(ctx, label, y, a, scale = 1) {

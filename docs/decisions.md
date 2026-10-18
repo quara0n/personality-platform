@@ -549,3 +549,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Begge nivåene åpner rapporten på Oversikt (79 kr hoppet før rett til kapittel 3).
 - 49 kr-rapporten har arbeidsliv, hverdagsliv og relasjoner med trekkortene og ukeplanen, men ikke de tilpassede spørsmålene i kapittel 3 og 4 eller AI-partneren. Der spørsmålene ville stått, forklarer et kort hva «Fordypning + tilpasset» gir. Kjøpskortene sier det samme («Tilpassede spørsmål og AI-partner» / «Uten tilpassede spørsmål og AI-partner»). Valget huskes i nettleseren til betaling er koblet til; uten valg (forhåndsvisning, eksempelrapport) vises alt.
 - Rune: testen skal stå som «10 minutter» (forsiden, Google-teksten og delingsbildene).
+
+## 2026-10-18 – Slagord
+
+- Rune valgte to slagord som gir navnet Kaleido noe å feste seg ved: «Se alle sidene dine.» / «See every side of you.» og «Se mønsteret ditt.» / «See your pattern.»
+- Forsiden: «Se alle sidene dine.» står øverst over «Ingen boks. Bare deg.» (erstatter «Kjenn deg selv bedre»), og «Se mønsteret ditt.» står over «Nysgjerrig på hvem du er?» nederst.
+- Delevideoen: «Se alle sidene dine.» står under Kaleido-ordmerket i bunnteksten og over spørsmålet på sluttkortet.
