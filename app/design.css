@@ -1308,7 +1308,6 @@ details.d-ctx-more>div{padding:0}
 .d-career-deep>summary::-webkit-details-marker{display:none}
 .d-career-deep-title{font:400 26px/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--title);max-width:24ch;text-wrap:balance}
 .d-career-deep-art{display:block;width:100%;max-width:300px;height:auto}
-.d-career-deep[open] .d-career-deep-art{max-width:150px}
 .d-career .d-career-plus{margin:0}
 .d-career-deep-body{padding:0 22px 14px}
 .d-career-deep-body>.d-career-sec:first-child{margin-top:4px}
@@ -1856,3 +1855,14 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-myanswers li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--box-border);font-size:15px}
 .d-myanswers-a{flex:none;max-width:45%;text-align:right;color:var(--title);font-weight:600}
 @media(max-width:560px){.d-myanswers li{flex-direction:column;gap:2px}.d-myanswers-a{max-width:none;text-align:left}}
+
+/* The sections behind «How does this connect with your traits?» as a carousel at every width, inside the card (Rune 2026-10-18). */
+.d-career-deep .d-deep-carousel{margin:4px -22px 12px}
+.d-career-deep .d-deep-carousel .d-fdots{display:flex;margin:0 0 0 -8px}
+.d-career-deep .d-deep-carousel .d-jcarousel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 22px 10px}
+.d-deep-slides{display:flex;gap:12px;padding:4px 22px 10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scroll-padding-inline:22px;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch}
+.d-deep-slides::-webkit-scrollbar{display:none}
+.d-deep-slides>.d-career-sec{flex:0 0 min(86%,560px);margin:0!important;padding:18px 18px 14px;scroll-snap-align:start;border:1px solid var(--box-border);border-radius:var(--box-radius);background:#fff;box-shadow:var(--box-shadow)}
+.d-deep-slides>.d-career-sec>h4{font-size:21px}
+.d-career-deep[open] .d-career-deep-art{max-width:200px}
+@media print{.d-career-deep .d-deep-carousel .d-jcarousel-top{display:none!important}.d-deep-slides{display:block;overflow:visible;padding:0}.d-deep-slides>.d-career-sec{margin:14px 0!important;box-shadow:none}}
