@@ -1,7 +1,7 @@
 // Swipeable card rows with a dot toggle on top (Rune, 2026-10-17): the facet cards in the traits chapter and
 // the tailored chapters' result cards. Phones and portrait tablets swipe; wider screens show a grid (design.css).
 // Each [data-fcarousel] holds .d-fdot buttons and a .d-fslides track; it is safe to call again after a re-render.
-export function initFacetCarousels(root){const still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;root.querySelectorAll('[data-fcarousel]').forEach(box=>{if(box.dataset.ready)return;box.dataset.ready='1';const track=box.querySelector('.d-fslides'),cards=[...track.children],dots=[...box.querySelectorAll('.d-fdot')];let at=-1,raf=0;
+export function initFacetCarousels(root){const still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;root.querySelectorAll('[data-fcarousel]').forEach(box=>{if(box.dataset.ready)return;box.dataset.ready='1';const track=box.querySelector('.d-fslides'),cards=[...track.children].filter(c=>!c.hasAttribute('data-noslide')),dots=[...box.querySelectorAll('.d-fdot')];let at=-1,raf=0;
   const mark=i=>{if(i===at)return;at=i;dots.forEach((b,k)=>k===i?b.setAttribute('aria-current','true'):b.removeAttribute('aria-current'));};
   const near=()=>{const x=track.scrollLeft;let best=0;cards.forEach((c,k)=>{if(Math.abs(c.offsetLeft-track.offsetLeft-x)<Math.abs(cards[best].offsetLeft-track.offsetLeft-x))best=k;});return track.scrollLeft+track.clientWidth>=track.scrollWidth-2?cards.length-1:best;};
   const go=i=>{i=Math.max(0,Math.min(cards.length-1,i));track.scrollTo({left:cards[i].offsetLeft-track.offsetLeft,behavior:still()?'auto':'smooth'});mark(i);};
