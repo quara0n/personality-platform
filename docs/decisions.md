@@ -515,3 +515,11 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Ordmerket står alene i topplinjen, bunnteksten, innloggingssteget og kjøpsarket, og nederst i delingsvideoen. Pinwheel-logoen står ikke lenger ved siden av, siden ordmerket har sine egne fasetter. Pinwheel-logoen er fortsatt app-ikon/favikon, lasteanimasjon og trekknavigasjon.
 - Delingsbildene (app/assets/og/kaleido-*.png) er laget på nytt med ordmerket. Overskriften er fortsatt Georgia.
 - Denne oppføringen erstatter punktet om at ordmerket er live Georgia-tekst i oppføringen over.
+
+## 2026-10-18 – Personvernerklæring og brukervilkår
+
+- Rune: «Sett meg som ansvarlig da på gdpr etc» og «Skriv det sånn at jeg personlig ikke vil lide noe av dette i framtiden». Han driver som ENK foreløpig og oppretter AS hvis tjenesten tar av.
+- Ny side «Juridisk» (`#legal`) med to kort: personvernerklæring (`#privacy`) og brukervilkår (`#terms`). Den nås fra bunnteksten («Legal»/«Juridisk»). «Personvern» er tatt ut av toppmenyen, slik Rune ba om at det juridiske skal ligge i en egen del man trykker seg inn på.
+- Personvernerklæringen erstatter den gamle teksten om at svarene aldri forlater nettleseren, som ikke lenger stemte med innlogging (Supabase) og AI-skriving av de tilpassede kapitlene (Anthropic). Den beskriver hva som lagres, rettslig grunnlag, databehandlere og overføring til USA, sikkerhet, rettigheter, aldersgrense 16 år og at resultatene ikke brukes til reklame eller automatiserte avgjørelser.
+- Brukervilkårene sier at Kaleido er selvrefleksjon og ikke diagnose eller rådgivning, forbyr bruk til å vurdere andre (f.eks. jobbsøkere), beskriver engangskjøp og angrerett (angrerettloven § 22 bokstav n), begrenser ansvar så langt loven tillater og lar ufravikelige forbrukerrettigheter stå.
+- Navn, organisasjonsnummer og kontaktadresse står i `CONTROLLER` i app/privacy-copy.js og mangler fortsatt; sidene sier at de kommer. Se docs/personvern.md for hva som gjenstår.
