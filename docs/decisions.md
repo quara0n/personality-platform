@@ -503,7 +503,15 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune har valgt «Kaleido» som produktnavn, inspirert av det kaleidoskopaktige logomerket med de fem trekantene. «Fem» (arbeidsnavnet) og «Cinko» ble vurdert først; «Cinko» ble forkastet samme dag.
 - Navnet står overalt brukeren ser det: sidetitler, ordmerket i topp og bunn, innloggingssiden, kjøpsvalget, e-posttekst, filnavn ved nedlasting (kaleido-profile/kaleido-profil, kaleido-report/kaleido-rapport, kaleido-answers.json), delingsvideoens sluttkort, og SEO (titler, og:site_name, JSON-LD).
 - Domenet er kaleidotest.com (Rune 2026-10-18; kaleido.com og kaleidoapp.com var tatt). `SITE_URL` har kaleidotest.com som standard og kan fortsatt overstyres i Vercel. bigfive.no er foreslått som norsk viderekoblingsadresse.
-- Ordmerket står i samme skrift som før: Georgia (live tekst, `.brand b` i app/design.css; Times New Roman som reserve). Logomerket med de fem trekantene er uendret.
+- Ordmerket stod først i samme skrift som før (Georgia, live tekst); samme dag erstattet av Runes nye ordmerke, se neste oppføring. Logomerket med de fem trekantene er uendret.
 - Delingsbildene heter nå app/assets/og/kaleido-en.png og kaleido-no.png og lages av scripts/og-images.cjs (krever at Georgia er installert).
 - Ordet «fem» (tallet) er ikke endret, f.eks. «Fem trekk. Din kombinasjon.» og «dine fem trekk». Interne nøkler (localStorage/sessionStorage `fem-…`, `window.FEM_CONFIG`, svarfilformatet `fem-answers-v1`) og fem-logo-reference.png er beholdt, så lagrede data og svarfiler fortsatt virker.
 - Eldre oppføringer i denne loggen og historiske notater (verification.md, docs/norms/overlevering-codex.md, research) beholder «Fem» som historikk. app/assets/fem-logo-reference.png er designreferansen med det gamle ordmerket; den vises ikke som ordmerke i appen.
+
+## 2026-10-18 – Nytt ordmerke for Kaleido
+
+- Rune valgte et nytt ordmerke («Let use that. Put it in»): marineblå serif «Kaleido» der K-ens armer er brettede trekanter (aprikos og himmelblå), i-prikken er en blå diamant og o-en har en sandfarget fasett.
+- Ordmerket er et bilde: app/assets/design/kaleido-wordmark.webp (562×150, brukes i appen og videoen) og kaleido-wordmark.png (1124×300, kilde for delingsbildene). Bakgrunnen fra Runes JPG er fjernet og bildet beskåret. Runes original er en JPG; en vektorfil (SVG) bør erstatte den når den finnes.
+- Ordmerket står alene i topplinjen, bunnteksten, innloggingssteget og kjøpsarket, og nederst i delingsvideoen. Pinwheel-logoen står ikke lenger ved siden av, siden ordmerket har sine egne fasetter. Pinwheel-logoen er fortsatt app-ikon/favikon, lasteanimasjon og trekknavigasjon.
+- Delingsbildene (app/assets/og/kaleido-*.png) er laget på nytt med ordmerket. Overskriften er fortsatt Georgia.
+- Denne oppføringen erstatter punktet om at ordmerket er live Georgia-tekst i oppføringen over.

@@ -2,14 +2,12 @@
 :root{--title:#0c1742;--sky:#e6f0f8;--warm:#fdeee5}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Logo: textured mark (assets/design/logo-mark.webp) beside a live Georgia wordmark */
+/* Logo: the «Kaleido» wordmark image (assets/design/kaleido-wordmark.webp); the pinwheel mark stays as app icon and loading animation */
 .brand{display:flex!important;align-items:center;gap:12px;width:auto!important;height:62px!important;overflow:visible!important;text-decoration:none}
-.brand .mark{display:block;flex:none;background:url('assets/design/logo-mark.webp') center/contain no-repeat!important;mix-blend-mode:normal!important;transform:none!important;width:56px!important;height:56px!important}
-.brand b{display:inline!important;font:400 46px/1 Georgia,'Times New Roman',serif;letter-spacing:-.04em;color:var(--title)}
+.brand .wordmark,.footer-brand .wordmark,.d-signin-step-brand .wordmark,.d-osheet-brand .wordmark{display:block;flex:none;width:auto;max-width:none}.brand .wordmark{height:50px}
 .footer-brand{display:flex!important;align-items:center;gap:10px;width:auto!important;height:52px!important;overflow:visible!important}
-.footer-brand .mark{display:block;flex:none;background:url('assets/design/logo-mark.webp') center/contain no-repeat!important;mix-blend-mode:normal!important;transform:none!important;width:44px!important;height:44px!important}
-.footer-brand b{display:inline!important;font:400 34px/1 Georgia,'Times New Roman',serif;letter-spacing:-.04em;color:var(--title)}
-@media(max-width:700px){.brand{height:49px!important;gap:9px}.brand .mark{width:44px!important;height:44px!important}.brand b{font-size:36px}}
+.footer-brand .wordmark{height:40px}
+@media(max-width:700px){.brand{height:49px!important}.brand .wordmark{height:40px}}
 
 /* Header while answering: only "Exit the test", as in the design */
 .d-exit{display:none}
@@ -1035,8 +1033,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 /* Sign-in step after question 120, copied from Rune's chosen mockup (2026-10-16): logo + wordmark, one Google button, quiet skip */
 .d-signin-step{text-align:center;padding-top:64px}
 .d-signin-step-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 26px}
-.d-signin-step-logo{display:block;width:52px;height:52px;background:url('assets/design/logo-mark.webp') center/contain no-repeat}
-.d-signin-step-brand b{font:400 44px/1 Georgia,'Times New Roman',serif;letter-spacing:-.04em;color:var(--title)}
+.d-signin-step-brand .wordmark{height:60px}
 .d-signin-step-kicker{margin:0 0 14px;font-size:17px;color:#4f6c8a}
 .d-signin-step h1{font-size:clamp(40px,4.4vw,60px);margin:0 auto 18px}
 .d-signin-step .lead{max-width:560px;margin:0 auto;font-size:20px;color:#4f6c8a}
@@ -1050,7 +1047,7 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-signin-optional a{color:inherit;text-decoration:none}
 .d-signin-optional a:hover{text-decoration:underline;text-underline-offset:3px}
 .d-signin-privacy{display:inline-block;margin:96px 0 10px;font-size:17px;color:#4f6c8a;text-underline-offset:4px}
-@media(max-width:700px){.d-signin-step{padding-top:40px}.d-signin-step-brand{gap:10px;margin-bottom:22px}.d-signin-step-logo{width:44px;height:44px}.d-signin-step-brand b{font-size:38px}.d-signin-step h1{font-size:40px}.d-signin-step .lead{font-size:17px}.d-signin-step .d-signin{margin:30px auto 26px}.d-signin-step .d-signin-btn{font-size:17px}.d-signin-privacy{margin-top:56px}}
+@media(max-width:700px){.d-signin-step{padding-top:40px}.d-signin-step-brand{margin-bottom:22px}.d-signin-step-brand .wordmark{height:50px}.d-signin-step h1{font-size:40px}.d-signin-step .lead{font-size:17px}.d-signin-step .d-signin{margin:30px auto 26px}.d-signin-step .d-signin-btn{font-size:17px}.d-signin-privacy{margin-top:56px}}
 
 /* Share button on the video itself (TikTok/Instagram style), always visible. */
 .d-share-frame{position:relative}
@@ -1901,9 +1898,8 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 }
 /* The Kaleido logo at the top of the offer sheet (Rune 2026-10-18). */
 .d-osheet-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 6px}
-.d-osheet-logo{display:block;width:40px;height:40px;background:url('assets/design/logo-mark.webp') center/contain no-repeat}
-.d-osheet-brand b{font:400 30px/1 Georgia,serif;letter-spacing:-.03em;color:var(--title)}
-@media(max-width:700px){.d-osheet-brand{margin-bottom:4px}.d-osheet-logo{width:32px;height:32px}.d-osheet-brand b{font-size:25px}}
+.d-osheet-brand .wordmark{height:40px}
+@media(max-width:700px){.d-osheet-brand{margin-bottom:4px}.d-osheet-brand .wordmark{height:34px}}
 /* Payment brand marks on the methods (Rune 2026-10-18). */
 .d-opay-btn .d-paymark{width:auto;height:22px}
 .d-opay-btn.is-apple .d-paymark,.d-opay-btn.is-google .d-paymark{height:30px;margin:-4px 0}
