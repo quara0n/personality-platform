@@ -10,7 +10,7 @@ export const pages={
     skip:'Skip to content',
     nav:'<a href="#method">The science</a><a href="#privacy">Privacy</a><a class="small-button" href="#test">Take the test <span aria-hidden="true">→</span></a>',
     main:'<article class="page narrow seo-intro"><p class="eyebrow">Kaleido</p><h1>A free Big Five personality test</h1><p>Answer 120 research-based questions (IPIP-NEO-120) in about 15 minutes. You get a free profile of the five traits – openness, conscientiousness, extraversion, agreeableness and emotional reactivity – and can choose an optional in-depth report on work and everyday life.</p><a class="button" href="#test">Start the test <span aria-hidden="true">→</span></a></article>',
-    footer:'<a class="footer-brand" href="#home">Kaleido <span>Your personality, in context.</span></a><div><a href="no">Norsk</a><a href="#method">Method & sources</a><a href="#privacy">Privacy</a><button id="clear-data" class="text-button">Clear my answers</button></div><p>Research-based self-reflection.</p>',
+    footer:'<a class="footer-brand" href="#home" aria-label="Kaleido"><img class="wordmark" src="assets/design/kaleido-wordmark.webp" alt="" width="562" height="150"> <span>Your personality, in context.</span></a><div><a href="no">Norsk</a><a href="#method">Method & sources</a><a href="#privacy">Privacy</a><button id="clear-data" class="text-button">Clear my answers</button></div><p>Research-based self-reflection.</p>',
     noscript:'This assessment needs JavaScript to calculate your answers in your browser.'},
   no:{path:'/no',file:'no.html',lang:'nb',locale:'nb_NO',alt:'en_US',image:'assets/og/kaleido-no.png',
     title:'Gratis personlighetstest (Big Five) – 120 spørsmål | Kaleido',
@@ -19,7 +19,7 @@ export const pages={
     skip:'Hopp til innhold',
     nav:'<a href="#method">Faglig grunnlag</a><a href="#privacy">Personvern</a><a class="small-button" href="#test">Ta testen <span aria-hidden="true">→</span></a>',
     main:'<article class="page narrow seo-intro"><p class="eyebrow">Kaleido</p><h1>Gratis personlighetstest basert på Big Five</h1><p>Svar på 120 forskningsbaserte spørsmål (IPIP-NEO-120) på rundt 15 minutter. Du får en gratis profil av de fem trekkene – åpenhet, planmessighet, ekstroversjon, medmenneskelighet og følelsesmessig reaktivitet – og kan velge en fordypningsrapport om arbeidsliv og hverdagsliv.</p><a class="button" href="#test">Start testen <span aria-hidden="true">→</span></a></article>',
-    footer:'<a class="footer-brand" href="#home">Kaleido <span>Personligheten din, i sammenheng.</span></a><div><a href="./">English</a><a href="#method">Metode og kilder</a><a href="#privacy">Personvern</a><button id="clear-data" class="text-button">Slett svarene mine</button></div><p>Forskningsbasert selvrefleksjon.</p>',
+    footer:'<a class="footer-brand" href="#home" aria-label="Kaleido"><img class="wordmark" src="assets/design/kaleido-wordmark.webp" alt="" width="562" height="150"> <span>Personligheten din, i sammenheng.</span></a><div><a href="./">English</a><a href="#method">Metode og kilder</a><a href="#privacy">Personvern</a><button id="clear-data" class="text-button">Slett svarene mine</button></div><p>Forskningsbasert selvrefleksjon.</p>',
     noscript:'Testen trenger JavaScript for å regne ut svarene dine i nettleseren.'}
 };
 const url=(p,site)=>site+(p==='/'?'/':p);

@@ -182,7 +182,7 @@ export const PIECES = Object.keys(LOGO);
 
 export function loadPieces(base = 'assets/design/') {
   // Trait icons and the logo both use the logo pieces (Rune, 2026-10-16); 'sand' is the ivory piece.
-  const files = [...[...PIECES, 'sand'].map(p => [p, `logo-piece-${p === 'sand' ? 'ivory' : p}.webp`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`])];
+  const files = [...[...PIECES, 'sand'].map(p => [p, `logo-piece-${p === 'sand' ? 'ivory' : p}.webp`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`]), ['wordmark', 'kaleido-wordmark.webp']];
   return Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
 }
 
@@ -262,10 +262,16 @@ function brush(ctx, x1, x2, y, color, k, alpha = 1) {
 function footer(ctx, imgs, a) {
   if (a <= 0) return;
   ctx.save(); ctx.globalAlpha = a;
-  ctx.fillStyle = INK; ctx.font = `400 52px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-  const x = W / 2 - (80 + ctx.measureText('Kaleido').width) / 2; // mark and name centred as one unit
-  logo(ctx, imgs, x + 28, H - 150, .2, 1, 1);
-  ctx.fillText('Kaleido', x + 80, H - 148);
+  const mark = imgs.wordmark;
+  if (mark) { // the «Kaleido» wordmark image, centred (Rune 2026-10-18)
+    const h = 64, w = h * mark.width / mark.height;
+    ctx.drawImage(mark, W / 2 - w / 2, H - 150 - h / 2, w, h);
+  } else { // fallback while the image is missing: pinwheel and name in Georgia
+    ctx.fillStyle = INK; ctx.font = `400 52px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const x = W / 2 - (80 + ctx.measureText('Kaleido').width) / 2;
+    logo(ctx, imgs, x + 28, H - 150, .2, 1, 1);
+    ctx.fillText('Kaleido', x + 80, H - 148);
+  }
   ctx.restore();
 }
 
