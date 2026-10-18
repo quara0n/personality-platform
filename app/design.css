@@ -1917,3 +1917,18 @@ footer select,header.menu-open .locale-bar select,.d-account-page select{border:
 .d-opay-btn.is-apple .d-paymark,.d-opay-btn.is-google .d-paymark{height:56px;margin:0 0 0 -8px}
 @media(max-width:700px){.d-opay-btn{height:42px}.d-opay-btn.is-apple .d-paymark,.d-opay-btn.is-google .d-paymark{height:50px}}
 @media(max-height:700px){.d-opay-h{display:none}.d-opay .d-osheet-terms{margin:0}}
+/* Opening animation before the purchase sheet (Rune 2026-10-18): a full-screen layer over the page, then the sheet. */
+.d-oprep{position:fixed;inset:0;z-index:1000;overflow:auto;background:var(--ivory)}
+.d-oprep .d-loading{min-height:100%}
+body.in-oprep{overflow:hidden}
+.d-opening .d-tailor-badge{margin:0 0 12px;opacity:0;animation:d-fade .6s ease .3s forwards}
+.d-opening.is-plus .d-opening-track span{background:linear-gradient(90deg,#f4a57f,#e98b63 45%,#1f3f74)}
+/* «+» on each report card opens everything it includes. */
+.d-otier-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.d-otier-more{display:grid;place-items:center;padding:0;border:0;background:none;cursor:pointer;border-radius:50%}
+.d-otier-more .d-gem-plus{width:32px;height:32px}
+.d-otier-more:focus-visible{outline:2px solid #a44e24;outline-offset:2px}
+.d-otier.is-open .d-gem-plus::after{transform:translate(-50%,-50%) rotate(0)}
+.d-otier-all{grid-column:2/-1;margin:6px 0 2px!important;padding-top:8px!important;border-top:1px solid var(--box-border);gap:6px!important}
+.d-otier-all[hidden]{display:none}
+@media(max-width:700px){.d-otier-more .d-gem-plus{width:28px;height:28px}.d-otier-all{grid-column:1/-1}}
