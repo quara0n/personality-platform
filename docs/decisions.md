@@ -529,3 +529,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: «Ønsker logoen til venstre for kaleido». Pinwheel-logoen (logo-mark.webp) står nå til venstre for ordmerket i topplinjen, bunnteksten, innloggingen, kjøpsarket og delingsvideoen. Delingsbildene har allerede logoen stort til venstre og er uendret.
 - Rune: «Må ha en customerservice@Kaleido.com». Kaleido.com eies ikke av oss; Rune valgte deretter support@kaleidotest.com (kortere) på et beslutningskort, brukt som kontaktadresse i personvernerklæringen og vilkårene. E-posten må settes opp hos en leverandør før den virker.
+
+## 2026-10-18 – Metodesiden forklarer persentiler også før testen
+
+- Metodesiden sa at stolpen viser gjennomsnitt fra 1 til 5 og «ikke er en persentil» når den ble åpnet uten en rapport, selv om alle resultater vises som persentiler. Den bruker nå persentilforklaringen så lenge normtabellen er lastet. Funnet under Runes gjennomgang av appen.
