@@ -2010,3 +2010,10 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 @keyframes k-drift{0%,100%{translate:0 0;rotate:0deg}33%{translate:0 -2px;rotate:-3deg}66%{translate:0 1px;rotate:2deg}}
 @keyframes k-turn{0%,100%{rotate:0deg;scale:1}50%{rotate:4deg;scale:1.02}}
 @media print{.d-track>span::before,.d-track>span::after,.d-pct-track>span::after,.d-mini>span::after{animation:none}}
+/* «Play with sound» over the first frame when the browser blocked sound (after the sign-in redirect) */
+.d-share-start{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:0;border:0;background:none;color:var(--title);font-weight:700;font-size:17px;cursor:pointer}
+.d-share-start[hidden]{display:none}
+.d-share-start-ico{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#15305c;box-shadow:0 10px 30px rgba(16,39,71,.3)}
+.d-share-start-ico svg{width:34px;height:34px;margin-left:5px;fill:#fff}
+.d-share-start:hover .d-share-start-ico{background:#1f4176}
+.d-share-start:not([hidden])~.d-share-sound{display:none}

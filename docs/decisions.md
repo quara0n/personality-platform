@@ -574,3 +574,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Prisene ligger fast på serveren (49 kr / $4.99, 79 kr / $7.99). Den som har 49 kr-rapporten, betaler mellomlegget (30 kr / $3.00) for «Fordypning + tilpasset».
 - Kjøpet lagres i Supabase (tabellen purchases) først når serveren har lest en betalt økt fra Stripe. Rapporten krever kjøp når betaling er slått på; eksempelrapporten er åpen. Uten kjøp åpnes gratisprofilen med kjøpsvalget.
 - Først testmodus. Livebetaling venter på Runes ja.
+
+## 2026-10-19 – Profilvideoen starter aldri dempet
+
+- Rune: videoen startet fortsatt uten lyd på PC. Årsaken er innloggingen rett før resultatene: Google-innloggingen laster siden på nytt, og etter en ny sidelasting uten trykk tillater ikke nettleseren lyd. Da venter videovinduet nå på første bilde med en stor «Spill av med lyd»-knapp i stedet for å spille dempet; ett trykk starter videoen med musikk fra begynnelsen. Når lyden er tillatt (ingen omlasting), starter den med lyd som før.
