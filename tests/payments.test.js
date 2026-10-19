@@ -59,6 +59,7 @@ test('checkout needs a signed-in user and sets the price on the server', async (
   assert.equal(body.get('success_url'), 'https://kaleidotest.com/no?paid={CHECKOUT_SESSION_ID}#report');
   assert.match(body.get('custom_text[submit][message]'), /angreretten/);
   assert.equal(body.get('payment_method_types[0]'), null);
+  assert.equal(body.get('managed_payments[enabled]'), 'false');
 });
 
 test('an owner of the 49 kr report pays the difference, and an owner of «plus» is not charged again', async () => {
