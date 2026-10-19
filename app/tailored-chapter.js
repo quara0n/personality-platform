@@ -185,9 +185,11 @@ export function createTailoredChapter(cfg) {
     pending = aiKey; message = '';
     section = rerender(section, ctx);
     try {
-      const r = await fetch('api/career-report', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(built.request)});
+      const token = await import('./account.js').then(m => m.accessToken()).catch(() => '');
+      const r = await fetch('api/career-report', {method: 'POST', headers: {'Content-Type': 'application/json', ...(token ? {Authorization: `Bearer ${token}`} : {})}, body: JSON.stringify(built.request)});
       const data = await r.json().catch(() => ({}));
       if (r.status === 503 || r.status === 404 || r.status === 405) message = tr('AI writing is not switched on here yet (the server needs an API key). You are seeing the pre-written text.', 'AI-skriving er ikke slått på her ennå (serveren mangler API-nøkkel). Du ser den ferdigskrevne teksten.');
+      else if (r.status === 401 || r.status === 402) message = tr('AI writing is part of the tailored report. You are seeing the pre-written text.', 'AI-skriving er en del av den tilpassede rapporten. Du ser den ferdigskrevne teksten.');
       else if (!r.ok || !Array.isArray(data.sections)) message = tr('AI writing failed. You are seeing the pre-written text.', 'AI-skrivingen feilet. Du ser den ferdigskrevne teksten.');
       else store({...state(), ai: {key: aiKey, sections: data.sections, model: data.model}, view: 'ai'});
     } catch {
