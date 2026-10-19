@@ -14,6 +14,7 @@ function fake({owned = [], session = {}, refuseVipps = false} = {}) {
     const ok = body => ({ok: true, status: 200, json: async () => body, text: async () => JSON.stringify(body)});
     if (url.endsWith('/auth/v1/user')) return init.headers.Authorization === 'Bearer good' ? ok({id: USER, email: 'a@b.no'}) : {ok: false, status: 401, json: async () => ({})};
     if (url.includes('/rest/v1/purchases?select')) return ok(owned.map(tier => ({tier})));
+    if (url.includes('/rest/v1/purchases?payment_intent')) return {ok: true, status: 204, json: async () => null, text: async () => ''};
     if (url.includes('/rest/v1/purchases?on_conflict')) return {ok: true, status: 201, json: async () => null, text: async () => ''};
     if (url.endsWith('/v1/checkout/sessions')) {
       if (refuseVipps && String(init.body).includes('vipps')) return {ok: false, status: 400, json: async () => ({error: {message: 'vipps not enabled'}})};
@@ -118,6 +119,22 @@ test('the webhook checks Stripe\'s signature before storing anything', async () 
   calls = fake();
   assert.equal((await handleWebhook(raw, `t=${t},v1=${sig}`, env)).status, 200);
   assert.equal(calls.filter(c => c.url.includes('on_conflict')).length, 1);
+});
+
+test('a full refund removes the purchase, and the old success link cannot bring it back', async () => {
+  const sign = raw => {const t = Math.floor(Date.now() / 1000); return `t=${t},v1=${createHmac('sha256', env.STRIPE_WEBHOOK_SECRET).update(`${t}.${raw}`).digest('hex')}`;};
+  const refund = refunded => JSON.stringify({type: 'charge.refunded', data: {object: {object: 'charge', refunded, payment_intent: 'pi_1'}}});
+  let calls = fake();
+  assert.equal((await handleWebhook(refund(true), sign(refund(true)), env)).status, 200);
+  const del = calls.find(c => c.init.method === 'DELETE');
+  assert.match(del.url, /purchases\?payment_intent=eq\.pi_1$/);
+  calls = fake();
+  await handleWebhook(refund(false), sign(refund(false)), env);
+  assert.ok(!calls.some(c => c.init.method === 'DELETE'), 'a partial refund keeps the report');
+  calls = fake({session: paid({payment_intent: {id: 'pi_1', latest_charge: {refunded: true}}})});
+  await handlePurchase({action: 'confirm', session: 'cs_test_abc'}, 'good', env);
+  assert.match(calls.find(c => c.url.includes('/v1/checkout/sessions/')).url, /expand\[\]=payment_intent\.latest_charge/);
+  assert.ok(!calls.some(c => c.url.includes('on_conflict')));
 });
 
 test('AI writing needs a «plus» purchase once payments are on', async () => {

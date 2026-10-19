@@ -578,3 +578,9 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-19 – Profilvideoen starter aldri dempet
 
 - Rune: videoen startet fortsatt uten lyd på PC. Årsaken er innloggingen rett før resultatene: Google-innloggingen laster siden på nytt, og etter en ny sidelasting uten trykk tillater ikke nettleseren lyd. Da venter videovinduet nå på første bilde med en stor «Spill av med lyd»-knapp i stedet for å spille dempet; ett trykk starter videoen med musikk fra begynnelsen. Når lyden er tillatt (ingen omlasting), starter den med lyd som før.
+
+## 2026-10-19 – Livebetaling: webhook, branding og refusjon
+
+- Rune: «Do what is needed with stripe and vercel to get it up and running». Stripes planleggingsverktøy anbefaler ferdig betalingsside (Checkout) for nettbutikk med digitale engangskjøp, som er det vi har.
+- Live-webhook til https://kaleidotest.com/api/stripe-webhook er opprettet i Stripe med `checkout.session.completed`, `checkout.session.async_payment_succeeded` og `charge.refunded`. Branding: hovedfarge #102747, aksent #f6b18d, hvit bakgrunn og mørkeblå knapp på betalingssiden.
+- En full refusjon fjerner kjøpet igjen, og den gamle suksesslenken kan ikke gjenopprette det. Delvis refusjon beholder rapporten.
