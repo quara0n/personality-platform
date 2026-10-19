@@ -27,7 +27,7 @@ Lag kapittelmaler og kildegrunnlag, knytt tolkning til resultat. Faglig gjennomg
 Ferdig når eksempeltilfeller kan spores fra svar til skår og relevant rapporttekst.
 
 ## 4. Betaling og levering
-Fastsett pris/valuta/avgifter, leverings- og tilgangsmodell. Verifiser betaling server-side og håndter repetert betalingsmelding, avbrutt kjøp og tilgang etter kjøp. Før livebetaling: samtykke til umiddelbar levering bekreftes i kvitteringen (vurder avkrysning), og pris inkl. mva. avklares.
+Stripe Checkout er bygget (2026-10-18, se docs/stripe-setup.md): faste priser på serveren, kjøp lagret i Supabase etter at serveren har lest betalt økt, webhook med signatur, rapporten krever kjøp. Gjenstår: nøkler i Vercel, test i testmodus, Vipps-tilgang hos Stripe, AI-endepunktet bak «plus», personverntekst og livebetaling etter Runes ja. Fastsett avgifter. Verifiser betaling server-side og håndter repetert betalingsmelding, avbrutt kjøp og tilgang etter kjøp. Før livebetaling: samtykke til umiddelbar levering bekreftes i kvitteringen (vurder avkrysning), og pris inkl. mva. avklares.
 Implementer PDF som lesbart dokument. Avklar lagring, sletting og nødvendig personverninformasjon for reelle brukere.
 
 ## 5. Brukertest og lanseringsgrunnlag

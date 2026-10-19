@@ -1,5 +1,34 @@
 # Stripe setup — confirmed commercial decisions
 
+## Current integration (2026-10-18)
+
+Stripe Checkout (hosted page) is built in: `lib/payments.js`, `api/purchase.js`, `api/stripe-webhook.js`,
+`supabase/migrations/20261018000000_purchases.sql`. Payments switch on when `STRIPE_SECRET_KEY` is set in Vercel.
+
+- Prices are fixed on the server (no Stripe Price objects needed): Fordypning 49 kr / $4.99, Fordypning + tilpasset
+  79 kr / $7.99, and the upgrade from 49 kr to «plus» 30 kr / $3.00. The browser only sends the tier and the market.
+- Card, Apple Pay and Google Pay come from Stripe's dynamic payment methods (switched on under Settings → Payment
+  methods). Vipps (Norway, NOK) is a private preview at Stripe: request access, then set `STRIPE_VIPPS=on`. The Vipps
+  button opens a Vipps-only page; if Stripe refuses, the normal page opens.
+- A purchase counts only after the server has read a paid Checkout Session (webhook `checkout.session.completed`
+  / `checkout.session.async_payment_succeeded`, or `confirm` when the buyer returns) and checked user, tier,
+  amount and currency. Rows are keyed by the session id, so repeats are ignored. Test purchases (`livemode=false`)
+  do not count once live keys are in.
+- Metadata holds only the Supabase user id and the tier, never answers or scores.
+- Norway: the consent to immediate delivery is shown above the pay button in Checkout (`custom_text.submit`).
+- The report (#report) needs a purchase when payments are on; #demo stays open. The AI endpoint is not yet gated
+  on the server.
+
+Vercel environment (Production and Preview): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`,
+`SUPABASE_SERVICE_ROLE_KEY` (server only, never in config.js), optional `STRIPE_VIPPS=on`; `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` are already set. Webhook endpoint: `https://kaleidotest.com/api/stripe-webhook` with the two
+events above. Test locally with `node scripts/payment-check.cjs` (browser) and `npm test` (server logic).
+
+Before live payments: Rune's go-ahead, live keys and a live webhook, receipts on in Stripe, the privacy text
+updated from «when payment is switched on», and the AI endpoint gated on «plus».
+
+## History
+
 Confirmed by Rune on 2026-10-11: one report, one-time purchase, Norway NOK 99 and USA USD 9.99, Stripe. On 2026-10-13 Rune changed the prices to NOK 49 and USD 4.99. Both work/career and everyday life are included. These are fixed market prices, not live foreign-exchange conversions.
 
 ## Current access and behavior

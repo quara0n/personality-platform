@@ -567,3 +567,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune sa ja til et eget fontpar: Source Serif 4 i overskrifter og Manrope i brødtekst og knapper. Før brukte appen Georgia og Arial, som Android ikke har (der ble det Noto Serif og Roboto), så appen så ulik ut fra enhet til enhet.
 - Fontene ligger i app/assets/fonts (SIL Open Font License), kuttet til latinske tegn med æ, ø og å; til sammen omtrent 125 KB med kursiv. Delevideoen venter på fontene før den tegner.
 - Tekststørrelsene er samlet fra 28 til en fast skala (10–22 px under overskriftene; halve piksler, 17, 19, 21 og 23 px er borte). Manrope er litt bredere enn Arial, så 17 px ble 16 px.
+
+## 2026-10-18 – Betaling med Stripe Checkout, Apple Pay, Google Pay og Vipps
+
+- Rune: «Stripe på, Google Pay, Vipps». Bygget med Stripes ferdige betalingsside (Checkout). Kort, Apple Pay og Google Pay kommer automatisk; Vipps er en lukket forhåndsversjon hos Stripe og slås på med `STRIPE_VIPPS=on` når Stripe har gitt tilgang. Vipps-knappen åpner en side med bare Vipps.
+- Prisene ligger fast på serveren (49 kr / $4.99, 79 kr / $7.99). Den som har 49 kr-rapporten, betaler mellomlegget (30 kr / $3.00) for «Fordypning + tilpasset».
+- Kjøpet lagres i Supabase (tabellen purchases) først når serveren har lest en betalt økt fra Stripe. Rapporten krever kjøp når betaling er slått på; eksempelrapporten er åpen. Uten kjøp åpnes gratisprofilen med kjøpsvalget.
+- Først testmodus. Livebetaling venter på Runes ja.
