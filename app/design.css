@@ -2017,3 +2017,11 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 .d-share-start-ico svg{width:34px;height:34px;margin-left:5px;fill:#fff}
 .d-share-start:hover .d-share-start-ico{background:#1f4176}
 .d-share-start:not([hidden])~.d-share-sound{display:none}
+.d-share-out{margin:14px 0 4px;padding:16px 18px;border:1px solid rgba(19,40,79,.14);border-radius:8px;background:#fffdf8}
+.d-share-out[hidden]{display:none}
+.d-share-out h3{margin:0 0 6px;font-size:17px;color:#13284f}
+.d-share-out .d-small{margin:0 0 10px}
+.d-share-targets{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.d-share-target{display:inline-flex;align-items:center;padding:8px 14px;border:1.5px solid #13284f;border-radius:999px;background:#fff;color:#13284f;font:inherit;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer}
+.d-share-target[data-kind="upload"]{background:#13284f;color:#fff}
+@media(hover:hover){.d-share-target:hover{filter:brightness(1.08);transform:translateY(-1px)}}

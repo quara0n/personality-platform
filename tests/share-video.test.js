@@ -114,3 +114,14 @@ test('outro lifts the five logo pieces on eighth notes from about 2 s before the
   const {pieces} = outroHits(videoScript(ds, {language: 'en', name}));
   assert.ok(Math.abs(((pieces[0] - .157) / .25) - Math.round((pieces[0] - .157) / .25)) < 1e-6);
 });
+
+test('video type prefers H.264 in MP4 over a bare MP4 that may hold VP9', async () => {
+  const {videoType} = await import('../app/share-video.js');
+  const saved = globalThis.MediaRecorder;
+  try {
+    globalThis.MediaRecorder = {isTypeSupported: t => ['video/mp4', 'video/mp4;codecs=avc1,opus', 'video/webm'].includes(t)};
+    assert.equal(videoType(true), 'video/mp4;codecs=avc1,opus');
+    globalThis.MediaRecorder = {isTypeSupported: t => t === 'video/mp4;codecs="avc1.42E01E,mp4a.40.2"'};
+    assert.equal(videoType(true), 'video/mp4;codecs="avc1.42E01E,mp4a.40.2"');
+  } finally {globalThis.MediaRecorder = saved;}
+});
