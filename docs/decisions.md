@@ -579,6 +579,13 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: videoen startet fortsatt uten lyd på PC. Årsaken er innloggingen rett før resultatene: Google-innloggingen laster siden på nytt, og etter en ny sidelasting uten trykk tillater ikke nettleseren lyd. Da venter videovinduet nå på første bilde med en stor «Spill av med lyd»-knapp i stedet for å spille dempet; ett trykk starter videoen med musikk fra begynnelsen. Når lyden er tillatt (ingen omlasting), starter den med lyd som før.
 
+## 2026-10-19 – Deling til Reels, TikTok, Messenger og e-post
+
+- Rune: «integrate share video with reels, tiktok, messenger» og e-post. Ingen av nettverkene lar en nettside legge ut video på vegne av brukeren, så Kaleido gir fila videre der det går.
+- Mobil: Del-knappen sender bare videofila til telefonens delingsmeny (Instagram Reels/Stories, TikTok, Messenger, Snapchat, WhatsApp, Mail osv.). Tekst sendes ikke med, fordi Instagram og TikTok kan falle ut av menyen på iPhone når tekst følger med. Bildeteksten («Hvordan ser din profil ut? Finn ut gratis: kaleidotest.com») kopieres i stedet til utklippstavla.
+- PC og nettlesere uten fildeling: når videoen er lagret, vises «Legg ut videoen» med knapper til Instagram, TikTok (tiktokstudio/upload) og Messenger som laster ned fila og åpner nettverkets opplastingsside, og lenkedeling via E-post (mailto), Facebook, WhatsApp, X, LinkedIn og «Kopier lenke». Lenken går til forsiden, aldri til profillenken med svarene.
+- E-post med videoen som vedlegg fra Kaleido (via support@) er ikke bygd; det krever e-posttjeneste på serveren og opplasting av videoen. Foreslått for Rune.
+
 ## 2026-10-19 – Livebetaling: webhook, branding og refusjon
 
 - Rune: «Do what is needed with stripe and vercel to get it up and running». Stripes planleggingsverktøy anbefaler ferdig betalingsside (Checkout) for nettbutikk med digitale engangskjøp, som er det vi har.
