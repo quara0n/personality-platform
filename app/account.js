@@ -140,6 +140,11 @@ export async function signOut() {
 export const paymentsOn = (c = cfg()) => enabled(c) && Boolean(c.payments);
 export const vippsOn = (c = cfg()) => paymentsOn(c) && Boolean(c.vipps);
 
+/** The signed-in user's access token, or '' (for server calls that check a purchase). */
+export async function accessToken() {
+  try { const c = await client(), {data} = await c.auth.getSession(); return data?.session?.access_token || ''; } catch { return ''; }
+}
+
 /** Calls /api/purchase as the signed-in user: 'status' → {tier}, 'checkout' → {url}, 'confirm' → {tier, paid}. */
 export async function purchase(action, body = {}) {
   const c = await client(), {data} = await c.auth.getSession(), token = data?.session?.access_token;

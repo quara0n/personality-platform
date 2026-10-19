@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHmac} from 'node:crypto';
-import {priceFor, validPaid, verifySignature, handlePurchase, handleWebhook, formEncode} from '../lib/payments.js';
+import {priceFor, validPaid, verifySignature, handlePurchase, handleWebhook, formEncode, plusGate} from '../lib/payments.js';
 
 const USER = '11111111-2222-3333-4444-555555555555';
 const env = {STRIPE_SECRET_KEY: 'sk_test_x', STRIPE_WEBHOOK_SECRET: 'whsec_x', SUPABASE_URL: 'https://sb.test', SUPABASE_ANON_KEY: 'anon', SUPABASE_SERVICE_ROLE_KEY: 'service', SITE_URL: 'https://kaleidotest.com'};
@@ -118,4 +118,14 @@ test('the webhook checks Stripe\'s signature before storing anything', async () 
   calls = fake();
   assert.equal((await handleWebhook(raw, `t=${t},v1=${sig}`, env)).status, 200);
   assert.equal(calls.filter(c => c.url.includes('on_conflict')).length, 1);
+});
+
+test('AI writing needs a «plus» purchase once payments are on', async () => {
+  assert.equal(await plusGate('', {}), null);
+  fake();
+  assert.equal((await plusGate('bad', env)).status, 401);
+  fake({owned: ['base']});
+  assert.equal((await plusGate('good', env)).status, 402);
+  fake({owned: ['plus']});
+  assert.equal(await plusGate('good', env), null);
 });
