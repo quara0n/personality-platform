@@ -17,7 +17,7 @@ import {profileName} from './profile-name.js';
 import {SONG, songPlan} from './share-music.js';
 
 export const W = 1080, H = 1920;
-const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "Georgia,'Times New Roman',serif", SANS = 'Arial,Helvetica,sans-serif';
+const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "'Source Serif 4',Georgia,'Times New Roman',serif", SANS = 'Manrope,Arial,Helvetica,sans-serif';
 const pick = (pair, language) => pair[language === 'no' ? 1 : 0];
 
 // Comparatives for "more X than N of 100".
@@ -184,7 +184,10 @@ export const PIECES = Object.keys(LOGO);
 export function loadPieces(base = 'assets/design/') {
   // Trait icons and the logo both use the logo pieces (Rune, 2026-10-16); 'sand' is the ivory piece.
   const files = [...[...PIECES, 'sand'].map(p => [p, `logo-piece-${p === 'sand' ? 'ivory' : p}.webp`]), ...PIECES.map(p => [`logo-${p}`, `logo-piece-${p}.webp`]), ['wordmark', 'kaleido-wordmark.webp']];
-  return Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
+  // The canvas only draws web fonts that are already loaded, so wait for both before the first frame.
+  const fonts = globalThis.document?.fonts ? Promise.all([`400 52px ${SERIF}`, `italic 400 40px ${SERIF}`, `400 40px ${SANS}`, `700 40px ${SANS}`].map(f => document.fonts.load(f))).catch(() => {}) : null;
+  const images = Promise.all(files.map(([p, file]) => new Promise(ok => {const img = new Image(); img.onload = () => ok([p, img]); img.onerror = () => ok([p, null]); img.src = base + file;}))).then(Object.fromEntries);
+  return fonts ? Promise.all([images, fonts]).then(([imgs]) => imgs) : images;
 }
 
 /** `t` (0..1) assembles the pieces in a staggered flight; `at` (seconds) instead lands each piece on its hit in LOGO_HITS with a small pop.
@@ -268,7 +271,7 @@ function footer(ctx, imgs, a, tagline) {
     const h = 64, w = h * mark.width / mark.height, x = W / 2 - (76 + w) / 2;
     logo(ctx, imgs, x + 30, H - 150, .21, 1, 1);
     ctx.drawImage(mark, x + 76, H - 150 - h / 2, w, h);
-  } else { // fallback while the image is missing: pinwheel and name in Georgia
+  } else { // fallback while the image is missing: pinwheel and name in the serif
     ctx.fillStyle = INK; ctx.font = `400 52px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const x = W / 2 - (80 + ctx.measureText('Kaleido').width) / 2;
     logo(ctx, imgs, x + 28, H - 150, .2, 1, 1);

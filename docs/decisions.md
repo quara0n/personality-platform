@@ -550,11 +550,23 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - 49 kr-rapporten har arbeidsliv, hverdagsliv og relasjoner med trekkortene og ukeplanen, men ikke de tilpassede spørsmålene i kapittel 3 og 4 eller AI-partneren. Der spørsmålene ville stått, forklarer et kort hva «Fordypning + tilpasset» gir. Kjøpskortene sier det samme («Tilpassede spørsmål og AI-partner» / «Uten tilpassede spørsmål og AI-partner»). Valget huskes i nettleseren til betaling er koblet til; uten valg (forhåndsvisning, eksempelrapport) vises alt.
 - Rune: testen skal stå som «10 minutter» (forsiden, Google-teksten og delingsbildene).
 
+## 2026-10-18 – Fasetterte grafer og rolig bevegelse
+
+- Runes nye grafdesign: stolpene får trekkets farge som en lys-til-dyp gradient med papirfasetter (trekanter) oppå, og den marineblå prikken. Gjelder gratisprofilen, rapportens stolper og forsiden (forsiden bruker nå trekkfargene og har prikk). Ekstroversjon følger samme mønster med egen farge.
+- Rolig, levende bevegelse: fasettene i stolpene glir sakte, et svakt lysskjær går over dem av og til, og logobitene vugger litt. Alt stopper når brukeren har valgt redusert bevegelse.
+
 ## 2026-10-18 – Slagord
 
 - Rune valgte to slagord som gir navnet Kaleido noe å feste seg ved: «Se alle sidene dine.» / «See every side of you.» og «Se mønsteret ditt.» / «See your pattern.»
 - Forsiden: «Se alle sidene dine.» står øverst over «Ingen boks. Bare deg.» (erstatter «Kjenn deg selv bedre»), og «Se mønsteret ditt.» står over «Nysgjerrig på hvem du er?» nederst.
 - Delevideoen: «Se alle sidene dine.» står under Kaleido-ordmerket i bunnteksten og over spørsmålet på sluttkortet.
+- Rune (samme kveld): «Se alle sidene dine.» er nå hovedtittelen på forsiden og erstatter «Ingen boks. Bare deg.»; linjen over er igjen «Kjenn deg selv bedre». Trekkoverskriften er «Fem trekk. Tretti fasetter. Én deg.» «Mer innsikt. Flere muligheter.», «Tendenser, ikke faste typer.» og lenken «Utforsk en eksempelrapport» er fjernet fra forsiden; selve rapporten skal være en overraskelse. Eksempelrapporten (#demo) finnes fortsatt for testing.
+
+## 2026-10-18 – Egne fonter
+
+- Rune sa ja til et eget fontpar: Source Serif 4 i overskrifter og Manrope i brødtekst og knapper. Før brukte appen Georgia og Arial, som Android ikke har (der ble det Noto Serif og Roboto), så appen så ulik ut fra enhet til enhet.
+- Fontene ligger i app/assets/fonts (SIL Open Font License), kuttet til latinske tegn med æ, ø og å; til sammen omtrent 125 KB med kursiv. Delevideoen venter på fontene før den tegner.
+- Tekststørrelsene er samlet fra 28 til en fast skala (10–22 px under overskriftene; halve piksler, 17, 19, 21 og 23 px er borte). Manrope er litt bredere enn Arial, så 17 px ble 16 px.
 
 ## 2026-10-18 – Betaling med Stripe Checkout, Apple Pay, Google Pay og Vipps
 

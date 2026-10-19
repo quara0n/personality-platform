@@ -25,3 +25,11 @@ Simple Icons 13.21.0 (https://simpleicons.org), CC0 1.0 Universal.
 Used for the payment marks in app/pay-marks.js (Apple Pay, Google Pay, Visa,
 Mastercard, Stripe). The marks are trademarks of their respective owners and
 are shown only to identify the payment method.
+
+--------------------------------------------------------------------------------
+Source Serif 4 (https://github.com/adobe-fonts/source-serif), Copyright 2014 The
+Source Serif 4 Project Authors, and Manrope (https://github.com/googlefonts/manrope),
+Copyright 2018 The Manrope Project Authors. Both are licensed under the SIL Open
+Font License 1.1; the full texts are in assets/fonts/OFL-SourceSerif4.txt and
+assets/fonts/OFL-Manrope.txt. The files in assets/fonts are subsets of the
+original fonts (Latin characters, weight 400 for Source Serif 4).
