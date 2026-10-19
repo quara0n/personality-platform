@@ -462,11 +462,13 @@ export function drawPoster(ctx, s, imgs) {
   pill(ctx, s.button, H - 110, 1, .8);
 }
 
-/** Best container this browser can record; MP4 first because Instagram and TikTok prefer it. With `audio`, a type that also carries sound. */
+/** Best container this browser can record; MP4 with H.264 first because Instagram and TikTok expect it.
+ *  A bare 'video/mp4' can give VP9 inside MP4 in Chrome, which Instagram may refuse, so H.264 with Opus comes before it.
+ *  With `audio`, a type that also carries sound. */
 export function videoType(audio = false) {
   if (typeof MediaRecorder === 'undefined') return '';
   const types = audio
-    ? ['video/mp4;codecs="avc1.42E01E,mp4a.40.2"', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    ? ['video/mp4;codecs="avc1.42E01E,mp4a.40.2"', 'video/mp4;codecs=avc1,mp4a', 'video/mp4;codecs="avc1.42E01E,opus"', 'video/mp4;codecs=avc1,opus', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
     : ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
   return types.find(t => MediaRecorder.isTypeSupported(t)) || '';
 }
