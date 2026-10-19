@@ -155,6 +155,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Kaleido',
+    watch: tr('Watch the video', 'Se videoen'),
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
     tagline: tr('See every side of you.', 'Se alle sidene dine.'),
@@ -514,4 +515,48 @@ export function musicCues(s) {
   const tl = timeline(s), total = duration(s);
   if (total <= SONG.length + .5) return {total, restartAt: null};
   return {total, restartAt: tl.filter(x => x.start >= total - SONG.length && x.start <= SONG.length).at(-1)?.start ?? null};
+}
+
+const jpeg = (c, q = .86) => new Promise((ok, no) => c.toBlob(b => b ? ok(b) : no(new Error('jpeg')), 'image/jpeg', q));
+const playButton = (x, cx, cy, r) => {
+  x.save(); x.shadowColor = 'rgba(16,39,71,.3)'; x.shadowBlur = 18; x.fillStyle = 'rgba(19,40,79,.88)'; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.fill(); x.restore();
+  const k = r / 58; x.fillStyle = '#fff'; x.beginPath(); x.moveTo(cx - 18 * k, cy - 28 * k); x.lineTo(cx + 30 * k, cy); x.lineTo(cx - 18 * k, cy + 28 * k); x.closePath(); x.fill();
+};
+/** Pictures for a shared link (lib/shares.js): `poster`, the still frame at 720 × 1280 for the player, and `card`,
+ *  a 1200 × 630 preview like a YouTube or Reels link: the profile figure, the profile name and a play button. */
+export async function sharePictures(canvas, s, imgs) {
+  const full = document.createElement('canvas'); full.width = W; full.height = H; drawPoster(full.getContext('2d'), s, imgs);
+  const poster = document.createElement('canvas'); poster.width = 720; poster.height = 1280; poster.getContext('2d').drawImage(full, 0, 0, 720, 1280);
+  const card = document.createElement('canvas'), cw = card.width = 1200, ch = card.height = 630, x = card.getContext('2d');
+  x.fillStyle = PAPER; x.fillRect(0, 0, cw, ch);
+  for (const [gx, gy, r, c] of [[150, 80, 520, 'rgba(246,177,141,.32)'], [1080, 560, 560, 'rgba(145,182,211,.3)']]) {
+    const g = x.createRadialGradient(gx, gy, 0, gx, gy, r); g.addColorStop(0, c); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, cw, ch);
+  }
+  const art = imgs.character;
+  if (art) {
+    // The figure on the left, the name on the right; the square crops some apps use keep the middle of both.
+    const size = 560, ax = 40, ay = 35;
+    x.drawImage(feathered(art), ax, ay, size, size);
+    playButton(x, ax + size - 70, ay + size - 80, 50);
+    const left = 640, max = 1140 - left;
+    x.textAlign = 'left'; x.textBaseline = 'alphabetic'; x.fillStyle = MUTED; x.font = `400 36px ${SERIF}`;
+    x.fillText(s.intro, left, 190);
+    let size2 = 76, ls;
+    do {x.font = `400 ${size2}px ${SERIF}`; ls = lines(x, s.name, max); size2 -= 4;} while ((ls.length > 3 || ls.some(l => x.measureText(l).width > max)) && size2 > 36);
+    x.fillStyle = INK; const lh = (size2 + 4) * 1.08; ls.forEach((l, i) => x.fillText(l, left, 190 + 30 + lh * (i + 1)));
+    const py = 190 + 30 + lh * ls.length + 50, label = s.watch || 'Kaleido';
+    x.font = `700 30px ${SANS}`; const pw = x.measureText(label).width + 110;
+    x.fillStyle = INK; x.beginPath(); x.roundRect ? x.roundRect(left, py, pw, 64, 32) : x.rect(left, py, pw, 64); x.fill();
+    x.fillStyle = '#fff'; x.beginPath(); x.moveTo(left + 34, py + 18); x.lineTo(left + 58, py + 32); x.lineTo(left + 34, py + 46); x.closePath(); x.fill();
+    x.fillText(label, left + 76, py + 43);
+    if (s.button) {x.fillStyle = MUTED; x.font = `600 26px ${SANS}`; x.fillText(s.button, left, ch - 40);}
+  } else {
+    x.globalAlpha = .3; x.drawImage(full, 0, (ch - cw * H / W) / 2, cw, cw * H / W); x.globalAlpha = 1;
+    const ph = 590, pw = ph * W / H, px = (cw - pw) / 2, py = (ch - ph) / 2;
+    x.save(); x.shadowColor = 'rgba(16,39,71,.35)'; x.shadowBlur = 30; x.shadowOffsetY = 10; x.fillStyle = '#fff';
+    x.beginPath(); x.roundRect ? x.roundRect(px, py, pw, ph, 18) : x.rect(px, py, pw, ph); x.fill(); x.restore();
+    x.save(); x.beginPath(); x.roundRect ? x.roundRect(px, py, pw, ph, 18) : x.rect(px, py, pw, ph); x.clip(); x.drawImage(full, px, py, pw, ph); x.restore();
+    playButton(x, px + pw - 64, py + ph - 64, 44);
+  }
+  return {poster: await jpeg(poster), card: await jpeg(card)};
 }
