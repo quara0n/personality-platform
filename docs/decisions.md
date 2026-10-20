@@ -631,3 +631,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## Deling er hovedvalget i videovinduet (2026-10-20)
 
 - Videovinduet som åpner seg etter testen har nå en stor knapp «Del personligheten din» under videoen. «Ikke nå» står fortsatt øverst. Grunn: Fredrik testet på mobil og trodde han måtte lukke vinduet med «Ikke nå» før han kunne dele. På PC lukkes vinduet når delepanelet åpnes, slik at lenken og knappene synes på siden.
+
+## PDF-rapporten nevnes i kjøpsvalget (2026-10-20)
+
+- Rune ville at listen over hva man får sier at Fordypningsrapporten kan lastes ned som PDF med sidetall. Utskrift av hele rapporten (Letter, slik @page er satt) ga 45–48 sider i testprofiler, avhengig av profil, språk og nivå. Teksten sier derfor «Over 40 sider» og ikke et eksakt tall. Linjen står i kjøpsvalget (kort og «+»-listene for begge nivåer), på #offer-siden og i åpningsanimasjonen.
