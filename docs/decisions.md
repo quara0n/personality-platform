@@ -608,3 +608,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: i stedet for et skrått lysskjær over hele trekklogoen skal hver lille trekantfasett i logobitene glinse svakt, regelmessig og i tilfeldig rekkefølge, aldri samme fasett to ganger på rad. Det gjelder overalt der bitene står i appen, men ikke selve logoen (topp, bunn, lasting, den spredte logoen) eller steinvardene på spørsmålssiden. Av ved redusert bevegelse. Fasettene er tegnet opp i app/facet-glint.js.
 - 2026-10-20: Rune åpnet en delelenke i Messenger på Android, og «Ta testen gratis» lå under videoen. Nå passer hele siden på første skjerm: videoen skaleres til høyden som er igjen etter logoen, overskriften, én kort linje og knappen.
+
+## 2026-10-20 – Nettleseroversettelse er slått av
+
+- Rune: på en annen PC sto svarene som «Stemmer svært tørr» og «Stemmer nokså tørr». Hun landet på den engelske siden og byttet til norsk. Appens egne tekster er riktige («Stemmer svært dårlig» osv.), så det var nettleserens automatiske oversettelse som maskinoversatte siden, og som fortsatte etter språkbyttet.
+- Siden har både engelsk og norsk selv, og testutsagnene må ha nøyaktig valgt ordlyd. Derfor har index.html og delingssidene translate="no" og `<meta name="google" content="notranslate">`. Ulempen er at Chrome ikke lenger tilbyr å oversette siden til andre språk.

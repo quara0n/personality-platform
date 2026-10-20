@@ -41,7 +41,7 @@ export function head(key,site=siteUrl){
 export function renderPage(template,key,site=siteUrl){
   const p=pages[key];let html=template;
   const swap=(re,to)=>{if(!re.test(html))throw Error(`seo.js: template is missing ${re}`);html=html.replace(re,()=>to);};
-  swap(/<html lang="[^"]*">/,`<html lang="${p.lang}">`);
+  swap(/<html lang="[^"]*"/,`<html lang="${p.lang}"`);
   swap(/<title>[^<]*<\/title><meta name="description" content="[^"]*">/,head(key,site));
   swap(/<a class="skip" href="#main">[^<]*/,`<a class="skip" href="#main">${p.skip}`);
   swap(/<nav aria-label="Main navigation">[\s\S]*?<\/nav>/,`<nav aria-label="${key==='no'?'Hovedmeny':'Main navigation'}">${p.nav}</nav>`);
