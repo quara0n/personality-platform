@@ -591,3 +591,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «Do what is needed with stripe and vercel to get it up and running». Stripes planleggingsverktøy anbefaler ferdig betalingsside (Checkout) for nettbutikk med digitale engangskjøp, som er det vi har.
 - Live-webhook til https://kaleidotest.com/api/stripe-webhook er opprettet i Stripe med `checkout.session.completed`, `checkout.session.async_payment_succeeded` og `charge.refunded`. Branding: hovedfarge #102747, aksent #f6b18d, hvit bakgrunn og mørkeblå knapp på betalingssiden.
 - En full refusjon fjerner kjøpet igjen, og den gamle suksesslenken kan ikke gjenopprette det. Delvis refusjon beholder rapporten.
+
+## 2026-10-20 – Profilmerket kommer til slutt
+
+- Rune: profilmerket øverst til høyre viste seg på innloggingssiden, før innlogging og introvideoen. Nå vises det ikke på innloggingssteget, lasteskjermen eller testen, ikke før man er logget inn (når innlogging er på), og først når profilvideoen er sett eller lukket.
