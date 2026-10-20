@@ -34,17 +34,26 @@ export function rarityCopy(s, language) {
   const lead = s.share ? ['About', 'Omtrent'] : ['', ''];
   const line = [`${lead[0]} <b>${amount[0]}</b> people get this profile character.`.trim(), `${lead[1]} <b>${amount[1]}</b> mennesker får denne profilfiguren.`.trim()];
   const people = roundPeople(s.total, language);
-  const source = s.source === 'kaleido'
-    ? [`Based on ${people} saved Kaleido profiles.`, `Bygger på ${people} lagrede Kaleido-profiler.`]
-    : ['Calculated from the research data behind the test: we worked out how often this exact combination of facets turns up among a million people, modelled on the answers of 243,307 participants.', 'Beregnet fra forskningsdataene bak testen: vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer, modellert etter svarene til 243\u00a0307 deltakere.'];
-  return {tag: pick(tag, language), line: pick(line, language), source: pick(source, language)};
+  // Method, shown in a speech bubble behind the (i) by the number (Rune 2026-10-20: «faglig tyngde»).
+  // Not «multiplied probabilities»: the calculation keeps that facets go together.
+  const method = s.source === 'kaleido'
+    ? [[`Counted among ${people} saved Kaleido profiles.`, 'Only totals are used, never who has which character.'],
+      [`Talt opp blant ${people} lagrede Kaleido-profiler.`, 'Bare totalene brukes, aldri hvem som har hvilken figur.']]
+    : [['Calculated from the research data behind the test: the answers of 243,307 participants in a large open study of this questionnaire (Kajonius & Johnson, 2019).',
+        'We worked out how often this exact combination of facets turns up among a million people modelled on those answers, taking into account that facets go together. Once enough Kaleido profiles are saved, we switch to real counts.'],
+      ['Beregnet fra forskningsdataene bak testen: svarene til 243\u00a0307 deltakere i en stor, åpen studie av dette spørreskjemaet (Kajonius og Johnson, 2019).',
+        'Vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer modellert etter disse svarene, og tok hensyn til at fasettene henger sammen. Når nok Kaleido-profiler er lagret, bytter vi til ekte tall.']];
+  return {tag: pick(tag, language), line: pick(line, language), method: pick(method, language)};
 }
 
+let popId = 0;
+/** Uses the app's (i) button and pop (.d-info-btn / .d-info-pop, toggled in app/ui.js). */
 export function rarityHtml(ruleId, estimates, real, language) {
   const s = nameShare(ruleId, estimates, real);
   if (!s) return '';
-  const c = rarityCopy(s, language);
-  return `<span class="d-name-rarity-tag">${c.tag}</span><p class="d-name-rarity-line">${c.line}</p><p class="d-name-rarity-source">${c.source}</p>`;
+  const c = rarityCopy(s, language), id = `rarity-info-${++popId}`, label = pick(['How is this calculated?', 'Hvordan er dette regnet ut?'], language);
+  const btn = `<button type="button" class="d-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="${label}" title="${label}"><span class="d-info-i" aria-hidden="true">i</span></button>`;
+  return `<span class="d-name-rarity-tag">${c.tag}</span><p class="d-name-rarity-line">${c.line.replace('</b>', `</b>\u00a0${btn}`)}</p><div class="d-info-pop d-name-rarity-pop" id="${id}" hidden>${c.method.map(t => `<p>${t}</p>`).join('')}</div>`;
 }
 
 let estimatesPromise, realPromise;

@@ -122,7 +122,9 @@ body.in-loading footer{display:none}
 .d-name-rarity-tag{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--warm);color:var(--title);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .d-name-rarity-line{margin:8px 0 4px;font:400 20px/1.35 var(--serif)}
 .d-name-rarity-line b{font-weight:400}
-.d-name-rarity-source{margin:0;color:#5a7290;font-size:13px;line-height:1.45}
+.d-name-rarity-line .d-info-btn{padding:0;color:#5a7290;vertical-align:.1em}
+.d-name-rarity-pop{position:relative;margin:12px auto 2px;box-shadow:0 10px 28px rgba(16,39,71,.12)}
+.d-name-rarity-pop::before{content:'';position:absolute;top:-7px;left:50%;width:12px;height:12px;margin-left:-6px;border-top:1px solid var(--box-border);border-left:1px solid var(--box-border);background:var(--box-bg,#fff);transform:rotate(45deg)}
 .d-account-character{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;align-items:center;margin-top:28px;padding:22px 24px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow);color:var(--title)}
 .d-account-character img{width:120px;aspect-ratio:1;object-fit:contain;border-radius:var(--box-radius)}
 .d-account-character-eyebrow{margin:0;color:#5a7290;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
