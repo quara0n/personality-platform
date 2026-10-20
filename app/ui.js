@@ -70,7 +70,11 @@ function updateShell(){document.documentElement.lang=language==='no'?'nb':'en';d
 // profile character with their initials from the sign-in (Rune 2026-10-18). It links to the profile.
 function myCharacter(){if(demo||!answersComplete())return null;if(!report)try{calculate();}catch{return null;}return profileName(sorted(),language);}
 const initials=()=>{const n=String(accountUser?.name||'').trim().split(/\s+/).filter(Boolean);return (n.length?(n.length>1?n[0][0]+n.at(-1)[0]:n[0][0]):String(accountUser?.email||'')[0]||'').toUpperCase();};
-function paintAvatar(){const head=document.querySelector('header');head.querySelector('.d-avatar')?.remove();const me=myCharacter();if(!me)return;
+// The badge is the reveal's last step (Rune 2026-10-20): not on the sign-in step or the loader, not before sign-in,
+// and not until the profile video has been seen or closed.
+function badgeReady(){const route=(location.hash||'#home').slice(1);if(['test','signin','loading'].includes(route)||(account.enabled()&&!accountUser))return false;
+  try{if(sessionStorage.getItem(INTRO)==='1')return false;}catch{}return !document.querySelector('dialog.d-video-intro');}
+function paintAvatar(){const head=document.querySelector('header');head.querySelector('.d-avatar')?.remove();const me=badgeReady()&&myCharacter();if(!me)return;
   const a=document.createElement('a'),ini=initials();a.className='d-avatar';a.href='#results';a.setAttribute('aria-label',tr('Your profile','Profilen din'));
   a.innerHTML=`<span class="d-avatar-pic"><img src="${figureSrc(me.image)}" data-id="${me.image}" alt=""></span>${ini?`<span class="d-avatar-initials" aria-hidden="true">${esc(ini)}</span>`:''}`;
   head.insertBefore(a,head.querySelector('.menu-toggle'));}
@@ -187,7 +191,7 @@ function videoIntro(){
   dlg.append(box);document.body.append(dlg);
   dlg.querySelector('.d-video-intro-close').addEventListener('click',()=>dlg.close());
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
-  dlg.addEventListener('close',()=>{box.femMute?.();spot.replaceWith(box);dlg.remove();window.scrollTo(0,0);});
+  dlg.addEventListener('close',()=>{box.femMute?.();spot.replaceWith(box);dlg.remove();window.scrollTo(0,0);paintAvatar();});
   dlg.showModal();
   // Making the file draws the video on screen in real time, so it plays and is ready to share when it ends.
   box.femPrepare?.();

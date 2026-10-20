@@ -599,3 +599,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Bare det videoen viser, lagres: tittel (profilnavnet), språk, type og bruker-ID. Ingen svar, skårer eller e-post. Id-en er tilfeldig (10 tegn), siden er noindex. Maks 20 lenker per bruker per døgn. «Slett lenken» fjerner rad og filer, og «Slett kontoen min» sletter alle lenkene først. Personvernerklæringen er oppdatert.
 - Reels og TikTok tar bare imot selve fila, så «Del videofila» (mobil) og opplastingsknappene (PC) er beholdt under lenken. Uten innlogging deles fila som før.
 - Krever at migrasjonen supabase/migrations/20261019000000_shares.sql kjøres i Supabase (tabell og bøtte).
+
+## 2026-10-20 – Profilmerket kommer til slutt
+
+- Rune: profilmerket øverst til høyre viste seg på innloggingssiden, før innlogging og introvideoen. Nå vises det ikke på innloggingssteget, lasteskjermen eller testen, ikke før man er logget inn (når innlogging er på), og først når profilvideoen er sett eller lukket.
