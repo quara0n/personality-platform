@@ -1095,11 +1095,14 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-video-intro::backdrop{background:rgba(8,16,40,.86)}
 .d-video-intro .d-share{display:block;margin:0;padding:0;background:none;box-shadow:none;border:0}
 .d-video-intro .d-share-body{display:none}
-.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 76px)*9/16));margin:0 auto;border-radius:var(--box-radius)}
+.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 146px)*9/16));margin:0 auto;border-radius:var(--box-radius)}
+.d-video-intro-actions{display:flex;justify-content:center;margin:12px 0 0}
+.d-video-intro-share{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;min-height:54px;padding:0 22px;border:0;border-radius:999px;background:#f06a3c;color:#fff;font:700 17px/1 Manrope,system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(240,106,60,.35)}
+.d-video-intro-share svg{width:22px;height:22px;fill:currentColor}
 .d-video-intro .d-share-fab{font-size:14px}
 .d-video-intro .d-share-fab svg{width:30px;height:30px;padding:14px}
 .d-video-intro .d-video-intro-close{display:block;margin:0 0 10px auto;padding:8px 14px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 15px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer}
-@media(max-width:760px){.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 76px)*9/16))}}
+@media(max-width:760px){.d-video-intro .d-share-frame{width:min(calc(100vw - 24px),calc((100dvh - 146px)*9/16))}}
 
 /* Tailored to your work / everyday life (tailored.js) */
 .d-tailor{margin:0 0 28px;padding:24px 26px;border:2px solid var(--title);border-radius:8px;background:#fffefb;color:var(--title)}
