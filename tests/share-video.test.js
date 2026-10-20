@@ -35,7 +35,7 @@ test('shows the facet furthest from the middle, with the closer of the facet beh
   assert.equal(s.facet.name, 'Assertiveness');
   assert.equal(s.facet.caption, 'Percentile 6 · Extraversion');
   assert.equal(s.closer, facetClosers.E3l[0]);
-  assert.match(s.ruleId, /^share-video-v1\//);
+  assert.match(s.ruleId, /^share-video-v2\//);
   assert.equal(videoScript(profile({O: 50, C: 55, E: 45, A: 52, N: 48}), {language: 'en', name}).closer, closers.balanced[0]);
 });
 

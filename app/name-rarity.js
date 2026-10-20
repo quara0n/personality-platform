@@ -36,13 +36,16 @@ export function rarityCopy(s, language) {
   const people = roundPeople(s.total, language);
   // Method, shown in a speech bubble behind the (i) by the number (Rune 2026-10-20: «faglig tyngde»).
   // Not «multiplied probabilities»: the calculation keeps that facets go together.
+  // Rune 2026-10-20: the video's facet pair («1 av 490») is a different, larger number; say why.
+  const pair = ['This number is for the whole profile character: the facets that stand out most among all 30. A single pair of facets, like the one in your video, is shared by more people, because the rest of the profile can look any way.',
+    'Tallet gjelder hele profilfiguren: de fasettene som skiller seg mest ut blant alle 30. Et enkelt par fasetter, som det i videoen din, deler flere, fordi resten av profilen kan se ut hvordan som helst.'];
   const method = s.source === 'kaleido'
-    ? [[`Counted among ${people} saved Kaleido profiles.`, 'Only totals are used, never who has which character.'],
-      [`Talt opp blant ${people} lagrede Kaleido-profiler.`, 'Bare totalene brukes, aldri hvem som har hvilken figur.']]
+    ? [[`Counted among ${people} saved Kaleido profiles.`, 'Only totals are used, never who has which character.', pair[0]],
+      [`Talt opp blant ${people} lagrede Kaleido-profiler.`, 'Bare totalene brukes, aldri hvem som har hvilken figur.', pair[1]]]
     : [['Calculated from the research data behind the test: the answers of 243,307 participants in a large open study of this questionnaire (Kajonius & Johnson, 2019).',
-        'We worked out how often this exact combination of facets turns up among a million people modelled on those answers, taking into account that facets go together. Once enough Kaleido profiles are saved, we switch to real counts.'],
+        'We worked out how often this exact combination of facets turns up among a million people modelled on those answers, taking into account that facets go together. Once enough Kaleido profiles are saved, we switch to real counts.', pair[0]],
       ['Beregnet fra forskningsdataene bak testen: svarene til 243\u00a0307 deltakere i en stor, åpen studie av dette spørreskjemaet (Kajonius og Johnson, 2019).',
-        'Vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer modellert etter disse svarene, og tok hensyn til at fasettene henger sammen. Når nok Kaleido-profiler er lagret, bytter vi til ekte tall.']];
+        'Vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer modellert etter disse svarene, og tok hensyn til at fasettene henger sammen. Når nok Kaleido-profiler er lagret, bytter vi til ekte tall.', pair[1]]];
   return {tag: pick(tag, language), line: pick(line, language), amount: pick(amount, language), lead: pick(lead, language), method: pick(method, language)};
 }
 
@@ -88,12 +91,17 @@ export function rarityShort(ruleId, language, data = loaded) {
   const pct = s.share >= 1 / 100, x = Math.round(s.share * 100), n = roundPeople(1 / s.share, language);
   return language === 'no' ? `Omtrent ${pct ? `${x} av 100` : `1 av ${n}`} får denne figuren` : `About ${pct ? `${x} in 100` : `1 in ${n}`} people get this character`;
 }
-/** Fills every [data-name-rarity], [data-rarity-card] and [data-rarity-note] (each holding a ruleId) on the page. `live` asks the server for real counts. */
-export async function paintRarity(language, live = false) {
+/** {estimates, real} for nameShare, fetched once. `live` asks the server for real counts. Also used by the share video. */
+export async function rarityData(live = false) {
   estimatesPromise ||= getJson('data/name-frequencies.json');
   if (live) realPromise ||= getJson('api/name-stats');
   const [estimates, real] = await Promise.all([estimatesPromise, live ? realPromise : null]);
   loaded = {estimates, real};
+  return loaded;
+}
+/** Fills every [data-name-rarity], [data-rarity-card] and [data-rarity-note] (each holding a ruleId) on the page. `live` asks the server for real counts. */
+export async function paintRarity(language, live = false) {
+  const {estimates, real} = await rarityData(live);
   const fill = (attr, key, make) => document.querySelectorAll(`[${attr}]`).forEach(el => {
     const html = make(el.dataset[key], estimates, real, language);
     el.innerHTML = html;
