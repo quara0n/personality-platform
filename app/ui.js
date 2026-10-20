@@ -192,7 +192,12 @@ function videoIntro(){
   const spot=document.createComment('share'),dlg=document.createElement('dialog');
   box.before(spot);dlg.className='d-video-intro';dlg.setAttribute('aria-labelledby','share-title');
   dlg.innerHTML=`<button type="button" class="d-video-intro-close">${tr('Not now','Ikke nå')} <span aria-hidden="true">×</span></button>`;
-  dlg.append(box);document.body.append(dlg);
+  // Sharing is the main action here, not something behind «Not now» (feedback 2026-10-20): a big button under the video
+  // does what the share button on the video does.
+  const act=document.createElement('div');act.className='d-video-intro-actions';
+  act.innerHTML=`<button type="button" class="d-video-intro-share" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5v4C7 9 4 13.5 3.5 19.5 6 15.8 9 14.4 13.5 14.4v4.1L21 11.5z"/></svg>${tr('Share your personality','Del personligheten din')}</button>`;
+  dlg.append(box,act);document.body.append(dlg);
+  act.querySelector('button').addEventListener('click',()=>box.querySelector('#share-fab')?.click());
   dlg.querySelector('.d-video-intro-close').addEventListener('click',()=>dlg.close());
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
   dlg.addEventListener('close',()=>{box.femMute?.();spot.replaceWith(box);dlg.remove();window.scrollTo(0,0);paintAvatar();});
@@ -301,7 +306,9 @@ function initShare(){
     out.innerHTML=(link?`<h3>${tr('Your video link','Videolenken din')}</h3><p class="d-small">${tr('It shows a big picture with a play button, and opens the video when tapped. It holds no answers.','Den vises med stort bilde og avspillingsknapp og åpner videoen når noen trykker. Den inneholder ingen svar.')}</p><div class="d-share-link"><input id="share-link" readonly value="${esc(u)}" aria-label="${tr('Video link','Videolenke')}"><button type="button" class="d-share-target" id="share-copy">${tr('Copy','Kopier')}</button></div><div class="d-share-targets">${links}</div>`:`<h3>${tr('Share a link to Kaleido','Del en lenke til Kaleido')}</h3><div class="d-share-targets">${links}<button type="button" class="d-share-target" id="share-copy">${tr('Copy link','Kopier lenke')}</button></div>`)
       +`<h3>${tr('Reels and TikTok','Reels og TikTok')}</h3><p class="d-small">${touch?tr('They need the video file. Share the file and choose Instagram or TikTok.','De trenger selve videofila. Del fila og velg Instagram eller TikTok.'):tr('They need the video file. The button saves it and opens the upload page.','De trenger selve videofila. Knappen lagrer den og åpner opplastingssiden.')}</p><div class="d-share-targets">${touch&&canShareFiles()?`<button type="button" class="d-share-target" data-kind="upload" id="share-file">${tr('Share video file','Del videofila')}</button>`:UPLOADS.filter(t=>t.id!=='messenger'||!link).map(t=>a(t,'upload')).join('')}</div>`
       +(link?`<button type="button" class="text-button d-share-unlink" id="share-unlink">${tr('Delete this link','Slett lenken')}</button>`:'');
-    out.hidden=false;};
+    out.hidden=false;
+    // From the video dialog the panel lives on the page underneath, so the dialog closes and the panel comes into view.
+    const dlg=out.closest('dialog.d-video-intro');if(dlg){dlg.close();setTimeout(()=>out.scrollIntoView({block:'center'}),60);}};
   out.addEventListener('click',async e=>{
     if(e.target.closest('#share-copy')){copy(link?.url||home,tr('The link is copied.','Lenken er kopiert.'));return;}
     if(e.target.closest('#share-file')){shareFile();return;}

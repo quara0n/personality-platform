@@ -627,3 +627,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: når man logger inn igjen, skal man få en oversikt over profilen sin, ikke den lange gratisprofilen. «Min side» (#account) viser nå profilfiguren og navnet, de fem trekkene og snarveier til Fordypningsrapporten (Oversikt), gratisprofilen, profilvideoen og «Se gjennom svarene mine». Kontoen og profilverktøyene ligger under. Profilmerket øverst til høyre og «Min side» i menyen går hit, og den lagrede profilen åpnes av seg selv i en tom fane.
 - Rune hadde kjøpt Fordypning (49 kr), men fikk kjøpsvalget med oppgraderingen forhåndsvalgt når han ville til rapporten. Nå går alle Fordypning-lenker rett til rapporten for den som har kjøpt; oppgraderingen til tilpasset vises bare fra lenker som tilbyr den, og som et valgfritt kort på Min side.
+
+## Deling er hovedvalget i videovinduet (2026-10-20)
+
+- Videovinduet som åpner seg etter testen har nå en stor knapp «Del personligheten din» under videoen. «Ikke nå» står fortsatt øverst. Grunn: Fredrik testet på mobil og trodde han måtte lukke vinduet med «Ikke nå» før han kunne dele. På PC lukkes vinduet når delepanelet åpnes, slik at lenken og knappene synes på siden.
