@@ -608,3 +608,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: i stedet for et skrått lysskjær over hele trekklogoen skal hver lille trekantfasett i logobitene glinse svakt, regelmessig og i tilfeldig rekkefølge, aldri samme fasett to ganger på rad. Det gjelder overalt der bitene står i appen, men ikke selve logoen (topp, bunn, lasting, den spredte logoen) eller steinvardene på spørsmålssiden. Av ved redusert bevegelse. Fasettene er tegnet opp i app/facet-glint.js.
 - 2026-10-20: Rune åpnet en delelenke i Messenger på Android, og «Ta testen gratis» lå under videoen. Nå passer hele siden på første skjerm: videoen skaleres til høyden som er igjen etter logoen, overskriften, én kort linje og knappen.
+
+## 2026-10-20 – Min side som oversikt etter innlogging
+
+- Rune: når man logger inn igjen, skal man få en oversikt over profilen sin, ikke den lange gratisprofilen. «Min side» (#account) viser nå profilfiguren og navnet, de fem trekkene og snarveier til Fordypningsrapporten (Oversikt), gratisprofilen, profilvideoen og «Se gjennom svarene mine». Kontoen og profilverktøyene ligger under. Profilmerket øverst til høyre og «Min side» i menyen går hit, og den lagrede profilen åpnes av seg selv i en tom fane.
+- Rune hadde kjøpt Fordypning (49 kr), men fikk kjøpsvalget med oppgraderingen forhåndsvalgt når han ville til rapporten. Nå går alle Fordypning-lenker rett til rapporten for den som har kjøpt; oppgraderingen til tilpasset vises bare fra lenker som tilbyr den, og som et valgfritt kort på Min side.
