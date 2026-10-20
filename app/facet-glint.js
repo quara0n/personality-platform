@@ -41,14 +41,14 @@ function upgrade(img) {
 }
 const upgradeAll = root => root.querySelectorAll?.('img[src*="logo-piece-"]').forEach(upgrade);
 
-// One facet at a time, picked at random among those on screen, never the one that just glinted.
+// A facet every half second or so, picked at random among those on screen, never the one that just glinted.
 let last = null, timer = 0;
 function onScreen(el) {
   const r = el.getBoundingClientRect();
   return r.width > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
 }
 function tick() {
-  timer = setTimeout(tick, 650 + Math.random() * 700);
+  timer = setTimeout(tick, 450 + Math.random() * 600);
   if (document.hidden) return;
   const all = [...document.querySelectorAll('.k-facet')].filter(f => f !== last && !f.closest(SKIP) && onScreen(f));
   if (!all.length) return;
