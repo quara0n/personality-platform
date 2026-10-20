@@ -56,13 +56,22 @@ export function rarityHtml(ruleId, estimates, real, language) {
   return `<span class="d-name-rarity-tag">${c.tag}</span><p class="d-name-rarity-line">${c.line.replace('</b>', `</b>\u00a0${btn}`)}</p><div class="d-info-pop d-name-rarity-pop" id="${id}" hidden>${c.method.map(t => `<p>${t}</p>`).join('')}</div>`;
 }
 
-let estimatesPromise, realPromise;
+let estimatesPromise, realPromise, loaded = {estimates: null, real: null};
 const getJson = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
+
+/** Short line for the share video, from data already loaded on the page («Omtrent 1 av 3 600 får denne figuren»), or ''. */
+export function rarityShort(ruleId, language, data = loaded) {
+  const s = nameShare(ruleId, data.estimates, data.real);
+  if (!s || !s.share) return '';
+  const pct = s.share >= 1 / 100, x = Math.round(s.share * 100), n = roundPeople(1 / s.share, language);
+  return language === 'no' ? `Omtrent ${pct ? `${x} av 100` : `1 av ${n}`} får denne figuren` : `About ${pct ? `${x} in 100` : `1 in ${n}`} people get this character`;
+}
 /** Fills every [data-name-rarity="<ruleId>"] on the page. `live` asks the server for real counts. */
 export async function paintRarity(language, live = false) {
   estimatesPromise ||= getJson('data/name-frequencies.json');
   if (live) realPromise ||= getJson('api/name-stats');
   const [estimates, real] = await Promise.all([estimatesPromise, live ? realPromise : null]);
+  loaded = {estimates, real};
   document.querySelectorAll('[data-name-rarity]').forEach(el => {
     const html = rarityHtml(el.dataset.nameRarity, estimates, real, language);
     el.innerHTML = html;

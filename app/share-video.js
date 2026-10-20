@@ -14,6 +14,7 @@ import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
+import {rarityShort} from './name-rarity.js';
 import {SONG, songPlan} from './share-music.js';
 
 export const W = 1080, H = 1920;
@@ -146,6 +147,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     hook: first ? tr(`Who is ${first}, really?`, `Hvem er ${first}, egentlig?`) : tr('120 questions later …', '120 spørsmål senere …'),
     intro: first ? tr(`${first} is`, `${first} er`) : tr('This is', 'Dette er'),
     name: named.name,
+    rarity: rarityShort(named.ruleId, language),
     image: named.image,
     trait: trait.code,
     color: traitColors[trait.code],
@@ -318,9 +320,11 @@ const scenes = {
     const bottom = text(ctx, s.name, top + 160, {size: art ? 112 : 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
     brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(lt, .8, 1.6)), a);
     if (art) {
-      const k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - (bottom + 130)), x = (W - size) / 2, y = bottom + 130 + 50 * (1 - k);
+      const gap = s.rarity ? 230 : 130, k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - (bottom + gap)), x = (W - size) / 2, y = bottom + gap + 50 * (1 - k);
       ctx.save(); ctx.globalAlpha = a * k; ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(feathered(art), x, y, size, size); ctx.restore();
     }
+    // How common the character is (app/name-rarity.js), between the name and the figure.
+    if (s.rarity) text(ctx, s.rarity, bottom + 150, {size: 50, color: MUTED, alpha: Math.min(a, ease(span(lt, 1.2, 1.8))), rise: 20 * (1 - ease(span(lt, 1.2, 1.8))), maxLines: 2, max: W - 160});
   },
   traits(ctx, lt, d, a, s, imgs) {
     text(ctx, s.traitsTitle, 330, {size: 84, alpha: a});

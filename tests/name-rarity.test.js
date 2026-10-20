@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {nameShare, rarityCopy, rarityHtml, roundPeople, MIN_COUNT} from '../app/name-rarity.js';
+import {nameShare, rarityCopy, rarityHtml, rarityShort, roundPeople, MIN_COUNT} from '../app/name-rarity.js';
 import {nameKey, aggregate, MIN_TOTAL} from '../lib/name-stats.js';
 
 const estimates = JSON.parse(await readFile(new URL('../app/data/name-frequencies.json', import.meta.url), 'utf8'));
@@ -47,4 +47,10 @@ test('the server counts names with the app code and hides small groups', () => {
   const many = aggregate([...Array(MIN_TOTAL).fill(code), '1' + '3'.repeat(120)]);
   assert.equal(many.total, MIN_TOTAL + 1);
   assert.deepEqual(Object.keys(many.counts), [nameKey(code)]);
+});
+
+test('the share video gets a short line in people, or nothing before the data has loaded', () => {
+  assert.match(rarityShort('profile-name-v2/C1l-N5l', 'no', {estimates, real: null}), /^Omtrent 1 av [\d\u00a0]+ får denne figuren$/);
+  assert.match(rarityShort('profile-name-v2/signature/N5h-C5l', 'en', {estimates, real: null}), /^About \d in 100 people get this character$/);
+  assert.equal(rarityShort('profile-name-v2/C1l-N5l', 'no'), '');
 });
