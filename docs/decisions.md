@@ -352,6 +352,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «de MÅ logge inn», etter 10–15 minutter på testen. Når innlogging er koblet til (Supabase), må man logge inn før lasteskjermen, gratisprofilen, rapporten og profillenker (#p=…) vises. Eksempelrapporten (#demo) er åpen.
 - Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
 - «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
+- 2026-10-20: E-posten har også en sekssifret kode som skrives inn på siden der man ba om innlogging (verifyOtp). Grunn: Rune sin bror tok testen i Messenger sin nettleser, lenken åpnet seg i en annen nettleser og feilet («code verifier should be non-empty»), og svarene ble ikke lagret. Koden virker uansett hvilken app e-posten leses i. Åpnes lenken i feil nettleser, forklarer siden det og ber om koden. Krever {{ .Token }} i Supabase-malene «Magic Link» og «Confirm signup».
 - I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
 
 ## 2026-10-16 – Trekkene som logo, fasettknapper og to mockuper

@@ -34,3 +34,19 @@ test('the email sign-in accepts only a plausible address', async () => {
   assert.ok(!validEmail('rune example.no'));
   assert.ok(!validEmail(''));
 });
+
+test('the code from the email is digits only, spaces allowed', async () => {
+  const {validOtp} = await import('../app/account.js');
+  assert.ok(validOtp('123456'));
+  assert.ok(validOtp('123 456'));
+  assert.ok(validOtp('12345678'));
+  assert.ok(!validOtp('12345'));
+  assert.ok(!validOtp('abc123'));
+});
+
+test('a link opened in another browser is told apart from other failures', async () => {
+  const {otherBrowser} = await import('../app/account.js');
+  assert.ok(otherBrowser('invalid request: both auth code and code verifier should be non-empty'));
+  assert.ok(!otherBrowser('Email link is invalid or has expired'));
+  assert.ok(!otherBrowser(''));
+});
