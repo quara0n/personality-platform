@@ -3,6 +3,9 @@
 // pieces step back. Used in the free profile ("Explore your traits") and the report ("Your five traits").
 // The caller renders the panels (hidden, with the ids from panelId) so print can still show them all.
 
+// A soft light band sweeps across the whole logo now and then (clipped to each piece, behind the numbers)
+// and the pieces brighten one by one, like the sheen on the score bars; still under reduced motion.
+
 // Piece outlines in the 512-unit logo (from logo-flat.svg; they match logo-mark-1024.webp at half scale).
 const SHAPES = {
   C: [[458.9, 138.4], [317.5, 14.5], [246.8, 218.6]],
@@ -37,6 +40,7 @@ export function logoNavHtml(items, {key, panelId, tr, esc}) {
     return `<g class="d-lnav-piece${DARK.has(code) ? ' is-dark' : ''}${on ? ' is-on' : ''}" data-trait="${code}" role="button" tabindex="0" aria-expanded="${on}" aria-controls="${panelId(code)}" aria-label="${esc(x.label)}" style="--ux:${(ux * k).toFixed(3)};--uy:${(uy * k).toFixed(3)};--i:${i};transform-origin:${cen[0].toFixed(1)}px ${cen[1].toFixed(1)}px">
       <clipPath id="lnav-${key}-${code}"><polygon points="${pts}"/></clipPath>
       <image href="assets/design/logo-mark-1024.webp" width="512" height="512" clip-path="url(#lnav-${key}-${code})"/>
+      <g class="d-lnav-gloss" clip-path="url(#lnav-${key}-${code})"><rect class="d-lnav-sheen" x="-180" y="-120" width="180" height="760" fill="url(#lnav-${key}-sheen)"/></g>
       <polygon class="d-lnav-hit" points="${pts}"/>
       <polygon class="d-lnav-edge" points="${pts}"/>
       <text class="d-lnav-num" x="${ic.x.toFixed(1)}" y="${(ic.y + fs * .18).toFixed(1)}" style="font-size:${fs.toFixed(1)}px">${esc(x.num)}</text>
@@ -45,7 +49,7 @@ export function logoNavHtml(items, {key, panelId, tr, esc}) {
   const keys = LOGO_ORDER.filter(c => by[c]).map(code => `<li><button type="button" class="d-lnav-key${code === sel ? ' is-on' : ''}" data-trait="${code}" aria-expanded="${code === sel}" aria-controls="${panelId(code)}"><img src="assets/design/logo-piece-${PIECE[code]}.webp" alt="" aria-hidden="true"><span>${esc(by[code].name)}</span><span class="d-chip d-chip-${by[code].band}">${esc(by[code].level)}</span></button></li>`).join('');
   return `<div class="d-lnav${sel ? ' has-open' : ''}" data-key="${key}">
     <p class="d-lnav-hint">${tr('Tap a piece of the logo to open that trait.', 'Trykk på en bit av logoen for å åpne trekket.')}</p>
-    <svg class="d-lnav-logo" viewBox="1.5 -19.5 523 502" aria-label="${esc(tr('Your five traits', 'Dine fem trekk'))}">${pieces}</svg>
+    <svg class="d-lnav-logo" viewBox="1.5 -19.5 523 502" aria-label="${esc(tr('Your five traits', 'Dine fem trekk'))}"><defs><linearGradient id="lnav-${key}-sheen"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>${pieces}</svg>
     <ul class="d-lnav-keys">${keys}</ul>
     <button type="button" class="d-lnav-float no-print" hidden><img src="assets/design/logo-mark.webp" alt="" aria-hidden="true"><span>${tr('All traits', 'Alle trekk')}</span></button></div>`;
 }

@@ -1462,6 +1462,11 @@ details.d-ctx-more>div{padding:0}
 @media(hover:hover){.d-lnav-piece:not(.is-on):hover{opacity:1;filter:none;transform:translate(calc(var(--ux) * 9px),calc(var(--uy) * 9px))}}
 .d-lnav-piece image{pointer-events:none}
 .d-lnav-hit{fill:transparent}
+.d-lnav-gloss{pointer-events:none}
+.d-lnav-sheen{opacity:0;transform:rotate(18deg)}
+@media(prefers-reduced-motion:no-preference){.d-lnav.is-in .d-lnav-sheen{animation:d-lnav-sheen 9s ease-in-out 1.6s infinite}.d-lnav.is-in .d-lnav-piece image{animation:d-lnav-glint 7s ease-in-out infinite;animation-delay:calc(var(--i) * 1.4s + 2s)}}
+@keyframes d-lnav-glint{0%,70%,100%{filter:brightness(1)}85%{filter:brightness(1.12) saturate(1.05)}}
+@keyframes d-lnav-sheen{0%{opacity:1;transform:rotate(18deg) translateX(-80px)}40%,100%{opacity:1;transform:rotate(18deg) translateX(760px)}}
 .d-lnav-edge{fill:none;stroke:none;pointer-events:none}
 .d-lnav-piece.is-on .d-lnav-edge{stroke:#fffefb;stroke-width:3;stroke-linejoin:round}
 .d-lnav-piece:focus-visible .d-lnav-edge{stroke:#a44e24;stroke-width:6}
