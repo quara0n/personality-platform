@@ -639,3 +639,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «et vindu skal poppe opp når man trykker på del … sånn det er i snapchat, insta». Del åpner nå et lite vindu med en gang, med lenke og Kopier, Facebook, WhatsApp, X, LinkedIn og E-post. På mobil kommer også «Del lenken», som åpner telefonens delemeny. Den lange boksen «Videolenken din / Reels og TikTok» under videoen er borte. I vinduet står det bare en stille «Last ned video» (PC) eller «Del videofila (Reels, TikTok)» (mobil), og «Slett lenken».
 - Lenken lages fra forhåndsbildet og kortet på et par sekunder. Videoen lastes opp i bakgrunnen når den er laget. Åpner noen lenken før det, ser de bildet og «Videoen er på vei». Samme video (navn, språk, svar) beholder lenken sin, så et nytt trykk på Del åpner delemenyen med en gang uten ny opplasting.
 - Storskjermknapp øverst til høyre i videoen. På iPhone, der Safari bare tillater fullskjerm for video-elementer, dekker videoen hele skjermen i stedet.
+
+## PDF-rapporten nevnes i kjøpsvalget (2026-10-20)
+
+- Rune ville at listen over hva man får sier at Fordypningsrapporten kan lastes ned som PDF med sidetall. Utskrift av hele rapporten (Letter, slik @page er satt) ga 45–48 sider i testprofiler, avhengig av profil, språk og nivå. Teksten sier derfor «Over 40 sider» og ikke et eksakt tall. Linjen står i kjøpsvalget (kort og «+»-listene for begge nivåer), på #offer-siden og i åpningsanimasjonen.
