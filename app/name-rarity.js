@@ -36,7 +36,7 @@ export function rarityCopy(s, language) {
   const people = roundPeople(s.total, language);
   const source = s.source === 'kaleido'
     ? [`Based on ${people} saved Kaleido profiles.`, `Bygger på ${people} lagrede Kaleido-profiler.`]
-    : ['An estimate from the test’s norm data. Once enough Kaleido profiles are saved, we show real numbers.', 'Et anslag ut fra normdataene til testen. Når nok Kaleido-profiler er lagret, viser vi ekte tall.'];
+    : ['Calculated from the research data behind the test: we worked out how often this exact combination of facets turns up among a million people, modelled on the answers of 243,307 participants.', 'Beregnet fra forskningsdataene bak testen: vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer, modellert etter svarene til 243\u00a0307 deltakere.'];
   return {tag: pick(tag, language), line: pick(line, language), source: pick(source, language)};
 }
 
