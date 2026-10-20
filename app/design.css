@@ -2038,3 +2038,8 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 .d-share-link{display:flex;gap:8px;margin:0 0 12px}
 .d-share-link input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid rgba(19,40,79,.25);border-radius:8px;font:inherit;font-size:15px;color:#13284f;background:#fff}
 .d-share-unlink{font-size:14px}
+/* The way past a failed sign-in on the sign-in step (see escapeHtml in ui.js) */
+.d-signin-escape-box:empty{display:none}
+.d-signin-escape-box{margin:18px 0 0;text-align:center}
+.d-signin-escape{margin:0 0 12px;font-size:15px;color:#4f6c8a}
+.d-signin-inapp{margin:0 0 4px;font-size:15px;color:#4f6c8a;text-align:center}

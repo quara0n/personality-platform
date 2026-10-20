@@ -68,10 +68,24 @@ export async function signIn(provider, route = 'account', intent = '') {
 export async function signInWithEmail(email, route = 'account', intent = '', code = '') {
   if (!validEmail(email)) throw new Error('invalid-email');
   const c = await client();
-  pending.set({route, intent, code: validCode(code) ? code : ''});
+  pending.set({route, intent, code: validCode(code) ? code : '', email: String(email).trim()});
   const {error} = await c.auth.signInWithOtp({email: String(email).trim(), options: {emailRedirectTo: location.origin + location.pathname, shouldCreateUser: true}});
-  if (error) {pending.drop(); throw error;}
+  if (error) {pending.set({route, intent, code: validCode(code) ? code : ''}); throw error;}
 }
+
+/** Keeps the finished answers in localStorage for 24 hours while the person signs in. The test itself lives in
+ *  sessionStorage, which is gone if the in-app browser (Messenger, Instagram) closes while they fetch the email.
+ *  120 answers must never be lost on the way to the result (Rune 2026-10-20). */
+export function keepAnswers(code, route = 'loading', intent = 'save') {
+  if (!validCode(code)) return;
+  const p = pending.get();
+  pending.set({route, intent, code, email: p?.code === code ? p.email || '' : ''});
+}
+/** The kept answer code, if any. */
+export const keptAnswers = () => {const c = pending.get()?.code; return validCode(c) ? c : '';};
+/** The address the last code was sent to, so the code field can be shown again after a reload. */
+export const pendingEmail = () => pending.get()?.email || '';
+export const forgetAnswers = () => pending.drop();
 
 export const validOtp = token => /^\d{6,10}$/.test(String(token).replace(/\s/g, ''));
 
