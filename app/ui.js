@@ -12,8 +12,8 @@ import {glanceHtml,initGlance,peopleFor,countUp} from './glance.js';
 import {profileName} from './profile-name.js';
 import {compareHtml} from './facet-compare.js';
 import {characterText,sharedArt} from './profile-name-copy.js';
-import {paintRarity} from './name-rarity.js';
-import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration,musicCues,sharePictures} from './share-video.js';
+import {paintRarity,rarityData} from './name-rarity.js';
+import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration,musicCues,sharePictures,comboArt} from './share-video.js';
 import {UPLOADS,linkTargets,caption} from './share-targets.js';
 import {renderMusic,loadSong} from './share-music.js';
 import {cairnsHtml,dropStone,cairnFinale,flyPieces} from './cairns.js';
@@ -227,11 +227,14 @@ function initShare(){
   // A recording started on the results page keeps running if the person leaves it (report is then
   // cleared), so it keeps using the last script it had.
   let lastScript=null;
-  const long=canvas.closest('.d-share').dataset.long==='true',script=()=>report?(lastScript=videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long})):lastScript;
+  const long=canvas.closest('.d-share').dataset.long==='true',script=()=>report?(lastScript=videoScript(sorted(),{language,firstName:input.value,name:d=>name(d).replace(/\s*\(.*\)$/,''),site,long,frequencies})):lastScript;
+  // How common the profile character is, said on the name slide; filled before the first frame.
+  let frequencies=null;
   let imgs={},playing=false,visible=false,recording=false,pos=0,from=0,since=0,file=null,url='',sound=false,voice=null,monitor=null,music=null;
   // The profile character goes on the name slide, in the figure the person chose on the profile.
-  const character=()=>new Promise(ok=>{const img=new Image();img.onload=()=>ok(img);img.onerror=()=>ok(null);img.src=figureSrc(script().image);});
-  const piecesReady=Promise.all([loadPieces(),character()]).then(([x,c])=>{imgs={...x,character:c};return imgs;});
+  // The rare-combo scene shows the two facet ends in the same figure.
+  const picture=id=>new Promise(ok=>{const img=new Image();img.onload=()=>ok(img);img.onerror=()=>ok(null);img.src=figureSrc(id);});
+  const piecesReady=rarityData(account.enabled()).catch(()=>null).then(f=>{frequencies=f;const ids=comboArt(script());return Promise.all([loadPieces(),picture(script().image),...ids.map(picture)]).then(([x,c,...art])=>{imgs={...x,character:c,...Object.fromEntries(ids.map((id,i)=>[`art-${id}`,art[i]]))};return imgs;});});
   const total=()=>duration(script()),clock=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
   const showTime=t=>{seek.max=total().toFixed(2);seek.value=t;seek.style.setProperty('--v',`${t/total()*100}%`);left.textContent='−'+clock(Math.ceil(total()-t-.001));};
   // Music: one buffer per length, heard through a gain node that the sound button turns up or down.

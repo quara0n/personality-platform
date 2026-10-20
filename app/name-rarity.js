@@ -49,11 +49,16 @@ export function rarityHtml(ruleId, estimates, real, language) {
 
 let estimatesPromise, realPromise;
 const getJson = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
-/** Fills every [data-name-rarity="<ruleId>"] on the page. `live` asks the server for real counts. */
-export async function paintRarity(language, live = false) {
+/** {estimates, real} for nameShare, fetched once. `live` asks the server for real counts. Also used by the share video. */
+export async function rarityData(live = false) {
   estimatesPromise ||= getJson('data/name-frequencies.json');
   if (live) realPromise ||= getJson('api/name-stats');
   const [estimates, real] = await Promise.all([estimatesPromise, live ? realPromise : null]);
+  return {estimates, real};
+}
+/** Fills every [data-name-rarity="<ruleId>"] on the page. `live` asks the server for real counts. */
+export async function paintRarity(language, live = false) {
+  const {estimates, real} = await rarityData(live);
   document.querySelectorAll('[data-name-rarity]').forEach(el => {
     const html = rarityHtml(el.dataset.nameRarity, estimates, real, language);
     el.innerHTML = html;

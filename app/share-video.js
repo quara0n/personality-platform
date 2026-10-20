@@ -9,12 +9,18 @@
 // Everything is drawn on a canvas and recorded in the browser; nothing is uploaded.
 // Closing lines are editorial, kind in both directions and never mock a score; they follow the
 // same trait as the profile name's noun, so they stay traceable to the result.
+// Both cuts also dig out the person's rarest facet pair (app/facet-combos.js, Rune 2026-10-20: «de rareste
+// komboene»), e.g. very orderly and very adventurous, with how many people share it; it takes the place of the
+// single facet scene. A hand-written line for that pair becomes the closing quote. The name scene says how
+// common the profile character is (app/name-rarity.js) when the frequencies are passed in.
 import {traitColors, traitPiece, panelCopy} from './design-copy.js';
 import {combination} from './combination-copy.js';
 import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
 import {SONG, songPlan} from './share-music.js';
+import {rareCombos} from './facet-combos.js';
+import {nameShare, rarityCopy} from './name-rarity.js';
 
 export const W = 1080, H = 1920;
 const INK = '#0c1742', MUTED = '#5a7290', PAPER = '#fbf9f4', SERIF = "'Source Serif 4',Georgia,'Times New Roman',serif", SANS = 'Manrope,Arial,Helvetica,sans-serif';
@@ -110,7 +116,7 @@ const pct = x => Math.round(shownPercentile(x.percentile));
 const byExtremity = (a, b) => extremity(b) - extremity(a) || a.code.localeCompare(b.code);
 
 /** Everything the video says, chosen from the scores. `names` maps a domain to its display name. */
-export function videoScript(domains, {language, firstName = '', name, site = '', long = false}) {
+export function videoScript(domains, {language, firstName = '', name, site = '', long = false, frequencies = null}) {
   const tr = (en, no) => (language === 'no' ? no : en);
   const named = profileName(domains, language);
   // The facet scene shows the first facet of the profile name's image id, so the same
@@ -131,6 +137,18 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
     : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
+  // A signature name already tells its pair with its own line; a plain name's pair can still be the combo.
+  const keyOf = f => `${f.code}${f.band[0]}`;
+  const combos = rareCombos(domains, {language, skip: named.line ? named.facets.map(keyOf) : []}).map(c => ({
+    id: c.id,
+    eyebrow: c.contrast ? tr('Two things that rarely go together', 'To ting som sjelden går sammen') : tr('Your rare combo', 'Den sjeldne komboen din'),
+    facets: [c.a, c.b].map(f => ({key: keyOf(f), name: f.name, percentile: pct(f), color: traitColors[f.code[0]]})),
+    amount: c.amount,
+    below: tr('people have this combination as clearly as you', 'mennesker har denne kombinasjonen like tydelig som deg'),
+    line: c.line
+  }));
+  const share = frequencies && nameShare(named.ruleId, frequencies.estimates, frequencies.real);
+  const rarity = share ? rarityCopy(share, language).line.replace(/\.$/, '') : '';
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
   const extra = long ? {
     traitsTitle: tr('All five traits', 'Alle fem trekkene'),
@@ -151,7 +169,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
-    closer: named.line || pick(facet && facet.band !== 'middle' ? facetClosers[`${facet.code}${facet.band[0]}`] : band === 'middle' ? closers.balanced : closers[trait.code][band], language),
+    combos,
+    comboNote: tr('Estimate from the test’s norm data', 'Anslag ut fra normdataene til testen'),
+    rarity,
+    // A hand-written line for the rarest pair is the punchline; otherwise the closer stays with the profile name.
+    closer: combos[0]?.line || named.line || pick(facet && facet.band !== 'middle' ? facetClosers[`${facet.code}${facet.band[0]}`] : band === 'middle' ? closers.balanced : closers[trait.code][band], language),
     end: tr("What's your profile?", 'Hvordan ser din profil ut?'),
     cta: tr('Find out for free', 'Finn ut gratis'),
     button: site || 'Kaleido',
@@ -159,7 +181,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     site,
     note: tr('Self-reflection, not a diagnosis.', 'Selvrefleksjon, ikke en diagnose.'),
     tagline: tr('See every side of you.', 'Se alle sidene dine.'),
-    ruleId: `share-video-v1/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}`
+    ruleId: `share-video-v2/${long ? 'long' : 'short'}/${trait.code}${band[0]}/${named.ruleId}${combos.map(c => `/combo/${c.id}`).join('')}`
   };
 }
 
@@ -287,13 +309,16 @@ function footer(ctx, imgs, a, tagline) {
 // got one more second so it is easier to read. The short cut lasts as long as the song. Scenes play back to back and cross-fade at the edges.
 // Rune moved two seconds from the end card to the closing quote, so the end card lasts 3 s with the outro.
 const CUTS = {
-  short: [['hook', 5.0], ['name', 3.5], ['stat', 4.0], ['facet', 3.0], ['closer', 5.0], ['end', 3.0]],
-  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['combo', 5.5], ['strength', 4.5], ['closer', 5.5], ['end', 3.0]]
+// The rare-combo scenes replace the single facet scene when the person has a rare pair.
+// The short cut still lasts as long as the song: the stat gave a second to the facet or combo scene.
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 3.0], ['facet', 4.0], ['rare', 4.0], ['closer', 5.0], ['end', 3.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['rare', 4.5], ['combo', 5.5], ['strength', 4.5], ['closer', 5.5], ['end', 3.0]]
 };
-/** Scenes with start and end times for this script; skips the facet when there is none. */
+const shown = (id, s) => id === 'facet' ? s.facet && !s.combos?.length : id === 'rare' ? s.combos?.length > 0 : true;
+/** Scenes with start and end times for this script; skips the facet when there is none or a rare combo takes its place. */
 export function timeline(s) {
   let at = 0;
-  return CUTS[s.long ? 'long' : 'short'].filter(([id]) => id !== 'facet' || s.facet).map(([id, d]) => {const x = {id, start: at, end: at + d}; at += d; return x;});
+  return CUTS[s.long ? 'long' : 'short'].filter(([id]) => shown(id, s)).map(([id, d]) => {const x = {id, start: at, end: at + d}; at += d; return x;});
 }
 export const duration = s => timeline(s).at(-1).end;
 
@@ -313,14 +338,16 @@ const scenes = {
   },
   name(ctx, lt, d, a, s, imgs) {
     // With the profile character (imgs.character), the name moves up and the figure stands below it.
-    const art = imgs.character, top = art ? 600 : 760, r = 40 * (1 - ease(span(lt, .1, .7)));
+    const art = imgs.character, top = art ? 560 : 760, r = 40 * (1 - ease(span(lt, .1, .7))), room = s.rarity ? 120 : 0;
     text(ctx, s.intro, top, {size: 64, color: MUTED, alpha: a, rise: r});
     const bottom = text(ctx, s.name, top + 160, {size: art ? 112 : 132, alpha: Math.min(a, ease(span(lt, .3, .9))), rise: r, maxLines: 3, lh: 1.05, max: W - 140});
     brush(ctx, 260, 820, bottom + 70, '#f6b18d', ease(span(lt, .8, 1.6)), a);
     if (art) {
-      const k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - (bottom + 130)), x = (W - size) / 2, y = bottom + 130 + 50 * (1 - k);
+      const k = ease(span(lt, .6, 1.3)), size = Math.min(760, H - 230 - room - (bottom + 130)), x = (W - size) / 2, y = bottom + 130 + 50 * (1 - k);
       ctx.save(); ctx.globalAlpha = a * k; ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(feathered(art), x, y, size, size); ctx.restore();
     }
+    // «Omtrent 1 av 12 000 mennesker får denne profilfiguren», with the number in bold.
+    if (s.rarity) rich(ctx, s.rarity, H - 300, {size: 42, alpha: a * ease(span(lt, 1.2, 1.8)), rise: 20 * (1 - ease(span(lt, 1.2, 1.8)))});
   },
   traits(ctx, lt, d, a, s, imgs) {
     text(ctx, s.traitsTitle, 330, {size: 84, alpha: a});
@@ -371,6 +398,7 @@ const scenes = {
     text(ctx, s.name, 760, {size: 76, alpha: a, maxLines: 2});
     text(ctx, c.text, 980, {size: 62, alpha: a * ease(span(lt, .6, 1.2)), maxLines: 7, lh: 1.3, max: W - 200});
   },
+  rare(ctx, lt, d, a, s, imgs) {rareScene(ctx, lt, a, s, imgs, 0);},
   strength(ctx, lt, d, a, s) {
     const g = s.strength, r = 40 * (1 - ease(span(lt, 0, .6)));
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#f6b18d'; ctx.beginPath(); ctx.moveTo(W / 2, 470 + r); ctx.lineTo(W / 2 + 60, 570 + r); ctx.lineTo(W / 2 - 60, 570 + r); ctx.closePath(); ctx.fill(); ctx.restore();
@@ -398,6 +426,53 @@ const scenes = {
   }
 };
 
+// Two facet pictures side by side with a plus between, names and percentiles under them, then how many
+// people share the pair. Its hand-written line, if any, is the closing quote.
+function rareScene(ctx, lt, a, s, imgs, i) {
+  const c = s.combos[i], r = 40 * (1 - ease(span(lt, 0, .6))), size = 400, gap = 60, x0 = (W - 2 * size - gap) / 2;
+  text(ctx, c.eyebrow.toUpperCase(), 330, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, rise: r, spacing: 4, maxLines: 2});
+  c.facets.forEach((f, j) => {
+    const k = ease(span(lt, .2 + j * .35, .9 + j * .35)), x = x0 + j * (size + gap), cx = x + size / 2, art = imgs[`art-${f.key}`];
+    ctx.save(); ctx.globalAlpha = a * k;
+    if (art) {ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(feathered(art), x, 420 + 40 * (1 - k), size, size); ctx.restore();}
+    else {ctx.fillStyle = hexA(f.color, .25); ctx.beginPath(); ctx.arc(cx, 620, 150, 0, Math.PI * 2); ctx.fill();}
+    ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    let fs = 54; do {ctx.font = `400 ${fs}px ${SERIF}`; fs -= 2;} while (ctx.measureText(f.name).width > size + 20 && fs > 28);
+    ctx.fillText(f.name, cx, 900);
+    const bw = size - 60, bx = cx - bw / 2, fill = bw * f.percentile / 100 * ease(span(lt, .6 + j * .35, 1.6 + j * .35));
+    ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, 935, bw, 20, 10); ctx.fill();
+    ctx.fillStyle = f.color; roundRect(ctx, bx, 935, Math.max(20, fill), 20, 10); ctx.fill();
+    ctx.fillStyle = MUTED; ctx.font = `400 34px ${SANS}`; ctx.fillText(`${s.language === 'no' ? 'Persentil' : 'Percentile'} ${f.percentile}`, cx, 1010);
+    ctx.restore();
+  });
+  const plus = easeOutBack(span(lt, .7, 1.1));
+  if (plus > 0) {
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(W / 2, 620); ctx.scale(plus, plus);
+    ctx.fillStyle = '#f06a3c'; ctx.beginPath(); ctx.arc(0, 0, 46, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.fillRect(-22, -5, 44, 10); ctx.fillRect(-5, -22, 10, 44); ctx.restore();
+  }
+  const k = ease(span(lt, 1.2, 1.9));
+  text(ctx, c.amount, 1230, {size: 150, alpha: a * k, rise: 30 * (1 - k)});
+  text(ctx, c.below, 1320, {size: 46, color: MUTED, alpha: a * k, maxLines: 2, max: W - 220});
+  text(ctx, s.comboNote, 1680, {size: 30, font: SANS, color: MUTED, alpha: a * k * .9});
+}
+
+// Centred line where the part in <b>…</b> is bold; shrinks to fit one line.
+function rich(ctx, str, y, {size, alpha = 1, rise = 0, max = W - 140}) {
+  const parts = String(str).split(/<b>|<\/b>/).map((t, i) => ({t, bold: i % 2 === 1})).filter(p => p.t);
+  let s = size, width;
+  const font = (p, n) => `${p.bold ? 700 : 400} ${n}px ${SANS}`;
+  do {width = parts.reduce((w, p) => {ctx.font = font(p, s); return w + ctx.measureText(p.t).width;}, 0); s -= 2;} while (width > max && s > 22);
+  s += 2;
+  ctx.save(); ctx.globalAlpha *= alpha; ctx.fillStyle = INK; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  let x = (W - width) / 2;
+  for (const p of parts) {ctx.font = font(p, s); ctx.fillText(p.t, x, y + rise); x += ctx.measureText(p.t).width;}
+  ctx.restore();
+}
+
+/** Picture ids the video draws besides the logo: the facet ends in the rare-combo scenes (assets/names/<id>.webp). */
+export const comboArt = s => (s.combos || []).flatMap(c => c.facets.map(f => f.key));
+
 // The character art sits on an off-white square; soft edges let it melt into the paper.
 const softened = new WeakMap();
 function feathered(img) {
@@ -413,7 +488,7 @@ function feathered(img) {
 /** Draws the frame at time t (seconds). */
 export function drawFrame(ctx, t, s, imgs) {
   const tl = timeline(s), at = id => tl.find(x => x.id === id), now = tl.find(x => t < x.end) || tl.at(-1);
-  const color = {traits: '#f6b18d', facet: s.facet?.color, combo: '#cdb8a2', strength: '#f6b18d'}[now.id] || (['hook', 'name'].includes(now.id) ? '#91b6d3' : s.color);
+  const color = {traits: '#f6b18d', facet: s.facet?.color, combo: '#cdb8a2', strength: '#f6b18d', rare: s.combos?.[0]?.facets[1].color}[now.id] || (['hook', 'name'].includes(now.id) ? '#91b6d3' : s.color);
   paper(ctx, t, color);
   // The logo assembles in the hook, then shrinks to the top while the name appears.
   const name = at('name');
@@ -457,7 +532,9 @@ export function drawPoster(ctx, s, imgs) {
   text(ctx, s.stat.above, y, {size: 56});
   text(ctx, String(s.stat.number), y + 190, {size: 200});
   text(ctx, s.stat.below, y + 262, {size: 50, color: MUTED});
-  if (s.facet) text(ctx, `${s.facet.name} · ${s.facet.caption.split(' · ')[0].toLowerCase()}`, y + 352, {size: 44, font: SANS, color: MUTED});
+  const c = s.combos?.[0];
+  if (c) text(ctx, `${c.facets[0].name} + ${c.facets[1].name} · ${c.amount}`, y + 352, {size: 44, font: SANS, color: MUTED});
+  else if (s.facet) text(ctx, `${s.facet.name} · ${s.facet.caption.split(' · ')[0].toLowerCase()}`, y + 352, {size: 44, font: SANS, color: MUTED});
   text(ctx, s.closer, H - 400, {size: 60, style: 'italic', maxLines: 2});
   text(ctx, `${s.end} ${s.cta}`, H - 200, {size: 40, font: SANS, color: INK});
   pill(ctx, s.button, H - 110, 1, .8);
