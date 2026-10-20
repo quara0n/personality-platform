@@ -2027,9 +2027,9 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 @media(hover:hover){.d-share-target:hover{filter:brightness(1.08);transform:translateY(-1px)}}
 
 /* Facet glint (facet-glint.js): one small facet at a time lights up faintly, in random order. */
-.k-facet{fill:#fff;opacity:0;pointer-events:none}
-.k-facet.is-glint{animation:k-glint 2.2s ease-in-out}
-@keyframes k-glint{45%{opacity:.2}}
+.k-facet{fill:#fff;fill-opacity:.55;stroke:#fff;stroke-width:1.5px;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:0;pointer-events:none}
+.k-facet.is-glint{animation:k-glint 1.8s ease-in-out}
+@keyframes k-glint{35%{opacity:.75}}
 @media(prefers-reduced-motion:reduce){.k-facet.is-glint{animation:none}}
 .d-share-out h3 + .d-small{margin-top:0}
 .d-share-out h3:not(:first-child){margin-top:14px}
