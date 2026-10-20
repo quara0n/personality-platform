@@ -66,3 +66,15 @@ test('the video shows the rare combo in place of the facet, ends on its line and
   assert.equal(plain.rarity, '');
   assert.ok(!timeline(plain).some(x => x.id === 'rare'));
 });
+
+test('the combo scene says the pair in words', () => {
+  const s = videoScript(person({E2: 91, E6: 14}), {language: 'no', name: x => x.name});
+  assert.equal(s.combos[0].below, 'mennesker er like selskapelige og alvorlige som deg');
+});
+
+test('with a combo the scene gets two more seconds and the quote two fewer, so the length stays the same', () => {
+  const tl = timeline(videoScript(person({C2: 93, N5: 88}), {language: 'no', name: x => x.name}));
+  const len = id => {const x = tl.find(t => t.id === id); return x.end - x.start;};
+  assert.equal(len('rare'), 6); assert.equal(len('closer'), 3);
+  assert.equal(tl.at(-1).end, timeline(videoScript(person({C2: 93}), {language: 'no', name: x => x.name})).at(-1).end);
+});

@@ -142,9 +142,11 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
   const combos = rareCombos(domains, {language, skip: named.line ? named.facets.map(keyOf) : []}).map(c => ({
     id: c.id,
     eyebrow: c.contrast ? tr('Two things that rarely go together', 'To ting som sjelden går sammen') : tr('Your rare combo', 'Den sjeldne komboen din'),
+    // The picture for each facet end may repeat the name's picture; Rune 2026-10-20: the picture must show the facet.
     facets: [c.a, c.b].map(f => ({key: keyOf(f), name: f.name, percentile: pct(f), color: traitColors[f.code[0]]})),
     amount: c.amount,
-    below: tr('people have this combination as clearly as you', 'mennesker har denne kombinasjonen like tydelig som deg'),
+    // Says what the pair means in words, with the profile name's adjectives (plural, «er like ryddige og nytelsesglade som deg»).
+    below: tr(`people are as ${c.adjectives[0]} and ${c.adjectives[1]} as you`, `mennesker er like ${c.adjectives[0]} og ${c.adjectives[1]} som deg`),
     line: c.line
   }));
   const share = frequencies && nameShare(named.ruleId, frequencies.estimates, frequencies.real);
@@ -311,14 +313,16 @@ function footer(ctx, imgs, a, tagline) {
 const CUTS = {
 // The rare-combo scenes replace the single facet scene when the person has a rare pair.
 // The short cut still lasts as long as the song: the stat gave a second to the facet or combo scene.
-  short: [['hook', 5.0], ['name', 3.5], ['stat', 3.0], ['facet', 4.0], ['rare', 4.0], ['closer', 5.0], ['end', 3.0]],
-  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['rare', 4.5], ['combo', 5.5], ['strength', 4.5], ['closer', 5.5], ['end', 3.0]]
+// Rune 2026-10-20: the combo scene got two more seconds to read, taken from the closing quote (the third number:
+// the closer's length when a combo is shown).
+  short: [['hook', 5.0], ['name', 3.5], ['stat', 3.0], ['facet', 4.0], ['rare', 6.0], ['closer', 5.0, 3.0], ['end', 3.0]],
+  long: [['hook', 5.0], ['name', 4.0], ['traits', 6.5], ['stat', 4.5], ['facet', 4.0], ['rare', 6.5], ['combo', 5.5], ['strength', 4.5], ['closer', 5.5, 3.5], ['end', 3.0]]
 };
 const shown = (id, s) => id === 'facet' ? s.facet && !s.combos?.length : id === 'rare' ? s.combos?.length > 0 : true;
 /** Scenes with start and end times for this script; skips the facet when there is none or a rare combo takes its place. */
 export function timeline(s) {
   let at = 0;
-  return CUTS[s.long ? 'long' : 'short'].filter(([id]) => shown(id, s)).map(([id, d]) => {const x = {id, start: at, end: at + d}; at += d; return x;});
+  return CUTS[s.long ? 'long' : 'short'].filter(([id]) => shown(id, s)).map(([id, d, withCombo]) => {if (withCombo && s.combos?.length) d = withCombo; const x = {id, start: at, end: at + d}; at += d; return x;});
 }
 export const duration = s => timeline(s).at(-1).end;
 
