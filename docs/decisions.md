@@ -634,6 +634,12 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Videovinduet som åpner seg etter testen har nå en stor knapp «Del personligheten din» under videoen. «Ikke nå» står fortsatt øverst. Grunn: Fredrik testet på mobil og trodde han måtte lukke vinduet med «Ikke nå» før han kunne dele. På PC lukkes vinduet når delepanelet åpnes, slik at lenken og knappene synes på siden.
 
+## Del åpner et delevindu med en gang (2026-10-20)
+
+- Rune: «et vindu skal poppe opp når man trykker på del … sånn det er i snapchat, insta». Del åpner nå et lite vindu med en gang, med lenke og Kopier, Facebook, WhatsApp, X, LinkedIn og E-post. På mobil kommer også «Del lenken», som åpner telefonens delemeny. Den lange boksen «Videolenken din / Reels og TikTok» under videoen er borte. I vinduet står det bare en stille «Last ned video» (PC) eller «Del videofila (Reels, TikTok)» (mobil), og «Slett lenken».
+- Lenken lages fra forhåndsbildet og kortet på et par sekunder. Videoen lastes opp i bakgrunnen når den er laget. Åpner noen lenken før det, ser de bildet og «Videoen er på vei». Samme video (navn, språk, svar) beholder lenken sin, så et nytt trykk på Del åpner delemenyen med en gang uten ny opplasting.
+- Storskjermknapp øverst til høyre i videoen. På iPhone, der Safari bare tillater fullskjerm for video-elementer, dekker videoen hele skjermen i stedet.
+
 ## 2026-10-20 – Sjeldne komboer i delevideoen
 
 - Rune: hver video skal «lurke frem de rareste komboene» av testen, så folk vil dele den fordi den treffer, er morsom eller litt skrytete. app/facet-combos.js finner personens sjeldneste fasettpar (f.eks. svært ryddig og svært nytelsesglad) og regner ut hvor mange som har begge deler minst like tydelig. Tallet er et anslag fra samme modell som profilfigurens sjeldenhet (felles trekkfaktor 0,65, trekk-korrelasjoner fra van der Linden mfl. 2010), sies i mennesker («1 av 230 mennesker har denne kombinasjonen like tydelig som deg») og merkes «Anslag ut fra normdataene til testen».

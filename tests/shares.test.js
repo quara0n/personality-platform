@@ -96,3 +96,18 @@ test('an unknown or malformed link sends people to the front page', async t => {
   assert.equal((await sharePage('AbCdEfGhIj', env)).status, 404);
   assert.equal((await sharePage('bad id', env)).status, 404);
 });
+
+test('a fresh video upload link is only given for the owner\'s own share', async t => {
+  const saved = globalThis.fetch;
+  t.after(() => {globalThis.fetch = saved;});
+  globalThis.fetch = fakeFetch([
+    [/auth\/v1\/user/, {json: {id: 'u1'}}],
+    [/GET .*rest\/v1\/shares\?select=id,video_ext&user_id=eq\.u1&id=eq\.AbCdEfGhIj/, {json: [{id: 'AbCdEfGhIj', video_ext: 'webm'}]}],
+    [/GET .*rest\/v1\/shares\?select=id,video_ext&user_id=eq\.u1&id=eq\.ZzZzZzZzZz/, {json: []}],
+    [/POST .*storage\/v1\/object\/upload\/sign\/shares\//, url => ({json: {url: `/object/upload/sign/shares/${url.split('/shares/')[1]}?token=t`}})]
+  ]);
+  const r = await handleShare({action: 'video', id: 'AbCdEfGhIj'}, 'tok', env);
+  assert.deepEqual(r, {status: 200, body: {upload: 'https://sb.example/storage/v1/object/upload/sign/shares/AbCdEfGhIj/video.webm?token=t'}});
+  assert.equal((await handleShare({action: 'video', id: 'ZzZzZzZzZz'}, 'tok', env)).status, 404);
+  assert.equal((await handleShare({action: 'video', id: '../x'}, 'tok', env)).status, 400);
+});
