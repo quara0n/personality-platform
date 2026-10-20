@@ -2133,8 +2133,10 @@ body.in-share-full{overflow:hidden}
 .d-combo{padding:22px 22px 18px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow);color:var(--title)}
 .d-combo-pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px 8px}
 .d-combo-pair img{display:block;width:100%;max-width:200px;aspect-ratio:1;margin:0 auto;object-fit:cover;mix-blend-mode:multiply}
-.d-combo-face{display:grid;gap:2px;align-self:start;margin:0;text-align:center;font-size:14px;color:#4f6c8a}
-.d-combo-face strong{font:400 20px/1.2 var(--serif);color:var(--title);overflow-wrap:anywhere;hyphens:auto}
+/* Name, bar and percentile share rows across both facets, so a name that wraps keeps the bars and percentiles level (Rune 2026-10-20). */
+.d-combo-face{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:2px;margin:0;text-align:center;font-size:14px;color:#4f6c8a}
+.d-combo-face strong{align-self:center;font:400 20px/1.2 var(--serif);color:var(--title);overflow-wrap:anywhere;hyphens:auto}
+.d-combo-face .d-mini{align-self:center}
 .d-combo-face .d-mini{width:100%;max-width:180px;margin:6px auto}
 .d-combo-plus{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#f06a3c;color:#fff;font:700 22px/1 var(--sans)}
 .d-combo-amount{margin:16px 0 0;text-align:center;font-size:16px;color:#2c4566}
