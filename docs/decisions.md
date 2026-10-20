@@ -352,6 +352,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune: «de MÅ logge inn», etter 10–15 minutter på testen. Når innlogging er koblet til (Supabase), må man logge inn før lasteskjermen, gratisprofilen, rapporten og profillenker (#p=…) vises. Eksempelrapporten (#demo) er åpen.
 - Innloggingsskjermen er kopiert fra Codex-skissen Rune valgte: logoen og «Fem» øverst, «Testen er fullført», «Lagre profilen din», én linje, Google-knapp, og Personvern nederst. Lenken for å hoppe over er fjernet.
 - «Logg inn uten Google» åpner et e-postfelt og sender en innloggingslenke (Supabase magic link). Svarene legges i localStorage til lenken er brukt, så de overlever at lenken åpnes i en ny fane. Lenken må åpnes i samme nettleser.
+- 2026-10-20: E-posten har også en sekssifret kode som skrives inn på siden der man ba om innlogging (verifyOtp). Grunn: Rune sin bror tok testen i Messenger sin nettleser, lenken åpnet seg i en annen nettleser og feilet («code verifier should be non-empty»), og svarene ble ikke lagret. Koden virker uansett hvilken app e-posten leses i. Åpnes lenken i feil nettleser, forklarer siden det og ber om koden. Krever {{ .Token }} i Supabase-malene «Magic Link» og «Confirm signup».
 - I lokal forhåndsvisning uten Supabase (?dev=1) finnes en merket lenke forbi skjermen, bare for testing.
 
 ## 2026-10-16 – Trekkene som logo, fasettknapper og to mockuper
@@ -595,7 +596,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-19 – Videoen deles som lenke med stort bilde
 
 - Rune: delingen skal være som en klassisk YouTube- eller Reels-lenke, med stort miniatyrbilde og avspillingsknapp, ikke en mp4-fil i meldingen.
-- Når en innlogget bruker trykker Del, lastes videoen, et stillbilde og et forhåndsbilde (1200 × 630: profilfiguren, «Rune er / Den impulsive reven», «Se videoen» og avspillingsknapp) opp til Supabase Storage (bøtta «shares») med signerte opplastingslenker fra /api/share. Lenken kaleidotest.com/v/<id> har Open Graph- og Twitter-merker (og og:video) og åpner en side som spiller videoen og leder til testen.
+- Når en innlogget bruker trykker Del, lastes videoen, et stillbilde og et forhåndsbilde (1200 × 630: profilfiguren, «Rune er / Den impulsive reven», «Se videoen» og avspillingsknapp) opp til Supabase Storage (bøtta «shares») med signerte opplastingslenker fra /api/share. Lenken kaleidotest.com/v/<id> har Open Graph- og Twitter-merker og åpner en side som spiller videoen og leder til testen.
 - Bare det videoen viser, lagres: tittel (profilnavnet), språk, type og bruker-ID. Ingen svar, skårer eller e-post. Id-en er tilfeldig (10 tegn), siden er noindex. Maks 20 lenker per bruker per døgn. «Slett lenken» fjerner rad og filer, og «Slett kontoen min» sletter alle lenkene først. Personvernerklæringen er oppdatert.
 - Reels og TikTok tar bare imot selve fila, så «Del videofila» (mobil) og opplastingsknappene (PC) er beholdt under lenken. Uten innlogging deles fila som før.
 - Krever at migrasjonen supabase/migrations/20261019000000_shares.sql kjøres i Supabase (tabell og bøtte).
@@ -613,6 +614,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: på en annen PC sto svarene som «Stemmer svært tørr» og «Stemmer nokså tørr». Hun landet på den engelske siden og byttet til norsk. Appens egne tekster er riktige («Stemmer svært dårlig» osv.), så det var nettleserens automatiske oversettelse som maskinoversatte siden, og som fortsatte etter språkbyttet.
 - Siden har både engelsk og norsk selv, og testutsagnene må ha nøyaktig valgt ordlyd. Derfor har index.html og delingssidene translate="no" og `<meta name="google" content="notranslate">`. Ulempen er at Chrome ikke lenger tilbyr å oversette siden til andre språk.
+- 2026-10-20: Rune sendte en delelenke i Messenger uten forhåndsbilde. Siden har ikke lenger og:video og er og:type website med og:image (1200 × 630, image/jpeg), slik at Facebook og Messenger alltid viser bildekortet i stedet for å prøve å bygge inn videoen.
 
 ## 2026-10-20 – Hvor vanlig profilfiguren er («kombo-statistikk»)
 
