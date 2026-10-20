@@ -1034,6 +1034,8 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-signin-email form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .d-signin-email input{min-height:52px;padding:0 16px;border:1px solid #b9c8d6;border-radius:8px;background:#fff;font:inherit;font-size:16px;color:var(--title)}
 .d-signin-email .d-signin-btn{width:100%;justify-content:center;background:var(--title);border-color:var(--title);color:#fff}
+.d-signin-email form[hidden]{display:none}
+.d-signin-email form label{font-size:15px;color:var(--title);text-align:left}
 .d-signin-email-msg{margin:0;font-size:15px;color:#4f6c8a}
 .d-signin-email-msg:empty{display:none}
 .d-account-actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 14px}
