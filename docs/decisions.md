@@ -640,6 +640,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Lenken lages fra forhåndsbildet og kortet på et par sekunder. Videoen lastes opp i bakgrunnen når den er laget. Åpner noen lenken før det, ser de bildet og «Videoen er på vei». Samme video (navn, språk, svar) beholder lenken sin, så et nytt trykk på Del åpner delemenyen med en gang uten ny opplasting.
 - Storskjermknapp øverst til høyre i videoen. På iPhone, der Safari bare tillater fullskjerm for video-elementer, dekker videoen hele skjermen i stedet.
 
+## PDF-rapporten nevnes i kjøpsvalget (2026-10-20)
+
+- Rune ville at listen over hva man får sier at Fordypningsrapporten kan lastes ned som PDF med sidetall. Utskrift av hele rapporten (Letter, slik @page er satt) ga 45–48 sider i testprofiler, avhengig av profil, språk og nivå. Teksten sier derfor «Over 40 sider» og ikke et eksakt tall. Linjen står i kjøpsvalget (kort og «+»-listene for begge nivåer), på #offer-siden og i åpningsanimasjonen.
+
 ## 2026-10-20 – Sjeldne komboer i delevideoen
 
 - Rune: hver video skal «lurke frem de rareste komboene» av testen, så folk vil dele den fordi den treffer, er morsom eller litt skrytete. app/facet-combos.js finner personens sjeldneste fasettpar (f.eks. svært ryddig og svært nytelsesglad) og regner ut hvor mange som har begge deler minst like tydelig. Tallet er et anslag fra samme modell som profilfigurens sjeldenhet (felles trekkfaktor 0,65, trekk-korrelasjoner fra van der Linden mfl. 2010), sies i mennesker («1 av 230 mennesker har denne kombinasjonen like tydelig som deg») og merkes «Anslag ut fra normdataene til testen».
