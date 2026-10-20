@@ -23,6 +23,19 @@ http.createServer(async(req,res)=>{
     else{let body=null;try{body=JSON.parse(raw);}catch{}result=await handlePurchase(body,String(req.headers.authorization||'').replace(/^Bearer\s+/i,''),process.env,req.headers);}
     res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
   }
+  if(req.method==='POST'&&req.url==='/api/share'){
+    // Same handler as api/share.js; needs the Supabase keys in the environment.
+    let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>20000)break;}
+    let body=null;try{body=JSON.parse(raw);}catch{}
+    const {handleShare}=await import('../lib/shares.js');
+    const result=await handleShare(body,String(req.headers.authorization||'').replace(/^Bearer\s+/i,''),process.env);
+    res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
+  }
+  if(req.method==='GET'&&/^\/v\/[^/]+$/.test(req.url.split('?')[0])){
+    const {sharePage}=await import('../lib/shares.js');
+    const {status,html}=await sharePage(req.url.split('?')[0].slice(3),process.env);
+    res.writeHead(status,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}).end(html);return;
+  }
   try{
     const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
     // Same pages as the build: / and /no from app/index.html, plus robots and sitemap.

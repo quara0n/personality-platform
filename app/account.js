@@ -126,6 +126,8 @@ export async function deleteProfile() {
 
 /** Deletes the saved profile and the account itself (delete_my_account() in the migration), then signs out. */
 export async function deleteAccount() {
+  // Shared video links go first, so their files leave storage too (the rows alone would go with the account).
+  await share('delete-all').catch(() => {});
   const c = await client(), {error} = await c.rpc('delete_my_account');
   if (error) throw error;
   await c.auth.signOut().catch(() => {});
@@ -153,4 +155,28 @@ export async function purchase(action, body = {}) {
   const out = await r.json().catch(() => ({}));
   if (!r.ok && r.status !== 409) throw Object.assign(new Error(out.error || `purchase ${r.status}`), {status: r.status});
   return out;
+}
+
+/** Calls /api/share as the signed-in user: 'create' → {id, url, uploads}, 'delete' {id}, 'delete-all'. See lib/shares.js. */
+export async function share(action, body = {}) {
+  const token = await accessToken();
+  if (!token) throw new Error('signed-out');
+  const r = await fetch('api/share', {method: 'POST', headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}, body: JSON.stringify({...body, action})});
+  const out = await r.json().catch(() => ({}));
+  if (!r.ok) throw Object.assign(new Error(out.error || `share ${r.status}`), {status: r.status});
+  return out;
+}
+
+/** Puts one file on a signed upload URL from share('create'); onProgress gets 0..1. */
+export function uploadSigned(url, blob, onProgress = () => {}) {
+  return new Promise((resolve, reject) => {
+    const x = new XMLHttpRequest();
+    x.open('PUT', url);
+    x.setRequestHeader('Content-Type', blob.type);
+    if (cfg().supabaseAnonKey) x.setRequestHeader('apikey', cfg().supabaseAnonKey);
+    x.upload.onprogress = e => e.lengthComputable && onProgress(e.loaded / e.total);
+    x.onload = () => x.status < 300 ? resolve() : reject(new Error(`upload ${x.status}`));
+    x.onerror = () => reject(new Error('upload'));
+    x.send(blob);
+  });
 }

@@ -2030,3 +2030,8 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 .d-share-target{display:inline-flex;align-items:center;padding:8px 14px;border:1.5px solid #13284f;border-radius:999px;background:#fff;color:#13284f;font:inherit;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer}
 .d-share-target[data-kind="upload"]{background:#13284f;color:#fff}
 @media(hover:hover){.d-share-target:hover{filter:brightness(1.08);transform:translateY(-1px)}}
+.d-share-out h3 + .d-small{margin-top:0}
+.d-share-out h3:not(:first-child){margin-top:14px}
+.d-share-link{display:flex;gap:8px;margin:0 0 12px}
+.d-share-link input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid rgba(19,40,79,.25);border-radius:8px;font:inherit;font-size:15px;color:#13284f;background:#fff}
+.d-share-unlink{font-size:14px}

@@ -592,6 +592,14 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Live-webhook til https://kaleidotest.com/api/stripe-webhook er opprettet i Stripe med `checkout.session.completed`, `checkout.session.async_payment_succeeded` og `charge.refunded`. Branding: hovedfarge #102747, aksent #f6b18d, hvit bakgrunn og mørkeblå knapp på betalingssiden.
 - En full refusjon fjerner kjøpet igjen, og den gamle suksesslenken kan ikke gjenopprette det. Delvis refusjon beholder rapporten.
 
+## 2026-10-19 – Videoen deles som lenke med stort bilde
+
+- Rune: delingen skal være som en klassisk YouTube- eller Reels-lenke, med stort miniatyrbilde og avspillingsknapp, ikke en mp4-fil i meldingen.
+- Når en innlogget bruker trykker Del, lastes videoen, et stillbilde og et forhåndsbilde (1200 × 630: profilfiguren, «Rune er / Den impulsive reven», «Se videoen» og avspillingsknapp) opp til Supabase Storage (bøtta «shares») med signerte opplastingslenker fra /api/share. Lenken kaleidotest.com/v/<id> har Open Graph- og Twitter-merker (og og:video) og åpner en side som spiller videoen og leder til testen.
+- Bare det videoen viser, lagres: tittel (profilnavnet), språk, type og bruker-ID. Ingen svar, skårer eller e-post. Id-en er tilfeldig (10 tegn), siden er noindex. Maks 20 lenker per bruker per døgn. «Slett lenken» fjerner rad og filer, og «Slett kontoen min» sletter alle lenkene først. Personvernerklæringen er oppdatert.
+- Reels og TikTok tar bare imot selve fila, så «Del videofila» (mobil) og opplastingsknappene (PC) er beholdt under lenken. Uten innlogging deles fila som før.
+- Krever at migrasjonen supabase/migrations/20261019000000_shares.sql kjøres i Supabase (tabell og bøtte).
+
 ## 2026-10-20 – Profilmerket kommer til slutt
 
 - Rune: profilmerket øverst til høyre viste seg på innloggingssiden, før innlogging og introvideoen. Nå vises det ikke på innloggingssteget, lasteskjermen eller testen, ikke før man er logget inn (når innlogging er på), og først når profilvideoen er sett eller lukket.
