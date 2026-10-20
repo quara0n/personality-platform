@@ -26,24 +26,31 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   await page.waitForTimeout(1500);if(!/#results$/.test(page.url()))await page.evaluate(()=>{location.hash='#results';});
   await page.locator('#share-fab').waitFor({state:'attached',timeout:30000});
   await page.evaluate(()=>document.querySelectorAll('dialog[open]').forEach(d=>d.close()));
-  await page.evaluate(()=>document.querySelector('#share-fab').click());
-  await page.waitForFunction(()=>!document.querySelector('#share-out').hidden,null,{timeout:90000});
+  const t0=Date.now();await page.evaluate(()=>document.querySelector('#share-fab').click());
+  // The window opens at once and the link comes from the pictures, before the video is made.
+  await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
+  await page.locator('#share-link').waitFor({timeout:15000});assert.ok(Date.now()-t0<15000);
+  assert.equal(await page.inputValue('#share-link'),'https://kaleidotest.com/v/AbCdEfGhIj');
+  assert.ok(!puts['video.mp4'],'the link does not wait for the video');
   const create=calls.find(c=>c.action==='create');
   assert.equal(create.kind,'profile');assert.equal(create.lang,'no');assert.match(create.type,/^video\//);assert.ok(create.title,'profile name as title');
-  assert.deepEqual(Object.keys(puts).sort(),['card.jpg','poster.jpg','video.mp4']);
-  assert.equal(puts['card.jpg'].type,'image/jpeg');assert.ok(puts['video.mp4'].body.length>100000,'the recorded video is uploaded');
-  assert.equal(await page.inputValue('#share-link'),'https://kaleidotest.com/v/AbCdEfGhIj');
+  assert.equal(puts['card.jpg'].type,'image/jpeg');
   assert.match(await page.getAttribute('.d-share-facebook','href'),/u=https%3A%2F%2Fkaleidotest\.com%2Fv%2FAbCdEfGhIj/);
+  if(mobile){assert.equal(await page.locator('#share-native').count(),1,'a big Share the link button on a phone');
+    assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'the share sheet opens with the link');}
+  if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-vindu-${mobile?'mobil':'pc'}.png`});
+  // The video uploads in the background once it is made.
+  for(let i=0;i<180&&!puts['video.mp4'];i++)await page.waitForTimeout(500);
+  assert.ok(puts['video.mp4']&&puts['video.mp4'].body.length>100000,'the recorded video is uploaded');
+  await page.waitForFunction(()=>!document.querySelector('#share-up')?.textContent,null,{timeout:10000});
   if(mobile){assert.equal(await page.locator('#share-file').count(),1,'Reels/TikTok share the file on a phone');
-    const shared=await page.evaluate(()=>window.__shared);assert.ok(shared.length<=1);
-    await page.evaluate(()=>document.querySelector('#share-fab').click());
-    assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'a second tap shares the same link');
-    assert.equal(calls.filter(c=>c.action==='create').length,1,'no second upload');}
-  else assert.equal(await page.locator('.d-share-instagram').count(),1);
-  if(process.env.SHOT){fs.writeFileSync(`${process.env.SHOT}-card.jpg`,puts['card.jpg'].body);fs.writeFileSync(`${process.env.SHOT}-poster.jpg`,puts['poster.jpg'].body);
-    await page.locator('.d-share-body').screenshot({path:`${process.env.SHOT}-${mobile?'mobil':'pc'}.png`});}
+    await page.click('.d-share-pop-close');await page.evaluate(()=>document.querySelector('#share-fab').click());
+    assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'a second tap goes straight to the share sheet');
+    assert.equal(calls.filter(c=>c.action==='create').length,1,'no second link');}
+  else assert.equal(await page.locator('#share-save').count(),1,'a quiet Download video link on PC');
+  if(process.env.SHOT){fs.writeFileSync(`${process.env.SHOT}-card.jpg`,puts['card.jpg'].body);fs.writeFileSync(`${process.env.SHOT}-poster.jpg`,puts['poster.jpg'].body);}
   page.once('dialog',d=>d.accept());await page.click('#share-unlink');
-  await page.waitForFunction(()=>!document.querySelector('#share-link'));
+  await page.waitForFunction(()=>!document.querySelector('dialog#share-pop').open);
   assert.deepEqual(calls.at(-1),{action:'delete',id:'AbCdEfGhIj'});
   assert.deepEqual(errors,[]);
   await ctx.close();console.log(`share check ${mobile?'mobile':'desktop'}: ok`);}

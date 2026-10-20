@@ -14,7 +14,7 @@ import {compareHtml} from './facet-compare.js';
 import {characterText,sharedArt} from './profile-name-copy.js';
 import {paintRarity} from './name-rarity.js';
 import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration,musicCues,sharePictures} from './share-video.js';
-import {UPLOADS,linkTargets,caption} from './share-targets.js';
+import {linkTargets,caption} from './share-targets.js';
 import {renderMusic,loadSong} from './share-music.js';
 import {cairnsHtml,dropStone,cairnFinale,flyPieces} from './cairns.js';
 import {lifeHtml,lifeContextHtml,initLife,clearLife} from './life.js';
@@ -83,7 +83,10 @@ function paintAvatar(){const head=document.querySelector('header');head.querySel
 function storePrefs(){try{localStorage.setItem(PREF,JSON.stringify({language,country}));}catch{}}
 async function loadNorms(){try{const r=await fetch('data/norms-us.json');return r.ok?await r.json():null;}catch{return null;}}
 async function load(){const token=++loadToken;try{const paths=language==='no'?['data/questions-no.json','data/report-content-no.json']:['data/questions.json','data/report-content.json'];const data=await Promise.all(paths.map(async p=>{const r=await fetch(p);if(!r.ok)throw Error(p);return r.json();}));if(norms===undefined)norms=await loadNorms();if(token!==loadToken)return;questions=data[0];content=data[1];if(questions.length!==120)throw Error('Expected 120 questions');answers=Object.fromEntries(Object.entries(answers).filter(([k,v])=>questions.some(q=>String(q.id)===k)&&Number.isInteger(v)&&v>=1&&v<=5));index=Math.min(Math.max(index,0),119);if(report)calculate(demo);render();}catch(e){if(token!==loadToken)return;main.innerHTML=`<div class="error"><h1>${tr('A small interruption','En liten avbrytelse')}</h1><p>${tr('The assessment could not load. Please serve the app through its local web server and try again. Your existing answers have not been cleared.','Testen kunne ikke lastes. Åpne appen gjennom den lokale nettserveren og prøv igjen. Lagrede svar er ikke slettet.')}</p><button class="button" id="retry">${tr('Try again','Prøv igjen')}</button></div>`;document.querySelector('#retry').onclick=load;console.error(e);}}
-function home(){const cta=tr('Start the test','Start testen'),pieces={O:'sky',C:'apricot',E:'steel',A:'ivory',N:'navy'},sample=[62,57,59,66,51],side=(t,cls)=>`<p class="h-side ${cls}" aria-hidden="true">${t}</p>`;main.innerHTML=`<section class="h-hero"><div class="h-hero-text"><p class="h-eyebrow">${tr('Know yourself better','Kjenn deg selv bedre')}</p><h1>${tr('See every<br>side of you.','Se alle<br>sidene dine.')}</h1><p class="h-lead">${tr('Explore your personality with the Big Five.','Utforsk personligheten din med Big Five.')}</p>${button(cta,'#test')}<p class="h-hint">${tr('Free profile · 120 questions · 10 minutes','Gratis profil · 120 spørsmål · 10 minutter')}</p></div><div class="h-hero-art"><img src="assets/design/home-hero.webp" alt="" aria-hidden="true">${side(tr('Same<br>people.<br>More<br>perspectives.','Samme<br>mennesker.<br>Flere<br>perspektiver.'),'h-side-right')}</div></section><section class="h-traits"><div class="h-traits-head"><div><h2>${tr('Five traits. Thirty facets. One you.','Fem trekk. Tretti fasetter. Én deg.')}</h2></div><p class="h-example">${tr('Illustrative example','Illustrert eksempel')}</p></div><ul class="h-band">${order.map((c,i)=>`<li class="h-tile h-${c}" style="--i:${i};--bar:${traitColors[c]}"><img src="assets/design/logo-piece-${pieces[c]}.webp" alt="" aria-hidden="true"><span class="h-name">${names[c]()}</span><span class="h-bar" role="img" aria-label="${tr(`Example: ${sample[i]} of 100`,`Eksempel: ${sample[i]} av 100`)}"><span style="width:${sample[i]}%"></span><i style="left:${sample[i]}%"></i></span></li>`).join('')}</ul></section><section class="h-areas"><h2>${tr('What would you like to understand?','Hva vil du forstå bedre?')}</h2><div class="h-cards">${[['life',tr('Everyday life','Hverdagen'),tr('Habits and choices.','Vaner og valg.')],['relations',tr('Your relationships','Relasjonene dine'),tr('You and other people.','Deg i møte med andre.')],['work',tr('Work & career','Arbeidsliv og karriere'),tr('The way you work.','Måten du jobber på.')]].map(([k,h,p])=>`<a class="h-card" href="#test"><img src="assets/design/home-card-${k}.webp" alt="" aria-hidden="true"><h3>${h}</h3><p>${p}</p><span class="h-arrow" aria-hidden="true">→</span></a>`).join('')}</div></section><section class="h-closing"><div class="h-closing-text"><p class="h-eyebrow">${tr('See your pattern.','Se mønsteret ditt.')}</p><h2>${tr('Curious about who you are?','Nysgjerrig på hvem du er?')}</h2><div class="h-closing-actions">${button(cta,'#test')}</div></div><img class="h-burst" src="assets/design/logo-spread.webp" alt="" aria-hidden="true">${side(tr('Same<br>facts.<br>More<br>possibilities.','Samme<br>fakta.<br>Flere<br>muligheter.'),'h-side-cta')}</section>`;}
+// Front page: three profile characters from very common to very rare (Rune 2026-10-20), numbers from app/name-rarity.js.
+const SHOWCASE=[['signature/N5h-C5l','N5h-C5l',()=>tr('The Just-One-More-Episode Enthusiast','Bare-én-episode-til-entusiasten')],['signature/C4h-C5l','C4h-C5l',()=>tr('The Ambitious Last-Minute Artist','Den ambisiøse sisteliten-kunstneren')],['A2h-C2l','A2h',()=>tr('The Chaotic Knight of Fair Play','Den kaotiske fair play-ridderen')]];
+function rarityShowcase(){return `<section class="h-rarity"><h2>${tr('How rare are you?','Hvor sjelden er du?')}</h2><p class="h-rarity-lead">${tr('The test gives you a profile character from the facets that set you apart most. Some characters are common, others almost nobody gets.','Testen gir deg en profilfigur ut fra fasettene som skiller deg mest ut. Noen figurer er vanlige, andre får nesten ingen.')}</p><div class="h-rarity-cards">${SHOWCASE.map(([rule,img,label])=>`<a class="h-rarity-card" href="#test"><img src="${figureSrc(img)}" data-id="${img}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()"><h3>${esc(label())}</h3><div data-rarity-card="${rule}" hidden></div></a>`).join('')}</div><div class="h-rarity-foot" data-rarity-note="${SHOWCASE[2][0]}" hidden></div></section>`;}
+function home(){const cta=tr('Start the test','Start testen'),pieces={O:'sky',C:'apricot',E:'steel',A:'ivory',N:'navy'},sample=[62,57,59,66,51],side=(t,cls)=>`<p class="h-side ${cls}" aria-hidden="true">${t}</p>`;main.innerHTML=`<section class="h-hero"><div class="h-hero-text"><p class="h-eyebrow">${tr('Know yourself better','Kjenn deg selv bedre')}</p><h1>${tr('See every<br>side of you.','Se alle<br>sidene dine.')}</h1><p class="h-lead">${tr('Explore your personality with the Big Five.','Utforsk personligheten din med Big Five.')}</p>${button(cta,'#test')}<p class="h-hint">${tr('Free profile · 120 questions · 10 minutes','Gratis profil · 120 spørsmål · 10 minutter')}</p></div><div class="h-hero-art"><img src="assets/design/home-hero.webp" alt="" aria-hidden="true">${side(tr('Same<br>people.<br>More<br>perspectives.','Samme<br>mennesker.<br>Flere<br>perspektiver.'),'h-side-right')}</div></section><section class="h-traits"><div class="h-traits-head"><div><h2>${tr('Five traits. Thirty facets. One you.','Fem trekk. Tretti fasetter. Én deg.')}</h2></div><p class="h-example">${tr('Illustrative example','Illustrert eksempel')}</p></div><ul class="h-band">${order.map((c,i)=>`<li class="h-tile h-${c}" style="--i:${i};--bar:${traitColors[c]}"><img src="assets/design/logo-piece-${pieces[c]}.webp" alt="" aria-hidden="true"><span class="h-name">${names[c]()}</span><span class="h-bar" role="img" aria-label="${tr(`Example: ${sample[i]} of 100`,`Eksempel: ${sample[i]} av 100`)}"><span style="width:${sample[i]}%"></span><i style="left:${sample[i]}%"></i></span></li>`).join('')}</ul></section><section class="h-areas"><h2>${tr('What would you like to understand?','Hva vil du forstå bedre?')}</h2><div class="h-cards">${[['life',tr('Everyday life','Hverdagen'),tr('Habits and choices.','Vaner og valg.')],['relations',tr('Your relationships','Relasjonene dine'),tr('You and other people.','Deg i møte med andre.')],['work',tr('Work & career','Arbeidsliv og karriere'),tr('The way you work.','Måten du jobber på.')]].map(([k,h,p])=>`<a class="h-card" href="#test"><img src="assets/design/home-card-${k}.webp" alt="" aria-hidden="true"><h3>${h}</h3><p>${p}</p><span class="h-arrow" aria-hidden="true">→</span></a>`).join('')}</div></section>${rarityShowcase()}<section class="h-closing"><div class="h-closing-text"><p class="h-eyebrow">${tr('See your pattern.','Se mønsteret ditt.')}</p><h2>${tr('Curious about who you are?','Nysgjerrig på hvem du er?')}</h2><div class="h-closing-actions">${button(cta,'#test')}</div></div><img class="h-burst" src="assets/design/logo-spread.webp" alt="" aria-hidden="true">${side(tr('Same<br>facts.<br>More<br>possibilities.','Samme<br>fakta.<br>Flere<br>muligheter.'),'h-side-cta')}</section>`;paintRarity(language,account.enabled());}
 // Test helper for previews: ?dev=1 shows a small "Random" button on the question page (remembered in this
 // browser; ?dev=0 turns it off). Remove before launch, see docs/plan.md.
 // Until launch the «Random» test shortcut shows for everyone (Rune 2026-10-14). Set to false, or remove devRandom and its buttons, before going live.
@@ -205,10 +208,10 @@ function videoIntro(){
   // Making the file draws the video on screen in real time, so it plays and is ready to share when it ends.
   box.femPrepare?.();
 }
-function shareBox(long=false){if(!sorted().some(hasPct))return '';return `<section class="d-share no-print" data-long="${long}" aria-labelledby="share-title"><div class="d-share-frame"><canvas id="share-canvas" width="1080" height="1920" role="img" aria-label="${tr('Preview of your profile video','Forhåndsvisning av profilvideoen din')}"></canvas><button type="button" class="d-share-fab" id="share-fab" data-state="idle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5v4C7 9 4 13.5 3.5 19.5 6 15.8 9 14.4 13.5 14.4v4.1L21 11.5z"/></svg><span class="d-share-fab-label">${tr('Share','Del')}</span></button><button type="button" class="d-share-start" id="share-start" hidden><span class="d-share-start-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>${tr('Play with sound','Spill av med lyd')}</button><button type="button" class="d-share-sound" id="share-sound" aria-pressed="false" aria-label="${tr('Sound','Lyd')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="off" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><div class="d-share-bar"><input type="range" id="share-seek" min="0" max="1" step="0.01" value="0" aria-label="${tr('Position in the video','Posisjon i videoen')}"><span id="share-left" aria-hidden="true"></span></div></div><div class="d-share-body"><h2 id="share-title">${long?tr('Share your report as a video','Del rapporten din som video'):tr('Share your profile as a video','Del profilen din som video')}</h2><label for="share-first">${tr('Your first name (optional)','Fornavnet ditt (valgfritt)')}</label><input id="share-first" maxlength="24" autocomplete="given-name" placeholder="${tr('Shown in the video','Vises i videoen')}"><div class="d-share-actions"><button type="button" class="d-share-make" id="share-make">${tr('Make video','Lag video')}</button><button type="button" class="d-share-send" id="share-send" hidden>${tr('Share video file','Del videofila')}</button><a class="d-share-dl" id="share-dl" hidden>${tr('Download video','Last ned video')}</a><button type="button" class="text-button" id="share-still">${tr('Download as image','Last ned som bilde')}</button></div><p class="d-share-status" id="share-status" role="status"></p>${shareOut()}</div></section>`;}
+function shareBox(long=false){if(!sorted().some(hasPct))return '';return `<section class="d-share no-print" data-long="${long}" aria-labelledby="share-title"><div class="d-share-frame"><canvas id="share-canvas" width="1080" height="1920" role="img" aria-label="${tr('Preview of your profile video','Forhåndsvisning av profilvideoen din')}"></canvas><button type="button" class="d-share-fab" id="share-fab" data-state="idle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5v4C7 9 4 13.5 3.5 19.5 6 15.8 9 14.4 13.5 14.4v4.1L21 11.5z"/></svg><span class="d-share-fab-label">${tr('Share','Del')}</span></button><button type="button" class="d-share-start" id="share-start" hidden><span class="d-share-start-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>${tr('Play with sound','Spill av med lyd')}</button><button type="button" class="d-share-sound" id="share-sound" aria-pressed="false" aria-label="${tr('Sound','Lyd')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="off" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><button type="button" class="d-share-full" id="share-full" aria-label="${tr('Full screen','Fullskjerm')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="d-share-bar"><input type="range" id="share-seek" min="0" max="1" step="0.01" value="0" aria-label="${tr('Position in the video','Posisjon i videoen')}"><span id="share-left" aria-hidden="true"></span></div></div><div class="d-share-body"><h2 id="share-title">${long?tr('Share your report as a video','Del rapporten din som video'):tr('Share your profile as a video','Del profilen din som video')}</h2><label for="share-first">${tr('Your first name (optional)','Fornavnet ditt (valgfritt)')}</label><input id="share-first" maxlength="24" autocomplete="given-name" placeholder="${tr('Shown in the video','Vises i videoen')}"><div class="d-share-actions"><button type="button" class="d-share-make" id="share-make">${tr('Make video','Lag video')}</button><button type="button" class="d-share-send" id="share-send" hidden>${tr('Share video file','Del videofila')}</button><a class="d-share-dl" id="share-dl" hidden>${tr('Download video','Last ned video')}</a><button type="button" class="text-button" id="share-still">${tr('Download as image','Last ned som bilde')}</button></div><p class="d-share-status" id="share-status" role="status"></p>${shareOut()}</div></section>`;}
 // Where the video goes after Share: a link (kaleidotest.com/v/<id>, big thumbnail and play button, lib/shares.js) for
 // messages and feeds, and the saved file for Reels and TikTok, which only take a real video. Filled in initShare.
-function shareOut(){return `<div class="d-share-out" id="share-out" hidden></div>`;}
+function shareOut(){return `<dialog class="d-share-pop" id="share-pop" aria-labelledby="share-pop-title"><button type="button" class="d-share-pop-close" aria-label="${tr('Close','Lukk')}">×</button><div class="d-share-out" id="share-out"></div></dialog>`;}
 // The preview is a small player: it loops with the end card held, has a timeline to scrub and shows
 // the time left. The song starts with sound when the browser lets this page play it (see wakeAudio), and the
 // first play-through is recorded straight into the file, picture and music together.
@@ -246,19 +249,23 @@ function initShare(){
   const frame=()=>{if(!canvas.isConnected){playing=false;stopVoice();return;}if(!playing||recording)return;let t=now();if(t>=total()){from=0;since=performance.now();t=0;startVoice(0);}pos=t;draw(t);requestAnimationFrame(frame);};
   const play=on=>{if(on&&!startBtn.hidden)return;if(still||recording){if(still)drawPoster(ctx,script(),imgs);return;}if(on&&!playing){playing=true;from=pos;since=performance.now();startVoice(pos);requestAnimationFrame(frame);}else if(!on&&playing){pos=now();playing=false;stopVoice();}};
   const seekTo=t=>{if(recording)return;pos=t;from=t;since=performance.now();if(playing)startVoice(t);else draw(t);};
-  const out=document.querySelector('#share-out');let saved=false,link=null,linking=false;
-  const reset=()=>{file=null;saved=false;link=null;send.hidden=true;dl.hidden=true;out.hidden=true;if(url)URL.revokeObjectURL(url);url='';status.textContent='';if(!recording)fabIdle();};
+  // Del opens a small window at once, like the share button in Snapchat or Instagram (Rune 2026-10-20). It lives in <body>
+  // so it also opens over the video dialog, where the text under the video is hidden.
+  const pop=document.querySelector('#share-pop'),out=pop.querySelector('#share-out');
+  document.querySelectorAll('body > dialog.d-share-pop').forEach(d=>{if(d!==pop)d.remove();});document.body.append(pop);
+  pop.querySelector('.d-share-pop-close').addEventListener('click',()=>pop.close());pop.addEventListener('click',e=>{if(e.target===pop)pop.close();});
+  let saved=false,link=null,linking=null,videoUp=null,upP=0,upFailed=false,recP=0;
+  const reset=()=>{file=null;saved=false;videoUp=null;send.hidden=true;dl.hidden=true;if(url)URL.revokeObjectURL(url);url='';status.textContent='';if(!recording)fabIdle();};
   if(still){canvas.closest('.d-share').classList.add('is-still');}
   piecesReady.then(()=>{if(still){drawPoster(ctx,script(),imgs);return;}draw(0);if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{visible=e[0].isIntersecting;play(visible);},{threshold:.3});io.observe(canvas);}else play(true);});
-  input.addEventListener('input',()=>{reset();if(still)drawPoster(ctx,script(),imgs);else if(!playing)draw(pos);});
+  input.addEventListener('input',()=>{reset();link=null;linking=null;if(still)drawPoster(ctx,script(),imgs);else if(!playing)draw(pos);});
   seek.addEventListener('input',()=>seekTo(Number(seek.value)));
   soundBtn.addEventListener('click',async()=>{const on=!sound;if(on&&!(await audioRunning()))return;setSound(on);});
   const fab=document.querySelector('#share-fab'),fabLabel=fab.querySelector('.d-share-fab-label'),canRecord=Boolean(videoType()&&canvas.captureStream);
   if(!canRecord){make.hidden=true;status.textContent=tr('This browser cannot make the video. You can download the image instead.','Denne nettleseren kan ikke lage videoen. Du kan laste ned bildet i stedet.');}
   const canShareFiles=()=>{try{return Boolean(navigator.canShare&&navigator.canShare({files:[file||new File([''],'fem.mp4',{type:'video/mp4'})]}));}catch{return false;}};
   const fabState=(state,label)=>{fab.dataset.state=state;fabLabel.textContent=label;};
-  const fabIdle=()=>fabState('idle',canRecord&&!canShareFiles()&&!canLink()?tr('Save','Lagre'):tr('Share','Del'));
-  let wantShare=false;
+  const fabIdle=()=>fabState('idle',tr('Share','Del'));
   // `auto` is the window after the test: it only records when the browser already allows sound,
   // so the shared file never ends up without music. A tap always records.
   const prepare=async(auto=false)=>{if(recording||file||!canRecord)return;
@@ -266,63 +273,92 @@ function initShare(){
     // the first frame with «Play with sound», and that tap starts the video with music (Rune 2026-10-19: never start muted).
     const withSound=await audioRunning();if(auto&&!withSound){if(canvas.closest('dialog')){play(false);pos=0;draw(0);startBtn.hidden=false;}return;}
     startBtn.hidden=true;
-    recording=true;play(false);reset();make.disabled=true;input.disabled=true;seek.disabled=true;fabState('busy',wantShare?'0 %':tr('Share','Del'));fab.style.setProperty('--p',0);
+    recording=true;play(false);reset();make.disabled=true;input.disabled=true;seek.disabled=true;recP=0;
     if(auto&&withSound)setSound(true);
     try{await piecesReady;let audio=null;if(withSound)try{audio={ctx:audioContext(),buffer:await getMusic(),monitor:ensureMonitor()};}catch{}
-      const blob=await recordVideo(canvas,script(),imgs,p=>{const pct=`${Math.round(p*100)} %`;status.textContent=`${tr('Making your video','Lager videoen')} … ${pct}`;fab.style.setProperty('--p',p);showTime(p*total());if(wantShare)fabLabel.textContent=pct;},audio);
+      const blob=await recordVideo(canvas,script(),imgs,p=>{const pct=`${Math.round(p*100)} %`;status.textContent=`${tr('Making your video','Lager videoen')} … ${pct}`;recP=p;paintUp();showTime(p*total());},audio);
       const ext=blob.type.includes('mp4')?'mp4':'webm',fname=(long?tr('kaleido-report','kaleido-rapport'):tr('kaleido-profile','kaleido-profil'))+'.'+ext;file=new File([blob],fname,{type:blob.type});url=URL.createObjectURL(blob);
       dl.href=url;dl.download=fname;dl.hidden=false;send.hidden=!canShareFiles()||canLink();
-      status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');fabState('ready',canShareFiles()||canLink()?tr('Share','Del'):tr('Save','Lagre'));}
+      status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');fabIdle();if(pop.open)fillOut();uploadVideo();}
     catch{status.textContent=tr('The video could not be made. Keep this tab open while it records, or download the image instead.','Videoen kunne ikke lages. Hold fanen åpen mens den tas opp, eller last ned bildet i stedet.');fabIdle();}
-    recording=false;make.disabled=false;input.disabled=false;seek.disabled=false;pos=0;if(visible||canvas.closest('dialog'))play(true);else draw(0);if(file&&wantShare){wantShare=false;share();}};
-  // Sharing needs a fresh tap in most browsers; if the tap has expired while the video was made, the button asks for one more.
+    recording=false;make.disabled=false;input.disabled=false;seek.disabled=false;pos=0;if(visible||canvas.closest('dialog'))play(true);else draw(0);paintUp();};
   // Only the file goes to the share sheet: on iPhone, Instagram and TikTok drop out of the sheet when text comes
   // along. The caption is put on the clipboard instead, ready to paste, and the end card already shows the address.
   const home=`${location.origin}/`,copy=(text,msg)=>{try{navigator.clipboard?.writeText(text).then(()=>{status.textContent=msg;},()=>{});}catch{}};
   const copyCaption=()=>copy(caption(script(),home),tr('The caption is copied. Paste it under the video.','Bildeteksten er kopiert. Lim den inn under videoen.'));
-  const shareFile=()=>{if(!file)return;if(!canShareFiles()){dl.click();fillOut();return;}
-    copyCaption();navigator.share({files:[file]}).catch(e=>{if(e?.name==='NotAllowedError')fabState('ready',tr('Tap to share','Trykk for å dele'));});};
-  // Signed-in people share a link: the video and two pictures are uploaded once, then the link goes to the share sheet
-  // (phone) or the panel below (PC). Without an account the file is shared as before.
+  const shareFile=()=>{if(!file)return;if(!canShareFiles()){dl.click();return;}
+    copyCaption();navigator.share({files:[file]}).catch(()=>{});};
+  // Signed-in people share a link. It is made from the two pictures in a second; the video follows in the background
+  // when it is ready, and the link page says it is on its way if someone opens it first. Without an account the
+  // window offers a link to Kaleido and the video file.
   const canLink=()=>Boolean(accountUser&&account.enabled()&&!demo),touch=matchMedia('(pointer:coarse)').matches;
   const linkText=()=>tr("See my personality video. What's your profile?",'Se personlighetsvideoen min. Hvordan ser din profil ut?');
-  const sendLink=()=>{const data={title:script().name,text:linkText(),url:link.url};fillOut();
-    if(touch&&navigator.share)navigator.share(data).catch(e=>{if(e?.name==='NotAllowedError')fabState('ready',tr('Tap to share','Trykk for å dele'));});
-    else out.scrollIntoView({block:'nearest',behavior:'smooth'});};
-  const makeLink=async()=>{if(linking)return;linking=true;const f=file;fabState('busy','0 %');fab.style.setProperty('--p',0);status.textContent=tr('Making your link …','Lager delelenken …');
-    try{const r=await account.share('create',{title:script().name,lang:language==='en'?'en':'no',kind:long?'report':'profile',type:f.type});
-      const pics=await sharePictures(canvas,script(),imgs);
+  const native=()=>Boolean(touch&&navigator.share);
+  const sendNative=()=>{if(link&&native())navigator.share({title:script().name,text:linkText(),url:link.url}).catch(()=>{});};
+  // The same video (name, language, answers) keeps its link across reloads, so tapping Share again makes no new upload.
+  const LINKS='fem-share-links',hash=t=>{let h=5381;for(const c of t)h=(h*33+c.charCodeAt(0))>>>0;return h.toString(36);};
+  const linkKey=()=>hash([long?'r':'p',language,input.value.trim(),profileCode(),accountUser?.id||''].join('|'));
+  const links=()=>{try{return JSON.parse(localStorage.getItem(LINKS)||'{}')||{};}catch{return {};}};
+  const remember=l=>{try{const all=links();if(l)all[linkKey()]={id:l.id,url:l.url,video:Boolean(l.video)};else delete all[linkKey()];localStorage.setItem(LINKS,JSON.stringify(Object.fromEntries(Object.entries(all).slice(-20))));}catch{}};
+  const ensureLink=()=>{if(link)return Promise.resolve(link);const known=links()[linkKey()];if(known){link={...known};return Promise.resolve(link);}
+    linking||=(async()=>{const r=await account.share('create',{title:script().name,lang:language==='en'?'en':'no',kind:long?'report':'profile',type:file?.type||videoType(true)||videoType()||'video/mp4'});
+      await piecesReady;const pics=await sharePictures(canvas,script(),imgs);
       await account.uploadSigned(r.uploads.poster,pics.poster);await account.uploadSigned(r.uploads.card,pics.card);
-      await account.uploadSigned(r.uploads.video,f,p=>{const pct=`${Math.round(p*100)} %`;fabLabel.textContent=pct;fab.style.setProperty('--p',p);status.textContent=`${tr('Uploading the video','Laster opp videoen')} … ${pct}`;});
-      if(file!==f){linking=false;return;}
-      link=r;status.textContent=tr('Your link is ready.','Lenken er klar.');fabState('ready',tr('Share','Del'));sendLink();}
-    catch(e){status.textContent=e?.status===429?tr('You have shared many videos today. Try again tomorrow, or download the video.','Du har delt mange videoer i dag. Prøv igjen i morgen, eller last ned videoen.'):tr('The link could not be made. You can download the video instead.','Lenken kunne ikke lages. Du kan laste ned videoen i stedet.');fabState('ready',tr('Share','Del'));if(!canShareFiles())fillOut();}
-    linking=false;};
-  const share=()=>{if(!file)return;if(!canLink()){shareFile();return;}if(link)sendLink();else makeLink();};
-  // The panel: the link with its share buttons, then Reels/TikTok, which need the file itself.
-  const fillOut=()=>{const u=link?.url||home,subject=tr('My Kaleido profile','Kaleido-profilen min');
-    const a=(t,kind,label=t.name)=>`<a class="d-share-target d-share-${t.id}" href="${esc(t.url)}"${t.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'} data-kind="${kind}">${esc(label)}</a>`;
-    const links=linkTargets(u,link?linkText():tr("What's your profile? Find out for free","Hvordan ser din profil ut? Finn ut gratis"),subject).map(t=>a(t,'link',t.id==='email'?tr('Email','E-post'):t.name)).join('');
-    out.innerHTML=(link?`<h3>${tr('Your video link','Videolenken din')}</h3><p class="d-small">${tr('It shows a big picture with a play button, and opens the video when tapped. It holds no answers.','Den vises med stort bilde og avspillingsknapp og åpner videoen når noen trykker. Den inneholder ingen svar.')}</p><div class="d-share-link"><input id="share-link" readonly value="${esc(u)}" aria-label="${tr('Video link','Videolenke')}"><button type="button" class="d-share-target" id="share-copy">${tr('Copy','Kopier')}</button></div><div class="d-share-targets">${links}</div>`:`<h3>${tr('Share a link to Kaleido','Del en lenke til Kaleido')}</h3><div class="d-share-targets">${links}<button type="button" class="d-share-target" id="share-copy">${tr('Copy link','Kopier lenke')}</button></div>`)
-      +`<h3>${tr('Reels and TikTok','Reels og TikTok')}</h3><p class="d-small">${touch?tr('They need the video file. Share the file and choose Instagram or TikTok.','De trenger selve videofila. Del fila og velg Instagram eller TikTok.'):tr('They need the video file. The button saves it and opens the upload page.','De trenger selve videofila. Knappen lagrer den og åpner opplastingssiden.')}</p><div class="d-share-targets">${touch&&canShareFiles()?`<button type="button" class="d-share-target" data-kind="upload" id="share-file">${tr('Share video file','Del videofila')}</button>`:UPLOADS.filter(t=>t.id!=='messenger'||!link).map(t=>a(t,'upload')).join('')}</div>`
-      +(link?`<button type="button" class="text-button d-share-unlink" id="share-unlink">${tr('Delete this link','Slett lenken')}</button>`:'');
-    out.hidden=false;
-    // From the video dialog the panel lives on the page underneath, so the dialog closes and the panel comes into view.
-    const dlg=out.closest('dialog.d-video-intro');if(dlg){dlg.close();setTimeout(()=>out.scrollIntoView({block:'center'}),60);}};
+      link={id:r.id,url:r.url,video:false,upload:r.uploads.video};remember(link);return link;})().catch(e=>{linking=null;throw e;});
+    return linking;};
+  const uploadVideo=()=>{if(!link||link.video||!file||videoUp)return videoUp;const l=link,f=file;upP=0;upFailed=false;
+    videoUp=(async()=>{const target=l.upload||(await account.share('video',{id:l.id})).upload;
+      await account.uploadSigned(target,f,p=>{upP=p;paintUp();});l.video=true;delete l.upload;if(link===l)remember(l);paintUp();})().catch(()=>{upFailed=true;videoUp=null;paintUp();});
+    paintUp();return videoUp;};
+  // One quiet line in the window about the video behind the link.
+  const upText=()=>{if(!canLink()||!link)return '';if(link.video)return '';
+    if(upFailed)return tr('The video could not be uploaded. The link shows the picture instead.','Videoen ble ikke lastet opp. Lenken viser bildet i stedet.');
+    if(!file)return recording?tr(`Making the video … ${Math.round(recP*100)} %. The link already works.`,`Lager videoen … ${Math.round(recP*100)} %. Lenken virker allerede.`):'';
+    return tr(`Uploading the video … ${Math.round(upP*100)} %. The link already works. Keep this page open until it is done.`,`Laster opp videoen … ${Math.round(upP*100)} %. Lenken virker allerede. Hold siden åpen til den er ferdig.`);};
+  const paintUp=()=>{const el=out.querySelector('#share-up');if(el)el.textContent=upText();};
+  const fillOut=(error='')=>{const u=link?.url||home,subject=tr('My Kaleido profile','Kaleido-profilen min'),waiting=canLink()&&!link&&!error;
+    const a=t=>`<a class="d-share-target d-share-${t.id}" href="${esc(t.url)}"${t.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}>${esc(t.id==='email'?tr('Email','E-post'):t.name)}</a>`;
+    const targets=linkTargets(u,link?linkText():tr("What's your profile? Find out for free","Hvordan ser din profil ut? Finn ut gratis"),subject).map(a).join('');
+    const more=[file?(touch&&canShareFiles()?`<button type="button" class="text-button" id="share-file">${tr('Share the video file (Reels, TikTok)','Del videofila (Reels, TikTok)')}</button>`:`<a class="text-button" id="share-save" href="${url}" download="${esc(dl.download||'')}">${tr('Download video','Last ned video')}</a>`):'',link?`<button type="button" class="text-button" id="share-unlink">${tr('Delete link','Slett lenken')}</button>`:''].filter(Boolean).join('');
+    out.innerHTML=`<h2 id="share-pop-title">${link||!canLink()?tr('Share your video','Del videoen din'):tr('Making your link …','Lager lenken …')}</h2>`
+      +(error?`<p class="d-share-pop-msg" role="status">${esc(error)}</p>`:'')
+      +(waiting?`<p class="d-share-pop-msg" role="status"><span class="d-share-spin" aria-hidden="true"></span>${tr('One moment','Et øyeblikk')}</p>`:`<div class="d-share-link"><input id="share-link" readonly value="${esc(u)}" aria-label="${tr('Link','Lenke')}"><button type="button" class="d-share-target" id="share-copy">${tr('Copy','Kopier')}</button></div>`
+        +(link&&native()?`<button type="button" class="d-share-pop-main" id="share-native">${tr('Share the link','Del lenken')}</button>`:'')
+        +`<div class="d-share-targets">${targets}</div>`)
+      +`<p class="d-share-up" id="share-up" role="status">${esc(upText())}</p>`+(more?`<div class="d-share-pop-more">${more}</div>`:'');};
+  const openShare=async()=>{
+    // The tap also starts the video if it is not made yet, so it can follow the link.
+    if(!file&&canRecord&&!recording)prepare();
+    if(canLink()&&!link){const known=links()[linkKey()];if(known)link={...known};}
+    fillOut();if(!pop.open)pop.showModal();
+    if(!canLink())return;
+    // A link made earlier goes straight to the phone's share sheet, still inside the tap.
+    if(link){sendNative();uploadVideo();return;}
+    try{await ensureLink();fillOut();uploadVideo();sendNative();}
+    catch(e){fillOut(e?.status===429?tr('You have shared many videos today. Try again tomorrow, or download the video.','Du har delt mange videoer i dag. Prøv igjen i morgen, eller last ned videoen.'):tr('The link could not be made. Check the connection and try again.','Lenken kunne ikke lages. Sjekk nettet og prøv igjen.'));}};
   out.addEventListener('click',async e=>{
-    if(e.target.closest('#share-copy')){copy(link?.url||home,tr('The link is copied.','Lenken er kopiert.'));return;}
+    if(e.target.closest('#share-copy')){const b=e.target.closest('#share-copy');try{await navigator.clipboard.writeText(link?.url||home);b.textContent=tr('Copied','Kopiert');}catch{out.querySelector('#share-link')?.select();}return;}
+    if(e.target.closest('#share-native')){sendNative();return;}
     if(e.target.closest('#share-file')){shareFile();return;}
+    if(e.target.closest('#share-save')){saved=true;return;}
     if(e.target.closest('#share-unlink')){if(!link||!confirm(tr('Delete the link and the uploaded video? People who open it will see the front page.','Slette lenken og den opplastede videoen? De som åpner den, kommer til forsiden.')))return;
-      try{await account.share('delete',{id:link.id});link=null;fillOut();status.textContent=tr('The link is deleted.','Lenken er slettet.');}catch{status.textContent=tr('The link could not be deleted. Try again.','Lenken ble ikke slettet. Prøv igjen.');}return;}
-    // Upload targets save the video first, so it is in Downloads when the network's page asks for a file.
-    if(e.target.closest('a[data-kind="upload"]')&&file){if(!saved)dl.click();status.textContent=tr('The video is in your downloads. Choose it on the page that opened.','Videoen ligger i nedlastingene dine. Velg den på siden som åpnet seg.');}});
+      try{await account.share('delete',{id:link.id});remember(null);link=null;linking=null;videoUp=null;pop.close();status.textContent=tr('The link is deleted.','Lenken er slettet.');}catch{fillOut(tr('The link could not be deleted. Try again.','Lenken ble ikke slettet. Prøv igjen.'));}}});
+  // Full screen: the frame itself where the browser allows it, otherwise (iPhone) the frame covers the screen.
+  const shell=canvas.closest('.d-share-frame'),fullBtn=document.querySelector('#share-full');
+  const leaveFull=()=>{shell.classList.remove('is-full');document.body.classList.remove('in-share-full');};
+  fullBtn.addEventListener('click',()=>{if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+    if(shell.classList.contains('is-full')){leaveFull();return;}
+    const go=shell.requestFullscreen||shell.webkitRequestFullscreen;
+    if(go)Promise.resolve(go.call(shell)).catch(()=>{shell.classList.add('is-full');document.body.classList.add('in-share-full');});else{shell.classList.add('is-full');document.body.classList.add('in-share-full');}
+    if(!playing&&!recording)play(true);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&shell.classList.contains('is-full'))leaveFull();});
   dl.addEventListener('click',()=>{saved=true;});
   startBtn.addEventListener('click',()=>prepare(true));
   canvas.closest('.d-share').femPrepare=()=>{if(!still)prepare(true);};
   canvas.closest('.d-share').femMute=()=>{if(sound)setSound(false);};
   fabIdle();
   make.addEventListener('click',()=>prepare());
-  fab.addEventListener('click',()=>{if(file){share();return;}if(!canRecord){document.querySelector('#share-still').click();return;}wantShare=true;if(recording){fabLabel.textContent=`${Math.round(parseFloat(fab.style.getPropertyValue('--p')||0)*100)} %`;return;}prepare();});
+  fab.addEventListener('click',openShare);
   send.addEventListener('click',shareFile);
   document.querySelector('#share-still').addEventListener('click',()=>{const c=document.createElement('canvas');c.width=canvas.width;c.height=canvas.height;drawPoster(c.getContext('2d'),script(),imgs);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=tr('kaleido-profile','kaleido-profil')+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);},'image/png');});
 }
