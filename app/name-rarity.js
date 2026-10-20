@@ -43,17 +43,39 @@ export function rarityCopy(s, language) {
         'We worked out how often this exact combination of facets turns up among a million people modelled on those answers, taking into account that facets go together. Once enough Kaleido profiles are saved, we switch to real counts.'],
       ['Beregnet fra forskningsdataene bak testen: svarene til 243\u00a0307 deltakere i en stor, åpen studie av dette spørreskjemaet (Kajonius og Johnson, 2019).',
         'Vi regnet ut hvor ofte akkurat denne kombinasjonen av fasetter dukker opp blant en million personer modellert etter disse svarene, og tok hensyn til at fasettene henger sammen. Når nok Kaleido-profiler er lagret, bytter vi til ekte tall.']];
-  return {tag: pick(tag, language), line: pick(line, language), method: pick(method, language)};
+  return {tag: pick(tag, language), line: pick(line, language), amount: pick(amount, language), lead: pick(lead, language), method: pick(method, language)};
 }
 
 let popId = 0;
-/** Uses the app's (i) button and pop (.d-info-btn / .d-info-pop, toggled in app/ui.js). */
+/** The app's (i) button and its pop (.d-info-btn / .d-info-pop, toggled in app/ui.js). */
+function methodInfo(c, language) {
+  const id = `rarity-info-${++popId}`, label = pick(['How is this calculated?', 'Hvordan er dette regnet ut?'], language);
+  return {btn: `<button type="button" class="d-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="${label}" title="${label}"><span class="d-info-i" aria-hidden="true">i</span></button>`,
+    pop: `<div class="d-info-pop d-name-rarity-pop" id="${id}" hidden>${c.method.map(t => `<p>${t}</p>`).join('')}</div>`};
+}
+
 export function rarityHtml(ruleId, estimates, real, language) {
   const s = nameShare(ruleId, estimates, real);
   if (!s) return '';
-  const c = rarityCopy(s, language), id = `rarity-info-${++popId}`, label = pick(['How is this calculated?', 'Hvordan er dette regnet ut?'], language);
-  const btn = `<button type="button" class="d-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="${label}" title="${label}"><span class="d-info-i" aria-hidden="true">i</span></button>`;
-  return `<span class="d-name-rarity-tag">${c.tag}</span><p class="d-name-rarity-line">${c.line.replace('</b>', `</b>\u00a0${btn}`)}</p><div class="d-info-pop d-name-rarity-pop" id="${id}" hidden>${c.method.map(t => `<p>${t}</p>`).join('')}</div>`;
+  const c = rarityCopy(s, language), {btn, pop} = methodInfo(c, language);
+  return `<span class="d-name-rarity-tag">${c.tag}</span><p class="d-name-rarity-line">${c.line.replace('</b>', `</b>\u00a0${btn}`)}</p>${pop}`;
+}
+
+/** Front-page example card: tag and «Omtrent 1 av 20 000 mennesker». */
+export function rarityCardHtml(ruleId, estimates, real, language) {
+  const s = nameShare(ruleId, estimates, real);
+  if (!s) return '';
+  const c = rarityCopy(s, language);
+  return `<span class="d-name-rarity-tag">${c.tag}</span><p class="h-rarity-num">${c.lead} <b>${c.amount}</b> ${pick(['people', 'mennesker'], language)}</p>`.replace('> <b>', '><b>');
+}
+
+/** One line under the front-page examples, with the same (i) and method as on the profile. */
+export function rarityNoteHtml(ruleId, estimates, real, language) {
+  const s = nameShare(ruleId, estimates, real);
+  if (!s) return '';
+  const c = rarityCopy(s, language), {btn, pop} = methodInfo(c, language);
+  const text = pick(['How are the numbers calculated?', 'Hvordan er tallene regnet ut?'], language);
+  return `<p class="h-rarity-note">${text}\u00a0${btn}</p>${pop}`;
 }
 
 let estimatesPromise, realPromise, loaded = {estimates: null, real: null};
@@ -66,15 +88,18 @@ export function rarityShort(ruleId, language, data = loaded) {
   const pct = s.share >= 1 / 100, x = Math.round(s.share * 100), n = roundPeople(1 / s.share, language);
   return language === 'no' ? `Omtrent ${pct ? `${x} av 100` : `1 av ${n}`} får denne figuren` : `About ${pct ? `${x} in 100` : `1 in ${n}`} people get this character`;
 }
-/** Fills every [data-name-rarity="<ruleId>"] on the page. `live` asks the server for real counts. */
+/** Fills every [data-name-rarity], [data-rarity-card] and [data-rarity-note] (each holding a ruleId) on the page. `live` asks the server for real counts. */
 export async function paintRarity(language, live = false) {
   estimatesPromise ||= getJson('data/name-frequencies.json');
   if (live) realPromise ||= getJson('api/name-stats');
   const [estimates, real] = await Promise.all([estimatesPromise, live ? realPromise : null]);
   loaded = {estimates, real};
-  document.querySelectorAll('[data-name-rarity]').forEach(el => {
-    const html = rarityHtml(el.dataset.nameRarity, estimates, real, language);
+  const fill = (attr, key, make) => document.querySelectorAll(`[${attr}]`).forEach(el => {
+    const html = make(el.dataset[key], estimates, real, language);
     el.innerHTML = html;
     el.hidden = !html;
   });
+  fill('data-name-rarity', 'nameRarity', rarityHtml);
+  fill('data-rarity-card', 'rarityCard', rarityCardHtml);
+  fill('data-rarity-note', 'rarityNote', rarityNoteHtml);
 }

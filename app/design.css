@@ -1399,6 +1399,23 @@ details.d-ctx-more>div{padding:0}
 .h-card img{display:block;width:100%;height:auto;aspect-ratio:282/236;object-fit:cover;object-position:center bottom;margin-bottom:16px}
 .h-card h3{margin:0 0 6px;font:400 clamp(22px,1.9vw,27px)/1.2 var(--serif);letter-spacing:-.03em}
 .h-card p{margin:0;font-size:16px;color:#1d3150}
+.h-rarity{max-width:1320px;margin:0 auto;padding:56px 40px 0}
+.h-rarity h2{margin:0 0 8px;font:400 clamp(38px,3.6vw,52px)/1.1 var(--serif);letter-spacing:-.05em;color:var(--title)}
+.h-rarity-lead{max-width:640px;margin:0 0 24px;font-size:18px;line-height:1.5;color:#1d3150}
+.h-rarity-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.h-rarity-card{display:flex;flex-direction:column;align-items:center;padding:18px 20px 22px;border:1px solid var(--box-border);border-radius:var(--box-radius);background:var(--box-bg);box-shadow:var(--box-shadow);color:var(--title);text-align:center;text-decoration:none;transition:transform .2s}
+.h-rarity-card:hover{transform:translateY(-3px)}
+.h-rarity-card img{display:block;width:100%;max-width:260px;aspect-ratio:1;object-fit:contain;border-radius:var(--box-radius)}
+.h-rarity-card h3{margin:12px 0 10px;font:400 clamp(20px,1.7vw,24px)/1.2 var(--serif);letter-spacing:-.02em}
+.h-rarity-card [data-rarity-card]{margin-top:auto}
+.h-rarity-num{margin:8px 0 0;font:400 20px/1.3 var(--serif)}
+.h-rarity-num b{font-weight:400}
+.h-rarity-foot{max-width:520px;margin:16px auto 0;text-align:center}
+.h-rarity-note{margin:0;color:#5a7290;font-size:14px}
+.h-rarity-note .d-info-btn{padding:0;vertical-align:-.3em;color:#5a7290}
+.h-rarity-foot .d-name-rarity-pop{text-align:left}
+@media (max-width:700px){.h-rarity-card .d-name-rarity-tag{font-size:10px;letter-spacing:.04em;padding:3px 10px}.h-rarity{padding:40px 20px 0}.h-rarity-cards{grid-template-columns:1fr;gap:16px}.h-rarity-card{display:grid;grid-template-columns:96px 1fr;column-gap:14px;align-items:center;text-align:left;padding:14px 16px}.h-rarity-card img{grid-row:span 2;max-width:96px}.h-rarity-card h3{margin:0 0 6px;align-self:end}.h-rarity-card [data-rarity-card]{align-self:start;margin:0}.h-rarity-num{font-size:18px;margin-top:6px}}
+@media (prefers-reduced-motion:reduce){.h-rarity-card{transition:none}.h-rarity-card:hover{transform:none}}
 .h-arrow{display:block;margin-top:8px;font-size:22px;transition:transform .15s}
 .h-card:hover .h-arrow{transform:translateX(4px)}
 .h-closing{position:relative;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:40px;margin:44px 0 30px;padding:42px max(80px,calc((100vw - 1240px)/2)) 42px max(80px,calc((100vw - 1240px)/2 + 20px));background:#dcecfa;clip-path:polygon(2% 0,95.5% 0,100% 38%,96.5% 100%,0 100%,0 34%)}
