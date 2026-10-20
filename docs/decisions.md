@@ -603,3 +603,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-20 – Profilmerket kommer til slutt
 
 - Rune: profilmerket øverst til høyre viste seg på innloggingssiden, før innlogging og introvideoen. Nå vises det ikke på innloggingssteget, lasteskjermen eller testen, ikke før man er logget inn (når innlogging er på), og først når profilvideoen er sett eller lukket.
+
+## 2026-10-20 – Fasettene glinser hver for seg
+
+- Rune: i stedet for et skrått lysskjær over hele trekklogoen skal hver lille trekantfasett i logobitene glinse svakt, regelmessig og i tilfeldig rekkefølge, aldri samme fasett to ganger på rad. Det gjelder overalt der bitene står i appen, men ikke selve logoen (topp, bunn, lasting, den spredte logoen) eller steinvardene på spørsmålssiden. Av ved redusert bevegelse. Fasettene er tegnet opp i app/facet-glint.js.

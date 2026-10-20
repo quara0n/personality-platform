@@ -1,6 +1,7 @@
 import { scoreAssessment, createReport, extremity } from './scoring.js';
 import {applyNorms,shownPercentile,sampleAnswers} from './norms.js';
 import {logoNavHtml,initLogoNav} from './logo-nav.js';
+import {startFacetGlint} from './facet-glint.js';
 import {PAY_MARKS} from './pay-marks.js';
 import {contextCard, contextArt} from './context-copy.js';
 import {facetArt} from './facet-art.js';
@@ -673,4 +674,5 @@ window.addEventListener('hashchange',()=>render());
 // Back from Google: open the page the person signed in from straight away instead of flashing the home page.
 {const r=account.enabled()&&account.pendingRoute();if(r)history.replaceState(null,'',`${location.pathname}${location.search}#${r}`);}
 load();
+startFacetGlint();
 let accountWait=0;const accountStart=setInterval(()=>{if(!questions.length&&++accountWait<200)return;clearInterval(accountStart);initAccount();},50);
