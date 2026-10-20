@@ -2031,3 +2031,8 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 .k-facet.is-glint{animation:k-glint 2.2s ease-in-out}
 @keyframes k-glint{45%{opacity:.2}}
 @media(prefers-reduced-motion:reduce){.k-facet.is-glint{animation:none}}
+.d-share-out h3 + .d-small{margin-top:0}
+.d-share-out h3:not(:first-child){margin-top:14px}
+.d-share-link{display:flex;gap:8px;margin:0 0 12px}
+.d-share-link input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid rgba(19,40,79,.25);border-radius:8px;font:inherit;font-size:15px;color:#13284f;background:#fff}
+.d-share-unlink{font-size:14px}
