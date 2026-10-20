@@ -73,6 +73,29 @@ export async function signInWithEmail(email, route = 'account', intent = '', cod
   if (error) {pending.drop(); throw error;}
 }
 
+export const validOtp = token => /^\d{6,10}$/.test(String(token).replace(/\s/g, ''));
+
+/** Signs in with the code from the email instead of the link. The link only works in the browser that asked for it
+ *  (PKCE keeps a secret there), and phones often open it somewhere else: Mail opens Safari while the test was taken in
+ *  Messenger's own browser (Rune 2026-10-20). The code is typed where the answers are, so nothing is lost.
+ *  Returns {route, intent, code} like finishSignIn. */
+export async function verifyEmailCode(email, token) {
+  const t = String(token).replace(/\s/g, '');
+  if (!validEmail(email)) throw new Error('invalid-email');
+  if (!validOtp(t)) throw new Error('invalid-code');
+  const c = await client(), e = String(email).trim();
+  let {data, error} = await c.auth.verifyOtp({email: e, token: t, type: 'email'});
+  // A brand-new account gets the sign-up email, whose code older servers only accept as 'signup'.
+  if (!data?.session) ({data, error} = await c.auth.verifyOtp({email: e, token: t, type: 'signup'}));
+  if (!data?.session) throw error || new Error('no-session');
+  const p = pending.get();
+  pending.drop();
+  return {route: p?.route || 'account', intent: p?.intent || '', code: p?.code || ''};
+}
+
+/** True when an emailed link was opened in another browser than the one that asked for it. */
+export const otherBrowser = reason => /code verifier|code_verifier|flow state|flow_state/i.test(String(reason || ''));
+
 /** On the way back from the provider: the route to show at once, so the first paint is not the home page. */
 export function pendingRoute() {
   return /[?&](code|error)=/.test(location.search) ? store.get(RETURN) || pending.get()?.route || 'account' : null;
