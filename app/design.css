@@ -2055,3 +2055,27 @@ body.in-test .d-avatar,body.in-loading .d-avatar{display:none}
 .d-signin-escape-box{margin:18px 0 0;text-align:center}
 .d-signin-escape{margin:0 0 12px;font-size:15px;color:#4f6c8a}
 .d-signin-inapp{margin:0 0 4px;font-size:15px;color:#4f6c8a;text-align:center}
+
+
+/* «Min side» (#account when signed in with a profile): figure, five traits and shortcuts, then the account panel */
+.d-account-page.has-me{max-width:980px}
+.d-me h1{margin:4px 0 0;font:400 clamp(40px,5vw,60px)/1.05 var(--serif);letter-spacing:-.045em;color:var(--title)}
+.d-me-hero{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:32px;align-items:center;margin-top:26px}
+.d-me-figure{text-align:center}
+.d-me-figure .d-profile-name-art{max-width:320px}
+.d-me-figure h2{margin:12px 0 0;font:400 clamp(28px,3vw,36px)/1.1 var(--serif);letter-spacing:-.025em;color:var(--title)}
+.d-me-hero .d-stage{margin:0;max-width:none}
+.d-me-hero .d-stage.is-solo{grid-template-columns:minmax(0,1fr)}
+.d-me-hero .d-stage .d-profile-card{margin:0}
+.d-me-links{display:grid;align-items:stretch;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:34px 0 0}
+.d-me-card{display:flex;align-items:center;gap:16px;padding:20px 22px;background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:var(--box-shadow);color:var(--title);text-decoration:none;text-align:left}
+.d-me-card:hover{background:var(--card-hover)}
+.d-me-card .d-piece-icon{width:40px;height:40px}
+.d-me-card-text{flex:1;min-width:0}
+.d-me-card b{display:block;margin-bottom:4px;font:400 22px/1.2 var(--serif);letter-spacing:-.02em}
+.d-me-card-text>span{display:block;color:var(--muted,#53667c);font-size:15px;line-height:1.45}
+.d-me-tag{display:inline-block;margin-left:6px;padding:3px 10px;border-radius:999px;background:var(--sky);font:600 12px/1.2 var(--sans);font-style:normal;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+.d-me-arrow{font-size:20px}
+.d-me-sub{margin:44px 0 0;font:400 clamp(28px,3vw,34px)/1.1 var(--serif);letter-spacing:-.03em;color:var(--title)}
+.d-account-page.has-me .d-account-panel{margin-top:16px}
+@media(max-width:760px){.d-me-hero{grid-template-columns:1fr;gap:18px}.d-me-figure .d-profile-name-art{max-width:240px}.d-me-links{grid-template-columns:1fr;gap:12px}.d-me-card{padding:18px}}

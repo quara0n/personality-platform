@@ -37,7 +37,8 @@ const fake=()=>{const k='fake-auth',db='fake-db',get=n=>JSON.parse(localStorage.
   // A fresh tab with no answers can open the saved profile.
   const tab=await ctx.newPage();tab.on('pageerror',e=>errors.push(e.message));
   await tab.goto('http://127.0.0.1:4173/#account');
-  await tab.locator('[data-account-action="open"]').click();await tab.locator('.d-results').waitFor();
+  // It opens by itself on «Min side» (Rune 2026-10-20), with the figure and the five traits.
+  await tab.locator('.d-me .d-trait-row').first().waitFor({timeout:20000});assert.equal(await tab.locator('.d-me .d-trait-row').count(),5);
   assert.equal(await tab.evaluate(()=>JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers&&Object.keys(JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers).length),120);
   await tab.goto('http://127.0.0.1:4173/#account');tab.on('dialog',d=>d.accept());
   await tab.locator('[data-account-action="delete-account"]').click();await tab.locator('.d-signin-btn').first().waitFor();

@@ -71,3 +71,5 @@ SEO-grunnmur 2026-10-18: `/` (engelsk) og `/no` (norsk) med metadata, delingsbil
 Personvern og vilkår 2026-10-18: «Juridisk»-side med personvernerklæring og brukervilkår på begge språk (app/privacy-copy.js, app/terms-copy.js, docs/personvern.md). Navn og org.nr. er fylt inn. Gjenstår: sette opp support@kaleidotest.com, databehandleravtaler med Vercel, Supabase, Anthropic og Stripe og bekrefte EU-region i Supabase. Ingen advokatgjennomgang (Runes valg).
 
 Kombo-statistikk 2026-10-20: profilfiguren viser hvor vanlig den er (app/name-rarity.js, anslag fra app/data/name-frequencies.json, ekte tall fra /api/name-stats når minst 1 000 profiler er lagret). Gjenstår: bygge tabellen på nytt (`node scripts/build_name_frequencies.js`) hver gang navnereglene i app/profile-name.js endres, og eventuelt kjøre simuleringen mot rådataene (IPIP120.dat) for et anslag uten modell.
+
+Min side 2026-10-20: oversikt etter innlogging (myOverview i app/ui.js), kontrolleres med scripts/min-side-check.cjs. scripts/account-check.cjs var allerede rød før dette (venter på videoen etter «Tilfeldig» uten innlogging) og bør oppdateres til innloggingskravet.
