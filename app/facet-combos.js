@@ -7,7 +7,7 @@
 // the norm data, not a count, and the video says so. Numbers are said in people, never percent.
 // Lines are editorial: warm, a little boastful or cheeky, never mocking. They only claim what the two facets
 // measure, so the joke stays traceable to the result.
-import {words} from './profile-name.js';
+import {words, profileName} from './profile-name.js';
 import {roundPeople} from './name-rarity.js';
 
 const LOADING = 0.65, ORDER = 'OCEAN';
@@ -22,6 +22,8 @@ const R = [
 const SKIP = new Set(['C1l', 'N3h', 'N6h']);
 // A pair has to be at least this rare to be shown (1 in 20 people or fewer).
 export const MAX_SHARE = 1 / 20;
+// Pairs that pull the same way are more common; the report shows them up to 1 in 10.
+export const MAX_TOGETHER = 1 / 10;
 // Below this share of what two unrelated facets would give, the pair «rarely goes together».
 const CONTRAST = .7;
 
@@ -203,6 +205,72 @@ const lines = {
 };
 export {lines as comboLines};
 
+// Pairs that pull the same way and are strong together in certain situations (Rune 2026-10-20: «to som går
+// steinbra sammen i enkelte situasjoner»), for the report's combo chapter. [line, when it shines], each [English, Norwegian].
+const together = {
+  'C2h+C5h': [['Has a place for everything, and the discipline to keep it there.', 'Har en plass til alt, og disiplinen til å holde det sånn.'], ['Big projects with many parts and a fixed deadline.', 'Store prosjekter med mange deler og en fast frist.']],
+  'C3h+C5h': [['Says yes, then actually does it, on time.', 'Sier ja, og gjør det faktisk, i tide.'], ['When others need someone they can count on all the way.', 'Når andre trenger noen de kan stole på hele veien.']],
+  'C4h+C5h': [['Big goals and the stamina to reach them.', 'Store mål og utholdenhet til å nå dem.'], ['Long hauls: an education, a marathon, a business.', 'Lange løp: en utdanning, et maraton, en bedrift.']],
+  'C1h+C4h': [['Believes they can, and wants to.', 'Tror den klarer det, og vil det.'], ['New challenges where someone has to step up first.', 'Nye utfordringer der noen må gå først.']],
+  'C2h+C6h': [['Careful and orderly. Nothing slips through.', 'Grundig og ryddig. Ingenting glipper.'], ['Checking, planning and anything where mistakes are expensive.', 'Kontroll, planlegging og alt der feil koster dyrt.']],
+  'C6l+E5h': [['Spontaneous and up for a thrill. Says yes before the question is finished.', 'Spontan og spenningssøkende. Sier ja før spørsmålet er ferdig.'], ['When plans fall apart and something new has to happen right now.', 'Når planene ryker og noe nytt må skje med en gang.']],
+  'C2l+O4h': [['Messy and adventurous. Ready to pack in five minutes.', 'Rotete og eventyrlysten. Klar til å pakke på fem minutter.'], ['Trips without an itinerary, and teams that need to try something new.', 'Reiser uten reiseplan, og team som må prøve noe nytt.']],
+  'C4l+E4l': [['Relaxed about goals and pace. The calm in a stressed office.', 'Avslappet til både mål og tempo. Roen på et stresset kontor.'], ['When everyone else is rushing and someone needs to keep it calm.', 'Når alle andre stresser og noen må holde det rolig.']],
+  'O1h+O2h': [['Daydreams in colour, and makes something of it.', 'Dagdrømmer i farger, og lager noe av det.'], ['Creative work: design, writing, music, ideas.', 'Kreativt arbeid: design, skriving, musikk, ideer.']],
+  'O5h+O6h': [['Thinks big and questions everything.', 'Tenker stort og stiller spørsmål ved alt.'], ['Debates, research, and spotting the flaw in a plan.', 'Debatter, forskning og å finne svakheten i en plan.']],
+  'E5h+O4h': [['Adventurous and up for a thrill. First one out of the plane.', 'Eventyrlysten og spenningssøkende. Først ut av flyet.'], ['Travel, new places and anything nobody has tried before.', 'Reiser, nye steder og alt ingen har prøvd før.']],
+  'C6h+O5h': [['Thinks deeply, and carefully.', 'Tenker dypt, og grundig.'], ['Hard problems that need both ideas and checking.', 'Vanskelige problemer som trenger både ideer og kontroll.']],
+  'C4h+O1h': [['Dreams big, and goes for it.', 'Drømmer stort, og går for det.'], ['Building something of your own from an idea.', 'Å bygge noe eget fra en idé.']],
+  'A6h+O3h': [['Feels deeply, and feels with others.', 'Kjenner sterkt, og føler med andre.'], ['When someone needs to be truly understood.', 'Når noen trenger å bli virkelig forstått.']],
+  'O2h+O3h': [['Moved by beauty. Every time.', 'Blir rørt av det vakre. Hver gang.'], ['Art, music, nature, and making a room beautiful.', 'Kunst, musikk, natur og å gjøre et rom vakkert.']],
+  'C3h+O4l': [['Loves routines and keeps their word.', 'Elsker rutiner og holder ord.'], ['Jobs and homes that need someone steady over time.', 'Jobber og hjem som trenger noen stødige over tid.']],
+  'C3h+O6l': [['Old values and a firm handshake.', 'Gamle verdier og et fast håndtrykk.'], ['When traditions and promises need someone to keep them.', 'Når tradisjoner og løfter trenger noen som holder dem.']],
+  'C1h+O5l': [['Practical and capable. Fixes it instead of discussing it.', 'Praktisk og handlekraftig. Fikser det i stedet for å diskutere det.'], ['When something breaks and needs fixing now.', 'Når noe går i stykker og må fikses nå.']],
+  'A3h+E1h': [['Warm and helpful. People feel welcome at once.', 'Varm og hjelpsom. Folk føler seg velkomne med en gang.'], ['Welcoming new people, hosting, and caring jobs.', 'Å ta imot nye folk, være vert og omsorgsyrker.']],
+  'C4h+E3h': [['Takes charge and aims high.', 'Tar styringen og sikter høyt.'], ['Leading a team towards a clear goal.', 'Å lede et team mot et tydelig mål.']],
+  'E3h+N6l': [['Takes the lead and stays calm.', 'Tar ledelsen og holder roen.'], ['Crises where someone has to decide fast.', 'Kriser der noen må bestemme fort.']],
+  'E2h+E6h': [['Social and cheerful. The party starts when they arrive.', 'Selskapelig og blid. Festen starter når de kommer.'], ['Parties, teams and anything that needs a bit of energy.', 'Fester, team og alt som trenger litt energi.']],
+  'C5h+E4h': [['Busy and disciplined. Gets an incredible amount done.', 'Travel og disiplinert. Får gjort utrolig mye.'], ['Busy periods with many tasks at once.', 'Travle perioder med mange oppgaver samtidig.']],
+  'E1h+E6h': [['Warm and cheerful. Hard not to like.', 'Varm og blid. Vanskelig å ikke like.'], ['First meetings, customer service and new groups.', 'Første møter, kundekontakt og nye grupper.']],
+  'E2l+O5h': [['Happy alone with big thoughts.', 'Trives alene med store tanker.'], ['Deep work that needs peace and concentration.', 'Dypt arbeid som trenger ro og konsentrasjon.']],
+  'E4l+N6l': [['Unhurried and steady.', 'Har god tid og står støtt.'], ['When things get hectic and someone needs to slow it down.', 'Når det blir hektisk og noen må senke tempoet.']],
+  'A4h+E3l': [['Lets others lead and keeps the peace.', 'Lar andre lede og holder freden.'], ['Teams that need glue more than another boss.', 'Team som trenger lim mer enn enda en sjef.']],
+  'C6h+E5l': [['Safe and careful. The one who brings the first-aid kit.', 'Trygg og forsiktig. Den som tar med førstehjelpsskrinet.'], ['Safety, planning and looking after others.', 'Sikkerhet, planlegging og å passe på andre.']],
+  'A1h+A3h': [['Trusts people and helps them.', 'Stoler på folk og hjelper dem.'], ['Volunteering, mentoring and new colleagues.', 'Frivillig arbeid, mentoring og nye kolleger.']],
+  'A2h+C3h': [['Honest and dependable. Their word is enough.', 'Ærlig og pålitelig. Ordet holder.'], ['Money, trust and anything that needs integrity.', 'Penger, tillit og alt som krever integritet.']],
+  'A4h+N2l': [['Cooperative and patient. Calms every argument.', 'Samarbeidsvillig og tålmodig. Roer ned enhver krangel.'], ['Conflicts, negotiations and family dinners.', 'Konflikter, forhandlinger og familiemiddager.']],
+  'A3h+A6h': [['Feels for others and does something about it.', 'Føler med andre og gjør noe med det.'], ['Care, teaching and being there for a friend.', 'Omsorg, undervisning og å stille opp for en venn.']],
+  'A3h+A5h': [['Helps without needing thanks.', 'Hjelper uten å trenge takk.'], ['Work behind the scenes that keeps everything running.', 'Arbeid bak kulissene som får alt til å gå rundt.']],
+  'A4l+E3h': [['Direct and takes charge. Says what everyone is thinking.', 'Direkte og tar styringen. Sier det alle tenker.'], ['When a hard decision has to be made and said out loud.', 'Når en vanskelig beslutning må tas og sies høyt.']],
+  'A1l+O5h': [['Sceptical and sharp. Checks the sources.', 'Skeptisk og skarp. Sjekker kildene.'], ['Research, analysis and spotting what doesn’t add up.', 'Forskning, analyse og å se det som ikke stemmer.']],
+  'A6l+N6l': [['Clear-eyed and steady. Keeps a cool head when others feel too much.', 'Klarsynt og stødig. Holder hodet kaldt når andre kjenner for mye.'], ['Emergencies and hard calls.', 'Nødsituasjoner og tøffe valg.']],
+  'A5l+E3h': [['Self-assured and takes charge.', 'Selvsikker og tar styringen.'], ['Pitching, selling and standing up for a team.', 'Å pitche, selge og stå opp for et team.']],
+  'E5h+N1l': [['Fearless and up for a thrill.', 'Uredd og spenningssøkende.'], ['Adventure sports, start-ups and bold first moves.', 'Ekstremsport, gründerliv og dristige første trekk.']],
+  'C6h+N1h': [['Thinks of what can go wrong, and prepares for it.', 'Tenker på det som kan gå galt, og forbereder seg.'], ['Risk, safety and planning for the unexpected.', 'Risiko, sikkerhet og å planlegge for det uventede.']],
+  'N1l+N6l': [['Unflappable and steady. The calm in every storm.', 'Uforskrekket og stødig. Roen i enhver storm.'], ['Crises, deadlines and bumpy flights.', 'Kriser, frister og urolige flyturer.']],
+  'E6h+N3l': [['Hopeful and cheerful. Sees the bright side first.', 'Håpefull og blid. Ser lyspunktene først.'], ['Hard days, for yourself and for others.', 'Tunge dager, for deg selv og for andre.']],
+  'C1h+N6l': [['Steady and capable. Handles whatever comes.', 'Stødig og handlekraftig. Takler det som kommer.'], ['When something goes wrong and needs handling.', 'Når noe går galt og må håndteres.']],
+  'E3h+N4l': [['Unabashed and takes charge. At home on any stage.', 'Frimodig og tar styringen. Hjemme på enhver scene.'], ['Talks, presentations and leading meetings.', 'Foredrag, presentasjoner og å lede møter.']],
+  'A6h+N4h': [['Shy and soft-hearted. Notices who is left out.', 'Sjenert og bløthjertet. Ser hvem som står utenfor.'], ['When someone quiet needs a friend.', 'Når noen stille trenger en venn.']],
+  'E6h+N5h': [['Enjoys life and laughs a lot.', 'Nyter livet og ler mye.'], ['Dinners, holidays and celebrations.', 'Middager, ferier og feiringer.']],
+  'N2h+O6h': [['Fiery and free-thinking. Fights for what matters.', 'Fyrrig og frisinnet. Kjemper for det som betyr noe.'], ['Causes, and speaking up against unfairness.', 'Saker man brenner for, og å si fra mot urettferdighet.']],
+  'C1h+N1l': [['Capable and unworried. Just does it.', 'Handlekraftig og bekymringsløs. Bare gjør det.'], ['New jobs and situations without a manual.', 'Nye jobber og situasjoner uten bruksanvisning.']],
+  'E5h+O1h': [['Daring and imaginative.', 'Dristig og fantasifull.'], ['Start-ups, new ideas and turning dreams into trips.', 'Gründerliv, nye ideer og å gjøre drømmer om til reiser.']],
+  'A1h+E6h': [['Cheerful and trusting. Sees the best in people.', 'Blid og tillitsfull. Ser det beste i folk.'], ['New groups, new colleagues, new neighbours.', 'Nye grupper, nye kolleger, nye naboer.']],
+  'A4h+C3h': [['Dependable and cooperative. Everyone’s favourite colleague.', 'Pålitelig og samarbeidsvillig. Alles favorittkollega.'], ['Teams and group projects.', 'Team og gruppeprosjekter.']],
+  'O1h+O4h': [['Imaginative and adventurous. Always the next idea, the next place.', 'Fantasifull og eventyrlysten. Alltid neste idé, neste sted.'], ['Travel, change and new beginnings.', 'Reiser, endring og nye begynnelser.']],
+  'C4h+O5h': [['Sharp and ambitious.', 'Skarp og ambisiøs.'], ['Studies, research and demanding goals.', 'Studier, forskning og krevende mål.']],
+  'A6h+O6h': [['Free-thinking and caring.', 'Frisinnet og omtenksom.'], ['Standing up for people who are treated unfairly.', 'Å stå opp for folk som blir urettferdig behandlet.']],
+  'E4h+E5h': [['Busy and daring. Never a dull day.', 'Travel og dristig. Aldri en kjedelig dag.'], ['Events, travel and fast-paced jobs.', 'Arrangementer, reiser og jobber i høyt tempo.']],
+  'E1l+O5h': [['Reserved and thoughtful.', 'Reservert og ettertenksom.'], ['Writing, analysis and conversations that go deep.', 'Skriving, analyse og samtaler som går i dybden.']],
+  'A3h+C1h': [['Helpful and capable. Fixes it for you.', 'Hjelpsom og handlekraftig. Fikser det for deg.'], ['Moving day, crises and practical help.', 'Flyttedag, kriser og praktisk hjelp.']],
+  'C3h+E3h': [['Takes charge and keeps promises.', 'Tar styringen og holder det den lover.'], ['Leading people who need to know where they stand.', 'Å lede folk som trenger å vite hvor de har deg.']],
+  'C2l+C6l': [['Spontaneous and relaxed about mess. Life is a jam session.', 'Spontan og avslappet til rot. Livet er en jamsession.'], ['Improvising: when the plan is gone and fun has to happen anyway.', 'Improvisasjon: når planen er borte og det skal bli gøy likevel.']],
+  'C4l+N1l': [['Content and unworried.', 'Nøysom og bekymringsløs.'], ['Holidays, weekends, and reminding others to breathe.', 'Ferier, helger og å minne andre på å puste.']],
+  'E2l+E5l': [['Homebody and comfort-seeker. Knows what a good evening is.', 'Hjemmekjær og kosemester. Vet hva en god kveld er.'], ['Recharging, and being the calm friend people visit.', 'Å lade opp, og å være den rolige vennen folk kommer på besøk til.']]
+};
+export {together as togetherLines};
+
 // ---------- the model ----------
 const phi = x => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
 // Normal CDF (Abramowitz–Stegun 7.1.26 erf, error < 1.5e-7), as in the build script.
@@ -285,4 +353,45 @@ export function rareCombos(domains, {language = 'en', count = 1, skip = []} = {}
       amount: peopleAmount(p.share, language)});
   }
   return out;
+}
+
+/**
+ * Up to `count` hand-written facet pairs that work well together (never contrasts), rarest first, not sharing a facet.
+ * Each says when the pair shines. Only written pairs are shown: a made-up situation would claim more than we know.
+ */
+export function strongPairs(domains, {language = 'en', count = 3, taken = []} = {}) {
+  const no = language === 'no';
+  const facets = domains.flatMap(d => d.facets || []).filter(f => Number.isFinite(f.percentile) && f.band && f.band !== 'middle' && !SKIP.has(key(f)));
+  const pairs = [];
+  for (let i = 0; i < facets.length; i++) for (let j = i + 1; j < facets.length; j++) {
+    const [a, b] = [facets[i], facets[j]].sort((x, y) => key(x).localeCompare(key(y)));
+    const id = comboKey(key(a), key(b)), {share, lift} = pairShare(a, b);
+    if (!together[id] || share > MAX_TOGETHER || lift < CONTRAST) continue;
+    pairs.push({id, a, b, share, lift, written: true, score: Math.log(share)});
+  }
+  pairs.sort((x, y) => x.score - y.score || x.id.localeCompare(y.id));
+  const out = [], used = new Set(taken);
+  for (const p of pairs) {
+    if (out.length >= count) break;
+    if (used.has(p.a.code) || used.has(p.b.code)) continue;
+    used.add(p.a.code); used.add(p.b.code);
+    const t = together[p.id];
+    out.push({...p, adjectives: [p.a, p.b].map(f => no ? words[key(f)][1] : words[key(f)][0].toLowerCase()), amount: peopleAmount(p.share, language),
+      line: pick(t[0], language), when: pick(t[1], language)});
+  }
+  return out;
+}
+
+/** The one combo the free profile and the share video show; a signature name's own pair is already told. */
+export function freeCombo(domains, language) {
+  const named = profileName(domains, language);
+  return rareCombos(domains, {language, skip: named.line ? named.facets.map(key) : []})[0] || null;
+}
+
+/** The report chapter: up to three contrasts and three pairs that work well together. */
+export function comboChapter(domains, language) {
+  // Facets already in a contrast are left out of the second list when other pairs are there, so the chapter shows more of the profile.
+  const contrasts = rareCombos(domains, {language, count: 3}).filter(c => c.contrast), taken = contrasts.flatMap(c => [c.a.code, c.b.code]);
+  const fresh = strongPairs(domains, {language, count: 3, taken});
+  return {contrasts, together: fresh.length >= 2 ? fresh : strongPairs(domains, {language, count: 3})};
 }

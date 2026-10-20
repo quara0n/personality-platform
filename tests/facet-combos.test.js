@@ -78,3 +78,20 @@ test('with a combo the scene gets two more seconds and the quote two fewer, so t
   assert.equal(len('rare'), 6); assert.equal(len('closer'), 3);
   assert.equal(tl.at(-1).end, timeline(videoScript(person({C2: 93}), {language: 'no', name: x => x.name})).at(-1).end);
 });
+
+test('the report chapter lists contrasts and hand-written pairs that work together, with when they shine', async () => {
+  const {comboChapter, strongPairs, togetherLines, freeCombo} = await import('../app/facet-combos.js');
+  const d = person({C2: 93, C5: 92, N5: 88, E3: 90, N6: 8});
+  const ch = comboChapter(d, 'no');
+  assert.ok(ch.contrasts.length >= 1 && ch.contrasts.every(c => c.contrast));
+  assert.ok(ch.together.length >= 1 && ch.together.every(c => togetherLines[c.id] && c.when.length > 10 && c.line.length > 5));
+  assert.deepEqual(strongPairs(person({})), []);
+  assert.equal(freeCombo(d, 'no').id, rareCombos(d, {language: 'no'})[0].id);
+  for (const [id, [line, when]] of Object.entries(togetherLines)) {
+    const [a, b] = id.split('+');
+    assert.equal(comboKey(a, b), id);
+    assert.ok(words[a] && words[b] && a.slice(0, 2) !== b.slice(0, 2), id);
+    assert.ok([...line, ...when].every(x => x.trim().length > 8), id);
+    assert.ok(!comboLines[id], `${id} is both a contrast and a strong pair`);
+  }
+});

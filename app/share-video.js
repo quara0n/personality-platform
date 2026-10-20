@@ -19,7 +19,7 @@ import {extremity} from './scoring.js';
 import {shownPercentile} from './norms.js';
 import {profileName} from './profile-name.js';
 import {SONG, songPlan} from './share-music.js';
-import {rareCombos} from './facet-combos.js';
+import {freeCombo} from './facet-combos.js';
 import {nameShare, rarityCopy} from './name-rarity.js';
 
 export const W = 1080, H = 1920;
@@ -137,9 +137,9 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     ? {above: tr('Right in the middle on', 'Midt på skalaen i'), number: p, below: name(trait), caption: tr(`Percentile ${p}`, `Persentil ${p}`), count: p}
     : {above: `${pick(poles[trait.code][band], language)} ${tr('than', 'enn')}`, number: count, below: tr('out of 100 people', 'av 100 personer'), caption: tr(`${name(trait)} · percentile ${p}`, `${name(trait)} · persentil ${p}`), count};
   const first = String(firstName).trim().split(/\s+/)[0].slice(0, 24);
-  // A signature name already tells its pair with its own line; a plain name's pair can still be the combo.
+  // The same combo as the free profile (app/facet-combos.js freeCombo).
   const keyOf = f => `${f.code}${f.band[0]}`;
-  const combos = rareCombos(domains, {language, skip: named.line ? named.facets.map(keyOf) : []}).map(c => ({
+  const combos = [freeCombo(domains, language)].filter(Boolean).map(c => ({
     id: c.id,
     eyebrow: c.contrast ? tr('Two things that rarely go together', 'To ting som sjelden går sammen') : tr('Your rare combo', 'Den sjeldne komboen din'),
     // The picture for each facet end may repeat the name's picture; Rune 2026-10-20: the picture must show the facet.
