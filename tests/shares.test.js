@@ -15,7 +15,10 @@ test('the share page unfurls with a big card, the video and no way to inject mar
   const html = sharePageHtml({id: 'AbCdEfGhIj', title: 'Kapteinen <script>', lang: 'no', kind: 'profile', video_ext: 'mp4'}, env);
   assert.match(html, /<meta property="og:image" content="https:\/\/sb\.example\/storage\/v1\/object\/public\/shares\/AbCdEfGhIj\/card\.jpg">/);
   assert.match(html, /og:image:width" content="1200"/);
-  assert.match(html, /og:video" content="https:\/\/sb\.example\/storage\/v1\/object\/public\/shares\/AbCdEfGhIj\/video\.mp4"/);
+  assert.match(html, /<video id="v" src="https:\/\/sb\.example\/storage\/v1\/object\/public\/shares\/AbCdEfGhIj\/video\.mp4"/);
+  assert.match(html, /og:type" content="website"/);
+  assert.match(html, /og:image:type" content="image\/jpeg"/);
+  assert.doesNotMatch(html, /og:video/, 'a plain link card, so Messenger shows the picture');
   assert.match(html, /twitter:card" content="summary_large_image"/);
   assert.match(html, /og:url" content="https:\/\/kaleidotest\.com\/v\/AbCdEfGhIj"/);
   assert.match(html, /Kaleido-profilen min/);
@@ -24,7 +27,7 @@ test('the share page unfurls with a big card, the video and no way to inject mar
   assert.match(html, /Kapteinen &lt;script&gt;/);
   const en = sharePageHtml({id: 'AbCdEfGhIj', title: 'The Captain', lang: 'en', kind: 'report', video_ext: 'webm'}, env);
   assert.match(en, /my Kaleido report/);
-  assert.match(en, /video\/webm/);
+  assert.match(en, /video\.webm"/);
 });
 
 function fakeFetch(routes) {
