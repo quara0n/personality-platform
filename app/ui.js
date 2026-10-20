@@ -692,17 +692,10 @@ async function initAccount(){
   let back=null;try{back=await account.finishSignIn();}catch{}
   await refreshAccount();
   await finishCheckout();
-<<<<<<< HEAD
   // Signed in again on a new device or tab: the saved profile opens by itself, so «Min side» and the badge have it.
   if(accountUser&&accountProfile&&!Object.keys(answers).length)openProfileLink(accountProfile.code);
-  if(back?.code&&accountUser&&!answersComplete())openProfileLink(back.code);
-  if(back?.failed)accountMsg=tr('Sign-in was cancelled or failed. You can try again.','Innloggingen ble avbrutt eller mislyktes. Du kan prøve igjen.')+(back.reason?` (${back.reason})`:'');
-  else if(back&&accountUser&&back.intent==='save'&&answersComplete()){try{await account.saveProfile(profileCode(),language);accountProfile=await account.loadProfile();accountMsg=tr('Your profile is saved.','Profilen er lagret.');}catch{accountMsg=tr('Signed in, but the profile could not be saved. Try again.','Du er logget inn, men profilen ble ikke lagret. Prøv igjen.');}}
-  if(back||gatedRoute((location.hash||'#home').slice(1))||['#signin','#account'].includes(location.hash))render(false);else paintAccount();
-=======
   await afterSignIn(back);
-  if(back||gatedRoute((location.hash||'#home').slice(1))||location.hash==='#signin')render(false);else paintAccount();
->>>>>>> origin/main
+  if(back||gatedRoute((location.hash||'#home').slice(1))||['#signin','#account'].includes(location.hash))render(false);else paintAccount();
 }
 // Back from Stripe (?paid=cs_…): the server reads the session from Stripe and stores the purchase, so the report opens
 // even if the webhook has not arrived yet. The address is cleaned either way.
