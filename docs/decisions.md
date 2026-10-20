@@ -607,3 +607,4 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 ## 2026-10-20 – Fasettene glinser hver for seg
 
 - Rune: i stedet for et skrått lysskjær over hele trekklogoen skal hver lille trekantfasett i logobitene glinse svakt, regelmessig og i tilfeldig rekkefølge, aldri samme fasett to ganger på rad. Det gjelder overalt der bitene står i appen, men ikke selve logoen (topp, bunn, lasting, den spredte logoen) eller steinvardene på spørsmålssiden. Av ved redusert bevegelse. Fasettene er tegnet opp i app/facet-glint.js.
+- 2026-10-20: Rune åpnet en delelenke i Messenger på Android, og «Ta testen gratis» lå under videoen. Nå passer hele siden på første skjerm: videoen skaleres til høyden som er igjen etter logoen, overskriften, én kort linje og knappen.
