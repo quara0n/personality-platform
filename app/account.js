@@ -139,11 +139,19 @@ export async function finishSignIn() {
   return {route, intent, code, failed, reason};
 }
 
-/** Saved profile {code, language, updatedAt} or null. */
+/** Saved profile {code, language, updatedAt, nextStep} or null. */
 export async function loadProfile() {
-  const c = await client(), {data, error} = await c.from('profiles').select('answers, language, updated_at').maybeSingle();
+  const c = await client(), {data, error} = await c.from('profiles').select('answers, language, updated_at, next_step').maybeSingle();
   if (error) throw error;
-  return data && validCode(data.answers) ? {code: data.answers, language: data.language, updatedAt: data.updated_at} : null;
+  return data && validCode(data.answers) ? {code: data.answers, language: data.language, updatedAt: data.updated_at, nextStep: data.next_step || null} : null;
+}
+
+/** Keeps the experiment picked in «Dine neste steg» with the saved profile, so it follows the account (or null to clear it). */
+export async function saveNextStep(step) {
+  const c = await client(), user = await currentUser();
+  if (!user) throw new Error('signed-out');
+  const {error} = await c.from('profiles').update({next_step: step || null}).eq('user_id', user.id);
+  if (error) throw error;
 }
 
 export async function saveProfile(code, language) {

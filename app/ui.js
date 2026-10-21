@@ -589,10 +589,14 @@ function nuances(){
 }
 // «Dine neste steg» (Rune 2026-10-21, option A): gathers the threads of the report. One strength, one trap, then ONE
 // experiment the person picks (kept in localStorage with the answers it belongs to, so it survives a closed tab
-// and shows on «Min side»), and a close with the video and a reminder to take the test again in six months.
+// and shows on «Min side»; with a saved profile it is kept on the account too), and a close with the video and a reminder to take the test again in six months.
 const NEXT='kaleido-next-step-v1';
-function nextStep(){try{const s=JSON.parse(localStorage.getItem(NEXT)||'null');return s&&s.code===profileCode()?s:null;}catch{return null;}}
-function saveNextStep(s){try{s?localStorage.setItem(NEXT,JSON.stringify({...s,code:profileCode()})):localStorage.removeItem(NEXT);}catch{}}
+// With a saved profile the choice also goes to the account (profiles.next_step), so it follows to other devices.
+const savedHere=()=>Boolean(accountUser&&accountProfile&&accountProfile.code===profileCode());
+function nextStep(){let s=null;try{s=JSON.parse(localStorage.getItem(NEXT)||'null');}catch{}
+  if(s?.code===profileCode())return s;const a=savedHere()?accountProfile.nextStep:null;return a?.code===profileCode()?a:null;}
+function saveNextStep(s){const v=s?{...s,code:profileCode()}:null;try{v?localStorage.setItem(NEXT,JSON.stringify(v)):localStorage.removeItem(NEXT);}catch{}
+  if(savedHere()){accountProfile.nextStep=v;account.saveNextStep(v).catch(()=>{});}}
 function stepPicks(){
   const picks=[...report.nextSteps];
   if(picks.length>=3)return {picks,explore:false};
