@@ -54,6 +54,8 @@ test('checkout needs a signed-in user and sets the price on the server', async (
   const body = new URLSearchParams(calls.find(c => c.url.endsWith('/v1/checkout/sessions')).init.body);
   assert.equal(body.get('line_items[0][price_data][unit_amount]'), '7900');
   assert.equal(body.get('line_items[0][price_data][currency]'), 'nok');
+  // The picture lists what the report holds, in the buyer's language.
+  assert.match(body.get('line_items[0][price_data][product_data][images][0]'), /\/assets\/checkout\/plus-no\.jpg$/);
   assert.equal(body.get('client_reference_id'), USER);
   assert.equal(body.get('metadata[tier]'), 'plus');
   assert.equal(body.get('success_url'), 'https://kaleidotest.com/no?paid={CHECKOUT_SESSION_ID}#report');

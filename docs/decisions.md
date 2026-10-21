@@ -660,3 +660,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Fart: serverfunksjonen vekkes når resultatsiden åpnes, bildene til lenken tegnes på forhånd, og raden og de tre opplastingslenkene lages samtidig på serveren. I test var lenken klar etter 0,2–1 sekund.
 - Ikonene er fra Simple Icons (CC0). Merkene tilhører eierne og brukes bare som delingsknapper.
 - Samme dag, etter test på Android: Rune: «Right one though needs removal as we get duplicates». På telefon åpner «Del» nå bare telefonens egen delemeny med lenken, uten vårt vindu først. App-raden over gjelder PC og nettlesere uten delemeny. Tar lenken for lang tid, ber knappen om ett trykk til («Trykk for å dele»), som går med en gang fordi lenken er lagret. «Last ned video» og «Del videofila» (for Reels og TikTok) står på siden, og opplastingen av videoen vises i linja under videoen.
+
+## Betalingssiden viser hva man får (2026-10-21)
+
+- Rune om Stripe-siden: «den siden kan gjerne representere hva de får … liste med ting. oversiktelig. innbydende». Bildet til venstre på Stripes betalingsside er nå en liste i Kaleido-stil med det rapporten inneholder, én for Fordypning og én for Fordypning + tilpasset, på norsk og engelsk (app/assets/checkout/<nivå>-<språk>.jpg, tegnet av scripts/checkout-images.cjs).
+- Stripe viser bildet omtrent 300 px bredt, så linjene er korte og store, uten undertekst. Listene følger kjøpskortene i appen, pluss «Komboene dine».
