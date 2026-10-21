@@ -593,6 +593,10 @@ export function videoType(audio = false) {
  *  `audio` ({ctx, buffer, monitor}) adds the music: a running AudioContext, the rendered buffer and
  *  an optional node the person hears it through. */
 const WARMUP = .4;
+// 3 Mbit/s instead of 6 halves the file (about 7.5 MB instead of 15 MB for the short cut on a phone that hits
+// the target), so it uploads twice as fast. The clip is calm graphics: SSIM against the source was 0.991 at 6 and
+// 0.989 at 3, with no difference to see (2026-10-21, Rune: «mange kan hoppe av her»).
+export const VIDEO_BITRATE = 3e6;
 export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null) {
   const type = videoType(Boolean(audio)) || videoType();
   if (!type || !canvas.captureStream) return Promise.reject(new Error('unsupported'));
@@ -603,7 +607,7 @@ export function recordVideo(canvas, s, imgs, onProgress = () => {}, audio = null
     src = audio.ctx.createBufferSource(); src.buffer = audio.buffer; src.connect(dest); if (audio.monitor) src.connect(audio.monitor);
     tracks = [...tracks, ...dest.stream.getAudioTracks()];
   }
-  const stream = new MediaStream(tracks), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 6e6, audioBitsPerSecond: 160e3});
+  const stream = new MediaStream(tracks), rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: VIDEO_BITRATE, audioBitsPerSecond: 160e3});
   rec.ondataavailable = e => e.data.size && parts.push(e.data);
   return new Promise((resolve, reject) => {
     rec.onstop = () => {video.getTracks().forEach(x => x.stop()); stream.getTracks().forEach(x => x.stop()); resolve(new Blob(parts, {type: type.split(';')[0]}));};
