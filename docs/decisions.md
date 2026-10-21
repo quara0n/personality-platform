@@ -665,3 +665,8 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune om Stripe-siden: «den siden kan gjerne representere hva de får … liste med ting. oversiktelig. innbydende». Bildet til venstre på Stripes betalingsside er nå en liste i Kaleido-stil med det rapporten inneholder, én for Fordypning og én for Fordypning + tilpasset, på norsk og engelsk (app/assets/checkout/<nivå>-<språk>.jpg, tegnet av scripts/checkout-images.cjs).
 - Stripe viser bildet omtrent 300 px bredt, så linjene er korte og store, uten undertekst. Listene følger kjøpskortene i appen, pluss «Komboene dine».
+
+## Mindre videofil, raskere opplasting (2026-10-21)
+
+- Rune: «videoen tar litt tid å laste opp … mange kan hoppe av her». Videoen tas nå opp med 3 Mbit/s i stedet for 6. Telefoner med maskinvare-H.264 treffer målet, så fila blir omtrent halvparten så stor (ca. 7,5 MB i stedet for 15 MB for det korte klippet på 24 s) og lastes opp dobbelt så fort.
+- Målt med det korte klippet kodet som H.264 i begge styrker: SSIM mot kilden var 0,991 ved 6 Mbit/s og 0,989 ved 3 Mbit/s, og bilder fra samme sekund var like for øyet. Klippet er rolige grafikker, så mer data gir ikke synlig bedre bilde. Instagram og TikTok koder uansett om til lavere styrke.
