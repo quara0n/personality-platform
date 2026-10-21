@@ -154,10 +154,10 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
   const ORDER = ['O', 'C', 'E', 'A', 'N'], combo = combination(domains, language), strength = panelCopy(trait, language);
   const extra = long ? {
     traitsTitle: tr('All five traits', 'Alle fem trekkene'),
-    traits: ORDER.map(code => domains.find(d => d.code === code)).filter(Boolean).map(d => ({code: d.code, name: name(d), percentile: pct(d), color: traitColors[d.code], piece: traitPiece[d.code]})),
+    traits: ORDER.map(code => domains.find(d => d.code === code)).filter(Boolean).map(d => ({code: d.code, name: name(d).replace(/\s*\(.*\)$/, ''), percentile: pct(d), color: traitColors[d.code], piece: traitPiece[d.code]})),
     traitsNote: tr('Percentile: how many of 100 people scored lower', 'Persentil: hvor mange av 100 som skåret lavere'),
     combo: {eyebrow: tr('Your combination', 'Kombinasjonen din'), text: combo.text, pieces: combo.traits.map(d => traitPiece[d.code])},
-    strength: {eyebrow: tr('A possible strength', 'En mulig styrke'), title: strength.strength, text: strength.strengthText}
+    strength: {eyebrow: tr('A possible strength', 'En mulig styrke'), title: strength.strength, text: strength.strengthText, piece: traitPiece[trait.code]}
   } : {};
   return {
     long,
@@ -168,6 +168,7 @@ export function videoScript(domains, {language, firstName = '', name, site = '',
     name: named.name,
     image: named.image,
     trait: trait.code,
+    piece: traitPiece[trait.code],
     color: traitColors[trait.code],
     stat,
     facet: facet ? {eyebrow: standsOut ? tr('The facet that stands out most', 'Fasetten som skiller seg mest ut') : tr('The facet behind the name', 'Fasetten bak navnet'), name: facet.name, caption: tr(`Percentile ${pct(facet)} · ${name(facetTrait)}`, `Persentil ${pct(facet)} · ${name(facetTrait)}`), percentile: pct(facet), color: traitColors[facetTrait.code]} : null,
@@ -358,19 +359,19 @@ const scenes = {
     s.traits.forEach((x, i) => {
       const y = 520 + i * 220, k = ease(span(lt, .5 + i * .35, 1.6 + i * .35)), ra = a * ease(span(lt, .3 + i * .35, .8 + i * .35));
       ctx.save(); ctx.globalAlpha = ra;
-      const img = imgs[x.piece]; if (img) {const w = 70, h = w * img.height / img.width; ctx.drawImage(img, 110, y - h / 2 - 34, w, h);}
-      ctx.fillStyle = INK; ctx.font = `400 50px ${SERIF}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(x.name, 200, y - 34);
-      ctx.font = `400 64px ${SERIF}`; ctx.textAlign = 'right'; ctx.fillText(String(Math.round(x.percentile * k)), W - 110, y - 30);
-      const bx = 110, bw = W - 220;
-      ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, y + 34, bw, 22, 11); ctx.fill();
-      ctx.fillStyle = x.color; roundRect(ctx, bx, y + 34, Math.max(22, bw * x.percentile / 100 * k), 22, 11); ctx.fill();
+      piece(ctx, imgs[x.piece], 150, y - 34, 84, lt, i);
+      ctx.fillStyle = INK; ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.font = `400 68px ${SERIF}`; ctx.fillText(String(Math.round(x.percentile * k)), W - 110, y - 30);
+      let fs = 52; ctx.textAlign = 'left'; do {ctx.font = `400 ${fs}px ${SERIF}`; fs -= 2;} while (ctx.measureText(x.name).width > W - 230 - 120 - 110 && fs > 32);
+      ctx.fillText(x.name, 230, y - 34);
+      facetBar(ctx, 110, y + 32, W - 220, 26, x.percentile / 100 * k, x.color, lt + i * 3);
       ctx.restore();
     });
     text(ctx, s.traitsNote, 1640, {size: 38, font: SANS, color: MUTED, alpha: a * ease(span(lt, 2.4, 3))});
   },
-  stat(ctx, lt, d, a, s) {
+  stat(ctx, lt, d, a, s, imgs) {
     const k = ease(span(lt, .2, 1.8));
-    text(ctx, s.stat.above, 360, {size: 70, alpha: a});
+    ctx.save(); ctx.globalAlpha = a; piece(ctx, imgs[s.piece], W / 2, 230, 120, lt); ctx.restore();
+    text(ctx, s.stat.above, 400, {size: 70, alpha: a});
     text(ctx, String(Math.round(s.stat.number * k)), 700, {size: 330, alpha: a});
     text(ctx, s.stat.below, 820, {size: 62, alpha: a, color: MUTED, maxLines: 2});
     const lit = Math.round(s.stat.count * ease(span(lt, .4, 2.2))), gap = 62, x0 = W / 2 - gap * 4.5, y0 = 1000;
@@ -388,24 +389,23 @@ const scenes = {
     const bottom = text(ctx, f.name, 800, {size: 120, alpha: a, rise: r, maxLines: 2});
     const by = bottom + 170, bx = 170, bw = W - 340, k = ease(span(lt, .6, 1.6)) * f.percentile / 100;
     ctx.save(); ctx.globalAlpha = a;
-    ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, by - 14, bw, 28, 14); ctx.fill();
-    ctx.fillStyle = f.color; roundRect(ctx, bx, by - 14, Math.max(28, bw * k), 28, 14); ctx.fill();
-    ctx.beginPath(); ctx.arc(bx + Math.max(14, bw * k), by, 26, 0, Math.PI * 2); ctx.fillStyle = INK; ctx.fill();
+    facetBar(ctx, bx, by - 16, bw, 32, k, f.color, lt);
     ctx.restore();
     text(ctx, f.caption, by + 130, {size: 48, font: SANS, color: MUTED, alpha: a});
   },
   combo(ctx, lt, d, a, s, imgs) {
     const c = s.combo, n = c.pieces.length;
-    c.pieces.forEach((p, i) => {const img = imgs[p]; if (!img) return; const w = 150, h = w * img.height / img.width, k = easeInOut(span(lt, .1, 1.1)), x = W / 2 + (i - (n - 1) / 2) * 150 * k - w / 2;
-      ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, x, 420 - h / 2, w, h); ctx.restore();});
+    c.pieces.forEach((p, i) => {const k = easeInOut(span(lt, .1, 1.1)), x = W / 2 + (i - (n - 1) / 2) * 170 * k;
+      ctx.save(); ctx.globalAlpha = a; piece(ctx, imgs[p], x, 420, 150, lt, i); ctx.restore();});
     text(ctx, c.eyebrow.toUpperCase(), 640, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, spacing: 4});
     text(ctx, s.name, 760, {size: 76, alpha: a, maxLines: 2});
     text(ctx, c.text, 980, {size: 62, alpha: a * ease(span(lt, .6, 1.2)), maxLines: 7, lh: 1.3, max: W - 200});
   },
   rare(ctx, lt, d, a, s, imgs) {rareScene(ctx, lt, a, s, imgs, 0);},
-  strength(ctx, lt, d, a, s) {
+  strength(ctx, lt, d, a, s, imgs) {
     const g = s.strength, r = 40 * (1 - ease(span(lt, 0, .6)));
-    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#f6b18d'; ctx.beginPath(); ctx.moveTo(W / 2, 470 + r); ctx.lineTo(W / 2 + 60, 570 + r); ctx.lineTo(W / 2 - 60, 570 + r); ctx.closePath(); ctx.fill(); ctx.restore();
+    // The trait's logo piece, never a flat triangle (designsystem: logo pieces only).
+    ctx.save(); ctx.globalAlpha = a; ctx.shadowColor = 'rgba(12,23,66,.18)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16; piece(ctx, imgs[g.piece], W / 2, 500 + r, 170, lt); ctx.restore();
     text(ctx, g.eyebrow.toUpperCase(), 680, {size: 40, font: SANS, weight: '700', color: '#d9764a', alpha: a, rise: r, spacing: 4});
     const bottom = text(ctx, g.title, 840, {size: 96, alpha: a, rise: r, maxLines: 3});
     text(ctx, g.text, bottom + 150, {size: 56, color: '#2c4566', alpha: a * ease(span(lt, .5, 1.1)), maxLines: 4, lh: 1.3});
@@ -444,8 +444,7 @@ function rareScene(ctx, lt, a, s, imgs, i) {
     let fs = 54; do {ctx.font = `400 ${fs}px ${SERIF}`; fs -= 2;} while (ctx.measureText(f.name).width > size + 20 && fs > 28);
     ctx.fillText(f.name, cx, 900);
     const bw = size - 60, bx = cx - bw / 2, fill = bw * f.percentile / 100 * ease(span(lt, .6 + j * .35, 1.6 + j * .35));
-    ctx.fillStyle = 'rgba(12,23,66,.1)'; roundRect(ctx, bx, 935, bw, 20, 10); ctx.fill();
-    ctx.fillStyle = f.color; roundRect(ctx, bx, 935, Math.max(20, fill), 20, 10); ctx.fill();
+    facetBar(ctx, bx, 932, bw, 24, fill / bw, f.color, lt + j * 4);
     ctx.fillStyle = MUTED; ctx.font = `400 34px ${SANS}`; ctx.fillText(`${s.language === 'no' ? 'Persentil' : 'Percentile'} ${f.percentile}`, cx, 1010);
     ctx.restore();
   });
@@ -522,6 +521,41 @@ function pill(ctx, label, y, a, scale = 1) {
   ctx.fillStyle = INK; roundRect(ctx, W / 2 - w / 2, y - h / 2, w, h, h / 2); ctx.fill();
   ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, W / 2, y + 2);
   ctx.restore();
+}
+// The app's faceted score bar (design.css, Rune 2026-10-18): a light-to-deep fill in the trait colour with paper
+// facets drifting slowly on top, and a navy knob with a white rim at the score.
+const rgb = hex => {const n = parseInt(hex.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255];};
+const mix = (a, b, p) => {const x = rgb(a), y = rgb(b); return `rgb(${x.map((v, i) => Math.round(v * p + y[i] * (1 - p))).join(',')})`;};
+const FACETS = [[160, [[[0, 0], [48, 0], [20, 40], [0, 40]], 'rgba(255,255,255,.16)'], [[[48, 0], [20, 40], [78, 40]], 'rgba(0,0,0,.05)'], [[[48, 0], [104, 0], [78, 40]], 'rgba(255,255,255,.22)'], [[[104, 0], [78, 40], [130, 40]], 'rgba(255,255,255,.05)'], [[[104, 0], [160, 0], [160, 40], [130, 40]], 'rgba(255,255,255,.16)']],
+  [230, [[[10, 40], [70, 0], [130, 0]], 'rgba(255,255,255,.1)'], [[[130, 0], [100, 40], [200, 40]], 'rgba(0,0,0,.045)'], [[[130, 0], [220, 0], [200, 40]], 'rgba(255,255,255,.08)']]];
+function facetBar(ctx, x, y, w, h, frac, color, t = 0, knob = true) {
+  const r = h / 2, fw = Math.max(h, w * clamp(frac));
+  ctx.save();
+  ctx.fillStyle = '#e6eaee'; roundRect(ctx, x, y, w, h, r); ctx.fill();
+  roundRect(ctx, x, y, fw, h, r); ctx.save(); ctx.clip();
+  const g = ctx.createLinearGradient(x, 0, x + fw, 0); g.addColorStop(0, mix(color, '#ffffff', .72)); g.addColorStop(.72, color); g.addColorStop(1, mix(color, '#13284f', .86));
+  ctx.fillStyle = g; ctx.fillRect(x, y, fw, h);
+  // Same two facet layers as the CSS, drifting the same way (160 px right, 230 px left per 26 s at bar height 40).
+  FACETS.forEach(([tile, ...polys], layer) => {
+    const k = h / 40, tw = tile * k, off = ((t / 26) * tw * (layer ? -1 : 1)) % tw;
+    for (let x0 = x - tw + off; x0 < x + fw; x0 += tw) for (const [pts, fill] of polys) {
+      ctx.beginPath(); pts.forEach(([px, py], i) => ctx[i ? 'lineTo' : 'moveTo'](x0 + px * k, y + py * k)); ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+    }
+  });
+  ctx.restore();
+  if (knob) {
+    const kx = x + Math.min(w, Math.max(r, w * clamp(frac))), kr = h * .95;
+    ctx.shadowColor = 'rgba(0,0,0,.2)'; ctx.shadowBlur = h * .3; ctx.shadowOffsetY = h * .1;
+    ctx.beginPath(); ctx.arc(kx, y + r, kr, 0, Math.PI * 2); ctx.fillStyle = '#fffefb'; ctx.fill(); ctx.shadowColor = 'transparent';
+    ctx.beginPath(); ctx.arc(kx, y + r, kr * .72, 0, Math.PI * 2); ctx.fillStyle = INK; ctx.fill();
+  }
+  ctx.restore();
+}
+// A logo piece as the trait's icon, swaying a little like the pieces in the app (k-drift).
+function piece(ctx, img, cx, cy, w, t = 0, i = 0) {
+  if (!img) return;
+  const h = w * img.height / img.width, p = (t / 8 + i * .21) % 1, ang = Math.sin(p * Math.PI * 2) * 2.5 * Math.PI / 180, dy = Math.sin(p * Math.PI * 2 + 1) * w * .02;
+  ctx.save(); ctx.translate(cx, cy + dy); ctx.rotate(ang); ctx.drawImage(img, -w / 2, -h / 2, w, h); ctx.restore();
 }
 function roundRect(ctx, x, y, w, h, r) {ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();}
 
