@@ -678,3 +678,7 @@ Rune: den lange videoen skal bruke designet fra appen. Alle grafer i videoen teg
 ## Kort og lang video på oversiktssiden (2026-10-21)
 
 - Rune: «I oversiktsiden må vi ha 2 forskjellige versjoner tilgjengelige av videoen. 24s er nok mest ettertraktet, den kan være default. En liten emoji som kan toggle mellom de to.» Rapportens oversikt viser nå den korte videoen (⚡ 24 s) først. En liten knapp øverst i videoen bytter til den lange (🎬 ca. 43 s) og tilbake. Et bytte gir en ny video, så fila og lenken lages på nytt for den versjonen.
+
+## 2026-10-21 – Testknappene skjult før lansering
+- «Tilfeldig», «Ny tilfeldig profil» og «Runes profil» vises bare med ?dev=1. Vanlige besøkende ser dem ikke.
+- AI-partnerkortet i Arbeidsliv og Hverdagsliv vises nå for kjøpere av 79 kr-nivået (og i ?dev=1), ikke bare i testmodus. Knappen heter «Skriv med AI» uten «(test)». Serveren sjekker fortsatt kjøpet (plusGate).
