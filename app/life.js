@@ -56,3 +56,4 @@ export const lifeHtml = chapter.html;
 export const lifeContextHtml = chapter.contextHtml;
 export const initLife = chapter.init;
 export const clearLife = chapter.clear;
+export const lifeWeekText = chapter.weekText;

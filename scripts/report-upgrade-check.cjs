@@ -19,7 +19,7 @@ const answers=Object.fromEntries(questions.map(q=>{
     assert.equal(await page.locator('.facet').count(),30);
     const ePattern=await page.locator('.d-trait-chapter').filter({hasText:'Extraversion'}).locator('.facet-pattern').textContent();
     assert.ok(/Friendliness is highest \(percentile \d+\) and Gregariousness is lowest \(percentile \d+\)/.test(ePattern),ePattern);
-    assert.equal(await page.locator('.step').count(),3);
+    assert.equal(await page.locator('#steps .d-ns-exp').count(),3);
     const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#backup-save').click()]);
     const backup=fs.readFileSync(await download.path(),'utf8');assert.deepEqual(JSON.parse(backup).answers,answers);
     const restored=await context.newPage();await restored.goto('http://127.0.0.1:4173');await restored.locator('.hero').waitFor();
@@ -72,9 +72,8 @@ const answers=Object.fromEntries(questions.map(q=>{
     await restored.evaluate(async()=>{await window.olderBackupRead();await new Promise(resolve=>requestAnimationFrame(resolve));});
     assert.deepEqual(await restored.evaluate(()=>JSON.parse(sessionStorage.getItem('five-assessment-v1')).answers),neutral,'A newer import must win over an older delayed read');
     await restored.reload();await restored.locator('.d-report-body').waitFor();
-    assert.equal(await restored.locator('.step').count(),0);
-    assert.equal(await restored.locator('.d-step.is-explore').count(),3);
-    assert.ok((await restored.locator('#steps').textContent()).includes('Fremfor å finne på tre'));
+    assert.equal(await restored.locator('#steps .d-ns-exp').count(),3);
+    assert.ok((await restored.locator('#steps').textContent()).includes('Alle fasettene dine ligger i midtområdet'));
     assert.deepEqual(errors,[]);
     console.log('PASS: facet contrasts, 30 interpretations, facet actions, answer-file download/restore/reload, bilingual report, invalid import preserves answers, neutral report, desktop/mobile/PDF.');
   }finally{await browser.close();}

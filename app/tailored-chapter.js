@@ -254,5 +254,13 @@ export function createTailoredChapter(cfg) {
     });
   }
 
-  return {html, contextHtml, init, clear, state};
+  /** The chapter's «Try one thing this week», or '' while the questions are not answered (for «Dine neste steg»). */
+  function weekText(ctx) {
+    const s = state();
+    if (!copy.isComplete(s.answers)) return '';
+    const sections = sectionsFor(s, ctx, build(ctx, s.answers));
+    return weekTry(id => sections.find(x => x.id === id));
+  }
+
+  return {html, contextHtml, init, clear, state, weekText};
 }
