@@ -27,27 +27,33 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   await page.locator('#share-fab').waitFor({state:'attached',timeout:30000});
   await page.evaluate(()=>document.querySelectorAll('dialog[open]').forEach(d=>d.close()));
   const t0=Date.now();await page.evaluate(()=>document.querySelector('#share-fab').click());
-  // The window opens at once and the link comes from the pictures, before the video is made.
+  // The window opens at once with the app row; the link comes from the pictures, before the video is made.
   await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
-  await page.locator('#share-link').waitFor({timeout:15000});assert.ok(Date.now()-t0<15000);
-  assert.equal(await page.inputValue('#share-link'),'https://kaleidotest.com/v/AbCdEfGhIj');
+  assert.ok(await page.locator('.d-app[data-app="messenger"]').isVisible(),'Messenger first in the app row');
+  await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="copy"]').disabled,null,{timeout:15000});
+  console.log(`link ready after ${Date.now()-t0} ms`);
+  assert.match(await page.textContent('.d-share-url'),/kaleidotest\.com\/v\/AbCdEfGhIj/);
+  assert.ok(calls.some(c=>c.action==='warm'),'the function is woken before the tap');
   assert.ok(!puts['video.mp4'],'the link does not wait for the video');
   const create=calls.find(c=>c.action==='create');
   assert.equal(create.kind,'profile');assert.equal(create.lang,'no');assert.match(create.type,/^video\//);assert.ok(create.title,'profile name as title');
   assert.equal(puts['card.jpg'].type,'image/jpeg');
-  assert.match(await page.getAttribute('.d-share-facebook','href'),/u=https%3A%2F%2Fkaleidotest\.com%2Fv%2FAbCdEfGhIj/);
-  if(mobile){assert.equal(await page.locator('#share-native').count(),1,'a big Share the link button on a phone');
-    assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'the share sheet opens with the link');}
+  const ids=await page.$$eval('.d-apps:not(.d-apps-actions) .d-app',b=>b.map(x=>x.dataset.app));
+  assert.deepEqual(ids.slice(0,6),['messenger','snapchat','instagram','whatsapp','facebook','tiktok']);
+  if(mobile)assert.ok(ids.includes('sms'));
+  await page.evaluate(()=>{window.__opened=[];window.open=u=>{window.__opened.push(u);return null;};});
+  if(!mobile){await page.click('.d-app[data-app="facebook"]');assert.match((await page.evaluate(()=>window.__opened)).at(-1),/sharer\.php\?u=https%3A%2F%2Fkaleidotest\.com%2Fv%2FAbCdEfGhIj/);}
+  else{await page.click('.d-app[data-app="more"]');assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'More opens the phone share sheet with the link');}
   if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-vindu-${mobile?'mobil':'pc'}.png`});
   // The video uploads in the background once it is made.
   for(let i=0;i<180&&!puts['video.mp4'];i++)await page.waitForTimeout(500);
   assert.ok(puts['video.mp4']&&puts['video.mp4'].body.length>100000,'the recorded video is uploaded');
   await page.waitForFunction(()=>!document.querySelector('#share-up')?.textContent,null,{timeout:10000});
-  if(mobile){assert.equal(await page.locator('#share-file').count(),1,'Reels/TikTok share the file on a phone');
+  await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="save"]').disabled);
+  if(mobile){await page.click('.d-app[data-app="instagram"]');assert.equal((await page.evaluate(()=>window.__shared)).at(-1).files,1,'Instagram gets the video file');
     await page.click('.d-share-pop-close');await page.evaluate(()=>document.querySelector('#share-fab').click());
-    assert.deepEqual((await page.evaluate(()=>window.__shared)).at(-1),{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0},'a second tap goes straight to the share sheet');
+    await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="copy"]').disabled,null,{timeout:2000});
     assert.equal(calls.filter(c=>c.action==='create').length,1,'no second link');}
-  else assert.equal(await page.locator('#share-save').count(),1,'a quiet Download video link on PC');
   if(process.env.SHOT){fs.writeFileSync(`${process.env.SHOT}-card.jpg`,puts['card.jpg'].body);fs.writeFileSync(`${process.env.SHOT}-poster.jpg`,puts['poster.jpg'].body);}
   page.once('dialog',d=>d.accept());await page.click('#share-unlink');
   await page.waitForFunction(()=>!document.querySelector('dialog#share-pop').open);

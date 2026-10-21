@@ -31,8 +31,8 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   await intro.locator('.d-video-intro-share').click();
   // The share window opens over the video dialog at once, with the link.
   await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
-  await page.locator('#share-link').waitFor({timeout:15000});
-  assert.ok(await page.locator('#share-link').isVisible(),'the link shows over the video dialog');
+  await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="copy"]').disabled,null,{timeout:15000});
+  assert.ok(await page.locator('.d-app[data-app="messenger"]').isVisible(),'the app row shows over the video dialog');
   if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-vindu-${mobile?'mobil':'pc'}.png`});
   // Full screen opposite the sound button.
   await page.click('.d-share-pop-close');

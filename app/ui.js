@@ -15,7 +15,8 @@ import {characterText,sharedArt} from './profile-name-copy.js';
 import {paintRarity,rarityData} from './name-rarity.js';
 import {freeCombo,comboChapter} from './facet-combos.js';
 import {videoScript,drawFrame,drawPoster,loadPieces,recordVideo,videoType,duration,musicCues,sharePictures,comboArt} from './share-video.js';
-import {linkTargets,caption} from './share-targets.js';
+import {appTargets,caption} from './share-targets.js';
+import {BRAND_ICONS} from './share-icons.js';
 import {renderMusic,loadSong} from './share-music.js';
 import {cairnsHtml,dropStone,cairnFinale,flyPieces} from './cairns.js';
 import {lifeHtml,lifeContextHtml,initLife,clearLife} from './life.js';
@@ -298,16 +299,19 @@ function initShare(){
   const canLink=()=>Boolean(accountUser&&account.enabled()&&!demo),touch=matchMedia('(pointer:coarse)').matches;
   const linkText=()=>tr("See my personality video. What's your profile?",'Se personlighetsvideoen min. Hvordan ser din profil ut?');
   const native=()=>Boolean(touch&&navigator.share);
-  const sendNative=()=>{if(link&&native())navigator.share({title:script().name,text:linkText(),url:link.url}).catch(()=>{});};
   // The same video (name, language, answers) keeps its link across reloads, so tapping Share again makes no new upload.
   const LINKS='fem-share-links',hash=t=>{let h=5381;for(const c of t)h=(h*33+c.charCodeAt(0))>>>0;return h.toString(36);};
   const linkKey=()=>hash([long?'r':'p',language,input.value.trim(),profileCode(),accountUser?.id||''].join('|'));
   const links=()=>{try{return JSON.parse(localStorage.getItem(LINKS)||'{}')||{};}catch{return {};}};
   const remember=l=>{try{const all=links();if(l)all[linkKey()]={id:l.id,url:l.url,video:Boolean(l.video)};else delete all[linkKey()];localStorage.setItem(LINKS,JSON.stringify(Object.fromEntries(Object.entries(all).slice(-20))));}catch{}};
+  // Speed (Rune 2026-10-21: «MYE FORTERE»): the two pictures are drawn while the page is idle and the server function is
+  // woken before anyone taps, so a tap only waits for one request and two small uploads that run side by side.
+  let picsFor='',picsP=null;
+  const pictures=()=>{const k=`${script().name}|${language}`;if(picsFor!==k||!picsP){picsFor=k;picsP=piecesReady.then(()=>sharePictures(canvas,script(),imgs));picsP.catch(()=>{picsP=null;});}return picsP;};
+  if(canLink()){account.share('warm').catch(()=>{});(window.requestIdleCallback||setTimeout)(()=>pictures().catch(()=>{}),{timeout:4000});}
   const ensureLink=()=>{if(link)return Promise.resolve(link);const known=links()[linkKey()];if(known){link={...known};return Promise.resolve(link);}
-    linking||=(async()=>{const r=await account.share('create',{title:script().name,lang:language==='en'?'en':'no',kind:long?'report':'profile',type:file?.type||videoType(true)||videoType()||'video/mp4'});
-      await piecesReady;const pics=await sharePictures(canvas,script(),imgs);
-      await account.uploadSigned(r.uploads.poster,pics.poster);await account.uploadSigned(r.uploads.card,pics.card);
+    linking||=(async()=>{const [r,pics]=await Promise.all([account.share('create',{title:script().name,lang:language==='en'?'en':'no',kind:long?'report':'profile',type:file?.type||videoType(true)||videoType()||'video/mp4'}),pictures()]);
+      await Promise.all([account.uploadSigned(r.uploads.card,pics.card),account.uploadSigned(r.uploads.poster,pics.poster)]);
       link={id:r.id,url:r.url,video:false,upload:r.uploads.video};remember(link);return link;})().catch(e=>{linking=null;throw e;});
     return linking;};
   const uploadVideo=()=>{if(!link||link.video||!file||videoUp)return videoUp;const l=link,f=file;upP=0;upFailed=false;
@@ -320,31 +324,48 @@ function initShare(){
     if(!file)return recording?tr(`Making the video … ${Math.round(recP*100)} %. The link already works.`,`Lager videoen … ${Math.round(recP*100)} %. Lenken virker allerede.`):'';
     return tr(`Uploading the video … ${Math.round(upP*100)} %. The link already works. Keep this page open until it is done.`,`Laster opp videoen … ${Math.round(upP*100)} %. Lenken virker allerede. Hold siden åpen til den er ferdig.`);};
   const paintUp=()=>{const el=out.querySelector('#share-up');if(el)el.textContent=upText();};
-  const fillOut=(error='')=>{const u=link?.url||home,subject=tr('My Kaleido profile','Kaleido-profilen min'),waiting=canLink()&&!link&&!error;
-    const a=t=>`<a class="d-share-target d-share-${t.id}" href="${esc(t.url)}"${t.url.startsWith('mailto:')?'':' target="_blank" rel="noopener"'}>${esc(t.id==='email'?tr('Email','E-post'):t.name)}</a>`;
-    const targets=linkTargets(u,link?linkText():tr("What's your profile? Find out for free","Hvordan ser din profil ut? Finn ut gratis"),subject).map(a).join('');
-    const more=[file?(touch&&canShareFiles()?`<button type="button" class="text-button" id="share-file">${tr('Share the video file (Reels, TikTok)','Del videofila (Reels, TikTok)')}</button>`:`<a class="text-button" id="share-save" href="${url}" download="${esc(dl.download||'')}">${tr('Download video','Last ned video')}</a>`):'',link?`<button type="button" class="text-button" id="share-unlink">${tr('Delete link','Slett lenken')}</button>`:''].filter(Boolean).join('');
-    out.innerHTML=`<h2 id="share-pop-title">${link||!canLink()?tr('Share your video','Del videoen din'):tr('Making your link …','Lager lenken …')}</h2>`
-      +(error?`<p class="d-share-pop-msg" role="status">${esc(error)}</p>`:'')
-      +(waiting?`<p class="d-share-pop-msg" role="status"><span class="d-share-spin" aria-hidden="true"></span>${tr('One moment','Et øyeblikk')}</p>`:`<div class="d-share-link"><input id="share-link" readonly value="${esc(u)}" aria-label="${tr('Link','Lenke')}"><button type="button" class="d-share-target" id="share-copy">${tr('Copy','Kopier')}</button></div>`
-        +(link&&native()?`<button type="button" class="d-share-pop-main" id="share-native">${tr('Share the link','Del lenken')}</button>`:'')
-        +`<div class="d-share-targets">${targets}</div>`)
-      +`<p class="d-share-up" id="share-up" role="status">${esc(upText())}</p>`+(more?`<div class="d-share-pop-more">${more}</div>`:'');};
+  // The window looks like a phone's share sheet: a row of app icons, then Copy link, Download video and More.
+  const glyph={sms:'<path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',email:'<path d="M3 6h18v12H3z M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+    copy:'<path d="M9 9h10v11H9z M5 15V4h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',save:'<path d="M12 4v11m-5-5 5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    more:'<circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>'};
+  const icon=id=>{const b=BRAND_ICONS[id];return b?`<span class="d-app-ico" style="background:${b.bg};color:${b.fg}"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="${b.path}"/></svg></span>`:`<span class="d-app-ico d-app-${id}"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">${glyph[id]||''}</svg></span>`;};
+  const appBtn=(id,label,attrs='')=>`<button type="button" class="d-app" data-app="${id}"${attrs}>${icon(id)}<span class="d-app-name">${esc(label)}</span></button>`;
+  let targets=[];
+  const fillOut=(error='')=>{const ready=Boolean(link)||!canLink(),u=link?.url||home;
+    targets=appTargets(u,link?linkText():tr("What's your profile? Find out for free","Hvordan ser din profil ut? Finn ut gratis"),{touch,subject:tr('My Kaleido profile','Kaleido-profilen min')});
+    const off=ready?'':' disabled';
+    const apps=targets.filter(t=>t.kind!=='file'||file||recording||canRecord).map(t=>appBtn(t.id,t.id==='email'?tr('Email','E-post'):t.name,t.kind==='file'?'':off)).join('');
+    const actions=appBtn('copy',tr('Copy link','Kopier lenke'),off)+(file||recording||canRecord?appBtn('save',tr('Download video','Last ned video'),file?'':' disabled'):'')+(native()?appBtn('more',tr('More','Mer'),off):'');
+    out.innerHTML=`<h2 id="share-pop-title">${tr('Share your video','Del videoen din')}</h2>`
+      +`<p class="d-share-pop-msg" role="status">${error?esc(error):ready?`<span class="d-share-url">${esc(u.replace(/^https?:\/\//,''))}</span>`:`<span class="d-share-spin" aria-hidden="true"></span>${tr('Making your link …','Lager lenken …')}`}</p>`
+      +`<div class="d-apps" role="list">${apps}</div><div class="d-apps d-apps-actions">${actions}</div>`
+      +`<p class="d-share-up" id="share-up" role="status">${esc(upText())}</p>`
+      +(link?`<button type="button" class="text-button d-share-unlink" id="share-unlink">${tr('Delete link','Slett lenken')}</button>`:'');};
   const openShare=async()=>{
     // The tap also starts the video if it is not made yet, so it can follow the link.
     if(!file&&canRecord&&!recording)prepare();
     if(canLink()&&!link){const known=links()[linkKey()];if(known)link={...known};}
     fillOut();if(!pop.open)pop.showModal();
     if(!canLink())return;
-    // A link made earlier goes straight to the phone's share sheet, still inside the tap.
-    if(link){sendNative();uploadVideo();return;}
-    try{await ensureLink();fillOut();uploadVideo();sendNative();}
+    if(link){uploadVideo();return;}
+    try{await ensureLink();if(pop.open)fillOut();uploadVideo();}
     catch(e){fillOut(e?.status===429?tr('You have shared many videos today. Try again tomorrow, or download the video.','Du har delt mange videoer i dag. Prøv igjen i morgen, eller last ned videoen.'):tr('The link could not be made. Check the connection and try again.','Lenken kunne ikke lages. Sjekk nettet og prøv igjen.'));}};
+  const flash=(btn,text)=>{const n=btn.querySelector('.d-app-name'),was=n.textContent;n.textContent=text;setTimeout(()=>{n.textContent=was;},2200);};
+  // Instagram and TikTok take the video file: the phone's share sheet with the file, or a download and their upload page.
+  const sendFile=(t,btn)=>{if(!file){flash(btn,tr('Video coming …','Videoen lages …'));return;}
+    if(touch&&canShareFiles()){shareFile();return;}
+    if(!saved){dl.click();saved=true;}flash(btn,tr('Saved','Lagret'));window.open(t.url,'_blank','noopener');};
   out.addEventListener('click',async e=>{
-    if(e.target.closest('#share-copy')){const b=e.target.closest('#share-copy');try{await navigator.clipboard.writeText(link?.url||home);b.textContent=tr('Copied','Kopiert');}catch{out.querySelector('#share-link')?.select();}return;}
-    if(e.target.closest('#share-native')){sendNative();return;}
-    if(e.target.closest('#share-file')){shareFile();return;}
-    if(e.target.closest('#share-save')){saved=true;return;}
+    const btn=e.target.closest('[data-app]');
+    if(btn){const id=btn.dataset.app,t=targets.find(x=>x.id===id),u=link?.url||home;
+      if(id==='copy'){try{await navigator.clipboard.writeText(u);flash(btn,tr('Copied','Kopiert'));}catch{prompt(tr('Copy the link','Kopier lenken'),u);}return;}
+      if(id==='save'){if(file){dl.click();saved=true;flash(btn,tr('Saved','Lagret'));}return;}
+      if(id==='more'){if(native())navigator.share({title:script().name,text:linkText(),url:u}).catch(()=>{});return;}
+      if(!t)return;
+      if(t.kind==='file'){sendFile(t,btn);return;}
+      if(t.kind==='paste'){try{await navigator.clipboard.writeText(u);}catch{}flash(btn,tr('Link copied','Lenke kopiert'));window.open(t.url,'_blank','noopener');return;}
+      if(/^(https?:)/.test(t.url)&&!touch)window.open(t.url,'_blank','noopener');else location.href=t.url;
+      return;}
     if(e.target.closest('#share-unlink')){if(!link||!confirm(tr('Delete the link and the uploaded video? People who open it will see the front page.','Slette lenken og den opplastede videoen? De som åpner den, kommer til forsiden.')))return;
       try{await account.share('delete',{id:link.id});remember(null);link=null;linking=null;videoUp=null;pop.close();status.textContent=tr('The link is deleted.','Lenken er slettet.');}catch{fillOut(tr('The link could not be deleted. Try again.','Lenken ble ikke slettet. Prøv igjen.'));}}});
   // Full screen: the frame itself where the browser allows it, otherwise (iPhone) the frame covers the screen.
