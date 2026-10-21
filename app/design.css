@@ -2165,3 +2165,10 @@ body.in-share-full{overflow:hidden}
 @keyframes d-sheet-up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
 @media(prefers-reduced-motion:reduce){.d-share-pop{animation:none}}
 @media(min-width:761px){.d-share-pop{width:min(480px,calc(100vw - 24px))}.d-apps{flex-wrap:wrap;overflow:visible;margin:0 0 6px;padding:2px 0 8px;gap:8px 4px}.d-app{width:84px}}
+/* Consent banner for analytics (app/analytics.js): a box in the shared style, fixed at the bottom, two equal buttons. */
+.d-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:760px;margin:0 auto;display:flex;gap:20px;align-items:center;padding:18px 22px;background:var(--box-bg);border:1px solid var(--box-border);border-radius:var(--box-radius);box-shadow:0 8px 30px rgba(16,39,71,.14);color:var(--title)}
+.d-consent p{margin:0;font-size:14px;line-height:1.55}
+.d-consent-actions{display:flex;gap:10px;flex:none}
+.d-consent .button{min-height:44px;padding:10px 18px;font-size:14px}
+@media(max-width:700px){.d-consent{flex-direction:column;align-items:stretch;gap:14px;padding:16px}.d-consent-actions .button{flex:1;padding:10px 12px;white-space:nowrap}}
+@media print{.d-consent{display:none}}
