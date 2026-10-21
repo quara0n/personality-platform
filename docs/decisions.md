@@ -670,3 +670,7 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 
 - Rune: «videoen tar litt tid å laste opp … mange kan hoppe av her». Videoen tas nå opp med 3 Mbit/s i stedet for 6. Telefoner med maskinvare-H.264 treffer målet, så fila blir omtrent halvparten så stor (ca. 7,5 MB i stedet for 15 MB for det korte klippet på 24 s) og lastes opp dobbelt så fort.
 - Målt med det korte klippet kodet som H.264 i begge styrker: SSIM mot kilden var 0,991 ved 6 Mbit/s og 0,989 ved 3 Mbit/s, og bilder fra samme sekund var like for øyet. Klippet er rolige grafikker, så mer data gir ikke synlig bedre bilde. Instagram og TikTok koder uansett om til lavere styrke.
+
+## Kort og lang video på oversiktssiden (2026-10-21)
+
+- Rune: «I oversiktsiden må vi ha 2 forskjellige versjoner tilgjengelige av videoen. 24s er nok mest ettertraktet, den kan være default. En liten emoji som kan toggle mellom de to.» Rapportens oversikt viser nå den korte videoen (⚡ 24 s) først. En liten knapp øverst i videoen bytter til den lange (🎬 ca. 43 s) og tilbake. Et bytte gir en ny video, så fila og lenken lages på nytt for den versjonen.
