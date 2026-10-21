@@ -111,3 +111,10 @@ test('a fresh video upload link is only given for the owner\'s own share', async
   assert.equal((await handleShare({action: 'video', id: 'ZzZzZzZzZz'}, 'tok', env)).status, 404);
   assert.equal((await handleShare({action: 'video', id: '../x'}, 'tok', env)).status, 400);
 });
+
+test('warming the function needs no sign-in and touches nothing', async t => {
+  const saved = globalThis.fetch;
+  t.after(() => {globalThis.fetch = saved;});
+  globalThis.fetch = async () => {throw new Error('no network for warm');};
+  assert.deepEqual(await handleShare({action: 'warm'}, '', env), {status: 200, body: {ok: true}});
+});

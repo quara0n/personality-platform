@@ -21,3 +21,18 @@ test('link targets carry the encoded address and caption', () => {
 test('caption joins the end-card question and the address', () => {
   assert.equal(caption({end: "What's your profile?", cta: 'Find out for free'}, 'https://kaleidotest.com/'), "What's your profile? Find out for free: https://kaleidotest.com/");
 });
+
+test('the app row: deep links on a phone, copy-and-open for Messenger on a computer, the file for Instagram and TikTok', async () => {
+  const {appTargets} = await import('../app/share-targets.js');
+  const url = 'https://kaleidotest.com/v/AbCdEfGhIj';
+  const phone = Object.fromEntries(appTargets(url, 'Se videoen', {touch: true}).map(t => [t.id, t]));
+  assert.equal(phone.messenger.url, 'fb-messenger://share/?link=https%3A%2F%2Fkaleidotest.com%2Fv%2FAbCdEfGhIj');
+  assert.equal(phone.snapchat.url, 'https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Fkaleidotest.com%2Fv%2FAbCdEfGhIj');
+  assert.equal(phone.instagram.kind, 'file');
+  assert.equal(phone.tiktok.kind, 'file');
+  assert.ok(phone.sms.url.startsWith('sms:?&body=Se%20videoen%20https'));
+  const pc = Object.fromEntries(appTargets(url, 'Se videoen').map(t => [t.id, t]));
+  assert.equal(pc.messenger.kind, 'paste');
+  assert.equal(pc.sms, undefined);
+  assert.deepEqual(appTargets(url, 'x', {touch: true}).slice(0, 3).map(t => t.id), ['messenger', 'snapchat', 'instagram']);
+});
