@@ -183,7 +183,7 @@ function facetTeaser(d,open){
 }
 const profileCode=()=>'1'+questions.map(q=>answers[q.id]).join('');
 function profileLink(){return `${location.origin}${location.pathname}#p=${profileCode()}`;}
-function emailBox(){return `<form class="d-email" id="email-form" novalidate><div><h2>${tr('Send the profile to your email','Send profilen til e-posten din')}</h2><p>${tr('Keep your results and come back to the in-depth report later.','Ta vare på resultatene og kom tilbake til Fordypningsrapporten senere.')}</p></div><div class="d-email-row"><label class="sr-only" for="email-to">${tr('Email address','E-postadresse')}</label><input type="email" id="email-to" autocomplete="email" placeholder="${tr('your@email.com','din@epost.no')}"><button type="submit">${tr('Send','Send')}</button></div></form>`;}
+function emailBox(){return `<form class="d-email" id="email-form" novalidate><div><h2>${tr('Send the profile to your email','Send profilen til e-posten din')}</h2><p>${tr('Keep your results and come back to the in-depth report later.','Ta vare på resultatene og kom tilbake til Fordypningsrapporten senere.')}</p></div><div class="d-email-row"><label class="sr-only" for="email-to">${tr('Email address','E-postadresse')}</label><input type="email" id="email-to" autocomplete="email" placeholder="${tr('your@email.com','din@epost.no')}"><button type="submit">${tr('Send','Send')}</button></div><p class="d-email-note" id="email-note" role="status" aria-live="polite" hidden></p></form>`;}
 // Right after the test, the video card opens first as a dialog: it plays on its own, the first name
 // comes from the sign-in when there is one, and «Not now» closes it to the profile underneath.
 // Only the video shows, with the share button on it; the text and name field stay in the card on the page.
@@ -413,11 +413,24 @@ function initShare(){
   send.addEventListener('click',shareFile);
   document.querySelector('#share-still').addEventListener('click',()=>{const c=document.createElement('canvas');c.width=canvas.width;c.height=canvas.height;drawPoster(c.getContext('2d'),script(),imgs);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=tr('kaleido-profile','kaleido-profil')+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);},'image/png');});
 }
-function sendProfile(event){
-  event.preventDefault();const to=document.querySelector('#email-to').value.trim();
+// The server sends the email (lib/profile-email.js, Rune 2026-10-21): a mailto: link left Windows asking which app to use.
+// If the server cannot send, the note offers the person's own email program as before.
+function profileMailto(to){
   const lines=sorted().map(d=>`${name(d)}: ${scoreText(d)} (${bandShort(d.band).toLowerCase()})`);
   const body=[tr('Your Kaleido personality profile','Kaleido-profilen din'),'',profileName(sorted(),language).name,'',...lines,'',tr('Open your profile again:','Åpne profilen igjen:'),profileLink(),'',tr('The link contains your answers. Only share it with people you trust.','Lenken inneholder svarene dine. Del den bare med folk du stoler på.')].join('\n');
-  location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(tr('Your Kaleido personality profile','Kaleido-profilen din'))}&body=${encodeURIComponent(body)}`;
+  return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(tr('Your Kaleido personality profile','Kaleido-profilen din'))}&body=${encodeURIComponent(body)}`;
+}
+async function sendProfile(event){
+  event.preventDefault();const form=event.currentTarget,input=form.querySelector('#email-to'),btn=form.querySelector('button[type=submit]'),note=form.querySelector('#email-note'),to=input.value.trim();
+  const say=(html,ok=false)=>{note.innerHTML=html;note.hidden=false;note.classList.toggle('is-sent',ok);};
+  if(!account.validEmail(to)){say(tr('Type a valid email address.','Skriv inn en gyldig e-postadresse.'));input.focus();return;}
+  if(btn.disabled)return;btn.disabled=true;btn.textContent=tr('Sending …','Sender …');
+  let status=0;try{const r=await fetch('/api/profile-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({to,code:profileCode(),lang:language==='en'?'en':'no',path:location.pathname})});status=r.status;}catch{}
+  btn.disabled=false;
+  if(status===200){btn.textContent=tr('Sent ✓','Sendt ✓');say(tr(`Sent to <b>${esc(to)}</b>. Check your inbox, and the spam folder if it is not there in a few minutes.`,`Sendt til <b>${esc(to)}</b>. Sjekk innboksen, og søppelpost hvis den ikke har kommet om noen minutter.`),true);track('profile_email');setTimeout(()=>{btn.textContent=tr('Send','Send');},4000);return;}
+  btn.textContent=tr('Send','Send');
+  const own=`<a href="${esc(profileMailto(to))}">${tr('open it in your own email program','åpne den i ditt eget e-postprogram')}</a>`;
+  say(status===429?tr(`You have sent many emails today. Try again tomorrow, or ${own}.`,`Du har sendt mange e-poster i dag. Prøv igjen i morgen, eller ${own}.`):status===400?tr('Check the email address and try again.','Sjekk e-postadressen og prøv igjen.'):tr(`The email could not be sent. Try again, or ${own}.`,`E-posten kunne ikke sendes. Prøv igjen, eller ${own}.`));
 }
 function openProfileLink(code){
   if(!/^1[1-5]{120}$/.test(code)||questions.length!==120)return false;

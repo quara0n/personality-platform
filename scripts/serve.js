@@ -31,6 +31,14 @@ http.createServer(async(req,res)=>{
     const result=await handleShare(body,String(req.headers.authorization||'').replace(/^Bearer\s+/i,''),process.env);
     res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
   }
+  if(req.method==='POST'&&req.url==='/api/profile-email'){
+    // Same handler as api/profile-email.js; needs RESEND_API_KEY and the Supabase keys in the environment.
+    let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>20000)break;}
+    let body=null;try{body=JSON.parse(raw);}catch{}
+    const {handleProfileEmail}=await import('../lib/profile-email.js');
+    const result=await handleProfileEmail(body,req.socket.remoteAddress,process.env);
+    res.writeHead(result.status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}).end(JSON.stringify(result.body));return;
+  }
   if(req.method==='GET'&&/^\/v\/[^/]+$/.test(req.url.split('?')[0])){
     const {sharePage}=await import('../lib/shares.js');
     const {status,html}=await sharePage(req.url.split('?')[0].slice(3),process.env);
