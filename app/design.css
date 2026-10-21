@@ -1124,6 +1124,7 @@ details.d-tailor-form{border:0;padding:0}
 .d-offer-plus{border-width:3px}
 /* Player controls on the video: sound at the top, a thin timeline with the time left at the bottom. */
 .d-share-sound{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:rgba(19,40,79,.55);color:#fff;cursor:pointer}
+.d-share-cut{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:2;min-height:32px;padding:0 12px;border:0;border-radius:16px;background:rgba(19,40,79,.55);color:#fff;font:600 14px/32px var(--sans);white-space:nowrap;cursor:pointer}
 .d-share-sound svg{width:22px;height:22px;fill:currentColor}
 .d-share-sound .on,.d-share-sound[aria-pressed="true"] .off{display:none}
 .d-share-sound[aria-pressed="true"] .on{display:inline}
