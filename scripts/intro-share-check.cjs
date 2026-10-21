@@ -29,13 +29,19 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   assert.ok(await intro.locator('.d-video-intro-share').isVisible(),'big share button under the video');
   if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-intro-${mobile?'mobil':'pc'}.png`});
   await intro.locator('.d-video-intro-share').click();
-  // The share window opens over the video dialog at once, with the link.
-  await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
-  await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="copy"]').disabled,null,{timeout:15000});
-  assert.ok(await page.locator('.d-app[data-app="messenger"]').isVisible(),'the app row shows over the video dialog');
-  if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-vindu-${mobile?'mobil':'pc'}.png`});
+  if(mobile){
+    // Phones go straight to the phone's share sheet with the link, with no window of ours on top.
+    await page.waitForFunction(()=>window.__shared.length>0,null,{timeout:15000});
+    assert.equal((await page.evaluate(()=>window.__shared))[0].url,'https://kaleidotest.com/v/AbCdEfGhIj');
+    assert.equal(await page.evaluate(()=>document.querySelector('dialog#share-pop').open),false,'no second share window');}
+  else{
+    // The share window opens over the video dialog at once, with the link.
+    await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
+    await page.waitForFunction(()=>!document.querySelector('.d-app[data-app="copy"]').disabled,null,{timeout:15000});
+    assert.ok(await page.locator('.d-app[data-app="messenger"]').isVisible(),'the app row shows over the video dialog');
+    if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-vindu-pc.png`});
+    await page.click('.d-share-pop-close');}
   // Full screen opposite the sound button.
-  await page.click('.d-share-pop-close');
   await page.click('dialog.d-video-intro #share-full');
   await page.waitForFunction(()=>document.fullscreenElement?.classList.contains('d-share-frame')||document.querySelector('.d-share-frame.is-full'));
   await page.evaluate(()=>document.exitFullscreen?.().catch(()=>{}));

@@ -283,7 +283,7 @@ function initShare(){
     try{await piecesReady;let audio=null;if(withSound)try{audio={ctx:audioContext(),buffer:await getMusic(),monitor:ensureMonitor()};}catch{}
       const blob=await recordVideo(canvas,script(),imgs,p=>{const pct=`${Math.round(p*100)} %`;status.textContent=`${tr('Making your video','Lager videoen')} … ${pct}`;recP=p;paintUp();showTime(p*total());},audio);
       const ext=blob.type.includes('mp4')?'mp4':'webm',fname=(long?tr('kaleido-report','kaleido-rapport'):tr('kaleido-profile','kaleido-profil'))+'.'+ext;file=new File([blob],fname,{type:blob.type});url=URL.createObjectURL(blob);
-      dl.href=url;dl.download=fname;dl.hidden=false;send.hidden=!canShareFiles()||canLink();
+      dl.href=url;dl.download=fname;dl.hidden=false;send.hidden=!canShareFiles()||(canLink()&&!native());
       status.textContent=tr('Your video is ready.','Videoen er klar.')+(ext==='webm'?' '+tr('Some apps only accept MP4. If the upload fails, use the image.','Noen apper tar bare imot MP4. Hvis opplastingen feiler, bruk bildet.'):'');fabIdle();if(pop.open)fillOut();uploadVideo();}
     catch{status.textContent=tr('The video could not be made. Keep this tab open while it records, or download the image instead.','Videoen kunne ikke lages. Hold fanen åpen mens den tas opp, eller last ned bildet i stedet.');fabIdle();}
     recording=false;make.disabled=false;input.disabled=false;seek.disabled=false;pos=0;if(visible||canvas.closest('dialog'))play(true);else draw(0);paintUp();};
@@ -323,7 +323,9 @@ function initShare(){
     if(upFailed)return tr('The video could not be uploaded. The link shows the picture instead.','Videoen ble ikke lastet opp. Lenken viser bildet i stedet.');
     if(!file)return recording?tr(`Making the video … ${Math.round(recP*100)} %. The link already works.`,`Lager videoen … ${Math.round(recP*100)} %. Lenken virker allerede.`):'';
     return tr(`Uploading the video … ${Math.round(upP*100)} %. The link already works. Keep this page open until it is done.`,`Laster opp videoen … ${Math.round(upP*100)} %. Lenken virker allerede. Hold siden åpen til den er ferdig.`);};
-  const paintUp=()=>{const el=out.querySelector('#share-up');if(el)el.textContent=upText();};
+  const paintUp=()=>{const el=out.querySelector('#share-up'),t=upText();if(el)el.textContent=t;
+    // On phones there is no window, so the line under the video says how the upload goes.
+    if(native()&&(t||status.dataset.up)){status.textContent=t||tr('The video is uploaded to the link.','Videoen er lastet opp til lenken.');status.dataset.up=t?'1':'';}};
   // The window looks like a phone's share sheet: a row of app icons, then Copy link, Download video and More.
   const glyph={sms:'<path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',email:'<path d="M3 6h18v12H3z M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
     copy:'<path d="M9 9h10v11H9z M5 15V4h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',save:'<path d="M12 4v11m-5-5 5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -341,7 +343,22 @@ function initShare(){
       +`<div class="d-apps" role="list">${apps}</div><div class="d-apps d-apps-actions">${actions}</div>`
       +`<p class="d-share-up" id="share-up" role="status">${esc(upText())}</p>`
       +(link?`<button type="button" class="text-button d-share-unlink" id="share-unlink">${tr('Delete link','Slett lenken')}</button>`:'');};
+  // Phones (Rune 2026-10-21: «vi får duplikater»): Del opens only the phone's own share sheet, with no window of ours
+  // first. The sheet must open within a few seconds of the tap, so a link that takes too long asks for one more tap,
+  // which is instant because the link is kept. Download video and Share the video file stay on the page.
+  const nativeShare=async()=>{
+    if(!file&&canRecord&&!recording)prepare();
+    if(!canLink()){navigator.share({title:script().name,text:tr("What's your profile? Find out for free","Hvordan ser din profil ut? Finn ut gratis"),url:home}).catch(()=>{});return;}
+    if(!link){const known=links()[linkKey()];if(known)link={...known};}
+    if(!link){fabState('busy',tr('Making link …','Lager lenke …'));
+      try{await ensureLink();}
+      catch(e){fabIdle();status.textContent=e?.status===429?tr('You have shared many videos today. Try again tomorrow, or download the video.','Du har delt mange videoer i dag. Prøv igjen i morgen, eller last ned videoen.'):tr('The link could not be made. Check the connection and try again.','Lenken kunne ikke lages. Sjekk nettet og prøv igjen.');return;}
+      fabIdle();}
+    uploadVideo();
+    try{await navigator.share({title:script().name,text:linkText(),url:link.url});}
+    catch(e){if(e?.name==='NotAllowedError'){fabState('ready',tr('Tap to share','Trykk for å dele'));status.textContent=tr('The link is ready. Tap Share again.','Lenken er klar. Trykk på Del igjen.');}}};
   const openShare=async()=>{
+    if(native())return nativeShare();
     // The tap also starts the video if it is not made yet, so it can follow the link.
     if(!file&&canRecord&&!recording)prepare();
     if(canLink()&&!link){const known=links()[linkKey()];if(known)link={...known};}

@@ -27,6 +27,21 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   await page.locator('#share-fab').waitFor({state:'attached',timeout:30000});
   await page.evaluate(()=>document.querySelectorAll('dialog[open]').forEach(d=>d.close()));
   const t0=Date.now();await page.evaluate(()=>document.querySelector('#share-fab').click());
+  if(mobile){
+    // Phones: Del goes straight to the phone's share sheet with the link, and no window of ours opens.
+    await page.waitForFunction(()=>window.__shared.length>0,null,{timeout:15000});console.log(`share sheet after ${Date.now()-t0} ms`);
+    assert.deepEqual((await page.evaluate(()=>window.__shared))[0],{url:'https://kaleidotest.com/v/AbCdEfGhIj',files:0});
+    assert.equal(await page.evaluate(()=>document.querySelector('dialog#share-pop').open),false,'no second share window');
+    assert.ok(calls.some(c=>c.action==='warm'),'the function is woken before the tap');
+    for(let i=0;i<180&&!puts['video.mp4'];i++)await page.waitForTimeout(500);
+    assert.ok(puts['video.mp4']&&puts['video.mp4'].body.length>100000,'the recorded video is uploaded');
+    assert.ok(await page.locator('#share-send').isVisible(),'Share the video file stays on the page for Reels and TikTok');
+    await page.evaluate(()=>document.querySelector('#share-fab').click());
+    await page.waitForFunction(()=>window.__shared.length>1,null,{timeout:2000});
+    assert.equal(calls.filter(c=>c.action==='create').length,1,'no second link');
+    assert.equal(await page.evaluate(()=>document.querySelector('dialog#share-pop').open),false);
+    if(process.env.SHOT)await page.screenshot({path:`${process.env.SHOT}-mobil.png`});
+    assert.deepEqual(errors,[]);await ctx.close();console.log('share check mobile: ok');continue;}
   // The window opens at once with the app row; the link comes from the pictures, before the video is made.
   await page.locator('dialog#share-pop[open]').waitFor({timeout:2000});
   assert.ok(await page.locator('.d-app[data-app="messenger"]').isVisible(),'Messenger first in the app row');
