@@ -10,7 +10,11 @@ Tekstene er skrevet for å beskytte Rune personlig så godt det lar seg gjøre, 
 3. Bekreft at Supabase-prosjektet ligger i en EU-region.
 4. Før en protokoll over behandlingene (artikkel 30). Personvernerklæringen kan brukes som grunnlag.
 5. Når betaling slås på: sjekk at teksten om Stripe, kvitteringer og angrerett fortsatt stemmer med kjøpsflyten.
-6. Ved overgang til AS: bytt navn og organisasjonsnummer i `CONTROLLER` og oppdater `UPDATED`.
+6. Når måling slås på (GA4_ID, CLARITY_ID, GOOGLE_ADS_ID i Vercel): godta databehandlervilkårene for Google Analytics (Admin → Kontoinnstillinger → Data processing terms), Google Ads (Admin → Kontoinnstillinger → Databeskyttelse) og Microsoft Clarity (vilkårene godtas når prosjektet lages). I Clarity: slå av «Personalized ads»-deling hvis den er på.
+7. Ved overgang til AS: bytt navn og organisasjonsnummer i `CONTROLLER` og oppdater `UPDATED`.
 
 ## Når appen endres
 Hvis en funksjon begynner å sende eller lagre noe nytt (analyse, e-postutsendelse, nye leverandører), skal personvernerklæringen og denne filen oppdateres i samme endring, og datoen `UPDATED` endres.
+
+## Måling (2026-10-21)
+GA4, Google Ads-konverteringer og Microsoft Clarity lastes bare etter «Godta» i samtykkebanneret (app/analytics.js, valget i localStorage `kaleido-consent`). «Bare nødvendige» er like stor og like lett å trykke. «Informasjonskapsler» i bunnteksten åpner valget igjen. Uten ID-ene i Vercel vises verken banner eller teksten om måling i personvernerklæringen. Hendelsene har aldri svar, skårer, profilnavn, e-post eller bruker-ID. Resultatsidene er maskert i Clarity (`data-clarity-mask`).

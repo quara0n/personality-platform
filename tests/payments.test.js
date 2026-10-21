@@ -96,7 +96,7 @@ test('the Vipps button asks for Vipps with the preview header and falls back whe
 test('confirm stores only a paid session that belongs to the user and has the right amount', async () => {
   let calls = fake({session: paid(), owned: ['plus']});
   let out = await handlePurchase({action: 'confirm', session: 'cs_test_abc'}, 'good', env);
-  assert.deepEqual(out.body, {tier: 'plus', paid: true});
+  assert.deepEqual(out.body, {tier: 'plus', paid: true, amount: 79, currency: 'NOK'});
   const insert = calls.find(c => c.url.includes('on_conflict=id'));
   assert.equal(JSON.parse(insert.init.body).amount, 7900);
   assert.match(insert.init.headers.Prefer, /ignore-duplicates/);

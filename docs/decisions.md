@@ -682,3 +682,10 @@ Rune: den lange videoen skal bruke designet fra appen. Alle grafer i videoen teg
 ## 2026-10-21 – Testknappene skjult før lansering
 - «Tilfeldig», «Ny tilfeldig profil» og «Runes profil» vises bare med ?dev=1. Vanlige besøkende ser dem ikke.
 - AI-partnerkortet i Arbeidsliv og Hverdagsliv vises nå for kjøpere av 79 kr-nivået (og i ?dev=1), ikke bare i testmodus. Knappen heter «Skriv med AI» uten «(test)». Serveren sjekker fortsatt kjøpet (plusGate).
+
+## 2026-10-21 – Måling med samtykke (GA4, Google Ads, Clarity)
+- Rune ba om Google Analytics 4, Microsoft Clarity og Google Ads. Alle tre lastes bare etter «Godta» i et samtykkebanner nederst på siden (ekomloven § 3-15). «Bare nødvendige» er like stor. «Informasjonskapsler» i bunnteksten åpner valget igjen.
+- ID-ene settes i Vercel: GA4_ID (G-…), CLARITY_ID, GOOGLE_ADS_ID (AW-…) og GOOGLE_ADS_PURCHASE_LABEL. Uten dem vises verken banner eller måletekst.
+- Hendelser: test_start, test_complete, login, share/share_target, begin_checkout og purchase (beløp i NOK/USD, Stripe-sesjonen som ordrenummer). Kjøpet sendes også som Google Ads-konvertering. Ingen svar, skårer, profilnavn, e-post eller bruker-ID.
+- Resultatsidene maskeres i Clarity. Persontilpasset reklame er av (ad_personalization denied).
+- Vercel Web Analytics trengs ikke ved siden av GA4.
