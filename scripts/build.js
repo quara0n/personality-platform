@@ -10,7 +10,7 @@ const config={supabaseUrl:process.env.SUPABASE_URL||'',supabaseAnonKey:process.e
   // Measurement IDs (public). Nothing loads until the visitor consents, see app/analytics.js.
   ga4Id:process.env.GA4_ID||'',clarityId:process.env.CLARITY_ID||'',adsId:process.env.GOOGLE_ADS_ID||'',adsPurchaseLabel:process.env.GOOGLE_ADS_PURCHASE_LABEL||''};
 await writeFile(new URL('dist/config.js',root),`window.FEM_CONFIG = ${JSON.stringify(config)};\n`);
-// SEO: / in English, /no (no.html via cleanUrls) in Norwegian, robots and sitemap for SITE_URL.
+// SEO: / in Norwegian, /en (en.html via cleanUrls) in English, robots and sitemap for SITE_URL.
 const template=await readFile(new URL('app/index.html',root),'utf8');
 for(const key in pages)await writeFile(new URL(`dist/${pages[key].file}`,root),renderPage(template,key));
 await writeFile(new URL('dist/robots.txt',root),robotsTxt());

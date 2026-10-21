@@ -58,7 +58,7 @@ test('checkout needs a signed-in user and sets the price on the server', async (
   assert.match(body.get('line_items[0][price_data][product_data][images][0]'), /\/assets\/checkout\/plus-no\.jpg$/);
   assert.equal(body.get('client_reference_id'), USER);
   assert.equal(body.get('metadata[tier]'), 'plus');
-  assert.equal(body.get('success_url'), 'https://kaleidotest.com/no?paid={CHECKOUT_SESSION_ID}#report');
+  assert.equal(body.get('success_url'), 'https://kaleidotest.com/?paid={CHECKOUT_SESSION_ID}#report');
   assert.match(body.get('custom_text[submit][message]'), /angreretten/);
   assert.equal(body.get('payment_method_types[0]'), null);
   assert.equal(body.get('managed_payments[enabled]'), 'false');

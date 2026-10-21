@@ -3,5 +3,17 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [{"source": "/v/:id", "destination": "/api/v?id=:id"}]
+  "rewrites": [
+    {
+      "source": "/v/:id",
+      "destination": "/api/v?id=:id"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/no",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
