@@ -666,6 +666,10 @@ Registrert fra samtalen 11. oktober 2026. «Valgt» nedenfor viser brukerens utt
 - Rune om Stripe-siden: «den siden kan gjerne representere hva de får … liste med ting. oversiktelig. innbydende». Bildet til venstre på Stripes betalingsside er nå en liste i Kaleido-stil med det rapporten inneholder, én for Fordypning og én for Fordypning + tilpasset, på norsk og engelsk (app/assets/checkout/<nivå>-<språk>.jpg, tegnet av scripts/checkout-images.cjs).
 - Stripe viser bildet omtrent 300 px bredt, så linjene er korte og store, uten undertekst. Listene følger kjøpskortene i appen, pluss «Komboene dine».
 
+## Rapportvideoen i appens design (2026-10-21)
+
+Rune: den lange videoen skal bruke designet fra appen. Alle grafer i videoen tegnes nå som appens fasetterte stolper (lys-til-dyp fyll i trekkfargen, papirfasetter som driver sakte, navy knapp med hvit kant), trekkene vises med logobitene sine som vugger litt, og «En mulig styrke» bruker trekkets logobit i stedet for en flat trekant. Statistikkscenen får trekkets logobit øverst. Lange trekknavn mister parentesen, som i logonavigasjonen. Tidene og kombosenen er uendret.
+
 ## Mindre videofil, raskere opplasting (2026-10-21)
 
 - Rune: «videoen tar litt tid å laste opp … mange kan hoppe av her». Videoen tas nå opp med 3 Mbit/s i stedet for 6. Telefoner med maskinvare-H.264 treffer målet, så fila blir omtrent halvparten så stor (ca. 7,5 MB i stedet for 15 MB for det korte klippet på 24 s) og lastes opp dobbelt så fort.
