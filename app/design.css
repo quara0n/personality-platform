@@ -2138,3 +2138,25 @@ body.in-share-full{overflow:hidden}
 .d-combo-more{display:block;margin:14px auto 0;text-align:center;font-weight:700;color:var(--title)}
 @media(max-width:520px){.d-combo{padding:18px 14px 14px}.d-combo-face strong{font-size:16px}.d-combo-plus{width:32px;height:32px;font-size:18px}.d-combo-amount strong{font-size:34px}}
 @media print{.d-combo{break-inside:avoid}}
+/* Share sheet like other apps (Rune 2026-10-21): app icons in a row, then Copy link, Download video and More */
+.d-share-pop h2{margin-bottom:4px}
+.d-share-pop .d-share-pop-msg{margin:0 0 14px;color:#4f6c8a;font-size:14px;min-height:20px}
+.d-share-url{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d-apps{display:flex;gap:6px;overflow-x:auto;margin:0 -20px 6px;padding:2px 20px 8px;scroll-snap-type:x proximity;scrollbar-width:none}
+.d-apps::-webkit-scrollbar{display:none}
+.d-apps-actions{padding-top:10px;border-top:1px solid rgba(19,40,79,.1)}
+.d-app{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;width:72px;padding:4px 0;border:0;background:none;color:#13284f;font:inherit;cursor:pointer;scroll-snap-align:start}
+.d-app[disabled]{opacity:.38;cursor:default}
+.d-app-ico{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#e9eef3;color:#13284f}
+.d-app-ico svg{width:28px;height:28px}
+.d-app-name{font-size:12px;line-height:1.2;text-align:center;white-space:nowrap}
+@media(hover:hover){.d-app:not([disabled]):hover .d-app-ico{transform:translateY(-2px);box-shadow:0 6px 14px rgba(16,39,71,.18)}}
+.d-share-pop .d-share-unlink{margin-top:4px;font-size:13px;color:#4f6c8a}
+/* On phones the window slides up from the bottom, like the system share sheet */
+@media(max-width:760px){
+  .d-share-pop{width:100vw;max-width:100vw;margin:auto 0 0;padding:18px 20px calc(16px + env(safe-area-inset-bottom));border-radius:18px 18px 0 0;animation:d-sheet-up .22s ease-out}
+  .d-share-pop::before{content:'';display:block;width:40px;height:4px;margin:-8px auto 12px;border-radius:2px;background:rgba(19,40,79,.2)}
+}
+@keyframes d-sheet-up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.d-share-pop{animation:none}}
+@media(min-width:761px){.d-share-pop{width:min(480px,calc(100vw - 24px))}.d-apps{flex-wrap:wrap;overflow:visible;margin:0 0 6px;padding:2px 0 8px;gap:8px 4px}.d-app{width:84px}}

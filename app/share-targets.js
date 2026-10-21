@@ -24,3 +24,25 @@ export function linkTargets(url, text, subject = 'Kaleido') {
 
 /** Caption that goes with the video: the end-card question and the site address. */
 export const caption = (s, url) => `${s.end} ${s.cta}: ${url}`;
+
+/** The row of apps in the share window, in the order people in Norway use them most (Rune 2026-10-21: «viser appen
+ *  logo etc i en rekke» like other apps). `kind` says what a tap does:
+ *  'link' opens `url` with the link filled in; 'paste' copies the link and opens `url`, for apps whose web page cannot
+ *  take a link (Messenger on a computer); 'file' hands over the video file, for Instagram and TikTok, which only take
+ *  a real video (the phone's share sheet, or a download plus the upload page on a computer). */
+export function appTargets(url, text, {touch = false, subject = 'Kaleido'} = {}) {
+  const u = encodeURIComponent(url), both = encodeURIComponent(`${text} ${url}`);
+  return [
+    touch ? {id: 'messenger', name: 'Messenger', kind: 'link', url: `fb-messenger://share/?link=${u}`} : {id: 'messenger', name: 'Messenger', kind: 'paste', url: 'https://www.messenger.com/'},
+    {id: 'snapchat', name: 'Snapchat', kind: 'link', url: `https://www.snapchat.com/scan?attachmentUrl=${u}`},
+    {id: 'instagram', name: 'Instagram', kind: 'file', url: 'https://www.instagram.com/'},
+    {id: 'whatsapp', name: 'WhatsApp', kind: 'link', url: `https://wa.me/?text=${both}`},
+    {id: 'facebook', name: 'Facebook', kind: 'link', url: `https://www.facebook.com/sharer/sharer.php?u=${u}`},
+    {id: 'tiktok', name: 'TikTok', kind: 'file', url: 'https://www.tiktok.com/tiktokstudio/upload'},
+    ...(touch ? [{id: 'sms', name: 'SMS', kind: 'link', url: `sms:?&body=${both}`}] : []),
+    {id: 'email', name: 'E-post', kind: 'link', url: `mailto:?subject=${encodeURIComponent(subject)}&body=${both}`},
+    {id: 'x', name: 'X', kind: 'link', url: `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${u}`},
+    {id: 'telegram', name: 'Telegram', kind: 'link', url: `https://t.me/share/url?url=${u}&text=${encodeURIComponent(text)}`},
+    {id: 'linkedin', name: 'LinkedIn', kind: 'link', url: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`}
+  ];
+}
