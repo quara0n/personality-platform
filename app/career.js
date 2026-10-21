@@ -56,3 +56,4 @@ export const careerHtml = chapter.html;
 export const careerContextHtml = chapter.contextHtml;
 export const initCareer = chapter.init;
 export const clearCareer = chapter.clear;
+export const careerWeekText = chapter.weekText;
