@@ -914,6 +914,9 @@ details[open] .d-acc-icon::after{transform:rotate(0)}
 .d-email-row button{padding:12px 20px;border:0;border-radius:8px;background:#13284f;color:#fff;font:inherit;font-weight:600;cursor:pointer}
 .d-email-row input:focus-visible,.d-email-row button:focus-visible{outline:3px solid #f6b18d;outline-offset:2px}
 .d-email .d-email-note{grid-column:1/-1;font-size:14px;color:#5a7290}
+.d-email .d-email-note.is-sent{color:#1f6b45}
+.d-email .d-email-note a{color:inherit}
+.d-email-row button:disabled{opacity:.7;cursor:progress}
 @media(max-width:760px){.d-email{grid-template-columns:1fr;margin-top:28px;padding:20px 16px}}
 .d-report-try{margin:18px 0}
 .d-report-try .d-tdetail-q{margin-top:8px!important;font-style:italic}
