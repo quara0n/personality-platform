@@ -29,8 +29,8 @@ import {termsHtml} from './terms-copy.js';
 import {initAnalytics,consentBanner,configured as analyticsOn,track,trackOnce} from './analytics.js';
 const main=document.querySelector('main');
 const KEY='five-assessment-v1', PREF='five-preferences-v1';
-// /no is the Norwegian page (see scripts/seo.js); a stored preference still wins.
-let language=/^\/no(\.html)?\/?$/.test(location.pathname)||/^n[obn]/.test(navigator.language.toLowerCase())?'no':'en';
+// / is the Norwegian page and /en the English one (see scripts/seo.js); a stored preference still wins.
+let language=/^\/en(\.html)?\/?$/.test(location.pathname)?'en':'no';
 let country=language==='no'?'NO':'US';
 try{const p=JSON.parse(localStorage.getItem(PREF)||'null');if(p){language=p.language==='no'?'no':'en';country=p.country==='NO'?'NO':'US';}}catch{}
 let questions=[],content={},answers={},index=0,busy=false,demo=false,report=null,loadToken=0,answerToken=0,restoreToken=0,storageAvailable=true,backupMessage='',norms;

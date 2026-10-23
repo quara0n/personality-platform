@@ -38,8 +38,9 @@ http.createServer(async(req,res)=>{
   }
   try{
     const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
-    // Same pages as the build: / and /no from app/index.html, plus robots and sitemap.
-    const page=pathname==='/'||pathname==='/index.html'?'en':pathname==='/no'||pathname==='/no.html'?'no':null;
+    // Same pages as the build: / (Norwegian) and /en from app/index.html; /no redirects to / as on Vercel; plus robots and sitemap.
+    if(pathname==='/no'||pathname==='/no.html'){res.writeHead(301,{Location:'/'+new URL(req.url,'http://localhost').search}).end();return;}
+    const page=pathname==='/'||pathname==='/index.html'?'no':pathname==='/en'||pathname==='/en.html'?'en':null;
     if(page){res.writeHead(200,{'Content-Type':mime['.html'],'Cache-Control':'no-store'}).end(renderPage(await readFile(path.join(root,'index.html'),'utf8'),page));return;}
     if(pathname==='/robots.txt'){res.writeHead(200,{'Content-Type':mime['.txt']}).end(robotsTxt());return;}
     if(pathname==='/sitemap.xml'){res.writeHead(200,{'Content-Type':'application/xml; charset=utf-8'}).end(sitemapXml());return;}

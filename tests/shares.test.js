@@ -22,7 +22,7 @@ test('the share page unfurls with a big card, the video and no way to inject mar
   assert.match(html, /twitter:card" content="summary_large_image"/);
   assert.match(html, /og:url" content="https:\/\/kaleidotest\.com\/v\/AbCdEfGhIj"/);
   assert.match(html, /Kaleido-profilen min/);
-  assert.match(html, /href="https:\/\/kaleidotest\.com\/no#test"/);
+  assert.match(html, /href="https:\/\/kaleidotest\.com\/#test"/);
   assert.doesNotMatch(html, /<script>"/);
   assert.match(html, /Kapteinen &lt;script&gt;/);
   const en = sharePageHtml({id: 'AbCdEfGhIj', title: 'The Captain', lang: 'en', kind: 'report', video_ext: 'webm'}, env);

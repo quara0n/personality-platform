@@ -14,7 +14,7 @@ const seed=async page=>page.evaluate(async()=>{const q=await (await fetch('data/
   let owned=null;const calls=[];
   await ctx.route('**/api/purchase',async r=>{const b=JSON.parse(r.request().postData());calls.push(b);assert.equal(r.request().headers().authorization,'Bearer tok');
     if(b.action==='status')return r.fulfill({json:{tier:owned}});
-    if(b.action==='checkout')return r.fulfill({json:{url:'http://127.0.0.1:4173/no?paid=cs_test_abc#report'}});
+    if(b.action==='checkout')return r.fulfill({json:{url:'http://127.0.0.1:4173/?paid=cs_test_abc#report'}});
     if(b.action==='confirm'){owned=b.session==='cs_test_abc'?'plus':owned;return r.fulfill({json:{tier:owned,paid:true}});}});
   await ctx.addInitScript(fake);
   await page.goto('http://127.0.0.1:4173/#home');await seed(page);
