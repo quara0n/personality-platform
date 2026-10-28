@@ -62,6 +62,7 @@ test('checkout needs a signed-in user and sets the price on the server', async (
   assert.match(body.get('custom_text[submit][message]'), /angreretten/);
   assert.equal(body.get('payment_method_types[0]'), null);
   assert.equal(body.get('managed_payments[enabled]'), 'false');
+  assert.equal(body.get('allow_promotion_codes'), 'true');
 });
 
 test('an owner of the 49 kr report pays the difference, and an owner of «plus» is not charged again', async () => {
@@ -108,6 +109,25 @@ test('confirm stores only a paid session that belongs to the user and has the ri
     assert.ok(!calls.some(c => c.url.includes('on_conflict')), JSON.stringify(bad));
   }
   assert.equal((await handlePurchase({action: 'confirm', session: '../x'}, 'good', env)).status, 400);
+});
+
+test('a promotion code may take part or all of the price, but the list price must still be ours', async () => {
+  const free = {payment_status: 'no_payment_required', amount_subtotal: 7900, amount_total: 0, total_details: {amount_discount: 7900}, payment_intent: null};
+  let calls = fake({session: paid(free), owned: ['plus']});
+  const out = await handlePurchase({action: 'confirm', session: 'cs_test_abc'}, 'good', env);
+  assert.deepEqual(out.body, {tier: 'plus', paid: true, amount: 0, currency: 'NOK'});
+  const row = JSON.parse(calls.find(c => c.url.includes('on_conflict=id')).init.body);
+  assert.equal(row.amount, 0);
+  assert.equal(row.payment_intent, null);
+  calls = fake({session: paid({amount_subtotal: 7900, amount_total: 3950, total_details: {amount_discount: 3950}})});
+  await handlePurchase({action: 'confirm', session: 'cs_test_abc'}, 'good', env);
+  assert.ok(calls.some(c => c.url.includes('on_conflict')), 'half price with a code');
+  for (const bad of [{...free, amount_subtotal: 100, total_details: {amount_discount: 100}}, {...free, total_details: {amount_discount: 0}},
+    {...free, payment_status: 'unpaid'}, {amount_subtotal: 7900, amount_total: 100}]) {
+    calls = fake({session: paid(bad)});
+    await handlePurchase({action: 'confirm', session: 'cs_test_abc'}, 'good', env);
+    assert.ok(!calls.some(c => c.url.includes('on_conflict')), JSON.stringify(bad));
+  }
 });
 
 test('the webhook checks Stripe\'s signature before storing anything', async () => {
